@@ -36,9 +36,9 @@ def periodify(signal, cycles=1, start=0, stop=None ):
     
 ''' Variables that control the script '''
 tix = False  # manually choose spacing between axis ticks
-tex = False  # LaTeX typesetting maths and descriptions
+tex = True  # LaTeX typesetting maths and descriptions
 
-st, ch1, ch2, mh1 = np.genfromtxt('./rlc.csv', float, delimiter=',',  unpack=True)
+st, ch1, ch2, mh1 = np.genfromtxt('./data/rlc.csv', float, delimiter=',',  unpack=True)
 
 t_min = 3.5e-4; t_max = 8.5e-4
 t, x_a, dt, dx = lab.mesrange(st, mh1, x_min=t_min, x_max=t_max)
@@ -46,13 +46,13 @@ t_b, x_b, dt, dx = lab.mesrange(st, ch1, x_min=t_min + 8e-5, x_max=t_max)
 # Preliminary plot to visualize the sub-interval of data to analyze
 lab.rc.typeset(usetex=tex, fontsize=12)
 fig, (ax1, ax2) = plt.subplots(2, 1)
-grid(ax1, xlab='Time [s]', ylab='Channel 1 [V]')
-grid(ax2, xlab='Time [s]', ylab='Channel 2 [V]')
-ax1.plot(np.linspace(num=5000, start=t[0], stop=20*t[-1]), periodify(x_a, cycles=20), 'b', alpha=0.6)
-ax2.plot(st, ch1, 'grey', alpha=0.6); ax2.plot(t_b, x_b, 'b', alpha=0.6)
+grid(ax1, xlab='Time [s]', ylab='Damped oscillation $V(t)$ [V]')
+grid(ax2, xlab='Time [s]', ylab='Original signal [V]')
+ax1.plot(t, x_a, 'b+', ls='-', alpha=0.6)
+ax2.plot(st, ch1, 'grey', marker='+', ls='-',  alpha=0.6); ax2.plot(t_b, x_b, 'b+', ls='-', alpha=0.6)
 
 t = t - t[0]
-dt = np.full(t.shape, 2e-7); dx = 1e-4*np.ones_like(x_a)
+dt = np.full(t.shape, 2e-7); dx = 2e-4*np.ones_like(x_a)
 
 # fit damped oscillation
 init_a = [1, 5e3, 0., 0, 3e-4]
@@ -67,7 +67,7 @@ chisq, ndof, resn, sigma = chitest(model(t, *pars), x_a, unc=deff,
 
 # graphs
 fig, (axf, axr) = pltfitres(model, t, x_a, dt, deff, pars=pars)
-axf.set_ylabel('Signal [V]' )
+axf.set_ylabel('RLC Signal $V(t)$ [V]' )
 if tix: lab.tick(axf, xmaj=5, ymaj=50)
 legend = axf.legend(loc='best')
 
