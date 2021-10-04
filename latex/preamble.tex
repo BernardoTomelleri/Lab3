@@ -1,0 +1,90 @@
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm, thmtools, amsfonts, mathtools}
+\usepackage{nicefrac}
+\usepackage{calc}
+\usepackage[pdftex, hyperindex, plainpages=false]{hyperref}
+\usepackage[nameinlink]{cleveref} %load before classicthesis (clash)
+\usepackage[nochapters,pdfspacing]{classicthesis}
+\usepackage{siunitx}
+\usepackage[siunitx]{circuitikz}
+
+\usepackage[a4paper]{geometry}
+\usepackage{float}
+\usepackage{mdframed}
+\usepackage{titling}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{caption, subcaption}
+\usepackage{xcolor}
+\usepackage[italian]{babel}
+\usepackage{pgfplots}
+\usepackage{listings}
+%\usepackage{lmodern}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{tikz} %loads after classicthesis (xcolor incompat)
+
+% lets graphicx know path where figures to be included are found
+\graphicspath{{../figs/}}
+\makeatletter
+\def\input@path{{../figs/}}
+%or: \def\input@path{{/path/to/folder/}{/path/to/other/folder/}}
+\makeatother
+
+% tikz pgf plots setup
+\usepgfplotslibrary{external}
+\pgfplotsset{compat=1.15}
+\tikzexternalize
+
+% spaces and significant digits/figures for measurements
+\sisetup{free-standing-units, space-before-unit, number-unit-product = \;,
+scientific-notation = true, round-mode = figures, round-precision = 2,}
+
+% turns all (hyperlinked) references black [default is blue]
+\hypersetup{
+	linktoc=all,
+	colorlinks=true,
+	linkcolor=black
+}
+
+% code listings config
+\lstset{
+language=Python,
+basicstyle=\ttfamily,
+columns=fullflexible,
+keepspaces=true,
+}
+
+% mdframed (for boxed text) configuration
+\mdfsetup{linewidth=0.6pt}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+% Commands 
+\newcommand{\executeiffilenewer}[3]{%
+	\ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+		{\pdffilemoddate{#2}}>0%
+	{\immediate\write18{#3}}\fi%
+}
+% input .svg --> .pdf_tex graphs
+\newcommand{\includesvg}[1]{%
+	\executeiffilenewer{#1.svg}{#1.pdf}%
+	{inkscape -z -D --file=#1.svg %
+	--export-pdf=#1.pdf --export-latex}%
+	\input{#1.pdf_tex}%
+}
+% Thanks UniPi's Department of Physics E. Fermi
+\newcommand{\thanksdf}{(\thanks{Dipartimento di Fisica E.~Fermi,%
+Universit\`a di Pisa - Pisa, Italy.}\;)}
+
+% hyperlink to email address
+\newcommand{\mail}[1]{\href{mailto:#1}{\textsf{#1}}}

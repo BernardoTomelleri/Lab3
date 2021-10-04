@@ -1,0 +1,84 @@
+\documentclass{article}[a4paper, 12pt, italian]
+\input{../../latex/preamble}
+\input{../../latex/math}
+
+% adjustable page margins, currently scientific article standards
+\geometry{left=25mm, right=25mm, top=25mm, bottom=25mm}
+
+\title{Esercitazione • di Laboratorio 3}
+\author{B.~Tomelleri\thanksdf \and M.~Rossi(\protect\footnotemark[1] )}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+%================================================================
+%                         Introduzione
+%================================================================
+\section{Introduzione}
+
+%================================================================
+%                         Cenni teorici
+%================================================================
+\section{Cenni Teorici}
+
+%================================================================
+%                Metodo e apparato sperimentale
+%================================================================
+\section{Metodo e apparato sperimentale}
+
+%================================================================
+%                   Analisi dati e Risultati
+%================================================================
+\section{Analisi dati e Risultati}
+
+Lasciando liberi entrambi i parametri $•_{•}$ e $•_{•}$ (e propagando
+gli errori sulla variabile indipendente) si ottengono i valori:
+\begin{align*}
+•_{•} &= • \pm • \ \; \si{\ohm} \\
+•_{•} &= • \pm • \; \si{\volt} \\  
+\rm{norm\_cov}_{(•_{•}, •_{•})} &= • \\ 
+\chi^2 &= •/• \\
+\rm{abs\_sigma} &= \rm False
+\end{align*}
+
+Ed il grafico \ref{plt:1}\\
+\begin{figure}[!htb]
+	\centering 
+% 		\scalebox{0.9}{\input{./hist.pgf}}
+ 	\caption{Fit dell' • rispetto alla • in scala • \label{plt:1}}
+\end{figure}
+% Alternatively
+%\begin{figure}[!htb]
+%	\centering 
+% 		\includegraphics[scale=0.9]{./figs/dist.pdf}
+% 	\caption{Distribuzione delle • per $• = • \pm • \rm •$ \label{dist:1}}
+%\end{figure}
+In entrambi casi impostando $\rm{abs\_sigma} = \rm False$ in quanto l'errore
+non statistico è predominante sulle misure.
+
+Da un secondo \emph{fit} con un modello:
+\begin{lstlisting}
+def fit(x, a, b):
+    return a + b*x
+\end{lstlisting}
+% Alternatively
+%\lstinputlisting[language=Python, firstline=38, lastline=39]{../foo.py}
+%or even
+%\begin{align*}
+%\rm def\; &foo(•_{•}, •_{•}, •_{•}):\\
+%    &\rm return\; •_{•}/•_{•} + •_{•}
+%\end{align*}
+
+\subsection{Nota sul metodo di fit}
+Per determinare i parametri ottimali e le rispettive covarianze si \`e
+implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
+mediante la funzione \emph{curve\_fit} della libreria 
+\texttt{SciPy}\cite{scipy}.
+%================================================================
+%                          Conclusioni
+%================================================================
+\section{Conclusioni}
+
+\bibliography{../../latex/refs}
+\end{document}

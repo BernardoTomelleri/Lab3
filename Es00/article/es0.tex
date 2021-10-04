@@ -1,0 +1,96 @@
+\documentclass{article}[a4paper, 12pt, italian]
+\input{../../latex/preamble}
+\input{../../latex/math}
+
+% adjustable page margins, currently scientific article standards
+\geometry{left=25mm, right=25mm, top=25mm, bottom=25mm}
+
+\title{Esercitazione 0 di Laboratorio 3}
+\author{B.~Tomelleri\thanksdf \and M.~Rossi(\protect\footnotemark[1] )}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+%================================================================
+%                         Introduzione
+%================================================================
+\section{Introduzione}
+Scopo dell’esercitazione è di acquisire familiarità con le funzionalità
+di Waveforms come oscilloscopio e generatore di funzioni.
+
+%================================================================
+%                         Cenni teorici
+%================================================================
+\section{Cenni Teorici}
+
+%================================================================
+%                Metodo e apparato sperimentale
+%================================================================
+\section{Metodo e apparato sperimentale}
+Digilent AD2 e applicazione dedicata Waveforms
+
+%================================================================
+%                   Analisi dati e Risultati
+%================================================================
+\section{Analisi dati e Risultati}
+
+Da un \emph{fit} con un modello:
+\begin{lstlisting}
+def dosc(t, A, frq, phi, ofs, tau):
+    return A*np.exp(-t/tau)*np.cos(2*np.pi*frq*t + phi) + B
+\end{lstlisting}
+
+Lasciando liberi tutti i parametri $A$, $\omega$, $\tau$ $\phi$ e $B$
+(e propagando gli errori sulla variabile indipendente) si ottengono i valori:
+\begin{align*}
+A &= 1.2045 \pm 0.0007  \; \si{\volt} \qquad &B &= -73.27 \pm 0.02 \;
+\si{m\volt} \\
+f &= 5722 \pm 1 \; \si{\hertz} \qquad &\phi &= 311 \pm 2 \; \si{m\radian} \\  
+\tau &= 88.41 \pm 0.02 \; \si{\us} \qquad &Q_f &= 1.6 \pm 0.2 \\
+\rm{norm\_cov_{(A, f)}} &= 0.71 \qquad &\rm{norm\_cov_{(A, B)}} &= -0.03 \\
+\rm{norm\_cov_{(A, \tau)}} &= -0.73 \qquad &\rm{norm\_cov_{(A, \phi)}} &= -0.85 \\ 
+\rm{norm\_cov_{(f, \phi)}} &= -0.84 \qquad &\rm{norm\_cov_{(f, \tau)}} &= -0.59 \\
+\rm{norm\_cov_{(f, B)}} &= -0.02 \qquad &\rm{norm\_cov_{(\phi, B)}} &= 0.02 \\
+\rm{norm\_cov_{(\phi, \tau)}} &= 0.53 \qquad &\rm{norm\_cov_{(B, \tau)}} &= 0.05 \\
+\chi^2 &= 215.4/245 \qquad &\rm{abs\_sigma} &= \rm False
+\end{align*}
+
+Ed il grafico \ref{plt:rlcfit}\\
+\begin{figure}[!htb]
+	\centering 
+ 		\includegraphics[scale=0.9]{rlcfit}
+    \caption{Fit del segnale $V(t)$ rispetto al tempo \label{plt:rlcfit}}
+\end{figure}
+% Alternatively
+%\begin{figure}[!htb]
+%	\centering 
+% 		\includegraphics[scale=0.9]{./figs/dist.pdf}
+% 	\caption{Distribuzione delle • per $• = • \pm • \rm •$ \label{dist:1}}
+%\end{figure}
+In entrambi casi impostando $\rm{abs\_sigma} = \rm False$ in quanto l'errore
+non statistico è predominante sulle misure.
+
+% Alternatively
+%\lstinputlisting[language=Python, firstline=38, lastline=39]{../foo.py}
+%or even
+%\begin{align*}
+%\rm def\; &foo(•_{•}, •_{•}, •_{•}):\\
+%    &\rm return\; •_{•}/•_{•} + •_{•}
+%\end{align*}
+
+\subsection{Nota sul metodo di fit}
+Per determinare i parametri ottimali e le rispettive covarianze si \`e
+implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
+mediante la funzione \emph{curve\_fit} della libreria 
+\texttt{SciPy}\cite{scipy}.
+%================================================================
+%                          Conclusioni
+%================================================================
+\section{Conclusioni}
+La forma d'onda oscillante ha si spegne dopo qualche periodo, per cui
+il fattore di merito trovato è ragionevole, essendo maggiore del valore
+$Q_c = \nicefrac{1}{2}$ corrispondente a smorzamento critico del sistema,
+ma comunque dello stesso ordine di grandezza.
+\bibliography{../../latex/refs}
+\end{document}
