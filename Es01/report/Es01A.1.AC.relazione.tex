@@ -100,8 +100,7 @@ automatica fornisce il valore $V_{\mathrm{AUTO}}= xx \,\mathrm{V}$
 
 \begin{figure}[h]
 \centering
-%\includegraphics[scale=0.4]{ivfit}
-\framebox(200,100){(2.b) Inserire il grafico $I_{D}$ vs. $V_{D}$ }
+\includegraphics[scale=0.8]{ivfit}
 \caption{(2.b) Grafico $I_{D}$ vs. $V_{D}$ e fit all'equazione di Schockley}
 \end{figure}
 
@@ -118,36 +117,35 @@ automatica fornisce il valore $V_{\mathrm{AUTO}}= xx \,\mathrm{V}$
 
 
 Si realizza un partitore con resistenze da $1 \,\mathrm{k}\Omega$.
-Valori misurati con il multimetro: R1=$0.993 \pm \exn \,\mathrm{k}\Omega$,
-R2=$0.993 \pm \exn \,\mathrm{k}\Omega$
+Valori misurati con il multimetro: R1=$993 \pm 8 \,\Omega$,
+R2=$993 \pm 8 \,\Omega$
 
 
 \begin{table}[h]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline 
-VIN& $\sigma$ VIN  &VOUT	 & $\sigma$ VOUT& VOUT/VIN & $\sigma$ VOUT/VIN \\
+VIN& $\sigma$ VIN  & VOUT	 & $\sigma$ VOUT & VOUT/VIN & $\sigma$ VOUT/VIN \\
 \hline 
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
+1.000 & \exn & \exn & \exn & \exn &\exn \\
+2.000 & \exn & \exn & \exn & \exn &\exn \\
+3.000 & \exn & \exn & \exn & \exn &\exn \\
+4.000 & \exn & \exn & \exn & \exn &\exn \\
 \hline 
 \end{tabular} 
 \caption{(6.b) Partitore di tensione con resistenze da circa 1k. Tutte le
 tensioni in V.\label{t:par1}}
 \end{table}
 
-
-\framebox(400,30){Inserire commento sul confronto tra valori misurati
-ed attesi.}
-
+I valori di attenuazione attesi per il partitore risultano compatibili
+con quelli misurati per tutti i valori di tensione compresi nell'intervallo
+esplorato ($1 - 4$ V.)
 
 \subsection*{6.d Partitore con resistenze da circa 1M}
 \par
 Si realizza un partitore con resistenze da $1 \,\mathrm{M}\Omega$.
-Valori misurati con il multimetro: R1=$\exn \pm \exn \,\mathrm{M}\Omega$,
-R2=$\exn \pm \exn \,\mathrm{M}\Omega$
+Valori misurati con il multimetro: R1=$\exn \pm 0.008 \,\mathrm{M}\Omega$,
+R2=$\exn \pm 0.008 \,\mathrm{M}\Omega$
 
 
 \begin{table}[h]
@@ -166,29 +164,47 @@ VIN& $\sigma$ VIN  &VOUT	 & $\sigma$ VOUT& VOUT/VIN & $\sigma$ VOUT/VIN \\
 Tutte le tensioni in V.\label{t:par2}}
 \end{table}
 
-
-\framebox(400,30){Inserire commento sul confronto tra valori misurati ed attesi.}
-
+La tensione in uscita dal partitore $R_1 + R_2$ risulta apprezzabilmente
+inferiore rispetto al suo valore atteso. Questo è dovuto al comportamento
+non ideale del voltmetro, per cui quando la sua impedenza in ingresso
+$10 \si{\Mohm}$ (nom.) è paragonabile a quella della resistenza del partitore
+a cui si trova in parallelo durante la misura, ne abbassa la resistenza
+effettiva $R_2 \mapsto R_{\mathrm{eff}} = (\frac{1}{R_{\mathrm{in}}}
++ \frac{1}{R2})^{-1}$. Di conseguenza aumenta la corrente che passa per
+il partitore, dunque la caduta di tensione ai capi di $R_1$, per cui
+diminuiscono la tensione in uscita e quindi il valore di attenuazione, come
+osservato.
 
 
 \subsection*{6.e Resistenza di ingresso del multimetro}
 Usando il modello mostrato nella scheda si ottiene
-\[ \frac{R_1}{R_T} =  \frac{V_{IN}}{V_{OUT}} - (1 +  \frac{R_1}{R_2} )
-\]
+\begin{equation}\label{eq: divider}
+\frac{R_1}{R_{IN}} =  \frac{V_{IN}}{V_{OUT}} - (1 +  \frac{R_1}{R_2} )
+\end{equation}
 
 Con i dati con resistenze da 1k si ottiene
-\[ R_1/R_{IN} = \exn  \pm  \exn   \rightarrow  R_{IN} > \exn k\Omega
-\]
+\begin{equation}\label{eq: estimate}
+R_1/R_{IN} = \exn  \pm  \exn   \rightarrow  R_{IN} > \exn k\Omega
+\end{equation}
 
 
 Con i dati con resistenze da 1M si ottiene
 \[ R_1/R_{IN} = \exn  \pm  \exn   \rightarrow  R_{IN} = (\exn \pm  \exn)  M\Omega
 \]
 
-\framebox(400,30){Inserire commento sulla sensibilit\`a sperimentale della misura.} 
-
-
-
+Quando la resistenza del multimetro $R_{IN} \gg R_2$ come visto al punto
+6.b si ha $A \approx A_{\exp}$, per cui dalla \eqref{eq: divider}
+\[
+\frac{1}{A} - \frac{1}{A_{\exp}} = \frac{V_{IN}}{V_{OUT}} -
+(1 +  \frac{R_1}{R_2}) = \frac{R_1}{R_{IN}}
+\]
+si vede come (a causa dell'incertezza sulla stima di $R_{IN}$ dalla
+propagazione dell'errore sulla differenza) non sia possibile dare una misura
+soddisfacente del suo valore. Ne possiamo però dare una stima dal basso:
+\[
+\frac{1}{A} \geq \frac{R_1}{R_{IN}} \implies R_{IN} \geq A R_1
+\]
+come in \eqref{eq: estimate}.
 
 \section{Misure di tempo e frequenza}
 
