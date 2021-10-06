@@ -33,7 +33,6 @@ par_bounds = [[0.0, 1], [6e2, 7e2], [0, 7], [-1, 1], [0, 1]]
 genetic_pars = lab.gen_init(model=sqw, coords=[t, x_b],
                                 bounds=par_bounds, unc=dx)
 
-lab.rc.NORMRES_MARKER
 #ax2.plot(t, sqw(t, *init_b), 'grey', alpha=0.6)
 for time, pos, mod, init in zip([t, t], [x_a, x_b], [sine, sqw], [init_a, genetic_pars]):
     pars, covm, deff = propfit(mod, time, pos, dt, dx, p0=init, max_iter=0, alg='trf')

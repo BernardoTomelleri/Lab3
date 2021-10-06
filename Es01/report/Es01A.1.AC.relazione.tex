@@ -1,18 +1,16 @@
 \documentclass[10pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[italian]{babel}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\input{../../latex/preamble}
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
 \newcommand{\rem}[1]{[\emph{#1}]}
 \newcommand{\exn}{\phantom{xxx}}
 
-\author{Gruppo 1.Ay \\ Mario Rossi, Anna Bianchi \rem{non dimenticate i nomi}}
+% lets graphicx know path where figures to be included are found
+\graphicspath{{../figs/}}
+
+\author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
 \title{Es01A: Uso dello strumento Analog Discovery 2.}
 \begin{document}
-\date{23 ottembre 2150}
+\date{\today}
 \maketitle
 
 \setcounter{section}{1}
@@ -21,11 +19,16 @@
 
 \subsection*{2.d Accensione diodo}
 
-La tensione di alimentazione \`e stata variata nell intervallo tra $xx\,\mathrm{V}$ e $yy\,\mathrm{V}$
+La tensione di alimentazione \`e stata variata nell'intervallo tra
+$0.5\,\mathrm{V}$ e $5\,\mathrm{V}$
 
 
-\vspace{0.5cm}
-\framebox(400,30){Inserire commento sulla luminosit\`a del diodo in funzione della tenione e per diversi colori.}
+Si osserva che la luminosit\`a del diodo è proporzionale alla tensione
+erogata dal generatore, una volta superata una tensione di soglia per cui
+il LED inizia a emettere luce di intensità osservabile. La tensione di soglia
+varia per i diversi colori; in particolare $V_{\mathrm{thr}}$ risulta
+proporzionale alla frequenza del colore di luce emessa. Dunque
+rosso $<$ giallo $<$ verde $<$ blu.
 
 \subsection*{2.e Misura tensione}
 Utilizzando il multimetro si misura la tensione ai capi del diodo e si ottiene:
@@ -42,7 +45,8 @@ V+& $\sigma$ V+  & VD & $\sigma$ VD & I(R1)  & $\sigma$ I(R1) \\
 \exn & \exn & \exn & \exn & \exn &\exn \\
 \hline 
 \end{tabular} 
-\caption{(2.e) Tensione e corrente ai capi del diodo. Tutte le tensioni in V.\label{t:par1}}
+\caption{(2.e) Tensione e corrente ai capi del diodo.
+Tutte le tensioni in V.\label{t:par1}}
 \end{table}
 
 %=======================
@@ -50,7 +54,8 @@ V+& $\sigma$ V+  & VD & $\sigma$ VD & I(R1)  & $\sigma$ I(R1) \\
 \exn 
 \par
 \vspace{0.5cm}
-\framebox(400,30){Inserire commento sulle onde generate, ed eventualmente screenshot }
+\framebox(400,30){Inserire commento sulle onde generate, ed eventualmente
+screenshot.}
 
 \section{Oscilloscopio}
 
@@ -63,15 +68,16 @@ V+& $\sigma$ V+  & VD & $\sigma$ VD & I(R1)  & $\sigma$ I(R1) \\
 
 \begin{figure}[h]
 \centering
-%\includegraphics[scale=0.4]{part1.pdf}
-\framebox(400,50){ (4.e) Inserire lo screenshot dell'oscilloscopio. }
+\includegraphics[scale=0.3]{trgdiode}
 \caption{(4.e) Relazione tra trigger e segnale}
 \end{figure}
 
 
 \subsection*{4.f Misura tensione massima ai capi del diodo}
 \par 
-La tensione massima ai capi del diodo misurata con i cursori risulta essere $V_{\mathrm{MAX}}= ( \exn \pm \exn ) \,\mathrm{V}$. La funzione di misura automatica fornisce il valore $V_{\mathrm{AUTO}}= xx \,\mathrm{V}$
+La tensione massima ai capi del diodo misurata con i cursori risulta essere
+$V_{\mathrm{MAX}}= ( \exn \pm \exn ) \,\mathrm{V}$. La funzione di misura
+automatica fornisce il valore $V_{\mathrm{AUTO}}= xx \,\mathrm{V}$
 
 \vspace{0.5cm} 
 \framebox(400,30){Inserire commento sulla accuratezza della misura.}
@@ -85,8 +91,7 @@ La tensione massima ai capi del diodo misurata con i cursori risulta essere $V_{
 
 \begin{figure}[h]
 \centering
-%\includegraphics[scale=0.4]{part1.pdf}
-\framebox(400,50){ (5.c) Inserire lo screenshot dell'oscilloscopio in XY. }
+\includegraphics[scale=0.4]{shockley}
 \caption{(5.c) Caratteristica corrente-tensione del diodo in modalit\`a XY}
 \end{figure}
 
@@ -95,7 +100,7 @@ La tensione massima ai capi del diodo misurata con i cursori risulta essere $V_{
 
 \begin{figure}[h]
 \centering
-%\includegraphics[scale=0.4]{part1.pdf}
+%\includegraphics[scale=0.4]{ivfit}
 \framebox(200,100){(2.b) Inserire il grafico $I_{D}$ vs. $V_{D}$ }
 \caption{(2.b) Grafico $I_{D}$ vs. $V_{D}$ e fit all'equazione di Schockley}
 \end{figure}
@@ -112,7 +117,9 @@ La tensione massima ai capi del diodo misurata con i cursori risulta essere $V_{
 \subsection*{6.b Partitore con resistenze da 1k}
 
 
-Si realizza un partitore con resistenze da $1 \,\mathrm{k}\Omega$. Valori misurati con il multimetro: R1=$\exn \pm \exn \,\mathrm{k}\Omega$, R2=$\exn \pm \exn \,\mathrm{k}\Omega$
+Si realizza un partitore con resistenze da $1 \,\mathrm{k}\Omega$.
+Valori misurati con il multimetro: R1=$0.993 \pm \exn \,\mathrm{k}\Omega$,
+R2=$0.993 \pm \exn \,\mathrm{k}\Omega$
 
 
 \begin{table}[h]
@@ -127,16 +134,20 @@ VIN& $\sigma$ VIN  &VOUT	 & $\sigma$ VOUT& VOUT/VIN & $\sigma$ VOUT/VIN \\
 \exn & \exn & \exn & \exn & \exn &\exn \\
 \hline 
 \end{tabular} 
-\caption{(6.b) Partitore di tensione con resistenze da circa 1k. Tutte le tensioni in V.\label{t:par1}}
+\caption{(6.b) Partitore di tensione con resistenze da circa 1k. Tutte le
+tensioni in V.\label{t:par1}}
 \end{table}
 
 
-\framebox(400,30){Inserire commento sul confronto tra valori misurati ed attesi.}
+\framebox(400,30){Inserire commento sul confronto tra valori misurati
+ed attesi.}
 
 
 \subsection*{6.d Partitore con resistenze da circa 1M}
 \par
-Si realizza un partitore con resistenze da $1 \,\mathrm{M}\Omega$. Valori misurati con il multimetro: R1=$\exn \pm \exn \,\mathrm{M}\Omega$, R2=$\exn \pm \exn \,\mathrm{M}\Omega$
+Si realizza un partitore con resistenze da $1 \,\mathrm{M}\Omega$.
+Valori misurati con il multimetro: R1=$\exn \pm \exn \,\mathrm{M}\Omega$,
+R2=$\exn \pm \exn \,\mathrm{M}\Omega$
 
 
 \begin{table}[h]
@@ -151,7 +162,8 @@ VIN& $\sigma$ VIN  &VOUT	 & $\sigma$ VOUT& VOUT/VIN & $\sigma$ VOUT/VIN \\
 \exn & \exn & \exn & \exn & \exn &\exn \\
 \hline 
 \end{tabular} 
-\caption{(6.d) Partitore di tensione con resistenze da circa 1M. Tutte le tensioni in V.\label{t:par2}}
+\caption{(6.d) Partitore di tensione con resistenze da circa 1M.
+Tutte le tensioni in V.\label{t:par2}}
 \end{table}
 
 
@@ -186,7 +198,8 @@ Misure con onda sinusoidale
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline 
-Periodo T (s)& $\sigma$ T (s)  &Frequenza f (Hz) & $\sigma$ f (Hz) & Misura oscilloscopio (Hz) & Differenza (Hz)\\
+Periodo T (s)& $\sigma$ T (s)  &Frequenza f (Hz) & $\sigma$ f (Hz) &
+Misura oscilloscopio (Hz) & Differenza (Hz)\\
 \hline 
 \exn & \exn & \exn & \exn & \exn &\exn \\
 \exn & \exn & \exn & \exn & \exn &\exn \\
@@ -194,7 +207,8 @@ Periodo T (s)& $\sigma$ T (s)  &Frequenza f (Hz) & $\sigma$ f (Hz) & Misura osci
 \exn & \exn & \exn & \exn & \exn &\exn \\
 \hline 
 \end{tabular} 
-\caption{(7.e) Misura di frequenza di onde sinusoidali  e confronto con misurazione interna dell'oscilloscopio }
+\caption{(7.e) Misura di frequenza di onde sinusoidali e confronto con
+misurazione interna dell'oscilloscopio }
 \end{table}
 
 \subsection*{7.f Misure di duty cyle}
@@ -203,7 +217,8 @@ Misure con onda quadra
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline 
-Periodo T (s)& $\sigma$ T (s) & Durata alto $t_H$ (s) & $\sigma$ $t_H$ (s) & Duty cycle D(\%) & $\sigma$ D (\%) \\
+Periodo T (s)& $\sigma$ T (s) & Durata alto $t_H$ (s) & $\sigma$ $t_H$ (s)
+& Duty cycle D(\%) & $\sigma$ D (\%) \\
 \hline 
 \exn & \exn & \exn & \exn & \exn &\exn \\
 \exn & \exn & \exn & \exn & \exn &\exn \\
@@ -219,16 +234,21 @@ Periodo T (s)& $\sigma$ T (s) & Durata alto $t_H$ (s) & $\sigma$ $t_H$ (s) & Dut
 Misure su onda quadra
 \[
 f = (\exn \pm \exn) \mathrm{MHz}, \quad
-t_\mathrm{salita} = (\exn \pm \exn) \mathrm{\mu s},
-t_\mathrm{discesa} = (\exn \pm \exn) \mathrm{\mu s},
+t_\mathrm{salita} = (35 \pm 6) \mathrm{ns},
+t_\mathrm{discesa} = (37 \pm 6) \mathrm{ns},
 \]
 
-\framebox(400,30){Inserire commento su altre caratteristiche del segnale ed eventualmente uno screenshot}
+La misura è un po' balorda, visto che il tempo di salita/discesa è dello
+stesso ordine di grandezza del periodo di campionamento $\nicefrac{1}{f_s} = \Delta t \approx 10 \si{\ns}$.
+\framebox(400,30){Inserire commento su altre caratteristiche del segnale
+ed eventualmente uno screenshot}
 
 \section{Conclusioni e commenti finali}
 \framebox(400,30){Inserire eventuali commenti e conclusioni finali}
 
 \section*{Dichiarazione}
-I firmatari di questa relazione dichiarano che il contenuto della relazione \`e originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari hanno contribuito alla elaborazione della relazione stessa.
+I firmatari di questa relazione dichiarano che il contenuto della relazione
+\`e originale, con misure effettuate dai membri del gruppo, e che tutti i
+firmatari hanno contribuito alla elaborazione della relazione stessa.
 
 \end{document}
