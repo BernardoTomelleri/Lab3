@@ -9,18 +9,16 @@ import phylab as lab
 
 def periodify(signal, cycles=1, start=0, stop=None ):
     """
-    
-
     Parameters
     ----------
     signal : array_like
-        Array containing a periodic signal to be repeated for a certain number of cycles.
+        Array containing a signal to be repeated for a certain number of cycles.
     cycles : int, optional
         How many copies of signal to be inserted in the output array. The default is 1.
     start : int, optional
-        Start point from which to start repeating the signal array. The default is 0.
+        Start point from which to start copying the signal array. The default is 0.
     stop : int, optional
-        End point at which to stop repeating the signal array. The default is None
+        End point at which to stop copying the signal array. The default is None
         (last element inclusive).
 
     Returns

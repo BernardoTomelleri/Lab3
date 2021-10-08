@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.4)  6 OCT 2021 14:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.6.4)  8 OCT 2021 13:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1295,41 +1295,54 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 14.
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<../figs//trgdiode.png, id=35, 1440.88312pt x 711.4078pt>
-File: ../figs//trgdiode.png Graphic file (type png)
-<use ../figs//trgdiode.png>
-Package pdftex.def Info: ../figs//trgdiode.png  used on input line 71.
+<../figs//sqwdiode.png, id=35, 1440.88312pt x 711.4078pt>
+File: ../figs//sqwdiode.png Graphic file (type png)
+<use ../figs//sqwdiode.png>
+Package pdftex.def Info: ../figs//sqwdiode.png  used on input line 61.
 (pdftex.def)             Requested size: 432.26826pt x 213.42398pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figs//shockley.png, id=36, 301.125pt x 371.13657pt>
-File: ../figs//shockley.png Graphic file (type png)
-<use ../figs//shockley.png>
-Package pdftex.def Info: ../figs//shockley.png  used on input line 94.
-(pdftex.def)             Requested size: 120.44786pt x 148.45198pt.
-[1
+<../figs//trgdiode_new.png, id=36, 1440.88312pt x 711.4078pt>
+File: ../figs//trgdiode_new.png Graphic file (type png)
+<use ../figs//trgdiode_new.png>
+Package pdftex.def Info: ../figs//trgdiode_new.png  used on input line 75.
+(pdftex.def)             Requested size: 432.26826pt x 213.42398pt.
+<../figs//shockley_new.png, id=37, 301.125pt x 625.58719pt>
+File: ../figs//shockley_new.png Graphic file (type png)
+<use ../figs//shockley_new.png>
+Package pdftex.def Info: ../figs//shockley_new.png  used on input line 98.
+(pdftex.def)             Requested size: 120.44786pt x 250.23044pt.
+ [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<../figs//ivfit.pdf, id=56, 472.6458pt x 362.7954pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<../figs//ivfit.pdf, id=57, 462.52798pt x 346.89601pt>
 File: ../figs//ivfit.pdf Graphic file (type pdf)
 <use ../figs//ivfit.pdf>
-Package pdftex.def Info: ../figs//ivfit.pdf  used on input line 103.
-(pdftex.def)             Requested size: 378.11714pt x 290.23671pt.
+Package pdftex.def Info: ../figs//ivfit.pdf  used on input line 107.
+(pdftex.def)             Requested size: 370.02287pt x 277.51718pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[2 <../figs//trgdiode.png (PNG copy)> <../figs//shockley.png (PNG copy)>]
-[3 <../figs//ivfit.pdf>]
-Overfull \hbox (67.14992pt too wide) in paragraph at lines 259--263
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2 <../figs//sqwdiode.png (PNG copy)> <../figs//trgdiode_new.png (PNG copy)>]
+[3 <../figs//shockley_new.png (PNG copy)>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (67.14992pt too wide) in paragraph at lines 261--265
 \T1/cmr/m/n/10 cam-pio-na-men-to $[]\OML/cmm/m/it/10 =[] \OT1/cmr/m/n/10 = ^^A\
 OML/cmm/m/it/10 t \OMS/cmsy/m/n/10 ^^Y \OT1/cmr/m/n/10 10[]$\T1/cmr/m/n/10 . []
  
  []
 
-[4] (./Es01A.1.AC.relazione.aux)
+[4 <../figs//ivfit.pdf>] [5] (./Es01A.1.AC.relazione.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1337,13 +1350,13 @@ Package rerunfilecheck Info: File `Es01A.1.AC.relazione.out' has not changed.
 (rerunfilecheck)             Checksum: 00EB35D5BC596CDFD504312F28106AD1;1286.
  ) 
 Here is how much of TeX's memory you used:
- 55487 strings out of 479713
- 1363614 string characters out of 5876925
- 2171059 words of memory out of 5000000
- 72471 multiletter control sequences out of 15000+600000
+ 55500 strings out of 479713
+ 1363974 string characters out of 5876925
+ 2172059 words of memory out of 5000000
+ 72482 multiletter control sequences out of 15000+600000
  415045 words of font info for 61 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,10n,125p,766b,797s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,10n,125p,766b,810s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
 ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dis
@@ -1359,10 +1372,10 @@ onts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1
 -super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfr
 m1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
 <c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on Es01A.1.AC.relazione.pdf (4 pages, 766761 bytes).
+Output written on Es01A.1.AC.relazione.pdf (5 pages, 649535 bytes).
 PDF statistics:
- 188 PDF objects out of 1000 (max. 8388607)
- 142 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
- 84 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 197 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
+ 37 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 
