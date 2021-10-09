@@ -80,8 +80,8 @@ screenshot.}
 \subsection*{4.f Misura tensione massima ai capi del diodo}
 \par 
 La tensione massima ai capi del diodo misurata con i cursori risulta essere
-$V_{\mathrm{MAX}}= ( \exn \pm \exn ) \,\mathrm{V}$. La funzione di misura
-automatica fornisce il valore $V_{\mathrm{AUTO}}= xx \,\mathrm{V}$
+$V_{\mathrm{MAX}}= ( 1.9 \pm 0.1 ) \,\mathrm{V}$. La funzione di misura
+automatica fornisce il valore $V_{\mathrm{AUTO}}= 1.975 \,\mathrm{V}$
 
 \vspace{0.5cm} 
 \framebox(400,30){Inserire commento sulla accuratezza della misura.}
@@ -131,10 +131,10 @@ R2=$993 \pm 8 \,\Omega$
 \hline 
 VIN& $\sigma$ VIN  & VOUT	 & $\sigma$ VOUT & VOUT/VIN & $\sigma$ VOUT/VIN \\
 \hline 
-1.000 & \exn & \exn & \exn & \exn &\exn \\
-2.000 & \exn & \exn & \exn & \exn &\exn \\
-3.000 & \exn & \exn & \exn & \exn &\exn \\
-4.000 & \exn & \exn & \exn & \exn &\exn \\
+1.000 & 0.005 & 0.500 & 0.003 & 0.500 & 0.008 \\
+2.00 & 0.02 & 1.000 & 0.005 & 0.500 & 0.011 \\
+3.00 & 0.02 & 1.500 & 0.008 & 0.500 &0.008 \\
+4.00 & 0.03 & 2.00 & 0.02 & 0.500 & 0.012 \\
 \hline 
 \end{tabular} 
 \caption{(6.b) Partitore di tensione con resistenze da circa 1k. Tutte le
@@ -148,8 +148,8 @@ esplorato ($1 - 4$ V.)
 \subsection*{6.d Partitore con resistenze da circa 1M}
 \par
 Si realizza un partitore con resistenze da $1 \,\mathrm{M}\Omega$.
-Valori misurati con il multimetro: R1=$\exn \pm 0.008 \,\mathrm{M}\Omega$,
-R2=$\exn \pm 0.008 \,\mathrm{M}\Omega$
+Valori misurati con il multimetro: R1=$993 \pm 8 \,\mathrm{k}\Omega$,
+R2=$996 \pm 0.008 \,\mathrm{k}\Omega$
 
 
 \begin{table}[h]
@@ -158,10 +158,10 @@ R2=$\exn \pm 0.008 \,\mathrm{M}\Omega$
 \hline 
 VIN& $\sigma$ VIN  &VOUT	 & $\sigma$ VOUT& VOUT/VIN & $\sigma$ VOUT/VIN \\
 \hline 
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
+1.000 & 0.005 & 0.481 & 0.003 & 0.481 & 0.008 \\
+2.00 & 0.02 & 0.955 & 0.005 & 0.478 & 0.011 \\
+3.00 & 0.02 & 1.431 & 0.007 & 0.477 & 0.008 \\
+4.00 & 0.03 & 1.906 & 0.009 & 0.477 & 0.009 \\
 \hline 
 \end{tabular} 
 \caption{(6.d) Partitore di tensione con resistenze da circa 1M.
@@ -218,13 +218,13 @@ Misure con onda sinusoidale
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline 
-Periodo T (s)& $\sigma$ T (s)  &Frequenza f (Hz) & $\sigma$ f (Hz) &
-Misura oscilloscopio (Hz) & Differenza (Hz)\\
+Periodo T ($\mu$ s)& $\sigma$ T ($\mu$ s) &Frequenza f (kHz) & $\sigma$ f (kHz) &
+Misura oscilloscopio (kHz) & Differenza (kHz)\\
 \hline 
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
+999 & 10 & 0.99 & 0.01 & \exn &\exn \\
+99.9 & 1.1 & 10.00 & 0.11 & \exn &\exn \\
+9.99 & 0.10 & 100.0 & 1.0 & \exn &\exn \\
+0.999 & 0.011 & 1000 & 11 & \exn &\exn \\
 \hline 
 \end{tabular} 
 \caption{(7.e) Misura di frequenza di onde sinusoidali e confronto con
@@ -237,12 +237,12 @@ Misure con onda quadra
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline 
-Periodo T (s)& $\sigma$ T (s) & Durata alto $t_H$ (s) & $\sigma$ $t_H$ (s)
+Periodo T ($\mu$ s)& $\sigma$ T ($\mu$ s) & Durata alto $t_H$ (s) & $\sigma$ $t_H$ (s)
 & Duty cycle D(\%) & $\sigma$ D (\%) \\
 \hline 
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
+100 & 2 & 9 & 2 & 0.09 & 0.02 \\
+100 & 2 & 50 & 2 & 0.50 & 0.02 \\
+100 & 2 & 90 & 2 & 0.90 & 0.02 \\
 \exn & \exn & \exn & \exn & \exn &\exn \\
 \hline 
 \end{tabular} 
@@ -253,7 +253,7 @@ Periodo T (s)& $\sigma$ T (s) & Durata alto $t_H$ (s) & $\sigma$ $t_H$ (s)
 \subsection*{7.g Tempo di salita e di discesa}
 Misure su onda quadra
 \[
-f = (\exn \pm \exn) \mathrm{MHz}, \quad
+f = (1.000 \pm 0.011) \mathrm{MHz}, \quad
 t_\mathrm{salita} = (35 \pm 6) \mathrm{ns},
 t_\mathrm{discesa} = (37 \pm 6) \mathrm{ns},
 \]
