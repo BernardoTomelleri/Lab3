@@ -26,51 +26,74 @@ $0.5\,\mathrm{V}$ e $5\,\mathrm{V}$
 Si osserva che la luminosit\`a del diodo è proporzionale alla tensione
 erogata dal generatore, una volta superata una tensione di soglia per cui
 il LED inizia a emettere luce di intensità osservabile. La tensione di soglia
-varia per i diversi colori; in particolare $V_{\mathrm{thr}}$ risulta
+varia per i diversi colori; in particolare $V_\gamma$ risulta
 proporzionale alla frequenza del colore di luce emessa. Dunque
 rosso $<$ giallo $<$ verde $<$ blu.
 
 \subsection*{2.e Misura tensione}
 Utilizzando il multimetro si misura la tensione ai capi del diodo e si ottiene:
 
-\begin{table}[h]
+\begin{table}[htb]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline 
 V+& $\sigma$ V+  & VD & $\sigma$ VD & I(R1)  & $\sigma$ I(R1) \\
 \hline 
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
+2.51 & 0.02 & 1.852 & 0.009 & \exn &\exn \\
+2.51 & 0.02 & 1.931 & 0.009 & \exn &\exn \\
+2.51 & 0.02 & 2.31 & 0.02 & \exn &\exn \\
+2.51 & 0.02 & 2.49 & 0.02 & \exn &\exn \\
 \hline 
 \end{tabular} 
-\caption{(2.e) Tensione e corrente ai capi del diodo.
-Tutte le tensioni in V.\label{t:par1}}
+\caption{(2.e) Dall'alto al basso tensione e corrente ai capi dei diodi
+R-G-Y-B misurata con la stessa ddp in ingresso al circuito V+ $\approx 2.5$ V.
+Tutte le tensioni in V e intensità di corrente in mA.\label{tab:VD-ID}}
 \end{table}
 
 %=======================
 \section{Uso generatore di forme d'onda}
-\exn 
-\par
-\vspace{0.5cm}
-\framebox(400,30){Inserire commento sulle onde generate, ed eventualmente
-screenshot.}
-\begin{figure}[ht]
+Con un'onda quadra di frequenza $\sim 10 \si{\Hz}$, ampiezza $\sim 2 \si{\V}$
+e componente DC $\sim + 2 \si{\V}$ in ingresso alla serie di $R_1 +$ LED
+rosso si vede bene come la tensione ai capi del diodo non si discosti
+molto dalla tensione di accensione $V_\gamma \approx 1.85 \si{\V}$ anche
+quando la tensione in ingresso V+ $\approx 2 \si{\V}$ (cioè quando l'onda
+quadra è in alto) è sensibilmente superiore. In accordo con quanto previsto
+dalla legge di Shockley per il diodo a giunzione ideale.
+\begin{equation}
+I_D = I_0 \left(e^{\frac{V_D}{\eta V_T}} - 1 \right)
+\end{equation}
+
+Le bande semitrasparenti nelle tracce dei segnali indicano rumore a frequenza
+più alta del sampling rate $f_s \approx 16 \si{k\Hz}$. Su entrambi i canali
+si riesce infatti ad apprezzare come nel salto discontinuo dell'onda quadra
+l'ampiezza superi il valore costante sul semiperiodo per via del fenomeno di
+Gibbs. 
+
+\begin{figure}[htb]
 \centering
 \includegraphics[scale=0.3]{sqwdiode}
-\caption{(3.b) Onda quadra in ingresso $f \approx 10 \si{\Hz}$ al diodo}
+\caption{(3.b) Onda quadra in ingresso $f \approx 10 \si{\Hz}$ al diodo.}
 \end{figure}
 \section{Oscilloscopio}
 
 \subsection*{4.e Uso del trigger}
 
-\exn 
-\par
-\vspace{0.5cm}
-\framebox(400,30){Inserire commento sulle prove effettuate }
+Quando la tensione di soglia del trigger (indicata dal triangolo giallo a
+destra) incontra almeno un fronte di salita del segnale ai capi del diodo 
+(CH1) la traccia rimane stabile sullo schermo. Mentre per valori di soglia
+$> 2$ V o negativi la traccia viene disegnata ogni volta che il circuito di
+trigger è autonomamente attivato dall'oscilloscopio, per cui il segnale sembra
+spostarsi in maniera irregolare sullo schermo.
 
-\begin{figure}[ht]
+Si nota immediatamente come la tensione ai capi del diodo cresca di pari
+passo con l'onda triangolare fino a quando la tensione di alimentazione 
+raggiunge la tensione di soglia $V_\gamma$ del LED rosso. Una volta superata
+$V_\gamma$ è la caduta di tensione sulla resistenza (CH2) a seguire il profilo
+dell'onda triangolare, mentre la tensione ai capi del diodo cresce molto
+lentamente; sempre secondo il modello di Shockley in maniera simile ad un
+logaritmo.
+
+\begin{figure}[htb]
 \centering
 \includegraphics[scale=0.3]{trgdiode_new}
 \caption{(4.e) Relazione tra trigger e segnale}
@@ -80,12 +103,14 @@ screenshot.}
 \subsection*{4.f Misura tensione massima ai capi del diodo}
 \par 
 La tensione massima ai capi del diodo misurata con i cursori risulta essere
-$V_{\mathrm{MAX}}= ( 1.9 \pm 0.1 ) \,\mathrm{V}$. La funzione di misura
+$V_{\mathrm{MAX}}= (2.0 \pm 0.1 ) \,\mathrm{V}$. La funzione di misura
 automatica fornisce il valore $V_{\mathrm{AUTO}}= 1.975 \,\mathrm{V}$
 
-\vspace{0.5cm} 
-\framebox(400,30){Inserire commento sulla accuratezza della misura.}
+Le due misure sono compatibili, ma la seconda è notevolmente più precisa di
+quella fatta ad occhio guardando la traccia sullo schermo.
 
+
+\framebox(400,30){Inserire commento sulla accuratezza della misura.}
 
 
 \section{Caratteristica del diodo}
@@ -93,7 +118,7 @@ automatica fornisce il valore $V_{\mathrm{AUTO}}= 1.975 \,\mathrm{V}$
 
 \subsection*{5.c Caratteristica del diodo}
 
-\begin{figure}[h]
+\begin{figure}[htb]
 \centering
 \includegraphics[scale=0.4]{shockley_new}
 \caption{(5.c) Caratteristica corrente-tensione del diodo in modalit\`a XY}
@@ -102,23 +127,15 @@ automatica fornisce il valore $V_{\mathrm{AUTO}}= 1.975 \,\mathrm{V}$
 \subsection*{5.d Fit curva del diodo}
 \par
 
-\begin{figure}[h]
+\begin{figure}[htb]
 \centering
 \includegraphics[scale=0.8]{ivfit}
 \caption{(2.b) Grafico $I_{D}$ vs. $V_{D}$ e fit all'equazione di Schockley}
 \end{figure}
 
-
-
-%=====================
-
-
-
-
 \section{Partitore}
 
 \subsection*{6.b Partitore con resistenze da 1k}
-
 
 Si realizza un partitore con resistenze da $1 \,\mathrm{k}\Omega$.
 Valori misurati con il multimetro: R1=$993 \pm 8 \,\Omega$,
@@ -138,7 +155,7 @@ VIN& $\sigma$ VIN  & VOUT	 & $\sigma$ VOUT & VOUT/VIN & $\sigma$ VOUT/VIN \\
 \hline 
 \end{tabular} 
 \caption{(6.b) Partitore di tensione con resistenze da circa 1k. Tutte le
-tensioni in V.\label{t:par1}}
+tensioni in V.\label{tab:div1k}}
 \end{table}
 
 I valori di attenuazione attesi per il partitore risultano compatibili
@@ -149,7 +166,7 @@ esplorato ($1 - 4$ V.)
 \par
 Si realizza un partitore con resistenze da $1 \,\mathrm{M}\Omega$.
 Valori misurati con il multimetro: R1=$993 \pm 8 \,\mathrm{k}\Omega$,
-R2=$996 \pm 0.008 \,\mathrm{k}\Omega$
+R2=$996 \pm 8 \,\mathrm{k}\Omega$
 
 
 \begin{table}[h]
@@ -165,7 +182,7 @@ VIN& $\sigma$ VIN  &VOUT	 & $\sigma$ VOUT& VOUT/VIN & $\sigma$ VOUT/VIN \\
 \hline 
 \end{tabular} 
 \caption{(6.d) Partitore di tensione con resistenze da circa 1M.
-Tutte le tensioni in V.\label{t:par2}}
+Tutte le tensioni in V.\label{tab:div1M}}
 \end{table}
 
 La tensione in uscita dal partitore $R_1 + R_2$ risulta apprezzabilmente
@@ -188,12 +205,12 @@ Usando il modello mostrato nella scheda si ottiene
 
 Con i dati con resistenze da 1k si ottiene
 \begin{equation}\label{eq: estimate}
-R_1/R_{IN} = \exn  \pm  \exn   \rightarrow  R_{IN} > \exn k\Omega
+R_1/R_{IN} = 0.00  \pm  0.04   \implies  R_{IN} > \geq 2 \si{k\ohm}
 \end{equation}
 
 
 Con i dati con resistenze da 1M si ottiene
-\[ R_1/R_{IN} = \exn  \pm  \exn   \rightarrow  R_{IN} = (\exn \pm  \exn)  M\Omega
+\[ R_1/R_{IN} = 0.09  \pm  0.04   \implies  R_{IN} = (11 \pm  5) \si{M\ohm}
 \]
 
 Quando la resistenza del multimetro $R_{IN} \gg R_2$ come visto al punto
@@ -243,7 +260,6 @@ Periodo T ($\mu$ s)& $\sigma$ T ($\mu$ s) & Durata alto $t_H$ (s) & $\sigma$ $t_
 100 & 2 & 9 & 2 & 0.09 & 0.02 \\
 100 & 2 & 50 & 2 & 0.50 & 0.02 \\
 100 & 2 & 90 & 2 & 0.90 & 0.02 \\
-\exn & \exn & \exn & \exn & \exn &\exn \\
 \hline 
 \end{tabular} 
 \caption{(7.f) Misura di duty cycle per onde quadre }
@@ -253,18 +269,23 @@ Periodo T ($\mu$ s)& $\sigma$ T ($\mu$ s) & Durata alto $t_H$ (s) & $\sigma$ $t_
 \subsection*{7.g Tempo di salita e di discesa}
 Misure su onda quadra
 \[
-f = (1.000 \pm 0.011) \mathrm{MHz}, \quad
+f = (1.000 \pm 0.011) \si{M\Hz}, \quad
 t_\mathrm{salita} = (35 \pm 6) \mathrm{ns},
 t_\mathrm{discesa} = (37 \pm 6) \mathrm{ns},
 \]
 
 La misura è un po' balorda, visto che il tempo di salita/discesa è dello
 stesso ordine di grandezza del periodo di campionamento $\nicefrac{1}{f_s} = \Delta t \approx 10 \si{\ns}$.
+
+
 \framebox(400,30){Inserire commento su altre caratteristiche del segnale
 ed eventualmente uno screenshot}
 
 \section{Conclusioni e commenti finali}
-\framebox(400,30){Inserire eventuali commenti e conclusioni finali}
+Si è riusciti ad apprezzare la differenza tra il comportamento ideale e quello
+realmente esibito da due circuiti molto semplici. Nel primo per la non
+trascurabilità dello strumento di misura sul funzionamento del partitore di
+tensione (DUIT); nel secondo per la componente resistiva del diodo reale.
 
 \section*{Dichiarazione}
 I firmatari di questa relazione dichiarano che il contenuto della relazione

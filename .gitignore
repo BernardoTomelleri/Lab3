@@ -1,3 +1,6 @@
+# Python cached files
+__pycache__/
+
 # Latex compiler outfiles
 *.aux
 *.fdb_latexmk*
