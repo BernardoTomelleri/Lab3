@@ -1,0 +1,5 @@
+Misure di tensione su R1: per calcolare la corrente nel ramo R1 + LED
+Misure non flottanti sul diodo: Corrente negativa per tensioni < Vgamma
+Fit soddisfacente con Shockley: Valori di VT e Is ragionevoli; ofs ~ 0
+Fit lineare alla parte ohmica della curva I-V del diodo e possibili cause: opzionale
+Screenshot e commento sul rise/fall time dell'onda quadra: f = 1MHz
