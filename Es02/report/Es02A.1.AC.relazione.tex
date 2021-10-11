@@ -1,0 +1,201 @@
+\documentclass[10pt,a4paper]{article}
+\input{../../latex/preamble}
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+\newcommand{\rem}[1]{[\emph{#1}]}
+\newcommand{\exn}{\phantom{xxx}}
+
+% lets graphicx know path where figures to be included are found
+\graphicspath{{../figs/}}
+
+\author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
+\title{Es02A: Circuito RC -- Filtri passivi}
+\begin{document}
+\date{\today}
+\maketitle
+
+\setcounter{section}{1}
+
+\section*{Filtro passa-basso}
+
+\subsection*{1.b Scelta della frequenza di taglio}
+
+La frequenza nominale di taglio \`e stata fissata a $f_1 = \ldots\;\; \Rightarrow |A_v(3\,\mathrm{kHz})| = \ldots\;\; |A_v(30\,\mathrm{kHz})| = \ldots\;\; $  
+
+\vspace{0.5cm}
+\framebox(400,30){Motivare la scelta di $f_1$}
+
+\subsection*{1.c,1.d Scelta dei componenti}
+
+I valori nominali scelti sono $R_1 = \dots\;\;C_1 = \ldots$.  
+
+\vspace{0.5cm}
+\framebox(400,30){Motivare la scelta dei componenti (\`e sufficiente  anche solo indicare le formule di riferimento)}
+
+\subsection*{1.e Misura di $C_1$}
+\[
+C_1 = \ldots \pm \ldots 
+\]
+
+\subsection*{1.f Calcolo della frequenza di taglio e delle attenuazioni attese}
+\[
+\begin{array}{rcl}
+f_1 &=& \ldots \pm \ldots\\
+|A_v(2\,\mathrm{kHz})| &=& \ldots \pm \ldots\\
+|A_v(20\,\mathrm{kHz})| &=& \ldots \pm \ldots
+\end{array}
+\]
+
+\subsection*{3 Misura $A_v$}
+Dalla misura delle ampiezze dei segnali di ingresso/uscita e del loro sfasamento si ottiene:
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+$f$ & $V_s \pm \sigma(V_s)$  & $V_{out} \pm \sigma(V_{out})$ & $A_v \pm \sigma(A_V)$ & $\phi \pm \sigma(\phi)$ \\
+\hline 
+\exn & \exn & \exn & \exn & \exn  \\
+\exn & \exn & \exn & \exn & \exn  \\
+\exn & \exn & \exn & \exn & \exn  \\
+\hline 
+\end{tabular} 
+\caption{(3) Amplficazione e sfasamento del filtro passa-basso a bassa ed alta frequenza ed alla frequenza nominale di taglio.
+\label{tab:par1}}
+\end{table}
+
+\subsection*{4 Risposta in frequenza}
+\begin{figure}[h]
+\centering
+%\includegraphics[scale=0.4]{part1.pdf}
+\framebox(400,50){ (4) Salvare ed inserire l'~immagine del Network analyzer}
+\caption{(4) Plot di Bode per il filtro passa-basso.}
+\end{figure}
+
+\subsection*{5.a Stima della frequenza di taglio (metodo a)}
+La nostra stima della frequenza per cui $A_v$(dB) = -3 dB \`e
+\[
+f_{1A} = \ldots\pm \ldots
+\]
+
+\subsection*{5.b Misura della frequenza di taglio (metodo b)}
+Dal fit a bassa frequenza ($f\ll f_1$) otteniamo
+\[
+A_1(dB) = \ldots\pm \ldots\;\;\; \chi^2 = \ldots\;\;\; d.o.f. = \ldots
+\]
+
+Ad alta frequenza ($f \gg f_1$) la retta di best-fit al plot di Bode in ampiezza ha i seguenti parametri:
+\[
+\mathrm{intercetta} = \ldots\pm \ldots\;\;\;\mathrm{pendenza}= \ldots\pm \ldots\;\;\;\mathrm{covarianza} 
+= \ldots\;\;\;\chi^2 = \ldots\;\;\; d.o.f. = \ldots
+\]
+Dall'~intersezione delle due rette stimiamo per la frequenza di taglio il valore
+\[
+f_{1B} = \ldots\pm \ldots
+\]
+
+\subsection*{5.c Misura della frequenza di taglio (metodo c)}
+Dal fit complessivo del modulo della funzione di trasferimento  
+otteniamo per l'~amplificazione di centro-banda e per la frequenza di taglio i seguenti valori:
+\[
+A_1(dB) = \ldots\pm \ldots \;\;\;f_{1B} = \ldots\pm \ldots\;\;\;\chi^2 = \ldots\;\;\; d.o.f.= \ldots
+\]
+
+\subsection*{5.d Confronto misure-predizione}
+\vspace{0.5cm}
+\framebox(400,30){Commentare l'~accordo tra le varie stime di $f_1$ ed il valore atteso.}
+
+\subsection*{6 Risposta del filtro ad un gradino}
+Il fronte del segnale di uscita ha un tempo di salita, misurato con i cursori, di 
+\[
+t_r = \ldots\pm \ldots
+\]
+da cui 
+\[
+f_1 \simeq \frac{2.2}{2\pi t_r} = \ldots\pm \ldots
+\]
+\begin{figure}[h]
+\centering
+%\includegraphics[scale=0.4]{part1.pdf}
+\framebox(400,50){ (6) Salvare ed inserire uno screenshot dell'~oscillografo.}
+\caption{(6) Risposta del filtro passa-basso ad un gradino di tensione.}
+\end{figure}
+
+\subsection*{7.a Impedenze di ingresso/uscita}
+(Qui \`e sufficiente scrivere le espressioni in termini della frequenza e dei componenti)
+\[
+Z_{in} = \ldots
+\]
+\[
+Z_{out} = \ldots
+\]
+
+\subsection*{7.b Effetti dovuti all'~accoppiamento con un carico}
+(Qui \`e richiesto che valutiate l'~amplificazione di centro-banda e la frequenza di taglio nel 
+caso in cui il carico sia rispettivamente 100 e 10 k$\Omega$)
+\[
+\begin{array}{rl}
+R_L=100 \,k\Omega & \Rightarrow A_1 = \ldots\;\;\; f_1 = \ldots\\
+R_L=10 \,k\Omega & \Rightarrow A_1 = \ldots\;\;\; f_1 = \ldots\\
+\end{array}
+\]
+
+%=======================
+\section*{Filtro passa-banda}
+
+\subsection*{8.a Misura dei componenti}
+\[ 
+C_1 = \ldots\pm \ldots
+\]
+
+\subsection*{8.b Filtro passa-basso, stima della frequenza di taglio}
+Dalla risposta in frequenza risulta
+\[
+A_1(dB) = \ldots \pm \ldots,\;\;f_1 = \ldots\pm \ldots
+\]
+
+\subsection*{9.a Misura dei componenti}
+\[ 
+C_2 = \ldots\pm \ldots
+\]
+
+\subsection*{9.b Filtro passa-alto, stima della frequenza di taglio}
+Dalla risposta in frequenza risulta
+\[
+A_2(dB) = \ldots \pm \ldots,\;\;f_2 = \ldots\pm \ldots
+\]
+
+\subsection*{10.a Filtro passa-banda, risposta in frequenza}
+\begin{figure}[h]
+\centering
+%\includegraphics[scale=0.4]{part1.pdf}
+\framebox(400,50){ (10.a) Salvare ed inserire l'~immagine del Network analyzer per il passa-banda}
+\caption{(4) Plot di Bode per il filtro passa-banda.}
+\end{figure}
+La nostra stima dell'~amplificazione di centro-banda e delle frequenze di taglio (per cui il guadagno si riduce di 3 dB rispetto a centro-banda) \`e
+\[
+A(dB) = \ldots\pm \ldots \;\;\;f_{L} = \ldots\pm \ldots\;\;\;f_{H} = \ldots\pm \ldots
+\]
+
+\subsection*{10.b Interpolazione del plot di Bode}
+Dal fit del plot di Bode in ampiezza si ha
+\[
+A(dB) = \ldots\pm \ldots \;\;\;f_{L} = \ldots\pm \ldots\;\;\;f_{H} = \ldots\pm \ldots\;\;\;\chi^2 = \ldots\;\;\; d.o.f.= \ldots
+\]
+\subsection*{10.c Differenze}
+\vspace{0.5cm}
+\framebox(400,30){Motivare la differenza rispetto ai filtri standalone}
+
+\subsection*{10.d Dipendenza dai valori delle resistenze}
+\vspace{0.5cm}
+\framebox(400,30){Commentare la dipendenza dalle resistenze, come da guida}
+
+\subsection*{10.e Andamento della fase}
+\vspace{0.5cm}
+\framebox(400,30){Commentare la dipendenza della fase dalla frequenza}
+
+\section*{Conclusioni e commenti finali}
+\framebox(400,30){Inserire eventuali commenti e conclusioni finali}
+
+\section*{Dichiarazione}
+I firmatari di questa relazione dichiarano che il contenuto della relazione \`e originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari hanno contribuito alla elaborazione della relazione stessa.
+
+\end{document}

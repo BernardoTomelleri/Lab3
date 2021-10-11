@@ -21,7 +21,7 @@ V, I = np.genfromtxt('./data/trgdiode10Hz1Vamp.csv', float, delimiter=',',
 V_min = 0; V_max = 1.76
 x, y, dx, dy = lab.mesrange(V, I, x_min=V_min, x_max=V_max)
 y*=1e3
-dx = np.full(x.shape, 1e-3); dy = 1e-3*np.abs(y) +1e-3
+dx = np.full(x.shape, 1e-3); dy = 1e-3*np.abs(y) + 1e-3
 
 # Preliminary plot to visualize the sub-interval of data to analyze
 #lab.rc.typeset(usetex=tex, fontsize=12)
@@ -45,6 +45,29 @@ chisq, ndof, resn = chitest(model(x, *pars), y, unc=deff, ddof=len(pars), v=True
 # fit graphs
 space = np.linspace(0.95, 1.77, 2000)
 fig, (axf, axr) = pltfitres(model, x, y, dx, deff, pars=pars, space=space)
+axf.set_ylabel('Intensità di Corrente $I$ [mA]')
+if tix: lab.tick(axf, xmaj=5, ymaj=50)
+legend = axf.legend(loc='best')
+
+axr.set_xlabel('Differenza di Potenziale $\Delta V$ [V]')
+if tix: lab.tick(axr, xmaj=5, ymaj=2, ymin=0.5)
+
+
+# Linear fit for LED equivalent resistance
+def lin(x, m=1, q=0):
+    return m*x + q
+
+lx, ly, dlx, dly = lab.mesrange(V, I*1e3, x_min=V_max+0.1)
+dlx = np.full(lx.shape, 1e-4); dly = 1e-2*ly + 1e-2
+
+popt, pcov = np.polyfit(lx, ly, deg=1, cov=True)
+errs, corm = lab.errcor(pcov)
+prnpar(popt, errs, model=lin)
+chisq, ndof, resn, sigma = chitest(lin(lx, *popt), ly, dly, ddof=len(popt), gauss=True, v=True)
+
+# Linear fit graph
+linspace = np.linspace(1.85, 1.91, 2000)
+linfig, (axf, axr) = pltfitres(lin, lx, ly, dlx, dly, pars=popt, space=linspace)
 axf.set_ylabel('Intensità di Corrente $I$ [mA]')
 if tix: lab.tick(axf, xmaj=5, ymaj=50)
 legend = axf.legend(loc='best')

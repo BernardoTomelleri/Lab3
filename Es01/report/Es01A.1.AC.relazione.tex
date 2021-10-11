@@ -31,16 +31,10 @@ proporzionale alla frequenza del colore di luce emessa. Dunque
 rosso $<$ giallo $<$ verde $<$ blu.
 
 \subsection*{2.e Misura tensione}
-Utilizzando il multimetro si misura la resistenza e la tensione ai capi del diodo e si ottiene:
+Utilizzando il multimetro si misura la resistenza R1 = $217 \pm 3 \,\Omega$
+e la tensione ai capi del diodo e si ottiene:
 
 \begin{table}[htb]
-\centering
-\begin{tabular}{|c|}
-\hline
-R1 = $217 \pm 3 \,\Omega$ \\
-\hline 
-\end{tabular}
-
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
@@ -110,14 +104,16 @@ logaritmo.
 \subsection*{4.f Misura tensione massima ai capi del diodo}
 
 La tensione massima ai capi del diodo misurata con i cursori risulta essere
-$V_{\mathrm{MAX}}= (2.0 \pm 0.1 ) \,\mathrm{V}$. La funzione di misura
+$V_{\mathrm{MAX}}= (2.0 \pm 0.1) \,\mathrm{V}$. La funzione di misura
 automatica fornisce il valore $V_{\mathrm{AUTO}}= 1.975 \,\mathrm{V}$
 
 Le due misure sono compatibili, ma la seconda è notevolmente più precisa di
-quella fatta ad occhio guardando la traccia sullo schermo.
-
-
-\framebox(400,30){Inserire commento sulla accuratezza della misura.}
+quella fatta ad occhio guardando la traccia sullo schermo. Questo perché la
+prima è affetta da incertezza relativa dell'ordine dell' $1\%$ circa, che
+deriva dalla lettura/posizionamento dei cursori sullo schermo. Mentre la
+misura ottenuta mediante la funzione "Measurements" è data dalla media dei
+campionamenti dell'ADC a 14 bit, che su fondo scala $\leq 0.5 \si{\V}/\rm div$
+ha risoluzione nominale di $0.32 \si{m\V}$.
 
 
 \section{Caratteristica del diodo}
@@ -212,7 +208,7 @@ Usando il modello mostrato nella scheda si ottiene
 
 Con i dati con resistenze da 1k si ottiene
 \begin{equation}\label{eq: estimate}
-R_1/R_{IN} = 0.00  \pm  0.04   \implies  R_{IN} \geq 2 \si{k\ohm}
+R_1/R_{IN} = 0.00  \pm  0.04   \implies  R_{IN} \geq 1 \si{k\ohm}
 \end{equation}
 
 
@@ -287,9 +283,7 @@ stesso ordine di grandezza del periodo di campionamento $\nicefrac{1}{f_s} = \De
 \centering
 \includegraphics[scale=0.4]{tempo_salita}
 \caption{(7.g) Misura del tempo di salita dell'onda quadra }
-\end{figure}
-\begin{figure}[htb]
-\centering
+
 \includegraphics[scale=0.4]{tempo_discesa}
 \caption{(7.g) Misura del tempo di discesa dell'onda quadra }
 \end{figure}
