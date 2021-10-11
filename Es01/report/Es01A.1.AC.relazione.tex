@@ -31,22 +31,29 @@ proporzionale alla frequenza del colore di luce emessa. Dunque
 rosso $<$ giallo $<$ verde $<$ blu.
 
 \subsection*{2.e Misura tensione}
-Utilizzando il multimetro si misura la tensione ai capi del diodo e si ottiene:
+Utilizzando il multimetro si misura la resistenza e la tensione ai capi del diodo e si ottiene:
 
 \begin{table}[htb]
 \centering
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabular}{|c|}
+\hline
+R1 = $217 \pm 3 \,\Omega$ \\
 \hline 
+\end{tabular}
+
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
 V+& $\sigma$ V+  & VD & $\sigma$ VD & I(R1)  & $\sigma$ I(R1) \\
 \hline 
-2.51 & 0.02 & 1.852 & 0.009 & \exn &\exn \\
-2.51 & 0.02 & 1.931 & 0.009 & \exn &\exn \\
-2.51 & 0.02 & 2.31 & 0.02 & \exn &\exn \\
-2.51 & 0.02 & 2.49 & 0.02 & \exn &\exn \\
+2.51 & 0.02 & 1.852 & 0.009 & 3.03 & 0.17 \\
+2.51 & 0.02 & 1.931 & 0.009 & 2.67 & 0.17 \\
+3.98 & 0.02 & 2.65 & 0.02 & 6.13 & 0.26 \\
+3.98 & 0.02 & 2.76 & 0.02 & 5.62 & 0.25\\
 \hline 
 \end{tabular} 
 \caption{(2.e) Dall'alto al basso tensione e corrente ai capi dei diodi
-R-G-Y-B misurata con la stessa ddp in ingresso al circuito V+ $\approx 2.5$ V.
+R-Y-G-B misurata con la stessa ddp in ingresso al circuito V+ $\approx 2.5$ V.
 Tutte le tensioni in V e intensità di corrente in mA.\label{tab:VD-ID}}
 \end{table}
 
@@ -129,7 +136,7 @@ quella fatta ad occhio guardando la traccia sullo schermo.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=0.8]{ivfit}
+\includegraphics[scale=0.7]{ivfit}
 \caption{(2.b) Grafico $I_{D}$ vs. $V_{D}$ e fit all'equazione di Schockley}
 \end{figure}
 
@@ -238,10 +245,10 @@ Misure con onda sinusoidale
 Periodo T ($\mu$ s)& $\sigma$ T ($\mu$ s) &Frequenza f (kHz) & $\sigma$ f (kHz) &
 Misura oscilloscopio (kHz) & Differenza (kHz)\\
 \hline 
-999 & 10 & 0.99 & 0.01 & \exn &\exn \\
-99.9 & 1.1 & 10.00 & 0.11 & \exn &\exn \\
-9.99 & 0.10 & 100.0 & 1.0 & \exn &\exn \\
-0.999 & 0.011 & 1000 & 11 & \exn &\exn \\
+999 & 10 & 0.99 & 0.01 & 1.0 & 0.01 \\
+99.9 & 1.1 & 10.00 & 0.11 & 9.99 & 0.01 \\
+9.99 & 0.10 & 100.0 & 1.0 & 99.98 & 0.02 \\
+0.999 & 0.011 & 1000 & 11 & 1000.1 & 0.1 \\
 \hline 
 \end{tabular} 
 \caption{(7.e) Misura di frequenza di onde sinusoidali e confronto con
@@ -276,10 +283,17 @@ t_\mathrm{discesa} = (37 \pm 6) \mathrm{ns},
 
 La misura è un po' balorda, visto che il tempo di salita/discesa è dello
 stesso ordine di grandezza del periodo di campionamento $\nicefrac{1}{f_s} = \Delta t \approx 10 \si{\ns}$.
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.4]{tempo_salita}
+\caption{(7.g) Misura del tempo di salita dell'onda quadra }
+\end{figure}
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.4]{tempo_discesa}
+\caption{(7.g) Misura del tempo di discesa dell'onda quadra }
+\end{figure}
 
-
-\framebox(400,30){Inserire commento su altre caratteristiche del segnale
-ed eventualmente uno screenshot}
 
 \section{Conclusioni e commenti finali}
 Si è riusciti ad apprezzare la differenza tra il comportamento ideale e quello
