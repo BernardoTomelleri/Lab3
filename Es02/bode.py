@@ -16,17 +16,19 @@ tex = False  # LaTeX typesetting maths and descriptions
 def lin(x, m=1, q=0):
     return m*x + q
 
-def hpf(f, fT):
+def lpf(f, fT):
     return 1./np.sqrt(1+(f/fT)**2) 
 
-def lpf(f, fT):
+def hpf(f, fT):
     return 1./np.sqrt(1+(fT/f)**2) 
 
-f, G = np.genfromtxt('./data/trgdiode10Hz1Vamp.csv', float, delimiter=',',
-                            skip_header=6, unpack=True)
+def bandpass(f, fL, fH):
+    return 
+f, CH1, CH2, phi = np.genfromtxt('./data/rc1k10nF.csv', float, delimiter=',',
+                            skip_header=21, unpack=True)
 
-f_min = 0; f_max = 1.76
-x, y, dx, dy = lab.mesrange(f, G, x_min=f_min, x_max=f_max)
+f_min = 0; f_max = 1e9
+x, y, dx, dy = lab.mesrange(f, CH2, x_min=f_min, x_max=f_max)
 
 dx = np.full(x.shape, 1e-3); dy = 1e-3*np.abs(y) +1e-3
 
@@ -37,10 +39,10 @@ grid(ax, xlab='Frequency $f$ [Hz]', ylab='Gain $A(f)$')
 ax.errorbar(x, y, dy, dx, 'k.', ls='-', ms=2, alpha=0.8)
 
 # linear fit
-init = [1e-6, 0.056, -2e-2]
+init = [1, 1]
 model = lin
-par_bounds = [[0.0, 1e-6], [0., 0.1], [-1, 1]]
-genetic_pars = lab.gen_init(model, coords=[x, y], bounds=par_bounds, unc=dy)
+#par_bounds = [[0.0, 1e-6], [0., 0.1], [-1, 1]]
+#genetic_pars = lab.gen_init(model, coords=[x, y], bounds=par_bounds, unc=dy)
 
 pars, covm, deff = propfit(model, x, y, dx, dy, p0=init, alg='lm')
 perr, pcor = errcor(covm)
