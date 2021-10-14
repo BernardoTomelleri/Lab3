@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  11 OCT 2021 23:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  14 OCT 2021 17:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1152,10 +1152,10 @@ Package siunitx Info: Option "number-unit-product" has been deprecated in this
 (siunitx)             Use "quantity-product" as a replacement.
 
 
-Package siunitx Info: Option "scientific-notation = true" has been deprecated
+Package siunitx Info: Option "scientific-notation = false" has been deprecated
 (siunitx)             in this release.
 (siunitx)             
-(siunitx)             Use "exponent-mode = scientific" as a replacement.
+(siunitx)             Use "exponent-mode = input" as a replacement.
 
 Package hyperref Info: Option `colorlinks' set `true' on input line 49.
 
@@ -1307,46 +1307,40 @@ File: ../figs//shockley_new.png Graphic file (type png)
 <use ../figs//shockley_new.png>
 Package pdftex.def Info: ../figs//shockley_new.png  used on input line 126.
 (pdftex.def)             Requested size: 120.44786pt x 250.23044pt.
-<../figs//ivfit.pdf, id=60, 462.52798pt x 346.89601pt>
+ [2 <../figs//sqwdiode.png (PNG copy)> <../figs//trgdiode_new.png (PNG copy)>]
+<../figs//ivfit.pdf, id=70, 462.52798pt x 346.89601pt>
 File: ../figs//ivfit.pdf Graphic file (type pdf)
 <use ../figs//ivfit.pdf>
-Package pdftex.def Info: ../figs//ivfit.pdf  used on input line 135.
+Package pdftex.def Info: ../figs//ivfit.pdf  used on input line 151.
 (pdftex.def)             Requested size: 323.76736pt x 242.82555pt.
- [2 <../figs//sqwdiode.png (PNG copy)> <../figs//trgdiode_new.png (PNG copy)>] 
-[3 <../figs//shockley_new.png (PNG copy)>]
-Overfull \hbox (8.23178pt too wide) in paragraph at lines 239--251
+ [3 <../figs//shockley_new.png (PNG copy)> <../figs//ivfit.pdf>] [4]
+Overfull \hbox (8.23178pt too wide) in paragraph at lines 268--280
  [][] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figs//tempo_salita.png, id=83, 1019.007pt x 390.86024pt>
+<../figs//tempo_salita.png, id=120, 1019.007pt x 390.86024pt>
 File: ../figs//tempo_salita.png Graphic file (type png)
 <use ../figs//tempo_salita.png>
-Package pdftex.def Info: ../figs//tempo_salita.png  used on input line 284.
+Package pdftex.def Info: ../figs//tempo_salita.png  used on input line 313.
 (pdftex.def)             Requested size: 407.59558pt x 156.34132pt.
-<../figs//tempo_discesa.png, id=84, 1014.79124pt x 390.258pt>
+<../figs//tempo_discesa.png, id=121, 1014.79124pt x 390.258pt>
 File: ../figs//tempo_discesa.png Graphic file (type png)
 <use ../figs//tempo_discesa.png>
-Package pdftex.def Info: ../figs//tempo_discesa.png  used on input line 287.
+Package pdftex.def Info: ../figs//tempo_discesa.png  used on input line 316.
 (pdftex.def)             Requested size: 405.9093pt x 156.10042pt.
-[4 <../figs//ivfit.pdf>] [5 <../figs//tempo_salita.png (PNG copy)> <../figs//te
-mpo_discesa.png>] [6] (./Es01A.1.AC.relazione.aux)
+[5] [6 <../figs//tempo_salita.png (PNG copy)> <../figs//tempo_discesa.png>]
+(./Es01A.1.AC.relazione.aux)
 Package rerunfilecheck Info: File `Es01A.1.AC.relazione.out' has not changed.
 (rerunfilecheck)             Checksum: 00EB35D5BC596CDFD504312F28106AD1;1286.
  ) 
 Here is how much of TeX's memory you used:
- 55529 strings out of 479713
- 1364676 string characters out of 5876923
- 2174059 words of memory out of 10000000
- 72508 multiletter control sequences out of 15000+600000
- 415045 words of font info for 61 fonts, out of 8000000 for 9000
+ 55533 strings out of 479713
+ 1364716 string characters out of 5876923
+ 2174050 words of memory out of 10000000
+ 72510 multiletter control sequences out of 15000+600000
+ 416579 words of font info for 63 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,10n,125p,766b,806s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,11n,125p,766b,806s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
 ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dis
@@ -1363,10 +1357,10 @@ m-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
 bx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb
 ><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texli
 ve/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on Es01A.1.AC.relazione.pdf (6 pages, 718512 bytes).
+Output written on Es01A.1.AC.relazione.pdf (6 pages, 726669 bytes).
 PDF statistics:
- 210 PDF objects out of 1000 (max. 8388607)
- 157 compressed objects within 2 object streams
+ 211 PDF objects out of 1000 (max. 8388607)
+ 158 compressed objects within 2 object streams
  40 named destinations out of 1000 (max. 500000)
  99 words of extra memory for PDF output out of 10000 (max. 10000000)
 

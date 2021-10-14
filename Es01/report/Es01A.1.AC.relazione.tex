@@ -128,14 +128,43 @@ ha risoluzione nominale di $0.32 \si{m\V}$.
 \end{figure}
 
 \subsection*{5.d Fit curva del diodo}
-\par
 
+La forma funzionale della legge di Shockley per il diodo ideale non segue
+l'andamento osservato delle misure: Per differenze di potenziale superiori
+alla tensione di soglia, l'intensità di corrente assume andamento polinomiale
+rispetto alla tensione ai capi del diodo.
+
+Non è stato possibile far convergere il fit con l'equazione
+\eqref{eq:shockley} a dei valori ottimali se non restringendo l'intervallo
+dei dati al di sotto di una tensione arbitraria 
+$V\ped{lim} \approx \SI{1.77}{\V}$. Così facendo si ottengono i valori dei
+parametri di best fit:
+\begin{align*}
+I_s &= 1.2045 \pm 0.0007  \; \si{m\A} \qquad &\rm{norm\_cov_{(I_s, \eta V_T)}} &= 0.998 \\
+\eta_VT &= 44.53 \pm 0.04 \si{m\volt} \qquad &\rm{norm\_cov_{(I_s, I\ped{ofs})}} &= -0.170 \\
+I\ped{ofs} &= 5722 \pm 1 \; \si{m\A} \qquad &\rm{norm\_cov_{(\eta V_T, I\ped{ofs})}} &= -0.168  \\ 
+\chi^2 &= 1.8 \times 10^5 / 8189 \qquad &\rm{abs\_sigma} &= \rm False
+\end{align*}
+che non hanno un gran senso.
 \begin{figure}[htb]
 \centering
 \includegraphics[scale=0.7]{ivfit}
 \caption{(2.b) Grafico $I_{D}$ vs. $V_{D}$ e fit all'equazione di Schockley}
 \end{figure}
 
+Si è poi data una stima della resistenza equivalente in serie del diodo nella
+parte lineare della curva caratteristica $I-V$ tramite un fit lineare
+\[
+I(V) = V/R_D + I_0
+\]
+da cui risulta:
+\begin{align*}
+R_D &= 201.4 \pm 0.2 \; \si{\ohm} \\
+I_0 &= -89.92 \pm 0.11 \; \si{m\A} \\
+\rm{norm\_cov_{(R_D, I_0)}} &= -0.999 \\
+\chi^2 &= 1890/2359 \\
+\rm{abs\_sigma} &= \rm False \\
+\end{align*}
 \section{Partitore}
 
 \subsection*{6.b Partitore con resistenze da 1k}
