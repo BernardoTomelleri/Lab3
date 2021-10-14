@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  14 OCT 2021 15:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  14 OCT 2021 17:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1312,18 +1312,13 @@ File: ../figs//lpfbodefit.pdf Graphic file (type pdf)
 <use ../figs//lpfbodefit.pdf>
 Package pdftex.def Info: ../figs//lpfbodefit.pdf  used on input line 187.
 (pdftex.def)             Requested size: 359.68535pt x 270.14342pt.
-<../figs//rc2k10nF_rise.png, id=49, 1440.88312pt x 711.4078pt>
+<../figs//rc2k10nF_rise.png, id=49, 1301.61281pt x 458.46281pt>
 File: ../figs//rc2k10nF_rise.png Graphic file (type png)
 <use ../figs//rc2k10nF_rise.png>
 Package pdftex.def Info: ../figs//rc2k10nF_rise.png  used on input line 209.
-(pdftex.def)             Requested size: 504.31665pt x 248.99646pt.
-
-Overfull \hbox (20.61978pt too wide) in paragraph at lines 209--210
- [][] 
- []
-
-[3 <../figs//corner.pdf>] [4 <../figs//lpfbodefit.pdf>] [5 <../figs//rc2k10nF_r
-ise.png (PNG copy)>] [6] (./Es02A.1.AC.relazione.aux)
+(pdftex.def)             Requested size: 455.5713pt x 160.46439pt.
+ [3 <../figs//corner.pdf>] [4 <../figs//lpfbodefit.pdf> <../figs//rc2k10nF_rise
+.png (PNG copy)>] [5] [6] (./Es02A.1.AC.relazione.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1356,7 +1351,7 @@ b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texl
 ive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/t
 exmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/
 fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on Es02A.1.AC.relazione.pdf (6 pages, 1254573 bytes).
+Output written on Es02A.1.AC.relazione.pdf (6 pages, 1205568 bytes).
 PDF statistics:
  226 PDF objects out of 1000 (max. 8388607)
  160 compressed objects within 2 object streams

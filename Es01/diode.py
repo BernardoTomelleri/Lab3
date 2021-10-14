@@ -5,11 +5,11 @@ Created on Wed Oct  6 04:11:04 2021
 @author: berni
 """
 from lab import (np, plt, grid, propfit, errcor, prnpar, chitest, pltfitres)
-import lab
+import lab, rc
 
 ''' Variables that control the script '''
 tix = False  # manually choose spacing between axis ticks
-tex = False  # LaTeX typesetting maths and descriptions
+tex = True  # LaTeX typesetting maths and descriptions
 
 # Legge di Shockley
 def sck(V, Is, VT, ofs=0):
@@ -24,7 +24,7 @@ y*=1e3
 dx = np.full(x.shape, 1e-3); dy = 1e-3*np.abs(y) + 1e-3
 
 # Preliminary plot to visualize the sub-interval of data to analyze
-#lab.rc.typeset(usetex=tex, fontsize=12)
+rc.typeset(usetex=tex, fontsize=12)
 fig, ax = plt.subplots()
 grid(ax, xlab='Differenza di Potenziale $\Delta V$ [V]', ylab='Intensità di Corrente $I$ [mA]')
 ax.errorbar(x, y, dy, dx, 'k.', ls='-', ms=2, alpha=0.8)
@@ -66,7 +66,7 @@ prnpar(popt, errs, model=lin)
 chisq, ndof, resn, sigma = chitest(lin(lx, *popt), ly, dly, ddof=len(popt), gauss=True, v=True)
 
 # Linear fit graph
-linspace = np.linspace(1.85, 1.91, 2000)
+linspace = np.linspace(1.855, 1.91, 2000)
 linfig, (axf, axr) = pltfitres(lin, lx, ly, dlx, dly, pars=popt, space=linspace)
 axf.set_ylabel('Intensità di Corrente $I$ [mA]')
 if tix: lab.tick(axf, xmaj=5, ymaj=50)

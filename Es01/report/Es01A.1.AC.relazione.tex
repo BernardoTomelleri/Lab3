@@ -128,7 +128,6 @@ ha risoluzione nominale di $0.32 \si{m\V}$.
 \end{figure}
 
 \subsection*{5.d Fit curva del diodo}
-
 La forma funzionale della legge di Shockley per il diodo ideale non segue
 l'andamento osservato delle misure: Per differenze di potenziale superiori
 alla tensione di soglia, l'intensità di corrente assume andamento polinomiale
@@ -167,6 +166,23 @@ I_0 &= -89.92 \pm 0.11 \; \si{m\A} \\
 \chi^2 &= 1890/2359 \\
 \rm{abs\_sigma} &= \rm False \\
 \end{align*}
+
+La legge di Shockley assume che il diodo a giunzione si trovi a temperatura
+costante, cioè $\eta V_T =$ costante. Noi non ne abbiamo misurato o
+mantenuto costante la temperatura, mentre il diodo viene percorso da corrente,
+per cui ci aspettiamo di vedere una deviazione dal modello di diodo ideale.
+
+Non solo, il LED non è costituito dalla sola giunzione, ma è collegato a
+reofori di materiale conduttore, che possono contribuire alla resistenza
+trovata, così come altri effetti che trascuriamo; ad esempio la possibiltà di resistenze di contatto.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.7]{ivlinfit}
+\caption{(2.b) Grafico $I_{D}$ vs. $V_{D}$ e fit lineare per la componente
+resistiva del diodo $R_D$.}
+\end{figure}
+
 \section{Partitore}
 
 \subsection*{6.b Partitore con resistenze da 1k}
