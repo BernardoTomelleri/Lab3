@@ -61,7 +61,7 @@ quando la tensione in ingresso V+ $\approx 2 \si{\V}$ (cioè quando l'onda
 quadra è in alto) è sensibilmente superiore. In accordo con quanto previsto
 dalla legge di Shockley per il diodo a giunzione ideale.
 \begin{equation}\label{eq:shockley}
-I_D = I_0 \left(e^{\frac{V_D}{\eta V_T}} - 1 \right)
+I_D = I_s \left(e^{\frac{V_D}{\eta V_T}} - 1 \right)
 \end{equation}
 
 Le bande semitrasparenti nelle tracce dei segnali indicano rumore a frequenza
@@ -134,21 +134,23 @@ l'andamento osservato delle misure: Per differenze di potenziale superiori
 alla tensione di soglia, l'intensità di corrente assume andamento polinomiale
 rispetto alla tensione ai capi del diodo.
 
-Non è stato possibile far convergere il fit con l'equazione
-\eqref{eq:shockley} a dei valori ottimali se non restringendo l'intervallo
-dei dati al di sotto di una tensione arbitraria 
-$V\ped{lim} \approx \SI{1.77}{\V}$. Così facendo si ottengono i valori dei
+Si è utilizzata come modello una funzione uguale alla curva del diodo ideale di Shockley aggiungendoci un valore di corrente costante chiamato $I\ped{ofs}$:
+\begin{equation}\label{eq:shockley_modificata}
+I_D (x) = I_s \left(e^{\frac{x}{\eta V_T}} - 1 \right)+I\ped{ofs}
+\end{equation}
+
+Così facendo si ottengono i valori dei
 parametri di best fit:
 \begin{align*}
-I_s &= 1.2045 \pm 0.0007  \; \si{m\A} \qquad &\rm{norm\_cov_{(I_s, \eta V_T)}} &= 0.998 \\
-\eta_VT &= 44.53 \pm 0.04 \si{m\volt} \qquad &\rm{norm\_cov_{(I_s, I\ped{ofs})}} &= -0.170 \\
-I\ped{ofs} &= 5722 \pm 1 \; \si{m\A} \qquad &\rm{norm\_cov_{(\eta V_T, I\ped{ofs})}} &= -0.168  \\ 
+I_s &= 1.87 \pm 0.13  \; \times 10^{-18} \si{\A} \qquad &\rm{norm\_cov_{(I_s, \eta V_T)}} &= 0.998 \\
+\eta_VT &= 57.3 \pm 0.12 \si{m\volt} \qquad &\rm{norm\_cov_{(I_s, I\ped{ofs})}} &= -0.170 \\
+I\ped{ofs} &= 1.51 \pm 0.04 \; \si{\micro\A} \qquad &\rm{norm\_cov_{(\eta V_T, I\ped{ofs})}} &= -0.168  \\ 
 \chi^2 &= 1.8 \times 10^5 / 8189 \qquad &\rm{abs\_sigma} &= \rm False
 \end{align*}
 che non hanno un gran senso.
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=0.7]{ivfit}
+\includegraphics[scale=0.37]{ivmatteo}
 \caption{(2.b) Grafico $I_{D}$ vs. $V_{D}$ e fit all'equazione di Schockley}
 \end{figure}
 
