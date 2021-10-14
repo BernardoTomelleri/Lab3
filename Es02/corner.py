@@ -17,7 +17,7 @@ def lin(x, m=1, q=0):
     return m*x + q
 
 
-f, CH1, CH2, phi = np.genfromtxt('./data/rc1k10nF_new.csv', float, delimiter=',',
+f, CH1, CH2, phi = np.genfromtxt('./data/rc2k10nF_new.csv', float, delimiter=',',
                             skip_header=21, unpack=True)
 
 f_lo = 500; f_hi = 4e4
@@ -45,12 +45,12 @@ prnpar(pars, perr, model)
 chisq, ndof, resn = chitest(model(x, *pars), y, unc=deff, ddof=len(pars), v=True)
 
 # linear fit graphs
-space = np.linspace(3.5, 6.2, 5000)
+space = np.linspace(3.7, 6.2, 5000)
 fig, (axf, axr) = pltfitres(model, x, y, dx, deff, pars=pars, space=space)
-axf.set_ylabel('Gain $A(f)$')
+axf.set_ylabel('Gain $A(f)$ [dB]')
 if tix: tick(axf, xmaj=5, ymaj=50)
 
-axr.set_xlabel('Frequency log10($f$) [Hz]')
+axr.set_xlabel('Frequency $\log_{10}(f)$ [Hz]', x=0.8)
 if tix: tick(axr, xmaj=5, ymaj=2, ymin=0.5)
 
 # Constant fit for low frequency data
@@ -75,5 +75,9 @@ axf.errorbar(np.log10(f), CH2, 1e-3*np.abs(CH2) +1e-3, 0.3/(np.log(10)*f), 'g.',
              ms=2, alpha=0.05, zorder=0)
 legend = axf.legend(loc='best')
 
-fc = space[np.argmin(np.abs(popt[0] - lin(space, *pars)))]
-print('Corner frequency:', 10**fc)
+#fc = space[np.argmin(np.abs(popt[0] - lin(space, *pars)))]
+a, b = pars; da, db = perr
+c = popt[0]; dc = errs[0]
+fc = (c - b)/a
+dfc = np.sqrt((((c - a)/(a**2))*da)**2 + (db/a)**2 +(dc/a)**2 - 2*covm[0][1]*(1/a)**2)
+print('Corner frequency: %f +- %f Hz'  % (10**fc, np.log(10)*dfc*10**fc))
