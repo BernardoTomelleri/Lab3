@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  15 OCT 2021 17:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  16 OCT 2021 01:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1167,14 +1167,7 @@ LaTeX Font Info:    Trying to load font information for T1+txtt on input line 6
 
 (c:/texlive/2021/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
-)) (../../latex/math.tex) (./E02.1.AC.aux
-
-LaTeX Warning: Label `fig: corner' multiply defined.
-
-
-LaTeX Warning: Label `fig: corner@cref' multiply defined.
-
-)
+)) (../../latex/math.tex) (./E02.1.AC.aux)
 \openout1 = `E02.1.AC.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
@@ -1299,47 +1292,44 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <../figs//rc2k10nF_new.png, id=30, 1301.61281pt x 655.69969pt>
 File: ../figs//rc2k10nF_new.png Graphic file (type png)
 <use ../figs//rc2k10nF_new.png>
-Package pdftex.def Info: ../figs//rc2k10nF_new.png  used on input line 138.
+Package pdftex.def Info: ../figs//rc2k10nF_new.png  used on input line 142.
 (pdftex.def)             Requested size: 455.5713pt x 229.49832pt.
  [2 <../figs//rc2k10nF_new.png (PNG copy)>]
 <../figs//corner.pdf, id=45, 529.7391pt x 379.4175pt>
 File: ../figs//corner.pdf Graphic file (type pdf)
 <use ../figs//corner.pdf>
-Package pdftex.def Info: ../figs//corner.pdf  used on input line 168.
+Package pdftex.def Info: ../figs//corner.pdf  used on input line 172.
 (pdftex.def)             Requested size: 370.81483pt x 265.59042pt.
 <../figs//lpfbodefit.pdf, id=46, 513.8397pt x 385.92181pt>
 File: ../figs//lpfbodefit.pdf Graphic file (type pdf)
 <use ../figs//lpfbodefit.pdf>
-Package pdftex.def Info: ../figs//lpfbodefit.pdf  used on input line 187.
+Package pdftex.def Info: ../figs//lpfbodefit.pdf  used on input line 191.
 (pdftex.def)             Requested size: 359.68535pt x 270.14342pt.
 <../figs//rc2k10nF_rise.png, id=49, 1301.61281pt x 458.46281pt>
 File: ../figs//rc2k10nF_rise.png Graphic file (type png)
 <use ../figs//rc2k10nF_rise.png>
-Package pdftex.def Info: ../figs//rc2k10nF_rise.png  used on input line 209.
+Package pdftex.def Info: ../figs//rc2k10nF_rise.png  used on input line 213.
 (pdftex.def)             Requested size: 455.5713pt x 160.46439pt.
  [3 <../figs//corner.pdf>] [4 <../figs//lpfbodefit.pdf> <../figs//rc2k10nF_rise
 .png (PNG copy)>]
-<../figs//rc2k10nbpf.png, id=120, 1301.61281pt x 655.69969pt>
+<../figs//rc2k10nbpf.png, id=121, 1301.61281pt x 655.69969pt>
 File: ../figs//rc2k10nbpf.png Graphic file (type png)
 <use ../figs//rc2k10nbpf.png>
-Package pdftex.def Info: ../figs//rc2k10nbpf.png  used on input line 269.
+Package pdftex.def Info: ../figs//rc2k10nbpf.png  used on input line 292.
 (pdftex.def)             Requested size: 455.5713pt x 229.49832pt.
- [5 <../figs//rc2k10nbpf.png (PNG copy)>] [6]
+ [5] [6 <../figs//rc2k10nbpf.png (PNG copy)>] [7]
 (./E02.1.AC.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `E02.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 56003 strings out of 479713
- 1374992 string characters out of 5876923
- 2180990 words of memory out of 10000000
- 72973 multiletter control sequences out of 15000+600000
+ 56009 strings out of 479713
+ 1375082 string characters out of 5876923
+ 2180989 words of memory out of 10000000
+ 72977 multiletter control sequences out of 15000+600000
  417592 words of font info for 66 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,11n,125p,754b,913s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,11n,125p,754b,912s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/tex
 live/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
@@ -1358,10 +1348,10 @@ b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texl
 ive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/t
 exmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/
 fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on E02.1.AC.pdf (6 pages, 1242552 bytes).
+Output written on E02.1.AC.pdf (7 pages, 1248335 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 160 compressed objects within 2 object streams
- 42 named destinations out of 1000 (max. 500000)
+ 237 PDF objects out of 1000 (max. 8388607)
+ 169 compressed objects within 2 object streams
+ 44 named destinations out of 1000 (max. 500000)
  38 words of extra memory for PDF output out of 10000 (max. 10000000)
 

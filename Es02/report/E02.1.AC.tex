@@ -22,12 +22,12 @@
     \centering
     \begin{circuitikz}
         \draw (0,2) node[ocirc, label=$ V\ped{in} $]{}
-        to[R=$R_{1}$] (3,2)
-        to[C=$ C_{1} $] (3,0) node[ground]{};
+        to[R=$R_1$] (3,2)
+        to[C=$ C_1 $] (3,0) node[ground]{};
         % \node[ground] at (2,0){};
         \draw (3,2) to (4,2) node[ocirc, label=$ V\ped{out} $]{};
     \end{circuitikz}
-    \caption{Schema di massima del passa--basso. \label{fig:lpfcirc}}
+    \caption{Schema di massima del passa--basso. \label{fig: lpfcirc}}
 \end{figure}
 
 \subsection*{1.b Scelta della frequenza di taglio}
@@ -37,7 +37,7 @@ La frequenza nominale di taglio \`e stata fissata a $f_1 = 7337 \si{\Hz} \;\;
 
 Abbiamo scelto $ f\ped{1 teo} = \SI{6}{\kilo\hertz} $, così da attenuare
 il segnale a \SI{3}{\kilo\hertz} di un fattore $\sim 1 $ e quello a 
-\SI{30}{\kilo\hertz} di un fattore $1/\sqrt{1 + (30/6)^2} \simeq
+\SI{30}{\kilo\hertz} di un fattore $1/\sqrt{1 + (30/6)^2} \approx
 \nicefrac{1}{5}$, per avere un fattore di soppressione di circa 4. Siamo giunti
 a questa scelta attraverso le seguenti considerazioni:
 
@@ -83,14 +83,14 @@ Affinché il passa basso non venga perturbato dal carico a valle
 $R\ped{L} = \SI{100}{\kilo\ohm}$, l'impedenza in uscita dal circuito
 $Z\ped{out}(\omega)$ dev'essere trascurabile rispetto a quella del carico.
 \[
-\abs{Z\ped{out}} = \abs{\left(\frac{1}{R_{1}} + j\omega 
-C_{1}\right)^{-1}} \ll R\ped{L} \implies R_{1} \ll
-R\ped{L} \sqrt{1 + \omega^{2} R_{1}^{2} C_{1}^{2}} =
+\abs{Z\ped{out}} = \abs{\left(\frac{1}{R_1} + j\omega 
+C_1\right)^{-1}} \ll R\ped{L} \implies R_1 \ll
+R\ped{L} \sqrt{1 + \omega^{2} R_1^{2} C_1^{2}} =
 R\ped{L} \sqrt{1 + \left(\frac{f}{f_1}\right)^{2}}.
 \]
 Dunque dobbiamo avere
 \[
-R_{1} \ll \SI{100}{\kilo\ohm}  \ \sqrt{1 + 
+R_1 \ll \SI{100}{\kilo\ohm}  \ \sqrt{1 + 
 \left(\frac{f_l}{f_1}\right)^2} \approx \SI{112}{\kilo\ohm}.
 \]
 Abbiamo quindi scelto $R\ped{1 teo} = \SI{2}{\kilo\ohm}$.
@@ -119,12 +119,16 @@ sfasamento si ottiene:
 \begin{tabular}{|c|c|c|c|c|}
 \hline 
 $f \pm \sigma(f)$ [kHz] & $V\ped{in} \pm \sigma(V\ped{in})$ [V] 
-                        & $V\ped{out} \pm \sigma(V\ped{out})$ [V] & $A_v \pm \sigma(A_v)$
+                        & $V\ped{out} \pm \sigma(V\ped{out})$ [V] & $A_v \pm 
+\sigma(A_v)$
 & $\phi \pm \sigma(\phi)$ \\
 \hline 
-$3.00 \pm 0.06$ & $1 \pm 0.05$ & $0.93 \pm 0.05$ & $0.93 \pm 0.07$ & $0.38 \pm 0.01$ \\
-$7.34 \pm 0.15$ & $1 \pm 0.05$ & $0.72 \pm 0.04$ & $0.72 \pm 0.06$ & $1.32 \pm 0.04$ \\
-$30.0 \pm 0.6$ & $1 \pm 0.05$ & $0.25 \pm 0.01$ & $0.25 \pm 0.02$ & $0.77 \pm 0.02$ \\
+$3.00 \pm 0.06$ & $1 \pm 0.05$ & $0.93 \pm 0.05$ & $0.93 \pm 0.07$ & $0.38 \pm 
+0.01$ \\
+$7.34 \pm 0.15$ & $1 \pm 0.05$ & $0.72 \pm 0.04$ & $0.72 \pm 0.06$ & $1.32 \pm 
+0.04$ \\
+$30.0 \pm 0.6$ & $1 \pm 0.05$ & $0.25 \pm 0.01$ & $0.25 \pm 0.02$ & $0.77 \pm 
+0.02$ \\
 \hline 
 \end{tabular} 
 \caption{(3) Amplficazione e sfasamento del filtro passa-basso a bassa ed alta 
@@ -158,7 +162,7 @@ ampiezza ha i seguenti parametri:
 0.0016 \;\;\;\mathrm{correlazione} 
 = -0.997 \;\;\; \chi^2 = 1647 \;\;\; d.o.f. = 1746
 \]
-Dall'~intersezione delle due rette stimiamo per la frequenza di taglio il valore
+Dall'intersezione delle due rette stimiamo per la frequenza di taglio il valore
 \[
 f_{1B} = 7246 \pm 8 \; \si{Hz}
 \]
@@ -186,7 +190,7 @@ A_1 (\mathrm{mdB}) = -19.1 \pm 0.3 \;\;\; f_{1C} = 7428.8 \pm 0.9 \si{\Hz}
 \centering
 \includegraphics[scale=0.7]{lpfbodefit}
 \caption{Fit complessivo al plot di bode con l'espressione per l'attenuazione
-\eqref{eq: lpfgain}.\label{fig: corner}}
+\eqref{eq: lpfgain}.\label{fig: lpfbodefit}}
 \end{figure}
 
 \subsection*{5.d Confronto misure-predizione}
@@ -202,7 +206,7 @@ t_r = 47 \pm 2 \; \si{\micro\second}
 \]
 da cui 
 \[
-f_1 = \ln(9) R_1 C_1 \simeq \frac{2.2}{2\pi t_r} = 7.4 \pm 0.3 \; \si{k\Hz}
+f_1 = \ln(9) R_1 C_1 \approx \frac{2.2}{2\pi t_r} = 7.4 \pm 0.3 \; \si{k\Hz}
 \]
 \begin{figure}[htb]
 \centering
@@ -211,16 +215,37 @@ f_1 = \ln(9) R_1 C_1 \simeq \frac{2.2}{2\pi t_r} = 7.4 \pm 0.3 \; \si{k\Hz}
 \end{figure}
 
 \subsection*{7.a Impedenze di ingresso/uscita}
-(Qui \`e sufficiente scrivere le espressioni in termini della frequenza e dei 
-componenti)
+L'impedenza in ingresso al circuito in \ref{fig: lpfcirc} è data da:
 \[
 Z\ped{in}(\omega) = R_1 + \frac{1}{j \omega C_1} =
 R_1 \left( 1 - j \frac{1}{\omega R_1 C_1} \right) =
 R_1 \left( 1 - j \frac{\omega_1}{\omega} \right)
 \]
+
+A bassa frequenza ($f \ll f_1$) il termine costante è trascurabile, per cui
 \[
-Z\ped{out}(\omega) = \left(\frac{1}{R_{1}} + j\omega C_{1}\right)^{-1}
+Z\ped{in}(f) \approx -jR_1 \frac{f_1}{f}
 \]
+Poiché l'impedenza del condensatore $Z_{C_1} \to \infty$ per $f \to 0$
+il filtro si comporta come un circuito aperto.
+
+Ad alta frequenza ($f \gg f_1$) è il termine costante a dominare, quindi
+\[
+Z\ped{in} \approx R
+\]
+cioè, nel limite opposto ($Z_{C_1} \to 0$ per $f \to \infty$) il
+condensatore si comporta come un corto-circuito, quindi il filtro ha
+impedenza puramente reale.
+
+Alla frequenza di taglio vale
+\[
+Z\ped{in} = R_1 (1 - j)
+.\]
+
+Mentre come impedenza in uscita abbiamo:
+\[
+Z\ped{out}(\omega) = \left(\frac{1}{R_1} + j\omega C_1\right)^{-1}
+.\]
 
 \subsection*{7.b Effetti dovuti all'~accoppiamento con un carico}
 (Qui \`e richiesto che valutiate l'~amplificazione di centro-banda e la 
@@ -240,8 +265,7 @@ R_L=10 \,k\Omega & \implies A_1 = 0.766\;\;\; f_1 = 8761 \\
 
 \subsection*{8.a Misura dei componenti}
 \begin{align*}
-R_1 &= 1.99 \pm 0.02 \si{k\ohm} \\
-C_1 &= 10.9 \pm 0.4
+R_1 = 1.99 \pm 0.02 \; \si{k\ohm} \quad C_1 = 10.9 \pm 0.4 \; \si{n\F}
 \end{align*}
 
 \subsection*{8.b Filtro passa-basso, stima della frequenza di taglio}
@@ -252,8 +276,7 @@ A_1(\mathrm{mdB}) = -19.1 \pm 0.3, \;\; f_1 = 7336 \pm 6 \; \si{\Hz}
 
 \subsection*{9.a Misura dei componenti}
 \begin{align*}
-R_2 &= 1.990 \pm 0.016 \; \si{k\ohm} \\ 
-C_2 &= 95 \pm 4 \; \si{n\F}
+R_2 = 1.990 \pm 0.016 \; \si{k\ohm} \quad C_2 = 95 \pm 4 \; \si{n\F}
 \end{align*}
 per cui il valore atteso della frequenza di taglio del filtro passa alto è
 $f_2 = \frac{1}{2\pi R_2 C_2} = 0.84 \pm 0.03 \; \si{k\Hz}$
@@ -264,31 +287,82 @@ A_2(\mathrm{mdB}) = -14.19 \pm 0.05, \;\; f_2 = 839 \pm 7 \; \si{\Hz}
 \]
 
 \subsection*{10.a Filtro passa-banda, risposta in frequenza}
-\begin{figure}[h]
+\begin{figure}[htb]
 \centering
 \includegraphics[scale=0.35]{rc2k10nbpf}
 \caption{(4) Plot di Bode per il filtro passa-banda.}
 \end{figure}
-La nostra stima dell'~amplificazione di centro-banda e delle frequenze di 
+La nostra stima dell'amplificazione di centro-banda e delle frequenze di 
 taglio (per cui il guadagno si riduce di 3 dB rispetto a centro-banda) \`e
 \[
-A(\mathrm{dB}) = -6.525 \pm 0.007 \;\;\;f_{L} = 383.4 \pm 0.5 ;\;\; f_{H} = 16.06 \pm 0.03
+A(\mathrm{dB}) = -6.525 \pm 0.007 \;\;\; f_{L} = 383.4 \pm 0.5 \si{\Hz} \;\;\;
+f_{H} = 16.06 \pm 0.03 \si{k\Hz}
 \]
 
 \subsection*{10.b Interpolazione del plot di Bode}
 Dal fit del plot di Bode in ampiezza si ha
 \[
-A(\mathrm{dB}) = \ldots \pm \ldots \;\;\;f_{L} = \ldots\pm \ldots\;\;\;f_{H} = \ldots\pm 
+A(\mathrm{dB}) = \ldots \pm \ldots \;\;\;f_{L} = \ldots\pm \ldots\;\;\;f_{H} = 
+\ldots\pm 
 \ldots\;\;\;\chi^2 = \ldots\;\;\; d.o.f.= \ldots
 \]
 \subsection*{10.c Differenze}
-\vspace{0.5cm}
-\framebox(400,30){Motivare la differenza rispetto ai filtri standalone}
+A differenza dei circuiti RC studiati prima, non possiamo considerare
+indipendenti i sotto-circuiti che compongono il passa-banda; infatti il
+comportamento reale del circuito è sensibilmente diverso da quanto previsto in 
+approssimazione di stadi indipendenti.
+
+In particolare a centro banda (i.e. nell'intervallo di frequenza
+$f_2 \leq f \leq f_1$) l'attenuazione non è più in ottima approssimazione
+unitaria, ma è minore di $A\ped{max}(f) \approx \SI{-6}{\dB/dec}$.
+
+Le frequenze di taglio misurate $f_L$ e $f_H$ non sono compatibili con quelle
+ottenute separatamente nell'analisi dei singoli circuiti. Più precisamente
+la frequenza più bassa (del passa alto) è pressoché dimezzata
+$f_L > f_2$, mentre la frequenza più alta (del passa basso) è più che
+raddoppiata $f_H > f_1$.
+
+D'altra parte, una ragionevole richiesta per assicurare l'indipendenza dei due
+circuiti collegati in serie è che si abbia
+$\abs{Z\ped{out, 1}} \ll \abs{Z\ped{in,2}}$ ad ogni frequenza (e 
+indipendentemente da questa). Riportiamo le impedenze in questione:
+\[
+\abs{Z\ped{out, 1}} = \abs{\frac{R_1}{1 + j \omega R_1 C_1}}^{2} = 
+\frac{R_1^{2}}{1 + \omega^{2} R_1^{2} C_1^{2}}
+\qquad
+\abs{Z\ped{in, 2}}^{2} = \abs{\frac{1 + j \omega R_2 C_2}{j\omega 
+C_2}}^{2} = \frac{1 + \omega^{2} R_2^{2} C_2^{2}}{\omega^{2} C_2^{2}}
+\]
+Ora $\abs{Z\ped{out, 1}} \leq 1/(\omega C_1)$ con $\abs{Z\ped{out, 
+1}} \sim 1/(\omega C_1)$ per $f \gg f_1 $ e $\abs{Z\ped{in, 2}} 
+\geq 1/(\omega C_2)$ con $\abs{Z\ped{out, 1}} \sim 1/(\omega C_2) 
+$ per $ f \ll f_2 $. Quindi per poter considerare indipendenti i due circuiti
+è sicuramente una buona idea imporre la condizione
+\[
+\abs{Z\ped{out, 1}} \leq \frac{1}{\omega C_2} \ll \frac{1}{\omega C_2} \leq 
+\abs{Z\ped{in, 2}} \implies C_2 \ll C_1.
+\]
+Da confrontare con la scelta fatta di $C_2 \approx 10 \times C_1$.
 
 \subsection*{10.d Dipendenza dai valori delle resistenze}
-\vspace{0.5cm}
-\framebox(400,30){Commentare la dipendenza dalle resistenze, come da guida}
+Se indichiamo con $A_1(f)$ e $A_2(f)$ le attenuazioni del passa-basso e del
+passa-alto, l'attenuazione attesa in uscita dai due circuiti collegati in
+cascata è
+\begin{equation}\label{eq: bpfgain}
+A = \left(\frac{R_1}{R_2} + \frac{1}{A_1 A_2}\right)^{-1} = 
+\frac{A_1 A_2}{A_1 A_2 \frac{R_1}{R_2} + 1} 
+\end{equation}
+Nel nostro caso vale $R_1 = R_2$ (entro l'incertezza) per cui come
+attenuazione di centro banda, dove avevamo $A_1 \approx A_2 \approx 1$, ci
+aspettiamo di avere $A\ped{cb} = \frac{1}{2}$.
+Questo è compatibile con il valore che abbiamo misurato (prima in dB)
+$A\ped{cb} = 0.4702 \pm 0.0004 \approx \frac{1}{2}$
 
+Per avere una risposta in frequenza del circuito complessivo il più possibile
+uguale al prodotto delle funzioni di trasferimento dei due sotto-circuiti
+avremmo dovuto scegliere $R_1 \ll R_2$ ($Z\ped{out, 1} \ll Z\ped{in, 2}$.
+Infatti l'attenuazione attesa a centro banda vista in \eqref{eq: bpfgain}
+sotto queste ipotesi diventa $A\ped{cb} \approx A_1 A_2 \approx 1$.
 \subsection*{10.e Andamento della fase}
 \vspace{0.5cm}
 \framebox(400,30){Commentare la dipendenza della fase dalla frequenza}
