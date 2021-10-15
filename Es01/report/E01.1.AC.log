@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  14 OCT 2021 17:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  14 OCT 2021 18:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Es02A.1.AC.relazione.tex
-(./Es02A.1.AC.relazione.tex
+**E01.1.AC.tex
+(./E01.1.AC.tex
 LaTeX2e <2021-06-01>
 L3 programming layer <2021-06-01>
 (c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
@@ -1143,7 +1143,7 @@ nal.code.tex
 ternal.code.tex
 (c:/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzex
 ternalshared.code.tex)))
-\openout3 = `Es02A.1.AC.relazione.auxlock'.
+\openout3 = `E01.1.AC.auxlock'.
 
 
 Package siunitx Info: Option "number-unit-product" has been deprecated in this
@@ -1167,36 +1167,30 @@ LaTeX Font Info:    Trying to load font information for T1+txtt on input line 6
 
 (c:/texlive/2021/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
-)) (../../latex/math.tex) (./Es02A.1.AC.relazione.aux
+))
+No file E01.1.AC.aux.
+\openout1 = `E01.1.AC.aux'.
 
-LaTeX Warning: Label `fig: corner' multiply defined.
-
-
-LaTeX Warning: Label `fig: corner@cref' multiply defined.
-
-)
-\openout1 = `Es02A.1.AC.relazione.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-Package hyperref Info: Link coloring ON on input line 13.
- (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+Package hyperref Info: Link coloring ON on input line 12.
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
 (c:/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1207,16 +1201,14 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count362
 )
-LaTeX Info: Redefining \ref on input line 13.
-LaTeX Info: Redefining \pageref on input line 13.
-LaTeX Info: Redefining \nameref on input line 13.
-
-(./Es02A.1.AC.relazione.out) (./Es02A.1.AC.relazione.out)
+LaTeX Info: Redefining \ref on input line 12.
+LaTeX Info: Redefining \pageref on input line 12.
+LaTeX Info: Redefining \nameref on input line 12.
 \@outlinefile=\write4
-\openout4 = `Es02A.1.AC.relazione.out'.
+\openout4 = `E01.1.AC.out'.
 
 Package translations Info: no dictionary file `translations-basic-dictionary-it
-alian.trsl' found. on input line 13.
+alian.trsl' found. on input line 12.
 
 (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1277,84 +1269,133 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \it@ocap on input line 13.
-LaTeX Info: Redefining \it@ccap on input line 13.
+LaTeX Info: Redefining \it@ocap on input line 12.
+LaTeX Info: Redefining \it@ccap on input line 12.
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.18} (current compat level: 1.15).
 
 \c@lstlisting=\count369
-LaTeX Font Info:    Trying to load font information for U+msa on input line 15.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 14.
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 15.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 14.
 
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+<../figs//sqwdiode.png, id=7, 1440.88312pt x 711.4078pt>
+File: ../figs//sqwdiode.png Graphic file (type png)
+<use ../figs//sqwdiode.png>
+Package pdftex.def Info: ../figs//sqwdiode.png  used on input line 75.
+(pdftex.def)             Requested size: 432.26826pt x 213.42398pt.
+<../figs//trgdiode_new.png, id=8, 1440.88312pt x 711.4078pt>
+File: ../figs//trgdiode_new.png Graphic file (type png)
+<use ../figs//trgdiode_new.png>
+Package pdftex.def Info: ../figs//trgdiode_new.png  used on input line 99.
+(pdftex.def)             Requested size: 432.26826pt x 213.42398pt.
+ [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<../figs//rc2k10nF_new.png, id=30, 1301.61281pt x 655.69969pt>
-File: ../figs//rc2k10nF_new.png Graphic file (type png)
-<use ../figs//rc2k10nF_new.png>
-Package pdftex.def Info: ../figs//rc2k10nF_new.png  used on input line 138.
-(pdftex.def)             Requested size: 455.5713pt x 229.49832pt.
- [2 <../figs//rc2k10nF_new.png (PNG copy)>]
-<../figs//corner.pdf, id=45, 529.7391pt x 379.4175pt>
-File: ../figs//corner.pdf Graphic file (type pdf)
-<use ../figs//corner.pdf>
-Package pdftex.def Info: ../figs//corner.pdf  used on input line 168.
-(pdftex.def)             Requested size: 370.81483pt x 265.59042pt.
-<../figs//lpfbodefit.pdf, id=46, 513.8397pt x 385.92181pt>
-File: ../figs//lpfbodefit.pdf Graphic file (type pdf)
-<use ../figs//lpfbodefit.pdf>
-Package pdftex.def Info: ../figs//lpfbodefit.pdf  used on input line 187.
-(pdftex.def)             Requested size: 359.68535pt x 270.14342pt.
-<../figs//rc2k10nF_rise.png, id=49, 1301.61281pt x 458.46281pt>
-File: ../figs//rc2k10nF_rise.png Graphic file (type png)
-<use ../figs//rc2k10nF_rise.png>
-Package pdftex.def Info: ../figs//rc2k10nF_rise.png  used on input line 209.
-(pdftex.def)             Requested size: 455.5713pt x 160.46439pt.
- [3 <../figs//corner.pdf>] [4 <../figs//lpfbodefit.pdf> <../figs//rc2k10nF_rise
-.png (PNG copy)>] [5] [6] (./Es02A.1.AC.relazione.aux)
+<../figs//shockley_new.png, id=34, 301.125pt x 625.58719pt>
+File: ../figs//shockley_new.png Graphic file (type png)
+<use ../figs//shockley_new.png>
+Package pdftex.def Info: ../figs//shockley_new.png  used on input line 126.
+(pdftex.def)             Requested size: 120.44786pt x 250.23044pt.
+ [2 <../figs//sqwdiode.png (PNG copy)> <../figs//trgdiode_new.png (PNG copy)>]
+<../figs//ivmatteo.png, id=45, 1387.584pt x 694.5147pt>
+File: ../figs//ivmatteo.png Graphic file (type png)
+<use ../figs//ivmatteo.png>
+Package pdftex.def Info: ../figs//ivmatteo.png  used on input line 152.
+(pdftex.def)             Requested size: 513.39804pt x 256.9664pt.
 
-LaTeX Warning: There were multiply-defined labels.
+Overfull \hbox (29.70117pt too wide) in paragraph at lines 152--153
+ [][] 
+ []
 
-Package rerunfilecheck Info: File `Es02A.1.AC.relazione.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+<../figs//ivlinfit.pdf, id=47, 611.40419pt x 450.2421pt>
+File: ../figs//ivlinfit.pdf Graphic file (type pdf)
+<use ../figs//ivlinfit.pdf>
+Package pdftex.def Info: ../figs//ivlinfit.pdf  used on input line 181.
+(pdftex.def)             Requested size: 427.98pt x 315.16731pt.
+[3 <../figs//shockley_new.png (PNG copy)>] [4 <../figs//ivmatteo.png>]
+
+LaTeX Warning: Reference `eq: divider' on page 5 undefined on input line 267.
+
+
+LaTeX Warning: Reference `eq: estimate' on page 5 undefined on input line 278.
+
+
+Overfull \hbox (8.23178pt too wide) in paragraph at lines 286--298
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5 <../figs//ivlinfit.pdf>]
+<../figs//tempo_salita.png, id=107, 1019.007pt x 390.86024pt>
+File: ../figs//tempo_salita.png Graphic file (type png)
+<use ../figs//tempo_salita.png>
+Package pdftex.def Info: ../figs//tempo_salita.png  used on input line 331.
+(pdftex.def)             Requested size: 407.59558pt x 156.34132pt.
+<../figs//tempo_discesa.png, id=108, 1014.79124pt x 390.258pt>
+File: ../figs//tempo_discesa.png Graphic file (type png)
+<use ../figs//tempo_discesa.png>
+Package pdftex.def Info: ../figs//tempo_discesa.png  used on input line 334.
+(pdftex.def)             Requested size: 405.9093pt x 156.10042pt.
+ [6 <../figs//tempo_salita.png (PNG copy)> <../figs//tempo_discesa.png>] [7] (.
+/E01.1.AC.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `E01.1.AC.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `E01.1.AC.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  00EB35D5BC596CDFD504312F28106AD1;1286.
  ) 
 Here is how much of TeX's memory you used:
- 55992 strings out of 479713
- 1374931 string characters out of 5876923
- 2181050 words of memory out of 10000000
- 72962 multiletter control sequences out of 15000+600000
- 417592 words of font info for 66 fonts, out of 8000000 for 9000
+ 55545 strings out of 479713
+ 1364811 string characters out of 5876923
+ 2173990 words of memory out of 10000000
+ 72521 multiletter control sequences out of 15000+600000
+ 418368 words of font info for 67 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,11n,125p,766b,913s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/tex
-live/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2021/
+ 122i,11n,125p,754b,806s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
+ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmmi5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8
-.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/t
-exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/202
-1/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pf
+s/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/t
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
+fbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pf
 b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texl
 ive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/t
 exmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/
 fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on Es02A.1.AC.relazione.pdf (6 pages, 1205568 bytes).
+Output written on E01.1.AC.pdf (7 pages, 709109 bytes).
 PDF statistics:
- 226 PDF objects out of 1000 (max. 8388607)
- 160 compressed objects within 2 object streams
- 42 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 207 PDF objects out of 1000 (max. 8388607)
+ 148 compressed objects within 2 object streams
+ 43 named destinations out of 1000 (max. 500000)
+ 48 words of extra memory for PDF output out of 10000 (max. 10000000)
 
