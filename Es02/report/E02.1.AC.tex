@@ -41,23 +41,23 @@ il segnale a \SI{3}{\kilo\hertz} di un fattore $\sim 1 $ e quello a
 \nicefrac{1}{5}$, per avere un fattore di soppressione di circa 4. Siamo giunti
 a questa scelta attraverso le seguenti considerazioni:
 
-Dette $f_{l} = \SI{3}{\kilo\hertz}$ e $f_{h} = \SI{30}{\kilo\hertz}$ definiamo
+Dette $f_l = \SI{3}{\kilo\hertz}$ e $f_h = \SI{30}{\kilo\hertz}$ definiamo
 il fattore di soppressione del filtro come il rapporto tra le attenuazioni
 attese alle due frequenze di interesse:
 \[
-\mathcal{S}^{2}(f_1) := 
-\frac{\abs{A(f_{l})}^{2}}{\abs{A(f_{h})}^{2}} = \frac{f_1^{2} + 
-f_{l}^{2}}{f_1^{2} + f_{h}^{2}}
+\mathcal{S}^2(f_1) := 
+\frac{\abs{A(f_l)}^2}{\abs{A(f_h)}^2} = \frac{f_1^2 + 
+f_l^2}{f_1^2 + f_h^2}
 \]
 questa è una funzione decrescente di $f_1$ con massimo in 
 $f_1 = \SI{0}{\hertz}$ pari a $\mathcal{S}(f_1 = 0) = \nicefrac{f_l}{f_h}$;
-Però la scelta $f_1 = \SI{0}{\hertz} $ oltre a non essere realizzabile
+Però la scelta $f_1 = \SI{0}{\hertz}$ oltre a non essere realizzabile
 praticamente avrebbe $A(f) \sim 0 $ per tutte le frequenze di nostro interesse
 ($\geq 3 \si{k\Hz}$) su cui il circuito avrebbe sempre lo stesso comportamento,
 che va contro a quanto vogliamo.
 
-Idealmente vorremmo $f_1 $ il più ``piccola'' possibile, ma non minore
-di $ f_l $ per ridurre attenuazioni e sfasamenti indesiderati del segnale
+Idealmente vorremmo $f_1$ il più ``piccola'' possibile, ma non minore
+di $f_l$ per ridurre attenuazioni e sfasamenti indesiderati del segnale
 a bassa frequenza, ma ``sufficientemente'' minore di $f_h $ affinché il
 segnale ad alta frequenza venga apprezzabilmente ''tagliato''. Ovverosia
 $f_l \ll f_1 \ll f_h$; però, dal momento che $f_h = 10 \cdot f_l$ tra i due
@@ -67,12 +67,12 @@ cercare un compromesso ragionevole: $f_l \leq f_1 \leq f_h$.
 Visto che il filtro raggiunge un fronte di discesa di pendenza modesta
 ($-20$ dB/decade) soltanto quando $f \gg f_1$ scegliamo $f_1$ decisamente
 più lontana da $f_h = 5 \cdot f_1$ che da $f_l = \frac{1}{2} f_1$:
-di modo che il segnale a $f_l$ venga adeguatamente soppresso, mentre quello
+di modo che il segnale a $f_h$ venga adeguatamente soppresso, mentre quello
 a $f_l$ rimanga il più possibile indisturbato.
 
 Infine la scelta tra i valori disponibili di $R_1$ e $C_1$ ci ha portato alla
 frequenza di taglio nominale più vicina a quella teorica di 
-$f_1 = 7.3 \pm 0.3 \si{k\Hz}.$ 
+$f_1 = 7.3 \pm 0.3 \; \si{k\Hz}$. 
 
 \subsection*{1.c,1.d Scelta dei componenti}
 
@@ -85,8 +85,8 @@ $Z\ped{out}(\omega)$ dev'essere trascurabile rispetto a quella del carico.
 \[
 \abs{Z\ped{out}} = \abs{\left(\frac{1}{R_1} + j\omega 
 C_1\right)^{-1}} \ll R\ped{L} \implies R_1 \ll
-R\ped{L} \sqrt{1 + \omega^{2} R_1^{2} C_1^{2}} =
-R\ped{L} \sqrt{1 + \left(\frac{f}{f_1}\right)^{2}}.
+R\ped{L} \sqrt{1 + \omega^2 R_1^2 C_1^2} =
+R\ped{L} \sqrt{1 + \left(\frac{f}{f_1}\right)^2}.
 \]
 Dunque dobbiamo avere
 \[
@@ -327,11 +327,11 @@ circuiti collegati in serie è che si abbia
 $\abs{Z\ped{out, 1}} \ll \abs{Z\ped{in,2}}$ ad ogni frequenza (e 
 indipendentemente da questa). Riportiamo le impedenze in questione:
 \[
-\abs{Z\ped{out, 1}} = \abs{\frac{R_1}{1 + j \omega R_1 C_1}}^{2} = 
-\frac{R_1^{2}}{1 + \omega^{2} R_1^{2} C_1^{2}}
+\abs{Z\ped{out, 1}} = \abs{\frac{R_1}{1 + j \omega R_1 C_1}}^2 = 
+\frac{R_1^2}{1 + \omega^2 R_1^2 C_1^2}
 \qquad
-\abs{Z\ped{in, 2}}^{2} = \abs{\frac{1 + j \omega R_2 C_2}{j\omega 
-C_2}}^{2} = \frac{1 + \omega^{2} R_2^{2} C_2^{2}}{\omega^{2} C_2^{2}}
+\abs{Z\ped{in, 2}}^2 = \abs{\frac{1 + j \omega R_2 C_2}{j\omega 
+C_2}}^2 = \frac{1 + \omega^2 R_2^2 C_2^2}{\omega^2 C_2^2}
 \]
 Ora $\abs{Z\ped{out, 1}} \leq 1/(\omega C_1)$ con $\abs{Z\ped{out, 
 1}} \sim 1/(\omega C_1)$ per $f \gg f_1 $ e $\abs{Z\ped{in, 2}} 
@@ -339,10 +339,11 @@ Ora $\abs{Z\ped{out, 1}} \leq 1/(\omega C_1)$ con $\abs{Z\ped{out,
 $ per $ f \ll f_2 $. Quindi per poter considerare indipendenti i due circuiti
 è sicuramente una buona idea imporre la condizione
 \[
-\abs{Z\ped{out, 1}} \leq \frac{1}{\omega C_2} \ll \frac{1}{\omega C_2} \leq 
+\abs{Z\ped{out, 1}} \leq \frac{1}{\omega C_1} \ll \frac{1}{\omega C_2} \leq 
 \abs{Z\ped{in, 2}} \implies C_2 \ll C_1.
 \]
-Da confrontare con la scelta fatta di $C_2 \approx 10 \times C_1$.
+Mentre per i valori di capacità scelti vale la condizione opposta
+$C_2 \approx 10 \cdot C_1$.
 
 \subsection*{10.d Dipendenza dai valori delle resistenze}
 Se indichiamo con $A_1(f)$ e $A_2(f)$ le attenuazioni del passa-basso e del
@@ -364,8 +365,43 @@ avremmo dovuto scegliere $R_1 \ll R_2$ ($Z\ped{out, 1} \ll Z\ped{in, 2}$.
 Infatti l'attenuazione attesa a centro banda vista in \eqref{eq: bpfgain}
 sotto queste ipotesi diventa $A\ped{cb} \approx A_1 A_2 \approx 1$.
 \subsection*{10.e Andamento della fase}
-\vspace{0.5cm}
-\framebox(400,30){Commentare la dipendenza della fase dalla frequenza}
+Idealmente, se la funzione di trasferimento complessiva $T(\omega)$ per il
+passa banda è il prodotto delle funzioni di trasferimento dei due circuiti in
+cascata:
+\begin{align*}
+T_1(\omega) = -\frac{1}{1 + j \omega/\omega_1} \qquad
+T_2(\omega) = \frac{1}{1 - j \omega_2/\omega}
+\end{align*}
+ci aspettiamo (per le regole di moltiplicazione sui complessi) che lo
+sfasamento totale in uscita sia pari alla somma degli sfasamenti prodotti dai
+singoli sotto-circuiti:
+\[
+T(\omega) = T_1(\omega) T_2(\omega) =
+\abs{T_1} e^{i (\omega t + \phi_1)} \abs{T_2} e^{i (\omega t + \phi_2)} =
+\abs{T_1} \abs{T_2} e^{i (\omega t + \phi_1 + \phi_2)} =
+\abs{T_1} \abs{T_2} e^{i (\omega t + \phi)}
+\]
+per cui $\phi = \phi_1 + \phi_2 =
+\tan^{-1} \left( \dfrac{\Im{\{T_1(\omega)\}}}{\Re{\{T_1(\omega)\}}} \right) +
+\tan^{-1} \left( \dfrac{\Im{\{T_2(\omega)\}}}{\Re{\{T_2(\omega)\}}} \right)$
+che corrispondono rispettivamente a
+\begin{align*}
+\phi_1(\omega) = \arctan - \frac{\omega}{\omega_1} \qquad
+\phi_2(\omega) = \arctan \frac{\omega_2}{\omega}
+\end{align*}
+
+Effettivamente le misure di sfasamento in uscita dal passa-banda risultano
+in accordo con l'andamento atteso
+\begin{equation}
+\phi_2 + \phi_1 = \phi(f) = \arctan{\frac{f_2}{f}} - \arctan{\frac{f}{f_1}}
+\end{equation}
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.7]{bpfphase}
+\caption{Grafico dello sfasamento misurato per il filtro passa-banda al
+variare della frequenza in scala semilogaritmica.}
+\end{figure}
 
 \section*{Conclusioni e commenti finali}
 \framebox(400,30){Inserire eventuali commenti e conclusioni finali}
