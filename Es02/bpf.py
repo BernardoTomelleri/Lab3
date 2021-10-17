@@ -22,7 +22,7 @@ def ALPF(f, fT, A=1):
 def hpf(f, fT):
     return 1./np.sqrt(1+(fT/f)**2) 
 
-f, CH1, CH2, phi = np.genfromtxt('./data/rc2k10nbpf.csv', float, delimiter=',',
+f, CH1, CH2, phi = np.genfromtxt('./data/bpfnetwork.csv', float, delimiter=',',
                             skip_header=21, unpack=True)
 
 # Input data manipulation

@@ -21,10 +21,13 @@
 \begin{figure}[ht]
     \centering
     \begin{circuitikz}
-        \draw (0,2) node[ocirc, label=$ V\ped{in} $]{}
-        to[R=$R_1$] (3,2)
-        to[C=$ C_1 $] (3,0) node[ground]{};
-        % \node[ground] at (2,0){};
+        \draw (-1,2) node[ocirc, label=$ V\ped{in} $]{}
+        to[short,-*](0,2)
+        to[R=$R_1$, -*] (3,2)
+        to[C=$ C_1 $, -*] (3,0)
+        node[eground]{}
+        to[short] (0,0)
+        to[sV, v=$W1$] (0,2);
         \draw (3,2) to (4,2) node[ocirc, label=$ V\ped{out} $]{};
     \end{circuitikz}
     \caption{Schema di massima del passa--basso. \label{fig: lpfcirc}}
@@ -152,7 +155,8 @@ f_{1A} = 7336 \pm 6 \; \si{k\Hz}
 \subsection*{5.b Misura della frequenza di taglio (metodo b)}
 Dal fit a bassa frequenza ($f\ll f_1$) otteniamo
 \[
-A_1(\mathrm{mdB}) = -17.91 \pm 0.18 \;\;\; \chi^2 = 243 \;\;\; d.o.f. = 873
+A_1(\mathrm{dB}) = \left(-17.91 \pm 0.18\right)\times 10^{-3} \;\;\;
+\chi^2 = 243 \;\;\; d.o.f. = 873
 \]
 
 Ad alta frequenza ($f \gg f_1$) la retta di best-fit al plot di Bode in 
@@ -182,8 +186,8 @@ Dal fit complessivo del modulo della funzione di trasferimento
 otteniamo per l'~amplificazione di centro-banda e per la frequenza di taglio i 
 seguenti valori:
 \[
-A_1 (\mathrm{mdB}) = -19.1 \pm 0.3 \;\;\; f_{1C} = 7428.8 \pm 0.9 \si{\Hz}
-\;\;\;\ \chi^2 = 1614 \;\;\; d.o.f.= 4997
+A_1 (\mathrm{dB}) = \left(-19.1 \pm 0.3\right)\times 10^{-3} \;\;\;
+f_{1C} = 7428.8 \pm 0.9 \si{\Hz} \;\;\;\ \chi^2 = 1614 \;\;\; d.o.f.= 4997
 \]
 
 \begin{figure}[htbp]
@@ -271,7 +275,8 @@ R_1 = 1.99 \pm 0.02 \; \si{k\ohm} \quad C_1 = 10.9 \pm 0.4 \; \si{n\F}
 \subsection*{8.b Filtro passa-basso, stima della frequenza di taglio}
 Dalla risposta in frequenza risulta
 \[
-A_1(\mathrm{mdB}) = -19.1 \pm 0.3, \;\; f_1 = 7336 \pm 6 \; \si{\Hz}
+A_1(\mathrm{dB}) = \left(-19.1 \pm 0.3\right)\times 10^{-3},
+\;\; f_1 = 7336 \pm 6 \; \si{\Hz}
 \]
 
 \subsection*{9.a Misura dei componenti}
@@ -395,16 +400,33 @@ in accordo con l'andamento atteso
 \begin{equation}
 \phi_2 + \phi_1 = \phi(f) = \arctan{\frac{f_2}{f}} - \arctan{\frac{f}{f_1}}
 \end{equation}
-
 \begin{figure}[htb]
 \centering
 \includegraphics[scale=0.7]{bpfphase}
 \caption{Grafico dello sfasamento misurato per il filtro passa-banda al
 variare della frequenza in scala semilogaritmica.}
 \end{figure}
+almeno fino a frequenze dell'ordine di $10^5 \; \si{\Hz}$ dove i punti
+iniziano a deviare dal modello man mano che ci si avvicina alla banda
+passante dell'AD2 $(\sim 9 \; \si{M\Hz})$. Questo può essere dovuto alle
+capacità parassite tra i fili, i componenti e la basetta che ad alta
+frequenza non sono trascurabili, a differenza di quanto presuppone il nostro
+modello.
 
 \section*{Conclusioni e commenti finali}
-\framebox(400,30){Inserire eventuali commenti e conclusioni finali}
+Si è riusciti a realizzare dei filtri RC passivi del primo ordine
+(o ``a un polo'') e ad apprezzarne il differente comportamento in vari
+regimi, quando usati separatamente, collegati in cascata e connessi a
+carichi resistivi di diverso valore.
+\iffalse
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.33]{noisine}
+\caption{Sia nel dominio del tempo che delle frequenze si vede come il filtro
+passa-basso progettato riesca ad attenuare sensibilmente il rumore a
+$\SI{30}{k\Hz}$ sovrapposto al segnale portante di frequenza $\SI{3}{k\Hz}$.}
+\end{figure}
+\fi
 
 \section*{Dichiarazione}
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e 
