@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  19 OCT 2021 01:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  19 OCT 2021 01:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**E02.1.AC.tex
-(./E02.1.AC.tex
+**E03.1.AC.tex
+(./E03.1.AC.tex
 LaTeX2e <2021-06-01>
 L3 programming layer <2021-06-01>
 (c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
@@ -1143,7 +1143,7 @@ nal.code.tex
 ternal.code.tex
 (c:/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzex
 ternalshared.code.tex)))
-\openout3 = `E02.1.AC.auxlock'.
+\openout3 = `E03.1.AC.auxlock'.
 
 
 Package siunitx Info: Option "number-unit-product" has been deprecated in this
@@ -1167,8 +1167,9 @@ LaTeX Font Info:    Trying to load font information for T1+txtt on input line 6
 
 (c:/texlive/2021/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
-)) (../../latex/math.tex) (./E02.1.AC.aux)
-\openout1 = `E02.1.AC.aux'.
+)) (../../latex/math.tex)
+No file E03.1.AC.aux.
+\openout1 = `E03.1.AC.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
@@ -1189,7 +1190,7 @@ LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 Package hyperref Info: Link coloring ON on input line 13.
- (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
 (c:/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1203,10 +1204,8 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 13.
 LaTeX Info: Redefining \pageref on input line 13.
 LaTeX Info: Redefining \nameref on input line 13.
-
-(./E02.1.AC.out) (./E02.1.AC.out)
 \@outlinefile=\write4
-\openout4 = `E02.1.AC.out'.
+\openout4 = `E03.1.AC.out'.
 
 Package translations Info: no dictionary file `translations-basic-dictionary-it
 alian.trsl' found. on input line 13.
@@ -1289,82 +1288,169 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<../figs//rc2k10nF_new.png, id=30, 1301.61281pt x 655.69969pt>
-File: ../figs//rc2k10nF_new.png Graphic file (type png)
-<use ../figs//rc2k10nF_new.png>
-Package pdftex.def Info: ../figs//rc2k10nF_new.png  used on input line 145.
-(pdftex.def)             Requested size: 455.5713pt x 229.49832pt.
- [2 <../figs//rc2k10nF_new.png (PNG copy)>]
-<../figs//corner.pdf, id=45, 529.7391pt x 379.4175pt>
-File: ../figs//corner.pdf Graphic file (type pdf)
-<use ../figs//corner.pdf>
-Package pdftex.def Info: ../figs//corner.pdf  used on input line 176.
-(pdftex.def)             Requested size: 370.81483pt x 265.59042pt.
-<../figs//lpfbodefit.pdf, id=46, 513.8397pt x 385.92181pt>
-File: ../figs//lpfbodefit.pdf Graphic file (type pdf)
-<use ../figs//lpfbodefit.pdf>
-Package pdftex.def Info: ../figs//lpfbodefit.pdf  used on input line 195.
-(pdftex.def)             Requested size: 359.68535pt x 270.14342pt.
-<../figs//rc2k10nF_rise.png, id=49, 1301.61281pt x 458.46281pt>
-File: ../figs//rc2k10nF_rise.png Graphic file (type png)
-<use ../figs//rc2k10nF_rise.png>
-Package pdftex.def Info: ../figs//rc2k10nF_rise.png  used on input line 216.
-(pdftex.def)             Requested size: 455.5713pt x 160.46439pt.
- [3 <../figs//corner.pdf>] [4 <../figs//lpfbodefit.pdf> <../figs//rc2k10nF_rise
-.png (PNG copy)>]
-<../figs//passa_basso.png, id=121, 1387.584pt x 694.5147pt>
-File: ../figs//passa_basso.png Graphic file (type png)
-<use ../figs//passa_basso.png>
-Package pdftex.def Info: ../figs//passa_basso.png  used on input line 282.
-(pdftex.def)             Requested size: 555.02377pt x 277.80095pt.
 
-Overfull \hbox (71.3269pt too wide) in paragraph at lines 282--283
- [][] 
- []
+! LaTeX Error: File `rc2k10nF_new' not found.
 
-<../figs//passa_alto.png, id=123, 1387.584pt x 694.5147pt>
-File: ../figs//passa_alto.png Graphic file (type png)
-<use ../figs//passa_alto.png>
-Package pdftex.def Info: ../figs//passa_alto.png  used on input line 306.
-(pdftex.def)             Requested size: 555.02377pt x 277.80095pt.
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.145 \includegraphics[scale=0.35]{rc2k10nF_new}
+                                                
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-Overfull \hbox (71.3269pt too wide) in paragraph at lines 306--307
- [][] 
- []
 
-[5 <../figs//passa_basso.png>]
-<../figs//passabanda.png, id=135, 1152.7065pt x 553.46774pt>
-File: ../figs//passabanda.png Graphic file (type png)
-<use ../figs//passabanda.png>
-Package pdftex.def Info: ../figs//passabanda.png  used on input line 320.
-(pdftex.def)             Requested size: 403.45332pt x 193.7166pt.
-<../figs//passa_banda.png, id=136, 1387.584pt x 694.5147pt>
-File: ../figs//passa_banda.png Graphic file (type png)
-<use ../figs//passa_banda.png>
-Package pdftex.def Info: ../figs//passa_banda.png  used on input line 335.
-(pdftex.def)             Requested size: 485.66168pt x 243.08377pt.
+! LaTeX Error: File `corner' not found.
 
-Overfull \hbox (1.96481pt too wide) in paragraph at lines 335--337
- [][] 
- []
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.176 \includegraphics[scale=0.7]{corner}
+                                         
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-[6 <../figs//passa_alto.png> <../figs//passabanda.png (PNG copy)>] [7 <../figs/
-/passa_banda.png>]
-<../figs//bpfphase.pdf, id=158, 604.17719pt x 358.4592pt>
-File: ../figs//bpfphase.pdf Graphic file (type pdf)
-<use ../figs//bpfphase.pdf>
-Package pdftex.def Info: ../figs//bpfphase.pdf  used on input line 439.
-(pdftex.def)             Requested size: 422.92114pt x 250.91972pt.
- [8 <../figs//bpfphase.pdf>] [9] (./E02.1.AC.aux)
-Package rerunfilecheck Info: File `E02.1.AC.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+[2]
+
+! LaTeX Error: File `lpfbodefit' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.195 \includegraphics[scale=0.7]{lpfbodefit}
+                                             
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: Reference `eq: lpfgain' on page 3 undefined on input line 197.
+
+
+LaTeX Warning: Reference `eq: lpfgain' on page 3 undefined on input line 197.
+
+
+! LaTeX Error: File `rc2k10nF_rise' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.216 \includegraphics[scale=0.35]{rc2k10nF_rise}
+                                                 
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: Reference `fig: lpfcirc' on page 3 undefined on input line 221.
+
+[3]
+
+! LaTeX Error: File `passa_basso' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.282 \includegraphics[scale=0.4]{passa_basso}
+                                              
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: File `passa_alto' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.306 \includegraphics[scale=0.4]{passa_alto}
+                                             
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: File `passabanda' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.320 \includegraphics[scale=0.35]{passabanda}
+                                              
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: File `passa_banda' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.335 \includegraphics[scale=0.35]{passa_banda}
+                                               
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[4]
+
+LaTeX Warning: Reference `eq: bpfgain' on page 5 undefined on input line 404.
+
+
+! LaTeX Error: File `bpfphase' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.439 \includegraphics[scale=0.7]{bpfphase}
+                                           
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[5] [6] (./E03.1.AC.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `E03.1.AC.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `E03.1.AC.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 56243 strings out of 479713
- 1381246 string characters out of 5876923
- 2187989 words of memory out of 10000000
- 73204 multiletter control sequences out of 15000+600000
- 417592 words of font info for 66 fonts, out of 8000000 for 9000
+ 56424 strings out of 479713
+ 1384269 string characters out of 5876923
+ 2186989 words of memory out of 10000000
+ 73382 multiletter control sequences out of 15000+600000
+ 418368 words of font info for 67 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,11n,125p,754b,989s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/tex
@@ -1375,22 +1461,20 @@ ype1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmmi5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8
 .pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/t
-exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/202
-1/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
-><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texli
-ve/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/te
-xmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/f
-onts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1
-/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm
--super/sfrm1728.pfb>
-Output written on E02.1.AC.pdf (9 pages, 1783137 bytes).
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
+fbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pf
+b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texl
+ive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/t
+exmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/
+fonts/type1/public/cm-super/sfrm1728.pfb>
+Output written on E03.1.AC.pdf (6 pages, 247879 bytes).
 PDF statistics:
- 291 PDF objects out of 1000 (max. 8388607)
- 210 compressed objects within 3 object streams
- 51 named destinations out of 1000 (max. 500000)
- 58 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 183 PDF objects out of 1000 (max. 8388607)
+ 136 compressed objects within 2 object streams
+ 48 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
