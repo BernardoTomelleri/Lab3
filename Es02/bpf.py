@@ -20,9 +20,9 @@ def ALPF(f, fT, A=1):
     return A/np.sqrt(1+(f/fT)**2)
 
 def hpf(f, fT):
-    return 1./np.sqrt(1+(fT/f)**2) 
+    return 1./np.sqrt(1+(fT/f)**2)
 
-f, CH1, CH2, phi = np.genfromtxt('./data/bpfnetwork.csv', float, delimiter=',',
+f, CH1, CH2, phi = np.genfromtxt('C:/Users/rossi/OneDrive/Desktop/passabanda.csv', float, delimiter=',',
                             skip_header=21, unpack=True)
 
 # Input data manipulation
@@ -39,3 +39,4 @@ ax.plot(f, (np.arctan(16.06e3/f) + np.arctan(-f/384.))*180/np.pi,
         label=r'$\tan^{-1}\frac{f_2}{f} - \tan^{-1} \frac{f}{f_1}$', zorder=5)
 ax.set_xscale('log')
 legend = ax.legend(loc='best')
+plt.show()
