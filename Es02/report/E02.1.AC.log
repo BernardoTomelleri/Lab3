@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  17 OCT 2021 13:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  19 OCT 2021 01:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1308,30 +1308,62 @@ Package pdftex.def Info: ../figs//lpfbodefit.pdf  used on input line 195.
 <../figs//rc2k10nF_rise.png, id=49, 1301.61281pt x 458.46281pt>
 File: ../figs//rc2k10nF_rise.png Graphic file (type png)
 <use ../figs//rc2k10nF_rise.png>
-Package pdftex.def Info: ../figs//rc2k10nF_rise.png  used on input line 217.
+Package pdftex.def Info: ../figs//rc2k10nF_rise.png  used on input line 216.
 (pdftex.def)             Requested size: 455.5713pt x 160.46439pt.
  [3 <../figs//corner.pdf>] [4 <../figs//lpfbodefit.pdf> <../figs//rc2k10nF_rise
 .png (PNG copy)>]
-<../figs//rc2k10nbpf.png, id=121, 1301.61281pt x 655.69969pt>
-File: ../figs//rc2k10nbpf.png Graphic file (type png)
-<use ../figs//rc2k10nbpf.png>
-Package pdftex.def Info: ../figs//rc2k10nbpf.png  used on input line 297.
-(pdftex.def)             Requested size: 455.5713pt x 229.49832pt.
- [5] [6 <../figs//rc2k10nbpf.png (PNG copy)>]
-<../figs//bpfphase.pdf, id=143, 604.17719pt x 358.4592pt>
+<../figs//passa_basso.png, id=121, 1387.584pt x 694.5147pt>
+File: ../figs//passa_basso.png Graphic file (type png)
+<use ../figs//passa_basso.png>
+Package pdftex.def Info: ../figs//passa_basso.png  used on input line 282.
+(pdftex.def)             Requested size: 555.02377pt x 277.80095pt.
+
+Overfull \hbox (71.3269pt too wide) in paragraph at lines 282--283
+ [][] 
+ []
+
+<../figs//passa_alto.png, id=123, 1387.584pt x 694.5147pt>
+File: ../figs//passa_alto.png Graphic file (type png)
+<use ../figs//passa_alto.png>
+Package pdftex.def Info: ../figs//passa_alto.png  used on input line 306.
+(pdftex.def)             Requested size: 555.02377pt x 277.80095pt.
+
+Overfull \hbox (71.3269pt too wide) in paragraph at lines 306--307
+ [][] 
+ []
+
+[5 <../figs//passa_basso.png>]
+<../figs//passabanda.png, id=135, 1152.7065pt x 553.46774pt>
+File: ../figs//passabanda.png Graphic file (type png)
+<use ../figs//passabanda.png>
+Package pdftex.def Info: ../figs//passabanda.png  used on input line 320.
+(pdftex.def)             Requested size: 403.45332pt x 193.7166pt.
+<../figs//passa_banda.png, id=136, 1387.584pt x 694.5147pt>
+File: ../figs//passa_banda.png Graphic file (type png)
+<use ../figs//passa_banda.png>
+Package pdftex.def Info: ../figs//passa_banda.png  used on input line 335.
+(pdftex.def)             Requested size: 485.66168pt x 243.08377pt.
+
+Overfull \hbox (1.96481pt too wide) in paragraph at lines 335--337
+ [][] 
+ []
+
+[6 <../figs//passa_alto.png> <../figs//passabanda.png (PNG copy)>] [7 <../figs/
+/passa_banda.png>]
+<../figs//bpfphase.pdf, id=158, 604.17719pt x 358.4592pt>
 File: ../figs//bpfphase.pdf Graphic file (type pdf)
 <use ../figs//bpfphase.pdf>
-Package pdftex.def Info: ../figs//bpfphase.pdf  used on input line 405.
+Package pdftex.def Info: ../figs//bpfphase.pdf  used on input line 430.
 (pdftex.def)             Requested size: 422.92114pt x 250.91972pt.
- [7 <../figs//bpfphase.pdf>] (./E02.1.AC.aux)
+ [8 <../figs//bpfphase.pdf>] [9] (./E02.1.AC.aux)
 Package rerunfilecheck Info: File `E02.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 56205 strings out of 479713
- 1380348 string characters out of 5876923
- 2187990 words of memory out of 10000000
- 73171 multiletter control sequences out of 15000+600000
+ 56243 strings out of 479713
+ 1381246 string characters out of 5876923
+ 2187989 words of memory out of 10000000
+ 73204 multiletter control sequences out of 15000+600000
  417592 words of font info for 66 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,11n,125p,754b,989s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1355,10 +1387,10 @@ xmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/f
 onts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1
 /public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm
 -super/sfrm1728.pfb>
-Output written on E02.1.AC.pdf (7 pages, 1548659 bytes).
+Output written on E02.1.AC.pdf (9 pages, 1783091 bytes).
 PDF statistics:
- 271 PDF objects out of 1000 (max. 8388607)
- 199 compressed objects within 2 object streams
- 46 named destinations out of 1000 (max. 500000)
- 43 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 291 PDF objects out of 1000 (max. 8388607)
+ 210 compressed objects within 3 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 58 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -20,13 +20,14 @@ def ALPF(f, fT, A=1):
     return A/np.sqrt(1+(f/fT)**2)
 
 def hpf(f, fT):
-    return 1./np.sqrt(1+(fT/f)**2) 
+    return 1./np.sqrt(1+(fT/f)**2)
 
 def band(f, fl, fh, A=1):
     return 20*np.log10(A/np.sqrt((1 + (f/fl)**2)*(1 + (fh/f)**2)))
 
-f, CH1, CH2, phi = np.genfromtxt('./data/bpfnetgain.csv', float, delimiter=',',
-                            skip_header=21, unpack=True)
+f, CH1, CH2, phi = np.genfromtxt('./data/bpfnetgain.csv', float, delimiter=',', 
+                                 skip_header=21, unpack=True)
+#f, CH1, CH2, phi = np.genfromtxt('C:/Users/rossi/OneDrive/Desktop/passabanda.csv', float, delimiter=',',
 
 # Input data manipulation
 f_min = 10; f_max = 1e6
@@ -63,6 +64,7 @@ axf.set_ylabel('Gain $A(f)$ [dB]')
 if tix: lab.tick(axf, xmaj=5, ymaj=50)
 
 axr.set_xlabel('Frequency $f$ [Hz]', x=0.8)
-if True: lab.tick(axr, ymaj=1, ymin=0.2)
+if tix: lab.tick(axr, ymaj=1, ymin=0.2)
 axf.set_xscale('log'); axr.set_xscale('log')
 legend = axf.legend(loc='best')
+plt.show()
