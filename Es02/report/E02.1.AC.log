@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  19 OCT 2021 01:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  20 OCT 2021 22:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1315,20 +1315,20 @@ Package pdftex.def Info: ../figs//rc2k10nF_rise.png  used on input line 216.
 <../figs//passa_basso.png, id=121, 1387.584pt x 694.5147pt>
 File: ../figs//passa_basso.png Graphic file (type png)
 <use ../figs//passa_basso.png>
-Package pdftex.def Info: ../figs//passa_basso.png  used on input line 282.
-(pdftex.def)             Requested size: 555.02377pt x 277.80095pt.
+Package pdftex.def Info: ../figs//passa_basso.png  used on input line 284.
+(pdftex.def)             Requested size: 485.66168pt x 243.08377pt.
 
-Overfull \hbox (71.3269pt too wide) in paragraph at lines 282--283
+Overfull \hbox (1.96481pt too wide) in paragraph at lines 284--285
  [][] 
  []
 
 <../figs//passa_alto.png, id=123, 1387.584pt x 694.5147pt>
 File: ../figs//passa_alto.png Graphic file (type png)
 <use ../figs//passa_alto.png>
-Package pdftex.def Info: ../figs//passa_alto.png  used on input line 306.
-(pdftex.def)             Requested size: 555.02377pt x 277.80095pt.
+Package pdftex.def Info: ../figs//passa_alto.png  used on input line 308.
+(pdftex.def)             Requested size: 485.66168pt x 243.08377pt.
 
-Overfull \hbox (71.3269pt too wide) in paragraph at lines 306--307
+Overfull \hbox (1.96481pt too wide) in paragraph at lines 308--309
  [][] 
  []
 
@@ -1336,15 +1336,15 @@ Overfull \hbox (71.3269pt too wide) in paragraph at lines 306--307
 <../figs//passabanda.png, id=135, 1152.7065pt x 553.46774pt>
 File: ../figs//passabanda.png Graphic file (type png)
 <use ../figs//passabanda.png>
-Package pdftex.def Info: ../figs//passabanda.png  used on input line 320.
+Package pdftex.def Info: ../figs//passabanda.png  used on input line 322.
 (pdftex.def)             Requested size: 403.45332pt x 193.7166pt.
 <../figs//passa_banda.png, id=136, 1387.584pt x 694.5147pt>
 File: ../figs//passa_banda.png Graphic file (type png)
 <use ../figs//passa_banda.png>
-Package pdftex.def Info: ../figs//passa_banda.png  used on input line 335.
+Package pdftex.def Info: ../figs//passa_banda.png  used on input line 337.
 (pdftex.def)             Requested size: 485.66168pt x 243.08377pt.
 
-Overfull \hbox (1.96481pt too wide) in paragraph at lines 335--337
+Overfull \hbox (1.96481pt too wide) in paragraph at lines 337--339
  [][] 
  []
 
@@ -1353,16 +1353,19 @@ Overfull \hbox (1.96481pt too wide) in paragraph at lines 335--337
 <../figs//bpfphase.pdf, id=158, 604.17719pt x 358.4592pt>
 File: ../figs//bpfphase.pdf Graphic file (type pdf)
 <use ../figs//bpfphase.pdf>
-Package pdftex.def Info: ../figs//bpfphase.pdf  used on input line 439.
+Package pdftex.def Info: ../figs//bpfphase.pdf  used on input line 441.
 (pdftex.def)             Requested size: 422.92114pt x 250.91972pt.
  [8 <../figs//bpfphase.pdf>] [9] (./E02.1.AC.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `E02.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
  56243 strings out of 479713
  1381246 string characters out of 5876923
- 2187989 words of memory out of 10000000
+ 2187990 words of memory out of 10000000
  73204 multiletter control sequences out of 15000+600000
  417592 words of font info for 66 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
@@ -1387,7 +1390,7 @@ xmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/f
 onts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1
 /public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm
 -super/sfrm1728.pfb>
-Output written on E02.1.AC.pdf (9 pages, 1783137 bytes).
+Output written on E02.1.AC.pdf (9 pages, 1784237 bytes).
 PDF statistics:
  291 PDF objects out of 1000 (max. 8388607)
  210 compressed objects within 3 object streams

@@ -251,20 +251,22 @@ Z\ped{out}(\omega) = \left(\frac{1}{R_1} + j\omega C_1\right)^{-1}
 .\]
 
 \subsection*{7.b Effetti dovuti all'~accoppiamento con un carico}
-(Qui \`e richiesto che valutiate l'~amplificazione di centro-banda e la 
-frequenza di taglio nel 
-caso in cui il carico sia rispettivamente 100 e 10 k$\Omega$)
+L'~amplificazione di centro-banda e la frequenza di taglio nel 
+caso in cui il carico sia rispettivamente 100 e 10 k$\Omega$:
 \[
 \begin{array}{rl}
-R_L=100 \,k\Omega & \implies A_1 = 0.98 \;\;\; f_1 = 7450 \\
-R_L=10 \,k\Omega & \implies A_1 = 0.83\;\;\; f_1 = 8761 \\
+R_L=100 \,k\Omega & \implies A_1 = 0.98 \;\;\; f_1 = 7450 \; \si{\Hz} \\
+R_L=10 \,k\Omega & \implies A_1 = 0.83\;\;\; f_1 = 8761 \; \si{\Hz} \\
 \end{array}
 \]
-% Si vede dal circuito equivalente di Thèvenin che la tensione vista dal
-% condensatore è quella in uscita dal partitore di tensione
-% $V_C = R_L/(R_1 + R_L) e che la resistenza a cui si trova in serie è il
-% parallelo di $R_1 || R_2 = (1/R_1 + 1/R_2)^{-1}$ che alza la frequenza
-% di taglio rispetto al valore atteso.
+
+Si vede dal circuito equivalente di Thèvenin che la tensione ai capi del
+condensatore è quella in uscita dal partitore di tensione
+$V_{C_1} = R_L/(R_1 + R_L) V\ped{in} \implies A_1 = R_L/(R_1 + R_L)$ e che
+la resistenza a cui si trova in serie $C_1$ è il parallelo $R_1 || R_2 =
+(\frac{1}{R_1} + \frac{1}{R_2})^{-1} = \frac{R_1 R_2}{R_2 + R_1}$ che alza
+la frequenza di taglio rispetto al valore atteso senza carico
+$f_{1L} = \frac{1}{2\pi (R1 || R_2) C_1} \geq \frac{1}{2\pi R_1 C_1} = f_1$.
 
 %=======================
 \section*{Filtro passa-banda}
@@ -279,7 +281,7 @@ f_1 = 7442 \pm 351 \; \si{\Hz}
 Dalla fit con la funzione di trasferimento del passa basso risulta:
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=0.4]{passa_basso}
+\includegraphics[scale=0.35]{passa_basso}
 \caption{Fit con il modello della funzione di trasferimento per il filtro passa basso}
 \end{figure}
 Il valore della frequenza di taglio vale invece:
@@ -303,7 +305,7 @@ f_1 = 821 \pm 41 \; \si{\Hz}
 Dal fit con modello la funzione di trasferimento di un filtro passa alto risulta:
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=0.4]{passa_alto}
+\includegraphics[scale=0.35]{passa_alto}
 \caption{Fit con il modello della funzione di trasferimento per il filtro passa alto}
 \end{figure}
 Il valore della frequenza di taglio ricavata dal fit vale:
