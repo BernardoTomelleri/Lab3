@@ -2,8 +2,9 @@
 \input{../../latex/preamble}
 \input{../../latex/math}
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
-\newcommand{\rem}[1]{[\emph{#1}]}
-\newcommand{\exn}{\phantom{xxx}}
+
+% indexes subsections with letters, sections with numbers (1.a, 1.b, ...)
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
 
 % lets graphicx know path where figures to be included are found
 \graphicspath{{../figs/}}
@@ -25,7 +26,7 @@ Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{\F}]$ & $C$ &
 $\sigma C$ \\
 \midrule
 \midrule
-$R_C$		  & 5.06 k	& 0.4 k	 & $C\ped{in}$  & 0.23 $\rm \mu$ & 0.01 $\rm \mu$ \\
+$R_C$		  & 5.06 k	& 0.04 k	 & $C\ped{in}$  & 0.23 $\rm \mu$ & 0.01 $\rm \mu$ \\
 $R_{E_p}$	  & 992		& 8      & $C\ped{out}$ & 104 n			 & 4	\\
 $R_{E_q}$	  & 993		& 8      & $C_E$        & 90 $\rm \mu$	 & 5	\\
 $R_{E}$		  & 496		& 4      &              &				 &		\\
@@ -43,87 +44,73 @@ circuito \label{tab: rcmes}}
 \end{table}
 
 \section{Verifica del punto di lavoro}
-\subsection*{1.a Componenti quiescenti}
+\subsection{Componenti quiescenti}
+Con il multimetro digitale abbiamo misurato
+\begin{align*}
+V_{BE}^Q &= 630 \pm 4 \; \si{m\V} \\
+V_{CE}^Q &= 3.67 \pm 0.03 \; \si{\V} \\
+I_C^Q &= \frac{\Delta V_{R_C}}{R_C} = 1.134 \pm 0.011 \; \si{m\A} \\
+\end{align*}% TODO: Misurare V_{CC} e V_{EE}
 
-La frequenza nominale di taglio \`e stata fissata a $f_1 = 7337 \si{\Hz} \;\; 
-\Rightarrow |A_v(3\,\mathrm{kHz})| = 0.93 \;\; |A_v(30\,\mathrm{kHz})| = 0.23$  
+Prendendo come riferimento (arbitrario) il valore per la tensione di soglia
+della giunzione BE $V_\gamma = 0.6 \pm 0.1 \; \si{\V}$ e come valore atteso
+per la tensione al terminale di base del transistor
+$\ds V_B = \frac{V_{CC}}{1 + R_1/R_2}$, ci aspettiamo di trovare
+\begin{align*}
+V\ped{BE, exp}^Q&\approx V_\gamma = 0.6 \pm 0.1 \; \si{m\V} \\
+I\ped{C, exp}^Q &= \frac{V_B - V_{BE}^Q}{R_E + R_B/h_{fe}} = \\
+V\ped{CE, exp}^Q &= V_{CC} - I_C^Q(R_C + R_E) =
+\end{align*}
+Dove abbiamo indicato con $R_B$ la resistenza di base, data dal parallelo di
+$R_1$ e $R_2$.
 
-Abbiamo scelto $ f\ped{1 teo} = \SI{6}{\kilo\hertz} $, così da attenuare
-il segnale a \SI{3}{\kilo\hertz} di un fattore $\sim 1 $ e quello a 
-\SI{30}{\kilo\hertz} di un fattore $1/\sqrt{1 + (30/6)^2} \approx
-\nicefrac{1}{5}$, per avere un fattore di soppressione di circa 4. Siamo giunti
-a questa scelta attraverso le seguenti considerazioni:
+\subsection{Tensioni ai terminali}
+Con il multimetro digitale abbiamo misurato rispetto a $V_{EE}$
+\begin{align*}
+V_E &= 566 \pm 3 \; \si{m\V} \\
+V_B &= 1.196 \pm 0.006 \; \si{\V} \\
+V_C &= 4.23 \pm 0.03 \; \si{V} \\
+\end{align*}
 
-Dette $f_l = \SI{3}{\kilo\hertz}$ e $f_h = \SI{30}{\kilo\hertz}$ definiamo
-il fattore di soppressione del filtro come il rapporto tra le attenuazioni
-attese alle due frequenze di interesse:
+mentre rispetto a $GND$:
+\begin{align*}
+V_E &= -773 \pm 3 \; \si{m\V} \\
+V_B &= -3.76 \pm 0.006 \; \si{\V} \\
+V_C &= -4.39 \pm 0.03 \; \si{V} \\
+\end{align*}
+
+Come valori attesi otteniamo
+\begin{align*}
+V\ped{E, exp} &= R_E I_E \approx R_E I\ped{C, exp}^Q = \pm \; \si{V} \\
+V\ped{B, exp} &= \frac{V_{CC}}{1 + R_1/R_2} = 0.618 \pm  \; \si{\V} \\
+V\ped{C, exp} &= R_C I\ped{C, exp}^Q = \pm  \; \si{V} \\
+\end{align*}
+\subsection{Partitore di tensione rigido}
+Possiamo ricavare le intensità di corrente che scorrono per le resistenze
+di base a partire dalle misure precedenti
+\begin{align*}
+I_{R_1} = \frac{V_{CC} - V_B}{R_1} = \qquad I_{R_2} = \frac{V_B}{R_2} = 
+\end{align*}
+da cui ricaviamo una stima della corrente di base
 \[
-\mathcal{S}^2(f_1) := 
-\frac{\abs{A(f_l)}^2}{\abs{A(f_h)}^2} = \frac{f_1^2 + 
-f_l^2}{f_1^2 + f_h^2}
+I_B = I_{R_1} - I_{R_2} = 
 \]
-questa è una funzione decrescente di $f_1$ con massimo in 
-$f_1 = \SI{0}{\hertz}$ pari a $\mathcal{S}(f_1 = 0) = \nicefrac{f_l}{f_h}$;
-Però la scelta $f_1 = \SI{0}{\hertz}$ oltre a non essere realizzabile
-praticamente avrebbe $A(f) \sim 0 $ per tutte le frequenze di nostro interesse
-($\geq 3 \si{k\Hz}$) su cui il circuito avrebbe sempre lo stesso comportamento,
-che va contro a quanto vogliamo.
-
-Idealmente vorremmo $f_1$ il più ``piccola'' possibile, ma non minore
-di $f_l$ per ridurre attenuazioni e sfasamenti indesiderati del segnale
-a bassa frequenza, ma ``sufficientemente'' minore di $f_h $ affinché il
-segnale ad alta frequenza venga apprezzabilmente ''tagliato''. Ovverosia
-$f_l \ll f_1 \ll f_h$; però, dal momento che $f_h = 10 \cdot f_l$ tra i due
-estremi di frequenza c'è solo un ordine di grandezza, siamo costretti a
-cercare un compromesso ragionevole: $f_l \leq f_1 \leq f_h$.
-
-Visto che il filtro raggiunge un fronte di discesa di pendenza modesta
-($-20$ dB/decade) soltanto quando $f \gg f_1$ scegliamo $f_1$ decisamente
-più lontana da $f_h = 5 \cdot f_1$ che da $f_l = \frac{1}{2} f_1$:
-di modo che il segnale a $f_h$ venga adeguatamente soppresso, mentre quello
-a $f_l$ rimanga il più possibile indisturbato.
-
-Infine la scelta tra i valori disponibili di $R_1$ e $C_1$ ci ha portato alla
-frequenza di taglio nominale più vicina a quella teorica di 
-$f_1 = 7.3 \pm 0.3 \; \si{k\Hz}$. 
-
-\subsection*{1.b Tensioni ai terminali}
-
-I valori nominali scelti sono $R_1 = 2 \pm 1\% \; \si{k\ohm} \;\; 
-C_1 = 10 \pm 10\% \; \si{n\F}$.  
-
-Affinché il passa basso non venga perturbato dal carico a valle
-$R\ped{L} = \SI{100}{\kilo\ohm}$, l'impedenza in uscita dal circuito
-$Z\ped{out}(\omega)$ dev'essere trascurabile rispetto a quella del carico.
+La condizione di partitore ``stiff'', che si traduce in
+$I_{R_1} \sim I_{R_2} > 10 I_{B}$ è abbastanza ben verificata.
+Possiamo anche stimare
 \[
-\abs{Z\ped{out}} = \abs{\left(\frac{1}{R_1} + j\omega 
-C_1\right)^{-1}} \ll R\ped{L} \implies R_1 \ll
-R\ped{L} \sqrt{1 + \omega^2 R_1^2 C_1^2} =
-R\ped{L} \sqrt{1 + \left(\frac{f}{f_1}\right)^2}.
+h\ped{FE} = \frac{I\ped{C}}{I\ped{B}} = 
 \]
-Dunque dobbiamo avere
-\[
-R_1 \ll \SI{100}{\kilo\ohm}  \ \sqrt{1 + 
-\left(\frac{f_l}{f_1}\right)^2} \approx \SI{112}{\kilo\ohm}.
-\]
-Abbiamo quindi scelto $R\ped{1 teo} = \SI{2}{\kilo\ohm}$.
-Per cui prendiamo $C\ped{1 teo} =
-\ds \frac{1}{2\pi R\ped{1 teo} f\ped{1 teo}} \approx \SI{8}{\nano\farad}$. 
-\subsection*{1.c Partitore ``stiff''}
-\[
-C_1 = 10.9 \pm 0.4 \si{n\F}
-\]
-Compatibile entro la tolleranza con il valore nominale.
 
 \section{Risposta a segnali sinusoidali}
 
-\subsection*{2.a Inversione di fase}
+\subsection{Inversione di fase}
 La nostra stima della frequenza per cui $A_v$(dB) = -3 dB \`e
 \[
 f_{1A} = 7336 \pm 6 \; \si{\Hz}
 \]
 
-\subsection*{2.b Guadagno per piccoli segnali}
+\subsection{Guadagno per piccoli segnali}
 Dal fit a bassa frequenza ($f\ll f_1$) otteniamo
 \[
 A_1(\mathrm{dB}) = \left(-17.91 \pm 0.18\right)\times 10^{-3} \;\;\;
@@ -149,7 +136,7 @@ f_{1B} = 7246 \pm 8 \; \si{Hz}
 punti non utilizzati nel fit. \label{fig: corner}}
 \end{figure}
 
-\subsection*{2.c Linearità del circuito}
+\subsection{Linearità del circuito}
 Dal fit complessivo del modulo della funzione di trasferimento
 \begin{equation}\label{eq: lpfgain}
 \abs{T(f)} = A(f) = \frac{1}{\sqrt{1 + \left(\frac{f}{f_1}\right)^2}}
@@ -169,8 +156,9 @@ f_{1C} = 7428.8 \pm 0.9 \si{\Hz} \;\;\;\ \chi^2 = 1614 \;\;\; d.o.f.= 4997
 \end{figure}
 
 
-\subsection*{2.d Clipping}
-Le misure delle frequenze di taglio trovate sono tutte compatibili con il valore atteso dato dai componenti.
+\subsection{Clipping}
+Le misure delle frequenze di taglio trovate sono tutte compatibili con il
+valore atteso dato dai componenti.
 
 \section{Impedenze in ingresso e uscita}
 Il fronte del segnale di uscita ha un tempo di salita, misurato con i cursori, 
@@ -183,7 +171,7 @@ da cui
 f_1 = \ln(9) R_1 C_1 \approx \frac{2.2}{2\pi t_r} = 7.4 \pm 0.3 \; \si{k\Hz}
 \]
 
-\subsection*{3.a Impedenza di ingresso}
+\subsection{Impedenza di ingresso}
 L'impedenza in ingresso al circuito in \ref{fig: lpfcirc} è data da:
 \[
 Z\ped{in}(\omega) = R_1 + \frac{1}{j \omega C_1} =
@@ -216,7 +204,7 @@ Mentre come impedenza in uscita abbiamo:
 Z\ped{out}(\omega) = \left(\frac{1}{R_1} + j\omega C_1\right)^{-1}
 .\]
 
-\subsection*{3.b Impedenza di uscita}
+\subsection{Impedenza di uscita}
 (Qui \`e richiesto che valutiate l'~amplificazione di centro-banda e la 
 frequenza di taglio nel 
 caso in cui il carico sia rispettivamente 100 e 10 k$\Omega$)
@@ -235,13 +223,13 @@ R_L=10 \,k\Omega & \implies A_1 = 0.83\;\;\; f_1 = 8761 \\
 %=======================
 \section{Risposta in frequenza}
 
-\subsection*{4.a Network Analyzer}
+\subsection{Network Analyzer}
 \begin{align*}
 R_1 = 1.98 \pm 0.02 \; \si{k\ohm} \quad C_1 = 10.8 \pm 0.4 \; \si{n\F} \quad
 f_1 = 7442 \pm 351 \; \si{\Hz}
 \end{align*}
 
-\subsection*{4.b Stima delle frequenze di taglio}
+\subsection{Stima delle frequenze di taglio}
 Dalla fit con la funzione di trasferimento del passa basso risulta:
 \begin{figure}[htb]
 \centering
@@ -259,13 +247,13 @@ Il guadagno a centro banda vale:
 A_1 = (-23 \pm 61) \times 10^{-3} \; \si{dB}
 \end{align*}
 
-\section*{Aumento del guadagno}
+\section{Aumento del guadagno}
 \begin{align*}
 R_2 = 1.98 \pm 0.02 \; \si{k\ohm} \quad C_1 = 97.6 \pm 3.9 \; \si{n\F} \quad
 f_1 = 821 \pm 41 \; \si{\Hz}
 \end{align*}
 
-\subsection*{5.a Guadagno a 10 kHz}
+\subsection{Guadagno a 10 kHz}
 Dal fit con modello la funzione di trasferimento di un filtro passa alto risulta:
 \begin{figure}[htb]
 \centering
@@ -280,7 +268,7 @@ Il guadagno a centro banda vale:
 \begin{align*}
 A_2 = (-25 \pm 61) \times 10^{-3} \; \si{dB}
 \end{align*}
-\subsection*{5.b Confronto con il guadagno atteso}
+\subsection{Confronto con il guadagno atteso}
 La nostra stima dell'amplificazione di centro-banda e delle frequenze di 
 taglio (per cui il guadagno si riduce di 3 dB rispetto a centro-banda) \`e
 \[
@@ -408,21 +396,13 @@ passante dell'AD2 $(\sim 9 \; \si{M\Hz})$. Questo può essere dovuto alle
 capacità parassite tra i fili, i componenti e la basetta che ad alta
 frequenza non sono trascurabili, a differenza di quanto presuppone il nostro
 modello.
+\fi
 
 \section*{Conclusioni e commenti finali}
 Si è riusciti a realizzare dei filtri RC passivi del primo ordine
 (o ``a un polo'') e ad apprezzarne il differente comportamento in vari
 regimi, quando usati separatamente, collegati in cascata e connessi a
 carichi resistivi di diverso valore.
-
-\begin{figure}[htb]
-\centering
-\includegraphics[scale=0.33]{noisine}
-\caption{Sia nel dominio del tempo che delle frequenze si vede come il filtro
-passa-basso progettato riesca ad attenuare sensibilmente il rumore a
-$\SI{30}{k\Hz}$ sovrapposto al segnale portante di frequenza $\SI{3}{k\Hz}$.}
-\end{figure}
-\fi
 
 \section*{Dichiarazione}
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e 
