@@ -27,8 +27,8 @@ def banda(x,fa,fb,A):
 """
 
 
-def banda(x, fa, fb, c):
-    return 20.*np.log10(1./(np.sqrt((c+fa/fb + 1)**2 + (x/fb - fa/x)**2)))
+def banda(x, fa, fb):
+    return 20.*np.log10(1./(np.sqrt((1 + fa/fb + 1)**2 + (x/fb - fa/x)**2)))
 
 
 fig = plt.figure("Passa banda")
@@ -41,7 +41,7 @@ plt.errorbar(f, A1, dA1, label="in signal data & error", fmt=".")
 plt.ylabel("Guadagno [dB]")
 
 popt, pcov = curve_fit(banda, f, A2, sigma=dA2,
-                       p0=np.array([1, 1, 1]), maxfev=7000)
+                       p0=np.array([1, 1]), maxfev=7000)
 print("PASSA BANDA")
 print(popt)
 print(np.sqrt(pcov.diagonal()))
@@ -51,7 +51,7 @@ chisq = (((A2-banda(f, *popt))/dA2)**2.).sum()
 plt.plot(f, banda(f, *popt),
          label="Amplification fit $\chi^2 = %.1f/%d$" % (chisq, len(f)-2))
 
-
+"""
 plt.annotate("Fa= %.2E \u00B1 %.2E [Hz]" % (
     popt[0], np.sqrt(pcov.diagonal())[0]), (10000, -6))
 
@@ -60,7 +60,7 @@ plt.annotate("Fb= %.2E \u00B1 %.2E [Hz]" % (
 
 plt.annotate("A= %.2E \u00B1 %.2E [Hz]" % (
     popt[2], np.sqrt(pcov.diagonal())[2]), (700, -8))
-
+"""
 plt.legend()
 fig.add_axes((.1, .05, .8, .2))
 plt.ylabel("residuals norm.")
