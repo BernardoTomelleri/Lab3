@@ -14,26 +14,36 @@
 \date{\today}
 \maketitle
 
-\setcounter{section}{1}
+\setcounter{section}{0}
 
-\section*{Filtro passa-basso}
-\subsection*{1.a Progettazione circuito RC passa--basso}
-\begin{figure}[ht]
-    \centering
-    \begin{circuitikz}
-        \draw (-1,2) node[ocirc, label=$ V\ped{in} $]{}
-        to[short,-*](0,2)
-        to[R=$R_1$, -*] (3,2)
-        to[C=$ C_1 $, -*] (3,0)
-        node[eground]{}
-        to[short] (0,0)
-        to[sV, v=$W1$] (0,2);
-        \draw (3,2) to (4,2) node[ocirc, label=$ V\ped{out} $]{};
-    \end{circuitikz}
-    \caption{Schema di massima del passa--basso. \label{fig: lpfcirc}}
-\end{figure}
+\section*{Misura componenti}
+\begin{table}[ht]
+\centering
+\begin{tabular}{cccccc}
+\toprule
+Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{\F}]$ & $C$ &
+$\sigma C$ \\
+\midrule
+\midrule
+$R_C$		  & 5.06 k	& 0.4 k	 & $C\ped{in}$  & 0.23 $\rm \mu$ & 0.01 $\rm \mu$ \\
+$R_{E_p}$	  & 992		& 8      & $C\ped{out}$ & 104 n			 & 4	\\
+$R_{E_q}$	  & 993		& 8      & $C_E$        & 90 $\rm \mu$	 & 5	\\
+$R_{E}$		  & 496		& 4      &              &				 &		\\
+$R_{1_s}$	  & 19.87 k & 0.16 k &              &				 &		\\
+$R_{1_t}$	  & 50.5 k  & 8 k	 &              &				 &		\\
+$R_1$		  & 70.4 k  & 0.6 k	 &              &				 &		\\
+$R_2$		  & 9.93 k  & 0.08 k &              &				 &		\\
+$R\ped{es_p}$ & 100.5	& 0.8    &				&				 &		\\
+$R\ped{es_q}$ & 100.2	& 0.8    &				&				 &		\\
+$R\ped{es}$   & 50.5	& 0.5    &				&				 &		\\
+\bottomrule     
+\end{tabular}
+\caption{Valori di resistenza e capacità misurate per i componenti del
+circuito \label{tab: rcmes}}
+\end{table}
 
-\subsection*{1.b Scelta della frequenza di taglio}
+\section{Verifica del punto di lavoro}
+\subsection*{1.a Componenti quiescenti}
 
 La frequenza nominale di taglio \`e stata fissata a $f_1 = 7337 \si{\Hz} \;\; 
 \Rightarrow |A_v(3\,\mathrm{kHz})| = 0.93 \;\; |A_v(30\,\mathrm{kHz})| = 0.23$  
@@ -77,7 +87,7 @@ Infine la scelta tra i valori disponibili di $R_1$ e $C_1$ ci ha portato alla
 frequenza di taglio nominale più vicina a quella teorica di 
 $f_1 = 7.3 \pm 0.3 \; \si{k\Hz}$. 
 
-\subsection*{1.c,1.d Scelta dei componenti}
+\subsection*{1.b Tensioni ai terminali}
 
 I valori nominali scelti sono $R_1 = 2 \pm 1\% \; \si{k\ohm} \;\; 
 C_1 = 10 \pm 10\% \; \si{n\F}$.  
@@ -99,60 +109,21 @@ R_1 \ll \SI{100}{\kilo\ohm}  \ \sqrt{1 +
 Abbiamo quindi scelto $R\ped{1 teo} = \SI{2}{\kilo\ohm}$.
 Per cui prendiamo $C\ped{1 teo} =
 \ds \frac{1}{2\pi R\ped{1 teo} f\ped{1 teo}} \approx \SI{8}{\nano\farad}$. 
-\subsection*{1.e Misura di $C_1$}
+\subsection*{1.c Partitore ``stiff''}
 \[
 C_1 = 10.9 \pm 0.4 \si{n\F}
 \]
 Compatibile entro la tolleranza con il valore nominale.
 
-\subsection*{1.f Calcolo della frequenza di taglio e delle attenuazioni attese}
-\[
-\begin{array}{rcl}
-f_1 &=& 7.3 \pm 0.3 \; \si{kHz}\\ 
-|A_v(3\,\mathrm{kHz})| &=& 0.93 \pm 0.04 \\
-|A_v(30\,\mathrm{kHz})| &=& 0.24 \pm 0.01
-\end{array}
-\]
+\section{Risposta a segnali sinusoidali}
 
-\subsection*{3 Misura $A_v$}
-Dalla misura delle ampiezze dei segnali di ingresso/uscita e del loro 
-sfasamento si ottiene:
-\begin{table}[h]
-\centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline 
-$f \pm \sigma(f)$ [kHz] & $V\ped{in} \pm \sigma(V\ped{in})$ [V] 
-                        & $V\ped{out} \pm \sigma(V\ped{out})$ [V] & $A_v \pm 
-\sigma(A_v)$
-& $\phi \pm \sigma(\phi)$ \\
-\hline 
-$3.00 \pm 0.06$ & $1 \pm 0.05$ & $0.93 \pm 0.05$ & $0.93 \pm 0.07$ & $0.38 \pm 
-0.01$ \\
-$7.34 \pm 0.15$ & $1 \pm 0.05$ & $0.72 \pm 0.04$ & $0.72 \pm 0.06$ & $1.32 \pm 
-0.04$ \\
-$30.0 \pm 0.6$ & $1 \pm 0.05$ & $0.25 \pm 0.01$ & $0.25 \pm 0.02$ & $0.77 \pm 
-0.02$ \\
-\hline 
-\end{tabular} 
-\caption{(3) Amplficazione e sfasamento del filtro passa-basso a bassa ed alta 
-frequenza ed alla frequenza nominale di taglio.
-\label{tab: lpfmes}}
-\end{table}
-
-\subsection*{4 Risposta in frequenza}
-\begin{figure}[htbp]
-\centering
-\includegraphics[scale=0.35]{rc2k10nF_new}
-\caption{Plot di Bode per il filtro passa-basso.}
-\end{figure}
-
-\subsection*{5.a Stima della frequenza di taglio (metodo a)}
+\subsection*{2.a Inversione di fase}
 La nostra stima della frequenza per cui $A_v$(dB) = -3 dB \`e
 \[
 f_{1A} = 7336 \pm 6 \; \si{\Hz}
 \]
 
-\subsection*{5.b Misura della frequenza di taglio (metodo b)}
+\subsection*{2.b Guadagno per piccoli segnali}
 Dal fit a bassa frequenza ($f\ll f_1$) otteniamo
 \[
 A_1(\mathrm{dB}) = \left(-17.91 \pm 0.18\right)\times 10^{-3} \;\;\;
@@ -173,12 +144,12 @@ f_{1B} = 7246 \pm 8 \; \si{Hz}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.7]{corner}
+%\includegraphics[scale=0.7]{corner}
 \caption{Fit al plot di bode per trovare la frequenza di corner. In verde i
 punti non utilizzati nel fit. \label{fig: corner}}
 \end{figure}
 
-\subsection*{5.c Misura della frequenza di taglio (metodo c)}
+\subsection*{2.c Linearità del circuito}
 Dal fit complessivo del modulo della funzione di trasferimento
 \begin{equation}\label{eq: lpfgain}
 \abs{T(f)} = A(f) = \frac{1}{\sqrt{1 + \left(\frac{f}{f_1}\right)^2}}
@@ -192,16 +163,16 @@ f_{1C} = 7428.8 \pm 0.9 \si{\Hz} \;\;\;\ \chi^2 = 1614 \;\;\; d.o.f.= 4997
 
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=0.7]{lpfbodefit}
+%\includegraphics[scale=0.7]{lpfbodefit}
 \caption{Fit complessivo al plot di bode con l'espressione per l'attenuazione
 \eqref{eq: lpfgain}.\label{fig: lpfbodefit}}
 \end{figure}
 
 
-\subsection*{5.d Confronto misure-predizione}
+\subsection*{2.d Clipping}
 Le misure delle frequenze di taglio trovate sono tutte compatibili con il valore atteso dato dai componenti.
 
-\subsection*{6 Risposta del filtro ad un gradino}
+\section{Impedenze in ingresso e uscita}
 Il fronte del segnale di uscita ha un tempo di salita, misurato con i cursori, 
 di 
 \[
@@ -211,13 +182,8 @@ da cui
 \[
 f_1 = \ln(9) R_1 C_1 \approx \frac{2.2}{2\pi t_r} = 7.4 \pm 0.3 \; \si{k\Hz}
 \]
-\begin{figure}[htb]
-\centering
-\includegraphics[scale=0.35]{rc2k10nF_rise}
-\caption{(6) Risposta del filtro passa-basso ad un gradino di tensione.}
-\end{figure}
 
-\subsection*{7.a Impedenze di ingresso/uscita}
+\subsection*{3.a Impedenza di ingresso}
 L'impedenza in ingresso al circuito in \ref{fig: lpfcirc} è data da:
 \[
 Z\ped{in}(\omega) = R_1 + \frac{1}{j \omega C_1} =
@@ -250,7 +216,7 @@ Mentre come impedenza in uscita abbiamo:
 Z\ped{out}(\omega) = \left(\frac{1}{R_1} + j\omega C_1\right)^{-1}
 .\]
 
-\subsection*{7.b Effetti dovuti all'~accoppiamento con un carico}
+\subsection*{3.b Impedenza di uscita}
 (Qui \`e richiesto che valutiate l'~amplificazione di centro-banda e la 
 frequenza di taglio nel 
 caso in cui il carico sia rispettivamente 100 e 10 k$\Omega$)
@@ -267,19 +233,19 @@ R_L=10 \,k\Omega & \implies A_1 = 0.83\;\;\; f_1 = 8761 \\
 % di taglio rispetto al valore atteso.
 
 %=======================
-\section*{Filtro passa-banda}
+\section{Risposta in frequenza}
 
-\subsection*{8.a Misura dei componenti}
+\subsection*{4.a Network Analyzer}
 \begin{align*}
 R_1 = 1.98 \pm 0.02 \; \si{k\ohm} \quad C_1 = 10.8 \pm 0.4 \; \si{n\F} \quad
 f_1 = 7442 \pm 351 \; \si{\Hz}
 \end{align*}
 
-\subsection*{8.b Filtro passa-basso, stima della frequenza di taglio}
+\subsection*{4.b Stima delle frequenze di taglio}
 Dalla fit con la funzione di trasferimento del passa basso risulta:
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=0.4]{passa_basso}
+%\includegraphics[scale=0.4]{passa_basso}
 \caption{Fit con il modello della funzione di trasferimento per il filtro passa basso}
 \end{figure}
 Il valore della frequenza di taglio vale invece:
@@ -293,17 +259,17 @@ Il guadagno a centro banda vale:
 A_1 = (-23 \pm 61) \times 10^{-3} \; \si{dB}
 \end{align*}
 
-\subsection*{9.a Misura dei componenti}
+\section*{Aumento del guadagno}
 \begin{align*}
 R_2 = 1.98 \pm 0.02 \; \si{k\ohm} \quad C_1 = 97.6 \pm 3.9 \; \si{n\F} \quad
 f_1 = 821 \pm 41 \; \si{\Hz}
 \end{align*}
 
-\subsection*{9.b Filtro passa-alto, stima della frequenza di taglio}
+\subsection*{5.a Guadagno a 10 kHz}
 Dal fit con modello la funzione di trasferimento di un filtro passa alto risulta:
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=0.4]{passa_alto}
+%\includegraphics[scale=0.4]{passa_alto}
 \caption{Fit con il modello della funzione di trasferimento per il filtro passa alto}
 \end{figure}
 Il valore della frequenza di taglio ricavata dal fit vale:
@@ -314,12 +280,7 @@ Il guadagno a centro banda vale:
 \begin{align*}
 A_2 = (-25 \pm 61) \times 10^{-3} \; \si{dB}
 \end{align*}
-\subsection*{10.a Filtro passa-banda, risposta in frequenza}
-\begin{figure}[htb]
-\centering
-\includegraphics[scale=0.35]{passabanda}
-\caption{(4) Immagine del network analyzer per il filtro passa-banda.}
-\end{figure}
+\subsection*{5.b Confronto con il guadagno atteso}
 La nostra stima dell'amplificazione di centro-banda e delle frequenze di 
 taglio (per cui il guadagno si riduce di 3 dB rispetto a centro-banda) \`e
 \[
@@ -327,6 +288,7 @@ A(\mathrm{dB}) = -6.505 \pm 0.006 \;\;\; f_{L} = 380 \pm 3 \si{\Hz} \;\;\;
 f_{H} = 16.29 \pm 0.16 \si{k\Hz}
 \]
 
+\iffalse
 \subsection*{10.b Fit della funzione di trasferimento}
 Utilizzando come modello la funzione di trasferimento per il passa banda si ottiene:
 
@@ -337,14 +299,14 @@ Utilizzando come modello la funzione di trasferimento per il passa banda si otti
 passa banda}
 \end{figure}
 
-\iffalse
+
 Dal fit del plot di Bode in ampiezza si ha
 \[
 A(\mathrm{dB}) = \ldots \pm \ldots \;\;\;f_{L} = \ldots\pm \ldots\;\;\;f_{H} = 
 \ldots\pm 
 \ldots\;\;\;\chi^2 = \ldots\;\;\; d.o.f.= \ldots
 \]
-\fi
+
 \subsection*{10.c Differenze}
 A differenza dei circuiti RC studiati prima, non possiamo considerare
 indipendenti i sotto-circuiti che compongono il passa-banda; infatti il
@@ -452,7 +414,7 @@ Si è riusciti a realizzare dei filtri RC passivi del primo ordine
 (o ``a un polo'') e ad apprezzarne il differente comportamento in vari
 regimi, quando usati separatamente, collegati in cascata e connessi a
 carichi resistivi di diverso valore.
-\iffalse
+
 \begin{figure}[htb]
 \centering
 \includegraphics[scale=0.33]{noisine}
