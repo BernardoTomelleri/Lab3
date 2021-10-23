@@ -42,7 +42,15 @@ $R\ped{es}$   & 50.5	& 0.5    &				&				 &		\\
 \caption{Valori di resistenza e capacità misurate per i componenti del
 circuito \label{tab: rcmes}}
 \end{table}
-
+Riportiamo per completezza anche il valore calcolato della resistenza di base
+\[
+R_B = R_1 || R_2 = 8.70 \pm 0.07 \; \si{k\ohm}
+\]
+e i valori delle tensioni di alimentazione continue misurate con il multimetro
+\begin{align*}
+V_{CC} &= 4.99 \pm 0.03 \si{\V} \\
+V_{EE} &= -4.99 \pm 0.03 \si{\V}
+\end{align*}
 \section{Caratterizzazione del punto di lavoro del transistor}
 \subsection{Misura delle componenti quiescenti}
 Con il multimetro digitale abbiamo misurato
@@ -50,19 +58,18 @@ Con il multimetro digitale abbiamo misurato
 V_{BE}^Q &= 630 \pm 4 \; \si{m\V} \\
 V_{CE}^Q &= 3.67 \pm 0.03 \; \si{\V} \\
 I_C^Q &= \frac{\Delta V_{R_C}}{R_C} = 1.134 \pm 0.011 \; \si{m\A} \\
-\end{align*}% TODO: Misurare V_{CC} e V_{EE}
+\end{align*}
 
 Prendendo come riferimento (arbitrario) il valore per la tensione di soglia
-della giunzione BE $V_\gamma = 0.6 \pm 0.1 \; \si{\V}$ e come valore atteso
+della giunzione BE $V_\gamma = 0.65 \pm 0.05 \; \si{\V}$ e come valore atteso
 per la tensione al terminale di base del transistor
-$\ds V_B = \frac{V_{CC}}{1 + R_1/R_2}$, ci aspettiamo di trovare
+$\ds V\ped{B, exp} = \frac{V_{CC}}{1 + R_1/R_2}$, ci aspettiamo di trovare
 \begin{align*}
-V\ped{BE, exp}^Q&\approx V_\gamma = 0.6 \pm 0.1 \; \si{m\V} \\
-I\ped{C, exp}^Q &= \frac{V_B - V_{BE}^Q}{R_E + R_B/h_{FE}} = \\
-V\ped{CE, exp}^Q &= V_{CC} - I_C^Q(R_C + R_E) =
+V\ped{BE, exp}^Q &\approx V_\gamma = 0.6 \pm 0.1 \; \si{\V} \\
+I\ped{C, exp}^Q &= \frac{V_B - V_{BE}^Q}{R_E + R_B/h_{FE}} =
+1.09 \pm 0.05 \si{\m\A} \\
+V\ped{CE, exp}^Q &= V_{CC} - I_C^Q(R_C + R_E) = 3.9 \pm 0.2 \; \si{\V}  
 \end{align*}
-Dove abbiamo indicato con $R_B$ la resistenza di base, data dal parallelo di
-$R_1$ e $R_2$.
 
 \subsection{Tensioni ai terminali del BJT}
 Con il multimetro digitale abbiamo misurato rispetto a $V_{EE}$
@@ -81,9 +88,9 @@ V_C &= -4.39 \pm 0.03 \; \si{V} \\
 
 Come valori attesi otteniamo
 \begin{align*}
-V\ped{E, exp} &= R_E I_E \approx R_E I\ped{C, exp}^Q = \pm \; \si{V} \\
-V\ped{B, exp} &= \frac{V_{CC}}{1 + R_1/R_2} = 0.618 \pm  \; \si{\V} \\
-V\ped{C, exp} &= R_C I\ped{C, exp}^Q = \pm  \; \si{V} \\
+V\ped{E, exp} &= R_E I_E \approx R_E I\ped{C, exp}^Q = 0.54 \pm 0.2 \; \si{\V} \\
+V\ped{B, exp} &= \frac{V_{CC}}{1 + R_1/R_2} = 1.24 \pm 0.13 \; \si{\V} \\
+V\ped{C, exp} &= R_C I\ped{C, exp}^Q = 5.5 \pm 0.2 \; \si{V} \\
 \end{align*}
 \subsection{Rigidità del partitore di tensione}
 Possiamo ricavare le intensità di corrente che scorrono per le resistenze

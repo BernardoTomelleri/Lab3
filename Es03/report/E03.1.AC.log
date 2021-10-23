@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  22 OCT 2021 10:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  23 OCT 2021 19:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1290,38 +1290,32 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
-LaTeX Warning: Reference `fig: lpfcirc' on page 3 undefined on input line 176.
+LaTeX Warning: Reference `fig: lpfcirc' on page 3 undefined on input line 183.
 
 [3]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 257.
+(hyperref)                removing `math shift' on input line 264.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 257.
+(hyperref)                removing `subscript' on input line 264.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 257.
+(hyperref)                removing `math shift' on input line 264.
 
 [4] (./E03.1.AC.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-Package rerunfilecheck Warning: File `E03.1.AC.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `E03.1.AC.out':
-(rerunfilecheck)             Before: DA2F8A9BD965731BBD5E135AAEA066A1;4040
-(rerunfilecheck)             After:  F3DA9C6AC8477C8FE021903D9BDC5486;4085.
+Package rerunfilecheck Info: File `E03.1.AC.out' has not changed.
+(rerunfilecheck)             Checksum: F3DA9C6AC8477C8FE021903D9BDC5486;4085.
  ) 
 Here is how much of TeX's memory you used:
  55610 strings out of 479713
  1364282 string characters out of 5876923
- 2177990 words of memory out of 10000000
+ 2180990 words of memory out of 10000000
  72591 multiletter control sequences out of 15000+600000
  418368 words of font info for 67 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
@@ -1343,7 +1337,7 @@ sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.p
 fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/tex
 live/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/
 texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on E03.1.AC.pdf (4 pages, 231091 bytes).
+Output written on E03.1.AC.pdf (4 pages, 231573 bytes).
 PDF statistics:
  209 PDF objects out of 1000 (max. 8388607)
  165 compressed objects within 2 object streams
