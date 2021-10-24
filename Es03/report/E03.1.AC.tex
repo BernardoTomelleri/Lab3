@@ -81,8 +81,8 @@ V_C &= 4.23 \pm 0.03 \; \si{V} \\
 
 mentre rispetto a $GND$:
 \begin{align*}
-V_E &= -773 \pm 3 \; \si{m\V} \\
-V_B &= -3.76 \pm 0.006 \; \si{\V} \\
+V_E &= -773 \pm 4 \; \si{m\V} \\
+V_B &= -3.76 \pm 0.03 \; \si{\V} \\
 V_C &= -4.39 \pm 0.03 \; \si{V} \\
 \end{align*}
 
@@ -96,18 +96,34 @@ V\ped{C, exp} &= R_C I\ped{C, exp}^Q = 5.5 \pm 0.2 \; \si{V} \\
 Possiamo ricavare le intensità di corrente che scorrono per le resistenze
 di base a partire dalle misure precedenti
 \begin{align*}
-I_{R_1} = \frac{V_{CC} - V_B}{R_1} = \qquad I_{R_2} = \frac{V_B}{R_2} = 
+I_{R_1} = \frac{V_{CC} - V_B}{R_1} = 124.4 \pm 1.2 \; \si{\micro\A} \qquad
+I_{R_2} = \frac{V_B}{R_2} = 120.4 \pm 1.3 \; \si{\micro\A} 
 \end{align*}
 da cui ricaviamo una stima della corrente di base
 \[
-I_B = I_{R_1} - I_{R_2} = 
+I_B^Q = I_{R_1} - I_{R_2} =  4.0 \pm 1.8 \; \si{\micro\A}
 \]
-La condizione di partitore ``stiff'': $I_B^Q = \ll \frac{V_B^Q - V_{EE}}{R_B}$
-che si traduce in $R_B \ll h_{fe} R_E$ o $I_{R_1} \sim I_{R_2} > 10 I_{B}$ è
-abbastanza ben verificata.
+
+Per condizione di partitore di tensione ``stiff'' intendiamo:
+\begin{equation}
+I_B^Q \ll I_P = \frac{V_B^Q - V_{EE}}{R_B}
+\end{equation}
+dove abbiamo chiamato $I_P$ la corrente che approssimativamente scorre nel
+partitore $R_1 + R_2$.
+E, dal calcolo esplicito con i valori misurati, risulta abbastanza ben
+verificata
+\[
+I_P = 143 \pm 5 \; \si{\micro\A} > 30 \cdot I_B^Q
+.\] 
+
+
+Come ulteriore conferma possiamo vedere la stessa condizione come 
+$I_{R_1} \sim I_{R_2} > 10 I_{B}$ o, in termini di resistenze
+$R_B \ll h_{fe} R_E$ che sono entrambe soddisfatte.
+
 Possiamo anche dare una stima del guadagno in corrente continua del transistor
 \[
-\beta_F = h_{FE} = \frac{I_C}{I_B} = 
+\beta_F = h_{FE} = \frac{I_C}{I_B} = 2.8 \pm 1.3 \times 10^{2}  
 \]
 
 \section{Risposta a segnali sinusoidali}
@@ -137,36 +153,56 @@ Dall'intersezione delle due rette stimiamo per la frequenza di taglio il valore
 f_{1B} = 7246 \pm 8 \; \si{Hz}
 \]
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 \centering
-%\includegraphics[scale=0.7]{corner}
-\caption{Fit al plot di bode per trovare la frequenza di corner. In verde i
-punti non utilizzati nel fit. \label{fig: corner}}
+\includegraphics[scale=0.35]{Alin200mV}
+\caption{Risposta del circuito ad un segnale sinusoidale di ampiezza
+$\SI{200}{m\V}$ e $f = \SI{1}{k\Hz}$ in ingresso. Quando l'amplificatore
+è in pieno regime attivo. \label{fig: Alin}}
 \end{figure}
 
 \subsection{Linearità del circuito amplificatore}
-Dal fit complessivo del modulo della funzione di trasferimento
-\begin{equation}\label{eq: lpfgain}
-\abs{T(f)} = A(f) = \frac{1}{\sqrt{1 + \left(\frac{f}{f_1}\right)^2}}
-\end{equation}
-otteniamo per l'~amplificazione di centro-banda e per la frequenza di taglio i 
-seguenti valori:
-\[
-A_1 (\mathrm{dB}) = \left(-19.1 \pm 0.3\right)\times 10^{-3} \;\;\;
-f_{1C} = 7428.8 \pm 0.9 \si{\Hz} \;\;\;\ \chi^2 = 1614 \;\;\; d.o.f.= 4997
-\]
+Quando la tensione in ingresso è abbastanza alta da condurre la giunzione
+BC in polarizzazione diretta il transistor entra in regime di saturazione,
+dove non è più valida la relazione lineare tra le intensità di corrente di
+base e collettore: per cui si osserva una distorsione del segnale in uscita.
+
+In particolare il segnale in uscita risulta distorto o ``tosato'' in basso,
+in maniera asimmetrica in corrispondenza della semionda positiva in ingresso
+(per la natura invertente dell'amplificatore). Se infatti $V_{BC}$ aumenta
+fino a valori prossimi a $V_\gamma$ (o perlomeno abbastanza alti da non
+garantire che la giunzione BC rimanga in polarizzazione inversa) deve
+diminuire $V_{CE} = V_C - V_B + V_B - V_E = -V_{BC} + V_{CE}$. Dunque ci
+spostiamo a sinistra del punto di lavoro fino ad arrivare al regime di
+saturazione.
+Il che spiega come mai l'effetto di ``clipping'' sia più marcato durante
+il semiperiodo positivo dell'onda in ingresso.
 
 \begin{figure}[htb]
 \centering
-%\includegraphics[scale=0.7]{lpfbodefit}
-\caption{Fit complessivo al plot di bode con l'espressione per l'attenuazione
-\eqref{eq: lpfgain}.\label{fig: lpfbodefit}}
+\includegraphics[scale=0.35]{Asat400mV}
+\caption{Risposta del circuito ad un segnale sinusoidale di ampiezza
+$\SI{450}{m\V}$ e $f = \SI{1}{k\Hz}$ in ingresso. Quando l'amplificatore
+è vicino al regime di saturazione. \label{fig: Asat}}
 \end{figure}
 
 
 \subsection{Clipping del segnale in uscita}
-Le misure delle frequenze di taglio trovate sono tutte compatibili con il
-valore atteso dato dai componenti.
+Aumentando ancora l'ampiezza del segnale alternato in ingresso $v_{in}$ fino
+a $\sim \SI{0.7}{\V}$, anche la parte alta del segnale in uscita è tagliata.
+In questo caso è la giunzione BE a cambiare polarizzazione, per cui quando
+entrambe le giunzioni sono inversamente polarizzate il transistor entra in
+regime di interdizione. Le uniche correnti che attraversano il BJT sono quelle
+di saturazione inversa, per cui in buona approssimazione si comporta come un
+circuito aperto, come si vede dal grafico delle correnti di collettore.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.35]{Aint700mV}
+\caption{Risposta del circuito ad un segnale sinusoidale di ampiezza
+$\SI{700}{m\V}$ e $f = \SI{1}{k\Hz}$ in ingresso. Quando l'amplificatore
+è vicino al regime di interdizione. \label{fig: Aint}}
+\end{figure}
 
 \section{Impedenze in ingresso e uscita}
 Il fronte del segnale di uscita ha un tempo di salita, misurato con i cursori, 
@@ -180,12 +216,17 @@ f_1 = \ln(9) R_1 C_1 \approx \frac{2.2}{2\pi t_r} = 7.4 \pm 0.3 \; \si{k\Hz}
 \]
 
 \subsection{Impedenza di ingresso}
-L'impedenza in ingresso al circuito in \ref{fig: lpfcirc} è data da:
+Come valore atteso per l'impedenza in ingresso al circuito abbiamo:
 \[
-Z\ped{in}(\omega) = R_1 + \frac{1}{j \omega C_1} =
-R_1 \left( 1 - j \frac{1}{\omega R_1 C_1} \right) =
-R_1 \left( 1 - j \frac{\omega_1}{\omega} \right)
+Z\ped{in}(\omega) = h_{ie} + h_{fe}Z_E(\omega) \; \lvert\rvert \; R_B =
+\left(\frac{1}{h_{ie} + h_{fe}Z_E} + \frac{1}{R_1} + \frac{1}{R_2}\right)^{-1}
 \]
+
+dove abbiamo indicato con $Z_E(\omega)$ l'impedenza del ramo di emettitore,
+che nel nostro circuito vale $Z_E = R_E$; meno che nel punto 5, dove in
+parallelo a $R_E$ si aggiunge un passa alto costruito con $C_E + R\ped{es}$,
+per cui vale $Z_E(\omega) = R_E || \left(R\ped{es} + \frac{1}{j \omega C_E}
+\right)$.
 
 A bassa frequenza ($f \ll f_1$) il termine costante è trascurabile, per cui
 \[
@@ -207,12 +248,12 @@ Alla frequenza di taglio vale
 Z\ped{in} = R_1 (1 - j)
 .\]
 
-Mentre come impedenza in uscita abbiamo:
+\subsection{Impedenza di uscita}
+Mentre come impedenza in uscita dal circuito ci aspettiamo di trovare
 \[
-Z\ped{out}(\omega) = \left(\frac{1}{R_1} + j\omega C_1\right)^{-1}
+Z\ped{out} = R_C
 .\]
 
-\subsection{Impedenza di uscita}
 (Qui \`e richiesto che valutiate l'~amplificazione di centro-banda e la 
 frequenza di taglio nel 
 caso in cui il carico sia rispettivamente 100 e 10 k$\Omega$)
@@ -222,20 +263,18 @@ R_L=100 \,k\Omega & \implies A_1 = 0.98 \;\;\; f_1 = 7450 \\
 R_L=10 \,k\Omega & \implies A_1 = 0.83\;\;\; f_1 = 8761 \\
 \end{array}
 \]
-% Si vede dal circuito equivalente di Thèvenin che la tensione vista dal
-% condensatore è quella in uscita dal partitore di tensione
-% $V_C = R_L/(R_1 + R_L) e che la resistenza a cui si trova in serie è il
-% parallelo di $R_1 || R_2 = (1/R_1 + 1/R_2)^{-1}$ che alza la frequenza
-% di taglio rispetto al valore atteso.
 
 %=======================
 \section{Risposta in frequenza}
 
 \subsection{Network Analyzer}
-\begin{align*}
-R_1 = 1.98 \pm 0.02 \; \si{k\ohm} \quad C_1 = 10.8 \pm 0.4 \; \si{n\F} \quad
-f_1 = 7442 \pm 351 \; \si{\Hz}
-\end{align*}
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.35]{1-10Mnet}
+\caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{1}{\Hz}$ e 
+$\SI{10}{M\Hz}$ con un segnale sinusoidale in ingresso di ampiezza
+$\SI{200}{m\V}$. \label{fig: bodeplot}}
+\end{figure}
 
 \subsection{Stima delle frequenze di taglio}
 Dalla fit con la funzione di trasferimento del passa basso risulta:
