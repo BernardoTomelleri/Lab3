@@ -1,0 +1,5 @@
+[] Inversione di fase con measurements, cursori e screenshot
+[] Misure vin vout dall'oscilloscopio
+[] Misura indiretta impedenza in ingresso e confronto
+[] Misura indiretta impedenza in uscita e confronto
+[] Misure di guadagno con passa-alto al collettore

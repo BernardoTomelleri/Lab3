@@ -245,25 +245,13 @@ parallelo a $R_E$ si aggiunge un passa alto costruito con $C_E + R\ped{es}$,
 per cui vale $Z_E(\omega) = R_E || \left(R\ped{es} + \frac{1}{j \omega C_E}
 \right)$.
 
-A bassa frequenza ($f \ll f_1$) il termine costante è trascurabile, per cui
+Inserendo in serie al generatore una resistenza $R_S$ dello stesso ordine di
+$R\ped{in}$ attesa e misurando la tensione in uscita con o senza $R_S$.
+Detta $V_1$ la tensione $V\ped{out}$ misurata senza $R_S$ e $V_2$ la tensione
+misurata con $R_S$ inserita, vale la formula:
 \[
-Z\ped{in}(f) \approx -jR_1 \frac{f_1}{f}
+R_S/R\ped{in} = V_1/V_2 – 1
 \]
-Poiché l'impedenza del condensatore $Z_{C_1} \to \infty$ per $f \to 0$
-il filtro si comporta come un circuito aperto.
-
-Ad alta frequenza ($f \gg f_1$) è il termine costante a dominare, quindi
-\[
-Z\ped{in} \approx R
-\]
-cioè, nel limite opposto ($Z_{C_1} \to 0$ per $f \to \infty$) il
-condensatore si comporta come un corto-circuito, quindi il filtro ha
-impedenza puramente reale.
-
-Alla frequenza di taglio vale
-\[
-Z\ped{in} = R_1 (1 - j)
-.\]
 
 \subsection{Impedenza di uscita}
 Mentre come impedenza in uscita dal circuito ci aspettiamo di trovare
@@ -319,10 +307,15 @@ Ma nel datasheet risulta al massimo $C\ped{ibo} \approx \SI{25}{p\F}$, per cui
 è difficile stabilire un valore di riferimento per la frequenza $f_H$ attesa.
 
 \section{Aumento del guadagno con passa-alto all'emettitore}
-\begin{align*}
-R_2 = 1.98 \pm 0.02 \; \si{k\ohm} \quad C_1 = 97.6 \pm 3.9 \; \si{n\F} \quad
-f_1 = 821 \pm 41 \; \si{\Hz}
-\end{align*}
+Per mitigare la diminuzione del guadagno dovuta alla resistenza tra emettitore
+e $V_{EE}$ si inserisce in parallelo a questa la serie $R\ped{es} + C_E$,
+in modo tale che $R_E$ sia vista ``per intero'' solamente in condizioni
+stazionarie (cioè dalle tensioni e correnti continue di alimentazione).
+Al contrario, per frequenze abbastanza alte il condensatore si comporterà come
+un corto circuito, per cui la resistenza del parallelo tenderà al valore più
+piccolo tra le due resistenze, cioè $R\ped{es} \ll R_E$.
+Quindi in breve l'impedenza all'emettitore si comporterà grossolanamente
+come un filtro passa alto.
 
 \subsection{Guadagno a 10 kHz con condensatore $C_E$}
 Dal fit con modello la funzione di trasferimento di un filtro passa alto risulta:
@@ -340,22 +333,40 @@ Il guadagno a centro banda vale:
 A_2 = (-25 \pm 61) \times 10^{-3} \; \si{dB}
 \end{align*}
 \subsection{Confronto con il guadagno atteso}
-Una volta inserito il condensatore all'emettitore dalla formula per il
-guadagno atteso otteniamo
+Una volta inserito il ramo in parallelo a $R_E$, dalla formula per il guadagno
+atteso otteniamo
 \[
 A_v = -\frac{R_C}{\abs{Z_E}} =
-- \frac{R_C}{R_E \; \lvert \rvert \; \left(R\ped{es} + 1/j\omega C_E\right)}
+- \frac{R_C}{R_E \; \lvert \rvert \; \left(R\ped{es} + \abs{1/j\omega C_E}
+\right)} =
+- R_C \abs{\frac{1}{R_E} + \frac{1}{R\ped{es} + 1/\omega C_E}}
 \]
 
 Visto che abbiamo scelto $C_E \gg C\ped{in} \sim C\ped{out}$, alla frequenza
-di lavoro $\SI{10}{k\Hz}$ possiamo considerare trascurabile l'impedenza del
-condensatore, per cui in buona approssimazione ci aspettiamo
+di lavoro $f = \SI{10}{k\Hz}$ possiamo considerare trascurabile l'impedenza
+del condensatore $\abs{Z_{C_E}} = \dfrac{1}{2\pi f C_E} \approx 0.1 \si{\ohm}
+\ll R\ped{es}$, per cui in buona approssimazione ci aspettiamo
 \[
-\abs{A_v} =
-\frac{R_C}{R_E \; \lvert \rvert \; R\ped{es}} \approx
-R_C \abs{\frac{1}{R_E} + \frac{1}{R\ped{es}}}^{-1} =
-110 \pm 1
+\abs{A_v} \approx
+\frac{R_C}{R_E \; \lvert \rvert \; R\ped{es}} =
+R_C \abs{\frac{1}{R_E} + \frac{1}{R\ped{es}}} \approx
+\frac{R_C}{R\ped{es}} = 110 \pm 1
 \]
+
+Questo però assumendo che l'impedenza del transistor sia trascurabile rispetto
+a $Z_E$, o meglio $\abs{Z_E \gg \dfrac{h_{ie}}{h_{fe}}}$
+\begin{align*}
+\abs{Z_E} &= \abs{\frac{1}{R_E} + \frac{1}{R\ped{es} + 1/\omega C_E}}^{-1} =
+45 \pm 2 \; \si{\ohm} \\
+\frac{h_{ie}}{h_{fe}} &\approx \SI{40}{\ohm}
+\end{align*}
+che non risulta affatto verificata.
+
+Considerando nel modello anche l'impedenza in ingresso del transistor in
+serie a quella del ramo $Z_E$ avremo come valore atteso per il guadagno
+\begin{equation}
+A_v = \frac{R_C}{\abs{Z_E} + h_{ie}/h_{fe}} \approx 60
+\end{equation}
 
 \iffalse
 \subsection*{10.c Differenze}
@@ -462,10 +473,11 @@ modello.
 \fi
 
 \section*{Conclusioni e commenti finali}
-Si è riusciti a realizzare dei filtri RC passivi del primo ordine
-(o ``a un polo'') e ad apprezzarne il differente comportamento in vari
-regimi, quando usati separatamente, collegati in cascata e connessi a
-carichi resistivi di diverso valore.
+Si è riusciti a costruire e caratterizzare un amplificatore di tensione
+invertente con un BJT in configurazione di emettitore comune. In particolare
+si è riusciti ad apprezzare il differente comportamento (anche non lineare)
+del circuito in vari regimi, dare una stima di guadagno, impedenza di
+ingresso e uscita e frequenze caratteristiche della sua risposta in frequenza.
 
 \section*{Dichiarazione}
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e

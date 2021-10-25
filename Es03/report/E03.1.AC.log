@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  25 OCT 2021 18:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  26 OCT 2021 00:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1305,33 +1305,37 @@ File: ../figs//Aint700mV.png Graphic file (type png)
 <use ../figs//Aint700mV.png>
 Package pdftex.def Info: ../figs//Aint700mV.png  used on input line 227.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
- [4 <../figs//Asat400mV.png (PNG copy)>]
+
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 253.
+
+[4 <../figs//Asat400mV.png (PNG copy)>]
 <../figs//1-10Mnet.png, id=120, 1301.61281pt x 655.69969pt>
 File: ../figs//1-10Mnet.png Graphic file (type png)
 <use ../figs//1-10Mnet.png>
-Package pdftex.def Info: ../figs//1-10Mnet.png  used on input line 290.
+Package pdftex.def Info: ../figs//1-10Mnet.png  used on input line 278.
 (pdftex.def)             Requested size: 455.5713pt x 229.49832pt.
- [5 <../figs//Aint700mV.png (PNG copy)>]
+ [5 <../figs//Aint700mV.png (PNG copy)> <../figs//1-10Mnet.png (PNG copy)>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 327.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 327.
+(hyperref)                removing `math shift' on input line 320.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 327.
+(hyperref)                removing `subscript' on input line 320.
 
-[6 <../figs//1-10Mnet.png (PNG copy)>] [7] (./E03.1.AC.aux)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 320.
+
+[6] [7] (./E03.1.AC.aux)
 Package rerunfilecheck Info: File `E03.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: F3DA9C6AC8477C8FE021903D9BDC5486;4085.
  ) 
 Here is how much of TeX's memory you used:
- 55664 strings out of 479713
- 1365409 string characters out of 5876923
- 2180990 words of memory out of 10000000
+ 55665 strings out of 479713
+ 1365421 string characters out of 5876923
+ 2180988 words of memory out of 10000000
  72638 multiletter control sequences out of 15000+600000
  417592 words of font info for 66 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
@@ -1352,10 +1356,10 @@ pe1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
 sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.p
 fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/tex
 live/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on E03.1.AC.pdf (7 pages, 545657 bytes).
+Output written on E03.1.AC.pdf (7 pages, 546456 bytes).
 PDF statistics:
- 226 PDF objects out of 1000 (max. 8388607)
- 178 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
+ 227 PDF objects out of 1000 (max. 8388607)
+ 179 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
