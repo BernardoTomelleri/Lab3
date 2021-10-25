@@ -10,7 +10,7 @@
 \graphicspath{{../figs/}}
 
 \author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
-\title{Es03A: Amplificatore a transistor}
+\title{Es03A: Amplificatore di tensione con BJT a emettitore comune}
 \begin{document}
 \date{\today}
 \maketitle
@@ -61,7 +61,7 @@ I_C^Q &= \frac{\Delta V_{R_C}}{R_C} = 1.134 \pm 0.011 \; \si{m\A} \\
 \end{align*}
 
 Prendendo come riferimento (arbitrario) il valore per la tensione di soglia
-della giunzione BE $V_\gamma = 0.65 \pm 0.05 \; \si{\V}$ e come valore atteso
+della giunzione BE $V_\gamma = 0.6 \pm 0.1 \; \si{\V}$ e come valore atteso
 per la tensione al terminale di base del transistor
 $\ds V\ped{B, exp} = \frac{V_{CC}}{1 + R_1/R_2}$, ci aspettiamo di trovare
 \begin{align*}
@@ -116,14 +116,13 @@ verificata
 I_P = 143 \pm 5 \; \si{\micro\A} > 30 \cdot I_B^Q
 .\] 
 
-
 Come ulteriore conferma possiamo vedere la stessa condizione come 
-$I_{R_1} \sim I_{R_2} > 10 I_{B}$ o, in termini di resistenze
+$I_{R_1} \sim I_{R_2} \gg I_{B}$ o, in termini di resistenze
 $R_B \ll h_{fe} R_E$ che sono entrambe soddisfatte.
 
 Possiamo anche dare una stima del guadagno in corrente continua del transistor
 \[
-\beta_F = h_{FE} = \frac{I_C}{I_B} = 2.8 \pm 1.3 \times 10^{2}  
+\beta_F = h_{FE} = \frac{I_C}{I_B} = (2.8 \pm 1.3) \times 10^{2}  
 \]
 
 \section{Risposta a segnali sinusoidali}
@@ -135,11 +134,31 @@ f_{1A} = 7336 \pm 6 \; \si{\Hz}
 \]
 
 \subsection{Guadagno per piccoli segnali in ingresso}
-Dal fit a bassa frequenza ($f\ll f_1$) otteniamo
-\[
-A_1(\mathrm{dB}) = \left(-17.91 \pm 0.18\right)\times 10^{-3} \;\;\;
-\chi^2 = 243 \;\;\; d.o.f. = 873
-\]
+Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
+e in uscita $v\ped{out}$ dall'amplificatore possiamo ricavare una misura del
+guadagno del circuito dal rapporto $A_v = \dfrac{v\ped{out}}{v\ped{in}}$.
+\begin{table}[htb]
+\centering
+\begin{tabular}{cccc}
+\toprule
+$v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & $v\ped{out} \pm \sigma(v\ped{out})$ [V] & $A_v \pm \sigma(A_v)$ \\
+\midrule
+\midrule
+5 & • & • & • \\
+10 & • & • & • \\
+25 & • & • & •  \\
+50 & • & • & • \\
+75 & • & • & • \\
+100 & • & • & • \\
+200 & • & • & •  \\
+250 & • & • & • \\
+300 & • & • & • \\
+400 & • & • & •  \\
+\bottomrule
+\end{tabular} 
+\caption{Misure di guadagno al variare della tensione in ingresso
+all'amplificatore \label{tab: bjtmes}}
+\end{table}
 
 Ad alta frequenza ($f \gg f_1$) la retta di best-fit al plot di Bode in 
 ampiezza ha i seguenti parametri:
@@ -148,18 +167,24 @@ ampiezza ha i seguenti parametri:
 0.0016 \;\;\;\mathrm{correlazione} 
 = -0.997 \;\;\; \chi^2 = 1647 \;\;\; d.o.f. = 1746
 \]
-Dall'intersezione delle due rette stimiamo per la frequenza di taglio il valore
-\[
-f_{1B} = 7246 \pm 8 \; \si{Hz}
-\]
 
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=0.35]{Alin200mV}
+\includegraphics[scale=0.335]{Alin200mV}
 \caption{Risposta del circuito ad un segnale sinusoidale di ampiezza
 $\SI{200}{m\V}$ e $f = \SI{1}{k\Hz}$ in ingresso. Quando l'amplificatore
 è in pieno regime attivo. \label{fig: Alin}}
 \end{figure}
+
+Il valore atteso per il guadagno dal valore dei componenti in questa
+configurazione del circuito è pari a
+\[
+A\ped{V, exp} = -\frac{R_C}{\abs{Z_E}} = -\frac{R_C}{R_E} = -10.20 \pm 0.12
+\]
+Questo è compatibile con quanto trovato sperimentalmente, seppur leggermente
+minore (in valore assoluto). Questo può essere spiegato da perdite dovute ai
+collegamenti reali nel circuito (che trascuriamo nel modello) e
+dall'indeterminazione sul valore dei parametri di costruzione del transistor.
 
 \subsection{Linearità del circuito amplificatore}
 Quando la tensione in ingresso è abbastanza alta da condurre la giunzione
@@ -180,7 +205,7 @@ il semiperiodo positivo dell'onda in ingresso.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=0.35]{Asat400mV}
+\includegraphics[scale=0.335]{Asat400mV}
 \caption{Risposta del circuito ad un segnale sinusoidale di ampiezza
 $\SI{450}{m\V}$ e $f = \SI{1}{k\Hz}$ in ingresso. Quando l'amplificatore
 è vicino al regime di saturazione. \label{fig: Asat}}
@@ -188,37 +213,29 @@ $\SI{450}{m\V}$ e $f = \SI{1}{k\Hz}$ in ingresso. Quando l'amplificatore
 
 
 \subsection{Clipping del segnale in uscita}
-Aumentando ancora l'ampiezza del segnale alternato in ingresso $v_{in}$ fino
+Aumentando ancora l'ampiezza del segnale alternato in ingresso $v\ped{in}$ fino
 a $\sim \SI{0.7}{\V}$, anche la parte alta del segnale in uscita è tagliata.
-In questo caso è la giunzione BE a cambiare polarizzazione, per cui quando
-entrambe le giunzioni sono inversamente polarizzate il transistor entra in
-regime di interdizione. Le uniche correnti che attraversano il BJT sono quelle
-di saturazione inversa, per cui in buona approssimazione si comporta come un
-circuito aperto, come si vede dal grafico delle correnti di collettore.
+In questo caso, durante il semiperiodo negativo dell'onda in ingresso, è la
+giunzione BE a cambiare polarizzazione, per cui quando entrambe le giunzioni
+sono inversamente polarizzate il transistor entra in regime di interdizione.
+Le uniche correnti che attraversano il BJT sono quelle di saturazione inversa,
+per cui in buona approssimazione si comporta come un circuito aperto, come si
+vede dal grafico delle correnti di collettore.
 
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=0.35]{Aint700mV}
+\includegraphics[scale=0.335]{Aint700mV}
 \caption{Risposta del circuito ad un segnale sinusoidale di ampiezza
 $\SI{700}{m\V}$ e $f = \SI{1}{k\Hz}$ in ingresso. Quando l'amplificatore
 è vicino al regime di interdizione. \label{fig: Aint}}
 \end{figure}
 
 \section{Impedenze in ingresso e uscita}
-Il fronte del segnale di uscita ha un tempo di salita, misurato con i cursori, 
-di 
-\[
-t_r = 47 \pm 2 \; \si{\micro\second}
-\]
-da cui 
-\[
-f_1 = \ln(9) R_1 C_1 \approx \frac{2.2}{2\pi t_r} = 7.4 \pm 0.3 \; \si{k\Hz}
-\]
-
 \subsection{Impedenza di ingresso}
 Come valore atteso per l'impedenza in ingresso al circuito abbiamo:
 \[
-Z\ped{in}(\omega) = h_{ie} + h_{fe}Z_E(\omega) \; \lvert\rvert \; R_B =
+Z\ped{in}(\omega) =
+h_{ie} + h_{fe}Z_E(\omega) \; \lvert\rvert \; R_B =
 \left(\frac{1}{h_{ie} + h_{fe}Z_E} + \frac{1}{R_1} + \frac{1}{R_2}\right)^{-1}
 \]
 
@@ -271,28 +288,35 @@ R_L=10 \,k\Omega & \implies A_1 = 0.83\;\;\; f_1 = 8761 \\
 \begin{figure}[htb]
 \centering
 \includegraphics[scale=0.35]{1-10Mnet}
-\caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{1}{\Hz}$ e 
-$\SI{10}{M\Hz}$ con un segnale sinusoidale in ingresso di ampiezza
-$\SI{200}{m\V}$. \label{fig: bodeplot}}
+\caption{Plot di Bode ottenuto dallo scan con Network tra $1 \; \si{\Hz}$ e
+$\SI{10}{M\Hz}$ con un segnale sinusoidale in ingresso di ampiezza costante
+$v\ped{in} = \SI{200}{m\V}$. \label{fig: bodeplot}}
 \end{figure}
 
 \subsection{Stima delle frequenze di taglio}
-Dalla fit con la funzione di trasferimento del passa basso risulta:
-\begin{figure}[htb]
-\centering
-%\includegraphics[scale=0.4]{passa_basso}
-\caption{Fit con il modello della funzione di trasferimento per il filtro passa basso}
-\end{figure}
-Il valore della frequenza di taglio vale invece:
+Partendo da una misura con i cursori del guadagno a centro banda,
+$A_V = 19.65 \pm 0.05 \; \si{dB} = 9.65 \pm 0.08$, possiamo ottenere una stima del valore
+delle frequenze di taglio a bassa $f_L$ e ad alta frequenza $f_H$ dai punti
+in cui il guadagno diminuisce di un fattore $1/\sqrt{2}$, cioè di circa
+$-3.01 \; \si{dB}$ rispetto ad $A_V$.
 \begin{align*}
-f_1 = 7.76 \pm 0.01 \; \si{k\Hz}\\
+f_L &= 80.77 \pm 0.12 \; \si{\Hz}\\
+f_H &= 646.1 \pm 0.5 \; \si{k\Hz}
 \end{align*}
-che è compatibile con i valori attesi.
 
-Il guadagno a centro banda vale:
-\begin{align*}
-A_1 = (-23 \pm 61) \times 10^{-3} \; \si{dB}
-\end{align*}
+Trascurando le capacità delle giunzioni nel transistor ci aspettiamo che
+la frequenza di taglio ``bassa'' corrisponda a quella di un filtro passa~alto
+costituito dalla serie $C\ped{in} + R_B$
+\begin{equation}
+f\ped{L, exp} = \frac{1}{2\pi R_B C\ped{in}} = 83 \pm 4 \; \si{\Hz}
+\end{equation} 
+che è in accordo con il valore misurato.
+
+Mentre per la frequenza di taglio ``alta'' la resistenza in uscita è data
+da $R_C$, per cui la capacità in serie dev'essere dell'ordine delle centinaia
+di pF per avere ordine di grandezza compatibile con il valore misurato.
+Ma nel datasheet risulta al massimo $C\ped{ibo} \approx \SI{25}{p\F}$, per cui
+è difficile stabilire un valore di riferimento per la frequenza $f_H$ attesa.
 
 \section{Aumento del guadagno con passa-alto all'emettitore}
 \begin{align*}
@@ -316,32 +340,24 @@ Il guadagno a centro banda vale:
 A_2 = (-25 \pm 61) \times 10^{-3} \; \si{dB}
 \end{align*}
 \subsection{Confronto con il guadagno atteso}
-La nostra stima dell'amplificazione di centro-banda e delle frequenze di 
-taglio (per cui il guadagno si riduce di 3 dB rispetto a centro-banda) \`e
+Una volta inserito il condensatore all'emettitore dalla formula per il
+guadagno atteso otteniamo
 \[
-A(\mathrm{dB}) = -6.505 \pm 0.006 \;\;\; f_{L} = 380 \pm 3 \si{\Hz} \;\;\;
-f_{H} = 16.29 \pm 0.16 \si{k\Hz}
+A_v = -\frac{R_C}{\abs{Z_E}} =
+- \frac{R_C}{R_E \; \lvert \rvert \; \left(R\ped{es} + 1/j\omega C_E\right)}
+\]
+
+Visto che abbiamo scelto $C_E \gg C\ped{in} \sim C\ped{out}$, alla frequenza
+di lavoro $\SI{10}{k\Hz}$ possiamo considerare trascurabile l'impedenza del
+condensatore, per cui in buona approssimazione ci aspettiamo
+\[
+\abs{A_v} =
+\frac{R_C}{R_E \; \lvert \rvert \; R\ped{es}} \approx
+R_C \abs{\frac{1}{R_E} + \frac{1}{R\ped{es}}}^{-1} =
+110 \pm 1
 \]
 
 \iffalse
-\subsection*{10.b Fit della funzione di trasferimento}
-Utilizzando come modello la funzione di trasferimento per il passa banda si ottiene:
-
-\begin{figure}[htb]
-\centering
-\includegraphics[scale=0.35]{passa_banda}
-\caption{Fit con il modello della funzione di trasferimento per il filtro
-passa banda}
-\end{figure}
-
-
-Dal fit del plot di Bode in ampiezza si ha
-\[
-A(\mathrm{dB}) = \ldots \pm \ldots \;\;\;f_{L} = \ldots\pm \ldots\;\;\;f_{H} = 
-\ldots\pm 
-\ldots\;\;\;\chi^2 = \ldots\;\;\; d.o.f.= \ldots
-\]
-
 \subsection*{10.c Differenze}
 A differenza dei circuiti RC studiati prima, non possiamo considerare
 indipendenti i sotto-circuiti che compongono il passa-banda; infatti il
@@ -452,8 +468,8 @@ regimi, quando usati separatamente, collegati in cascata e connessi a
 carichi resistivi di diverso valore.
 
 \section*{Dichiarazione}
-I firmatari di questa relazione dichiarano che il contenuto della relazione \`e 
-originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari 
+I firmatari di questa relazione dichiarano che il contenuto della relazione \`e
+originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
 hanno contribuito alla elaborazione della relazione stessa.
 
 \end{document}
