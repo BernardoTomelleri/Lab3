@@ -63,12 +63,14 @@ I_C^Q &= \frac{\Delta V_{R_C}}{R_C} = 1.134 \pm 0.011 \; \si{m\A} \\
 Prendendo come riferimento (arbitrario) il valore per la tensione di soglia
 della giunzione BE $V_\gamma = 0.6 \pm 0.1 \; \si{\V}$ e come valore atteso
 per la tensione al terminale di base del transistor
-$\ds V\ped{B, exp} = \frac{V_{CC}}{1 + R_1/R_2}$, ci aspettiamo di trovare
+$\ds V\ped{B, exp} = \frac{V_{CC} - V_{EE}}{1 + R_1/R_2}$, ci aspettiamo di
+trovare
 \begin{align*}
 V\ped{BE, exp}^Q &\approx V_\gamma = 0.6 \pm 0.1 \; \si{\V} \\
 I\ped{C, exp}^Q &= \frac{V_B - V_{BE}^Q}{R_E + R_B/h_{FE}} =
 1.09 \pm 0.05 \si{\m\A} \\
-V\ped{CE, exp}^Q &= V_{CC} - I_C^Q(R_C + R_E) = 3.9 \pm 0.2 \; \si{\V}  
+V\ped{CE, exp}^Q &= (V_{CC} - V_{EE}) - I_C^Q(R_C + R_E) = 3.9 \pm 0.2 \;
+\si{\V}
 \end{align*}
 
 \subsection{Tensioni ai terminali del BJT}
@@ -89,19 +91,20 @@ V_C &= -4.39 \pm 0.03 \; \si{V} \\
 Come valori attesi otteniamo
 \begin{align*}
 V\ped{E, exp} &= R_E I_E \approx R_E I\ped{C, exp}^Q = 0.54 \pm 0.2 \; \si{\V} \\
-V\ped{B, exp} &= \frac{V_{CC}}{1 + R_1/R_2} = 1.24 \pm 0.13 \; \si{\V} \\
+V\ped{B, exp} &= \frac{V_{CC} - V_{EE}}{1 + R_1/R_2} = 1.24 \pm 0.13 \; \si{\V}
+\\
 V\ped{C, exp} &= R_C I\ped{C, exp}^Q = 5.5 \pm 0.2 \; \si{V} \\
 \end{align*}
 \subsection{Rigidità del partitore di tensione}
 Possiamo ricavare le intensità di corrente che scorrono per le resistenze
 di base a partire dalle misure precedenti
 \begin{align*}
-I_{R_1} = \frac{V_{CC} - V_B}{R_1} = 124.4 \pm 1.2 \; \si{\micro\A} \qquad
+I_{R_1} = \frac{(V_{CC} - V_{EE}) - V_B}{R_1} = 125.0 \pm 1.2 \; \si{\micro\A} \qquad
 I_{R_2} = \frac{V_B}{R_2} = 120.4 \pm 1.3 \; \si{\micro\A} 
 \end{align*}
 da cui ricaviamo una stima della corrente di base
 \[
-I_B^Q = I_{R_1} - I_{R_2} =  4.0 \pm 1.8 \; \si{\micro\A}
+I_B^Q = I_{R_1} - I_{R_2} =  4.6 \pm 1.8 \; \si{\micro\A}
 \]
 
 Per condizione di partitore di tensione ``stiff'' intendiamo:
@@ -128,10 +131,24 @@ Possiamo anche dare una stima del guadagno in corrente continua del transistor
 \section{Risposta a segnali sinusoidali}
 
 \subsection{Inversione di fase del segnale in uscita}
-La nostra stima della frequenza per cui $A_v$(dB) = -3 dB \`e
+Se i due segnali sono in opposizione di fase il passaggio per 0 con la stessa
+pendenza/slope devono distare un semi-periodo dall'altro; come si vede bene
+dalla figura \ref{fig: Alin} in cui ai massimi del segnale in ingresso (la
+traccia gialla) corrispondono i minimi del segnale in uscita (la traccia blu)
+Da una misura con i cursori troviamo
+\begin{align*}
+\Delta t &= 50.2 \pm 1.0 \; \si{n\s}\\
+\Delta \phi &= 2\pi f \Delta t = 3.14 \pm 0.06 \; \si{\radian}
+\end{align*}
+
+mentre con la funzione di misura automatica definita con uno script di Wavegen
+risulta:
 \[
-f_{1A} = 7336 \pm 6 \; \si{\Hz}
+\phi = 179.63 \pm 0.10 \; \si{\degree}
 \]
+
+che sono entrambi compatibili con il valore atteso di $\Delta \phi\ped{exp}
+= \pi \; \si{\radian}$ per la natura invertente dell'amplificatore.
 
 \subsection{Guadagno per piccoli segnali in ingresso}
 Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
@@ -144,16 +161,20 @@ guadagno del circuito dal rapporto $A_v = \dfrac{v\ped{out}}{v\ped{in}}$.
 $v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & $v\ped{out} \pm \sigma(v\ped{out})$ [V] & $A_v \pm \sigma(A_v)$ \\
 \midrule
 \midrule
-5 & • & • & • \\
-10 & • & • & • \\
-25 & • & • & •  \\
-50 & • & • & • \\
-75 & • & • & • \\
-100 & • & • & • \\
-200 & • & • & •  \\
-250 & • & • & • \\
-300 & • & • & • \\
-400 & • & • & •  \\
+20 & $19.8 \pm 0.5$ & $192 \pm 2 \; \si{m}$ & • \\
+40 & $39.9 \pm 0.8$ & $383 \pm 3 \; \si{m}$ & • \\
+60 & $59.8 \pm 1.0$ & $576 \pm 4 \; \si{m}$ & •  \\
+80 & $80.0 \pm 1.1$ & $768 \pm 5 \; \si{m}$ & • \\
+100 & $100.0 \pm 1.2$ & $960 \pm 6 \; \si{m}$ & • \\
+125 & $125.0 \pm 1.5$ & $1200 \pm 7$ & • \\
+150 & $150.0 \pm 1.6$ & $1439 \pm 8$ & • \\
+175 & $175.2 \pm 1.8$ & $1.678 \pm 0.010$ & • \\
+200 & $200 \pm 2$ & $1.916 \pm 0.011$ & • \\
+225 & $225 \pm 2$ & $2.155 \pm 0.012$ & • \\
+250 & $250 \pm 2$ & $2.438 \pm 0.014$ & • \\
+275 & $275 \pm 2$ & $2.679 \pm 0.015$ & • \\
+300 & $300 \pm 3$ & $2.922 \pm 0.016$ & • \\
+325 & $325 \pm 3$ & $3.2 \pm 0.2$ & • \\
 \bottomrule
 \end{tabular} 
 \caption{Misure di guadagno al variare della tensione in ingresso
@@ -194,12 +215,11 @@ base e collettore: per cui si osserva una distorsione del segnale in uscita.
 
 In particolare il segnale in uscita risulta distorto o ``tosato'' in basso,
 in maniera asimmetrica in corrispondenza della semionda positiva in ingresso
-(per la natura invertente dell'amplificatore). Se infatti $V_{BC}$ aumenta
-fino a valori prossimi a $V_\gamma$ (o perlomeno abbastanza alti da non
-garantire che la giunzione BC rimanga in polarizzazione inversa) deve
-diminuire $V_{CE} = V_C - V_B + V_B - V_E = -V_{BC} + V_{CE}$. Dunque ci
-spostiamo a sinistra del punto di lavoro fino ad arrivare al regime di
-saturazione.
+(l'amplificatore è invertente). Se infatti $V_{BC}$ aumenta fino a valori
+prossimi a $V_\gamma$ (o perlomeno abbastanza alti da non garantire che la
+giunzione BC rimanga in polarizzazione inversa) deve diminuire
+$V_{CE} = V_C - V_B + V_B - V_E = -V_{BC} + V_{CE}$. Dunque ci spostiamo a
+sinistra del punto di lavoro fino ad arrivare al regime di saturazione.
 Il che spiega come mai l'effetto di ``clipping'' sia più marcato durante
 il semiperiodo positivo dell'onda in ingresso.
 
@@ -208,7 +228,8 @@ il semiperiodo positivo dell'onda in ingresso.
 \includegraphics[scale=0.335]{Asat400mV}
 \caption{Risposta del circuito ad un segnale sinusoidale di ampiezza
 $\SI{450}{m\V}$ e $f = \SI{1}{k\Hz}$ in ingresso. Quando l'amplificatore
-è vicino al regime di saturazione. \label{fig: Asat}}
+è vicino al regime di saturazione. Anche da qui si vede bene come i segnali
+in ingresso ed in uscita abbiano fase opposta. \label{fig: Asat}}
 \end{figure}
 
 
@@ -237,6 +258,7 @@ Come valore atteso per l'impedenza in ingresso al circuito abbiamo:
 Z\ped{in}(\omega) =
 h_{ie} + h_{fe}Z_E(\omega) \; \lvert\rvert \; R_B =
 \left(\frac{1}{h_{ie} + h_{fe}Z_E} + \frac{1}{R_1} + \frac{1}{R_2}\right)^{-1}
+= 7.49 \pm 7 \; \si{k\ohm} 
 \]
 
 dove abbiamo indicato con $Z_E(\omega)$ l'impedenza del ramo di emettitore,
@@ -245,12 +267,18 @@ parallelo a $R_E$ si aggiunge un passa alto costruito con $C_E + R\ped{es}$,
 per cui vale $Z_E(\omega) = R_E || \left(R\ped{es} + \frac{1}{j \omega C_E}
 \right)$.
 
-Inserendo in serie al generatore una resistenza $R_S$ dello stesso ordine di
-$R\ped{in}$ attesa e misurando la tensione in uscita con o senza $R_S$.
+Inserendo in serie al generatore una resistenza di shunt $R_S$ dello stesso
+ordine di $R\ped{in}$ attesa e misurando la tensione in uscita con o senza
+$R_S$ è possibile dare un stima della resistenza in ingresso del circuito.
 Detta $V_1$ la tensione $V\ped{out}$ misurata senza $R_S$ e $V_2$ la tensione
-misurata con $R_S$ inserita, vale la formula:
+misurata con $R_S$ inserita, vale l'equazione:
+\begin{equation}
+\frac{R_S}{R\ped{in}} = \frac{V_1}{V_2} - 1
+\end{equation}
+
 \[
-R_S/R\ped{in} = V_1/V_2 – 1
+{R\ped{in}} = R_S \left(\frac{V_1}{V_2} - 1\right)^{-1} =
+R_S \frac{V_2}{V_1 - V_2}
 \]
 
 \subsection{Impedenza di uscita}
@@ -259,14 +287,18 @@ Mentre come impedenza in uscita dal circuito ci aspettiamo di trovare
 Z\ped{out} = R_C
 .\]
 
-(Qui \`e richiesto che valutiate l'~amplificazione di centro-banda e la 
-frequenza di taglio nel 
-caso in cui il carico sia rispettivamente 100 e 10 k$\Omega$)
+Inserendo tra l'uscita e la massa una resistenza di carico $R_L$ dello stesso
+ordine di $R\ped{out}$ e misurando la tensione di uscita con o senza
+resistenza è possibile dare una stima della resistenza in uscita
+dell'amplificatore.
+Detta $V_1$ la tensione misurata senza $R_L$ e $V_2$ la tensione misurata
+con $R_L$, vale la formula:
+\begin{equation}
+\frac{R\ped{out}}{R_L} = \frac{V_1}{V_2} -1
+\end{equation}
+
 \[
-\begin{array}{rl}
-R_L=100 \,k\Omega & \implies A_1 = 0.98 \;\;\; f_1 = 7450 \\
-R_L=10 \,k\Omega & \implies A_1 = 0.83\;\;\; f_1 = 8761 \\
-\end{array}
+R\ped{out} = R_L \left(\frac{V_1}{V_2} - 1\right)
 \]
 
 %=======================

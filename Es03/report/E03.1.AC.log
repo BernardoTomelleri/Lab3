@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  26 OCT 2021 00:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  26 OCT 2021 18:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1288,55 +1288,51 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<../figs//Alin200mV.png, id=98, 1440.88312pt x 711.4078pt>
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<../figs//Alin200mV.png, id=106, 1440.88312pt x 711.4078pt>
 File: ../figs//Alin200mV.png Graphic file (type png)
 <use ../figs//Alin200mV.png>
-Package pdftex.def Info: ../figs//Alin200mV.png  used on input line 173.
+Package pdftex.def Info: ../figs//Alin200mV.png  used on input line 194.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
- [2] [3 <../figs//Alin200mV.png (PNG copy)>]
-<../figs//Asat400mV.png, id=111, 1440.88312pt x 711.4078pt>
+ [3 <../figs//Alin200mV.png (PNG copy)>]
+<../figs//Asat400mV.png, id=112, 1440.88312pt x 711.4078pt>
 File: ../figs//Asat400mV.png Graphic file (type png)
 <use ../figs//Asat400mV.png>
-Package pdftex.def Info: ../figs//Asat400mV.png  used on input line 208.
+Package pdftex.def Info: ../figs//Asat400mV.png  used on input line 228.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-<../figs//Aint700mV.png, id=112, 1440.88312pt x 711.4078pt>
+<../figs//Aint700mV.png, id=113, 1440.88312pt x 711.4078pt>
 File: ../figs//Aint700mV.png Graphic file (type png)
 <use ../figs//Aint700mV.png>
-Package pdftex.def Info: ../figs//Aint700mV.png  used on input line 227.
+Package pdftex.def Info: ../figs//Aint700mV.png  used on input line 248.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-
-
-LaTeX Warning: Command \textendash invalid in math mode on input line 253.
-
-[4 <../figs//Asat400mV.png (PNG copy)>]
-<../figs//1-10Mnet.png, id=120, 1301.61281pt x 655.69969pt>
+ [4 <../figs//Asat400mV.png (PNG copy)>]
+<../figs//1-10Mnet.png, id=121, 1301.61281pt x 655.69969pt>
 File: ../figs//1-10Mnet.png Graphic file (type png)
 <use ../figs//1-10Mnet.png>
-Package pdftex.def Info: ../figs//1-10Mnet.png  used on input line 278.
+Package pdftex.def Info: ../figs//1-10Mnet.png  used on input line 310.
 (pdftex.def)             Requested size: 455.5713pt x 229.49832pt.
- [5 <../figs//Aint700mV.png (PNG copy)> <../figs//1-10Mnet.png (PNG copy)>]
+ [5 <../figs//Aint700mV.png (PNG copy)>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 320.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 320.
+(hyperref)                removing `math shift' on input line 352.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 320.
+(hyperref)                removing `subscript' on input line 352.
 
-[6] [7] (./E03.1.AC.aux)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 352.
+
+[6 <../figs//1-10Mnet.png (PNG copy)>] [7] (./E03.1.AC.aux)
 Package rerunfilecheck Info: File `E03.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: F3DA9C6AC8477C8FE021903D9BDC5486;4085.
  ) 
 Here is how much of TeX's memory you used:
- 55665 strings out of 479713
- 1365421 string characters out of 5876923
- 2180988 words of memory out of 10000000
- 72638 multiletter control sequences out of 15000+600000
+ 55668 strings out of 479713
+ 1365458 string characters out of 5876923
+ 2180990 words of memory out of 10000000
+ 72639 multiletter control sequences out of 15000+600000
  417592 words of font info for 66 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,11n,125p,754b,812s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1356,10 +1352,10 @@ pe1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
 sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.p
 fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/tex
 live/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on E03.1.AC.pdf (7 pages, 546456 bytes).
+Output written on E03.1.AC.pdf (7 pages, 548433 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 179 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 500000)
+ 230 PDF objects out of 1000 (max. 8388607)
+ 182 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
