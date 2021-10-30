@@ -41,7 +41,7 @@ plt.errorbar(f, A1, dA1, label="in signal data & error", fmt=".")
 plt.ylabel("Guadagno [dB]")
 
 popt, pcov = curve_fit(banda, f, A2, sigma=dA2,
-                       p0=np.array([1, 1]), maxfev=7000)
+                        maxfev=7000)
 print("PASSA BANDA")
 print(popt)
 print(np.sqrt(pcov.diagonal()))
