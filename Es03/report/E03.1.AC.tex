@@ -78,6 +78,29 @@ V\ped{CE, exp}^Q &= (V_{CC} - V_{EE}) - I_C^Q(R_C + R_E) = 3.9 \pm 0.2 \;
 \si{\V}
 \end{align*}
 
+Se consideriamo l'equazione della retta di carico del BJT, indicando con
+$V_0 = V_{CC} - V_{EE}$ la tensione di alimentazione,
+\begin{equation*}
+V_{CE}^Q = V_0 + R_C I_C^Q
+\end{equation*}
+per assicurarci che il transistor sia in mezzo alla zona attiva possiamo
+richiedere che le componenti quiescenti della curva caratteristica siano a
+metà tra i propri valori minimi $(0)$ e massimi, che corrispondono alle
+intercette con gli assi della caratteristica di collettore $V_0$ e $V_0/R_C$.
+In breve
+\begin{align*}
+V^Q\ped{CE, ideale} &= \frac{V0}{2} \approx 5 \; \si{\V} \\
+I^Q\ped{C, ideale} &= \frac{V_0}{2R_C} \approx 1 \; \si{\mA}
+\end{align*}
+
+Per cui vediamo che l'intensità di corrente di collettore $I_C^Q$ misurata è
+compatibile entro il $10 \%$ con il valore ideale, mentre la tensione ai capi
+della giunzione $V_{CE}^Q$ non si trova altrettanto vicina alla metà attesa.
+Questo comporterà un'asimmetria nella risposta a segnali alternanti di
+ampiezza $v\ped{in}$ abbastanza grande da portare l'amplificatore in regime
+non lineare. Infatti, al crescere di $v\ped{in}$, ci aspettiamo di incontrare
+prima il regime di interdizione $V_{CE} < V_\gamma$ di quello di saturazione.
+  
 \subsection{Tensioni ai terminali del BJT}
 Con il multimetro digitale abbiamo misurato rispetto a $V_{EE}$
 \begin{align*}

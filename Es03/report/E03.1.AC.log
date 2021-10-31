@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  31 OCT 2021 22:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  31 OCT 2021 23:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1288,61 +1288,62 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<../figs//Alin200mV.png, id=99, 1440.88312pt x 711.4078pt>
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<../figs//Alin200mV.png, id=105, 1440.88312pt x 711.4078pt>
 File: ../figs//Alin200mV.png Graphic file (type png)
 <use ../figs//Alin200mV.png>
-Package pdftex.def Info: ../figs//Alin200mV.png  used on input line 147.
+Package pdftex.def Info: ../figs//Alin200mV.png  used on input line 170.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
- [2]
-<../figs//gain.pdf, id=107, 572.37839pt x 373.6359pt>
+<../figs//gain.pdf, id=106, 572.37839pt x 373.6359pt>
 File: ../figs//gain.pdf Graphic file (type pdf)
 <use ../figs//gain.pdf>
-Package pdftex.def Info: ../figs//gain.pdf  used on input line 203.
+Package pdftex.def Info: ../figs//gain.pdf  used on input line 226.
 (pdftex.def)             Requested size: 343.42967pt x 224.18326pt.
  [3 <../figs//Alin200mV.png (PNG copy)>]
-<../figs//Asat400mV.png, id=113, 1440.88312pt x 711.4078pt>
+<../figs//Asat400mV.png, id=112, 1440.88312pt x 711.4078pt>
 File: ../figs//Asat400mV.png Graphic file (type png)
 <use ../figs//Asat400mV.png>
-Package pdftex.def Info: ../figs//Asat400mV.png  used on input line 242.
-(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-<../figs//Aint700mV.png, id=114, 1440.88312pt x 711.4078pt>
-File: ../figs//Aint700mV.png Graphic file (type png)
-<use ../figs//Aint700mV.png>
-Package pdftex.def Info: ../figs//Aint700mV.png  used on input line 262.
+Package pdftex.def Info: ../figs//Asat400mV.png  used on input line 265.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
  [4 <../figs//gain.pdf>]
-<../figs//1-10Mnet.png, id=151, 1301.61281pt x 655.69969pt>
+<../figs//Aint700mV.png, id=147, 1440.88312pt x 711.4078pt>
+File: ../figs//Aint700mV.png Graphic file (type png)
+<use ../figs//Aint700mV.png>
+Package pdftex.def Info: ../figs//Aint700mV.png  used on input line 285.
+(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
+ [5 <../figs//Asat400mV.png (PNG copy)>]
+<../figs//1-10Mnet.png, id=157, 1301.61281pt x 655.69969pt>
 File: ../figs//1-10Mnet.png Graphic file (type png)
 <use ../figs//1-10Mnet.png>
-Package pdftex.def Info: ../figs//1-10Mnet.png  used on input line 331.
+Package pdftex.def Info: ../figs//1-10Mnet.png  used on input line 354.
 (pdftex.def)             Requested size: 455.5713pt x 229.49832pt.
- [5 <../figs//Asat400mV.png (PNG copy)>]
-[6 <../figs//Aint700mV.png (PNG copy)> <../figs//1-10Mnet.png (PNG copy)>]
+
+[6 <../figs//Aint700mV.png (PNG copy)>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 373.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 373.
+(hyperref)                removing `math shift' on input line 396.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 373.
+(hyperref)                removing `subscript' on input line 396.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 396.
 
 <../figs//gainCE.pdf, id=165, 573.82379pt x 368.57701pt>
 File: ../figs//gainCE.pdf Graphic file (type pdf)
 <use ../figs//gainCE.pdf>
-Package pdftex.def Info: ../figs//gainCE.pdf  used on input line 397.
+Package pdftex.def Info: ../figs//gainCE.pdf  used on input line 420.
 (pdftex.def)             Requested size: 344.29692pt x 221.1479pt.
-[7 <../figs//gainCE.pdf>] [8] (./E03.1.AC.aux)
+[7 <../figs//1-10Mnet.png (PNG copy)>] [8 <../figs//gainCE.pdf>] [9]
+(./E03.1.AC.aux)
 Package rerunfilecheck Info: File `E03.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: F3DA9C6AC8477C8FE021903D9BDC5486;4085.
  ) 
 Here is how much of TeX's memory you used:
- 55696 strings out of 479713
- 1366022 string characters out of 5876923
+ 55697 strings out of 479713
+ 1366028 string characters out of 5876923
  2180990 words of memory out of 10000000
  72664 multiletter control sequences out of 15000+600000
  417592 words of font info for 66 fonts, out of 8000000 for 9000
@@ -1366,10 +1367,10 @@ b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texl
 ive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/t
 exmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/
 fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on E03.1.AC.pdf (8 pages, 671898 bytes).
+Output written on E03.1.AC.pdf (9 pages, 674609 bytes).
 PDF statistics:
- 289 PDF objects out of 1000 (max. 8388607)
- 223 compressed objects within 3 object streams
- 44 named destinations out of 1000 (max. 500000)
+ 293 PDF objects out of 1000 (max. 8388607)
+ 226 compressed objects within 3 object streams
+ 45 named destinations out of 1000 (max. 500000)
  187 words of extra memory for PDF output out of 10000 (max. 10000000)
 
