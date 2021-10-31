@@ -26,7 +26,7 @@ Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{\F}]$ & $C$ &
 $\sigma C$ \\
 \midrule
 \midrule
-$R_C$		  & 5.06 k	& 0.04 k	 & $C\ped{in}$  & 0.23 $\rm \mu$ & 0.01 $\rm \mu$ \\
+$R_C$		  & 5.06 k	& 0.04 k & $C\ped{in}$  & 0.23 $\rm \mu$ & 0.01 $\rm \mu$ \\
 $R_{E_p}$	  & 992		& 8      & $C\ped{out}$ & 104 n			 & 4	\\
 $R_{E_q}$	  & 993		& 8      & $C_E$        & 90 $\rm \mu$	 & 5	\\
 $R_{E}$		  & 496		& 4      &              &				 &		\\
@@ -37,6 +37,11 @@ $R_2$		  & 9.93 k  & 0.08 k &              &				 &		\\
 $R\ped{es_p}$ & 100.5	& 0.8    &				&				 &		\\
 $R\ped{es_q}$ & 100.2	& 0.8    &				&				 &		\\
 $R\ped{es}$   & 50.5	& 0.5    &				&				 &		\\
+$R_{S_s}$	  & 5.07 k	& 0.04 k &				&				 &		\\
+$R_{S_t}$     & 1990	& 16	 &				&				 &		\\
+$R_{S_u}$	  & 326		& 3		 &				&				 &		\\
+$R_{S}$		  & 7.39 k	& 0.06 k &				&				 &		\\
+$R_{L}$		  & 5.07 k	& 0.04 k &				&				 &		\\
 \bottomrule     
 \end{tabular}
 \caption{Valori di resistenza e capacità misurate per i componenti del
@@ -81,12 +86,14 @@ V_B &= 1.196 \pm 0.006 \; \si{\V} \\
 V_C &= 4.23 \pm 0.03 \; \si{V} \\
 \end{align*}
 
+\iffalse
 mentre rispetto a $GND$:
 \begin{align*}
 V_E &= -773 \pm 4 \; \si{m\V} \\
 V_B &= -3.76 \pm 0.03 \; \si{\V} \\
 V_C &= -4.39 \pm 0.03 \; \si{V} \\
 \end{align*}
+\fi
 
 Come valori attesi otteniamo
 \begin{align*}
@@ -135,6 +142,14 @@ Se i due segnali sono in opposizione di fase il passaggio per 0 con la stessa
 pendenza/slope devono distare un semi-periodo dall'altro; come si vede bene
 dalla figura \ref{fig: Alin} in cui ai massimi del segnale in ingresso (la
 traccia gialla) corrispondono i minimi del segnale in uscita (la traccia blu)
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.335]{Alin200mV}
+\caption{Risposta del circuito ad un segnale sinusoidale di ampiezza
+$\SI{200}{m\V}$ e $f = \SI{1}{k\Hz}$ in ingresso. Quando l'amplificatore
+è in pieno regime attivo. \label{fig: Alin}}
+\end{figure}
+
 Da una misura con i cursori troviamo
 \begin{align*}
 \Delta t &= 50.2 \pm 1.0 \; \si{n\s}\\
@@ -161,51 +176,50 @@ guadagno del circuito dal rapporto $A_v = \dfrac{v\ped{out}}{v\ped{in}}$.
 $v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & $v\ped{out} \pm \sigma(v\ped{out})$ [V] & $A_v \pm \sigma(A_v)$ \\
 \midrule
 \midrule
-20 & $19.8 \pm 0.5$ & $192 \pm 2 \; \si{m}$ & • \\
-40 & $39.9 \pm 0.8$ & $383 \pm 3 \; \si{m}$ & • \\
-60 & $59.8 \pm 1.0$ & $576 \pm 4 \; \si{m}$ & •  \\
-80 & $80.0 \pm 1.1$ & $768 \pm 5 \; \si{m}$ & • \\
-100 & $100.0 \pm 1.2$ & $960 \pm 6 \; \si{m}$ & • \\
-125 & $125.0 \pm 1.5$ & $1200 \pm 7$ & • \\
-150 & $150.0 \pm 1.6$ & $1439 \pm 8$ & • \\
-175 & $175.2 \pm 1.8$ & $1.678 \pm 0.010$ & • \\
-200 & $200 \pm 2$ & $1.916 \pm 0.011$ & • \\
-225 & $225 \pm 2$ & $2.155 \pm 0.012$ & • \\
-250 & $250 \pm 2$ & $2.438 \pm 0.014$ & • \\
-275 & $275 \pm 2$ & $2.679 \pm 0.015$ & • \\
-300 & $300 \pm 3$ & $2.922 \pm 0.016$ & • \\
-325 & $325 \pm 3$ & $3.2 \pm 0.2$ & • \\
+20 & $19.8 \pm 0.5$ & $192 \pm 2 \; \si{m}$ & $9.7 \pm 0.3$ \\
+40 & $39.9 \pm 0.8$ & $383 \pm 3 \; \si{m}$ & $9.6 \pm 0.2$ \\
+60 & $59.8 \pm 1.0$ & $576 \pm 4 \; \si{m}$ & $9.63 \pm 0.17$ \\
+80 & $80.0 \pm 1.1$ & $768 \pm 5 \; \si{m}$ & $9.60 \pm 0.15$ \\
+100 & $100.0 \pm 1.2$ & $960 \pm 6 \; \si{m}$ & $9.60 \pm 0.13$ \\
+125 & $125.0 \pm 1.5$ & $1200 \pm 7$ & $9.60 \pm 0.13$ \\
+150 & $150.0 \pm 1.6$ & $1439 \pm 8$ & $9.60 \pm 0.12$ \\
+175 & $175.2 \pm 1.8$ & $1.678 \pm 0.010$ & $9.58 \pm 0.11$ \\
+200 & $200 \pm 2$ & $1.916 \pm 0.011$ & $9.58 \pm 0.11$ \\
+225 & $225 \pm 2$ & $2.155 \pm 0.012$ & $9.58 \pm 0.11$ \\
+250 & $250 \pm 2$ & $2.438 \pm 0.014$ & $9.75 \pm 0.11$ \\
+275 & $275 \pm 2$ & $2.679 \pm 0.015$ & $9.74 \pm 0.11$ \\
+300 & $300 \pm 3$ & $2.922 \pm 0.016$ & $9.74 \pm 0.11$ \\
+325 & $325 \pm 3$ & $3.17 \pm 0.02$ & $9.75\pm 0.10$ \\
 \bottomrule
 \end{tabular} 
 \caption{Misure di guadagno al variare della tensione in ingresso
 all'amplificatore \label{tab: bjtmes}}
 \end{table}
 
-Ad alta frequenza ($f \gg f_1$) la retta di best-fit al plot di Bode in 
-ampiezza ha i seguenti parametri:
-\[
-\mathrm{intercetta} = 75.928 \pm 0.008 \;\;\;\mathrm{pendenza} = -19.6747 \pm 
-0.0016 \;\;\;\mathrm{correlazione} 
-= -0.997 \;\;\; \chi^2 = 1647 \;\;\; d.o.f. = 1746
-\]
-
+Con un fit lineare possiamo stimare il guadagno dell'amplificatore a partire
+dal grafico di $v\ped{out} = A_v v\ped{in}$ al variare di $v\ped{in}$.
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=0.335]{Alin200mV}
-\caption{Risposta del circuito ad un segnale sinusoidale di ampiezza
-$\SI{200}{m\V}$ e $f = \SI{1}{k\Hz}$ in ingresso. Quando l'amplificatore
-è in pieno regime attivo. \label{fig: Alin}}
+\includegraphics[scale=0.6]{gain}
+\caption{Fit lineare per l'andamento dell'uscita rispetto al segnale in
+ingresso. \label{fig: gainfit}}
 \end{figure}
+Da cui troviamo i seguenti parametri per la retta di best-fit
+\begin{align*}
+\mathrm{intercetta} = -2 \pm 3 \;\;\;\mathrm{pendenza} = 9.66 \pm 0.03 \;\;\;\mathrm{correlazione} 
+= -0.72 \;\;\; \chi^2 = 3 \;\;\; d.o.f. = 11 \\
+\text{coefficiente angolare/senza intercetta} = 9.65 \pm 0.02 \;\;\;
+\chi^2 = 3 \;\;\; d.o.f. = 12
+\end{align*}
 
 Il valore atteso per il guadagno dal valore dei componenti in questa
 configurazione del circuito è pari a
 \[
-A\ped{V, exp} = -\frac{R_C}{\abs{Z_E}} = -\frac{R_C}{R_E} = -10.20 \pm 0.12
+A\ped{v, exp} = -\frac{R_C}{R_E + h_{ie}/h_{fe}} = -9.44 \pm 0.12
 \]
-Questo è compatibile con quanto trovato sperimentalmente, seppur leggermente
-minore (in valore assoluto). Questo può essere spiegato da perdite dovute ai
-collegamenti reali nel circuito (che trascuriamo nel modello) e
-dall'indeterminazione sul valore dei parametri di costruzione del transistor.
+Questo è compatibile con quanto trovato sperimentalmente, specialmente
+tenendo conto della notevole indeterminazione sul valore dei parametri di
+costruzione del transistor.
 
 \subsection{Linearità del circuito amplificatore}
 Quando la tensione in ingresso è abbastanza alta da condurre la giunzione
@@ -258,7 +272,7 @@ Come valore atteso per l'impedenza in ingresso al circuito abbiamo:
 Z\ped{in}(\omega) =
 h_{ie} + h_{fe}Z_E(\omega) \; \lvert\rvert \; R_B =
 \left(\frac{1}{h_{ie} + h_{fe}Z_E} + \frac{1}{R_1} + \frac{1}{R_2}\right)^{-1}
-= 7.49 \pm 7 \; \si{k\ohm} 
+= 7.5 \pm 10\% \; \si{k\ohm} 
 \]
 
 dove abbiamo indicato con $Z_E(\omega)$ l'impedenza del ramo di emettitore,
@@ -267,20 +281,25 @@ parallelo a $R_E$ si aggiunge un passa alto costruito con $C_E + R\ped{es}$,
 per cui vale $Z_E(\omega) = R_E || \left(R\ped{es} + \frac{1}{j \omega C_E}
 \right)$.
 
-Inserendo in serie al generatore una resistenza di shunt $R_S$ dello stesso
-ordine di $R\ped{in}$ attesa e misurando la tensione in uscita con o senza
-$R_S$ è possibile dare un stima della resistenza in ingresso del circuito.
+Inserendo in serie al generatore una resistenza $R_S$ dello stesso ordine di
+$R\ped{in}$ attesa e misurando la tensione in uscita con o senza $R_S$ è
+possibile dare un stima della resistenza in ingresso del circuito.
 Detta $V_1$ la tensione $V\ped{out}$ misurata senza $R_S$ e $V_2$ la tensione
 misurata con $R_S$ inserita, vale l'equazione:
-\begin{equation}
+\begin{equation}\label{eq: Zin}
 \frac{R_S}{R\ped{in}} = \frac{V_1}{V_2} - 1
 \end{equation}
-
-\[
-{R\ped{in}} = R_S \left(\frac{V_1}{V_2} - 1\right)^{-1} =
-R_S \frac{V_2}{V_1 - V_2}
-\]
-
+Abbiamo preso come $R_S$ la serie di tre resistenze $R_S =
+R_{S_s} + R_{S_t} + R_{S_u} =
+\SI{5.1}{k\ohm} + \SI{2}{k\ohm} + \SI{330}{\ohm} =
+\SI{7.4}{k\ohm}$
+Per cui, avendo misurato $V_1 = 1916 \pm 11 \; \si{m\V}$ e
+$V_2 = 1011 \pm 7 \; \si{m\V}$, troviamo come resistenza in ingresso:
+\begin{align*}
+{R\ped{in}} &= \frac{R_S}{V_1/V_2 - 1} = 8.26 \pm 0.07
+\end{align*}
+Che è compatibile (entro le incertezze con cui sono noti i parametri del
+transistor $\sim 10 \%$) con il valore atteso dalla \eqref{eq: Zin}.
 \subsection{Impedenza di uscita}
 Mentre come impedenza in uscita dal circuito ci aspettiamo di trovare
 \[
@@ -293,14 +312,16 @@ resistenza è possibile dare una stima della resistenza in uscita
 dell'amplificatore.
 Detta $V_1$ la tensione misurata senza $R_L$ e $V_2$ la tensione misurata
 con $R_L$, vale la formula:
-\begin{equation}
+\begin{equation}\label{eq: Zout}
 \frac{R\ped{out}}{R_L} = \frac{V_1}{V_2} -1
 \end{equation}
-
+Per cui, una volta misurate $V_1 = \pm \; \si{m\V}$ e
+$V_2 = \pm \; \si{m\V}$, abbiamo ottenuto come resistenza in ingresso:
 \[
 R\ped{out} = R_L \left(\frac{V_1}{V_2} - 1\right)
 \]
 
+Che risulta
 %=======================
 \section{Risposta in frequenza}
 
@@ -350,20 +371,41 @@ Quindi in breve l'impedenza all'emettitore si comporterà grossolanamente
 come un filtro passa alto.
 
 \subsection{Guadagno a 10 kHz con condensatore $C_E$}
-Dal fit con modello la funzione di trasferimento di un filtro passa alto risulta:
+\begin{table}[htb]
+\centering
+\begin{tabular}{cccc}
+\toprule
+$v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & $v\ped{out} \pm \sigma(v\ped{out})$ [V] & $A_v \pm \sigma(A_v)$ \\
+\midrule
+\midrule
+10 & $9.89 \pm 0.13$ & $713 \pm 9 \; \si{m}$ & $72.1 \pm 1.3$ \\
+15 & $14.8 \pm 0.2$ & $1.037 \pm 0.015$ & $70.0 \pm 1.4$ \\
+20 & $19.8 \pm 0.3$ & $1.420 \pm 0.018$ & $71.7 \pm 1.4$ \\
+25 & $24.9 \pm 0.4$ & $1.76 \pm 0.02$ & $ 70.7 \pm 1.4$ \\
+30 & $30.0 \pm 0.5$ & $2.10 \pm 0.03$ & $ 70.0 \pm 1.5$ \\
+35 & $34.9 \pm 0.5$ & $2.37 \pm 0.03$ & $ 67.9 \pm 1.3$ \\
+40 & $39.9 \pm 0.6$ & $2.76 \pm 0.04$ & $ 69.2 \pm 1.4$ \\
+45 & $44.9 \pm 0.6$ & $3.08 \pm 0.04$ & $ 68.6 \pm 1.3$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Come prima otteniamo una stima del fattore di guadagno nella nuova
+configurazione con un fit lineare.
 \begin{figure}[htb]
 \centering
-%\includegraphics[scale=0.4]{passa_alto}
-\caption{Fit con il modello della funzione di trasferimento per il filtro passa alto}
+\includegraphics[scale=0.6]{gainCE}
+\caption{Fit lineare per l'andamento dell'uscita rispetto al segnale in
+ingresso per il circuito con passa alto all'emettitore.
+\label{fig: gainCEfit}}
 \end{figure}
-Il valore della frequenza di taglio ricavata dal fit vale:
-\begin{align*}
-f_2 = 821.3 \pm 0.2 \; \si{Hz}
-\end{align*}
-Il guadagno a centro banda vale:
-\begin{align*}
-A_2 = (-25 \pm 61) \times 10^{-3} \; \si{dB}
-\end{align*}
+
+Da cui troviamo i seguenti parametri per la retta di best-fit
+\[
+\mathrm{intercetta} = 42 \pm 15 \;\;\;\mathrm{pendenza} = 68.0 \pm 0.8 \;\;\;\mathrm{correlazione} 
+= -0.88 \;\;\; \chi^2 = 3.5 \;\;\; d.o.f. = 6
+\]
+
 \subsection{Confronto con il guadagno atteso}
 Una volta inserito il ramo in parallelo a $R_E$, dalla formula per il guadagno
 atteso otteniamo
@@ -386,7 +428,7 @@ R_C \abs{\frac{1}{R_E} + \frac{1}{R\ped{es}}} \approx
 \]
 
 Questo però assumendo che l'impedenza del transistor sia trascurabile rispetto
-a $Z_E$, o meglio $\abs{Z_E \gg \dfrac{h_{ie}}{h_{fe}}}$
+a $Z_E$, o meglio $\abs{Z_E} \gg \dfrac{h_{ie}}{h_{fe}}$
 \begin{align*}
 \abs{Z_E} &= \abs{\frac{1}{R_E} + \frac{1}{R\ped{es} + 1/\omega C_E}}^{-1} =
 45 \pm 2 \; \si{\ohm} \\
@@ -399,6 +441,10 @@ serie a quella del ramo $Z_E$ avremo come valore atteso per il guadagno
 \begin{equation}
 A_v = \frac{R_C}{\abs{Z_E} + h_{ie}/h_{fe}} \approx 60
 \end{equation}
+
+Che è perfettamente in accordo con il valore misurato per il guadagno sempre
+entro le grandi incertezze relative sui parametri di costruzione del
+transistor.
 
 \iffalse
 \subsection*{10.c Differenze}
