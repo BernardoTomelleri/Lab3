@@ -1,8 +1,7 @@
 [x] Verifica punto di lavoro in zona attiva
 [x] Inversione di fase con measurements, cursori e screenshot
-[] Inversione di fase con fit sinusoide
 [x] Misure vin vout dall'oscilloscopio
 [x] Fit lineare per il guadagno
 [x] Misura indiretta impedenza in ingresso e confronto
-[] Misura indiretta impedenza in uscita e confronto
+[x] Misura indiretta impedenza in uscita e confronto
 [x] Misure di guadagno con passa-alto al collettore
