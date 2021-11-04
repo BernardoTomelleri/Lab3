@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  3 NOV 2021 00:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  4 NOV 2021 17:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1344,7 +1344,7 @@ Package rerunfilecheck Info: File `E03.1.AC.out' has not changed.
 Here is how much of TeX's memory you used:
  55697 strings out of 479713
  1366028 string characters out of 5876923
- 2180988 words of memory out of 10000000
+ 2180990 words of memory out of 10000000
  72664 multiletter control sequences out of 15000+600000
  417592 words of font info for 66 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
@@ -1367,7 +1367,7 @@ b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texl
 ive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/t
 exmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/
 fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on E03.1.AC.pdf (9 pages, 674657 bytes).
+Output written on E03.1.AC.pdf (9 pages, 674871 bytes).
 PDF statistics:
  293 PDF objects out of 1000 (max. 8388607)
  226 compressed objects within 3 object streams

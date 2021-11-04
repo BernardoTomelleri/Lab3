@@ -31,7 +31,7 @@ $R_{E_p}$	  & 992		& 8      & $C\ped{out}$ & 104 n			 & 4	\\
 $R_{E_q}$	  & 993		& 8      & $C_E$        & 90 $\rm \mu$	 & 5	\\
 $R_{E}$		  & 496		& 4      &              &				 &		\\
 $R_{1_s}$	  & 19.87 k & 0.16 k &              &				 &		\\
-$R_{1_t}$	  & 50.5 k  & 8 k	 &              &				 &		\\
+$R_{1_t}$	  & 50 k  & 8 k	 &              &				 &		\\
 $R_1$		  & 70.4 k  & 0.6 k	 &              &				 &		\\
 $R_2$		  & 9.93 k  & 0.08 k &              &				 &		\\
 $R\ped{es_p}$ & 100.5	& 0.8    &				&				 &		\\
@@ -99,9 +99,9 @@ della giunzione $V_{CE}^Q$ non si trova altrettanto vicina alla metà attesa.
 Questo comporterà un'asimmetria nella risposta a segnali alternanti di
 ampiezza $v\ped{in}$ abbastanza grande da portare l'amplificatore in regime
 non lineare. Infatti, al crescere di $v\ped{in}$, ci aspettiamo di incontrare
-prima il regime di saturazione del transistor $V_{BC} \sim V_\gamma$ di quello
-di interdizione.
-  
+prima il regime di saturazione del transistor $V_{CE} < V_\gamma \; \si{\V}$,
+$V_{BE} \sim V_\gamma$ di quello di interdizione.
+
 \subsection{Tensioni ai terminali del BJT}
 Con il multimetro digitale abbiamo misurato rispetto a $V_{EE}$
 \begin{align*}
@@ -320,7 +320,7 @@ R_{S_s} + R_{S_t} + R_{S_u} =
 Per cui, avendo misurato $V_1 = 1916 \pm 11 \; \si{m\V}$ e
 $V_2 = 1011 \pm 7 \; \si{m\V}$, troviamo come resistenza in ingresso:
 \begin{align*}
-{R\ped{in}} &= \frac{R_S}{V_1/V_2 - 1} = 8.26 \pm 0.07
+{R\ped{in}} &= \frac{R_S}{V_1/V_2 - 1} = 8.26 \pm 0.17
 \end{align*}
 Che è compatibile (entro le incertezze con cui sono noti i parametri del
 transistor $\sim 10 \%$) con il valore atteso dalla \eqref{eq: Zin}.
@@ -339,13 +339,13 @@ con $R_L$, vale la formula:
 \begin{equation}\label{eq: Zout}
 \frac{R\ped{out}}{R_L} = \frac{V_1}{V_2} -1
 \end{equation}
-Per cui, una volta misurate $V_1 = \pm \; \si{m\V}$ e
-$V_2 = \pm \; \si{m\V}$, abbiamo ottenuto come resistenza in ingresso:
+Per cui, una volta misurate $V_1 = 1725 \pm 8 \; \si{m\V}$,
+$V_2 = 866 \pm 4\; \si{m\V}$ e $R_L = 5.08 \pm 0.05 \si{k\ohm}$ abbiamo ottenuto come impedenza d'uscita:
 \[
 R\ped{out} = R_L \left(\frac{V_1}{V_2} - 1\right)
 \]
 
-Che risulta
+Risulta $R\ped{out} = 5.0 \pm 0.1\; \si{k\ohm}$ che è compatibile con la stima iniziale dell'impedenza.
 %=======================
 \section{Risposta in frequenza}
 
@@ -466,7 +466,7 @@ serie a quella del ramo $Z_E$ avremo come valore atteso per il guadagno
 A_v = \frac{R_C}{\abs{Z_E} + h_{ie}/h_{fe}} \approx 60
 \end{equation}
 
-Che è perfettamente in accordo con il valore misurato per il guadagno sempre
+Che è in buon accordo con il valore misurato per il guadagno sempre
 entro le grandi incertezze relative sui parametri di costruzione del
 transistor.
 
