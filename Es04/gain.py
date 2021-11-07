@@ -9,12 +9,12 @@ from phylab import (np, plt, grid, tick, mesrange, propfit, errcor, prnpar, chit
 import phylab as lab
 
 ''' Variables that control the script '''
-tix = False  # manually choose spacing between axis ticks
+tix = True  # manually choose spacing between axis ticks
 tex = True  # LaTeX typesetting maths and descriptions
 
 # Modello lineare
-def lin(x, m=1):
-    return m*x
+def lin(x, m=1, q=0):
+    return m*x + q
 
 vin, dvin, vout, dvout = np.loadtxt('./data/Av.txt', float, unpack=True)
 v_min = 0; v_max = 3
@@ -29,7 +29,7 @@ grid(ax, xlab=r'Input amplitude $v_{\rm in}$ [V]', ylab=r'Output amplitude $v_{\
 ax.errorbar(x, y, dy, dx, 'k.', ls='-', ms=2, alpha=0.8)
 
 # linear fit
-init = [10]
+init = [7, 0]
 model = lin
 
 pars, covm, deff = propfit(model, x, y, dx, dy, p0=init, alg='lm', max_iter=3)
@@ -40,8 +40,8 @@ chisq, ndof, resn = chitest(model(x, *pars), y, unc=deff, ddof=len(pars), v=True
 # linear fit graphs
 fig, (axf, axr) = pltfitres(model, x, y, dx, deff, pars=pars)
 axf.set_ylabel(r'Output amplitude $v_{\rm out}$ [V]')
-if tix: tick(axf, xmaj=5, ymaj=50)
+if tix: tick(axf, xmaj=5, ymaj=1)
 
 axr.set_xlabel(r'Input amplitude $v_{\rm in}$ [V]', x=0.8)
-if tix: tick(axr, xmaj=5, ymaj=2, ymin=0.5)
+if tix: tick(axr, xmaj=0.1, ymaj=1, ymin=0.2)
 legend = axf.legend(loc='best')
