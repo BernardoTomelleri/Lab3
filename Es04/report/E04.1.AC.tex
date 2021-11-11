@@ -29,7 +29,7 @@ $\sigma C$ \\
 $R_1$	  & 998 	& 8 	 & $C$ & 50			 & 2 \\
 $R_2^a$	  & 7.04	& 0.06 	 & & &	\\
 $R_2^f$	  & 9.85 k	& 0.08 k & & &	\\
-$R_3$	  & 998		& 8		 & & &	\\
+$R_S$	  & 998		& 8		 & & &	\\
 \bottomrule     
 \end{tabular}
 \caption{Valori di resistenza e capacità misurate per i componenti dei
@@ -43,9 +43,9 @@ $\sigma C$ \\
 \midrule
 $R_1$	  & 993 	& 8 	 & $C$ & 48			 & 2 \\
 $R_2^a$	  & 5.09 k	& 0.04 k 	 & & &	\\
-$R_2^f$	  & 9.85 k		& 0.08 k & 		& 		 &	\\
-$R_3$	  & 998		& 8		 &				&				 &		\\
-$R_L$	  & 992		& 8		 &				&				 &		\\
+$R_2^f$	  & 9.94 k		& 0.08 k & 		& 		 &	\\
+$R_3$	  & 993		& 8		 &				&				 &		\\
+$R_S$	  & 992		& 8		 &				&				 &		\\
 \bottomrule     
 \end{tabular}
 \caption{Valori di resistenza e capacità misurate per i componenti dei
@@ -104,65 +104,19 @@ $\SI{5}{k\ohm} \leq R_2 \leq \SI{10}{k\ohm}$, di conseguenza scegliamo
 $R_2 = 5.1 \pm 1\% \; \si{k\ohm}$, che corrisponde ad un guadagno
 di centro banda $A\ped{v, atteso} = 5.1 \pm 2\%$ 
 
-Con il multimetro digitale abbiamo misurato
-\begin{align*}
-V_{BE}^Q &= 630 \pm 4 \; \si{m\V} \\
-V_{CE}^Q &= 3.67 \pm 0.03 \; \si{\V} \\
-I_C^Q &= \frac{\Delta V_{R_C}}{R_C} = 1.134 \pm 0.011 \; \si{m\A} \\
-\end{align*}
-
-Prendendo come riferimento (arbitrario) il valore per la tensione di soglia
-della giunzione BE $V_\gamma = 0.6 \pm 0.1 \; \si{\V}$ e come valore atteso
-per la tensione al terminale di base del transistor
-$\ds V\ped{B, exp} = \frac{V_{CC} - V_{EE}}{1 + R_1/R_2}$, ci aspettiamo di
-trovare
-\begin{align*}
-V\ped{BE, exp}^Q &\approx V_\gamma = 0.6 \pm 0.1 \; \si{\V} \\
-I\ped{C, exp}^Q &= \frac{V_B - V_{BE}^Q}{R_E + R_B/h_{FE}} =
-1.09 \pm 0.05 \si{\m\A} \\
-V\ped{CE, exp}^Q &= (V_{CC} - V_{EE}) - I_C^Q(R_C + R_E) = 3.9 \pm 0.2 \;
-\si{\V}
-\end{align*}
-
-Se consideriamo l'equazione della retta di carico del BJT, indicando con
-$V_0 = V_{CC} - V_{EE}$ la tensione di alimentazione,
-\begin{equation*}
-V_{CE}^Q = V_0 + R_C I_C^Q
-\end{equation*}
-per assicurarci che il transistor sia in mezzo alla zona attiva possiamo
-richiedere che le componenti quiescenti della curva caratteristica siano a
-metà tra i propri valori minimi $(0)$ e massimi, che corrispondono alle
-intercette con gli assi della caratteristica di collettore $V_0$ e $V_0/R_C$.
-In breve
-\begin{align*}
-V^Q\ped{CE, ideale} &= \frac{V0}{2} \approx 5 \; \si{\V} \\
-I^Q\ped{C, ideale} &= \frac{V_0}{2R_C} \approx 1 \; \si{\mA}
-\end{align*}
-
-Per cui vediamo che l'intensità di corrente di collettore $I_C^Q$ misurata è
-compatibile entro il $10 \%$ con il valore ideale, mentre la tensione ai capi
-della giunzione $V_{CE}^Q$ non si trova altrettanto vicina alla metà attesa.
-Questo comporterà un'asimmetria nella risposta a segnali alternanti di
-ampiezza $v\ped{in}$ abbastanza grande da portare l'amplificatore in regime
-non lineare. Infatti, al crescere di $v\ped{in}$, ci aspettiamo di incontrare
-prima il regime di saturazione del transistor $V_{CE} < V_\gamma \; \si{\V}$,
-$V_{BE} \sim V_\gamma$ di quello di interdizione.
-
 \subsection{Amplificazione di piccoli segnali}
-Si è inviato all'ingresso dell'amplificatore un segnale sinusoidale di
-ampiezza $v\ped{in} = \SI{200}{m\V}$ e frequenza $\SI{5}{k\Hz}$.
+Si è inviato all'ingresso di entrambi i circuiti un segnale sinusoidale di
+ampiezza $v\ped{in} = 200 \pm 2 \; \si{m\V}$ ad una frequenza fissata
+$5.02 \pm 0.06 \; \si{k\Hz}$.
 
-Dunque abbiamo misurato l'ampiezza del segnale in uscita
-$v\ped{out} = \pm \; \si{\V}$, ottenendo così una stima del guadagno del
-circuito amplificatore $A_v = \dfrac{v\ped{out}}{v\ped{in}} = \pm $.
+Dunque abbiamo misurato l'ampiezza del segnale in uscita dal circuito con
+$R_2^a = \SI{5.1}{k\ohm}$, che risulta $v\ped{out} = 1022 \pm 8 \; \si{m\V}$,
+ottenendo così una stima del guadagno dell'amplificatore
+$A_v = \dfrac{v\ped{out}}{v\ped{in}} = 5.11 \pm 0.06 $.
 
-Come valori attesi otteniamo
-\begin{align*}
-V\ped{E, exp} &= R_E I_E \approx R_E I\ped{C, exp}^Q = 0.54 \pm 0.2 \; \si{\V} \\
-V\ped{B, exp} &= \frac{V_{CC} - V_{EE}}{1 + R_1/R_2} = 1.24 \pm 0.13 \; \si{\V}
-\\
-V\ped{C, exp} &= R_C I\ped{C, exp}^Q = 5.5 \pm 0.2 \; \si{V} \\
-\end{align*}
+Mentre per il circuito con $R_2^a = \SI{7}{k\ohm}$ si trova
+$v\ped{out} = 1411 \pm 8 \; \si{m\V}$, che corrisponde ad un guadagno di
+$A_v = \dfrac{v\ped{out}}{v\ped{in}} = 7.06 \pm 0.06$.
 
 \subsection{Misure di guadagno al variare di $v\ped{in}$}
 Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
@@ -205,11 +159,11 @@ $v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & $v\ped{o
 80 & $79.9 \pm 1.1$ & $564 \pm 3 \; \si{m}$ & $7.06 \pm 0.06$ \\
 100 & $100.1 \pm 1.2$ & $705 \pm 4 \; \si{m}$ & $7.04 \pm 0.06$ \\
 200 & $200 \pm 2$ & $1412 \pm 8 \; \si{m}$ & $7.06 \pm 0.06$ \\
-400 & $300 \pm 3$ & $2882 \pm 17 \; \si{m}$ & $7.04 \pm 0.06$ \\
-600 & $300 \pm 3$ & $4.24 \pm 0.02$ & $7.05 \pm 0.06$ \\
-800 & $300 \pm 3$ & $5.78 \pm 0.03$ & $7.21 \pm 0.06$ \\
-900 & $300 \pm 3$ & $6.32 \pm 0.04$ & $7.00 \pm 0.06$ \\
-1000 & $300 \pm 3$ & $7.04 \pm 0.04$ & $7.02 \pm 0.06$ \\
+400 & $401 \pm 3$ & $2882 \pm 17 \; \si{m}$ & $7.04 \pm 0.06$ \\
+600 & $601 \pm 5$ & $4.24 \pm 0.02$ & $7.05 \pm 0.06$ \\
+800 & $801 \pm 6$ & $5.78 \pm 0.03$ & $7.21 \pm 0.06$ \\
+900 & $900 \pm 6$ & $6.32 \pm 0.04$ & $7.00 \pm 0.06$ \\
+1000 & $1000 \pm 7$ & $7.04 \pm 0.04$ & $7.02 \pm 0.06$ \\
 \bottomrule
 \end{tabular} 
 \caption{Misure di guadagno al variare della tensione in ingresso
@@ -397,7 +351,8 @@ Risulta $R\ped{out} = 5.0 \pm 0.1\; \si{k\ohm}$ che è compatibile con la stima 
 %=======================
 \section{Circuito integratore attivo}
 \subsection{Risposta in frequenza}
-$f_c = 337.5 \pm 0.5 \; \si{\Hz}$
+$A_M = 19.92 \pm 0.09 \; \si{dB}$
+$f_c = 342.5 \pm 0.5 \; \si{\Hz}$
 \begin{figure}[htb]
 \centering
 \includegraphics[scale=0.35]{bode integratore}
@@ -409,7 +364,7 @@ attivo di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
 
 \subsection{Risposta ad un'onda quadra @ 10 kHz}
 Si è inviato all'ingresso del filtro passa-basso un'onda quadra di
-ampiezza $v\ped{in} = \SI{200}{m\V}$ e frequenza $\SI{10}{k\Hz}$.
+ampiezza $v\ped{in} = \SI{200}{m\V}$ e frequenza $10.02 \pm 0.12 \; \si{k\Hz}$.
 
 $$v\ped{in} = 200 \pm 2 \; \si{m\V}$$
 $$v\ped{out} = 107.3 \pm 1.3 \; \si{m\V}$$

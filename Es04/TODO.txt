@@ -1,0 +1,14 @@
+[] Grafico guadagno con punti fuori regime lineare
+[] Misura frequenza taglio amplificatore invertente e confronto
+
+[] Misura frequenza taglio derivatore e confronto
+[] Diversi regimi al variare della frequenza per il derivatore HPF
+[] Confronto valori attesi e funzione di R1 per il derivatore
+
+[] Misura frequenza taglio integratore e confronto. Funzione di R2
+[] Scrivere due cazzate sui regimi al variare della frequenza per l'integratore LPF
+[] Spiegazione dell'origine dei picchi nei triangoli
+
+[] Plot di Bode per 3 valori di resistenza POT1
+[] Sovrapposizione dei grafici e confronto con prodotto banda-guadagno
+
