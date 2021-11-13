@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  11 NOV 2021 16:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  13 NOV 2021 17:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1167,14 +1167,7 @@ LaTeX Font Info:    Trying to load font information for T1+txtt on input line 6
 
 (c:/texlive/2021/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
-)) (../../latex/math.tex) (./E04.1.AC.aux
-
-LaTeX Warning: Label `tab: bjtmes' multiply defined.
-
-
-LaTeX Warning: Label `tab: bjtmes@cref' multiply defined.
-
-)
+)) (../../latex/math.tex) (./E04.1.AC.aux)
 \openout1 = `E04.1.AC.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
@@ -1316,61 +1309,72 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 121.
 
-<../figs//gain5k1.pdf, id=99, 604.89992pt x 370.74509pt>
+<../figs//gain5k1.pdf, id=99, 662.7159pt x 397.485pt>
 File: ../figs//gain5k1.pdf Graphic file (type pdf)
 <use ../figs//gain5k1.pdf>
-Package pdftex.def Info: ../figs//gain5k1.pdf  used on input line 177.
-(pdftex.def)             Requested size: 423.42705pt x 259.51978pt.
+Package pdftex.def Info: ../figs//gain5k1.pdf  used on input line 187.
+(pdftex.def)             Requested size: 463.89796pt x 278.2376pt.
 [2]
-<../figs//opampbode.png, id=110, 1152.7065pt x 553.46774pt>
+<../figs//gainsat.pdf, id=109, 661.99323pt x 396.7623pt>
+File: ../figs//gainsat.pdf Graphic file (type pdf)
+<use ../figs//gainsat.pdf>
+Package pdftex.def Info: ../figs//gainsat.pdf  used on input line 210.
+(pdftex.def)             Requested size: 463.3921pt x 277.7317pt.
+ [3 <../figs//gain5k1.pdf>]
+<../figs//opampbode.png, id=146, 1152.7065pt x 553.46774pt>
 File: ../figs//opampbode.png Graphic file (type png)
 <use ../figs//opampbode.png>
-Package pdftex.def Info: ../figs//opampbode.png  used on input line 229.
+Package pdftex.def Info: ../figs//opampbode.png  used on input line 250.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
- [3 <../figs//gain5k1.pdf>]
-<../figs//slew.png, id=147, 1301.61281pt x 458.46281pt>
+ [4 <../figs//gainsat.pdf>]
+<../figs//slew.png, id=174, 1301.61281pt x 458.46281pt>
 File: ../figs//slew.png Graphic file (type png)
 <use ../figs//slew.png>
-Package pdftex.def Info: ../figs//slew.png  used on input line 275.
+Package pdftex.def Info: ../figs//slew.png  used on input line 296.
 (pdftex.def)             Requested size: 455.5713pt x 160.46439pt.
- [4 <../figs//opampbode.png (PNG copy)>]
-<../figs//bode derivatore.png, id=155, 1152.7065pt x 553.46774pt>
+ [5 <../figs//opampbode.png (PNG copy)> <../figs//slew.png (PNG copy)>]
+<../figs//bode derivatore.png, id=182, 1152.7065pt x 553.46774pt>
 File: ../figs//bode derivatore.png Graphic file (type png)
 <use ../figs//bode derivatore.png>
-Package pdftex.def Info: ../figs//bode derivatore.png  used on input line 300.
+Package pdftex.def Info: ../figs//bode derivatore.png  used on input line 328.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//derivatore.png, id=156, 1152.7065pt x 553.46774pt>
+<../figs//derivatore.png, id=183, 1152.7065pt x 553.46774pt>
 File: ../figs//derivatore.png Graphic file (type png)
 <use ../figs//derivatore.png>
-Package pdftex.def Info: ../figs//derivatore.png  used on input line 327.
+Package pdftex.def Info: ../figs//derivatore.png  used on input line 355.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
- [5 <../figs//slew.png (PNG copy)> <../figs//bode derivatore.png (PNG copy)>]
-<../figs//bode integratore.png, id=165, 1152.7065pt x 553.46774pt>
+ [6 <../figs//bode derivatore.png (PNG copy)>]
+<../figs//bode integratore.png, id=192, 1152.7065pt x 553.46774pt>
 File: ../figs//bode integratore.png Graphic file (type png)
 <use ../figs//bode integratore.png>
-Package pdftex.def Info: ../figs//bode integratore.png  used on input line 358.
+Package pdftex.def Info: ../figs//bode integratore.png  used on input line 391.
 
 (pdftex.def)             Requested size: 403.45332pt x 193.7166pt.
- [6 <../figs//derivatore.png (PNG copy)> <../figs//bode integratore.png (PNG co
+ [7 <../figs//derivatore.png (PNG copy)> <../figs//bode integratore.png (PNG co
 py)>]
-<../figs//integratore.png, id=174, 1152.7065pt x 553.46774pt>
+<../figs//integratore.png, id=200, 1152.7065pt x 553.46774pt>
 File: ../figs//integratore.png Graphic file (type png)
 <use ../figs//integratore.png>
-Package pdftex.def Info: ../figs//integratore.png  used on input line 375.
+Package pdftex.def Info: ../figs//integratore.png  used on input line 408.
 (pdftex.def)             Requested size: 386.16347pt x 185.41495pt.
+<../figs//intfin.png, id=201, 1301.61281pt x 642.14906pt>
+File: ../figs//intfin.png Graphic file (type png)
+<use ../figs//intfin.png>
+Package pdftex.def Info: ../figs//intfin.png  used on input line 451.
+(pdftex.def)             Requested size: 436.04796pt x 215.12372pt.
+ [8 <../figs//integratore.png (PNG copy)>] [9 <../figs//intfin.png (PNG copy)>]
+ [10] (./E04.1.AC.aux)
 
-[7 <../figs//integratore.png (PNG copy)>] [8] (./E04.1.AC.aux)
-
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `E04.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: FBDE46C08C339DD6E634470177E7669A;3673.
  ) 
 Here is how much of TeX's memory you used:
- 56331 strings out of 479713
- 1382593 string characters out of 5876923
- 2186990 words of memory out of 10000000
- 73284 multiletter control sequences out of 15000+600000
+ 56361 strings out of 479713
+ 1383190 string characters out of 5876923
+ 2188990 words of memory out of 10000000
+ 73310 multiletter control sequences out of 15000+600000
  420349 words of font info for 75 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,11n,125p,754b,986s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1392,10 +1396,10 @@ ts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx120
 texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/20
 21/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-d
 ist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on E04.1.AC.pdf (8 pages, 784938 bytes).
+Output written on E04.1.AC.pdf (10 pages, 848333 bytes).
 PDF statistics:
- 278 PDF objects out of 1000 (max. 8388607)
- 216 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 500000)
- 192 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 310 PDF objects out of 1000 (max. 8388607)
+ 239 compressed objects within 3 object streams
+ 52 named destinations out of 1000 (max. 500000)
+ 202 words of extra memory for PDF output out of 10000 (max. 10000000)
 
