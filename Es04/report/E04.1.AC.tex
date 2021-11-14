@@ -95,8 +95,12 @@ e $10$ come quello in figura \ref{fig: ampschm}
 
 In condizione di op-amp ideale gli ingressi $+, -$ sono dei circuiti aperti,
 per cui la stessa corrente scorre attraverso $R_1$ ed $R_2$:
-$V_+ = V_- \approx 0 \implies R\ped{in} \approx R_1$, allora per
-soddisfare la richiesta $5 \leq A_v \leq 10$ basta imporre
+$V_+ = V_- \approx 0$.
+Questo implica che
+\begin{equation}\label{eq: Zin}
+R\ped{in} \approx R_1
+\end{equation}
+allora per soddisfare la richiesta $5 \leq A_v \leq 10$ basta imporre
 $5 R_1 \leq R_2 \leq 10 R_1$.
 
 Dunque una volta fissata $R_1 = 1 \pm 1\% \; \si{k\ohm}$, dobbiamo avere
@@ -117,6 +121,33 @@ $A_v = \dfrac{v\ped{out}}{v\ped{in}} = 5.11 \pm 0.06 $.
 Mentre per il circuito con $R_2^a = \SI{7}{k\ohm}$ si trova
 $v\ped{out} = 1411 \pm 8 \; \si{m\V}$, che corrisponde ad un guadagno di
 $A_v = \dfrac{v\ped{out}}{v\ped{in}} = 7.06 \pm 0.06$.
+
+Se i due segnali sono in opposizione di fase il passaggio per 0 con la stessa
+pendenza/slope devono distare un semi-periodo dall'altro; come si vede bene
+dalla figura \ref{fig: Alin} in cui ai massimi del segnale in ingresso (la
+traccia gialla) corrispondono i minimi del segnale in uscita (la traccia blu)
+\begin{figure}[htb]
+\centering
+%\includegraphics[scale=0.335]{Alin200mV}
+\caption{Risposta del circuito ad un segnale sinusoidale di ampiezza
+$\SI{200}{m\V}$ e $f = \SI{1}{k\Hz}$ in ingresso. Quando l'amplificatore
+è in pieno regime attivo. \label{fig: Alin}}
+\end{figure}
+
+Da una misura con i cursori troviamo
+\begin{align*}
+\Delta t &= 50.2 \pm 1.0 \; \si{n\s}\\
+\Delta \phi &= 2\pi f \Delta t = 3.14 \pm 0.06 \; \si{\radian}
+\end{align*}
+
+mentre con la funzione di misura automatica definita con uno script di Wavegen
+risulta:
+\[
+\phi = 179.63 \pm 0.10 \; \si{\degree}
+\]
+
+che sono entrambi compatibili con il valore atteso di $\Delta \phi\ped{exp}
+= \pi \; \si{\radian}$ per la natura invertente dell'amplificatore.
 
 \subsection{Misure di guadagno al variare di $v\ped{in}$}
 Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
@@ -141,7 +172,7 @@ $v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & $v\ped{o
 500 & $499 \pm 4$ & $2.56 \pm 0.02$ & $5.13 \pm 0.06$ \\
 550 & $549 \pm 4$ & $2.82 \pm 0.02$ & $5.13 \pm 0.06$ \\
 600 & $599 \pm 5$ & $3.07 \pm 0.02$ & $5.13 \pm 0.06$ \\
-\rule{0pt}{3ex}
+\\
 700 & $699 \pm 6$ & $3.55 \pm 0.03$ & $5.07 \pm 0.06$ \\
 800 & $799 \pm 6$ & $3.82 \pm 0.03$ & $4.78 \pm 0.05$ \\
 900 & $899 \pm 7$ & $3.86 \pm 0.03$ & $4.28 \pm 0.05$ \\
@@ -154,7 +185,10 @@ $v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & $v\ped{o
 \bottomrule
 \end{tabular} 
 \caption{Misure di guadagno al variare della tensione in ingresso
-all'amplificatore con $R_2^a = 5.1$k \label{tab: gain_B}}
+all'amplificatore con $R_2^a = 5.1 \; \si{k\ohm}$. Oltre i \SI{600}{m\V} di
+ampiezza del segnale in ingresso la forma d'onda in uscita inizia a
+manifestare difetti dovuti al clipping dell'op-amp al di fuori del regime
+lineare. \label{tab: gain_B}}
 \end{table}
 
 \begin{table}[htb]
@@ -203,21 +237,23 @@ A\ped{v, exp} = -\frac{R_2}{R_1} = - 5.13 \pm 0.12
 \]
 Questo è compatibile con quanto trovato sperimentalmente, specialmente
 tenendo conto della notevole indeterminazione sul valore dei parametri di
-costruzione dell'opamp.
+costruzione dell'op-amp.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[scale=0.7]{gainsat}
 \caption{Andamento reale dell'uscita al variare dell'ampiezza del segnale in
-ingresso oltre il regime lineare dell'amplificatore. \label{fig: gainsat}}
+ingresso oltre il regime lineare dell'amplificatore misurati per il circuito
+con $R_2^a = 5.1 \; \si{k\ohm}$ \label{fig: gainsat}}
 \end{figure}
+
 \subsection{Impedenza in ingresso}
 Inserendo in serie al generatore una resistenza $R_S$ dello stesso ordine di
 $R\ped{in}$ attesa e misurando la tensione in uscita con o senza $R_S$ è
 possibile dare un stima della resistenza in ingresso del circuito.
 Detta $V_1$ la tensione $V\ped{out}$ misurata senza $R_S$ e $V_2$ la tensione
 misurata con $R_S$ inserita, vale l'equazione:
-\begin{equation}\label{eq: Zin}
+\begin{equation}\label{eq: RS}
 \frac{R_S}{R\ped{in}} = \frac{V_1}{V_2} - 1
 \end{equation}
 Abbiamo preso come $R_S$ un'altra resistenza da $1 \pm 10\% \; \si{k\ohm}$
@@ -226,15 +262,16 @@ $V_2 = 2.822 \pm 0.017 \; \si{\V}$, troviamo come resistenza in ingresso:
 \begin{align*}
 {R\ped{in}} &= \frac{R_S}{V_1/V_2 - 1} = 1.00 \pm 0.02 \; \si{k\ohm}
 \end{align*}
-Che è compatibile entro l'incertezza con il valore atteso dalla
-\eqref{eq: Zin}.
 
-Per l'amplificatore di guadagno 5,
-Per cui, avendo misurato $V_1 = 1022 \pm 8 \; \si{m\V}$ e
-$V_2 = 512 \pm 4 \; \si{m\V}$, troviamo come resistenza in ingresso:
+Dunque per l'amplificatore di guadagno $5.1$ abbiamo misurato
+$V_1 = 1022 \pm 8 \; \si{m\V}$ e $V_2 = 512 \pm 4 \; \si{m\V}$, cioè come
+resistenza in ingresso si ha:
 \begin{align*}
 {R\ped{in}} &= \frac{R_S}{V_1/V_2 - 1} = 0.99 \pm 0.02 \; \si{k\ohm}
 \end{align*}
+
+Il che risulta compatibile entro l'incertezza con il valore atteso dalla
+\eqref{eq: Zin} per entrambi gli amplificatori invertenti.
 
 \section{Risposta in frequenza e slew rate}
 \subsection{Network analyzer}
@@ -253,37 +290,11 @@ $\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso all'amplificatore
 invertente di ampiezza costante $v\ped{in} = \SI{200}{m\V}$. \label{fig: invbode}}
 \end{figure}
 
-Se i due segnali sono in opposizione di fase il passaggio per 0 con la stessa
-pendenza/slope devono distare un semi-periodo dall'altro; come si vede bene
-dalla figura \ref{fig: Alin} in cui ai massimi del segnale in ingresso (la
-traccia gialla) corrispondono i minimi del segnale in uscita (la traccia blu)
-\begin{figure}[htb]
-\centering
-%\includegraphics[scale=0.335]{Alin200mV}
-\caption{Risposta del circuito ad un segnale sinusoidale di ampiezza
-$\SI{200}{m\V}$ e $f = \SI{1}{k\Hz}$ in ingresso. Quando l'amplificatore
-è in pieno regime attivo. \label{fig: Alin}}
-\end{figure}
-
-Da una misura con i cursori troviamo
-\begin{align*}
-\Delta t &= 50.2 \pm 1.0 \; \si{n\s}\\
-\Delta \phi &= 2\pi f \Delta t = 3.14 \pm 0.06 \; \si{\radian}
-\end{align*}
-
-mentre con la funzione di misura automatica definita con uno script di Wavegen
-risulta:
-\[
-\phi = 179.63 \pm 0.10 \; \si{\degree}
-\]
-
-che sono entrambi compatibili con il valore atteso di $\Delta \phi\ped{exp}
-= \pi \; \si{\radian}$ per la natura invertente dell'amplificatore.
-
 \subsection{Misura dello slew rate}
 Abbiamo inviato in ingresso all'amplificatore un'onda quadra di ampiezza
-$\SI{2}{\V}$, al fronte di discesa dell'onda abbiamo trovato una rampa come
-segnale in uscita, la cui pendenza è proprio lo slew rate dell'amplificatore.
+$1999 \pm 15 \; \si{m\V}$ e frequenza $1000 \pm 16 \; \si{\Hz}$, al fronte di
+discesa dell'onda abbiamo trovato una rampa come segnale in uscita, la cui
+pendenza corrisponde proprio allo slew rate dell'amplificatore.
 
 Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
 e in uscita $v\ped{out}$ dall'amplificatore possiamo ricavare una misura del
@@ -315,46 +326,65 @@ tenendo conto della notevole indeterminazione sul valore dei parametri di
 costruzione del transistor.
 
 \section{Circuito derivatore attivo}
-Sempre usando i cursori abbiamo misurato come guadagno a centro banda
-per il circuito derivatore $A_M =  \pm  \; \si{dB}$.
-
-Dunque abbiamo ricavato una stima della frequenza di taglio dell'amplificatore
-invertente dal punto in cui il guadagno diminuisce di $-3.01 \; \si{dB}$
-rispetto ad $A_M$:
-$f_c = \pm  \; \si{\Hz}$
 \subsection{Risposta in frequenza}
+Sempre usando i cursori abbiamo misurato come guadagno a centro banda
+per il circuito derivatore $A_M = 20.02 \pm  0.09 \; \si{dB}$.
+
+Dunque abbiamo ricavato una stima delle frequenze di taglio del circuito dai
+due punti in cui il guadagno diminuisce di $-3.01 \; \si{dB}$ rispetto a
+centro banda:
+$f_c = 3408 \pm 11 \; \si{\Hz}$ e $f_A = 209.5 \pm 1.3 \; \si{k\Hz}$.
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=0.4]{bode derivatore}
+\includegraphics[scale=0.4]{hpfbode}
 \caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{100}{\Hz}$ e
 $\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso al derivatore RC attivo
 di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
 \label{fig: derbode}}
 \end{figure}
 
-Come valore atteso per l'impedenza in ingresso al circuito abbiamo:
-\[
-Z\ped{in}(\omega) =
-h_{ie} + h_{fe}Z_E(\omega) \; \lvert\rvert \; R_B =
-\left(\frac{1}{h_{ie} + h_{fe}Z_E} + \frac{1}{R_1} + \frac{1}{R_2}\right)^{-1}
-= 7.5 \pm 10\% \; \si{k\ohm} 
-\]
-
-dove abbiamo indicato con $Z_E(\omega)$ l'impedenza del ramo di emettitore,
-che nel nostro circuito vale $Z_E = R_E$; meno che nel punto 5, dove in
-parallelo a $R_E$ si aggiunge un passa alto costruito con $C_E + R\ped{es}$,
-per cui vale $Z_E(\omega) = R_E || \left(R\ped{es} + \frac{1}{j \omega C_E}
-\right)$.
 
 \subsection{Risposta ad un'onda triangolare}
 Si è inviato all'ingresso del filtro passa-alto un segnale triangolare di
-ampiezza $v\ped{in} = \SI{200}{m\V}$ e frequenza $\SI{5}{k\Hz}$.
+ampiezza $v\ped{in} = 200 \pm 2 \si{m\V}$ e frequenza
+$f = 100.0 \pm 1.6 \si{\Hz}$.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[scale=0.4]{derivatore}
 \caption{Risposta del circuito ad un segnale triangolare di ampiezza
-$\SI{200}{m\V}$ e $f = \SI{5}{k\Hz}$ in ingresso. \label{fig: dertrg}}
+$\SI{200}{m\V}$ e $f = \SI{100}{\Hz}$ in ingresso. \label{fig: dertrg}}
+\end{figure}
+
+Per frequenze $f \ll f_c$ il filtro è in regime di taglio, per cui si comporta
+come un derivatore, dunque la forma d'onda in uscita è un'onda quadra di
+ampiezza sempre minore al diminuire della frequenza.
+
+Per frequenze $f_c \ll f \ll f_A$ come ci si aspetta, la forma d'onda in uscita
+rimane visivamente inalterata rispetto all'onda triangolare in ingresso,
+che risulta però amplificata in ampiezza di un fattore $A_M \sim 10$.
+
+Nel regime intermedio $f \sim f_c$ all'uscita del filtro RC osserviamo un'onda
+"a pinna di squalo" caratteristica della carica e della scarica del
+condensatore con cui abbiamo costruito il nostro filtro passa-alto.
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.335]{derfin}
+\caption{Onda a pinna di squalo in risposta ad un triangolo di ampiezza
+$200 \pm 2 \; \si{m\V}$ e $f = 1000 \pm 16 \; \si{Hz}$ in ingresso al
+circuito derivatore. \label{fig: derfin}}
+\end{figure}
+
+Per frequenze $f \gg f_A$ il filtro torna in regime di taglio, ma ora si
+comporta grosso modo come un integratore, infatti la forma d'onda in uscita è
+costituita da una serie di parabole con concavità rivolte verso l'alto e verso
+il basso con ampiezza sempre minore all'aumentare della frequenza.
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.335]{derpar}
+\caption{Parabole con concavità alternanti in risposta ad un triangolo di
+ampiezza $200 \pm 2 \; \si{m\V}$ e $f = 1.00 \pm 0.02 \; \si{M\Hz}$ in ingresso
+al circuito derivatore. \label{fig: derpar}}
 \end{figure}
 
 Inserendo tra l'uscita e la massa una resistenza di carico $R_L$ dello stesso
@@ -443,7 +473,7 @@ come un integratore, dunque la forma d'onda in uscita è un'onda triangolare di
 ampiezza sempre minore al crescere della frequenza.
 
 Nel regime intermedio $f \sim f_c$ all'uscita del filtro RC osserviamo un'onda
-"a pinna di squalo" che corrispondono alle rampe di carica e scarica del
+"a pinna di squalo" che corrispondono alle curve di carica e scarica del
 condensatore al passaggio da basso ad alto e viceversa dell'onda quadra in
 ingresso.
 \begin{figure}[htb]
@@ -453,6 +483,7 @@ ingresso.
 $\SI{200}{m\V}$ e $f = 500 \pm 6 \; \si{Hz}$ in ingresso al circuito
 integratore. \label{fig: intfin}}
 \end{figure}
+
 \section{Circuito amplificatore non invertente}
 Per mitigare la diminuzione del guadagno dovuta alla resistenza tra emettitore
 e $V_{EE}$ si inserisce in parallelo a questa la serie $R\ped{es} + C_E$,
