@@ -26,7 +26,7 @@ Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
 $\sigma C$ \\
 \midrule
 \midrule
-$R_1$	  & 998 	& 8 	 & $C$ & 50			 & 2 \\
+$R_1$	  & 100.6 	& 0.8 	 & $C$ & 50			 & 2 \\
 $R_2^a$	  & 7.04	& 0.06 	 & & &	\\
 $R_2^f$	  & 9.85 k	& 0.08 k & & &	\\
 $R_S$	  & 998		& 8		 & & &	\\
@@ -61,6 +61,10 @@ V_{CC} &= 4.99 \pm 0.03 \si{\V} \\
 V_{EE} &= -4.99 \pm 0.03 \si{\V}
 \end{align*}
 
+Non è stato possibile misurare i valori di capacità dei condensatori nel
+circuito con il multimetro, che ha un rumore di fondo abbastanza alto da
+saturare sempre il fondo scala da $\SI{2}{n\F}$, per cui al posto delle loro
+misure prendiamo i valori nominali e relativa tolleranza.
 \section{Circuito amplificatore invertente}
 \subsection{Progettazione del circuito}
 Scegliamo di costruire un amplificatore invertente a partire da un op-amp
@@ -293,29 +297,11 @@ invertente di ampiezza costante $v\ped{in} = \SI{200}{m\V}$. \label{fig: invbode
 \end{figure}
 
 Per caratterizzare le frequenze di taglio misurate possiamo ricavare un valore
-atteso con cui confrontarle a partire dal valore del prodotto banda
-guadagno\footnote{Assumendo che il prodotto banda-guadagno sia costante,
-come frequenza di taglio attesa in funzione del guadagno dell'amplificatore
-abbiamo
-$f\ped{A, exp} = \mathrm{GBW}/A_v =
-\begin{cases}
-\SI{4}{M\Hz} / 5.1 \approx 780 \; \si{k\Hz} \\
-\SI{4}{M\Hz} / 7 \approx 570 \; \si{k\Hz}
-\end{cases}$.}
-(GBW) riportato nel datasheet dell'op-amp: $\SI{4}{M\Hz}$
-
-Già dai nostri dati notiamo però come il prodotto $A_v \cdot f_H$ valga
-\[
-A_M \cdot f_A = 
-\begin{dcases}
-5.12 \pm 0.05 \cdot 388.0 \pm 1.1 \; \si{k\Hz} = \pm \; \si{k\Hz} \\
-
-\end{dcases}
-\]
-che è circa la metà del valore tipico riportato senza incertezza per valori
-di tensioni di alimentazione +15 e -15 V.
-Quindi ci aspettiamo al più che le frequenze trovate siano prossime alla
-metà dei loro valori attesi.
+atteso con cui confrontarle a partire dal valore del prodotto banda guadagno
+(GBW) riportato nel datasheet dell'op-amp: $\SI{4}{M\Hz}$\footnote{Assumendo
+che il prodotto banda-guadagno sia costante, come frequenza di taglio
+attesa in funzione del guadagno dell'amplificatore abbiamo
+$f\ped{A, exp} = \mathrm{GBW}/A_v$}.
 
 \subsection{Misura dello slew rate}
 Abbiamo inviato in ingresso all'amplificatore un'onda quadra di ampiezza
