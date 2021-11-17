@@ -51,11 +51,8 @@ $R_S$	  & 992		& 8		 &				&				 &		\\
 \caption{Valori di resistenza e capacità misurate per i componenti dei
 circuiti studiati. \label{tab: rcmes_B}}
 \end{table}
-Riportiamo per completezza anche il valore calcolato della resistenza di base
-\[
-R_B = R_1 || R_2 = 8.70 \pm 0.07 \; \si{k\ohm}
-\]
-e i valori delle tensioni di alimentazione continue misurate con il multimetro
+Riportiamo per completezza anche i valori delle tensioni di alimentazione
+continue misurate con il multimetro
 \begin{align*}
 V_{CC} &= 4.99 \pm 0.03 \si{\V} \\
 V_{EE} &= -4.99 \pm 0.03 \si{\V}
@@ -216,8 +213,8 @@ Riportiamo quanto trovato per il primo circuito:
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.7]{gain5k1}
-\caption{Fit lineare per l'andamento dell'uscita rispetto al segnale in
-ingresso. \label{fig: gainfit}}
+\caption{Fit lineare per l'andamento dell'ampiezza misurata in uscita rispetto
+all'ampiezza del segnale in ingresso. \label{fig: gainfit}}
 \end{figure}
 Da cui troviamo i seguenti parametri per la retta di best-fit
 \begin{align*}
@@ -241,9 +238,10 @@ lineare
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.7]{gainsat}
-\caption{Andamento reale dell'uscita al variare dell'ampiezza del segnale in
-ingresso oltre il regime lineare dell'amplificatore misurati per il circuito
-con $R_2^a = 5.1 \; \si{k\ohm}$ \label{fig: gainsat}}
+\caption{Andamento reale dell'ampiezza del segnale in uscita al variare
+dell'ampiezza del segnale in ingresso, anche oltre il regime lineare
+dell'amplificatore misurati per il circuito con $R_2^a = 5.1 \; \si{k\ohm}$
+\label{fig: gainsat}}
 \end{figure}
 
 \subsection{Impedenza in ingresso}
@@ -308,14 +306,20 @@ Già dai nostri dati notiamo però come il prodotto $A_v \cdot f_H$ valga
 \[
 A_M \cdot f_A = 
 \begin{dcases}
-5.12 \pm 0.05 \cdot 388.0 \pm 1.1 \; \si{k\Hz} = \pm \; \si{k\Hz} \\
-
+(5.12 \pm 0.05) \cdot (388.0 \pm 1.1) \; \si{k\Hz} =
+1.99 \pm 0.02 \; \si{M\Hz} \\
+%
 \end{dcases}
 \]
 che è circa la metà del valore tipico riportato senza incertezza per valori
-di tensioni di alimentazione +15 e -15 V.
+di tensioni di alimentazione +15 e -15 V. Possiamo supporre che questo sia
+dovuto all'aver preso come tensioni di alimentazione $V_{CC}$ e $V_{EE}$
+pari a circa un terzo dei due valori tipici presi come riferimento nel
+datasheet.
+
 Quindi ci aspettiamo al più che le frequenze trovate siano prossime alla
-metà dei loro valori attesi.
+metà dei loro valori attesi, ma assolutamente non compatibili entro
+l'incertezza con il valore ottenuto dal GBW tipico.
 
 \subsection{Misura dello slew rate}
 Abbiamo inviato in ingresso all'amplificatore un'onda quadra di ampiezza
@@ -334,8 +338,8 @@ e $7$ risulta
 \frac{6.19 \pm 0.04 \; \si{\V}}{542 \pm 10 \; \si{n\s}}
 &= 11.4 \pm 0.2 \; \si{\V/\micro\s} \\
 \mathrm{SR} = \frac{\Delta V}{\Delta t} =
-\frac{4.10 \pm 0.04 \; \si{\V}}{354 \pm 10 \; \si{n\s}}
-&= 11.6 \pm 0.3 \; \si{\V/\micro\s}  
+\frac{4.10 \pm 0.03 \; \si{\V}}{354 \pm 10 \; \si{n\s}}
+&= 11.6 \pm 0.2 \; \si{\V/\micro\s}  
 \end{align*}
 
 \begin{figure}[htbp]
@@ -346,19 +350,30 @@ all'oscilloscopio da cui abbiamo ottenuto la misura diretta dello slew rate.
 \label{fig: slewrate}}
 \end{figure}
 
+Che di nuovo risultano sensibilmente inferiori rispetto al valore tipico
+riportato nel datasheet del TL081, $SR\ped{exp} = \SI{13}{\V/\micro\s}$,
+ma comunque compatibili con questo entro poco più del $10\%$. Come sopra
+possiamo ipotizzare che questo sia una conseguenza della scelta (forzata
+per limitazioni dell'AD2) delle tensioni di alimentazione $V_{CC}$ e $V_{EE}$
+dell'op-amp minori rispetto ai valori tipici.
+
 \section{Circuito derivatore attivo}
 \subsection{Risposta in frequenza}
-Sempre usando i cursori abbiamo misurato come guadagno a centro banda
-per i circuiti derivatori
+Partendo da una misura con i cursori del guadagno a centro banda per i
+circuiti derivatori attivi
 \begin{align*}
 A_M &= 20.02 \pm  0.09 \; \si{dB} \\
 A_M &= 20.01 \pm  0.09 \; \si{dB}
 \end{align*}
 
-Dunque abbiamo ricavato una stima delle frequenze di taglio del circuito dai
-due punti in cui il guadagno diminuisce di $-3.01 \; \si{dB}$ rispetto a
-centro banda:
-$f_c = 3408 \pm 11 \; \si{\Hz}$ e $f_A = 209 \pm 2 \; \si{k\Hz}$.
+possiamo ottenere una stima del valore delle frequenze di taglio a bassa
+$f_c$ e ad alta frequenza $f_A$ dai punti in cui il guadagno diminuisce di un
+fattore $1/\sqrt{2}$, cioè di circa $-3.01 \; \si{dB}$ rispetto ad $A_M$.
+\begin{align*}
+f_c &= 3408 \pm 11 \; \si{\Hz} \, ; \quad f_A = 209 \pm 2 \; \si{k\Hz} \\
+f_c &= \pm \; \si{\Hz} \, ; \quad f_A = \pm \; \si{k\Hz}
+\end{align*}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.36]{hpfbode}
@@ -368,7 +383,34 @@ di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
 \label{fig: derbode}}
 \end{figure}
 
-Assumendo che il prodotto banda-guadagno rimanga costante possiamo
+Assumendo che il prodotto banda-guadagno rimanga costante possiamo verificare
+che la frequenza di taglio alta sia dovuta alla limitazione di banda
+dell'op-amp reale, confrontandola con quella attesa per il guadagno $A_M$ del
+passa-alto attivo
+$f\ped{A, exp} = \mathrm{GBW}/A_M
+= (1.99 \pm 0.02 \; \si{M\Hz})/(10.00 \pm 0.10) = 199 \pm 2 \; \si{k\Hz}$.
+Questo è compatibile entro il $5\%$ con il valore di frequenza $f_A$ misurato,
+ma preferiamo controllare che la frequenza di taglio alta del passa-banda
+corrisponda proprio a quella di un amplificatore con guadagno 10 come ulteriore
+conferma.
+
+Quindi, una volta realizzato un nuovo amplificatore invertente con la
+stessa resistenza $R_2$ del filtro (i.e. scollegando il condensatore)
+misuriamo dal plot di Bode la frequenza di taglio con i cursori
+$f_H = 207.8 \pm 1.3 \; \si{k\Hz}$
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.36]{ampinv10}
+\caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{100}{\Hz}$ e
+$\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso all'amplificatore
+invertente (con $R_2^f=10$) di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
+\label{fig: ampinv10}}
+\end{figure}
+
+Questa è compatibile entro l'incertezza con $f_A$ misurata per il derivatore,
+per cui possiamo dire che il circuito si comporta come un passa-banda per via
+del limite in frequenza dell'op-amp, il quale determina la frequenza di taglio
+alta del filtro.
 
 \subsection{Risposta ad un'onda triangolare}
 Si è inviato all'ingresso del filtro passa-alto un segnale triangolare di
@@ -378,9 +420,21 @@ $f = 100.0 \pm 1.6 \si{\Hz}$.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.4]{derivatore}
-\caption{Risposta del circuito ad un segnale triangolare di ampiezza
+\caption{Risposta del circuito derivatore ad un segnale triangolare di ampiezza
 $\SI{200}{m\V}$ e $f = \SI{100}{\Hz}$ in ingresso. \label{fig: dertrg}}
 \end{figure}
+
+In uscita dai due circuiti abbiamo trovato un'onda quadra, come in figura
+\ref{fig: dertrg} di cui riportiamo le misure di ampiezza:
+\begin{align*}
+v\ped{out} &=  \pm  \si{m\V} \\
+v\ped{out} &=  \pm  \si{m\V}
+\end{align*}
+
+per cui effettivamente il segnale in uscita assume la forma della derivata
+del segnale in ingresso, con ampiezza ridotta di circa la metà
+$A_v = \nicefrac{v\ped{out}}{v\ped{in}} = \pm $, in accordo con
+quanto ci aspettiamo.
 
 Per frequenze $f \ll f_c$ il filtro è in regime di taglio, per cui si comporta
 come un derivatore, dunque la forma d'onda in uscita è un'onda quadra di
@@ -413,30 +467,17 @@ ampiezza $200 \pm 2 \; \si{m\V}$ e $f = 1.00 \pm 0.02 \; \si{M\Hz}$ in ingresso
 al circuito derivatore. \label{fig: derpar}}
 \end{figure}
 
-Inserendo tra l'uscita e la massa una resistenza di carico $R_L$ dello stesso
-ordine di $R\ped{out}$ e misurando la tensione di uscita con o senza
-resistenza è possibile dare una stima della resistenza in uscita
-dell'amplificatore.
-Detta $V_1$ la tensione misurata senza $R_L$ e $V_2$ la tensione misurata
-con $R_L$, vale la formula:
-\begin{equation}\label{eq: Zout}
-\frac{R\ped{out}}{R_L} = \frac{V_1}{V_2} -1
-\end{equation}
-Per cui, una volta misurate $V_1 = 1725 \pm 8 \; \si{m\V}$,
-$V_2 = 866 \pm 4\; \si{m\V}$ e $R_L = 5.08 \pm 0.05 \si{k\ohm}$ abbiamo ottenuto come impedenza d'uscita:
-\[
-R\ped{out} = R_L \left(\frac{V_1}{V_2} - 1\right)
-\]
-
-Risulta $R\ped{out} = 5.0 \pm 0.1\; \si{k\ohm}$ che è compatibile con la stima iniziale dell'impedenza.
-
 \subsection{Confronto con i valori attesi}
 
 %=======================
 \section{Circuito integratore attivo}
 \subsection{Risposta in frequenza}
 Di nuovo utilizzando i cursori abbiamo misurato come guadagno a centro banda
-per il circuito integratore attivo $A_M = 19.92 \pm 0.09 \; \si{dB}$.
+per i circuiti integratori
+\begin{align*}
+A_M &= 19.92 \pm 0.09 \; \si{dB} \\
+A_M &= \pm \; \si{dB}
+\end{align*}
 
 Dunque abbiamo ricavato una stima della frequenza di taglio dell'amplificatore
 invertente dal punto in cui il guadagno diminuisce di $-3.01 \; \si{dB}$
@@ -453,29 +494,28 @@ attivo di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
 
 \subsection{Risposta ad un'onda quadra @ 10 kHz}
 Si è inviato all'ingresso del filtro passa-basso un'onda quadra di
-ampiezza $v\ped{in} = \SI{200}{m\V}$ e frequenza $10.02 \pm 0.12 \; \si{k\Hz}$.
-
-$$v\ped{in} = 200 \pm 2 \; \si{m\V}$$
-$$v\ped{out} = 107.3 \pm 1.3 \; \si{m\V}$$
-$$A_v = \frac{v\ped{out}}{v\ped{in}} = 0.537 \pm 0.008$$
+ampiezza $v\ped{in} = 200 \pm 2 \; \si{m\V}$ e frequenza
+$10.02 \pm 0.12 \; \si{k\Hz}$.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.42]{integratore}
-\caption{Risposta del circuito ad un'onda quadra di ampiezza
+\caption{Risposta del circuito integratore ad un'onda quadra di ampiezza
 $\SI{200}{m\V}$ e $f = \SI{10}{k\Hz}$ in ingresso. \label{fig: intsqw}}
 \end{figure}
 
-Partendo da una misura con i cursori del guadagno a centro banda,
-$A_V = 19.65 \pm 0.05 \; \si{dB} = 9.65 \pm 0.08$, possiamo ottenere una stima del valore
-delle frequenze di taglio a bassa $f_L$ e ad alta frequenza $f_H$ dai punti
-in cui il guadagno diminuisce di un fattore $1/\sqrt{2}$, cioè di circa
-$-3.01 \; \si{dB}$ rispetto ad $A_V$.
+In uscita abbiamo trovato un'onda triangolare, come si vede in figura
+\ref{fig: intsqw} di cui riportiamo le misure di ampiezza:
 \begin{align*}
-f_L &= 80.77 \pm 0.12 \; \si{\Hz}\\
-f_H &= 646.1 \pm 0.5 \; \si{k\Hz}
+v\ped{out} = 107.3 \pm 1.3 \; \si{m\V} \\
+v\ped{out} =  \pm  \; \si{m\V}
 \end{align*}
+per cui effettivamente il segnale in uscita è la forma d'onda integrale
+di quella in ingresso, con ampiezza ridotta di circa la metà
+$A_v = \nicefrac{v\ped{out}}{v\ped{in}} = 0.537 \pm 0.008$, in accordo con
+quanto ci aspettiamo.
 
+\iffalse
 Trascurando le capacità delle giunzioni nel transistor ci aspettiamo che
 la frequenza di taglio ``bassa'' corrisponda a quella di un filtro passa~alto
 costituito dalla serie $C\ped{in} + R_B$
@@ -489,6 +529,7 @@ da $R_C$, per cui la capacità in serie dev'essere dell'ordine delle centinaia
 di pF per avere ordine di grandezza compatibile con il valore misurato.
 Ma nel datasheet risulta al massimo $C\ped{ibo} \approx \SI{25}{p\F}$, per cui
 è difficile stabilire un valore di riferimento per la frequenza $f_H$ attesa.
+\fi
 
 Per frequenze $f \ll f_c$ come è ragionevole aspettarsi, la forma d'onda in
 uscita non è apprezzabilmente cambiata rispetto all'onda quadra in ingresso,
@@ -511,21 +552,11 @@ integratore. \label{fig: intfin}}
 \end{figure}
 
 \section{Circuito amplificatore non invertente}
-Per mitigare la diminuzione del guadagno dovuta alla resistenza tra emettitore
-e $V_{EE}$ si inserisce in parallelo a questa la serie $R\ped{es} + C_E$,
-in modo tale che $R_E$ sia vista ``per intero'' solamente in condizioni
-stazionarie (cioè dalle tensioni e correnti continue di alimentazione).
-Al contrario, per frequenze abbastanza alte il condensatore si comporterà come
-un corto circuito, per cui la resistenza del parallelo tenderà al valore più
-piccolo tra le due resistenze, cioè $R\ped{es} \ll R_E$.
-Quindi in breve l'impedenza all'emettitore si comporterà grossolanamente
-come un filtro passa alto.
-
 \subsection{Risposta in frequenza}
 
 \begin{figure}[htbp]
 \centering
-%\includegraphics[scale=0.35]{1-10Mnet}
+%\includegraphics[scale=0.35]{ninvbode}
 \caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{100}{\Hz}$ e
 $\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso all'amplificatore
 non-invertente di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
@@ -542,7 +573,7 @@ $-3.01 \; \si{dB}$ rispetto ad $A_V$.
 f_L &= 80.77 \pm 0.12 \; \si{\Hz}\\
 f_H &= 646.1 \pm 0.5 \; \si{k\Hz}
 \end{align*}
-
+\iffalse
 Una volta inserito il ramo in parallelo a $R_E$, dalla formula per il guadagno
 atteso otteniamo
 \[
@@ -581,7 +612,7 @@ A_v = \frac{R_C}{\abs{Z_E} + h_{ie}/h_{fe}} \approx 60
 Che è in buon accordo con il valore misurato per il guadagno sempre
 entro le grandi incertezze relative sui parametri di costruzione del
 transistor.
-
+\fi
 \begin{figure}[htbp]
 \centering
 %\includegraphics[scale=0.335]{Alin200mV}

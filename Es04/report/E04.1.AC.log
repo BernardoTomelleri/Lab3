@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  16 NOV 2021 20:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  17 NOV 2021 14:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1291,33 +1291,33 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 145.
+(hyperref)                removing `math shift' on input line 142.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 145.
+(hyperref)                removing `math shift' on input line 142.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 145.
+(hyperref)                removing `subscript' on input line 142.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 145.
+(hyperref)                removing `math shift' on input line 142.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 145.
+(hyperref)                removing `math shift' on input line 142.
 
 <../figs//gain5k1.pdf, id=100, 662.7159pt x 397.485pt>
 File: ../figs//gain5k1.pdf Graphic file (type pdf)
 <use ../figs//gain5k1.pdf>
-Package pdftex.def Info: ../figs//gain5k1.pdf  used on input line 218.
+Package pdftex.def Info: ../figs//gain5k1.pdf  used on input line 215.
 (pdftex.def)             Requested size: 463.89796pt x 278.2376pt.
 <../figs//gainsat.pdf, id=101, 661.99323pt x 396.7623pt>
 File: ../figs//gainsat.pdf Graphic file (type pdf)
 <use ../figs//gainsat.pdf>
-Package pdftex.def Info: ../figs//gainsat.pdf  used on input line 243.
+Package pdftex.def Info: ../figs//gainsat.pdf  used on input line 240.
 (pdftex.def)             Requested size: 463.3921pt x 277.7317pt.
 [2] [3] [4 <../figs//gain5k1.pdf> <../figs//gainsat.pdf
 
@@ -1327,64 +1327,71 @@ le pdfs with page group included in a single page
 <../figs//opampbode.png, id=170, 1152.7065pt x 553.46774pt>
 File: ../figs//opampbode.png Graphic file (type png)
 <use ../figs//opampbode.png>
-Package pdftex.def Info: ../figs//opampbode.png  used on input line 289.
+Package pdftex.def Info: ../figs//opampbode.png  used on input line 287.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
  [5 <../figs//opampbode.png (PNG copy)>]
-<../figs//slew.png, id=188, 1301.61281pt x 458.46281pt>
+<../figs//slew.png, id=188, 1301.61281pt x 642.14906pt>
 File: ../figs//slew.png Graphic file (type png)
 <use ../figs//slew.png>
-Package pdftex.def Info: ../figs//slew.png  used on input line 331.
-(pdftex.def)             Requested size: 481.5892pt x 169.62857pt.
-<../figs//hpfbode.png, id=189, 1301.61281pt x 655.69969pt>
+Package pdftex.def Info: ../figs//slew.png  used on input line 347.
+(pdftex.def)             Requested size: 481.5892pt x 237.59143pt.
+ [6 <../figs//slew.png (PNG copy)>]
+<../figs//hpfbode.png, id=195, 1301.61281pt x 655.69969pt>
 File: ../figs//hpfbode.png Graphic file (type png)
 <use ../figs//hpfbode.png>
-Package pdftex.def Info: ../figs//hpfbode.png  used on input line 352.
+Package pdftex.def Info: ../figs//hpfbode.png  used on input line 379.
 (pdftex.def)             Requested size: 468.58026pt x 236.05171pt.
-<../figs//derivatore.png, id=190, 1152.7065pt x 553.46774pt>
+<../figs//ampinv10.png, id=196, 1301.61281pt x 655.69969pt>
+File: ../figs//ampinv10.png Graphic file (type png)
+<use ../figs//ampinv10.png>
+Package pdftex.def Info: ../figs//ampinv10.png  used on input line 403.
+(pdftex.def)             Requested size: 468.58026pt x 236.05171pt.
+<../figs//derivatore.png, id=197, 1152.7065pt x 553.46774pt>
 File: ../figs//derivatore.png Graphic file (type png)
 <use ../figs//derivatore.png>
-Package pdftex.def Info: ../figs//derivatore.png  used on input line 368.
+Package pdftex.def Info: ../figs//derivatore.png  used on input line 422.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//derfin.png, id=191, 1440.88312pt x 711.4078pt>
+<../figs//derfin.png, id=199, 1440.88312pt x 711.4078pt>
 File: ../figs//derfin.png Graphic file (type png)
 <use ../figs//derfin.png>
-Package pdftex.def Info: ../figs//derfin.png  used on input line 386.
+Package pdftex.def Info: ../figs//derfin.png  used on input line 452.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-<../figs//derpar.png, id=192, 1440.88312pt x 711.4078pt>
+<../figs//derpar.png, id=200, 1440.88312pt x 711.4078pt>
 File: ../figs//derpar.png Graphic file (type png)
 <use ../figs//derpar.png>
-Package pdftex.def Info: ../figs//derpar.png  used on input line 398.
+Package pdftex.def Info: ../figs//derpar.png  used on input line 464.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
- [6 <../figs//slew.png (PNG copy)>]
-[7 <../figs//hpfbode.png (PNG copy)> <../figs//derivatore.png (PNG copy)>]
-[8 <../figs//derfin.png (PNG copy)> <../figs//derpar.png (PNG copy)>]
-<../figs//bode integratore.png, id=211, 1152.7065pt x 553.46774pt>
+
+[7 <../figs//hpfbode.png (PNG copy)>] [8 <../figs//ampinv10.png (PNG copy)> <..
+/figs//derivatore.png (PNG copy)>] [9 <../figs//derfin.png (PNG copy)> <../figs
+//derpar.png (PNG copy)>]
+<../figs//bode integratore.png, id=220, 1152.7065pt x 553.46774pt>
 File: ../figs//bode integratore.png Graphic file (type png)
 <use ../figs//bode integratore.png>
-Package pdftex.def Info: ../figs//bode integratore.png  used on input line 435.
+Package pdftex.def Info: ../figs//bode integratore.png  used on input line 488.
 
 (pdftex.def)             Requested size: 484.13344pt x 232.45486pt.
-<../figs//integratore.png, id=212, 1152.7065pt x 553.46774pt>
+<../figs//integratore.png, id=221, 1152.7065pt x 553.46774pt>
 File: ../figs//integratore.png Graphic file (type png)
 <use ../figs//integratore.png>
-Package pdftex.def Info: ../figs//integratore.png  used on input line 452.
+Package pdftex.def Info: ../figs//integratore.png  used on input line 502.
 (pdftex.def)             Requested size: 484.13344pt x 232.45486pt.
- [9 <../figs//bode integratore.png (PNG copy)>]
-<../figs//intfin.png, id=220, 1301.61281pt x 642.14906pt>
+<../figs//intfin.png, id=223, 1301.61281pt x 642.14906pt>
 File: ../figs//intfin.png Graphic file (type png)
 <use ../figs//intfin.png>
-Package pdftex.def Info: ../figs//intfin.png  used on input line 495.
+Package pdftex.def Info: ../figs//intfin.png  used on input line 548.
 (pdftex.def)             Requested size: 436.04796pt x 215.12372pt.
- [10 <../figs//integratore.png (PNG copy)>] [11 <../figs//intfin.png (PNG copy)
->] [12] (./E04.1.AC.aux)
+ [10 <../figs//bode integratore.png (PNG copy)>]
+[11 <../figs//integratore.png (PNG copy)> <../figs//intfin.png (PNG copy)>]
+[12] (./E04.1.AC.aux)
 Package rerunfilecheck Info: File `E04.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: FBDE46C08C339DD6E634470177E7669A;3673.
  ) 
 Here is how much of TeX's memory you used:
- 56396 strings out of 479713
- 1383698 string characters out of 5876923
+ 56405 strings out of 479713
+ 1383938 string characters out of 5876923
  2189990 words of memory out of 10000000
- 73339 multiletter control sequences out of 15000+600000
+ 73350 multiletter control sequences out of 15000+600000
  421879 words of font info for 77 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,11n,125p,754b,986s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1395,28 +1402,28 @@ st/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pub
 lic/amsfonts/cmextra/cmex8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.p
-fb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fo
-nts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/
-public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-
-super/sfrm0600.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm
-0700.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><
-c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive
-/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texm
-f-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on E04.1.AC.pdf (12 pages, 1074561 bytes).
+m/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.p
+fb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/tex
+live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c
+:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fon
+ts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/p
+ublic/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-s
+uper/sfrm0600.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0
+700.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c
+:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/
+2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf
+-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
+Output written on E04.1.AC.pdf (12 pages, 1119363 bytes).
 PDF statistics:
- 363 PDF objects out of 1000 (max. 8388607)
+ 364 PDF objects out of 1000 (max. 8388607)
  272 compressed objects within 3 object streams
- 57 named destinations out of 1000 (max. 500000)
- 212 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 55 named destinations out of 1000 (max. 500000)
+ 217 words of extra memory for PDF output out of 10000 (max. 10000000)
 
