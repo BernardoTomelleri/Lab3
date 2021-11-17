@@ -28,7 +28,7 @@ $\sigma C$ \\
 \midrule
 $R_1$	  & 998 	& 8 	 & $C$ & 50			 & 2 \\
 $R_2^a$	  & 7.04	& 0.06 	 & & &	\\
-$R_2^f$	  & 9.85 k	& 0.08 k & & &	\\
+$R_2^f$	  & 9.95 k	& 0.08 k & & &	\\
 $R_S$	  & 998		& 8		 & & &	\\
 \bottomrule     
 \end{tabular}
@@ -277,11 +277,11 @@ Il che risulta compatibile entro l'incertezza con il valore atteso dalla
 \subsection{Network analyzer}
 Con l'aiuto dei cursori abbiamo misurato come guadagno a centro banda
 per il circuito amplificatore con resistenza $R_2^a = 5.1 \; \si{k\ohm}$
-$A_M = 14.18 \pm 0.09 \; \si{dB} = 5.12 \pm 0.05$
-dunque abbiamo ricavato una stima della frequenza di taglio dell'amplificatore
+$A_M = 14.18 \pm 0.09 \; \si{dB} = 5.12 \pm 0.05$.Nel secondo caso invece ($R_2^a = 7.04 \; \si{k\ohm}$)$A_M = 16.96 \pm 0.07 \; \si{dB} = 7.05 \pm 0.06$.
+Dunque abbiamo ricavato una stima della frequenza di taglio dell'amplificatore
 invertente dal punto in cui il guadagno diminuisce di $-3.01 \; \si{dB}$
 rispetto ad $A_M$:
-$f_A = 388.0 \pm 1.1 \; \si{k\Hz}$
+$f_A = 388.0 \pm 1.1 \; \si{k\Hz}$ e $f_A = 282.8 \pm 1.6 \; \si{k\Hz}$
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.4]{opampbode}
@@ -307,10 +307,13 @@ Già dai nostri dati notiamo però come il prodotto $A_v \cdot f_H$ valga
 A_M \cdot f_A = 
 \begin{dcases}
 (5.12 \pm 0.05) \cdot (388.0 \pm 1.1) \; \si{k\Hz} =
-1.99 \pm 0.02 \; \si{M\Hz} \\
+1.99 \pm 0.03 \; \si{M\Hz} \\
 %
+(7.05 \pm 0.06) \cdot (282.8 \pm 1.6) \; \si{k\Hz} =
+1.99 \pm 0.03 \; \si{M\Hz} \\
 \end{dcases}
 \]
+
 che è circa la metà del valore tipico riportato senza incertezza per valori
 di tensioni di alimentazione +15 e -15 V. Possiamo supporre che questo sia
 dovuto all'aver preso come tensioni di alimentazione $V_{CC}$ e $V_{EE}$
@@ -371,7 +374,7 @@ $f_c$ e ad alta frequenza $f_A$ dai punti in cui il guadagno diminuisce di un
 fattore $1/\sqrt{2}$, cioè di circa $-3.01 \; \si{dB}$ rispetto ad $A_M$.
 \begin{align*}
 f_c &= 3408 \pm 11 \; \si{\Hz} \, ; \quad f_A = 209 \pm 2 \; \si{k\Hz} \\
-f_c &= \pm \; \si{\Hz} \, ; \quad f_A = \pm \; \si{k\Hz}
+f_c &= 3150\pm 38\; \si{\Hz} \, ; \quad f_A = 191\pm 4\; \si{k\Hz}
 \end{align*}
 
 \begin{figure}[htbp]
@@ -427,14 +430,13 @@ $\SI{200}{m\V}$ e $f = \SI{100}{\Hz}$ in ingresso. \label{fig: dertrg}}
 In uscita dai due circuiti abbiamo trovato un'onda quadra, come in figura
 \ref{fig: dertrg} di cui riportiamo le misure di ampiezza:
 \begin{align*}
-v\ped{out} &=  \pm  \si{m\V} \\
+v\ped{out} &= 40.1 \pm 0.6 \si{m\V} \\
 v\ped{out} &=  \pm  \si{m\V}
 \end{align*}
 
 per cui effettivamente il segnale in uscita assume la forma della derivata
-del segnale in ingresso, con ampiezza ridotta di circa la metà
-$A_v = \nicefrac{v\ped{out}}{v\ped{in}} = \pm $, in accordo con
-quanto ci aspettiamo.
+del segnale in ingresso, con ampiezza ridotta di
+$A_v = \nicefrac{v\ped{out}}{v\ped{in}} = 0.2\pm 0.005 $.
 
 Per frequenze $f \ll f_c$ il filtro è in regime di taglio, per cui si comporta
 come un derivatore, dunque la forma d'onda in uscita è un'onda quadra di
@@ -476,13 +478,14 @@ Di nuovo utilizzando i cursori abbiamo misurato come guadagno a centro banda
 per i circuiti integratori
 \begin{align*}
 A_M &= 19.92 \pm 0.09 \; \si{dB} \\
-A_M &= \pm \; \si{dB}
+A_M &= 19.95 \pm 0.09 \; \si{dB}
 \end{align*}
 
 Dunque abbiamo ricavato una stima della frequenza di taglio dell'amplificatore
 invertente dal punto in cui il guadagno diminuisce di $-3.01 \; \si{dB}$
 rispetto ad $A_M$:
 $f_c = 342.5 \pm 0.5 \; \si{\Hz}$
+$f_c = 317.4 \pm 0.5 \; \si{\Hz}$
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.42]{bode integratore}
@@ -508,11 +511,11 @@ In uscita abbiamo trovato un'onda triangolare, come si vede in figura
 \ref{fig: intsqw} di cui riportiamo le misure di ampiezza:
 \begin{align*}
 v\ped{out} = 107.3 \pm 1.3 \; \si{m\V} \\
-v\ped{out} =  \pm  \; \si{m\V}
+v\ped{out} = 100.5 \pm 1.2 \; \si{m\V}
 \end{align*}
 per cui effettivamente il segnale in uscita è la forma d'onda integrale
 di quella in ingresso, con ampiezza ridotta di circa la metà
-$A_v = \nicefrac{v\ped{out}}{v\ped{in}} = 0.537 \pm 0.008$, in accordo con
+$A_v = \nicefrac{v\ped{out}}{v\ped{in}} = 0.537 \pm 0.008$ e $A_v = \nicefrac{v\ped{out}}{v\ped{in}} = 0.503 \pm 0.007$, in accordo con
 quanto ci aspettiamo.
 
 \iffalse
