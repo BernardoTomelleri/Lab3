@@ -370,7 +370,7 @@ possiamo ottenere una stima del valore delle frequenze di taglio a bassa
 $f_c$ e ad alta frequenza $f_A$ dai punti in cui il guadagno diminuisce di un
 fattore $1/\sqrt{2}$, cioè di circa $-3.01 \; \si{dB}$ rispetto ad $A_M$.
 \begin{align*}
-f_c &= 3408 \pm 11 \; \si{\Hz} \, ; \quad f_A = 209 \pm 2 \; \si{k\Hz} \\
+f_c &= 3.347 \pm 0.011 \; \si{k\Hz} \, ; \quad f_A = 209 \pm 2 \; \si{k\Hz} \\
 f_c &= \pm \; \si{\Hz} \, ; \quad f_A = \pm \; \si{k\Hz}
 \end{align*}
 
@@ -382,6 +382,14 @@ $\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso al derivatore RC attivo
 di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
 \label{fig: derbode}}
 \end{figure}
+
+La frequenza di taglio attesa per il filtro passa-alto calcolata a partire
+dai valori misurati dei componenti dei circuiti è pari a
+\begin{equation}
+f\ped{c, exp} = \frac{1}{2\pi R_1 C} = 3.34 \pm 0.13 \; \si{k\Hz}
+\end{equation}
+che risulta in ottimo accordo con le nostre misure della frequenza di taglio
+bassa $f_c$ del circuito derivatore.
 
 Assumendo che il prodotto banda-guadagno rimanga costante possiamo verificare
 che la frequenza di taglio alta sia dovuta alla limitazione di banda
@@ -479,10 +487,14 @@ A_M &= 19.92 \pm 0.09 \; \si{dB} \\
 A_M &= \pm \; \si{dB}
 \end{align*}
 
-Dunque abbiamo ricavato una stima della frequenza di taglio dell'amplificatore
-invertente dal punto in cui il guadagno diminuisce di $-3.01 \; \si{dB}$
+Dunque abbiamo ricavato le nostre stime per le frequenze di taglio del filtro
+passa-basso dal punto in cui il guadagno diminuisce di $-3.01 \; \si{dB}$
 rispetto ad $A_M$:
-$f_c = 342.5 \pm 0.5 \; \si{\Hz}$
+\begin{align*}
+f_c &= 335 \pm 2 \; \si{\Hz} \\
+f_c &= \pm  \; \si{\Hz} \\
+\end{align*}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.42]{bode integratore}
@@ -492,6 +504,13 @@ attivo di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
 \label{fig: intbode}}
 \end{figure}
 
+La frequenza di taglio attesa per il filtro passa-basso calcolata a partire
+dai valori misurati dei componenti dei circuiti risulta
+\begin{equation}
+f\ped{c, exp} = \frac{1}{2\pi R_2 C} = 334 \pm 13 \; \si{\Hz}
+\end{equation}
+che risulta in ottimo accordo con le nostre misure della frequenza di taglio
+bassa $f_c$ del circuito derivatore.
 \subsection{Risposta ad un'onda quadra @ 10 kHz}
 Si è inviato all'ingresso del filtro passa-basso un'onda quadra di
 ampiezza $v\ped{in} = 200 \pm 2 \; \si{m\V}$ e frequenza
