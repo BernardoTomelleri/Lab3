@@ -28,7 +28,7 @@ $\sigma C$ \\
 \midrule
 $R_1$	  & 998 	& 8 	 & $C$ & 50			 & 2 \\
 $R_2^a$	  & 7.04	& 0.06 	 & & &	\\
-$R_2^f$	  & 9.85 k	& 0.08 k & & &	\\
+$R_2^f$	  & 9.95 k	& 0.08 k & & &	\\
 $R_S$	  & 998		& 8		 & & &	\\
 \bottomrule     
 \end{tabular}
@@ -277,11 +277,17 @@ Il che risulta compatibile entro l'incertezza con il valore atteso dalla
 \subsection{Network analyzer}
 Con l'aiuto dei cursori abbiamo misurato come guadagno a centro banda
 per il circuito amplificatore con resistenza $R_2^a = 5.1 \; \si{k\ohm}$
-$A_M = 14.18 \pm 0.09 \; \si{dB} = 5.12 \pm 0.05$
-dunque abbiamo ricavato una stima della frequenza di taglio dell'amplificatore
-invertente dal punto in cui il guadagno diminuisce di $-3.01 \; \si{dB}$
-rispetto ad $A_M$:
-$f_A = 388.0 \pm 1.1 \; \si{k\Hz}$
+$A_M = 14.18 \pm 0.09 \; \si{dB} = 5.12 \pm 0.05$.
+Nel secondo caso invece ($R_2^a = 7.04 \; \si{k\ohm}$)
+$A_M = 16.96 \pm 0.07 \; \si{dB} = 7.05 \pm 0.06$.
+Dunque abbiamo ricavato una stima delle frequenze di taglio per i due
+amplificatori invertenti dal punto in cui il guadagno diminuisce di
+$-3.01 \; \si{dB}$ rispetto ad $A_M$:
+\begin{align*}
+f_A &= 388.0 \pm 1.1 \; \si{k\Hz} \\
+f_A &= 282.8 \pm 1.6 \; \si{k\Hz}
+\end{align*}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.4]{opampbode}
@@ -307,10 +313,13 @@ Già dai nostri dati notiamo però come il prodotto $A_v \cdot f_H$ valga
 A_M \cdot f_A = 
 \begin{dcases}
 (5.12 \pm 0.05) \cdot (388.0 \pm 1.1) \; \si{k\Hz} =
-1.99 \pm 0.02 \; \si{M\Hz} \\
+1.99 \pm 0.03 \; \si{M\Hz} \\
 %
+(7.05 \pm 0.06) \cdot (282.8 \pm 1.6) \; \si{k\Hz} =
+1.99 \pm 0.03 \; \si{M\Hz} \\
 \end{dcases}
 \]
+
 che è circa la metà del valore tipico riportato senza incertezza per valori
 di tensioni di alimentazione +15 e -15 V. Possiamo supporre che questo sia
 dovuto all'aver preso come tensioni di alimentazione $V_{CC}$ e $V_{EE}$
@@ -371,12 +380,12 @@ $f_c$ e ad alta frequenza $f_A$ dai punti in cui il guadagno diminuisce di un
 fattore $1/\sqrt{2}$, cioè di circa $-3.01 \; \si{dB}$ rispetto ad $A_M$.
 \begin{align*}
 f_c &= 3.347 \pm 0.011 \; \si{k\Hz} \, ; \quad f_A = 209 \pm 2 \; \si{k\Hz} \\
-f_c &= \pm \; \si{\Hz} \, ; \quad f_A = \pm \; \si{k\Hz}
+f_c &= 3.15 \pm 0.04 \; \si{k\Hz} \, ; \quad f_A = 191 \pm 4 \; \si{k\Hz}
 \end{align*}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.36]{hpfbode}
+\includegraphics[scale=0.335]{hpfbode}
 \caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{100}{\Hz}$ e
 $\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso al derivatore RC attivo
 di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
@@ -384,11 +393,11 @@ di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
 \end{figure}
 
 La frequenza di taglio attesa per il filtro passa-alto calcolata a partire
-dai valori misurati dei componenti dei circuiti è pari a
-\begin{equation}
+dai valori misurati dei componenti dei due circuiti studiati è pari a
+\begin{equation}\label{eq: hpfcut}
 f\ped{c, exp} = \frac{1}{2\pi R_1 C} = 3.34 \pm 0.13 \; \si{k\Hz}
 \end{equation}
-che risulta in ottimo accordo con le nostre misure della frequenza di taglio
+che risulta in accordo con le nostre misure della frequenza di taglio
 bassa $f_c$ del circuito derivatore.
 
 Assumendo che il prodotto banda-guadagno rimanga costante possiamo verificare
@@ -435,14 +444,13 @@ $\SI{200}{m\V}$ e $f = \SI{100}{\Hz}$ in ingresso. \label{fig: dertrg}}
 In uscita dai due circuiti abbiamo trovato un'onda quadra, come in figura
 \ref{fig: dertrg} di cui riportiamo le misure di ampiezza:
 \begin{align*}
-v\ped{out} &=  \pm  \si{m\V} \\
-v\ped{out} &=  \pm  \si{m\V}
+v\ped{out} &= 38.0 \pm 0.3 \; \si{m\V} \\
+v\ped{out} &= 40.1 \pm 0.6 \; \si{m\V} 
 \end{align*}
 
 per cui effettivamente il segnale in uscita assume la forma della derivata
-del segnale in ingresso, con ampiezza ridotta di circa la metà
-$A_v = \nicefrac{v\ped{out}}{v\ped{in}} = \pm $, in accordo con
-quanto ci aspettiamo.
+del segnale in ingresso, con ampiezza ridotta di
+$A_v = \nicefrac{v\ped{out}}{v\ped{in}} = 0.195 \pm 0.005 $
 
 Per frequenze $f \ll f_c$ il filtro è in regime di taglio, per cui si comporta
 come un derivatore, dunque la forma d'onda in uscita è un'onda quadra di
@@ -476,6 +484,38 @@ al circuito derivatore. \label{fig: derpar}}
 \end{figure}
 
 \subsection{Confronto con i valori attesi}
+Detta $V_{0} = v\ped{in} $ l'ampiezza del segnale in ingresso, la componente
+principale nello sviluppo in serie di Fourier dell'onda triangolare ha ampiezza 
+$\dfrac{8}{\pi^2} V_{0} $ e frequenza pari a quella della portante $f$.
+Dalla funzione di trasferimento sviluppata per frequenze $f \gg f_c$,
+la componente principale dell'onda in uscita ha ampiezza
+$\dfrac{8}{\pi^2} V_{0} 2\pi R_2 C f $. Pertanto ci aspettiamo che l'onda
+triangolare in uscita abbia ampiezza riscalata di un fattore $\pi/4$ dato dallo
+sviluppo in serie di Fourier di un'onda quadra:
+\[
+v\ped{out, exp} = \frac{8}{\pi^{2}} V\ped{in} 2 \pi R_{2} C f \frac{\pi}{4} =
+4 v\ped{in} R_{2} C f = 37.3 \pm 1.5 \; \si{m\V}
+\]
+che risulta compatibile con l'ampiezza del segnale misurato in uscita.
+
+Senza la resistenza $R_1$ il circuito (in approssimazione di ground virtuale)
+avrebbe come funzione di trasferimento
+\begin{equation}\label{eq: hpfTfunc}
+T(\omega) = - j \omega R_2 C \implies
+\abs{T(f)} = A(f) =  - 2\pi f R_2 C
+\end{equation}
+Dunque un guadagno corrispondente nel diagramma di Bode ad una retta di
+pendenza costante $\SI{20}{\deci\bel/decade}$.
+Questo implica una divergenza del segnale in uscita per alte frequenze, la
+quale porterebbe l'op-amp in regime non lineare di saturazione.
+In altre parole avremmo un derivatore in cui però non abbiamo controllo sulla
+frequenza di taglio e con segnale in uscita affetto da clipping ad alte
+frequenze.
+
+La resistenza in serie al condensatore ci permette in primo luogo di
+stabilire la frequenza di taglio come in equazione \eqref{eq: hpfcut} e,
+in secondo, di limitare il guadagno massimo a $R_2/R_1$;
+indipendentemente dal valore dei parametri di costruzione dell'op-amp.
 
 %=======================
 \section{Circuito integratore attivo}
@@ -484,7 +524,7 @@ Di nuovo utilizzando i cursori abbiamo misurato come guadagno a centro banda
 per i circuiti integratori
 \begin{align*}
 A_M &= 19.92 \pm 0.09 \; \si{dB} \\
-A_M &= \pm \; \si{dB}
+A_M &= 19.95 \pm 0.09 \; \si{dB}
 \end{align*}
 
 Dunque abbiamo ricavato le nostre stime per le frequenze di taglio del filtro
@@ -492,12 +532,12 @@ passa-basso dal punto in cui il guadagno diminuisce di $-3.01 \; \si{dB}$
 rispetto ad $A_M$:
 \begin{align*}
 f_c &= 335 \pm 2 \; \si{\Hz} \\
-f_c &= \pm  \; \si{\Hz} \\
+f_c &= 317.4 \pm 0.5 \; \si{\Hz} \\
 \end{align*}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.42]{bode integratore}
+\includegraphics[scale=0.335]{lpfbode}
 \caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{10}{\Hz}$ e
 $\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso all'integratore RC
 attivo di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
@@ -506,11 +546,31 @@ attivo di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
 
 La frequenza di taglio attesa per il filtro passa-basso calcolata a partire
 dai valori misurati dei componenti dei circuiti risulta
-\begin{equation}
+\begin{equation}\label{eq: lpfcut}
 f\ped{c, exp} = \frac{1}{2\pi R_2 C} = 334 \pm 13 \; \si{\Hz}
 \end{equation}
 che risulta in ottimo accordo con le nostre misure della frequenza di taglio
 bassa $f_c$ del circuito derivatore.
+
+Senza la resistenza $R_2$ il circuito (in approssimazione di ground virtuale)
+avrebbe come funzione di trasferimento
+\[
+T(\omega) = - \frac{1}{j \omega R_1 C} \implies
+\abs{T(f)} = A(f) = \frac{1}{2\pi f R_1 C}
+\]
+Dunque un guadagno corrispondente nel diagramma di Bode ad una retta di
+pendenza costante $\SI{-20}{\deci\bel/decade}$.
+Questo implica una divergenza del segnale in uscita per basse frequenze, la
+quale porterebbe l'op-amp in regime non lineare di saturazione.
+Cioè avremmo un integratore in cui però non abbiamo controllo sulla
+frequenza di taglio e con segnale in uscita affetto da clipping a basse
+frequenze.
+
+La resistenza in parallelo al condensatore ci permette in primo luogo di
+stabilire la frequenza di taglio come in equazione \eqref{eq: lpfcut} e,
+in secondo, di limitare il guadagno massimo a $R_2/R_1$;
+indipendentemente dal valore dei parametri di costruzione dell'op-amp.
+
 \subsection{Risposta ad un'onda quadra @ 10 kHz}
 Si è inviato all'ingresso del filtro passa-basso un'onda quadra di
 ampiezza $v\ped{in} = 200 \pm 2 \; \si{m\V}$ e frequenza
@@ -527,28 +587,12 @@ In uscita abbiamo trovato un'onda triangolare, come si vede in figura
 \ref{fig: intsqw} di cui riportiamo le misure di ampiezza:
 \begin{align*}
 v\ped{out} = 107.3 \pm 1.3 \; \si{m\V} \\
-v\ped{out} =  \pm  \; \si{m\V}
+v\ped{out} = 100.5 \pm 1.2 \; \si{m\V}
 \end{align*}
 per cui effettivamente il segnale in uscita è la forma d'onda integrale
 di quella in ingresso, con ampiezza ridotta di circa la metà
-$A_v = \nicefrac{v\ped{out}}{v\ped{in}} = 0.537 \pm 0.008$, in accordo con
-quanto ci aspettiamo.
-
-\iffalse
-Trascurando le capacità delle giunzioni nel transistor ci aspettiamo che
-la frequenza di taglio ``bassa'' corrisponda a quella di un filtro passa~alto
-costituito dalla serie $C\ped{in} + R_B$
-\begin{equation}
-f\ped{L, exp} = \frac{1}{2\pi R_B C\ped{in}} = 83 \pm 4 \; \si{\Hz}
-\end{equation} 
-che è in accordo con il valore misurato.
-
-Mentre per la frequenza di taglio ``alta'' la resistenza in uscita è data
-da $R_C$, per cui la capacità in serie dev'essere dell'ordine delle centinaia
-di pF per avere ordine di grandezza compatibile con il valore misurato.
-Ma nel datasheet risulta al massimo $C\ped{ibo} \approx \SI{25}{p\F}$, per cui
-è difficile stabilire un valore di riferimento per la frequenza $f_H$ attesa.
-\fi
+$A_v = \nicefrac{v\ped{out}}{v\ped{in}} = 0.537 \pm 0.008$
+%e $A_v = \nicefrac{v\ped{out}}{v\ped{in}} = 0.503 \pm 0.007$.
 
 Per frequenze $f \ll f_c$ come è ragionevole aspettarsi, la forma d'onda in
 uscita non è apprezzabilmente cambiata rispetto all'onda quadra in ingresso,
@@ -569,6 +613,13 @@ ingresso.
 $\SI{200}{m\V}$ e $f = 500 \pm 6 \; \si{Hz}$ in ingresso al circuito
 integratore. \label{fig: intfin}}
 \end{figure}
+
+In corrispondenza dei fronti di salita/discesa dell'onda quadra in ingresso
+osserviamo dei picchi di tensione in uscita, che alterano apprezzabilmente
+la forma d'onda triangolare. La loro presenza potrebbe essere dovuta al fatto
+che l'approssimazione di ground virtuale non sia verificata in questo caso,
+per cui si determina una caduta di tensione sulla resistenza interna $R_{in}$
+dell'op-amp che quindi devia dal comportamento atteso.
 
 \section{Circuito amplificatore non invertente}
 \subsection{Risposta in frequenza}
