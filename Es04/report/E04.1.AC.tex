@@ -52,7 +52,7 @@ $R_S$	  & 998		& 8		 & & &	\\
 circuiti studiati. \label{tab: rcmes_M}}
 \end{table}
 Riportiamo per completezza anche i valori delle tensioni di alimentazione
-continue misurate con il multimetro
+continue per l'op-amp misurate con il multimetro
 \begin{align*}
 V_{CC} &= 4.99 \pm 0.03 \si{\V} \\
 V_{EE} &= -4.99 \pm 0.03 \si{\V}
@@ -673,71 +673,53 @@ che risulta compatibile con l'ampiezza del segnale misurato in uscita.
 
 \section{Circuito amplificatore non invertente}
 \subsection{Risposta in frequenza}
-\begin{figure}[htbp]
-\centering
-%\includegraphics[scale=0.35]{ninvbode}
-\caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{100}{\Hz}$ e
-$\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso all'amplificatore
-non-invertente di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
-\label{fig: ampbode}}
-\end{figure}
+Variando la posizione del potenziometro abbiamo scelto 6 diversi valori di
+resistenza, dunque per ciascuna configurazione ne abbiamo studiato la risposta
+in frequenza grazie ai plot di Bode prodotti dallo strumento Network dell'AD2
+nell'intervallo di frequenza $\SI{100}{\Hz}$ - $\SI{5}{M\Hz}$ con un segnale
+in ingresso di ampiezza costante pari a $v\ped{in} = \SI{200}{m\V}$.
 
 \subsection{Misure di guadagno e frequenza di taglio}
-Partendo da una misura con i cursori del guadagno a centro banda,
-$A_V = 19.65 \pm 0.05 \; \si{dB} = 9.65 \pm 0.08$, possiamo ottenere una stima del valore
-delle frequenze di taglio a bassa $f_L$ e ad alta frequenza $f_H$ dai punti
-in cui il guadagno diminuisce di un fattore $1/\sqrt{2}$, cioè di circa
-$-3.01 \; \si{dB}$ rispetto ad $A_V$.
-\begin{align*}
-f_L &= 80.77 \pm 0.12 \; \si{\Hz}\\
-f_H &= 646.1 \pm 0.5 \; \si{k\Hz}
-\end{align*}
-\iffalse
-Una volta inserito il ramo in parallelo a $R_E$, dalla formula per il guadagno
-atteso otteniamo
-\[
-A_v = -\frac{R_C}{\abs{Z_E}} =
-- \frac{R_C}{R_E \; \lvert \rvert \; \left(R\ped{es} + \abs{1/j\omega C_E}
-\right)} =
-- R_C \abs{\frac{1}{R_E} + \frac{1}{R\ped{es} + 1/\omega C_E}}
-\]
+Quindi abbiamo misurato il guadagno corrispondente
+$A_v = \frac{v\ped{out}}{v_+}$ a ognuno dei valori di resistenza scelti
+utilizzando i cursori.
+Come prima si è ricavata una stima del valore delle rispettive frequenze di
+taglio per i circuiti amplificatori $f_c$ dai punti in cui il guadagno
+diminuisce di circa $-3.01 \; \si{dB}$ rispetto ad $A_v$. 
+\begin{table}[htbp]
+\centering
+\begin{tabular}{cccccc}
+\toprule
+$R_p [\si{k\ohm}]$ & $v_+ [\si{m\V}]$ & $v\ped{out} [V]$ & $A_v $ &
+$f_c [\si{k\Hz}]$ & $GWB [\si{M\Hz}]$ \\
+\midrule
+\midrule
+$91.8 \pm 0.8$   &  &  &  &  &  \\
+$61.4 \pm 0.5$   &  &  &  &  &  \\
+$10.55 \pm 0.09$ &  &  &  &  &  \\
+                 &  &  &  &  &  \\
+                 &  &  &  &  &  \\
+                 &  &  &  &  &  \\
+\bottomrule     
+\end{tabular}
+\caption{Misure di resistenza per il potenziometro, rispettivi guadagni e
+frequenze di taglio misurate per segnali di ampiezza $v_+$ in ingresso e
+$v\ped{out}$ in uscita dagli amplificatori non-invertenti studiati.
+\label{tab: ampmes}}
+\end{table}
 
-Visto che abbiamo scelto $C_E \gg C\ped{in} \sim C\ped{out}$, alla frequenza
-di lavoro $f = \SI{10}{k\Hz}$ possiamo considerare trascurabile l'impedenza
-del condensatore $\abs{Z_{C_E}} = \dfrac{1}{2\pi f C_E} \approx 0.1 \si{\ohm}
-\ll R\ped{es}$, per cui in buona approssimazione ci aspettiamo
-\[
-\abs{A_v} \approx
-\frac{R_C}{R_E \; \lvert \rvert \; R\ped{es}} =
-R_C \abs{\frac{1}{R_E} + \frac{1}{R\ped{es}}} \approx
-\frac{R_C}{R\ped{es}} = 110 \pm 1
-\]
-
-Questo però assumendo che l'impedenza del transistor sia trascurabile rispetto
-a $Z_E$, o meglio $\abs{Z_E} \gg \dfrac{h_{ie}}{h_{fe}}$
-\begin{align*}
-\abs{Z_E} &= \abs{\frac{1}{R_E} + \frac{1}{R\ped{es} + 1/\omega C_E}}^{-1} =
-45 \pm 2 \; \si{\ohm} \\
-\frac{h_{ie}}{h_{fe}} &\approx \SI{40}{\ohm}
-\end{align*}
-che non risulta affatto verificata.
-
-Considerando nel modello anche l'impedenza in ingresso del transistor in
-serie a quella del ramo $Z_E$ avremo come valore atteso per il guadagno
-\begin{equation}
-A_v = \frac{R_C}{\abs{Z_E} + h_{ie}/h_{fe}} \approx 60
-\end{equation}
-
-Che è in buon accordo con il valore misurato per il guadagno sempre
-entro le grandi incertezze relative sui parametri di costruzione del
-transistor.
-\fi
+Riportiamo dunque in unico grafico la sovrapposizione dei plot di Bode studiati
 \begin{figure}[htbp]
 \centering
-%\includegraphics[scale=0.335]{Alin200mV}
-\caption{Sovrapposizione dei plot di Bode ottenuti per l'amplificatore
-non-invertente. \label{fig: prdbode}}
+\includegraphics[scale=0.335]{amp banda R1}
+\caption{Sovrapposizione dei plot di Bode ottenuti per gli amplificatori
+non-invertenti. \label{fig: prdbode}}
 \end{figure}
+
+Quindi il prodotto banda-guadagno risulta costante al variare di $A_v$ e $f_c$
+entro l’incertezza sperimentale. Come già abbiamo visto per l'amplificatore
+invertente, il valore osservato è circa la metà di quello riportato nel
+datasheet dell’op-amp come valore tipico $GBW\ped{typ} = \SI{4}{M\Hz}$.
 
 \section*{Conclusioni e commenti finali}
 Si è riusciti a costruire e studiare alcuni dei circuiti più comuni che si
