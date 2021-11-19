@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  19 NOV 2021 02:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  19 NOV 2021 02:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**E04.1.AC.tex
-(./E04.1.AC.tex
+**E05.1.AC.tex
+(./E05.1.AC.tex
 LaTeX2e <2021-06-01>
 L3 programming layer <2021-06-01>
 (c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
@@ -1143,7 +1143,7 @@ nal.code.tex
 ternal.code.tex
 (c:/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzex
 ternalshared.code.tex)))
-\openout3 = `E04.1.AC.auxlock'.
+\openout3 = `E05.1.AC.auxlock'.
 
 
 Package siunitx Info: Option "number-unit-product" has been deprecated in this
@@ -1167,8 +1167,8 @@ LaTeX Font Info:    Trying to load font information for T1+txtt on input line 6
 
 (c:/texlive/2021/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
-)) (../../latex/math.tex) (./E04.1.AC.aux)
-\openout1 = `E04.1.AC.aux'.
+)) (../../latex/math.tex) (./E05.1.AC.aux)
+\openout1 = `E05.1.AC.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
@@ -1204,9 +1204,9 @@ LaTeX Info: Redefining \ref on input line 14.
 LaTeX Info: Redefining \pageref on input line 14.
 LaTeX Info: Redefining \nameref on input line 14.
 
-(./E04.1.AC.out) (./E04.1.AC.out)
+(./E05.1.AC.out) (./E05.1.AC.out)
 \@outlinefile=\write4
-\openout4 = `E04.1.AC.out'.
+\openout4 = `E05.1.AC.out'.
 
 Package translations Info: no dictionary file `translations-basic-dictionary-it
 alian.trsl' found. on input line 14.
@@ -1288,111 +1288,67 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Underfull \hbox (badness 10000) in paragraph at lines 195--202
+
+ []
+
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
+05.
+(c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 141.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 141.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 141.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 141.
+(hyperref)                removing `math shift' on input line 258.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 141.
+(hyperref)                removing `math shift' on input line 258.
 
-<../figs//gain5k1.pdf, id=100, 662.7159pt x 397.485pt>
-File: ../figs//gain5k1.pdf Graphic file (type pdf)
-<use ../figs//gain5k1.pdf>
-Package pdftex.def Info: ../figs//gain5k1.pdf  used on input line 214.
-(pdftex.def)             Requested size: 463.89796pt x 278.2376pt.
-<../figs//gainsat.pdf, id=101, 661.99323pt x 396.7623pt>
-File: ../figs//gainsat.pdf Graphic file (type pdf)
-<use ../figs//gainsat.pdf>
-Package pdftex.def Info: ../figs//gainsat.pdf  used on input line 239.
-(pdftex.def)             Requested size: 463.3921pt x 277.7317pt.
-[2] [3] [4 <../figs//gain5k1.pdf> <../figs//gainsat.pdf
 
-pdfTeX warning: pdflatex.exe (file ../figs//gainsat.pdf): PDF inclusion: multip
-le pdfs with page group included in a single page
->]
-<../figs//opampbode.png, id=170, 1152.7065pt x 553.46774pt>
-File: ../figs//opampbode.png Graphic file (type png)
-<use ../figs//opampbode.png>
-Package pdftex.def Info: ../figs//opampbode.png  used on input line 292.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
- [5 <../figs//opampbode.png (PNG copy)>]
-<../figs//slew.png, id=188, 1301.61281pt x 642.14906pt>
-File: ../figs//slew.png Graphic file (type png)
-<use ../figs//slew.png>
-Package pdftex.def Info: ../figs//slew.png  used on input line 355.
-(pdftex.def)             Requested size: 481.5892pt x 237.59143pt.
- [6 <../figs//slew.png (PNG copy)>]
-<../figs//hpfbode.png, id=195, 1440.88312pt x 711.4078pt>
-File: ../figs//hpfbode.png Graphic file (type png)
-<use ../figs//hpfbode.png>
-Package pdftex.def Info: ../figs//hpfbode.png  used on input line 387.
-(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-<../figs//derivatore.png, id=197, 1152.7065pt x 553.46774pt>
-File: ../figs//derivatore.png Graphic file (type png)
-<use ../figs//derivatore.png>
-Package pdftex.def Info: ../figs//derivatore.png  used on input line 423.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//derfin.png, id=199, 1440.88312pt x 711.4078pt>
-File: ../figs//derfin.png Graphic file (type png)
-<use ../figs//derfin.png>
-Package pdftex.def Info: ../figs//derfin.png  used on input line 452.
-(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 258.
 
-[7 <../figs//hpfbode.png (PNG copy)>]
-<../figs//derpar.png, id=211, 1440.88312pt x 711.4078pt>
-File: ../figs//derpar.png Graphic file (type png)
-<use ../figs//derpar.png>
-Package pdftex.def Info: ../figs//derpar.png  used on input line 464.
-(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
- [8 <../figs//derivatore.png (PNG copy)> <../figs//derfin.png (PNG copy)>]
-<../figs//ampinv10.png, id=217, 1301.61281pt x 655.69969pt>
-File: ../figs//ampinv10.png Graphic file (type png)
-<use ../figs//ampinv10.png>
-Package pdftex.def Info: ../figs//ampinv10.png  used on input line 488.
-(pdftex.def)             Requested size: 468.58026pt x 236.05171pt.
- [9 <../figs//derpar.png (PNG copy)> <../figs//ampinv10.png (PNG copy)>]
-<../figs//lpfbode.png, id=226, 1440.88312pt x 711.4078pt>
-File: ../figs//lpfbode.png Graphic file (type png)
-<use ../figs//lpfbode.png>
-Package pdftex.def Info: ../figs//lpfbode.png  used on input line 554.
-(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
- [10 <../figs//lpfbode.png (PNG copy)>]
-<../figs//integratore.png, id=235, 1152.7065pt x 553.46774pt>
-File: ../figs//integratore.png Graphic file (type png)
-<use ../figs//integratore.png>
-Package pdftex.def Info: ../figs//integratore.png  used on input line 616.
-(pdftex.def)             Requested size: 484.13344pt x 232.45486pt.
- [11 <../figs//integratore.png (PNG copy)>]
-<../figs//intfin.png, id=243, 1301.61281pt x 642.14906pt>
-File: ../figs//intfin.png Graphic file (type png)
-<use ../figs//intfin.png>
-Package pdftex.def Info: ../figs//intfin.png  used on input line 646.
-(pdftex.def)             Requested size: 436.04796pt x 215.12372pt.
- [12 <../figs//intfin.png (PNG copy)>] [13]
-(./E04.1.AC.aux)
-Package rerunfilecheck Info: File `E04.1.AC.out' has not changed.
-(rerunfilecheck)             Checksum: FBDE46C08C339DD6E634470177E7669A;3673.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 258.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 258.
+
+[3]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 334.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 334.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 334.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 334.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 334.
+
+[4] [5] [6] [7] [8] [9] (./E05.1.AC.aux)
+Package rerunfilecheck Info: File `E05.1.AC.out' has not changed.
+(rerunfilecheck)             Checksum: 95ED18098734FB9A8C1B7A47225617C3;3986.
  ) 
 Here is how much of TeX's memory you used:
- 56417 strings out of 479713
- 1384000 string characters out of 5876923
- 2190989 words of memory out of 10000000
- 73358 multiletter control sequences out of 15000+600000
- 421879 words of font info for 77 fonts, out of 8000000 for 9000
+ 56304 strings out of 479713
+ 1381702 string characters out of 5876923
+ 2184989 words of memory out of 10000000
+ 73244 multiletter control sequences out of 15000+600000
+ 422968 words of font info for 79 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,11n,125p,754b,986s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
@@ -1407,24 +1363,27 @@ fb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/tex
 live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><
-c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/
-2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/p
-ublic/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-s
-uper/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0
-600.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c
-:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/
-2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf
--dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/font
-s/type1/public/cm-super/sfrm1728.pfb>
-Output written on E04.1.AC.pdf (13 pages, 1167576 bytes).
+e1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c
+:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2021/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-s
+uper/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1
+200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c
+:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c:/texlive/
+2021/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/2021/texmf
+-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2021/texmf-dist/font
+s/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
+blic/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-su
+per/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt10
+00.pfb>
+Output written on E05.1.AC.pdf (9 pages, 393374 bytes).
 PDF statistics:
- 384 PDF objects out of 1000 (max. 8388607)
- 289 compressed objects within 3 object streams
- 60 named destinations out of 1000 (max. 500000)
- 217 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 328 PDF objects out of 1000 (max. 8388607)
+ 253 compressed objects within 3 object streams
+ 58 named destinations out of 1000 (max. 500000)
+ 165 words of extra memory for PDF output out of 10000 (max. 10000000)
 

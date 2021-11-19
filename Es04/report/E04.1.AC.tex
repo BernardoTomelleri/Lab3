@@ -18,23 +18,8 @@
 \setcounter{section}{0}
 
 \section*{Misura componenti del circuito}
-\begin{table}[ht]
+\begin{table}[htbp]
 \centering
-\begin{tabular}{cccccc}
-\toprule
-Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
-$\sigma C$ \\
-\midrule
-\midrule
-$R_1$	  & 998 	& 8 	 & $C$ & 50			 & 2 \\
-$R_2^a$	  & 7.04	& 0.06 	 & & &	\\
-$R_2^f$	  & 9.95 k	& 0.08 k & & &	\\
-$R_S$	  & 998		& 8		 & & &	\\
-\bottomrule     
-\end{tabular}
-\caption{Valori di resistenza e capacità misurate per i componenti dei
-circuiti studiati. \label{tab: rcmes_M}}
-
 \begin{tabular}{cccccc}
 \toprule
 Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
@@ -50,6 +35,21 @@ $R_S$	  & 992		& 8		 &				&				 &		\\
 \end{tabular}
 \caption{Valori di resistenza e capacità misurate per i componenti dei
 circuiti studiati. \label{tab: rcmes_B}}
+
+\begin{tabular}{cccccc}
+\toprule
+Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
+$\sigma C$ \\
+\midrule
+\midrule
+$R_1$	  & 998 	& 8 	 & $C$ & 50			 & 2 \\
+$R_2^a$	  & 7.04	& 0.06 	 & & &	\\
+$R_2^f$	  & 9.95 k	& 0.08 k & & &	\\
+$R_S$	  & 998		& 8		 & & &	\\
+\bottomrule     
+\end{tabular}
+\caption{Valori di resistenza e capacità misurate per i componenti dei
+circuiti studiati. \label{tab: rcmes_M}}
 \end{table}
 Riportiamo per completezza anche i valori delle tensioni di alimentazione
 continue misurate con il multimetro
@@ -134,7 +134,6 @@ mentre da una misura diretta dello sfasamento tramite la funzione
 \[
 \phi = 179.88 \pm 0.10 \; \si{\degree}
 \]
-
 che sono entrambi compatibili con il valore atteso di $\Delta \phi\ped{exp}
 = \pi \; \si{\radian}$, per cui l'amplificatore costruito è effettivamente
 invertente.
@@ -392,43 +391,28 @@ di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
 \label{fig: derbode}}
 \end{figure}
 
-La frequenza di taglio attesa per il filtro passa-alto calcolata a partire
-dai valori misurati dei componenti dei due circuiti studiati è pari a
+Notiamo come per frequenze di lavoro fino a circa $\SI{100}{k\Hz}$ il circuito si
+comporta in maniera compatibile con quanto ci aspettiamo dalla funzione di
+trasferimento per il nostro derivatore invertente
+\begin{equation}\label{eq: hpfTfunc}
+T(f) = - \frac{R_2}{Z_1(f)} = - \frac{R_2}{R_1} \frac{1}{1 - j \frac{f_c}{f}}
+\end{equation}
+Dunque, guadagno a centro banda
+$A\ped{M, exp} = R_2/R1 = 20.01 \pm 0.10 \; \si{dB}$, pendenza
+$\SI{20}{dB/decade}$ nel regime di taglio del filtro ($f \ll f_c$)
+e frequenza di taglio attesa (calcolata a partire dai valori misurati dei
+componenti dei circuiti studiati)
 \begin{equation}\label{eq: hpfcut}
 f\ped{c, exp} = \frac{1}{2\pi R_1 C} = 3.34 \pm 0.13 \; \si{k\Hz}
 \end{equation}
 che risulta in accordo con le nostre misure della frequenza di taglio
 bassa $f_c$ del circuito derivatore.
 
-Assumendo che il prodotto banda-guadagno rimanga costante possiamo verificare
-che la frequenza di taglio alta sia dovuta alla limitazione di banda
-dell'op-amp reale, confrontandola con quella attesa per il guadagno $A_M$ del
-passa-alto attivo
-$f\ped{A, exp} = \mathrm{GBW}/A_M
-= (1.99 \pm 0.02 \; \si{M\Hz})/(10.00 \pm 0.10) = 199 \pm 2 \; \si{k\Hz}$.
-Questo è compatibile entro il $5\%$ con il valore di frequenza $f_A$ misurato,
-ma preferiamo controllare che la frequenza di taglio alta del passa-banda
-corrisponda proprio a quella di un amplificatore con guadagno 10 come ulteriore
-conferma.
-
-Quindi, una volta realizzato un nuovo amplificatore invertente con la
-stessa resistenza $R_2$ del filtro (i.e. scollegando il condensatore)
-misuriamo dal plot di Bode la frequenza di taglio con i cursori
-$f_H = 207.8 \pm 1.3 \; \si{k\Hz}$
-\begin{figure}[htbp]
-\centering
-\includegraphics[scale=0.36]{ampinv10}
-\caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{100}{\Hz}$ e
-$\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso all'amplificatore
-invertente (con $R_2^f=10$) di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
-\label{fig: ampinv10}}
-\end{figure}
-
-Questa è compatibile entro l'incertezza con $f_A$ misurata per il derivatore,
-per cui possiamo dire che il circuito si comporta come un passa-banda per via
-del limite in frequenza dell'op-amp, il quale determina la frequenza di taglio
-alta del filtro.
-
+Però, continuando ad aumentare la frequenza, come si vede dal plot di Bode in
+figura \ref{fig: derbode} il circuito inizia ad avere guadagno decrescente con
+pendenza $\SI{-20}{dB/decade}$ per frequenze $f \gg f_A$, come ci si aspetta
+(complessivamente) per un filtro passa-banda.
+ 
 \subsection{Risposta ad un'onda triangolare}
 Si è inviato all'ingresso del filtro passa-alto un segnale triangolare di
 ampiezza $v\ped{in} = 200 \pm 2 \si{m\V}$ e frequenza
@@ -484,13 +468,43 @@ al circuito derivatore. \label{fig: derpar}}
 \end{figure}
 
 \subsection{Confronto con i valori attesi}
+Assumendo che il prodotto banda-guadagno rimanga costante possiamo verificare
+che la frequenza di taglio alta sia dovuta alla limitazione di banda
+dell'op-amp reale, confrontandola con quella attesa per il guadagno $A_M$ del
+passa-alto attivo
+$f\ped{A, exp} = \mathrm{GBW}/A_M
+= (1.99 \pm 0.02 \; \si{M\Hz})/(10.00 \pm 0.10) = 199 \pm 2 \; \si{k\Hz}$.
+Questo è compatibile entro il $5\%$ con il valore di frequenza $f_A$ misurato,
+ma preferiamo controllare che la frequenza di taglio alta del passa-banda
+corrisponda proprio a quella di un amplificatore con guadagno 10 come ulteriore
+conferma.
+
+Quindi, una volta realizzato un nuovo amplificatore invertente con la
+stessa resistenza $R_2$ del filtro (i.e. scollegando il condensatore)
+misuriamo dal plot di Bode la frequenza di taglio con i cursori
+$f_H = 207.8 \pm 1.3 \; \si{k\Hz}$
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.36]{ampinv10}
+\caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{100}{\Hz}$ e
+$\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso all'amplificatore
+invertente (con $R_2^f=10$) di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
+\label{fig: ampinv10}}
+\end{figure}
+
+Questa è compatibile entro l'incertezza con $f_A$ misurata per il derivatore,
+per cui possiamo dire che il circuito si comporta come un passa-banda per via
+del limite in frequenza dell'op-amp, il quale determina la frequenza di taglio
+alta del filtro.
+
 Detta $V_{0} = v\ped{in} $ l'ampiezza del segnale in ingresso, la componente
 principale nello sviluppo in serie di Fourier dell'onda triangolare ha ampiezza 
-$\dfrac{8}{\pi^2} V_{0} $ e frequenza pari a quella della portante $f$.
-Dalla funzione di trasferimento sviluppata per frequenze $f \gg f_c$,
-la componente principale dell'onda in uscita ha ampiezza
-$\dfrac{8}{\pi^2} V_{0} 2\pi R_2 C f $. Pertanto ci aspettiamo che l'onda
-triangolare in uscita abbia ampiezza riscalata di un fattore $\pi/4$ dato dallo
+$\frac{8}{\pi^2} V_{0} $ e frequenza pari a quella della portante $f$.
+Dalla funzione di trasferimento \eqref{eq: hpfTfunc} sviluppata per frequenze
+$f \ll f_c$, la componente principale dell'onda in uscita ha ampiezza
+$\frac{8}{\pi^2} V_{0} 2\pi R_2 C f $. Pertanto ci aspettiamo che l'onda
+triangolare in uscita abbia ampiezza riscalata di un fattore $\pi/4$, che è
+il reciproco del fattore di ampiezza raccolto da ogni coefficiente dello
 sviluppo in serie di Fourier di un'onda quadra:
 \[
 v\ped{out, exp} = \frac{8}{\pi^{2}} V\ped{in} 2 \pi R_{2} C f \frac{\pi}{4} =
@@ -500,10 +514,10 @@ che risulta compatibile con l'ampiezza del segnale misurato in uscita.
 
 Senza la resistenza $R_1$ il circuito (in approssimazione di ground virtuale)
 avrebbe come funzione di trasferimento
-\begin{equation}\label{eq: hpfTfunc}
+\[
 T(\omega) = - j \omega R_2 C \implies
 \abs{T(f)} = A(f) =  - 2\pi f R_2 C
-\end{equation}
+\]
 Dunque un guadagno corrispondente nel diagramma di Bode ad una retta di
 pendenza costante $\SI{20}{\deci\bel/decade}$.
 Questo implica una divergenza del segnale in uscita per alte frequenze, la
@@ -550,7 +564,28 @@ dai valori misurati dei componenti dei circuiti risulta
 f\ped{c, exp} = \frac{1}{2\pi R_2 C} = 334 \pm 13 \; \si{\Hz}
 \end{equation}
 che risulta in ottimo accordo con le nostre misure della frequenza di taglio
-bassa $f_c$ del circuito derivatore.
+bassa $f_c$ del circuito integratore.
+
+Notiamo come per frequenze di lavoro fino a circa $\SI{100}{k\Hz}$ il circuito
+si comporta in maniera compatibile con quanto ci aspettiamo dalla funzione di
+trasferimento per il nostro integratore invertente
+\begin{equation}\label{eq: lpfTfunc}
+T(f) = \frac{Z_2(f)}{R_1} = - \frac{R_2}{R_1} \frac{1}{1 + j \frac{f}{f_c}}
+\end{equation}
+Ovvero, guadagno a centro banda
+$A\ped{M, exp} = R_2/R1 = 20.01 \pm 0.10 \; \si{dB}$ e pendenza
+$\SI{-20}{dB/decade}$ nel regime di taglio del filtro ($f \gg f_c$).
+
+Per frequenze maggiori dal plot di Bode in figura \ref{fig: intbode} vediamo
+che il guadagno assume un minimo a circa $-29.5 \pm 0.5 \; \si{dB}$ per
+una frequenza $f = 186 \pm 2 \; \si{k\Hz}$ e inverte il suo andamento fino
+ad assumere pendenza leggermente inferiore a $\SI{20}{dB/decade}$, in maniera
+simile a quanto ci si aspetta per il passaggio da uno zero di ordine 2
+nella funzione di trasferimento del sistema.
+
+Risulta difficile da valutare se questo sia dovuto ad accoppiamenti capacitivi
+fra basetta, fili e componenti passivi del circuito, alle capacità parassite
+dentro il TL081 o ad entrambi, che non stiamo considerando nel nostro modello.
 
 Senza la resistenza $R_2$ il circuito (in approssimazione di ground virtuale)
 avrebbe come funzione di trasferimento
@@ -586,13 +621,13 @@ $\SI{200}{m\V}$ e $f = \SI{10}{k\Hz}$ in ingresso. \label{fig: intsqw}}
 In uscita abbiamo trovato un'onda triangolare, come si vede in figura
 \ref{fig: intsqw} di cui riportiamo le misure di ampiezza:
 \begin{align*}
-v\ped{out} = 107.3 \pm 1.3 \; \si{m\V} \\
-v\ped{out} = 100.5 \pm 1.2 \; \si{m\V}
+v\ped{out} = 107.3 \pm 1.3 \; \si{m\V} \, ; \quad
+A_v = \frac{v\ped{out}}{v\ped{in}} = 0.537 \pm 0.008 \\
+v\ped{out} = 100.5 \pm 1.2 \; \si{m\V} \, ; \quad
+A_v = \frac{v\ped{out}}{v\ped{in}} = 0.503 \pm 0.007
 \end{align*}
 per cui effettivamente il segnale in uscita è la forma d'onda integrale
-di quella in ingresso, con ampiezza ridotta di circa la metà
-$A_v = \nicefrac{v\ped{out}}{v\ped{in}} = 0.537 \pm 0.008$
-%e $A_v = \nicefrac{v\ped{out}}{v\ped{in}} = 0.503 \pm 0.007$.
+di quella in ingresso, con ampiezza ridotta di circa la metà.
 
 Per frequenze $f \ll f_c$ come è ragionevole aspettarsi, la forma d'onda in
 uscita non è apprezzabilmente cambiata rispetto all'onda quadra in ingresso,
@@ -621,9 +656,23 @@ che l'approssimazione di ground virtuale non sia verificata in questo caso,
 per cui si determina una caduta di tensione sulla resistenza interna $R_{in}$
 dell'op-amp che quindi devia dal comportamento atteso.
 
+Ripercorrendo al contrario il ragionamento di prima, se $V_0 = v\ped{in}$ è
+l'ampiezza dell'onda quadra in ingresso, la sua componente principale nello
+sviluppo in serie di Fourier ha ampiezza $\frac{4}{\pi} V_0$ e la stessa
+frequenza della portante scelta con Wavegen $f_0 = f$.
+Applicando la funzione di trasferimento \eqref{eq: lpfTfunc} approssimata per
+frequenze $f \gg f_c$, la componente principale del segnale in uscita ha
+ampiezza $\frac{4}{\pi} V_0 / 2\pi R_1 C f$. Finalmente ci aspettiamo che
+l'onda triangolare in uscita abbia ampiezza scalata di un ulteriore fattore
+$\pi^2/8$, dato dal suo sviluppo in serie:
+\[
+v\ped{out, exp} = \frac{4}{\pi} \frac{v\ped{in}}{2 \pi R_1 C f} \frac{\pi^2}{8} =
+\frac{v\ped{in}}{4 R_1 C f} = 107 \pm 4 \; \si{m\V}
+\]
+che risulta compatibile con l'ampiezza del segnale misurato in uscita.
+
 \section{Circuito amplificatore non invertente}
 \subsection{Risposta in frequenza}
-
 \begin{figure}[htbp]
 \centering
 %\includegraphics[scale=0.35]{ninvbode}

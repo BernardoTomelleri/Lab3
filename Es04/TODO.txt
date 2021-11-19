@@ -8,7 +8,7 @@
 [x] Misura frequenza taglio integratore e confronto. Funzione di R2
 [x] Scrivere due cazzate sui regimi al variare della frequenza per l'integratore LPF
 [x] Spiegazione dell'origine dei picchi nei triangoli
-[] Giustificazione v o risalita nel guadagno a circa 100 kHz
+[x] Giustificazione v o risalita nel guadagno a circa 100 kHz
 
 [] Plot di Bode per 3 valori di resistenza POT1
 [] Sovrapposizione dei grafici e confronto con prodotto banda-guadagno

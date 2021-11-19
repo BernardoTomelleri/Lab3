@@ -43,9 +43,12 @@ $\sigma C$ \\
 \midrule
 $R_1$	  & 993 	& 8 	 & $C$ & 48			 & 2 \\
 $R_2^a$	  & 5.09 k	& 0.04 k 	 & & &	\\
-$R_2^f$	  & 9.94 k		& 0.08 k & 		& 		 &	\\
-$R_3$	  & 993		& 8		 &				&				 &		\\
-$R_S$	  & 992		& 8		 &				&				 &		\\
+$R_2^f$	  & 9.94 k		& 0.08 k & 		& 		 &	
+\\
+$R_3$	  & 993		& 8		 &				&	
+			 &		\\
+$R_S$	  & 992		& 8		 &				&	
+			 &		\\
 \bottomrule     
 \end{tabular}
 \caption{Valori di resistenza e capacità misurate per i componenti dei
@@ -65,7 +68,8 @@ Non è stato possibile misurare i valori di capacità dei condensatori nel
 circuito con il multimetro, che ha un rumore di fondo abbastanza alto da
 saturare sempre il fondo scala da $\SI{2}{n\F}$, per cui al posto delle loro
 misure prendiamo i valori nominali e relativa tolleranza.
-\section{Circuito amplificatore invertente}
+
+\section{Circuito amplificatore di carica}
 \subsection{Progettazione del circuito}
 Scegliamo di costruire un amplificatore invertente a partire da un op-amp
 TL081CP con impedenza in ingresso maggiore o uguale a $\SI{1}{k\ohm}$ e guadagno
@@ -81,7 +85,8 @@ e $10$ come quello in figura \ref{fig: ampschm}
 		(opamp.-) to[R=$ R_1 $, *-] (-0.8,0.5)
 		(opamp.out) to (5,0) node[ocirc, label=$ v\ped{out} $]{}
 		(opamp.up) --++(0,0.5) node[vcc]{$V_{CC} =$ 5\,\textnormal{V}}
-		(opamp.down) --++(0,-0.5) node[vee]{$V_{EE} =$ -5\,\textnormal{V}};
+		(opamp.down) --++(0,-0.5) node[vee]{$V_{EE} =$ 
+-5\,\textnormal{V}};
 		\draw
 		(1.8, 0.5) to [short] (1.8, 2.7)
 		to [R=$ R_2 $] (4.5, 2.7)
@@ -122,39 +127,217 @@ $R_2^a = \SI{5.1}{k\ohm}$, che risulta $v\ped{out} = 1022 \pm 8 \; \si{m\V}$,
 ottenendo così una stima del guadagno dell'amplificatore
 $A_v = \dfrac{v\ped{out}}{v\ped{in}} = 5.11 \pm 0.06 $.
 
-Mentre per il circuito con $R_2^a = \SI{7}{k\ohm}$ si trova
-$v\ped{out} = 1411 \pm 8 \; \si{m\V}$, che corrisponde ad un guadagno di
-$A_v = \dfrac{v\ped{out}}{v\ped{in}} = 7.06 \pm 0.06$.
-
-Per quanto riguarda il segno del guadagno abbiamo controllato che i segnali in
-ingresso ed uscita fossero in opposizione di fase verificando che i passaggi
-per 0 con la stessa pendenza delle forme d'onda siano separati di circa un
-semi-periodo.
-
-Misurando questa distanza con i cursori si è trovato
-\begin{align*}
-\Delta t &= 100 \pm 1.2 \; \si{\micro\s}\\
-\Delta \phi &= 2\pi f \Delta t = 3.14 \pm 0.04 \; \si{\radian}
-\end{align*}
-mentre da una misura diretta dello sfasamento tramite la funzione
-``Measurements'' definita con uno script di Wavegen risulta:
+Consideriamo il sotto-circuito formato dal condensatore $ C\ped{T} $ e dal 
+circuito di formazione. La funzione di trasferimento che lega $ 
+V\ped{in} $ a $ V\ped{sh} $ è data di fatto da quella di un amplificatore 
+invertente con impedenze complesse: in trasformata di Laplace
 \[
-\phi = 179.88 \pm 0.10 \; \si{\degree}
+\tilde{A}(s) = - \frac{\left(\frac{1}{R_{1}} + s 
+C\ped{F}\right)^{-1}}{\frac{1}{s C\ped{T}}} = - \frac{C\ped{T}}{C\ped{F}} 
+\frac{s}{s + \frac{1}{\tau}}
+\]
+con $ \tau \coloneqq R_{1} C\ped{F} $. In ingresso abbiamo un'onda quadra di 
+periodo $ 2T $ (che prendiamo nulla per tempi negativi) che possiamo scrivere 
+come
+\[
+V\ped{in}(t) = \sum_{k=0}^{+\infty} (-1)^{k}f(t - kT)
+\qquad \text{dove} \quad
+f(t) = V_{0} \left[\theta(t) - \theta(t - T)\right]
+\]
+In trasformata di Laplace si ha
+\[
+\tilde{f}(s) = V_{0}\left[\frac{1}{s} - \frac{e^{-sT}}{s}\right]
+\]
+da cui
+\[
+\tilde{V}\ped{in}(s) = \sum_{k=0}^{+\infty} (-1)^{k} \tilde{f}(s) e^{-kTs} = 
+\tilde{f}(s) \sum_{k=0}^{+\infty} (-1)^{k} e^{-kTs}
+\]
+La risposta del circuito in trasformata è
+\[
+  \tilde{V}\ped{sh}(s) = \tilde{A}(s) \tilde{V}\ped{in}(s) =  
+\tilde{A}(s)\tilde{f}(s) \sum_{k=0}^{+\infty} (-1)^{k}e^{-kTs} = \tilde{g}(s) 
+\sum_{k=0}^{+\infty} (-1)^{k}e^{-kTs} = \mathcal{L}\left[\sum_{k=0}^{+\infty} 
+(-1)^{k}g(t - kT)\right](s)
+\]
+Ora
+\[
+  \tilde{g}(s) = - V_{0} \frac{C\ped{T}}{C\ped{F}} \left[\frac{1}{s + 
+\frac{1}{\tau}} - \frac{e^{-sT}}{s + \frac{1}{\tau}}\right]
+\]
+da cui, anti-trasformando
+\[
+  g(t) = - V_{0} \frac{C\ped{T}}{C\ped{F}} \left[e^{-t/\tau}\theta(t) - 
+e^{-(t-T)/\tau} \theta(t - T) \right]
 \]
 
-che sono entrambi compatibili con il valore atteso di $\Delta \phi\ped{exp}
-= \pi \; \si{\radian}$, per cui l'amplificatore costruito è effettivamente
-invertente.
+Ma allora la risposta del circuito nel dominio del tempo è
+\begin{align*}
+  V\ped{sh}(t) &= - V_{0} \frac{C\ped{T}}{C\ped{F}} \left\{ 
+\sum_{k=0}^{+\infty} (-1)^{k}e^{-\frac{t - kT}{\tau}}\theta(t - kT) - 
+\sum_{k=0}^{+\infty} (-1)^{k} e^{-\frac{t- (k+1) T }{\tau}} \theta(t - (k+1)T ) 
+\right\} \\
+               &= - V_{0} \frac{C\ped{T}}{C\ped{F}} \left\{ e^{-\frac{t}{\tau}} 
+\theta(t) - 2 \sum_{k=1}^{+\infty} (-1)^{k} e^{-\frac{t - kT}{\tau}} \theta(t - 
+kT) \right\}
+\end{align*}
+ovvero, ignorando il transiente iniziale e supponendo $ \tau\ll T $\footnote{
+La buona definizione della somma è assicurata dal fatto che (tralasciando le 
+costanti fisiche)
+\[ \sum_{k \geq 0} \theta(t-k) e^{-(t-k)} = \sum_{k=0}^{\lfloor t \rfloor} 
+e^{-(t-k)} \leq \frac{e}{e-1} e^{-\{t\}}. \]
+},
+\begin{align}\label{eq:Vsh}
+V\ped{sh}(t) &\approx 2 V_{0} \frac{C\ped{T}}{C\ped{F}} \sum_{k=1}^{+\infty} 
+(-1)^{k} e^{-\frac{t - kT}{\tau}} \theta(t - kT) \nonumber\\
+               &\approx  2 V_{0} \frac{C\ped{T}}{C\ped{F}} \sum_{k=1}^{+\infty} 
+(-1)^{k} e^{-\frac{t - kT}{\tau}} \chi_{[kT, (k+1)T]}(t)
+\end{align}
+Per il circuito in esame i valori nominali sono $ C\ped{T} = C\ped{F} = 
+\SI{1}{\nano\farad} $, $ R_{1} = \SI{100}{\kilo\ohm} $, da cui $ \tau = 
+\SI{100}{\micro\second} $, e $ 2T = \SI{10}{\milli\second} $. Dopo un 
+transiente $ t\ll\tau $ in uscita ci aspettiamo quindi di osservare dei picchi 
+esponenzialmente decrescenti di segno alterno e di ampiezza pari al doppio del 
+segnale in ingresso. \\
 
+\paragraph{Discriminatore}
+Ignorando ora il condensatore $ C_{1} $ che ha il solo scopo di rimuovere il 
+rumore ad alte frequenze dal generatore, il sotto-circuito \texttt{X2} è un 
+discriminatore con tensione di soglia $ V\ped{t} $ data dal partitore di 
+tensione collegato al terminale ``--'' dell'OpAmp
+\[
+  V\ped{t} = (1 - 2\alpha) V\ped{G}
+\]
+dove $ 0\leq \alpha \leq 1 $ è la ``frazione'' di resistenza data dal 
+potenziometro e $ V\ped{G} = \SI{15}{\volt} $ (valore nominale) è la tensione 
+di alimentazione. In altri termini la tensione di soglia è variabile da $ 
+\SI{-15}{\volt} $ a $ \SI{15}{\volt} $. Supponendo di essere sempre in regime 
+di saturazione, l'uscita del circuito è data da
+\[
+  V\ped{out} = V\ped{G} \sgn\left(V\ped{sh} - V\ped{t}\right).
+\]
+Più esplicitamente, usando $ V\ped{in} = \SI{6}{\volt} $ ci aspettiamo $ 
+V\ped{sh} = \SI{12}{\volt} $ (ampiezze picco-picco), pertanto:
+\begin{itemize}
+\item se $ V\ped{t} > \SI{6}{\volt} $, $ V\ped{out} = -V\ped{G} $ costante.
+\item se $ \SI{0}{\volt} < V\ped{t} < \SI{6}{\volt} $, ci aspettiamo (in un 
+periodo)
+  \[
+    V\ped{out}(t) =
+    \begin{cases}
+      V\ped{G} & 0 < t < h \\
+      - V\ped{G} & h < t < 2T
+    \end{cases}
+  \]
+  dove $ h $ è il tempo in cui il picco esponenzialmente decrescente è 
+maggiore della tensione di soglia, ovvero
+  \begin{equation} \label{eq:tot-ampiezza-durata}
+    h = \tau \log\left(\frac{C\ped{F}}{C\ped{T}} 
+\frac{V\ped{in}}{V\ped{t}}\right).
+  \end{equation}
+\item se $ \SI{-6}{\volt} < V\ped{t} < \SI{0}{\volt} $, ci aspettiamo (in un 
+periodo)
+  \[
+    V\ped{out}(t) =
+    \begin{cases}
+      V\ped{G} & 0 < t < T \\
+      - V\ped{G} & T < t < T + h' \\
+      V\ped{G} & T + h' < t < 2T
+    \end{cases}
+  \]
+  dove $ h' $ è il tempo in cui il picco esponenzialmente crescente è minore 
+della tensione di soglia, ovvero
+  \[
+    h' = \tau \log\left(\frac{C\ped{F}}{C\ped{T}} 
+\frac{V\ped{in}}{\abs{V\ped{t}}}\right).
+  \]
+\item se $ V\ped{t} < \SI{-6}{\volt} $, $ V\ped{out} = -V\ped{G} $ costante.
+\end{itemize}
+
+%\setcounter{subsection}{c}
 \subsection{Misure di guadagno al variare di $v\ped{in}$}
 Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
 e in uscita $v\ped{out}$ dall'amplificatore possiamo ricavare una misura del
 guadagno del circuito dal rapporto $A_v = \dfrac{v\ped{out}}{v\ped{in}}$.
+
 \begin{table}[htbp]
 \centering
 \begin{tabular}{cccc}
 \toprule
-$v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & $v\ped{out} \pm \sigma(v\ped{out})$ [V] & $A_v \pm \sigma(A_v)$ \\
+$v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & 
+$v\ped{out} \pm \sigma(v\ped{out})$ [V] & $A_v \pm \sigma(A_v)$ \\
+\midrule
+\midrule
+40 & $40.1 \pm 0.2$ & $283 \pm 1.7 \; \si{m}$ & $7.06 \pm 0.06$ \\
+60 & $59.8 \pm 0.3$ & $410 \pm 2 \; \si{m}$ & $6.86 \pm 0.06$ \\
+80 & $79.9 \pm 1.1$ & $564 \pm 3 \; \si{m}$ & $7.06 \pm 0.06$ \\
+100 & $100.1 \pm 1.2$ & $705 \pm 4 \; \si{m}$ & $7.04 \pm 0.06$ \\
+200 & $200 \pm 2$ & $1412 \pm 8 \; \si{m}$ & $7.06 \pm 0.06$ \\
+400 & $401 \pm 3$ & $2882 \pm 17 \; \si{m}$ & $7.04 \pm 0.06$ \\
+600 & $601 \pm 5$ & $4.24 \pm 0.02$ & $7.05 \pm 0.06$ \\
+800 & $801 \pm 6$ & $5.78 \pm 0.03$ & $7.21 \pm 0.06$ \\
+900 & $900 \pm 6$ & $6.32 \pm 0.04$ & $7.00 \pm 0.06$ \\
+1000 & $1000 \pm 7$ & $7.04 \pm 0.04$ & $7.02 \pm 0.06$ \\
+\bottomrule
+\end{tabular} 
+\caption{Misure di guadagno al variare della tensione in ingresso
+all'amplificatore con $R_2^a = \SI{7}{k\ohm}$. Le ampiezze per questo
+circuito sono riportate per comodità in ampiezza picco-picco. A partire
+da valori di ampiezza (picco-picco) di \SI{1}{\V} del segnale in ingresso la
+parte inferiore dell'onda in uscita viene ``tosata''. \label{tab: gain_M}}
+\end{table}
+
+Con un fit lineare possiamo stimare il guadagno dell'amplificatore a partire
+dal grafico di $v\ped{out} = A_v v\ped{in}$ al variare di $v\ped{in}$.
+Riportiamo quanto trovato per il primo circuito:
+\begin{figure}[htbp]
+\centering
+%\includegraphics[scale=0.7]{gain5k1}
+\caption{Fit lineare per l'andamento dell'uscita rispetto al segnale in
+ingresso. \label{fig: gainfit}}
+\end{figure}
+Da cui troviamo i seguenti parametri per la retta di best-fit
+\begin{align*}
+\mathrm{intercetta} = -0.6 \pm 0.4 \; \si{m\V} \;\;\;\mathrm{pendenza} = 5.124 
+\pm 0.003 \;\;\;\mathrm{correlazione} 
+= -0.72 \;\;\; \chi^2 = 0.2 \;\;\; d.o.f. = 10 \\
+\text{coefficiente angolare/senza intercetta} = 5.120 \pm 0.002 \;\;\;
+\chi^2 = 0.2 \;\;\; d.o.f. = 11
+\end{align*}
+
+Il valore atteso per il guadagno dal valore dei componenti in questa
+configurazione del circuito è pari a
+\[
+A\ped{v, exp} = -\frac{R_2}{R_1} = - 5.13 \pm 0.12
+\]
+Questo è in ottimo accordo con quanto trovato sperimentalmente dalla nostra
+analisi.
+
+Per completezza riportiamo in un grafico anche le misure che non abbiamo
+considerato nel fit perché oltre la regione in cui l'op-amp ha comportamento
+lineare
+\begin{figure}[htbp]
+\centering
+%\includegraphics[scale=0.7]{gainsat}
+\caption{Andamento reale dell'uscita al variare dell'ampiezza del segnale in
+ingresso oltre il regime lineare dell'amplificatore misurati per il circuito
+con $R_2^a = 5.1 \; \si{k\ohm}$ \label{fig: gainsat}}
+\end{figure}
+
+\subsection{Durata impulso per carica di test}
+Abbiamo misurato per $V_s = 999 \pm 8 \si{m\V}$ di ampiezza dell'onda quadra
+in ingresso, frequenza $f = 100.0 \pm 1.6 \; \si{k\Hz}$, dunque come carica
+$Q\ped{in} = C_T \cdot V_s = 0.99 \pm 0.04 \; \si{n\coulomb}$.
+
+L'impulso in uscita ha durata pari a $415 \pm 5 \; \si{\micro\s}$.
+
+\subsection{Andamento di TOT al variare di $Q\ped{in}$}
+\begin{table}[htbp]
+\centering
+\begin{tabular}{cccc}
+\toprule
+$v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & 
+$v\ped{out} \pm \sigma(v\ped{out})$ [V] & $A_v \pm \sigma(A_v)$ \\
 \midrule
 \midrule
 50 & $50.0 \pm 0.4$ & $256 \pm 2 \; \si{m}$ & $5.12 \pm 0.06$ \\
@@ -188,97 +371,8 @@ manifestare difetti dovuti al clipping dell'op-amp al di fuori del regime
 lineare. \label{tab: gain_B}}
 \end{table}
 
-\begin{table}[htbp]
-\centering
-\begin{tabular}{cccc}
-\toprule
-$v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & $v\ped{out} \pm \sigma(v\ped{out})$ [V] & $A_v \pm \sigma(A_v)$ \\
-\midrule
-\midrule
-40 & $40.1 \pm 0.2$ & $283 \pm 1.7 \; \si{m}$ & $7.06 \pm 0.06$ \\
-60 & $59.8 \pm 0.3$ & $410 \pm 2 \; \si{m}$ & $6.86 \pm 0.06$ \\
-80 & $79.9 \pm 1.1$ & $564 \pm 3 \; \si{m}$ & $7.06 \pm 0.06$ \\
-100 & $100.1 \pm 1.2$ & $705 \pm 4 \; \si{m}$ & $7.04 \pm 0.06$ \\
-200 & $200 \pm 2$ & $1412 \pm 8 \; \si{m}$ & $7.06 \pm 0.06$ \\
-400 & $401 \pm 3$ & $2882 \pm 17 \; \si{m}$ & $7.04 \pm 0.06$ \\
-600 & $601 \pm 5$ & $4.24 \pm 0.02$ & $7.05 \pm 0.06$ \\
-800 & $801 \pm 6$ & $5.78 \pm 0.03$ & $7.21 \pm 0.06$ \\
-900 & $900 \pm 6$ & $6.32 \pm 0.04$ & $7.00 \pm 0.06$ \\
-1000 & $1000 \pm 7$ & $7.04 \pm 0.04$ & $7.02 \pm 0.06$ \\
-\bottomrule
-\end{tabular} 
-\caption{Misure di guadagno al variare della tensione in ingresso
-all'amplificatore con $R_2^a = \SI{7}{k\ohm}$. Le ampiezze per questo
-circuito sono riportate per comodità in ampiezza picco-picco. A partire
-da valori di ampiezza (picco-picco) di \SI{1}{\V} del segnale in ingresso la
-parte inferiore dell'onda in uscita viene ``tosata''. \label{tab: gain_M}}
-\end{table}
-
-Con un fit lineare possiamo stimare il guadagno dell'amplificatore a partire
-dal grafico di $v\ped{out} = A_v v\ped{in}$ al variare di $v\ped{in}$.
-Riportiamo quanto trovato per il primo circuito:
-\begin{figure}[htbp]
-\centering
-\includegraphics[scale=0.7]{gain5k1}
-\caption{Fit lineare per l'andamento dell'uscita rispetto al segnale in
-ingresso. \label{fig: gainfit}}
-\end{figure}
-Da cui troviamo i seguenti parametri per la retta di best-fit
-\begin{align*}
-\mathrm{intercetta} = -0.6 \pm 0.4 \; \si{m\V} \;\;\;\mathrm{pendenza} = 5.124 \pm 0.003 \;\;\;\mathrm{correlazione} 
-= -0.72 \;\;\; \chi^2 = 0.2 \;\;\; d.o.f. = 10 \\
-\text{coefficiente angolare/senza intercetta} = 5.120 \pm 0.002 \;\;\;
-\chi^2 = 0.2 \;\;\; d.o.f. = 11
-\end{align*}
-
-Il valore atteso per il guadagno dal valore dei componenti in questa
-configurazione del circuito è pari a
-\[
-A\ped{v, exp} = -\frac{R_2}{R_1} = - 5.13 \pm 0.12
-\]
-Questo è in ottimo accordo con quanto trovato sperimentalmente dalla nostra
-analisi.
-
-Per completezza riportiamo in un grafico anche le misure che non abbiamo
-considerato nel fit perché oltre la regione in cui l'op-amp ha comportamento
-lineare
-\begin{figure}[htbp]
-\centering
-\includegraphics[scale=0.7]{gainsat}
-\caption{Andamento reale dell'uscita al variare dell'ampiezza del segnale in
-ingresso oltre il regime lineare dell'amplificatore misurati per il circuito
-con $R_2^a = 5.1 \; \si{k\ohm}$ \label{fig: gainsat}}
-\end{figure}
-
-\subsection{Impedenza in ingresso}
-Inserendo in serie al generatore una resistenza $R_S$ dello stesso ordine di
-$R\ped{in}$ attesa e misurando la tensione in uscita con o senza $R_S$ è
-possibile dare un stima della resistenza in ingresso del circuito.
-Detta infatti $V_1$ la tensione $V\ped{out}$ misurata senza $R_S$ e $V_2$ la
-tensione misurata con $R_S$ inserita, vale la relazione:
-\begin{equation}\label{eq: RS}
-\frac{R_S}{R\ped{in}} = \frac{V_1}{V_2} - 1
-\end{equation}
-Abbiamo preso per entrambi i circuiti come $R_S$ un'altra resistenza da
-$1 \pm 10\% \; \si{k\ohm}$, come quella scelta per $R_1$.
-
-Dunque per l'amplificatore di guadagno $5.1$ abbiamo misurato
-$V_1 = 1022 \pm 8 \; \si{m\V}$ e $V_2 = 512 \pm 4 \; \si{m\V}$, cioè come
-resistenza in ingresso si ha:
-\begin{align*}
-{R\ped{in}} &= \frac{R_S}{V_1/V_2 - 1} = 0.99 \pm 0.02 \; \si{k\ohm}
-\end{align*}
-
-Mentre per l'amplificatore di guadagno $7$ si è trovato
-$V_1 = 1412 \pm 8 \; \si{m\V}$ e $V_2 = 2.822 \pm 0.017 \; \si{\V}$, da cui
-ricaviamo come stima della resistenza in ingresso:
-\begin{align*}
-{R\ped{in}} &= \frac{R_S}{V_1/V_2 - 1} = 1.00 \pm 0.02 \; \si{k\ohm}
-\end{align*}
-
-Il che risulta compatibile entro l'incertezza con il valore atteso dalla
-\eqref{eq: Zin} per entrambi gli amplificatori invertenti.
-
+Per 40 mV l'impulso di deforma in una parabola
+Sotto i 20 mV non c'è segnale apprezabile in uscita.
 \section{Risposta in frequenza e slew rate}
 \subsection{Network analyzer}
 Con l'aiuto dei cursori abbiamo misurato come guadagno a centro banda
@@ -290,10 +384,11 @@ rispetto ad $A_M$:
 $f_A = 388.0 \pm 1.1 \; \si{k\Hz}$
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.4]{opampbode}
+%\includegraphics[scale=0.4]{opampbode}
 \caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{100}{\Hz}$ e
 $\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso all'amplificatore
-invertente di ampiezza costante $v\ped{in} = \SI{200}{m\V}$. \label{fig: invbode}}
+invertente di ampiezza costante $v\ped{in} = \SI{200}{m\V}$. \label{fig: 
+invbode}}
 \end{figure}
 
 Per caratterizzare le frequenze di taglio misurate possiamo ricavare un valore
@@ -326,7 +421,7 @@ e $7$ risulta
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.37]{slew}
+%\includegraphics[scale=0.37]{slew}
 \caption{La traccia della rampa in uscita dall'amplificatore visualizzata
 all'oscilloscopio da cui abbiamo ottenuto la misura diretta dello slew rate.
 \label{fig: slewrate}}
@@ -347,7 +442,7 @@ centro banda:
 $f_c = 3408 \pm 11 \; \si{\Hz}$ e $f_A = 209 \pm 2 \; \si{k\Hz}$.
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.36]{hpfbode}
+%\includegraphics[scale=0.36]{hpfbode}
 \caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{100}{\Hz}$ e
 $\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso al derivatore RC attivo
 di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
@@ -363,7 +458,7 @@ $f = 100.0 \pm 1.6 \si{\Hz}$.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.4]{derivatore}
+%\includegraphics[scale=0.4]{derivatore}
 \caption{Risposta del circuito ad un segnale triangolare di ampiezza
 $\SI{200}{m\V}$ e $f = \SI{100}{\Hz}$ in ingresso. \label{fig: dertrg}}
 \end{figure}
@@ -381,7 +476,7 @@ Nel regime intermedio $f \sim f_c$ all'uscita del filtro RC osserviamo un'onda
 condensatore con cui abbiamo costruito il nostro filtro passa-alto.
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.335]{derfin}
+%\includegraphics[scale=0.335]{derfin}
 \caption{Onda a pinna di squalo in risposta ad un triangolo di ampiezza
 $200 \pm 2 \; \si{m\V}$ e $f = 1000 \pm 16 \; \si{Hz}$ in ingresso al
 circuito derivatore. \label{fig: derfin}}
@@ -393,7 +488,7 @@ costituita da una serie di parabole con concavità rivolte verso l'alto e verso
 il basso con ampiezza sempre minore all'aumentare della frequenza.
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.335]{derpar}
+%\includegraphics[scale=0.335]{derpar}
 \caption{Parabole con concavità alternanti in risposta ad un triangolo di
 ampiezza $200 \pm 2 \; \si{m\V}$ e $f = 1.00 \pm 0.02 \; \si{M\Hz}$ in ingresso
 al circuito derivatore. \label{fig: derpar}}
@@ -409,12 +504,14 @@ con $R_L$, vale la formula:
 \frac{R\ped{out}}{R_L} = \frac{V_1}{V_2} -1
 \end{equation}
 Per cui, una volta misurate $V_1 = 1725 \pm 8 \; \si{m\V}$,
-$V_2 = 866 \pm 4\; \si{m\V}$ e $R_L = 5.08 \pm 0.05 \si{k\ohm}$ abbiamo ottenuto come impedenza d'uscita:
+$V_2 = 866 \pm 4\; \si{m\V}$ e $R_L = 5.08 \pm 0.05 \si{k\ohm}$ abbiamo 
+ottenuto come impedenza d'uscita:
 \[
 R\ped{out} = R_L \left(\frac{V_1}{V_2} - 1\right)
 \]
 
-Risulta $R\ped{out} = 5.0 \pm 0.1\; \si{k\ohm}$ che è compatibile con la stima iniziale dell'impedenza.
+Risulta $R\ped{out} = 5.0 \pm 0.1\; \si{k\ohm}$ che è compatibile con la stima 
+iniziale dell'impedenza.
 
 \subsection{Confronto con i valori attesi}
 
@@ -430,7 +527,7 @@ rispetto ad $A_M$:
 $f_c = 342.5 \pm 0.5 \; \si{\Hz}$
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.42]{bode integratore}
+%\includegraphics[scale=0.42]{bode integratore}
 \caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{10}{\Hz}$ e
 $\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso all'integratore RC
 attivo di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
@@ -447,13 +544,14 @@ $$A_v = \frac{v\ped{out}}{v\ped{in}} = 0.537 \pm 0.008$$
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.42]{integratore}
+%\includegraphics[scale=0.42]{integratore}
 \caption{Risposta del circuito ad un'onda quadra di ampiezza
 $\SI{200}{m\V}$ e $f = \SI{10}{k\Hz}$ in ingresso. \label{fig: intsqw}}
 \end{figure}
 
 Partendo da una misura con i cursori del guadagno a centro banda,
-$A_V = 19.65 \pm 0.05 \; \si{dB} = 9.65 \pm 0.08$, possiamo ottenere una stima del valore
+$A_V = 19.65 \pm 0.05 \; \si{dB} = 9.65 \pm 0.08$, possiamo ottenere una stima 
+del valore
 delle frequenze di taglio a bassa $f_L$ e ad alta frequenza $f_H$ dai punti
 in cui il guadagno diminuisce di un fattore $1/\sqrt{2}$, cioè di circa
 $-3.01 \; \si{dB}$ rispetto ad $A_V$.
@@ -490,7 +588,7 @@ condensatore al passaggio da basso ad alto e viceversa dell'onda quadra in
 ingresso.
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.335]{intfin}
+%\includegraphics[scale=0.335]{intfin}
 \caption{Onda a pinna di squalo in risposta ad un'onda quadra di ampiezza
 $\SI{200}{m\V}$ e $f = 500 \pm 6 \; \si{Hz}$ in ingresso al circuito
 integratore. \label{fig: intfin}}
@@ -520,7 +618,8 @@ non-invertente di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
 
 \subsection{Misure di guadagno e frequenza di taglio}
 Partendo da una misura con i cursori del guadagno a centro banda,
-$A_V = 19.65 \pm 0.05 \; \si{dB} = 9.65 \pm 0.08$, possiamo ottenere una stima del valore
+$A_V = 19.65 \pm 0.05 \; \si{dB} = 9.65 \pm 0.08$, possiamo ottenere una stima 
+del valore
 delle frequenze di taglio a bassa $f_L$ e ad alta frequenza $f_H$ dai punti
 in cui il guadagno diminuisce di un fattore $1/\sqrt{2}$, cioè di circa
 $-3.01 \; \si{dB}$ rispetto ad $A_V$.
