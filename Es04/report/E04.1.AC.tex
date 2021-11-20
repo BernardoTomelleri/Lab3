@@ -273,7 +273,7 @@ Il che risulta compatibile entro l'incertezza con il valore atteso dalla
 \eqref{eq: Zin} per entrambi gli amplificatori invertenti.
 
 \section{Risposta in frequenza e slew rate}
-\subsection{Network analyzer}
+\subsection{Network analyzer}\label{sub: invamp network}
 Con l'aiuto dei cursori abbiamo misurato come guadagno a centro banda
 per il circuito amplificatore con resistenza $R_2^a = 5.1 \; \si{k\ohm}$
 $A_M = 14.18 \pm 0.09 \; \si{dB} = 5.12 \pm 0.05$.
@@ -691,15 +691,21 @@ diminuisce di circa $-3.01 \; \si{dB}$ rispetto ad $A_v$.
 \begin{tabular}{cccccc}
 \toprule
 $R_p [\si{k\ohm}]$ & $v_+ [\si{m\V}]$ & $v\ped{out} [V]$ & $A_v $ &
-$f_c [\si{k\Hz}]$ & $GWB [\si{M\Hz}]$ \\
+$f_c [\si{k\Hz}]$ & GWB $[\si{M\Hz}]$ \\
 \midrule
 \midrule
-$15.54 \pm 0.13$ & $90.5 \pm 0.8$ & $1.52 \pm 0.01$ & $16.8 \pm 0.2$ & $122.6 \pm 0.1$  & $2.06 \pm 0.02$ \\
-$55.1 \pm 0.5$   & $45.4 \pm 0.5$ & $2.55 \pm 0.02$ & $56.2 \pm 0.8$ & $36.3 \pm 0.1$ &  $2.04 \pm 0.03$\\
-$88.0 \pm 0.7$   & $27.1 \pm 0.4$ & $2.42 \pm 0.02$ & $89.3 \pm 1.5$ & $22.6 \pm 0.1$ & $2.01 \pm 0.03$ \\
-                 &  &  &  &  &  \\
-                 &  &  &  &  &  \\
-                 &  &  &  &  &  \\
+$5.16 \pm 0.05$ & $45.3 \pm 0.4$ & $283 \pm 2 \;$m & $6.22 \pm 0.07$ &
+$363 \pm 2$ & $2.29 \pm 0.03$ \\
+$15.54 \pm 0.13$ & $90.5 \pm 0.8$ & $1.52 \pm 0.01$ & $16.8 \pm 0.2$ &
+$122.6 \pm 0.1$  & $2.06 \pm 0.02$ \\
+$30.0 \pm 0.3$ & $45.3 \pm 0.4$  & $1415 \pm 11\;$m & $31.3 \pm 0.4$ &
+$67.6 \pm 0.2$ & $2.11 \pm 0.03$ \\
+$55.1 \pm 0.5$   & $45.4 \pm 0.5$ & $2.55 \pm 0.02$ & $56.2 \pm 0.8$ &
+$36.3 \pm 0.1$ &  $2.04 \pm 0.03$ \\
+$70.0 \pm 0.6$ & $45.3 \pm 0.4$ & $3.15 \pm 0.02$ & $66.8 \pm 0.8$ 	 &
+$33.2 \pm 0.2$ & $2.22 \pm 0.03$ \\
+$88.0 \pm 0.7$   & $27.1 \pm 0.4$ & $2.42 \pm 0.02$ & $89.3 \pm 1.5$ &
+$22.6 \pm 0.1$ & $2.01 \pm 0.03$ \\
 \bottomrule     
 \end{tabular}
 \caption{Misure di resistenza per il potenziometro, rispettivi guadagni e
@@ -711,15 +717,16 @@ $v\ped{out}$ in uscita dagli amplificatori non-invertenti studiati.
 Riportiamo dunque in unico grafico la sovrapposizione dei plot di Bode studiati
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.335]{amp banda R1}
+\includegraphics[scale=0.335]{ampbode}
 \caption{Sovrapposizione dei plot di Bode ottenuti per gli amplificatori
-non-invertenti. \label{fig: prdbode}}
+non-invertenti. \label{fig: ampbode}}
 \end{figure}
 
 Quindi il prodotto banda-guadagno risulta costante al variare di $A_v$ e $f_c$
 entro l’incertezza sperimentale. Come già abbiamo visto per l'amplificatore
-invertente, il valore osservato è circa la metà di quello riportato nel
-datasheet dell’op-amp come valore tipico $GBW\ped{typ} = \SI{4}{M\Hz}$.
+invertente nella sezione \ref{sub: invamp network}, il valore osservato è
+circa la metà di quello riportato nel datasheet dell’op-amp come valore
+tipico $\mathrm{GBW_{typ}} = \SI{4}{M\Hz}$.
 
 \section*{Conclusioni e commenti finali}
 Si è riusciti a costruire e studiare alcuni dei circuiti più comuni che si
