@@ -10,6 +10,6 @@
 [x] Spiegazione dell'origine dei picchi nei triangoli
 [x] Giustificazione v o risalita nel guadagno a circa 100 kHz
 
-[] Plot di Bode per 3 valori di resistenza POT1
-[] Sovrapposizione dei grafici e confronto con prodotto banda-guadagno
+[x] Plot di Bode per 3 valori di resistenza POT1
+[x] Sovrapposizione dei grafici e confronto con prodotto banda-guadagno
 
