@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  20 NOV 2021 01:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  21 NOV 2021 11:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1382,11 +1382,11 @@ File: ../figs//intfin.png Graphic file (type png)
 <use ../figs//intfin.png>
 Package pdftex.def Info: ../figs//intfin.png  used on input line 646.
 (pdftex.def)             Requested size: 436.04796pt x 215.12372pt.
-<../figs//ampbode.png, id=245, 1301.61281pt x 655.69969pt>
+<../figs//ampbode.png, id=245, 1440.88312pt x 711.4078pt>
 File: ../figs//ampbode.png Graphic file (type png)
 <use ../figs//ampbode.png>
 Package pdftex.def Info: ../figs//ampbode.png  used on input line 720.
-(pdftex.def)             Requested size: 436.04796pt x 219.66325pt.
+(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
  [12 <../figs//intfin.png (PNG copy)>] [13 <../figs//ampbode.png (PNG copy)>] [
 14] (./E04.1.AC.aux)
 Package rerunfilecheck Info: File `E04.1.AC.out' has not changed.
@@ -1395,7 +1395,7 @@ Package rerunfilecheck Info: File `E04.1.AC.out' has not changed.
 Here is how much of TeX's memory you used:
  56431 strings out of 479713
  1384289 string characters out of 5876923
- 2189989 words of memory out of 10000000
+ 2189990 words of memory out of 10000000
  73371 multiletter control sequences out of 15000+600000
  421879 words of font info for 77 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
@@ -1426,7 +1426,7 @@ uper/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0
 2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf
 -dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/font
 s/type1/public/cm-super/sfrm1728.pfb>
-Output written on E04.1.AC.pdf (14 pages, 1205075 bytes).
+Output written on E04.1.AC.pdf (14 pages, 1261341 bytes).
 PDF statistics:
  391 PDF objects out of 1000 (max. 8388607)
  294 compressed objects within 3 object streams
