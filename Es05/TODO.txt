@@ -1,15 +1,10 @@
-[x] Grafico guadagno con punti fuori regime lineare
-[] Misura frequenza taglio amplificatore invertente e confronto
+MISURE DA RIPORTARE PER ENTRAMBI I CIRCUITI:
+[] 1.e Misura durata impulso per valore fissato di Q_in (= C_T V_S)
+[] 1.g Misura ampiezza minima Q_in per cui compara 
 
-[] Misura frequenza taglio derivatore e confronto
-[x] Diversi regimi al variare della frequenza per il derivatore HPF
-[] Confronto valori attesi e funzione di R1 per il derivatore
+[] 2.b Segnali in uscita a saturazione positiva e negativa OA
 
-[] Misura frequenza taglio integratore e confronto. Funzione di R2
-[x] Scrivere due cazzate sui regimi al variare della frequenza per l'integratore LPF
-[] Spiegazione dell'origine dei picchi nei triangoli
-[] Giustificazione v o risalita nel guadagno a circa 100 kHz
+[] 3.d Misure di periodo e duty cycle onda quadra generata
 
-[] Plot di Bode per 3 valori di resistenza POT1
-[] Sovrapposizione dei grafici e confronto con prodotto banda-guadagno
-
+[] 4.b Durata dell'impulso generato
+[] 4.c Massima frequenza e minima ampiezza per il circuito

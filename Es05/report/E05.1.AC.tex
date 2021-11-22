@@ -10,7 +10,7 @@
 \graphicspath{{../figs/}}
 
 \author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
-\title{Es04A: Amplificatori operazionali e filtri attivi}
+\title{Es05A: Applicazioni non-lineari di amplificatori operazionali}
 \begin{document}
 \date{\today}
 \maketitle
@@ -18,7 +18,7 @@
 \setcounter{section}{0}
 
 \section*{Misura componenti del circuito}
-\begin{table}[ht]
+\begin{table}[htbp]
 \centering
 \begin{tabular}{cccccc}
 \toprule
@@ -54,11 +54,9 @@ $R_S$	  & 992		& 8		 &				&
 \caption{Valori di resistenza e capacità misurate per i componenti dei
 circuiti studiati. \label{tab: rcmes_B}}
 \end{table}
-Riportiamo per completezza anche il valore calcolato della resistenza di base
-\[
-R_B = R_1 || R_2 = 8.70 \pm 0.07 \; \si{k\ohm}
-\]
-e i valori delle tensioni di alimentazione continue misurate con il multimetro
+
+Riportiamo per completezza anche i valori delle tensioni di alimentazione
+continue per l'op-amp misurate con il multimetro
 \begin{align*}
 V_{CC} &= 4.99 \pm 0.03 \si{\V} \\
 V_{EE} &= -4.99 \pm 0.03 \si{\V}
@@ -69,37 +67,17 @@ circuito con il multimetro, che ha un rumore di fondo abbastanza alto da
 saturare sempre il fondo scala da $\SI{2}{n\F}$, per cui al posto delle loro
 misure prendiamo i valori nominali e relativa tolleranza.
 
+%=======================
 \section{Circuito amplificatore di carica}
 \subsection{Progettazione del circuito}
-Scegliamo di costruire un amplificatore invertente a partire da un op-amp
-TL081CP con impedenza in ingresso maggiore o uguale a $\SI{1}{k\ohm}$ e guadagno
-$A\ped{v, atteso} = - \dfrac{R_2}{R_1}$ compreso (in valore assoluto) tra $5$
-e $10$ come quello in figura \ref{fig: ampschm}
+Si è costruito un amplificatore di carica a partire da un op-amp TL081CP come
+quello in figura \ref{fig: ampschm}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
     \centering
-    \begin{circuitikz}
-        \draw
-		(3,0) node[op amp] (opamp) {}
-		(opamp.+) to[short] (1.8, -2) node[eground]{}
-		(opamp.-) to[R=$ R_1 $, *-] (-0.8,0.5)
-		(opamp.out) to (5,0) node[ocirc, label=$ v\ped{out} $]{}
-		(opamp.up) --++(0,0.5) node[vcc]{$V_{CC} =$ 5\,\textnormal{V}}
-		(opamp.down) --++(0,-0.5) node[vee]{$V_{EE} =$ 
--5\,\textnormal{V}};
-		\draw
-		(1.8, 0.5) to [short] (1.8, 2.7)
-		to [R=$ R_2 $] (4.5, 2.7)
-		to [short, -*] (4.5, 0);
-		\draw
-		(-0.8, -2) node[eground] {}
-		to[sV, v=$ v\ped{in} $] (-0.8, 0.5);
-		\draw
-		(5, -1) --++ (0, 0.45) node[vcc] {}
-		--++ (0, -1.4) node[vee] {};
-    \end{circuitikz}
-    \caption{Schema di massima dell'amplificatore invertente costruito.
-    \label{fig: ampschm}}
+	\includegraphics[scale=1.2]{Qamp}
+    \caption{Schema circuitale dell'amplificatore di carica costruito.
+    \label{fig: Qampschm}}
 \end{figure}
 
 In condizione di op-amp ideale gli ingressi $+, -$ sono dei circuiti aperti,
@@ -254,7 +232,7 @@ della tensione di soglia, ovvero
 \item se $ V\ped{t} < \SI{-6}{\volt} $, $ V\ped{out} = -V\ped{G} $ costante.
 \end{itemize}
 
-%\setcounter{subsection}{c}
+\setcounter{subsection}{3}
 \subsection{Misure di guadagno al variare di $v\ped{in}$}
 Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
 e in uscita $v\ped{out}$ dall'amplificatore possiamo ricavare una misura del
@@ -371,10 +349,20 @@ manifestare difetti dovuti al clipping dell'op-amp al di fuori del regime
 lineare. \label{tab: gain_B}}
 \end{table}
 
-Per 40 mV l'impulso di deforma in una parabola
-Sotto i 20 mV non c'è segnale apprezabile in uscita.
-\section{Risposta in frequenza e slew rate}
-\subsection{Network analyzer}
+Per 40 mV l'impulso si deforma in una parabola
+Sotto i 20 mV non c'è segnale apprezzabile in uscita.
+
+%=======================
+\section{Trigger di Schmitt}
+
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=1.5]{trgSchmitt}
+    \caption{Schema circuitale del trigger di Schmitt costruito.
+    \label{fig: trgschmittschm}}
+\end{figure}
+
+\subsection{Risposta ad un'onda sinusoidale}
 Con l'aiuto dei cursori abbiamo misurato come guadagno a centro banda
 per il circuito amplificatore con resistenza $R_2^a = 5.1 \; \si{k\ohm}$
 $A_M = 14.18 \pm 0.09 \; \si{dB} = 5.12 \pm 0.05$
@@ -398,7 +386,7 @@ che il prodotto banda-guadagno sia costante, come frequenza di taglio
 attesa in funzione del guadagno dell'amplificatore abbiamo
 $f\ped{A, exp} = \mathrm{GBW}/A_v$}.
 
-\subsection{Misura dello slew rate}
+\subsection{Saturazione dell'OpAmp}
 Abbiamo inviato in ingresso all'amplificatore un'onda quadra di ampiezza
 $1999 \pm 15 \; \si{m\V}$ e frequenza $1000 \pm 16 \; \si{\Hz}$, al fronte di
 discesa dell'onda abbiamo trovato una rampa come segnale in uscita. Questo
@@ -427,8 +415,21 @@ all'oscilloscopio da cui abbiamo ottenuto la misura diretta dello slew rate.
 \label{fig: slewrate}}
 \end{figure}
 
-\section{Circuito derivatore attivo}
-\subsection{Risposta in frequenza}
+\subsection{Tensioni di soglia e funzionamento del trigger}
+
+\subsection{Limiti fisici del circuito}
+
+%=======================
+\section{Multivibratore astabile}
+
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=1.5]{astable}
+    \caption{Schema circuitale del multivibratore astabile costruito.
+    \label{fig: astableschm}}
+\end{figure}
+
+\subsection{Funzionamento del circuito}
 Sempre usando i cursori abbiamo misurato come guadagno a centro banda
 per i circuiti derivatori
 \begin{align*}
@@ -449,9 +450,8 @@ di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
 \label{fig: derbode}}
 \end{figure}
 
-Assumendo che il prodotto banda-guadagno rimanga costante possiamo
-
-\subsection{Risposta ad un'onda triangolare}
+\setcounter{subsection}{2}
+\subsection{Studio dei segnali in ingresso e uscita}
 Si è inviato all'ingresso del filtro passa-alto un segnale triangolare di
 ampiezza $v\ped{in} = 200 \pm 2 \si{m\V}$ e frequenza
 $f = 100.0 \pm 1.6 \si{\Hz}$.
@@ -513,11 +513,20 @@ R\ped{out} = R_L \left(\frac{V_1}{V_2} - 1\right)
 Risulta $R\ped{out} = 5.0 \pm 0.1\; \si{k\ohm}$ che è compatibile con la stima 
 iniziale dell'impedenza.
 
-\subsection{Confronto con i valori attesi}
+\subsection{Misure di periodo e duty cycle}
+
+\subsection{Limite massimo in frequenza del generatore}
 
 %=======================
-\section{Circuito integratore attivo}
-\subsection{Risposta in frequenza}
+\section{Multivibratore monostabile}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=1.2]{monostable}
+    \caption{Schema circuitale del multivibratore monostabile costruito.
+    \label{fig: monostableschm}}
+\end{figure}
+
+\subsection{Studio dei segnali in ingresso e uscita}
 Di nuovo utilizzando i cursori abbiamo misurato come guadagno a centro banda
 per il circuito integratore attivo $A_M = 19.92 \pm 0.09 \; \si{dB}$.
 
@@ -534,7 +543,7 @@ attivo di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
 \label{fig: intbode}}
 \end{figure}
 
-\subsection{Risposta ad un'onda quadra @ 10 kHz}
+\subsection{Durata dell'impulso generato}
 Si è inviato all'ingresso del filtro passa-basso un'onda quadra di
 ampiezza $v\ped{in} = \SI{200}{m\V}$ e frequenza $10.02 \pm 0.12 \; \si{k\Hz}$.
 
@@ -594,86 +603,9 @@ $\SI{200}{m\V}$ e $f = 500 \pm 6 \; \si{Hz}$ in ingresso al circuito
 integratore. \label{fig: intfin}}
 \end{figure}
 
-\section{Circuito amplificatore non invertente}
-Per mitigare la diminuzione del guadagno dovuta alla resistenza tra emettitore
-e $V_{EE}$ si inserisce in parallelo a questa la serie $R\ped{es} + C_E$,
-in modo tale che $R_E$ sia vista ``per intero'' solamente in condizioni
-stazionarie (cioè dalle tensioni e correnti continue di alimentazione).
-Al contrario, per frequenze abbastanza alte il condensatore si comporterà come
-un corto circuito, per cui la resistenza del parallelo tenderà al valore più
-piccolo tra le due resistenze, cioè $R\ped{es} \ll R_E$.
-Quindi in breve l'impedenza all'emettitore si comporterà grossolanamente
-come un filtro passa alto.
+\subsection{Analisi del funzionamento del circuito}
 
-\subsection{Risposta in frequenza}
-
-\begin{figure}[htbp]
-\centering
-%\includegraphics[scale=0.35]{1-10Mnet}
-\caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{100}{\Hz}$ e
-$\SI{5}{M\Hz}$ con un segnale sinusoidale in ingresso all'amplificatore
-non-invertente di ampiezza costante $v\ped{in} = \SI{200}{m\V}$.
-\label{fig: ampbode}}
-\end{figure}
-
-\subsection{Misure di guadagno e frequenza di taglio}
-Partendo da una misura con i cursori del guadagno a centro banda,
-$A_V = 19.65 \pm 0.05 \; \si{dB} = 9.65 \pm 0.08$, possiamo ottenere una stima 
-del valore
-delle frequenze di taglio a bassa $f_L$ e ad alta frequenza $f_H$ dai punti
-in cui il guadagno diminuisce di un fattore $1/\sqrt{2}$, cioè di circa
-$-3.01 \; \si{dB}$ rispetto ad $A_V$.
-\begin{align*}
-f_L &= 80.77 \pm 0.12 \; \si{\Hz}\\
-f_H &= 646.1 \pm 0.5 \; \si{k\Hz}
-\end{align*}
-
-Una volta inserito il ramo in parallelo a $R_E$, dalla formula per il guadagno
-atteso otteniamo
-\[
-A_v = -\frac{R_C}{\abs{Z_E}} =
-- \frac{R_C}{R_E \; \lvert \rvert \; \left(R\ped{es} + \abs{1/j\omega C_E}
-\right)} =
-- R_C \abs{\frac{1}{R_E} + \frac{1}{R\ped{es} + 1/\omega C_E}}
-\]
-
-Visto che abbiamo scelto $C_E \gg C\ped{in} \sim C\ped{out}$, alla frequenza
-di lavoro $f = \SI{10}{k\Hz}$ possiamo considerare trascurabile l'impedenza
-del condensatore $\abs{Z_{C_E}} = \dfrac{1}{2\pi f C_E} \approx 0.1 \si{\ohm}
-\ll R\ped{es}$, per cui in buona approssimazione ci aspettiamo
-\[
-\abs{A_v} \approx
-\frac{R_C}{R_E \; \lvert \rvert \; R\ped{es}} =
-R_C \abs{\frac{1}{R_E} + \frac{1}{R\ped{es}}} \approx
-\frac{R_C}{R\ped{es}} = 110 \pm 1
-\]
-
-Questo però assumendo che l'impedenza del transistor sia trascurabile rispetto
-a $Z_E$, o meglio $\abs{Z_E} \gg \dfrac{h_{ie}}{h_{fe}}$
-\begin{align*}
-\abs{Z_E} &= \abs{\frac{1}{R_E} + \frac{1}{R\ped{es} + 1/\omega C_E}}^{-1} =
-45 \pm 2 \; \si{\ohm} \\
-\frac{h_{ie}}{h_{fe}} &\approx \SI{40}{\ohm}
-\end{align*}
-che non risulta affatto verificata.
-
-Considerando nel modello anche l'impedenza in ingresso del transistor in
-serie a quella del ramo $Z_E$ avremo come valore atteso per il guadagno
-\begin{equation}
-A_v = \frac{R_C}{\abs{Z_E} + h_{ie}/h_{fe}} \approx 60
-\end{equation}
-
-Che è in buon accordo con il valore misurato per il guadagno sempre
-entro le grandi incertezze relative sui parametri di costruzione del
-transistor.
-
-\begin{figure}[htbp]
-\centering
-%\includegraphics[scale=0.335]{Alin200mV}
-\caption{Sovrapposizione dei plot di Bode ottenuti per l'amplificatore
-non-invertente. \label{fig: prdbode}}
-\end{figure}
-
+%=======================
 \section*{Conclusioni e commenti finali}
 Si è riusciti a costruire e studiare alcuni dei circuiti più comuni che si
 possono realizzare con un amplificatore operazionale, tra cui: due filtri
@@ -683,6 +615,7 @@ In particolare siamo riusciti ad apprezzare il differente comportamento dei
 circuiti (anche in regime non lineare) dare una stima di guadagno, impedenza di
 ingresso e frequenze caratteristiche della loro risposta in frequenza.
 
+%=======================
 \section*{Dichiarazione}
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e
 originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
