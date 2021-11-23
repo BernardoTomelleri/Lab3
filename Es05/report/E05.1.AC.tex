@@ -17,23 +17,25 @@
 
 \setcounter{section}{0}
 
-\section*{Misura componenti del circuito}
+\section*{Misura componenti dei circuiti}
 \begin{table}[htbp]
 \centering
 \begin{tabular}{cccccc}
 \toprule
-Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
+Resistenze $[\si{k\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
 $\sigma C$ \\
 \midrule
 \midrule
-$R_1$	  & 100.6 	& 0.8 	 & $C$ & 50			 & 2 \\
-$R_2^a$	  & 7.04	& 0.06 	 & & &	\\
-$R_2^f$	  & 9.85 k	& 0.08 k & & &	\\
-$R_S$	  & 998		& 8		 & & &	\\
+$R_1^Q$	  & 100.6 	& 0.8 	 & $C_T$ & 1.00		 & 0.04 \\
+$R_1^T$	  & 9.94	& 0.08 	 & $C_F$ & 1.00		 & 0.04 \\
+$R_2^T$	  & 2.19	& 0.03	 & $C_1$ & 96		 & 4	\\
+$R_2^a$	  & 998		& 8		 & $C_2$ & 1.00		 & 0.04 \\
+$R_3$	  & 998		& 8		 & & & \\
+$R_4$	  & 998		& 8		 & & & \\
 \bottomrule     
 \end{tabular}
 \caption{Valori di resistenza e capacità misurate per i componenti dei
-circuiti studiati. \label{tab: rcmes_M}}
+circuiti studiati. \label{tab: rcmes_B}}
 
 \begin{tabular}{cccccc}
 \toprule
@@ -52,7 +54,7 @@ $R_S$	  & 992		& 8		 &				&
 \bottomrule     
 \end{tabular}
 \caption{Valori di resistenza e capacità misurate per i componenti dei
-circuiti studiati. \label{tab: rcmes_B}}
+circuiti studiati. \label{tab: rcmes_M}}
 \end{table}
 
 Riportiamo per completezza anche i valori delle tensioni di alimentazione
@@ -387,11 +389,15 @@ attesa in funzione del guadagno dell'amplificatore abbiamo
 $f\ped{A, exp} = \mathrm{GBW}/A_v$}.
 
 \subsection{Saturazione dell'OpAmp}
-Abbiamo inviato in ingresso all'amplificatore un'onda quadra di ampiezza
-$1999 \pm 15 \; \si{m\V}$ e frequenza $1000 \pm 16 \; \si{\Hz}$, al fronte di
-discesa dell'onda abbiamo trovato una rampa come segnale in uscita. Questo
-permette di misurare lo slew rate dell'amplificatore direttamente dalla
-pendenza della rampa.
+Abbiamo inviato in ingresso all'amplificatore un'onda sinusoidale di ampiezza
+$1999 \pm 15 \; \si{m\V}$ e frequenza $1000 \pm 16 \; \si{\Hz}$.
+Dalle intersezioni tra i due canali abbiamo misurato le transizioni basso-alto
+(OH) e alto-basso (OL)
+
+\[
+V_{OH} = 617 \pm 5 \; \si{m\V}
+V_{OL} = 782 \pm 6 \; \si{m\V}
+\]
 
 Misurando con l'oscilloscopio di quanto sale la tensione in uscita
 dall'amplificatore $\Delta V$ in un certo intervallo di tempo $\Delta t$
