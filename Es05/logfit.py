@@ -14,10 +14,10 @@ tex = True  # LaTeX typesetting maths and descriptions
 
 # Modello logaritmico
 def log(x, a=1, b=0):
-    return a*np.log(x) + b
+    return a*np.log(x/b)
 
 vin, dvin, vout, dvout = np.loadtxt('./data/TOT.txt', float, unpack=True)
-vin*=1e-3; dvin*=1e-3
+vin*=2e-3; dvin*=2e-3
 v_min = 0; v_max = 3
 
 # Linear fit
@@ -39,7 +39,7 @@ perr, pcor = errcor(covm)
 prnpar(pars, perr, model)
 chisq, ndof, resn = chitest(model(x, *pars), y, unc=deff, ddof=len(pars), v=True)
 
-# linear fit graphs
+# log fit graphs
 fig, (axf, axr) = pltfitres(model, x, y, dx, deff, pars=pars)
 axf.set_ylabel(r'Time-over-Threshold [$\mu$s]')
 if tix: tick(axf, xmaj=5, ymaj=0.05)
