@@ -7,6 +7,8 @@ MISURE DA RIPORTARE PER ENTRAMBI I CIRCUITI:
 [x] 2.d limiti fisici del circuito
 
 [x] 3.d Misure di periodo e duty cycle onda quadra generata
+[] 3.d Calcolare ammodino l'incertezza sul periodo atteso
+[] 3.e Discutere frequenza massima
 
 [] 4.b Durata dell'impulso generato
 [] 4.c Massima frequenza e minima ampiezza per il circuito
