@@ -1,10 +1,14 @@
 MISURE DA RIPORTARE PER ENTRAMBI I CIRCUITI:
-[] 1.e Misura durata impulso per valore fissato di Q_in (= C_T V_S)
-[] 1.g Misura ampiezza minima Q_in per cui compara 
+[x] 1.e Misura durata impulso per valore fissato di Q_in (= C_T V_S)
+[x] 1.g Misura ampiezza minima Q_in per cui compara 
 
-[] 2.b Segnali in uscita a saturazione positiva e negativa OA
+[x] 2.b Segnali in uscita a saturazione positiva e negativa OA
+[x] 2.c Soglia positiva e negativa
+[x] 2.d limiti fisici del circuito
 
-[] 3.d Misure di periodo e duty cycle onda quadra generata
+[x] 3.d Misure di periodo e duty cycle onda quadra generata
+[] 3.d Calcolare ammodino l'incertezza sul periodo atteso
+[] 3.e Discutere frequenza massima
 
 [] 4.b Durata dell'impulso generato
 [] 4.c Massima frequenza e minima ampiezza per il circuito
