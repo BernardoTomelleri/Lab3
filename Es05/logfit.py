@@ -14,7 +14,7 @@ tex = True  # LaTeX typesetting maths and descriptions
 
 # Modello logaritmico
 def log(x, a=1, b=0):
-    return a*np.log(x/b)
+    return a*np.log(x) + b
 
 vin, dvin, vout, dvout = np.loadtxt('./data/TOT.txt', float, unpack=True)
 vin*=2e-3; dvin*=2e-3

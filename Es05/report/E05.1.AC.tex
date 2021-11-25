@@ -156,9 +156,9 @@ dall'AD2, di cui riportiamo brevemente i risultati
     circuito formatore $V\ped{sh}$ \label{fig: tau}}
 \end{figure}
 \begin{align*}
-V\ped{sh} (t=0) &= 2024 \pm 2 \; \si{m\V}
-&\tau = 101.90 \pm 0.03 \; \si{\micro\s} \\
-\chi^2/\mathrm{ndof} &= 2774/4086 &\mathrm{cov_{norm}} = -0.73
+V\ped{sh} (t=0) &= 2021 \pm 2 \; \si{m\V}
+&\tau = 101.88 \pm 0.03 \; \si{\micro\s} \\
+\chi^2/\mathrm{ndof} &= 2774/4086 &\mathrm{cov_{norm}} = -0.75
 \end{align*}
 
 Da cui vediamo come non solo la misura di ampiezza iniziale sia compatibile
@@ -173,8 +173,8 @@ $V\ped{thr} = 60 \pm 0.4 \si{m\V}$ fornita dal generatore di tensione
 \verb+W2+ collegato all'ingresso invertente del secondo OpAmp.
 
 Supponiamo di essere sempre in regime di saturazione per l'OpAmp ideale e
-come prima assumiamo iniezione istantanea di carica sui condensatori $C_T$ e
-$C_F$. Grazie al fatto che le tensioni di alimentazione sono pari in modulo
+come prima assumiamo iniezione istantanea di carica sui condensatori. 
+Grazie al fatto che le tensioni di alimentazione sono pari in modulo
 $V_{CC} = - V_{EE}$ possiamo prendere come segnale atteso in uscita
 \begin{equation}\label{eq: Vdiscr}
 V\ped{discr} (t) = V_{CC} \sgn\left[V\ped{sh}(t) - V\ped{thr}\right].
@@ -228,7 +228,8 @@ in ingresso $V_s (t)$. Riportiamo le misure dirette effettuate con i cursori
 delle tensioni di saturazione del comparatore e una misura del tempo ``alto''
 dell'impulso definita in maniera compatibile con la funzione automatica di
 misura ``PosWidth'' (cioè come il tempo in cui la tensione si trova al di
-sopra della metà del valore positivo dell'impulso).
+sopra della metà del valore positivo dell'impulso, che quindi sovrastima
+per la pendenza decisamente non ideale dei fronti d'onda).
 \begin{align*}
 V_{OH} &= 4.38 \pm 0.03 \; \si{\V} \\
 V_{OL} &= -3.53 \pm 0.02 \; \si{\V} \\
@@ -239,19 +240,25 @@ Osserviamo quindi che i valori di saturazione alta e bassa misurati non sono
 compatibili con quelli attesi, ma sono entrambi inferiori (in modulo). Questo
 può essere dovuto al fatto che in realtà il TL081 in regime di saturazione
 produce al massimo tensioni entro il suo (Maximum Output) \emph{Voltage swing}
-riportato come valore tipico nel datasheet $V_{OM} = 13.5$,
+riportato come valore tipico nel datasheet $V\ped{OM, typ} = 13.5$,
 sensibilmente inferiore rispetto al valore di tensione di alimentazione tipico
-a cui è riferito $V_CC = \SI{15}{\V}$.
+a cui è riferito $V\ped{CC, typ} = \SI{15}{\V}$.
 
 Quindi, volendo ragionare per analogia ci aspettiamo un escursione massima tra
 le tensioni di saturazione (date le nostre tensioni di alimentazione a
-$\pm \SI{5}{\V}$) $V_{OM} = 13.5 / 3 = 4.5 \; \si{\V}$, che risulta
-sicuramente più vicino a quanto abbiamo trovato.
+$\pm \SI{5}{\V}$) $V_{OM} = 13.5 \cdot \frac{V_{CC}}{V\ped{CC, typ}} =
+13.5 /3 = 4.5 \; \si{\V}$, che risulta sicuramente più vicino a quanto
+abbiamo misurato.
 
 \subsection{Durata impulso per carica di test}
-Abbiamo misurato per $V_s = 999 \pm 8 \si{m\V}$ di ampiezza dell'onda quadra
-in ingresso, frequenza $f = 100.0 \pm 1.6 \; \si{k\Hz}$, dunque come carica
-$Q\ped{in} = C_T \cdot 2 V_s = 1.98 \pm 0.08 \; \si{n\coulomb}$.
+Abbiamo scelto come ampiezza per l'onda quadra $V_s = 999 \pm 8 \si{m\V}$ e
+frequenza $f = 100.0 \pm 1.6 \; \si{k\Hz}$, dunque come carica
+iniettata $Q\ped{in} = C_T \cdot 2 V_s = 1.98 \pm 0.08 \; \si{n\coulomb}$.
+Si è scelta una frequenza abbastanza bassa, con periodo corrispondente a
+$1/f = T \gg \tau$ di modo che tra una iniezione di carica e l'altra (cioè tra
+ogni semiperiodo dell'onda quadra $V_s (t)$) i condensatori abbiano tempo di
+scaricarsi, così da poter considerare indipendente ogni iniezione di carica
+dalla precedente.
 
 L'impulso in uscita ha durata pari a $415 \pm 5 \; \si{\micro\s}$ in un circuito e $410 \pm 5 \; \si{\micro\s}$ nel secondo.
 
@@ -267,9 +274,61 @@ ToT = R_1 C_F \log\left(\frac{C_T}{C_F} \frac{2 V_s}{V\ped{thr}}\right) =
 %analisi.
 
 \subsection{Andamento di TOT al variare di $Q\ped{in}$}
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.335]{shaper_discrzoom}
+\caption{Acquisizione del segnale in uscita dal circuito discriminatore con
+un'onda quadra in ingresso $V_s = \SI{1}{\V}$, $f = \SI{100}{\Hz}$
+\label{fig: shaperdiscr}}
+\end{figure}
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.335]{discr_sat}
+\caption{Acquisizione del segnale in uscita dal circuito discriminatore con
+un'onda quadra in ingresso $V_s = \SI{30}{m\V}$, $f = \SI{100}{\Hz}$
+\label{fig: discr_sat}}
+\end{figure}
+Il fronte di salita all'uscita del discriminatore è sicuramente limitato dallo
+slew rate finito dell'amplificatore
+\[
+t_{oh} = V\ped{disc}^{pp}/SR = 7.9 / 13 = 2 \; \si{\micro\s}
+\]
+mentre il fronte di discesa è meno ripido perché corrisponde alla transizione
+del discriminatore sulla discesa esponenziale di $V\ped{sh}$, che ha una derivata
+piccola in prossimità della soglia. Questo infatti lascia presumere che esista
+un intervallo temporale durante il quale l'uscita di $V\ped{discr}$ è in zona
+lineare.
+
+Infatti si è trovato, per ampiezza dell'onda quadra prossima alla soglia
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.335]{shdiscthr}
+\caption{Acquisizione del segnale in uscita dal circuito discriminatore con
+un'onda quadra in ingresso $V_s = \SI{20}{m\V}$, $f = \SI{100}{\Hz}$
+\label{fig: discrthr}}
+\end{figure}
+che è proprio il transiente dello shaper visto in \ref{fig: shzoom} amplificato
+dal secondo OpAmp in regime lineare.
+
+\subsection{Minima carica per cui satura il comparatore}
 Provando con varie ampiezza in ingresso, in entrambi i circuiti si sono verificati i medesimi risultati: per ampiezze dei segnali in ingresso maggiori dei 50 mV non sono presenti particolari deformazioni nel segnale in uscita; al di sotto dei 50 mV invece il segnale in uscita inizia a deformarsi, assumendo la forma di una parabola rovesciata che si sposta verso il basso più diminuiamo l'ampiezza in ingresso; questo comportamento si osserva fino a circa 30 mV, quando il segnale in uscita diventa impercettibile e scompare.
 
+\subsection{Confronto con i valori attesi}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.6]{logfit}
+    \caption{Fit logaritmico del $ToT$ in funzione dell'ampiezza di carica in
+    ingresso $Q\ped{in}$ \label{fig: logfit}}
+\end{figure}
+\begin{align*}
+V\ped{thr} &= 40.7 \pm 0.2 \; \si{m\V}
+&\tau = 106.51 \pm 0.3 \; \si{\micro\s} \\
+\chi^2/\mathrm{ndof} &= 0.6/8 &\mathrm{cov_{norm}} = 0.82
+\end{align*}
+
+Ritroviamo che il valore del tempo di smorzamento $\tau$ è compatibile con il
+valore atteso dai componenti del circuito.
 %=======================
 \section{Trigger di Schmitt}
 
@@ -432,74 +491,6 @@ Dalla misura diretta ricavo
 
 \subsection{Analisi del funzionamento del circuito}
 
-\subsection*{Appendice}
-Consideriamo il sotto-circuito formato dal condensatore $ C\ped{T} $ e dal 
-circuito di formazione. La funzione di trasferimento che lega $ 
-V\ped{in} $ a $ V\ped{sh} $ è data di fatto da quella di un amplificatore 
-invertente con impedenze complesse: in trasformata di Laplace
-\[
-\tilde{A}(s) = - \frac{\left(\frac{1}{R_{1}} + s 
-C\ped{F}\right)^{-1}}{\frac{1}{s C\ped{T}}} = - \frac{C\ped{T}}{C\ped{F}} 
-\frac{s}{s + \frac{1}{\tau}}
-\]
-con $ \tau \coloneqq R_{1} C\ped{F} $. In ingresso abbiamo un'onda quadra di 
-periodo $ 2T $ (che prendiamo nulla per tempi negativi) che possiamo scrivere 
-come
-\[
-V\ped{in}(t) = \sum_{k=0}^{+\infty} (-1)^{k}f(t - kT)
-\qquad \text{dove} \quad
-f(t) = V_{0} \left[\theta(t) - \theta(t - T)\right]
-\]
-In trasformata di Laplace si ha
-\[
-\tilde{f}(s) = V_{0}\left[\frac{1}{s} - \frac{e^{-sT}}{s}\right]
-\]
-da cui
-\[
-\tilde{V}\ped{in}(s) = \sum_{k=0}^{+\infty} (-1)^{k} \tilde{f}(s) e^{-kTs} = 
-\tilde{f}(s) \sum_{k=0}^{+\infty} (-1)^{k} e^{-kTs}
-\]
-La risposta del circuito in trasformata è
-\[
-  \tilde{V}\ped{sh}(s) = \tilde{A}(s) \tilde{V}\ped{in}(s) =  
-\tilde{A}(s)\tilde{f}(s) \sum_{k=0}^{+\infty} (-1)^{k}e^{-kTs} = \tilde{g}(s) 
-\sum_{k=0}^{+\infty} (-1)^{k}e^{-kTs} = \mathcal{L}\left[\sum_{k=0}^{+\infty} 
-(-1)^{k}g(t - kT)\right](s)
-\]
-Ora
-\[
-  \tilde{g}(s) = - V_{0} \frac{C\ped{T}}{C\ped{F}} \left[\frac{1}{s + 
-\frac{1}{\tau}} - \frac{e^{-sT}}{s + \frac{1}{\tau}}\right]
-\]
-da cui, anti-trasformando
-\[
-  g(t) = - V_{0} \frac{C\ped{T}}{C\ped{F}} \left[e^{-t/\tau}\theta(t) - 
-e^{-(t-T)/\tau} \theta(t - T) \right]
-\]
-
-Ma allora la risposta del circuito nel dominio del tempo è
-\begin{align*}
-  V\ped{sh}(t) &= - V_{0} \frac{C\ped{T}}{C\ped{F}} \left\{ 
-\sum_{k=0}^{+\infty} (-1)^{k}e^{-\frac{t - kT}{\tau}}\theta(t - kT) - 
-\sum_{k=0}^{+\infty} (-1)^{k} e^{-\frac{t- (k+1) T }{\tau}} \theta(t - (k+1)T ) 
-\right\} \\
-               &= - V_{0} \frac{C\ped{T}}{C\ped{F}} \left\{ e^{-\frac{t}{\tau}} 
-\theta(t) - 2 \sum_{k=1}^{+\infty} (-1)^{k} e^{-\frac{t - kT}{\tau}} \theta(t - 
-kT) \right\}
-\end{align*}
-ovvero, ignorando il transiente iniziale e supponendo $ \tau\ll T $\footnote{
-La buona definizione della somma è assicurata dal fatto che (tralasciando le 
-costanti fisiche)
-\[ \sum_{k \geq 0} \theta(t-k) e^{-(t-k)} = \sum_{k=0}^{\lfloor t \rfloor} 
-e^{-(t-k)} \leq \frac{e}{e-1} e^{-\{t\}}. \]
-},
-\begin{align}\label{eq:Vshaper}
-V\ped{sh}(t) &\approx 2 V_{0} \frac{C\ped{T}}{C\ped{F}} \sum_{k=1}^{+\infty} 
-(-1)^{k} e^{-\frac{t - kT}{\tau}} \theta(t - kT) \nonumber\\
-               &\approx  2 V_{0} \frac{C\ped{T}}{C\ped{F}} \sum_{k=1}^{+\infty} 
-(-1)^{k} e^{-\frac{t - kT}{\tau}} \chi_{[kT, (k+1)T]}(t)
-\end{align}
-
 %=======================
 \section*{Conclusioni e commenti finali}
 Si è riusciti a costruire e studiare alcuni dei circuiti più comuni che si
@@ -515,5 +506,74 @@ ingresso e frequenze caratteristiche della loro risposta in frequenza.
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e
 originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
 hanno contribuito alla elaborazione della relazione stessa.
+
+\newpage
+\subsection*{Appendice}
+Consideriamo il sotto-circuito formato dal condensatore $C_T$ e dal circuito
+di formazione. La funzione di trasferimento che lega $V_s$ a $V\ped{sh}$ è
+data di fatto da quella di un amplificatore invertente con impedenze
+complesse: in trasformata di Laplace
+\[
+\tilde{A}(s) = - \frac{\left(\frac{1}{R_1} + s 
+C_F\right)^{-1}}{\frac{1}{s C_T}} = - \frac{C_T}{C_F} 
+\frac{s}{s + \frac{1}{\tau}}
+\]
+con $ \tau \coloneqq R_1 C_F $. In ingresso abbiamo un'onda quadra di 
+periodo $ 2T $ (che prendiamo nulla per tempi negativi) che possiamo scrivere 
+come
+\[
+V\ped{in}(t) = \sum_{k=0}^{+\infty} (-1)^{k}f(t - kT)
+\qquad \text{dove} \quad
+f(t) = V_s \left[\theta(t) - \theta(t - T)\right]
+\]
+In trasformata di Laplace si ha
+\[
+\tilde{f}(s) = V_s\left[\frac{1}{s} - \frac{e^{-sT}}{s}\right]
+\]
+da cui
+\[
+\tilde{V}\ped{in}(s) = \sum_{k=0}^{+\infty} (-1)^{k} \tilde{f}(s) e^{-kTs} = 
+\tilde{f}(s) \sum_{k=0}^{+\infty} (-1)^{k} e^{-kTs}
+\]
+La risposta del circuito in trasformata è
+\[
+  \tilde{V}\ped{sh}(s) = \tilde{A}(s) \tilde{V}\ped{in}(s) =  
+\tilde{A}(s)\tilde{f}(s) \sum_{k=0}^{+\infty} (-1)^{k}e^{-kTs} = \tilde{g}(s) 
+\sum_{k=0}^{+\infty} (-1)^{k}e^{-kTs} = \mathcal{L}\left[\sum_{k=0}^{+\infty} 
+(-1)^{k}g(t - kT)\right](s)
+\]
+Ora
+\[
+  \tilde{g}(s) = - V_s \frac{C_T}{C_F} \left[\frac{1}{s + 
+\frac{1}{\tau}} - \frac{e^{-sT}}{s + \frac{1}{\tau}}\right]
+\]
+da cui, anti-trasformando
+\[
+  g(t) = - V_s \frac{C_T}{C_F} \left[e^{-t/\tau}\theta(t) - 
+e^{-(t-T)/\tau} \theta(t - T) \right]
+\]
+
+Ma allora la risposta del circuito nel dominio del tempo è
+\begin{align*}
+  V\ped{sh}(t) &= - V_s \frac{C_T}{C_F} \left\{ 
+\sum_{k=0}^{+\infty} (-1)^{k}e^{-\frac{t - kT}{\tau}}\theta(t - kT) - 
+\sum_{k=0}^{+\infty} (-1)^{k} e^{-\frac{t- (k+1) T }{\tau}} \theta(t - (k+1)T ) 
+\right\} \\
+               &= - V_s \frac{C_T}{C_F} \left\{ e^{-\frac{t}{\tau}} 
+\theta(t) - 2 \sum_{k=1}^{+\infty} (-1)^{k} e^{-\frac{t - kT}{\tau}} \theta(t - 
+kT) \right\}
+\end{align*}
+ovvero, ignorando il transiente iniziale e supponendo $ \tau\ll T $\footnote{
+La buona definizione della somma è assicurata dal fatto che (tralasciando le 
+costanti fisiche)
+\[ \sum_{k \geq 0} \theta(t-k) e^{-(t-k)} = \sum_{k=0}^{\lfloor t \rfloor} 
+e^{-(t-k)} \leq \frac{e}{e-1} e^{-\{t\}}. \]
+},
+\begin{align}\label{eq:Vshaper}
+V\ped{sh}(t) &\approx 2 V_s \frac{C_T}{C_F} \sum_{k=1}^{+\infty} 
+(-1)^{k} e^{-\frac{t - kT}{\tau}} \theta(t - kT) \nonumber\\
+               &\approx  2 V_s \frac{C_T}{C_F} \sum_{k=1}^{+\infty} 
+(-1)^{k} e^{-\frac{t - kT}{\tau}} \chi_{[kT, (k+1)T]}(t)
+\end{align}
 
 \end{document}
