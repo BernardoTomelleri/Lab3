@@ -29,9 +29,9 @@ $\sigma C$ \\
 $R_1^Q$	  & 100.6 	& 0.8 	 & $C_T$ & 1.00		 & 0.04 \\
 $R_1^T$	  & 9.94	& 0.08 	 & $C_F$ & 1.00		 & 0.04 \\
 $R_2^T$	  & 2.19	& 0.03	 & $C_1$ & 96		 & 4	\\
-$R_2^a$	  & 998		& 8		 & $C_2$ & 1.00		 & 0.04 \\
-$R_3$	  & 998		& 8		 & & & \\
-$R_4$	  & 998		& 8		 & & & \\
+$R_2^a$	  & 9.94	& 0.08	 & $C_2$ & 1.00		 & 0.04 \\
+$R_3$	  & 9.92	& 0.08	 & & & \\
+$R_4$	  & 9.94	& 0.08	 & & & \\
 \bottomrule     
 \end{tabular}
 \caption{Valori di resistenza e capacità misurate per i componenti dei
@@ -62,16 +62,25 @@ V_{CC} &= 4.99 \pm 0.03 \si{\V} \\
 V_{EE} &= -4.99 \pm 0.03 \si{\V}
 \end{align*}
 
-Non è stato possibile misurare i valori di capacità dei condensatori nel
-circuito con il multimetro, che ha un rumore di fondo abbastanza alto da
-saturare sempre il fondo scala da $\SI{2}{n\F}$, per cui al posto delle loro
-misure prendiamo i valori nominali e relativa tolleranza.
+Non è stato facile misurare i valori di capacità dei condensatori nel
+circuito con il multimetro, che a volte con i soli puntali collegati legge
+un rumore di fondo intorno ai $7 \pm 1 \; \si{n\F}$, abbastanza alto da
+saturare il fondo scala da $\SI{2}{n\F}$ con cui si vorrebbero misurare i
+valori delle capacità $C_T$, $C_F$ e $C_2$.
+
+Per tutto il resto della trattazione come ampiezze dei segnali si intendono
+misurate non ``picco - picco'', a meno che non venga esplicitato altrimenti.
+
+\subsection*{Nota sul metodo di fit}
+Per determinare i parametri ottimali e le rispettive covarianze si \`e
+implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
+mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 
 %=======================
 \section{Circuito amplificatore di carica}
 \subsection{Progettazione del circuito}
 Si è costruito un amplificatore di carica a partire da un op-amp TL081CP come
-quello in figura \ref{fig: ampschm}
+quello in figura \ref{fig: Qampschm}
 
 \begin{figure}[htbp]
     \centering
@@ -80,207 +89,182 @@ quello in figura \ref{fig: ampschm}
     \label{fig: Qampschm}}
 \end{figure}
 
-In condizione di op-amp ideale gli ingressi $+, -$ sono dei circuiti aperti,
-per cui la stessa corrente scorre attraverso $R_1$ ed $R_2$:
-$V_+ = V_- \approx 0$.
-Questo implica che
-\begin{equation}\label{eq: Zin}
-R\ped{in} \approx R_1
-\end{equation}
-allora per soddisfare la richiesta $5 \leq A_v \leq 10$ basta imporre
-$5 R_1 \leq R_2 \leq 10 R_1$.
+In cui abbiamo indicato i sotto-circuiti di cui è composto, da sinistra verso
+destra come: ``iniettore/rivelatore di carica'', ``circuito formatore/shaper''
+(passa-basso/integratore attivo) e ``discriminatore/comparatore''.
 
-Dunque una volta fissata $R_1 = 1 \pm 1\% \; \si{k\ohm}$, dobbiamo avere
-$\SI{5}{k\ohm} \leq R_2 \leq \SI{10}{k\ohm}$, di conseguenza scegliamo
-$R_2 = 5.1 \pm 1\% \; \si{k\ohm}$, che corrisponde ad un guadagno
-di centro banda $A\ped{v, atteso} = 5.1 \pm 2\%$ 
+\subsection{Funzionamento di iniettore e shaper}
+Si è inviato all'ingresso di entrambi i circuiti un'onda quadra di
+ampiezza $V_s = 999 \pm 8 \si{m\V}$ e frequenza fissata a
+$f = 100.0 \pm 1.6 \; \si{\Hz}$, che corrisponde ad una carica
+$Q\ped{in} = C_T \cdot 2V_s = 1.98 \pm 0.08 \; \si{n\coulomb}$, proporzionale
+al ``salto'' di tensione dal livello alto a basso (e viceversa) dell'onda,
+più semplicemente alla sua ampiezza picco-picco
+$V_s^{pp} = 2 V_s \implies Q\ped{in} = C_T \cdot V_s^{pp}$.
 
-\subsection{Amplificazione di piccoli segnali}
-Si è inviato all'ingresso di entrambi i circuiti un segnale sinusoidale di
-ampiezza $v\ped{in} = 200 \pm 2 \; \si{m\V}$ ad una frequenza fissata
-$5.01 \pm 0.05 \; \si{k\Hz}$.
+Dunque abbiamo trovato come segnale in uscita dal circuito formatore un
+segnale che dopo un breve transiente diventa un esponenziale decrescente,
+con ampiezza iniziale $V\ped{sh} (t=0) = 2007 \pm 18 \; \si{m\V}$ e
+con la stessa frequenza $99.9 \pm 1.6 \; \si{\Hz}$ dell'onda quadra.
+Riportiamo in figura l'immagine acquisita dall'oscilloscopio con dettaglio
+sul transiente al fronte di discesa dell'onda quadra.
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.335]{shaperzoom}
+    \caption{Acquisizione del segnale in uscita dal circuito formatore con
+    un'onda quadra in ingresso $V_s = \SI{1}{V}$, $f= \SI{100}{\Hz}$
+    \label{fig: shzoom}}
+\end{figure}
 
-Dunque abbiamo misurato l'ampiezza del segnale in uscita dal circuito con
-$R_2^a = \SI{5.1}{k\ohm}$, che risulta $v\ped{out} = 1022 \pm 8 \; \si{m\V}$,
-ottenendo così una stima del guadagno dell'amplificatore
-$A_v = \dfrac{v\ped{out}}{v\ped{in}} = 5.11 \pm 0.06 $.
-
-Consideriamo il sotto-circuito formato dal condensatore $ C\ped{T} $ e dal 
-circuito di formazione. La funzione di trasferimento che lega $ 
-V\ped{in} $ a $ V\ped{sh} $ è data di fatto da quella di un amplificatore 
-invertente con impedenze complesse: in trasformata di Laplace
-\[
-\tilde{A}(s) = - \frac{\left(\frac{1}{R_{1}} + s 
-C\ped{F}\right)^{-1}}{\frac{1}{s C\ped{T}}} = - \frac{C\ped{T}}{C\ped{F}} 
-\frac{s}{s + \frac{1}{\tau}}
-\]
-con $ \tau \coloneqq R_{1} C\ped{F} $. In ingresso abbiamo un'onda quadra di 
-periodo $ 2T $ (che prendiamo nulla per tempi negativi) che possiamo scrivere 
-come
-\[
-V\ped{in}(t) = \sum_{k=0}^{+\infty} (-1)^{k}f(t - kT)
-\qquad \text{dove} \quad
-f(t) = V_{0} \left[\theta(t) - \theta(t - T)\right]
-\]
-In trasformata di Laplace si ha
-\[
-\tilde{f}(s) = V_{0}\left[\frac{1}{s} - \frac{e^{-sT}}{s}\right]
-\]
-da cui
-\[
-\tilde{V}\ped{in}(s) = \sum_{k=0}^{+\infty} (-1)^{k} \tilde{f}(s) e^{-kTs} = 
-\tilde{f}(s) \sum_{k=0}^{+\infty} (-1)^{k} e^{-kTs}
-\]
-La risposta del circuito in trasformata è
-\[
-  \tilde{V}\ped{sh}(s) = \tilde{A}(s) \tilde{V}\ped{in}(s) =  
-\tilde{A}(s)\tilde{f}(s) \sum_{k=0}^{+\infty} (-1)^{k}e^{-kTs} = \tilde{g}(s) 
-\sum_{k=0}^{+\infty} (-1)^{k}e^{-kTs} = \mathcal{L}\left[\sum_{k=0}^{+\infty} 
-(-1)^{k}g(t - kT)\right](s)
-\]
-Ora
-\[
-  \tilde{g}(s) = - V_{0} \frac{C\ped{T}}{C\ped{F}} \left[\frac{1}{s + 
-\frac{1}{\tau}} - \frac{e^{-sT}}{s + \frac{1}{\tau}}\right]
-\]
-da cui, anti-trasformando
-\[
-  g(t) = - V_{0} \frac{C\ped{T}}{C\ped{F}} \left[e^{-t/\tau}\theta(t) - 
-e^{-(t-T)/\tau} \theta(t - T) \right]
-\]
-
-Ma allora la risposta del circuito nel dominio del tempo è
-\begin{align*}
-  V\ped{sh}(t) &= - V_{0} \frac{C\ped{T}}{C\ped{F}} \left\{ 
-\sum_{k=0}^{+\infty} (-1)^{k}e^{-\frac{t - kT}{\tau}}\theta(t - kT) - 
-\sum_{k=0}^{+\infty} (-1)^{k} e^{-\frac{t- (k+1) T }{\tau}} \theta(t - (k+1)T ) 
-\right\} \\
-               &= - V_{0} \frac{C\ped{T}}{C\ped{F}} \left\{ e^{-\frac{t}{\tau}} 
-\theta(t) - 2 \sum_{k=1}^{+\infty} (-1)^{k} e^{-\frac{t - kT}{\tau}} \theta(t - 
-kT) \right\}
-\end{align*}
-ovvero, ignorando il transiente iniziale e supponendo $ \tau\ll T $\footnote{
-La buona definizione della somma è assicurata dal fatto che (tralasciando le 
-costanti fisiche)
-\[ \sum_{k \geq 0} \theta(t-k) e^{-(t-k)} = \sum_{k=0}^{\lfloor t \rfloor} 
-e^{-(t-k)} \leq \frac{e}{e-1} e^{-\{t\}}. \]
-},
+Assumendo iniezione di carica istantanea sulle armature dei condensatori $C_T$
+e $C_F$, il segnale in uscita dal sotto-circuito formato da $C_T$ e dal
+formatore è legato al segnale in ingresso dalla relazione
 \begin{align}\label{eq:Vsh}
-V\ped{sh}(t) &\approx 2 V_{0} \frac{C\ped{T}}{C\ped{F}} \sum_{k=1}^{+\infty} 
-(-1)^{k} e^{-\frac{t - kT}{\tau}} \theta(t - kT) \nonumber\\
-               &\approx  2 V_{0} \frac{C\ped{T}}{C\ped{F}} \sum_{k=1}^{+\infty} 
-(-1)^{k} e^{-\frac{t - kT}{\tau}} \chi_{[kT, (k+1)T]}(t)
+V\ped{sh}(t) &= \frac{Q\ped{in}}{C_F} e^{-t/\tau} =
+2V_s(t) \frac{C_T}{C_F} e^{-t/\tau} \\
+\tau &= R_1 C_F
 \end{align}
-Per il circuito in esame i valori nominali sono $ C\ped{T} = C\ped{F} = 
-\SI{1}{\nano\farad} $, $ R_{1} = \SI{100}{\kilo\ohm} $, da cui $ \tau = 
-\SI{100}{\micro\second} $, e $ 2T = \SI{10}{\milli\second} $. Dopo un 
-transiente $ t\ll\tau $ in uscita ci aspettiamo quindi di osservare dei picchi 
-esponenzialmente decrescenti di segno alterno e di ampiezza pari al doppio del 
-segnale in ingresso. \\
+Per i circuiti in esame i valori delle capacità sono
+$C_T \approx C_F = \SI{1}{n\F}$ e $R_1 = \SI{100}{\kilo\ohm}$,
+per cui possiamo semplificare il rapporto $C_T/C_F \approx 1$, da cui
+ricaviamo come valori attesi
+\begin{align*}
+V\ped{sh}(t) &= 2V_s(t) e^{-t/\tau} \\
+\tau &= R_1 C_F = 100 \pm 4 \; \si{\micro\s}
+\end{align*}
+Quindi complessivamente come tensione in uscita $V\ped{sh} (t)$ ci aspettiamo
+di osservare una serie di picchi seguiti da decrescite esponenziali di segno
+alternante con l'onda quadra in ingresso e di ampiezza doppia.
 
-\paragraph{Discriminatore}
-Ignorando ora il condensatore $ C_{1} $ che ha il solo scopo di rimuovere il 
-rumore ad alte frequenze dal generatore, il sotto-circuito \texttt{X2} è un 
-discriminatore con tensione di soglia $ V\ped{t} $ data dal partitore di 
-tensione collegato al terminale ``--'' dell'OpAmp
-\[
-  V\ped{t} = (1 - 2\alpha) V\ped{G}
-\]
-dove $ 0\leq \alpha \leq 1 $ è la ``frazione'' di resistenza data dal 
-potenziometro e $ V\ped{G} = \SI{15}{\volt} $ (valore nominale) è la tensione 
-di alimentazione. In altri termini la tensione di soglia è variabile da $ 
-\SI{-15}{\volt} $ a $ \SI{15}{\volt} $. Supponendo di essere sempre in regime 
-di saturazione, l'uscita del circuito è data da
-\[
-  V\ped{out} = V\ped{G} \sgn\left(V\ped{sh} - V\ped{t}\right).
-\]
-Più esplicitamente, usando $ V\ped{in} = \SI{6}{\volt} $ ci aspettiamo $ 
-V\ped{sh} = \SI{12}{\volt} $ (ampiezze picco-picco), pertanto:
-\begin{itemize}
-\item se $ V\ped{t} > \SI{6}{\volt} $, $ V\ped{out} = -V\ped{G} $ costante.
-\item se $ \SI{0}{\volt} < V\ped{t} < \SI{6}{\volt} $, ci aspettiamo (in un 
-periodo)
-  \[
-    V\ped{out}(t) =
-    \begin{cases}
-      V\ped{G} & 0 < t < h \\
-      - V\ped{G} & h < t < 2T
-    \end{cases}
-  \]
-  dove $ h $ è il tempo in cui il picco esponenzialmente decrescente è 
-maggiore della tensione di soglia, ovvero
-  \begin{equation} \label{eq:tot-ampiezza-durata}
-    h = \tau \log\left(\frac{C\ped{F}}{C\ped{T}} 
-\frac{V\ped{in}}{V\ped{t}}\right).
-  \end{equation}
-\item se $ \SI{-6}{\volt} < V\ped{t} < \SI{0}{\volt} $, ci aspettiamo (in un 
-periodo)
-  \[
-    V\ped{out}(t) =
-    \begin{cases}
-      V\ped{G} & 0 < t < T \\
-      - V\ped{G} & T < t < T + h' \\
-      V\ped{G} & T + h' < t < 2T
-    \end{cases}
-  \]
-  dove $ h' $ è il tempo in cui il picco esponenzialmente crescente è minore 
-della tensione di soglia, ovvero
-  \[
-    h' = \tau \log\left(\frac{C\ped{F}}{C\ped{T}} 
-\frac{V\ped{in}}{\abs{V\ped{t}}}\right).
-  \]
-\item se $ V\ped{t} < \SI{-6}{\volt} $, $ V\ped{out} = -V\ped{G} $ costante.
-\end{itemize}
+Questo risulta compatibile con quanto si è osservato dall'oscilloscopio, che
+riportiamo per chiarezza in figura~\ref{fig: shaper}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.335]{shaper}
+    \caption{Onda quadra in ingresso $V_s = \SI{1}{V}$, $f = \SI{100}{\Hz}$
+    su CH1 e segnale in uscita dal circuito formatore $V\ped{sh}$ su CH2.
+    \label{fig: shaper}}
+\end{figure}
+
+Dunque possiamo controllare che la forma d'onda esponenziale sia compatibile
+con quanto atteso dalla \eqref{eq:Vsh} tramite un fit ai punti campionati
+dall'AD2, di cui riportiamo brevemente i risultati
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.6]{tau}
+    \caption{Fit con esponenziale decrescente al segnale in uscita dal
+    circuito formatore $V\ped{sh}$ \label{fig: tau}}
+\end{figure}
+\begin{align*}
+V\ped{sh} (t=0) &= 2024 \pm 2 \; \si{m\V}
+&\tau = 101.90 \pm 0.03 \; \si{\micro\s} \\
+\chi^2/\mathrm{ndof} &= 2774/4086 &\mathrm{cov_{norm}} = -0.73
+\end{align*}
+
+Da cui vediamo come non solo la misura di ampiezza iniziale sia compatibile
+con il valore misurato, ma anche il tempo caratteristico di smorzamento $\tau$
+risulta pienamente in accordo con il valore atteso dai componenti del
+circuito.
 
 \setcounter{subsection}{3}
-\subsection{Misure di guadagno al variare di $v\ped{in}$}
-Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
-e in uscita $v\ped{out}$ dall'amplificatore possiamo ricavare una misura del
-guadagno del circuito dal rapporto $A_v = \dfrac{v\ped{out}}{v\ped{in}}$.
+\subsection{Funzionamento del discriminatore}
+Il sotto-circuito discriminatore è un comparatore con tensione di soglia
+$V\ped{thr} = 60 \pm 0.4 \si{m\V}$ fornita dal generatore di tensione
+\verb+W2+ collegato all'ingresso invertente del secondo OpAmp.
 
-Con un fit lineare possiamo stimare il guadagno dell'amplificatore a partire
-dal grafico di $v\ped{out} = A_v v\ped{in}$ al variare di $v\ped{in}$.
-Riportiamo quanto trovato per il primo circuito:
+Supponiamo di essere sempre in regime di saturazione per l'OpAmp ideale e
+come prima assumiamo iniezione istantanea di carica sui condensatori $C_T$ e
+$C_F$. Grazie al fatto che le tensioni di alimentazione sono pari in modulo
+$V_{CC} = - V_{EE}$ possiamo prendere come segnale atteso in uscita
+\begin{equation}\label{eq: Vdiscr}
+V\ped{discr} (t) = V_{CC} \sgn\left[V\ped{sh}(t) - V\ped{thr}\right].
+\end{equation}
+
+Più esplicitamente, ricordando che $V\ped{sh}$ ha ampiezza (iniziale) doppia
+rispetto all'ampiezza in ingresso $V_s$ (o proporzionale a $V_s^{pp}$)
+\begin{itemize}
+\item se $V_s^{pp} < V\ped{thr} \implies V\ped{discr} = V_{EE}$ costante.
+\item se $V_s^{pp} \geq V\ped{thr}$, ci aspettiamo (in un periodo dell'onda
+quadra di durata $T = 9.99 \pm 0.16 \; \si{m\s}$)
+\[
+V\ped{discr}(t) =
+\begin{cases}
+V_{CC} & 0 < t < ToT \\
+V_{EE} & ToT < t < T
+\end{cases}
+\]
+In cui $ToT$ è il tempo in cui il picco esponenzialmente decrescente è
+maggiore della tensione di soglia
+$V\ped{sh}(t) = \frac{Q\ped{in}}{C_F} e^{-t/\tau} \geq V\ped{thr}$, appunto il
+``Time-over-Threshold''.
+\begin{equation} \label{eq:ToT}
+ToT = \tau \log\left(\frac{Q\ped{in}}{C_F V\ped{thr}}\right) =
+\tau \log\left(\frac{C_T V_s^{pp}}{C_F V\ped{thr}}\right) = 
+\tau \log\left(\frac{C_T}{C_F} \frac{2 V_s}{V\ped{thr}}\right).
+  \end{equation}
+\end{itemize}
+
+Mantenendo lo stesso segnale in ingresso al circuito del punto precedente
+(con ampiezza ben oltre la soglia $V_s \gg V\ped{thr}$) riportiamo il
+segnale visualizzato all'oscilloscopio in uscita dal discriminatore in figura
+\ref{fig: discr}
 \begin{figure}[htbp]
 \centering
-%\includegraphics[scale=0.7]{gain5k1}
-\caption{Fit lineare per l'andamento dell'uscita rispetto al segnale in
-ingresso. \label{fig: gainfit}}
+\includegraphics[scale=0.335]{discrzoom}
+\caption{Acquisizione del segnale in uscita dal circuito comparatore con
+un'onda quadra in ingresso $V_s = \SI{1}{V}$, $f = \SI{100}{\Hz}$
+\label{fig: discr}}
 \end{figure}
-Da cui troviamo i seguenti parametri per la retta di best-fit
+Risulta già chiaro dal dettaglio a destra, in corrispondenza del fronte di
+discesa dell'onda quadra, come il segnale in uscita non ha né livelli basso
+e alto simmetrici rispetto a $\SI{0}{V}$, né pendenza uguale (idealmente
+infinita) nel passaggio tra questi due, al contrario di quanto atteso dal
+nostro modello semplificato.
+
+Possiamo caratterizzare il segnale $V\ped{discr}$ trovato come un impulso di
+tensione con livello basso $V_{OL}$ e livello alto $V_{OH}$ di durata
+$T_{OH}$ che si ripete periodicamente con la stessa frequenza dell'onda quadra
+in ingresso $V_s (t)$. Riportiamo le misure dirette effettuate con i cursori
+delle tensioni di saturazione del comparatore e una misura del tempo ``alto''
+dell'impulso definita in maniera compatibile con la funzione automatica di
+misura ``PosWidth'' (cioè come il tempo in cui la tensione si trova al di
+sopra della metà del valore positivo dell'impulso).
 \begin{align*}
-\mathrm{intercetta} = -0.6 \pm 0.4 \; \si{m\V} \;\;\;\mathrm{pendenza} = 5.124 
-\pm 0.003 \;\;\;\mathrm{correlazione} 
-= -0.72 \;\;\; \chi^2 = 0.2 \;\;\; d.o.f. = 10 \\
-\text{coefficiente angolare/senza intercetta} = 5.120 \pm 0.002 \;\;\;
-\chi^2 = 0.2 \;\;\; d.o.f. = 11
+V_{OH} &= 4.38 \pm 0.03 \; \si{\V} \\
+V_{OL} &= -3.53 \pm 0.02 \; \si{\V} \\
+T_{OH} &= 416 \pm 5 \; \si{\micro\s}
 \end{align*}
 
-Il valore atteso per il guadagno dal valore dei componenti in questa
-configurazione del circuito è pari a
-\[
-A\ped{v, exp} = -\frac{R_2}{R_1} = - 5.13 \pm 0.12
-\]
-Questo è in ottimo accordo con quanto trovato sperimentalmente dalla nostra
-analisi.
+Osserviamo quindi che i valori di saturazione alta e bassa misurati non sono
+compatibili con quelli attesi, ma sono entrambi inferiori (in modulo). Questo
+può essere dovuto al fatto che in realtà il TL081 in regime di saturazione
+produce al massimo tensioni entro il suo (Maximum Output) \emph{Voltage swing}
+riportato come valore tipico nel datasheet $V_{OM} = 13.5$,
+sensibilmente inferiore rispetto al valore di tensione di alimentazione tipico
+a cui è riferito $V_CC = \SI{15}{\V}$.
 
-Per completezza riportiamo in un grafico anche le misure che non abbiamo
-considerato nel fit perché oltre la regione in cui l'op-amp ha comportamento
-lineare
-\begin{figure}[htbp]
-\centering
-%\includegraphics[scale=0.7]{gainsat}
-\caption{Andamento reale dell'uscita al variare dell'ampiezza del segnale in
-ingresso oltre il regime lineare dell'amplificatore misurati per il circuito
-con $R_2^a = 5.1 \; \si{k\ohm}$ \label{fig: gainsat}}
-\end{figure}
+Quindi, volendo ragionare per analogia ci aspettiamo un escursione massima tra
+le tensioni di saturazione (date le nostre tensioni di alimentazione a
+$\pm \SI{5}{\V}$) $V_{OM} = 13.5 / 3 = 4.5 \; \si{\V}$, che risulta
+sicuramente più vicino a quanto abbiamo trovato.
 
 \subsection{Durata impulso per carica di test}
 Abbiamo misurato per $V_s = 999 \pm 8 \si{m\V}$ di ampiezza dell'onda quadra
 in ingresso, frequenza $f = 100.0 \pm 1.6 \; \si{k\Hz}$, dunque come carica
-$Q\ped{in} = C_T \cdot V_s = 0.99 \pm 0.04 \; \si{n\coulomb}$.
+$Q\ped{in} = C_T \cdot 2 V_s = 1.98 \pm 0.08 \; \si{n\coulomb}$.
 
 L'impulso in uscita ha durata pari a $415 \pm 5 \; \si{\micro\s}$ in un circuito e $410 \pm 5 \; \si{\micro\s}$ nel secondo.
+
+Per quanto riguarda il valore atteso per la durata dell'impulso, possiamo
+confrontare i due valori trovati per il tempo ``alto'' con il valore atteso
+di Time-over-Threshold
+\[
+ToT = R_1 C_F \log\left(\frac{C_T}{C_F} \frac{2 V_s}{V\ped{thr}}\right) =
+350 \pm 14 \; \si{\micro\s}
+\]
+
+%Questo è in ottimo accordo con quanto trovato sperimentalmente dalla nostra
+%analisi.
 
 \subsection{Andamento di TOT al variare di $Q\ped{in}$}
 
@@ -300,7 +284,7 @@ Provando con varie ampiezza in ingresso, in entrambi i circuiti si sono verifica
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.4]{schmitt}
+\includegraphics[scale=0.335]{schmitt}
 \caption{risposta ad un segnale sinusoidale di ampiezza 1 V e frequenza 100 Hz del trigger di schmitt}
 \end{figure}
 
@@ -447,6 +431,74 @@ Dalla misura diretta ricavo
 \]
 
 \subsection{Analisi del funzionamento del circuito}
+
+\subsection*{Appendice}
+Consideriamo il sotto-circuito formato dal condensatore $ C\ped{T} $ e dal 
+circuito di formazione. La funzione di trasferimento che lega $ 
+V\ped{in} $ a $ V\ped{sh} $ è data di fatto da quella di un amplificatore 
+invertente con impedenze complesse: in trasformata di Laplace
+\[
+\tilde{A}(s) = - \frac{\left(\frac{1}{R_{1}} + s 
+C\ped{F}\right)^{-1}}{\frac{1}{s C\ped{T}}} = - \frac{C\ped{T}}{C\ped{F}} 
+\frac{s}{s + \frac{1}{\tau}}
+\]
+con $ \tau \coloneqq R_{1} C\ped{F} $. In ingresso abbiamo un'onda quadra di 
+periodo $ 2T $ (che prendiamo nulla per tempi negativi) che possiamo scrivere 
+come
+\[
+V\ped{in}(t) = \sum_{k=0}^{+\infty} (-1)^{k}f(t - kT)
+\qquad \text{dove} \quad
+f(t) = V_{0} \left[\theta(t) - \theta(t - T)\right]
+\]
+In trasformata di Laplace si ha
+\[
+\tilde{f}(s) = V_{0}\left[\frac{1}{s} - \frac{e^{-sT}}{s}\right]
+\]
+da cui
+\[
+\tilde{V}\ped{in}(s) = \sum_{k=0}^{+\infty} (-1)^{k} \tilde{f}(s) e^{-kTs} = 
+\tilde{f}(s) \sum_{k=0}^{+\infty} (-1)^{k} e^{-kTs}
+\]
+La risposta del circuito in trasformata è
+\[
+  \tilde{V}\ped{sh}(s) = \tilde{A}(s) \tilde{V}\ped{in}(s) =  
+\tilde{A}(s)\tilde{f}(s) \sum_{k=0}^{+\infty} (-1)^{k}e^{-kTs} = \tilde{g}(s) 
+\sum_{k=0}^{+\infty} (-1)^{k}e^{-kTs} = \mathcal{L}\left[\sum_{k=0}^{+\infty} 
+(-1)^{k}g(t - kT)\right](s)
+\]
+Ora
+\[
+  \tilde{g}(s) = - V_{0} \frac{C\ped{T}}{C\ped{F}} \left[\frac{1}{s + 
+\frac{1}{\tau}} - \frac{e^{-sT}}{s + \frac{1}{\tau}}\right]
+\]
+da cui, anti-trasformando
+\[
+  g(t) = - V_{0} \frac{C\ped{T}}{C\ped{F}} \left[e^{-t/\tau}\theta(t) - 
+e^{-(t-T)/\tau} \theta(t - T) \right]
+\]
+
+Ma allora la risposta del circuito nel dominio del tempo è
+\begin{align*}
+  V\ped{sh}(t) &= - V_{0} \frac{C\ped{T}}{C\ped{F}} \left\{ 
+\sum_{k=0}^{+\infty} (-1)^{k}e^{-\frac{t - kT}{\tau}}\theta(t - kT) - 
+\sum_{k=0}^{+\infty} (-1)^{k} e^{-\frac{t- (k+1) T }{\tau}} \theta(t - (k+1)T ) 
+\right\} \\
+               &= - V_{0} \frac{C\ped{T}}{C\ped{F}} \left\{ e^{-\frac{t}{\tau}} 
+\theta(t) - 2 \sum_{k=1}^{+\infty} (-1)^{k} e^{-\frac{t - kT}{\tau}} \theta(t - 
+kT) \right\}
+\end{align*}
+ovvero, ignorando il transiente iniziale e supponendo $ \tau\ll T $\footnote{
+La buona definizione della somma è assicurata dal fatto che (tralasciando le 
+costanti fisiche)
+\[ \sum_{k \geq 0} \theta(t-k) e^{-(t-k)} = \sum_{k=0}^{\lfloor t \rfloor} 
+e^{-(t-k)} \leq \frac{e}{e-1} e^{-\{t\}}. \]
+},
+\begin{align}\label{eq:Vshaper}
+V\ped{sh}(t) &\approx 2 V_{0} \frac{C\ped{T}}{C\ped{F}} \sum_{k=1}^{+\infty} 
+(-1)^{k} e^{-\frac{t - kT}{\tau}} \theta(t - kT) \nonumber\\
+               &\approx  2 V_{0} \frac{C\ped{T}}{C\ped{F}} \sum_{k=1}^{+\infty} 
+(-1)^{k} e^{-\frac{t - kT}{\tau}} \chi_{[kT, (k+1)T]}(t)
+\end{align}
 
 %=======================
 \section*{Conclusioni e commenti finali}

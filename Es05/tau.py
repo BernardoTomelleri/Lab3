@@ -8,14 +8,14 @@ from phylab import (np, plt, grid, errcor, prnpar, chitest, propfit, pltfitres, 
 import phylab as lab
 
 ''' Variables that control the script '''
-tex = False # LaTeX typesetting maths and descriptions
-tix = False  # manually choose spacing between axis ticks
+tex = True # LaTeX typesetting maths and descriptions
+tix = True  # manually choose spacing between axis ticks
 
 # Modello esponenziale
 def exp(x, a=1, b=1):
     return a*np.exp(-x/b)
 
-t, V = np.genfromtxt('./porcodio.csv', float, delimiter=',', 
+t, V = np.genfromtxt('./data/vshaper.csv', float, delimiter=',', 
                                  skip_header=6, unpack=True)
 t_min = 2e-6; t_max = 1e3
 x, y, t_b, x_b = lab.mesrange(t, V, x_min=t_min, x_max=t_max)
@@ -45,5 +45,5 @@ axf.set_ylabel(r'$V_{sh}(t)$ [V]')
 if tix: tick(axf, xmaj=5, ymaj=0.2)
 
 axr.set_xlabel(r'Time $t$ [$\mu$s]', x=0.8)
-if tix: tick(axr, xmaj=100, ymaj=1, ymin=0.02)
+if tix: tick(axr, xmaj=100, ymaj=2)
 legend = axf.legend(loc='best')
