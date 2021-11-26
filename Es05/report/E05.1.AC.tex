@@ -333,11 +333,16 @@ variato l'ampiezza del segnale in ingresso $V_s$ dal generatore di forme
 d'onda, dunque abbiamo misurato con i cursori l'ampiezza critica trovata per
 i due circuiti studiati:
 \begin{align*}
-V\ped{thr} &= 40.5 \pm 0.3 \; \si{m\V} \\ 
-V\ped{thr} &=  \pm  \; \si{m\V}
+V\ped{min} &= 40.5 \pm 0.3 \; \si{m\V} \\ 
+V\ped{min} &=  \pm  \; \si{m\V}
 \end{align*}
+che corrisponde ad una quantità di carica minima per l'amplificatore di
+$Q\ped{min} = C_T \cdot 2V\ped{min} = 80 \pm  3 \; \si{\pico\coulomb}$.
 
 \subsection{Confronto con i valori attesi}
+Abbiamo eseguito un fit con legge logaritmica per l'andamento delle misure
+del Time-over-Threshold al variare dell'ampiezza di carica in ingresso
+$Q\ped{in}$, di cui riportiamo i risultati
 \begin{figure}[htbp]
     \centering
 	\includegraphics[scale=0.7]{logfit}
@@ -437,7 +442,7 @@ diminuisce fino a $V_{OL}$
 F_{L} = 92.6 \pm 0.1 \; \si{k\Hz}
 \]
 \[
-SR = 11.1 \pm 0.3 \; \si{k\Hz}
+SR = 11.1 \pm 0.3 \; \si{\V/\micro\s}
 \]
 \begin{figure}[htbp]
 \centering
@@ -487,18 +492,20 @@ scende e il condensatore comincia a scaricarsi fino a quando il livello della
 tensione ai capi del condensatore non raggiunge quello presente all’ingresso
 non invertente.
 Il ciclo dunque si ripete generando un'onda quadra il cui periodo di
-oscillazione è quindi il doppio del tempo caratteristico $\tau = R_3 C_1$ in
+oscillazione è quindi il doppio del tempo caratteristico $\tau$ in
 cui il condensatore è in grado di caricarsi/scaricarsi.
-
-\[
-q = \frac{R_1}{R_1 + R_2}
-\]
+Dette
+\begin{align*}
+q &= \frac{R_1}{R_1 + R_2} \\
+\tau &= R_3 C_1 = 101 \pm 4 \; \si{\micro\s}
+\end{align*}
+Abbiamo come valori attesi per i tempi caratteristici alto $t_H$ e basso
+$t_L$ ed il periodo $T$ dell'onda quadra generata dal multivibratore:
 \begin{align}
 t_H &= \tau \ln\left(\frac{1 - q\frac{V_{OL}}{V_{OH}}}{1-q}\right) \\
 t_L &= \tau \ln\left(\frac{1 - q\frac{V_{OH}}{V_{OL}}}{1-q}\right) \\
 T &= 2 R_3 C_1 \ln\left(\frac{1 + q}{1 - q}\right) = t_H + t_L
 \end{align}
-
 
 \setcounter{subsection}{2}
 \subsection{Studio dei segnali in ingresso e uscita}
@@ -560,7 +567,7 @@ in tempo da uno stato all'altro.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.42]{monostabile}
-\caption{Grafico segnale in ingresso e $V_{out}$}
+\caption{Grafico segnale in ingresso e $V_{out}$ \label{fig: vout_mstabile}}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -583,7 +590,7 @@ $\frac{R_2}{R_2 + R_1} \simeq 0.5 $.
 Si è misurato il tempo per cui il segnale $ V \ped{out} $ rimane ``basso'' in ogni periodo:
 
 Il valore atteso è
-\begin{equation} \label{eq: mstable}
+\begin{equation} \label{eq: mstabile}
 t\ped{L, exp} =
 \tau \log\left[\left(1 + \frac{V_\gamma}{V \ped{out}/2}\right)
 \left(1 + \frac{R_2}{R_1}\right)\right]
@@ -595,9 +602,11 @@ Come nel caso del multivibratore astabile, $ V\ped{out} $ può assumere solo com
 Se il condensatore è inizialmente scarico e se è $ V\ped{out} = V_{\gamma} + V_{z} $ allora il condensatore $ C $ si carica fino a quando la caduta ai suoi capi è $ V_{\gamma} $ essendo in parallelo ad un diodo; essendo quindi $ V\ped{+} \sim V_{\gamma} \simeq \SI{0.7}{\volt} $ e $ V_{-} = \frac{R_{2}}{R_{1} + R_{2}} V\ped{out} \simeq 0.5 \times \SI{7}{\volt} = \SI{3.5}{\volt} $, l'uscita rimane ``alta''.
 Se il condensatore è inizialmente carico (con caduta ai capi pari a $ V_{\gamma} $) e se è $ V\ped{out} = -(V_{\gamma} + V_{z}) $, allora si scarica fintanto che è $ V_{-} > V_{+} \simeq -\SI{3.5}{\volt} $: a questo, essendo l'OpAmp in regime di saturazione, l'uscita passa a $ V\ped{out} = V_{\gamma} + V_{z} $ e il condensatore si carica come descritto sopra, ripristinando la condizione $ V_{+} \sim V_{\gamma} $. \\
 
-Il sotto-circuito di trigger, formato dal passa-alto con il diodo in cascata, ha la funzione di ``sovrapporre'' a $ V_{+} $ dei picchi di differenza di potenziale negativa che portano il circuito nella configurazione instabile sopra descritta, che, dopo un tempo caratteristico dato dall'equazione~\eqref{eq:monostabile-tempopiccolomacaratteristico} torna nella configurazione stabile. \\
+Il sotto-circuito di trigger, formato dal passa-alto con il diodo in cascata, ha la funzione di ``sovrapporre'' a $ V_{+} $ dei picchi di differenza di potenziale negativa che portano il circuito nella configurazione instabile sopra descritta, che, dopo un tempo caratteristico dato dall'equazione~\eqref{eq: mstabile} torna nella configurazione stabile. \\
 
-Come si può vedere in Figura~\ref{fig:monostabile}, quanto osservato sperimentalmente riproduce qualitativamente quanto descritto
+Come si può vedere in figura~\ref{fig: vout_mstabile}, quanto osservato 
+sperimentalmente riproduce qualitativamente l'andamento atteso dall'analisi
+teorica del circuito.
 
 \subsection{Durata dell'impulso generato}
 \[
