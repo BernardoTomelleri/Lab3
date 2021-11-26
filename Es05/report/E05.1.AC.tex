@@ -334,7 +334,7 @@ d'onda, dunque abbiamo misurato con i cursori l'ampiezza critica trovata per
 i due circuiti studiati:
 \begin{align*}
 V\ped{thr} &= 40.5 \pm 0.3 \; \si{m\V} \\ 
-V\ped{thr} &=  \pm  \; \si{m\V}
+V\ped{thr} &= 43.6 \pm 0.4 \; \si{m\V}
 \end{align*}
 
 \subsection{Confronto con i valori attesi}
@@ -356,7 +356,7 @@ e che la tensione di soglia trovata dal fit è compatibile con il valore
 in corrispondenza della minima ampiezza di carica.
 %=======================
 \section{Trigger di Schmitt}
-
+Abbiamo costruito un trigger di Schmitt a partire dall'OpAmp TL081CP
 \begin{figure}[htbp]
     \centering
 	\includegraphics[scale=1.5]{trgSchmitt}
@@ -365,13 +365,14 @@ in corrispondenza della minima ampiezza di carica.
 \end{figure}
 
 \subsection{Risposta ad un'onda sinusoidale}
-
+Abbiamo inviato all'ingresso invertente dell'OpAmp un'onda sinusoidale di Ampiezza $V =999 \pm 8 \si{m\V}$ e frequenza $f= 100.0 \pm 1.6 \si{\Hz}$. Si osserva immediatamente che le due tensioni di saturazione non sono le medesime in valore assoluto (stesso discorso può esser fatto per le tensioni di soglia), per questo motivo l'onda quadra in uscita dal trigger nel grafico in funzione del tempo risulta traslata verso l'alto.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.335]{schmitt}
 \caption{risposta ad un segnale sinusoidale di ampiezza 1 V e frequenza 100 Hz del trigger di schmitt}
 \end{figure}
 
+La stessa situazione si incontra nel grafico XY in cui le 2 rette di transizione verticali rappresentanti i 2 valori delle tensioni di soglia non sono simmetriche rispetto allo 0 ma sono spostate verso destra.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.4]{shmitt_isteresi}
@@ -380,18 +381,22 @@ in corrispondenza della minima ampiezza di carica.
 
 
 \subsection{Saturazione dell'OpAmp}
-Per il primo circuito 
-\begin{align*}
-V_{OH} = 4.28 \pm 0.04 \; \si{\V} \\
+Per misurare la tensione di saturazione dell'OpAmp abbiamo misurato i 2 valori che assume l'onda quadra in uscita dal trigger tramite cursori:
+per il primo circuito abbiamo trovato
+\[
+V_{OH} = 4.28 \pm 0.04 \; \si{\V}
+\]
+\[
 V_{OL} = -3.66 \pm 0.03 \; \si{\V}
-\end{align*}
-Mentre per il secondo
+\]
+mentre per il secondo
 \[
 V_{OH} = 4.21 \pm 0.04 \; \si{\V}
 \]
 \[
 V_{OL} = -3.53 \pm 0.03 \; \si{\V}
 \]
+Infine, come ci si aspettava, cambiando l'ampiezza dell'onda in ingresso i valori di saturazione non cambiavano
 \subsection{Tensioni di soglia e funzionamento del trigger}
 Abbiamo inviato in ingresso all'amplificatore un'onda sinusoidale di ampiezza
 $1999 \pm 15 \; \si{m\V}$ e frequenza $1000 \pm 16 \; \si{\Hz}$.
@@ -433,16 +438,11 @@ diminuisce fino a $V_{OL}$
 
 
 \subsection{Limiti fisici del circuito}
-\[
-F_{L} = 92.6 \pm 0.1 \; \si{k\Hz}
-\]
-\[
-SR = 11.1 \pm 0.3 \; \si{k\Hz}
-\]
+
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.4]{schmitt_freq}
-\caption{analisi in frequenza del trigger di schmitt, in particolare l'unico punto di interesse si trova a circa 90 kHz, punto in cui smette di funzionare}
+\includegraphics[scale=0.4]{bodeschmitt1V100Hz5MHz}
+\caption{analisi in frequenza del trigger di schmitt, 1V di ampiezza, in particolare l'unico punto di interesse si trova a circa 90 kHz, punto in cui smette di funzionare}
 \end{figure}
 
 Si osserva che il circuito si comporta come discriminatore con isteresi per
@@ -450,7 +450,15 @@ frequenze sufficientemente basse. Per frequenze maggiori di
 $\sim\SI{10}{\kilo\hertz}$ la pendenza della transizione del segnale in
 uscita da ``alto'' a ``basso'' e viceversa comincia ad essere limitata dallo
 slew rate dell'OpAmp.
-
+\[
+SR = 11.1 \pm 0.3 \; \si{V/\micro\s}
+\]
+Esiste infine una frequenza limite, oltre il quale il trigger smette di funzionare: il valore di questa frequenza limite dipende anche dall'ampiezza dell'onda che si va ad utilizzare, per esempio nel caso in cui l'ampiezza dell'onda sia 1V la $F_L \approx 90 \si{k\Hz}$, nel caso invece di 2V la $F_L \approx 3 \si{M\Hz}$
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.4]{bodeschmitt2V100Hz5MHz}
+\caption{analisi in frequenza del trigger di schmitt, 2V di ampiezza, in particolare l'unico punto di interesse si trova a circa 3 MHz, punto in cui smette di funzionare}
+\end{figure}
 Il regime in cui l'OpAmp si comporta da discriminatore con isteresi è quello
 in cui il tempo minimo di salita e discesa è molto minore del periodo del
 segnale in ingresso (e in uscita)
@@ -525,16 +533,15 @@ squalo'', caratteristico del processo di carica/scarica di un condensatore,
 con la stessa ampiezza picco-picco di $V_+$.
 
 \subsection{Misure di periodo e duty cycle}
-
-\[
-DC = 0.482 \pm 0.013
-\]
+Per misurare periodo e duty cycle abbiamo utilizzato i cursori sull'asse x per misurare il tempo in cui l'onda quadra era in saturazione positiva e il tempo di 8 periodi d'onda
 \[
 T = 2.15 \pm 0.02 \si{m\s}
 \]
 \[
-T_{atteso} = 2.17 \pm 0.09 \si{m\s}
+DC = \frac{T_+}{T}=48.2 \pm 1.3 \; \si{\%}
 \]
+Ricordandoci che il periodo atteso era definito come $T = 2 R_3 C_1 \ln\left(\frac{1 + q}{1 - q}\right) = 2.17 \pm 0.09 \si{m\s}$,
+il periodo è compatibile con il suo valore atteso entro una barra di errore, mentre il duty cycle è sempre compatibile ma entro le 2 barre di errore.
 
 \subsection{Limite massimo in frequenza del generatore}
 Riducendo di metà il valore della resistenza $R_3$ o riducendo di metà il
@@ -600,20 +607,21 @@ Il sotto-circuito di trigger, formato dal passa-alto con il diodo in cascata, ha
 Come si può vedere in Figura~\ref{fig:monostabile}, quanto osservato sperimentalmente riproduce qualitativamente quanto descritto
 
 \subsection{Durata dell'impulso generato}
+Mi aspetto di trovare una durata dell'impulso pari a $\Delta= R_3 C_1 \ln(\frac{1 - \frac{V_\gamma}{V_{OL}}}{1 - \beta})$
+Misurando coi cursori la tensione di saturazione negativa ottengo:
 \[
 V_{S-}= 3.49 \pm 0.03 \si{\V}
 \]
+se poi moltiplico questo valore per $\beta=\frac{R_1}{R_2+R_1}$ ottengo il valore della soglia inferiore
 \[
 V_{OL} = \frac{V_{S-}}{\beta} = 6.95 \pm 0.10 \si{\V}
 \]
-\[
-\Delta= R_3 C_1 \ln(\frac{1 - \frac{V_\gamma}{V_{OL}}}{1 - \beta})= 0.78 \pm 0.03 \si{m\s}
-\]
+quindi $\Delta= 0.78 \pm 0.03 \si{m\s}$
 Dalla misura diretta ricavo
 \[
 \Delta= 779 \pm 10 \;\si{\micro\s}
 \]
-
+che risulta compatibile con il valore atteso.
 \subsection{Analisi del funzionamento del circuito}
 a discesa di $ V\ped{trig} $ causa l'impulso in $ V\ped{out} $. La risalita in $ V\ped{out} $ accade quando $ V\ped{trig} $ è costante, prima che torni ``alto''. Tale risalita avviene infatti nel momento in cui $ V_{-} $ assume il valore minimo che fa ``scattare'' il discriminatore.
 
