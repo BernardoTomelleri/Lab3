@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  26 NOV 2021 15:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  26 NOV 2021 19:00
 entering extended mode
 **./E05.1.AC.tex
 (E05.1.AC.tex
@@ -1574,17 +1574,14 @@ LaTeX Warning: Reference `fig:monostabile' on page 15 undefined on input line 6
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `E05.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: ACFF6789E08990919FBBE94A54A09EF0;5022.
  ) 
 Here is how much of TeX's memory you used:
- 56278 strings out of 478927
- 1393156 string characters out of 2852534
+ 56280 strings out of 478927
+ 1393201 string characters out of 2852534
  2187436 words of memory out of 3000000
- 73306 multiletter control sequences out of 15000+600000
+ 73308 multiletter control sequences out of 15000+600000
  420897 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  122i,11n,125p,757b,881s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1622,9 +1619,9 @@ onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rossi/AppData/Local/Programs
 Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/rossi/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/ross
 i/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on E05.1.AC.pdf (17 pages, 1850741 bytes).
+Output written on E05.1.AC.pdf (17 pages, 1850544 bytes).
 PDF statistics:
- 699 PDF objects out of 1000 (max. 8388607)
+ 700 PDF objects out of 1000 (max. 8388607)
  82 named destinations out of 1000 (max. 500000)
  294 words of extra memory for PDF output out of 10000 (max. 10000000)
 

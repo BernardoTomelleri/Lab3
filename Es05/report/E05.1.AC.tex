@@ -591,7 +591,7 @@ in tempo da uno stato all'altro.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.42]{monostabileV-}
-\caption{Grafico segnale in $V_-$ e $V_{out}$}
+\caption{Grafico segnale in $V_-$ e $V_{out}$ \label{fig: monostabileV-}}
 \end{figure}
 
 I segnali osservati riproducono qualitativamente quanto atteso.
@@ -607,7 +607,7 @@ t\ped{L, exp} =
 \tau \log\left[\left(1 + \frac{V_\gamma}{V \ped{out}/2}\right)
 \left(1 + \frac{R_2}{R_1}\right)\right]
 \end{equation}
-riportato senza incertezza data la natura nominale e indicativa del parametro $ V_{\gamma} \simeq \SI{0.7}{\volt} $. Il valore $ \Delta t \ped{exp} $ risulta comparabile con quello misurato.
+riportato senza incertezza data la natura nominale e indicativa del parametro $ V_{\gamma} \simeq \SI{0.7}{\volt} $.
 
 In assenza del sotto-circuito di trigger, il sistema presenta un solo stato stabile in cui $ V\ped{out} =  V_{\gamma} + V_{z} $.
 Come nel caso del multivibratore astabile, $ V\ped{out} $ può assumere solo come valori $ \pm V_{\gamma} + V_{z} $.
@@ -620,20 +620,23 @@ Come si può vedere in Figura~\ref{fig:monostabile}, quanto osservato sperimenta
 
 \subsection{Durata dell'impulso generato}
 Mi aspetto di trovare una durata dell'impulso pari a $\Delta= R_3 C_1 \ln(\frac{1 - \frac{V_\gamma}{V_{OL}}}{1 - \beta})$
-Misurando coi cursori la tensione di saturazione negativa ottengo:
+Misurando coi cursori la tensione di saturazione negativa ottengo e il $V_\gamma$ come la retta orizzontale che viene formata in V- come si vede in figura ~\ref{fig: monostabileV-}:
 \[
-V_{S-}= 3.49 \pm 0.03 \si{\V}
+V_{OL}= -3.49 \pm 0.03 \si{\V}
 \]
-se poi moltiplico questo valore per $\beta=\frac{R_1}{R_2+R_1}$ ottengo il valore della soglia inferiore
 \[
-V_{OL} = \frac{V_{S-}}{\beta} = 6.95 \pm 0.10 \si{\V}
+V_{\gamma}= 549 \pm 6 \si{m\V}
 \]
-quindi $\Delta= 0.78 \pm 0.03 \si{m\s}$
+
+
+
+quindi $\Delta= 0.83 \pm 0.03 \si{\micro\s}$.
+
 Dalla misura diretta ricavo
 \[
-\Delta= 779 \pm 10 \;\si{\micro\s}
+\Delta= 784 \pm 10 \;\si{\micro\s}
 \]
-che risulta compatibile con il valore atteso.
+che risulta distante più di una barra di errore dal valore aspettato
 \subsection{Analisi del funzionamento del circuito}
 a discesa di $ V\ped{trig} $ causa l'impulso in $ V\ped{out} $. La risalita in $ V\ped{out} $ accade quando $ V\ped{trig} $ è costante, prima che torni ``alto''. Tale risalita avviene infatti nel momento in cui $ V_{-} $ assume il valore minimo che fa ``scattare'' il discriminatore.
 
