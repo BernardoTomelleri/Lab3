@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  26 NOV 2021 13:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  26 NOV 2021 15:40
 entering extended mode
 **./E05.1.AC.tex
 (E05.1.AC.tex
@@ -1520,67 +1520,69 @@ Package pdftex.def Info: ../figs//astable.pdf  used on input line 484.
 <../figs//V+Vout.png, id=259, 1019.007pt x 489.027pt>
 File: ../figs//V+Vout.png Graphic file (type png)
 <use ../figs//V+Vout.png>
-Package pdftex.def Info: ../figs//V+Vout.png  used on input line 516.
+Package pdftex.def Info: ../figs//V+Vout.png  used on input line 526.
 (pdftex.def)             Requested size: 407.59558pt x 195.60732pt.
 <../figs//V-Vout.png, id=260, 1019.007pt x 489.027pt>
 File: ../figs//V-Vout.png Graphic file (type png)
 <use ../figs//V-Vout.png>
-Package pdftex.def Info: ../figs//V-Vout.png  used on input line 522.
+Package pdftex.def Info: ../figs//V-Vout.png  used on input line 532.
 (pdftex.def)             Requested size: 407.59558pt x 195.60732pt.
- [12 <../figs//V+Vout.png (PNG copy)> <../figs//V-Vout.png (PNG copy)>]
+ [12 <../figs//V+Vout.png (PNG copy)>]
 
 pdfTeX warning: pdflatex (file ../figs//monostable.pdf): PDF inclusion: found P
 DF version <1.7>, but at most version <1.5> allowed
-<../figs//monostable.pdf, id=270, 204.52032pt x 185.84106pt>
+<../figs//monostable.pdf, id=273, 204.52032pt x 185.84106pt>
 File: ../figs//monostable.pdf Graphic file (type pdf)
 <use ../figs//monostable.pdf>
-Package pdftex.def Info: ../figs//monostable.pdf  used on input line 561.
+Package pdftex.def Info: ../figs//monostable.pdf  used on input line 573.
 (pdftex.def)             Requested size: 245.42316pt x 223.00813pt.
-<../figs//monostabile.png, id=271, 1152.7065pt x 553.46774pt>
+<../figs//monostabile.png, id=274, 1152.7065pt x 553.46774pt>
 File: ../figs//monostabile.png Graphic file (type png)
 <use ../figs//monostabile.png>
-Package pdftex.def Info: ../figs//monostabile.png  used on input line 569.
+Package pdftex.def Info: ../figs//monostabile.png  used on input line 581.
 (pdftex.def)             Requested size: 484.13344pt x 232.45486pt.
-<../figs//monostabileV+.png, id=272, 1152.7065pt x 553.46774pt>
+<../figs//monostabileV+.png, id=275, 1152.7065pt x 553.46774pt>
 File: ../figs//monostabileV+.png Graphic file (type png)
 <use ../figs//monostabileV+.png>
-Package pdftex.def Info: ../figs//monostabileV+.png  used on input line 575.
+Package pdftex.def Info: ../figs//monostabileV+.png  used on input line 587.
 (pdftex.def)             Requested size: 484.13344pt x 232.45486pt.
-<../figs//monostabileV-.png, id=273, 1152.7065pt x 553.46774pt>
+<../figs//monostabileV-.png, id=276, 1152.7065pt x 553.46774pt>
 File: ../figs//monostabileV-.png Graphic file (type png)
 <use ../figs//monostabileV-.png>
-Package pdftex.def Info: ../figs//monostabileV-.png  used on input line 581.
+Package pdftex.def Info: ../figs//monostabileV-.png  used on input line 593.
 (pdftex.def)             Requested size: 484.13344pt x 232.45486pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 600--604
+[13 <../figs//V-Vout.png (PNG copy)> <../figs//monostable.pdf>] [14 <../figs//m
+onostabile.png (PNG copy)> <../figs//monostabileV+.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 612--616
 
  []
 
-[13 <../figs//monostable.pdf>] [14 <../figs//monostabile.png (PNG copy)> <../fi
-gs//monostabileV+.png (PNG copy)>]
 
 LaTeX Warning: Reference `eq:monostabile-tempopiccolomacaratteristico' on page 
-15 undefined on input line 605.
+15 undefined on input line 617.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 605--606
+Underfull \hbox (badness 10000) in paragraph at lines 617--618
 
  []
 
 
 LaTeX Warning: Reference `fig:monostabile' on page 15 undefined on input line 6
-07.
+19.
 
 [15 <../figs//monostabileV-.png (PNG copy)>] [16] [17] (E05.1.AC.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `E05.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: ACFF6789E08990919FBBE94A54A09EF0;5022.
  ) 
 Here is how much of TeX's memory you used:
- 56274 strings out of 478927
- 1393104 string characters out of 2852534
+ 56278 strings out of 478927
+ 1393156 string characters out of 2852534
  2187436 words of memory out of 3000000
  73306 multiletter control sequences out of 15000+600000
  420897 words of font info for 71 fonts, out of 8000000 for 9000
@@ -1620,9 +1622,9 @@ onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rossi/AppData/Local/Programs
 Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/rossi/AppDat
 a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/ross
 i/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on E05.1.AC.pdf (17 pages, 1849665 bytes).
+Output written on E05.1.AC.pdf (17 pages, 1850741 bytes).
 PDF statistics:
- 694 PDF objects out of 1000 (max. 8388607)
- 78 named destinations out of 1000 (max. 500000)
+ 699 PDF objects out of 1000 (max. 8388607)
+ 82 named destinations out of 1000 (max. 500000)
  294 words of extra memory for PDF output out of 10000 (max. 10000000)
 

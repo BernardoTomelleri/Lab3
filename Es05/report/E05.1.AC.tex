@@ -499,13 +499,23 @@ oscillazione è quindi il doppio del tempo caratteristico $\tau = R_3 C_1$ in
 cui il condensatore è in grado di caricarsi/scaricarsi.
 
 \[
-q = \frac{R_1}{R_1 + R_2}
+q = \frac{R_1}{R_1 + R_2}=0.502 \pm 0.006
 \]
+\[ 
+V_{OH}=4.18 \pm 0.04 \si{\V}
+\]
+\[
+V_{OL}=-3.47 \pm 0.03 \si{\V}
+\]
+
 \begin{align}
-t_H &= \tau \ln\left(\frac{1 - q\frac{V_{OL}}{V_{OH}}}{1-q}\right) \\
-t_L &= \tau \ln\left(\frac{1 - q\frac{V_{OH}}{V_{OL}}}{1-q}\right) \\
-T &= 2 R_3 C_1 \ln\left(\frac{1 + q}{1 - q}\right) = t_H + t_L
+t_H &= \tau \ln\left(\frac{1 - q\frac{V_{OL}}{V_{OH}}}{1-q}\right) =1.04 \pm 0.04 ms\\
+t_L &= \tau \ln\left(\frac{1 - q\frac{V_{OH}}{V_{OL}}}{1-q}\right) =1.16 \pm 0.05 ms\\
 \end{align}
+Per il calcolo delle incertezze si è considerato il fatto che l'errore relativo sulla capacità è molto superiore rispetto a quello di tutti gli altri parametri, di conseguenza possiamo calcolare le incertezze come il $4\%$ sul valore medio dei valori attesi;
+Conseguentemente il valore del periodo e duty cycle atteso vale:
+$T = t_H + t_L= 2.2 \pm 0.09 ms$
+$DC = \frac{t_H}{T}=47.2 \pm 2.6 \; \si{\%}$
 
 
 \setcounter{subsection}{2}
@@ -533,15 +543,17 @@ squalo'', caratteristico del processo di carica/scarica di un condensatore,
 con la stessa ampiezza picco-picco di $V_+$.
 
 \subsection{Misure di periodo e duty cycle}
-Per misurare periodo e duty cycle abbiamo utilizzato i cursori sull'asse x per misurare il tempo in cui l'onda quadra era in saturazione positiva e il tempo di 8 periodi d'onda
+Per misurare i periodi alti e bassi e duty cycle abbiamo utilizzato i cursori sull'asse x per misurare il tempo in cui l'onda quadra era in saturazione positiva (o negativa) e il tempo di 8 periodi d'onda per ricavare il periodo
+Abbiamo poi misurato i valori:
+\begin{align}
+t_H &=1.03 \pm 0.02 ms \\
+t_L &=1.12 \pm 0.02 ms\\
+T &=2.14 \pm 0.01 ms\\
+\end{align}
 \[
-T = 2.15 \pm 0.02 \si{m\s}
+DC = \frac{t_H}{T}=47.9 \pm 1.0 \; \si{\%}
 \]
-\[
-DC = \frac{T_+}{T}=48.2 \pm 1.3 \; \si{\%}
-\]
-Ricordandoci che il periodo atteso era definito come $T = 2 R_3 C_1 \ln\left(\frac{1 + q}{1 - q}\right) = 2.17 \pm 0.09 \si{m\s}$,
-il periodo è compatibile con il suo valore atteso entro una barra di errore, mentre il duty cycle è sempre compatibile ma entro le 2 barre di errore.
+Dato che le misure dei tempi in saturazione positiva e negativa e del periodo sono perfettamente compatibili entro una barra di errore dal valore atteso, ne deduco che lo sia anche il duty cycle
 
 \subsection{Limite massimo in frequenza del generatore}
 Riducendo di metà il valore della resistenza $R_3$ o riducendo di metà il
