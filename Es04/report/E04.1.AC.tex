@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[10pt, a4paper, italian]{article}
 \input{../../latex/preamble}
 \input{../../latex/math}
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
@@ -105,7 +105,7 @@ $\SI{5}{k\ohm} \leq R_2 \leq \SI{10}{k\ohm}$, di conseguenza scegliamo
 $R_2 = 5.1 \pm 1\% \; \si{k\ohm}$, che corrisponde ad un guadagno
 di centro banda $A\ped{v, atteso} = 5.1 \pm 2\%$ 
 
-\subsection{Analisi funzionamento del circuito}
+\subsection{Amplificazione di piccoli segnali}
 Si è inviato all'ingresso di entrambi i circuiti un segnale sinusoidale di
 ampiezza $v\ped{in} = 200 \pm 2 \; \si{m\V}$ ad una frequenza fissata
 $5.01 \pm 0.05 \; \si{k\Hz}$.
@@ -138,7 +138,7 @@ che sono entrambi compatibili con il valore atteso di $\Delta \phi\ped{exp}
 = \pi \; \si{\radian}$, per cui l'amplificatore costruito è effettivamente
 invertente.
 
-\subsection{Durata dell'impulso in uscita (Time-Over-Treshold)}
+\subsection{Misure di guadagno al variare di $v\ped{in}$}
 Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
 e in uscita $v\ped{out}$ dall'amplificatore possiamo ricavare una misura del
 guadagno del circuito dal rapporto $A_v = \dfrac{v\ped{out}}{v\ped{in}}$.
@@ -243,7 +243,7 @@ dell'amplificatore misurati per il circuito con $R_2^a = 5.1 \; \si{k\ohm}$
 \label{fig: gainsat}}
 \end{figure}
 
-\subsection{Andamento TOT al variare della carica iniettata $Q\ped{in}$}
+\subsection{Impedenza in ingresso}
 Inserendo in serie al generatore una resistenza $R_S$ dello stesso ordine di
 $R\ped{in}$ attesa e misurando la tensione in uscita con o senza $R_S$ è
 possibile dare un stima della resistenza in ingresso del circuito.
@@ -272,12 +272,8 @@ ricaviamo come stima della resistenza in ingresso:
 Il che risulta compatibile entro l'incertezza con il valore atteso dalla
 \eqref{eq: Zin} per entrambi gli amplificatori invertenti.
 
-\subsection{Ampiezza della carica di soglia}
-
-\subsection{Confronto con i valori attesi}
-
-\section{Trigger di Schmitt}
-\subsection{Network analyzer}
+\section{Risposta in frequenza e slew rate}
+\subsection{Network analyzer}\label{sub: invamp network}
 Con l'aiuto dei cursori abbiamo misurato come guadagno a centro banda
 per il circuito amplificatore con resistenza $R_2^a = 5.1 \; \si{k\ohm}$
 $A_M = 14.18 \pm 0.09 \; \si{dB} = 5.12 \pm 0.05$.
@@ -369,7 +365,7 @@ possiamo ipotizzare che questo sia una conseguenza della scelta (forzata
 per limitazioni dell'AD2) delle tensioni di alimentazione $V_{CC}$ e $V_{EE}$
 dell'op-amp minori rispetto ai valori tipici.
 
-\section{Multivibratore astabile}
+\section{Circuito derivatore attivo}
 \subsection{Risposta in frequenza}
 Partendo da una misura con i cursori del guadagno a centro banda per i
 circuiti derivatori attivi
@@ -536,7 +532,7 @@ in secondo, di limitare il guadagno massimo a $R_2/R_1$;
 indipendentemente dal valore dei parametri di costruzione dell'op-amp.
 
 %=======================
-\section{Multivibratore monostabile}
+\section{Circuito integratore attivo}
 \subsection{Risposta in frequenza}
 Di nuovo utilizzando i cursori abbiamo misurato come guadagno a centro banda
 per i circuiti integratori
@@ -658,7 +654,7 @@ osserviamo dei picchi di tensione in uscita, che alterano apprezzabilmente
 la forma d'onda triangolare. La loro presenza potrebbe essere dovuta al fatto
 che l'approssimazione di ground virtuale non sia verificata in questo caso,
 per cui si determina una caduta di tensione sulla resistenza interna
-$R\ped{in}$ dell'op-amp che quindi devia dal comportamento atteso.
+$R\ped{in}$ dell'op-amp, che quindi devia dal comportamento atteso.
 
 Ripercorrendo al contrario il ragionamento di prima, se $V_0 = v\ped{in}$ è
 l'ampiezza dell'onda quadra in ingresso, la sua componente principale nello
@@ -733,10 +729,13 @@ circa la metà di quello riportato nel datasheet dell’op-amp come valore
 tipico $\mathrm{GBW_{typ}} = \SI{4}{M\Hz}$.
 
 \section*{Conclusioni e commenti finali}
-Si è riusciti a costruire e studiare alcuni notevoli esempi di circuiti in
-cui si fa uso di amplificatori operazionale in modalità non-lineare, tra cui:
-un amplificatore di carica, un trigger di Schmitt e due multivibratori
-(astabile e monostabile).
+Si è riusciti a costruire e studiare alcuni dei circuiti più comuni che si
+possono realizzare con un amplificatore operazionale, tra cui: due filtri
+attivi, passa-basso e passa-alto, un amplificatore di tensione invertente
+(e uno non).
+In particolare siamo riusciti ad apprezzare il differente comportamento dei
+circuiti (anche in regime non lineare) dare una stima di guadagno, impedenza di
+ingresso e frequenze caratteristiche della loro risposta in frequenza.
 
 \section*{Dichiarazione}
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e

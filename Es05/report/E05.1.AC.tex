@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper,italian]{article}
+\documentclass[10pt, a4paper, italian]{article}
 \input{../../latex/preamble}
 \input{../../latex/math}
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
@@ -435,7 +435,7 @@ V_{TL} &= 775 \pm 6 \; \si{m\V}
 \end{align*}
 Per il secondo circuito invece abbiamo preso una media pesata dei punti che
 giacciono sulle 2 linee verticali che si formano nelle transizioni del ciclo
-di isteresi visto nel grafico XY di figura \ref{fig: schmittxy}.
+di isteresi visto nel grafico XY di \cref{fig: schmittxy}.
 \begin{align*}
 V_{TH} &= -611.6 \pm 0.5 \; \si{m\V} \\
 V_{TL} &= 780.4 \pm 0.5 \; \si{m\V}
@@ -451,7 +451,9 @@ V\ped{out} = V_{CC} \sgn(v_+ - v_-)
 .\]
 Inoltre, dal momento che l'ingresso non-invertente è collegato all'uscita del
 partitore di tensione costituito da $R_1$ e $R_2$, abbiamo
-\[ v_+ = \frac{R}{R_1 + R_2} V \ped{out} = \beta V\ped{out} \]
+\[
+v_+ = \frac{R_2}{R_1 + R_2} V \ped{out} = \beta V\ped{out}
+\]
 dove abbiamo implicitamente definito il coefficiente di partizione
 $\beta \coloneqq \frac{R_2}{R_1 + R_2}$. Quindi mettendo tutto insieme
 \[
