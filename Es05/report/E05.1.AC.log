@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  26 NOV 2021 19:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  27 NOV 2021 02:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1329,148 +1329,145 @@ Package pdftex.def Info: ../figs//discrzoom.png  used on input line 214.
  [4 <../figs//tau.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 279.
+(hyperref)                removing `math shift' on input line 281.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 279.
+(hyperref)                removing `math shift' on input line 281.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 279.
+(hyperref)                removing `subscript' on input line 281.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 279.
+(hyperref)                removing `math shift' on input line 281.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 279.
+(hyperref)                removing `math shift' on input line 281.
 
 <../figs//shaper_discrzoom.png, id=184, 1440.88312pt x 711.4078pt>
 File: ../figs//shaper_discrzoom.png Graphic file (type png)
 <use ../figs//shaper_discrzoom.png>
-Package pdftex.def Info: ../figs//shaper_discrzoom.png  used on input line 286.
+Package pdftex.def Info: ../figs//shaper_discrzoom.png  used on input line 288.
 
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
 <../figs//discr_sat.png, id=185, 1440.88312pt x 711.4078pt>
 File: ../figs//discr_sat.png Graphic file (type png)
 <use ../figs//discr_sat.png>
-Package pdftex.def Info: ../figs//discr_sat.png  used on input line 294.
+Package pdftex.def Info: ../figs//discr_sat.png  used on input line 300.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
 <../figs//shdiscthr.png, id=186, 1440.88312pt x 711.4078pt>
 File: ../figs//shdiscthr.png Graphic file (type png)
 <use ../figs//shdiscthr.png>
-Package pdftex.def Info: ../figs//shdiscthr.png  used on input line 317.
+Package pdftex.def Info: ../figs//shdiscthr.png  used on input line 328.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
 [5 <../figs//discrzoom.png (PNG copy)>] [6 <../figs//shaper_discrzoom.png (PNG 
 copy)> <../figs//discr_sat.png (PNG copy)>]
 <../figs//logfit.pdf, id=201, 606.34532pt x 362.7954pt>
 File: ../figs//logfit.pdf Graphic file (type pdf)
 <use ../figs//logfit.pdf>
-Package pdftex.def Info: ../figs//logfit.pdf  used on input line 348.
+Package pdftex.def Info: ../figs//logfit.pdf  used on input line 356.
 (pdftex.def)             Requested size: 424.43883pt x 253.95505pt.
- [7 <../figs//shdiscthr.png (PNG copy)> <../figs//logfit.pdf>]
+
 
 pdfTeX warning: pdflatex.exe (file ../figs//trgSchmitt.pdf): PDF inclusion: fou
 nd PDF version <1.7>, but at most version <1.5> allowed
-<../figs//trgSchmitt.pdf, id=229, 127.61256pt x 126.6878pt>
+<../figs//trgSchmitt.pdf, id=202, 127.61256pt x 126.6878pt>
 File: ../figs//trgSchmitt.pdf Graphic file (type pdf)
 <use ../figs//trgSchmitt.pdf>
-Package pdftex.def Info: ../figs//trgSchmitt.pdf  used on input line 367.
+Package pdftex.def Info: ../figs//trgSchmitt.pdf  used on input line 377.
 (pdftex.def)             Requested size: 191.41833pt x 190.03122pt.
-<../figs//schmitt.png, id=230, 1440.88312pt x 711.4078pt>
+<../figs//schmitt.png, id=203, 1440.88312pt x 711.4078pt>
 File: ../figs//schmitt.png Graphic file (type png)
 <use ../figs//schmitt.png>
-Package pdftex.def Info: ../figs//schmitt.png  used on input line 376.
+Package pdftex.def Info: ../figs//schmitt.png  used on input line 392.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-<../figs//shmitt_isteresi.png, id=231, 752.21025pt x 473.3685pt>
+<../figs//shmitt_isteresi.png, id=204, 752.21025pt x 473.3685pt>
 File: ../figs//shmitt_isteresi.png Graphic file (type png)
 <use ../figs//shmitt_isteresi.png>
-Package pdftex.def Info: ../figs//shmitt_isteresi.png  used on input line 383.
+Package pdftex.def Info: ../figs//shmitt_isteresi.png  used on input line 404.
 (pdftex.def)             Requested size: 300.87877pt x 189.34404pt.
-[8 <../figs//trgSchmitt.pdf> <../figs//schmitt.png (PNG copy)>] [9 <../figs//sh
-mitt_isteresi.png (PNG copy)>]
-<../figs//bodeschmitt1V100Hz5MHz.png, id=244, 1301.61281pt x 655.69969pt>
+[7 <../figs//shdiscthr.png (PNG copy)>] [8 <../figs//logfit.pdf> <../figs//trgS
+chmitt.pdf>] [9 <../figs//schmitt.png (PNG copy)> <../figs//shmitt_isteresi.png
+ (PNG copy)>]
+
+LaTeX Warning: Reference `fig: schmittsine' on page 1 undefined on input line 4
+84.
+
+<../figs//bodeschmitt1V100Hz5MHz.png, id=246, 1301.61281pt x 655.69969pt>
 File: ../figs//bodeschmitt1V100Hz5MHz.png Graphic file (type png)
 <use ../figs//bodeschmitt1V100Hz5MHz.png>
 Package pdftex.def Info: ../figs//bodeschmitt1V100Hz5MHz.png  used on input lin
-e 455.
-(pdftex.def)             Requested size: 520.6359pt x 262.27522pt.
-
-Overfull \hbox (36.93903pt too wide) in paragraph at lines 455--456
- [][] 
- []
-
-<../figs//bodeschmitt2V100Hz5MHz.png, id=245, 1301.61281pt x 655.69969pt>
+e 496.
+(pdftex.def)             Requested size: 436.04796pt x 219.66325pt.
+<../figs//bodeschmitt2V100Hz5MHz.png, id=247, 1301.61281pt x 655.69969pt>
 File: ../figs//bodeschmitt2V100Hz5MHz.png Graphic file (type png)
 <use ../figs//bodeschmitt2V100Hz5MHz.png>
 Package pdftex.def Info: ../figs//bodeschmitt2V100Hz5MHz.png  used on input lin
-e 470.
-(pdftex.def)             Requested size: 520.6359pt x 262.27522pt.
-
-Overfull \hbox (36.93903pt too wide) in paragraph at lines 470--471
- [][] 
- []
-
-[10 <../figs//bodeschmitt1V100Hz5MHz.png (PNG copy)>]
+e 514.
+(pdftex.def)             Requested size: 436.04796pt x 219.66325pt.
+[10] [11 <../figs//bodeschmitt1V100Hz5MHz.png (PNG copy)> <../figs//bodeschmitt
+2V100Hz5MHz.png (PNG copy)>]
 
 pdfTeX warning: pdflatex.exe (file ../figs//astable.pdf): PDF inclusion: found 
 PDF version <1.7>, but at most version <1.5> allowed
-<../figs//astable.pdf, id=252, 159.70726pt x 154.17316pt>
+<../figs//astable.pdf, id=260, 159.70726pt x 154.17316pt>
 File: ../figs//astable.pdf Graphic file (type pdf)
 <use ../figs//astable.pdf>
-Package pdftex.def Info: ../figs//astable.pdf  used on input line 495.
+Package pdftex.def Info: ../figs//astable.pdf  used on input line 542.
 (pdftex.def)             Requested size: 239.56027pt x 231.25914pt.
-[11 <../figs//bodeschmitt2V100Hz5MHz.png (PNG copy)> <../figs//astable.pdf>]
-<../figs//V+Vout.png, id=261, 1019.007pt x 489.027pt>
+[12 <../figs//astable.pdf>]
+<../figs//V+Vout.png, id=269, 1019.007pt x 489.027pt>
 File: ../figs//V+Vout.png Graphic file (type png)
 <use ../figs//V+Vout.png>
-Package pdftex.def Info: ../figs//V+Vout.png  used on input line 542.
+Package pdftex.def Info: ../figs//V+Vout.png  used on input line 589.
 (pdftex.def)             Requested size: 407.59558pt x 195.60732pt.
-<../figs//V-Vout.png, id=262, 1019.007pt x 489.027pt>
+<../figs//V-Vout.png, id=270, 1019.007pt x 489.027pt>
 File: ../figs//V-Vout.png Graphic file (type png)
 <use ../figs//V-Vout.png>
-Package pdftex.def Info: ../figs//V-Vout.png  used on input line 548.
+Package pdftex.def Info: ../figs//V-Vout.png  used on input line 595.
 (pdftex.def)             Requested size: 407.59558pt x 195.60732pt.
-
-[12 <../figs//V+Vout.png (PNG copy)>]
+ [13 <../figs//V+Vout.png (PNG copy)> <../figs//V-Vout.png (PNG copy)>]
 
 pdfTeX warning: pdflatex.exe (file ../figs//monostable.pdf): PDF inclusion: fou
 nd PDF version <1.7>, but at most version <1.5> allowed
-<../figs//monostable.pdf, id=272, 204.52032pt x 185.84106pt>
+<../figs//monostable.pdf, id=282, 204.52032pt x 185.84106pt>
 File: ../figs//monostable.pdf Graphic file (type pdf)
 <use ../figs//monostable.pdf>
-Package pdftex.def Info: ../figs//monostable.pdf  used on input line 589.
+Package pdftex.def Info: ../figs//monostable.pdf  used on input line 636.
 (pdftex.def)             Requested size: 245.42316pt x 223.00813pt.
-<../figs//monostabile.png, id=273, 1152.7065pt x 553.46774pt>
+<../figs//monostabile.png, id=283, 1152.7065pt x 553.46774pt>
 File: ../figs//monostabile.png Graphic file (type png)
 <use ../figs//monostabile.png>
-Package pdftex.def Info: ../figs//monostabile.png  used on input line 597.
+Package pdftex.def Info: ../figs//monostabile.png  used on input line 644.
 (pdftex.def)             Requested size: 484.13344pt x 232.45486pt.
-<../figs//monostabileV+.png, id=274, 1152.7065pt x 553.46774pt>
+<../figs//monostabileV+.png, id=284, 1152.7065pt x 553.46774pt>
 File: ../figs//monostabileV+.png Graphic file (type png)
 <use ../figs//monostabileV+.png>
-Package pdftex.def Info: ../figs//monostabileV+.png  used on input line 603.
+Package pdftex.def Info: ../figs//monostabileV+.png  used on input line 650.
 (pdftex.def)             Requested size: 484.13344pt x 232.45486pt.
-<../figs//monostabileV-.png, id=275, 1152.7065pt x 553.46774pt>
+<../figs//monostabileV-.png, id=285, 1152.7065pt x 553.46774pt>
 File: ../figs//monostabileV-.png Graphic file (type png)
 <use ../figs//monostabileV-.png>
-Package pdftex.def Info: ../figs//monostabileV-.png  used on input line 609.
+Package pdftex.def Info: ../figs//monostabileV-.png  used on input line 656.
 (pdftex.def)             Requested size: 484.13344pt x 232.45486pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 628--632
+Underfull \hbox (badness 10000) in paragraph at lines 675--679
 
  []
 
-[13 <../figs//V-Vout.png (PNG copy)>] [14 <../figs//monostable.pdf> <../figs//m
-onostabile.png (PNG copy)>] [15 <../figs//monostabileV+.png (PNG copy)> <../fig
-s//monostabileV-.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 633--634
+[14 <../figs//monostable.pdf>] [15 <../figs//monostabile.png (PNG copy)> <../fi
+gs//monostabileV+.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 680--681
 
  []
 
-[16] [17] (./E05.1.AC.aux)
+[16 <../figs//monostabileV-.png (PNG copy)>] [17] [18] (./E05.1.AC.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
@@ -1478,48 +1475,46 @@ Package rerunfilecheck Info: File `E05.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: ACFF6789E08990919FBBE94A54A09EF0;5022.
  ) 
 Here is how much of TeX's memory you used:
- 55946 strings out of 479713
- 1371957 string characters out of 5876923
- 2179990 words of memory out of 10000000
- 72867 multiletter control sequences out of 15000+600000
- 420121 words of font info for 70 fonts, out of 8000000 for 9000
+ 55958 strings out of 479713
+ 1372158 string characters out of 5876923
+ 2182071 words of memory out of 10000000
+ 72877 multiletter control sequences out of 15000+600000
+ 420897 words of font info for 71 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,11n,125p,754b,881s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{equation.4.9} has been referenced but does not ex
-ist, replaced by a fixed one
-
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texliv
-e/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/
-fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2021/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c
-:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/
-2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.p
-fb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/te
-xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2021
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
-/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/
-sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0600.p
-fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/tex
-live/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2021/
-texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist
-/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
-cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
-ftt1000.pfb>
-Output written on E05.1.AC.pdf (17 pages, 1895505 bytes).
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
+ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2021/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb>
+<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
+.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/
+texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/20
+21/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
+ic/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-supe
+r/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440
+.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c:/t
+exlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/202
+1/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2021/texmf-di
+st/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/t
+ype1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publi
+c/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super
+/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.
+pfb>
+Output written on E05.1.AC.pdf (18 pages, 1909771 bytes).
 PDF statistics:
- 465 PDF objects out of 1000 (max. 8388607)
- 351 compressed objects within 4 object streams
- 84 named destinations out of 1000 (max. 500000)
+ 478 PDF objects out of 1000 (max. 8388607)
+ 361 compressed objects within 4 object streams
+ 85 named destinations out of 1000 (max. 500000)
  294 words of extra memory for PDF output out of 10000 (max. 10000000)
 

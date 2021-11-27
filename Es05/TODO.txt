@@ -7,8 +7,14 @@ MISURE DA RIPORTARE PER ENTRAMBI I CIRCUITI:
 [x] 2.d limiti fisici del circuito
 
 [x] 3.d Misure di periodo e duty cycle onda quadra generata
-[] 3.d Calcolare ammodino l'incertezza sul periodo atteso
-[] 3.e Discutere frequenza massima
 
 [] 4.b Durata dell'impulso generato
 [] 4.c Massima frequenza e minima ampiezza per il circuito
+
+COSE DA RIVEDERE PRIMA DELLA CONSEGNA
+[] 1.f Misure di Time-over-Threshold incompatibili perché sovrastimate (riprendere/giustificare meglio?)
+[] 1.f Stima del tempo caratteristico in cui la discesa dell'impulso è in regime lineare
+
+[] 2.d Chiarire meglio quali sono i limiti in ampiezza (specialmente) e in frequenza di Schmitt
+
+[] 3.e Discutere frequenza massima (valori attesi?)
