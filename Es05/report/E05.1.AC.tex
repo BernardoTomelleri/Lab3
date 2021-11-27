@@ -264,7 +264,7 @@ scaricarsi, così da poter considerare indipendente ogni iniezione di carica
 dalla precedente.
 
 L'impulso in uscita ha durata pari a $416 \pm 5 \; \si{\micro\s}$ in un
-circuito e $410 \pm 5 \; \si{\micro\s}$ nel secondo.
+circuito e $378 \pm 5 \; \si{\micro\s}$ nel secondo.
 
 Per quanto riguarda il valore atteso per la durata dell'impulso, possiamo
 confrontare i due valori trovati per il tempo ``alto'' con il valore atteso
@@ -274,9 +274,7 @@ ToT = R_1 C_F \log\left(\frac{C_T}{C_F} \frac{2 V_s}{V\ped{thr}}\right) =
 370 \pm 15 \; \si{\micro\s}
 \]
 
-Che,come ci aspettavamo risulta, minore della durata dell'impulso trovata
-per via della sovrastima sistematica introdotta dal nostro metodo di misura,
-ma comunque compatibile entro 2 barre d'errore.
+Che risulta compatibile con quanto abbiamo trovato sperimentalmente entro 1 barra di errore.
 
 \subsection{Andamento di TOT al variare di $Q\ped{in}$}
 Provando con varie ampiezze del segnale in ingresso $V_s$, il comportamento
@@ -486,12 +484,6 @@ Il che corrisponde esattamente a quanto si riesce ad osservare visualizzando
 i segnali in ingresso ed uscita con l'oscilloscopio in \cref{fig: schmittsine}.
 
 \subsection{Limiti fisici del circuito}
-\[
-F_L = 92.6 \pm 0.1 \; \si{k\Hz}
-\]
-\[
-\mathrm{SR} = 11.1 \pm 0.3 \; \si{\V/\micro\s}
-\]
 
 \begin{figure}[htbp]
 \centering
@@ -510,7 +502,7 @@ slew rate dell'OpAmp.
 \[
 \mathrm{SR} = 11.1 \pm 0.3 \; \si{V/\micro\s}
 \]
-Esiste infine una frequenza limite, oltre il quale il trigger smette di funzionare: il valore di questa frequenza limite dipende anche dall'ampiezza dell'onda che si va ad utilizzare, per esempio nel caso in cui l'ampiezza dell'onda sia 1V la $F_L \approx 90 \si{k\Hz}$, nel caso invece di 2V la $F_L \approx 3 \si{M\Hz}$
+Esiste quindi una frequenza limite, oltre il quale il trigger smette di funzionare: il valore di questa frequenza limite dipende anche dall'ampiezza dell'onda che si va ad utilizzare, per esempio nel caso in cui l'ampiezza dell'onda sia 1V la $F_L \approx 90 \si{k\Hz}$, nel caso invece di 2V la $F_L \approx 500 \si{k\Hz}$.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.335]{bodeschmitt2V100Hz5MHz}
@@ -521,20 +513,18 @@ in cui il tempo minimo di salita e discesa è molto minore del periodo del
 segnale in ingresso (e in uscita)
 \begin{equation}\label{eq:slewlimit}
 T \gg 2 t \ped{min} \qquad t \ped{min} = \frac{V\ped{out}}{\mathrm{SR}} \approx \SI{0.5}{\micro\second} \implies f \ll \SI{1}{M\hertz}.
-  \end{equation}
+\end{equation}
+che dimostra quanto abbiamo trovato sperimentalmente.
 
-%Come ci si aspettava, cambiando l'ampiezza dell'onda in ingresso i valori di
-%saturazione dell'onda in uscita non risultano cambiare in maniera
-%apprezzabile.
 Variando l'ampiezza del segnale in igresso $V_s$ si osserva che l'ampiezza del
 segnale in uscita rimane pressoché uguale fino a una soglia inferiore, al di
-sotto della quale diventa costante. 
+sotto della quale l'uscita diventa costante. 
 Infatti, affinché ciò non accada il circuito deve poter compiere il ciclo di
 isteresi, e dunque l'ampiezza picco-picco del segnale in ingresso deve essere
 maggiore della base del rettangolo di isteresi:
 \[ V_s > 2 V \ped{sat} \eqqcolon V\ped{s, min}. \]
-
-Sperimentalmente, si misura come ampiezza in ingresso minima
+Sperimentalmente si può misurare dal valore delle soglie, prendendo come ampiezza la soglia più lontana dallo zero.
+Nonostante questo, un cambio nell'ampiezza dell'onda in ingresso provoca un mutamento del duty cycle del circuito: in particolare per valori molto vicini alla soglia il duty cycle risulta $\approx 60 \%$, mentre per valori più alti, come ad esempio $\approx 5 \si{V}$ si registra un $DC =50.6 \pm 1.1 \; \%$
 
 %=======================
 \section{Multivibratore astabile}
@@ -579,7 +569,7 @@ t_L &= \tau \ln\left(\frac{1 - q\frac{V_{OH}}{V_{OL}}}{1-q}\right) = 1.16 \pm 0.
 \end{align}
 Conseguentemente il valore del periodo e duty cycle atteso valgono:
 \begin{align}
-T = t_H + t_L = 2 	\tau \ln\left(\frac{1 + q}{1 - q}\right) = 2.2 \pm 0.09 \si{m\s}
+T = t_H + t_L = 2.2 \pm 0.09 \si{m\s} \;
 DC = \frac{t_H}{T}=47.2 \pm 2.6 \; \%
 \end{align}
 
@@ -626,11 +616,12 @@ valore della capacità $C_1$ notiamo un raddoppiamento della frequenza
 del treno d'impulsi generato dovuto ad un dimezzamento del tempo
 caratteristico di carica/scarica $\tau=R_3 C_1$.
 
-Quando il valore del periodo diventa dell'ordine del $\si{\micro\s}$, il
+Quando il valore del semi periodo diventa dell'ordine del $\si{\micro\s}$, il
 tempo che lo slew rate impiega per fare un salto di circa $8$V, non
 otteniamo più in uscita un'onda quadra perché l'OpAmp non riesce a passare
 in tempo da uno stato all'altro.
 
+Dato che $SR=11.1 \pm 0.3 \si{V/s}$ e che il salto tra $SAT_-$ e $SAT_+$ corrisponde circa a $8$V il periodo dell'onda deve valere come minimo $T_{min}\approx 1.5 \si{\micro\s}$ quindi $\tau=R_3 C_1$ deve essere $ >> T_{min}$
 %=======================
 \section{Multivibratore monostabile}
 \begin{figure}[htbp]
