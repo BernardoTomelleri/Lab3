@@ -486,12 +486,20 @@ Il che corrisponde esattamente a quanto si riesce ad osservare visualizzando
 i segnali in ingresso ed uscita con l'oscilloscopio in \cref{fig: schmittsine}.
 
 \subsection{Limiti fisici del circuito}
-\[
-F_L = 92.6 \pm 0.1 \; \si{k\Hz}
-\]
-\[
-\mathrm{SR} = 11.1 \pm 0.3 \; \si{\V/\micro\s}
-\]
+Si osserva che il circuito si comporta come discriminatore con isteresi per
+frequenze sufficientemente basse; più precisamente possiamo individuare una
+frequenza limite $f_L$, oltre la quale il trigger smette di funzionare.
+Il valore di questa frequenza limite dipende anche dall'ampiezza dell'onda che
+si invia all'ingresso, per esempio nel caso in cui l'ampiezza sia
+$V_s = \SI{1}{\V}$ si trova $f_L \approx 90 \si{k\Hz}$, mentre per
+$V_s = \SI{2}{\V}$ la frequenza limite aumenta fino a
+$f_L \approx 3 \si{M\Hz}$. Riportiamo di seguito le misure della frequenza
+trovate da uno scan con Network per i due circuiti in queste due
+configurazioni:
+\begin{align*}
+f_L = 92.6 \pm 0.1 \; \si{k\Hz}
+f_L = 2.96 \pm 0.15 \; \si{M\Hz}
+\end{align*}
 
 \begin{figure}[htbp]
 \centering
@@ -502,15 +510,16 @@ circa $\SI{90}{k\Hz}$, frequenza oltre alla quale il circuito non ha più
 il comportamento atteso.}
 \end{figure}
 
-Si osserva che il circuito si comporta come discriminatore con isteresi per
-frequenze sufficientemente basse. Per frequenze maggiori di
-$\sim\SI{10}{\kilo\hertz}$ la pendenza della transizione del segnale in
-uscita da ``alto'' a ``basso'' e viceversa comincia ad essere limitata dallo
-slew rate dell'OpAmp.
-\[
-\mathrm{SR} = 11.1 \pm 0.3 \; \si{V/\micro\s}
-\]
-Esiste infine una frequenza limite, oltre il quale il trigger smette di funzionare: il valore di questa frequenza limite dipende anche dall'ampiezza dell'onda che si va ad utilizzare, per esempio nel caso in cui l'ampiezza dell'onda sia 1V la $F_L \approx 90 \si{k\Hz}$, nel caso invece di 2V la $F_L \approx 3 \si{M\Hz}$
+Per frequenze maggiori di $\sim\SI{10}{k\Hz}$ la pendenza della transizione
+del segnale in uscita da ``alto'' a ``basso'' e viceversa comincia ad essere
+limitata dallo slew rate dell'OpAmp.
+Per cui dal fronte d'onda tra le transizioni dello stato del trigger abbiamo
+sceltp di misurare direttamente lo slew-rate del TL081
+\begin{align*}
+\mathrm{SR} = 11.1 \pm 0.3 \; \si{\V/\micro\s}
+\mathrm{SR} = 11.3 \pm 0.3 \; \si{\V/\micro\s}
+\end{align*}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.335]{bodeschmitt2V100Hz5MHz}
