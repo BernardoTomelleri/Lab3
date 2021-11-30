@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  29 NOV 2021 19:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  30 NOV 2021 17:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1426,42 +1426,60 @@ File: ../figs//V-Vout.png Graphic file (type png)
 Package pdftex.def Info: ../figs//V-Vout.png  used on input line 634.
 (pdftex.def)             Requested size: 407.59558pt x 195.60732pt.
  [13 <../figs//V+Vout.png (PNG copy)>]
+<../figs//astable1nF.png, id=286, 1440.88312pt x 711.4078pt>
+File: ../figs//astable1nF.png Graphic file (type png)
+<use ../figs//astable1nF.png>
+Package pdftex.def Info: ../figs//astable1nF.png  used on input line 674.
+(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
+<../figs//astable(C=1 nF, R= 220 ohm).png, id=288, 1019.007pt x 489.027pt>
+File: ../figs//astable(C=1 nF, R= 220 ohm).png Graphic file (type png)
+<use ../figs//astable(C=1 nF, R= 220 ohm).png>
+Package pdftex.def Info: ../figs//astable(C=1 nF, R= 220 ohm).png  used on inpu
+t line 708.
+(pdftex.def)             Requested size: 509.50226pt x 244.5129pt.
+
+Overfull \hbox (25.80539pt too wide) in paragraph at lines 708--712
+ [][] 
+ []
+
+[14 <../figs//V-Vout.png (PNG copy)>]
 
 pdfTeX warning: pdflatex.exe (file ../figs//monostable.pdf): PDF inclusion: fou
 nd PDF version <1.7>, but at most version <1.5> allowed
-<../figs//monostable.pdf, id=285, 204.52032pt x 185.84106pt>
+<../figs//monostable.pdf, id=294, 204.52032pt x 185.84106pt>
 File: ../figs//monostable.pdf Graphic file (type pdf)
 <use ../figs//monostable.pdf>
-Package pdftex.def Info: ../figs//monostable.pdf  used on input line 676.
+Package pdftex.def Info: ../figs//monostable.pdf  used on input line 719.
 (pdftex.def)             Requested size: 245.42316pt x 223.00813pt.
-<../figs//monostabile.png, id=286, 1152.7065pt x 553.46774pt>
+<../figs//monostabile.png, id=295, 1152.7065pt x 553.46774pt>
 File: ../figs//monostabile.png Graphic file (type png)
 <use ../figs//monostabile.png>
-Package pdftex.def Info: ../figs//monostabile.png  used on input line 684.
+Package pdftex.def Info: ../figs//monostabile.png  used on input line 727.
 (pdftex.def)             Requested size: 484.13344pt x 232.45486pt.
-<../figs//monostabileV+.png, id=287, 1152.7065pt x 553.46774pt>
+<../figs//monostabileV+.png, id=296, 1152.7065pt x 553.46774pt>
 File: ../figs//monostabileV+.png Graphic file (type png)
 <use ../figs//monostabileV+.png>
-Package pdftex.def Info: ../figs//monostabileV+.png  used on input line 690.
+Package pdftex.def Info: ../figs//monostabileV+.png  used on input line 733.
 (pdftex.def)             Requested size: 484.13344pt x 232.45486pt.
-<../figs//monostabileV-.png, id=288, 1152.7065pt x 553.46774pt>
+<../figs//monostabileV-.png, id=297, 1152.7065pt x 553.46774pt>
 File: ../figs//monostabileV-.png Graphic file (type png)
 <use ../figs//monostabileV-.png>
-Package pdftex.def Info: ../figs//monostabileV-.png  used on input line 696.
+Package pdftex.def Info: ../figs//monostabileV-.png  used on input line 739.
 (pdftex.def)             Requested size: 484.13344pt x 232.45486pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 715--719
+Underfull \hbox (badness 10000) in paragraph at lines 758--762
 
  []
 
-[14 <../figs//V-Vout.png (PNG copy)>] [15 <../figs//monostable.pdf> <../figs//m
-onostabile.png (PNG copy)>] [16 <../figs//monostabileV+.png (PNG copy)> <../fig
-s//monostabileV-.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 720--721
+
+Underfull \hbox (badness 10000) in paragraph at lines 763--764
 
  []
 
-[17] [18] (./E05.1.AC.aux)
+[15 <../figs//astable1nF.png (PNG copy)>] [16 <../figs//astable(C=1 nF, R= 220 
+ohm).png (PNG copy)> <../figs//monostable.pdf>] [17 <../figs//monostabile.png (
+PNG copy)> <../figs//monostabileV+.png (PNG copy)>] [18 <../figs//monostabileV-
+.png (PNG copy)>] [19] [20] (./E05.1.AC.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
@@ -1469,45 +1487,48 @@ Package rerunfilecheck Info: File `E05.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: ACFF6789E08990919FBBE94A54A09EF0;5022.
  ) 
 Here is how much of TeX's memory you used:
- 55961 strings out of 479713
- 1372209 string characters out of 5876923
+ 55991 strings out of 479713
+ 1373087 string characters out of 5876923
  2182076 words of memory out of 10000000
- 72880 multiletter control sequences out of 15000+600000
+ 72908 multiletter control sequences out of 15000+600000
  420121 words of font info for 70 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,14n,125p,754b,881s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
-ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
-t/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2021/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb>
-<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
-.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/
-texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/20
-21/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
-ic/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-supe
-r/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0600
-.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/t
-exlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/202
-1/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-di
-st/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/t
-ype1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publi
-c/cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super
-/sftt1000.pfb>
-Output written on E05.1.AC.pdf (18 pages, 1900647 bytes).
+pdfTeX warning (dest): name{equation.4.16} has been referenced but does not e
+xist, replaced by a fixed one
+
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texliv
+e/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/
+fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2021/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c
+:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/
+2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.p
+fb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2021
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
+/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/
+sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0600.p
+fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/tex
+live/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2021/
+texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist
+/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/typ
+e1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
+cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
+ftt1000.pfb>
+Output written on E05.1.AC.pdf (20 pages, 2050049 bytes).
 PDF statistics:
- 477 PDF objects out of 1000 (max. 8388607)
- 362 compressed objects within 4 object streams
- 86 named destinations out of 1000 (max. 500000)
- 294 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 489 PDF objects out of 1000 (max. 8388607)
+ 370 compressed objects within 4 object streams
+ 87 named destinations out of 1000 (max. 500000)
+ 304 words of extra memory for PDF output out of 10000 (max. 10000000)
 

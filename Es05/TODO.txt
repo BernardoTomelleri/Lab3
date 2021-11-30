@@ -18,3 +18,5 @@ COSE DA RIVEDERE PRIMA DELLA CONSEGNA
 [x] 2.d Chiarire meglio quali sono i limiti in ampiezza (specialmente) e in frequenza di Schmitt
 
 [x] 3.e Discutere frequenza massima (valori attesi?)
+
+[] Spiegare notazione con indici dei valori di resistenza e capacità tabulati (R_2^a, etc...)

@@ -263,7 +263,7 @@ ogni semiperiodo dell'onda quadra $V_s (t)$) i condensatori abbiano tempo di
 scaricarsi, così da poter considerare indipendente ogni iniezione di carica
 dalla precedente.
 
-L'impulso in uscita ha durata pari a $416 \pm 5 \; \si{\micro\s}$ in un
+L'impulso in uscita ha durata pari a $382 \pm 5 \; \si{\micro\s}$ in un
 circuito e $378 \pm 5 \; \si{\micro\s}$ nel secondo.
 
 Per quanto riguarda il valore atteso per la durata dell'impulso, possiamo
@@ -484,7 +484,7 @@ uscita sale velocemente al livello alto.
 Il che corrisponde esattamente a quanto si riesce ad osservare visualizzando
 i segnali in ingresso ed uscita con l'oscilloscopio in \cref{fig: schmittsine}.
 
-\subsection{Limiti fisici del circuito}
+\subsection{Limiti fisici del circuito}\label{sub: trglim}
 Si osserva che il circuito si comporta come discriminatore con isteresi per
 frequenze sufficientemente basse; più precisamente possiamo individuare una
 frequenza limite $f_L$, oltre la quale il trigger smette di funzionare.
@@ -531,7 +531,7 @@ Effettivamente, affinché l'OpAmp possa funzionare correttamente come
 discriminatore con isteresi, occorre che il tempo minimo di salita e discesa
 siano molto minori rispetto al periodo dei segnali in ingresso e in uscita:
 \begin{equation}\label{eq: slewlim}
-T \gg 2 t\ped{min}, \qquad t \ped{min} =
+T \gg 2 t\ped{min}, \qquad t\ped{min} =
 \frac{V\ped{out}^{pp}}{\mathrm{SR}} \approx \SI{0.7}{\micro\s}
 \implies \frac{1}{T} = f \ll \SI{700}{k\Hz}.
 \end{equation}
@@ -640,34 +640,77 @@ segnali $v_- (t)$ (CH1) e $V\ped{out}$ (CH2). \label{fig: v-vout}}
 Per misurare il periodo dell'onda quadra $V\ped{out} (t)$ e la durata dei
 tempi in cui è in saturazione positiva $t_H$ (e negativa $t_L$) si è fatto
 uso dei cursori sull'asse $X$:
-\begin{align}
-t_H &= 1.03 \pm 0.02 \; \si{m\s} \\
-t_L &= 1.12 \pm 0.02 \; \si{m\s} \\
-T &= 2.14 \pm 0.01 \; \si{m\s} \\
-\end{align}
+\begin{align*}
+t_H &= 1.03 \pm 0.02 \; \si{m\s} &\quad t_H = 1.00 \pm 0.02 \; \si{m\s} \\
+t_L &= 1.12 \pm 0.02 \; \si{m\s} &\quad t_L = 1.08 \pm 0.02 \; \si{m\s} \\
+T &= 2.14 \pm 0.01 \; \si{m\s}  &\quad T = 2.09 \pm 0.16 \; \si{m\s} \\
+\end{align*}
 Da queste abbiamo ricavato la nostra miglior stima del duty-cycle dell'onda
 quadra generata dal multivibratore
-\[
-\mathrm{dc} = \frac{t_H}{T} = 47.9 \pm 1.0 \; \%
-\]
+\begin{align*}
+\mathrm{dc} = \frac{t_H}{T} = 47.9 \pm 1.0 \; \% \\
+\mathrm{dc} = \frac{t_H}{T} = 48.2 \pm 0.9 \; \% \\
+\end{align*}
 Le misure dei tempi in saturazione positiva, negativa e del periodo dei
 segnali studiati risultano compatibili con i loro valori attesi, per cui
 lo è anche il duty cycle.
 
 \subsection{Limite massimo in frequenza del generatore}
-Riducendo di metà il valore della resistenza $R_3$ o riducendo di metà il
-valore della capacità $C_1$ notiamo un raddoppiamento della frequenza
-del treno d'impulsi generato dovuto ad un dimezzamento del tempo
-caratteristico di carica/scarica $\tau = R_3 C_1$.
+Secondo il nostro modello il periodo dell'onda quadra generata è direttamente
+proporzionale a (e anche dello stesso ordine di) $\tau = R_3 C_1$, per cui
+se ne vogliamo aumentare la frequenza sarà sufficiente ridurre il valore
+della resistenza $R_3$ o della capacità $C_1$. Effettivamente abbiamo osservato
+un aumento di un fattore $10$ nella frequenza del treno d'impulsi generato,
+a seguito di una riduzione di $C_1$ ed $R_3$ dello stesso fattore, in accordo
+con quanto ci si aspetta di vedere per una decimazione del tempo caratteristico
+di carica/scarica $\tau$.
 
-Quando il valore del semi-periodo diventa dell'ordine del $\si{\micro\s}$, il
-tempo che lo slew-rate impiega per fare un salto di circa $8$V, non
-otteniamo più in uscita un'onda quadra perché l'OpAmp non riesce a passare
-in tempo da uno stato all'altro.
+L'aumento della massima frequenza generabile non è però l'unico effetto che
+si osserva per via della modifica di $\tau$: l'onda quadra in uscita risulta
+distorta, specialmente intorno ai fronti di salita e discesa che sono
+visibilmente limitati in pendenza, come si vede in \cref{fig: astable1nF}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.335]{astable1nF}
+\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
+segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2) quando il periodo dell'onda
+generata $T \sim \tau \approx 36 \; \si{\micro\s}$ è ridotto di un fattore di
+circa 10 rispetto alla configurazione originale del circuito.
+\label{fig: astable1nF}}
+\end{figure}
 
-Dato che $SR=11.1 \pm 0.3 \si{V/s}$ e che il salto tra $SAT_-$ e $SAT_+$ 
-corrisponde circa a $8$V il periodo dell'onda deve valere come minimo 
-$T_{min}\approx 1.5 \si{\micro\s}$ quindi $\tau = R_3 C_1$ deve essere $ >> T_{min}$.
+In piena analogia con quanto visto nella \cref{sub: trglim}, quando il
+semi-periodo dell'uscita si avvicina all'ordine dei $\si{\micro\s}$, cioè il
+tempo minimo che l'OpAmp reale impiega per le transizioni di stato dell'onda
+quadra di ampiezza picco-picco $V\ped{out}^{pp} \sim \SI{8}{\V}$, il segnale
+in uscita presenta fronti di salita e discesa limitati dallo slew-rate
+dell'OpAmp, che non riesce a passare abbastanza rapidamente da uno stato
+all'altro.
+
+Per verificare che l'effetto di distorsione predominante sia dovuto allo
+slew-rate dell'OpAmp, come per il trigger di Schmitt abbiamo misurato (con
+i cursori) dalla pendenza dei fronti di salita dell'onda in uscita
+$\mathrm{SR} = 11.2 \pm 0.3 \si{V/s}$. Questo è compatibile con l'intervallo
+di valori tipici riportato nel datasheet
+($\rm SR_{min} = \SI{8}{\V/\micro\s} - SR_{typ} = \SI{13}{\V/\micro\s}$)
+in particolare ci aspettiamo che l'onda quadra generata inizi ad essere
+distorta per valori del periodo dell'onda prossimi a
+$T\ped{min} \approx 1.4 \si{\micro\s}$, compatibilmente con quanto abbiamo
+osservato.
+
+Riducendo ulteriormente i valori di resistenza e capacità
+($R_3 \approx 220 \; \si{\ohm}$, $C_1 \approx 1 \; \si{nF}$) si osservano
+deviazioni ancora più pronunciate dall'onda quadra attesa in uscita, che
+possono essere dovute al fatto che il TL081 ha guadagno finito e dipendente
+dalla frequenza di lavoro, a differenza di quanto presuppone il nostro modello. 
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.5]{astable(C=1 nF, R= 220 ohm)}
+\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
+segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2) quando il periodo dell'onda
+generata $T \approx \SI{4}{\micro\s}$ è prossimo ai limiti possibili per il
+circuito. \label{fig: astable_lim}}
+\end{figure}
 
 %=======================
 \section{Multivibratore monostabile}
@@ -734,12 +777,21 @@ V_{\gamma}= 549 \pm 6 \si{m\V}
 \]
 
 
+\[
+V_{OL}= -3.53 \pm 0.03 \si{\V}
+\]
+\[
+V_{\gamma}= 551 \pm 6 \si{m\V}
+\]
 
 quindi $\Delta= 0.83 \pm 0.03 \si{\micro\s}$.
 
 Dalla misura diretta ricavo
 \[
 \Delta= 784 \pm 10 \;\si{\micro\s}
+\]
+\[
+\Delta= 765 \pm 10 \;\si{\micro\s}
 \]
 che risulta distante più di una barra di errore dal valore aspettato
 \subsection{Analisi del funzionamento del circuito}
