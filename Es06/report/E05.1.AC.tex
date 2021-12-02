@@ -1,0 +1,67 @@
+\documentclass[10t, a4paper, italian]{article}
+\input{../../latex/preamble}
+\input{../../latex/math}
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+
+% indexes subsections with letters, sections with numbers (1.a, 1.b, ...)
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+% lets graphicx know path where figures to be included are found
+\graphicspath{{../figs/}}
+
+\author{Gruppo 1.AC \\ Matteo Rossi}
+\title{Es06A: Oscillatore sinusoidale a ponte di Wien con Amplificatore Operazionale}
+\begin{document}
+\date{\today}
+\maketitle
+
+\setcounter{section}{0}
+
+\section*{Misura componenti dei circuiti}
+\begin{table}[htbp]
+\centering
+\begin{tabular}{cccccc}
+\toprule
+Resistenze $[\si{k\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
+$\sigma C$ \\
+\midrule
+\midrule
+$R_1$	  & 9.96 	& 0.8 	 & $C_2$ & 10.5		 & 0.4 \\
+$R_2$	  & 9.95	& 0.08 	 & $C_1$ & 9.6		 & 0.4 \\
+$R_3$	  & 9.97	& 0.08	 & & & \\
+$R_4$	  & 9.97	& 0.08	 & & & \\
+$R_5$	  & 9.93	& 0.08	 & & & \\
+\bottomrule     
+\end{tabular}
+\caption{Valori di resistenza e capacità misurate per i componenti dei
+circuiti studiati. \label{tab: rcmes_B}}
+\end{table}
+
+\subsection*{Nota sul metodo di fit}
+Per determinare i parametri ottimali e le rispettive covarianze si \`e
+implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
+mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
+
+%=======================
+\section{Circuito amplificatore di carica}
+
+%=======================
+\section{Trigger di Schmitt}
+
+%=======================
+\section{Multivibratore astabile}
+
+%=======================
+\section{Multivibratore monostabile}
+
+%=======================
+\section*{Conclusioni e commenti finali}
+
+
+%=======================
+\section*{Dichiarazione}
+I firmatari di questa relazione dichiarano che il contenuto della relazione \`e
+originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
+hanno contribuito alla elaborazione della relazione stessa.
+
+\end{document}
