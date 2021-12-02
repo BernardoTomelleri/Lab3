@@ -29,8 +29,8 @@ $\sigma C$ \\
 $R_1^Q$	  & 100.6 	& 0.8 	 & $C_T$ & 1.00		 & 0.04 \\
 $R_1^T$	  & 9.94	& 0.08 	 & $C_F$ & 1.00		 & 0.04 \\
 $R_2^T$	  & 2.19	& 0.03	 & $C_1$ & 96		 & 4	\\
-$R_2^a$	  & 9.94	& 0.08	 & $C_2$ & 1.00		 & 0.04 \\
-$R_3$	  & 9.92	& 0.08	 & & & \\
+$R_2^a$	  & 9.92	& 0.08	 & $C_2$ & 1.00		 & 0.04 \\
+$R_3$	  & 9.94	& 0.08	 & & & \\
 $R_4$	  & 9.94	& 0.08	 & & & \\
 \bottomrule     
 \end{tabular}
@@ -263,7 +263,7 @@ ogni semiperiodo dell'onda quadra $V_s (t)$) i condensatori abbiano tempo di
 scaricarsi, così da poter considerare indipendente ogni iniezione di carica
 dalla precedente.
 
-L'impulso in uscita ha durata pari a $416 \pm 5 \; \si{\micro\s}$ in un
+L'impulso in uscita ha durata pari a $382 \pm 5 \; \si{\micro\s}$ in un
 circuito e $378 \pm 5 \; \si{\micro\s}$ nel secondo.
 
 Per quanto riguarda il valore atteso per la durata dell'impulso, possiamo
@@ -464,9 +464,10 @@ $V\ped{out} > V_s/\beta$ e ``basso'' (cioè $V\ped{out} = -V_{CC}$)
 nel semipiano $V\ped{out} < V_s/\beta$. Queste condizioni definiscono la
 tensione di soglia per cui ci aspettiamo avvengano le transizioni:
 $V_s = \pm V\ped{trn}$, cioé
-\begin{align}
-V\ped{trn} = \beta V_{CC} = \frac{V_{CC}}{1 + R_1/R_2} = 0.90 \pm 0.03 \; \si{\V}
-\end{align}
+\begin{equation}
+V\ped{trn} = \beta V_{CC} = \frac{V_{CC}}{1 + R_1/R_2} =
+0.90 \pm 0.03 \; \si{\V}
+\end{equation}
 
 Possiamo spiegare il funzionamento del trigger di Schmitt in termini di
 feedback positivo, che ne regola il comportamento tramite il controllo del
@@ -483,7 +484,21 @@ uscita sale velocemente al livello alto.
 Il che corrisponde esattamente a quanto si riesce ad osservare visualizzando
 i segnali in ingresso ed uscita con l'oscilloscopio in \cref{fig: schmittsine}.
 
-\subsection{Limiti fisici del circuito}
+\subsection{Limiti fisici del circuito}\label{sub: trglim}
+Si osserva che il circuito si comporta come discriminatore con isteresi per
+frequenze sufficientemente basse; più precisamente possiamo individuare una
+frequenza limite $f_L$, oltre la quale il trigger smette di funzionare.
+Il valore di questa frequenza limite dipende anche dall'ampiezza dell'onda che
+si invia all'ingresso, per esempio nel caso in cui l'ampiezza sia
+$V_s = \SI{1}{\V}$ si trova $f_L \approx 90 \si{k\Hz}$, mentre per
+$V_s = \SI{2}{\V}$ la frequenza limite aumenta fino a
+$f_L \approx 700 \si{k\Hz}$. Riportiamo di seguito le misure della frequenza
+trovate da uno scan con Network per i due circuiti in queste due
+configurazioni:
+\begin{align*}
+f_L &= 92.6 \pm 0.1 \; \si{k\Hz} \\
+f_L &= 680 \pm 4 \; \si{k\Hz}
+\end{align*}
 
 \begin{figure}[htbp]
 \centering
@@ -494,41 +509,59 @@ circa $\SI{90}{k\Hz}$, frequenza oltre alla quale il circuito non ha più
 il comportamento atteso.}
 \end{figure}
 
-Si osserva che il circuito si comporta come discriminatore con isteresi per
-frequenze sufficientemente basse. Per frequenze maggiori di
-$\sim\SI{10}{\kilo\hertz}$ la pendenza della transizione del segnale in
-uscita da ``alto'' a ``basso'' e viceversa comincia ad essere limitata dallo
-slew rate dell'OpAmp.
-\[
-\mathrm{SR} = 11.1 \pm 0.3 \; \si{V/\micro\s}
-\]
-Esiste quindi una frequenza limite, oltre il quale il trigger smette di funzionare: il valore di questa frequenza limite dipende anche dall'ampiezza dell'onda che si va ad utilizzare, per esempio nel caso in cui l'ampiezza dell'onda sia 1V la $F_L \approx 90 \si{k\Hz}$, nel caso invece di 2V la $F_L \approx 500 \si{k\Hz}$.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.335]{bodeschmitt2V100Hz5MHz}
-\caption{analisi in frequenza del trigger di schmitt, 2V di ampiezza, in particolare l'unico punto di interesse si trova a circa 3 MHz, punto in cui smette di funzionare}
+\caption{Risposta in frequenza del trigger di Schmitt, con ampiezza del segnale
+in ingresso fissata a $\SI{2}{V}$, a partire dai $\SI{700}{k\Hz}$ osserviamo
+una deviazione dall'andamento atteso.}
 \end{figure}
-Il regime in cui l'OpAmp si comporta da discriminatore con isteresi è quello
-in cui il tempo minimo di salita e discesa è molto minore del periodo del
-segnale in ingresso (e in uscita)
-\begin{equation}\label{eq:slewlimit}
-T \gg 2 t \ped{min} \qquad t \ped{min} = \frac{V\ped{out}}{\mathrm{SR}} \approx \SI{0.5}{\micro\second} \implies f \ll \SI{1}{M\hertz}.
-\end{equation}
-che dimostra quanto abbiamo trovato sperimentalmente.
 
-Variando l'ampiezza del segnale in igresso $V_s$ si osserva che l'ampiezza del
-segnale in uscita rimane pressoché uguale fino a una soglia inferiore, al di
-sotto della quale l'uscita diventa costante. 
-Infatti, affinché ciò non accada il circuito deve poter compiere il ciclo di
-isteresi, e dunque l'ampiezza picco-picco del segnale in ingresso deve essere
-maggiore della base del rettangolo di isteresi:
-\[ V_s > 2 V \ped{sat} \eqqcolon V\ped{s, min}. \]
-Sperimentalmente si può misurare dal valore delle soglie, prendendo come ampiezza la soglia più lontana dallo zero.
-Nonostante questo, un cambio nell'ampiezza dell'onda in ingresso provoca un mutamento del duty cycle del circuito: in particolare per valori molto vicini alla soglia il duty cycle risulta $\approx 60 \%$, mentre per valori più alti, come ad esempio $\approx 5 \si{V}$ si registra un $DC =50.6 \pm 1.1 \; \%$
+Per frequenze maggiori di $\sim \SI{10}{k\Hz}$ la pendenza della transizione
+del segnale in uscita da ``alto'' a ``basso'' e viceversa comincia ad essere
+limitata dallo slew-rate dell'OpAmp.
+Per cui dal fronte d'onda tra le transizioni dello stato del trigger abbiamo
+scelto di misurare direttamente lo slew-rate del TL081
+\begin{align*}
+\mathrm{SR} &= 11.1 \pm 0.3 \; \si{\V/\micro\s} \\
+\mathrm{SR} &= 11.3 \pm 0.3 \; \si{\V/\micro\s}
+\end{align*}
+
+Effettivamente, affinché l'OpAmp possa funzionare correttamente come
+discriminatore con isteresi, occorre che il tempo minimo di salita e discesa
+siano molto minori rispetto al periodo dei segnali in ingresso e in uscita:
+\begin{equation}\label{eq: slewlim}
+T \gg 2 t\ped{min}, \qquad t\ped{min} =
+\frac{V\ped{out}^{pp}}{\mathrm{SR}} \approx \SI{0.7}{\micro\s}
+\implies \frac{1}{T} = f \ll \SI{700}{k\Hz}.
+\end{equation}
+che risulta in accordo con quanto si è trovato sperimentalmente.
+
+Variando l'ampiezza del segnale in ingresso $V_s$ si osserva che l'ampiezza del
+segnale in uscita rimane pressoché uguale a $V\ped{out}^{pp} = V_{OH} - V_{OL}
+= 7.94 \pm 0.04$ fino a una soglia inferiore intorno a $\SI{800}{m\V}$, al di
+sotto della quale l'uscita è costante al valore di saturazione $V_{OH}$.
+Infatti per quanto abbiamo visto, affinché il circuito possa compiere il ciclo
+di isteresi, l'ampiezza (picco-picco) del segnale in ingresso deve essere
+maggiore della base del rettangolo di isteresi $V_s^{pp} \geq 2 V\ped{trn}$.
+In realtà, per via dell'asimmetria delle tensioni di soglia, è necessario
+che $V_s$ abbia ampiezza superiore alla soglia $V_{TL}$, in modulo la
+più alta delle due; come si è visto dall'esperimento.
+
+Notiamo infine che al diminuire dell'ampiezza dell'onda in ingresso (a partire
+dal massimo valore generabile di $V\ped{s, max} = \SI{5}{\V}$ fino a soglia
+$V_s \approx V_{TL} \approx \SI{800}{m\V}$)
+corrispondono un aumento della componente continua (da un minimo di circa
+$560 \; \si{m\V}$ ad un massimo valore registrato di $1.5 \; \si{\V}$) e del
+duty cycle (a partire da un valore minimo di $50.6 \pm 1.1 \%$ fino a
+$65.6 \pm 1.2 \%$ per valori di $V_s$ molto vicini alla soglia) nell'onda
+quadra in uscita dal circuito.
 
 %=======================
 \section{Multivibratore astabile}
-
+Il circuito in figura \ref{fig: astableschm} è costituito da un trigger di
+Schmitt con un filtro passa-basso RC collegato all'ingresso invertente dell'
+OpAmp.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[scale=1.5]{astable}
@@ -537,26 +570,19 @@ Nonostante questo, un cambio nell'ampiezza dell'onda in ingresso provoca un muta
 \end{figure}
 
 \subsection{Funzionamento del circuito}
-Il circuito in figura \ref{fig: astableschm} funziona come un trigger di
-Schmitt collegato in input ad un filtro passa-basso RC. Il condensatore $C_1$ si
-carica fino a raggiungere il livello della tensione dell’ingresso non
-invertente, a questo punto l’OpAmp scatta, la tensione nell’ingresso non invertente
-scende e il condensatore comincia a scaricarsi fino a quando il livello della
-tensione ai capi del condensatore non raggiunge quello presente all’ingresso
-non invertente.
-Il ciclo dunque si ripete generando un'onda quadra il cui periodo di
-oscillazione è quindi il doppio del tempo caratteristico $\tau$ in
-cui il condensatore è in grado di caricarsi/scaricarsi.
+Per spiegarne il funzionamento è fondamentale studiare il comportamento del
+condensatore collegato all'ingresso negativo dell'OpAmp $C_1$. Questo si
+carica fino a raggiungere la stessa d.d.p. al terminale positivo
+dell'operazionale, a questo punto il trigger cambia rapidamente stato da alto
+a basso e, di conseguenza, la tensione all'ingresso non-invertente si abbassa.
+Dunque il condensatore comincia a scaricarsi fino a che la d.d.p. ai suoi capi
+non raggiunge la stessa tensione ora presente all'ingresso non invertente
+dell'amplificatore operazionale.
+Il ciclo quindi si ripete generando un'onda quadra in uscita, il cui
+periodo di oscillazione è proporzionale al doppio del tempo caratteristico
+$\tau = R_3 C_1$ in cui il condensatore è in grado di caricarsi/scaricarsi.
 
-
-\[ 
-V_{OH}=4.18 \pm 0.04 \si{\V}
-\]
-\[
-V_{OL}=-3.47 \pm 0.03 \si{\V}
-\]
-
-Dette
+Più precisamente, una volta definite
 \begin{align*}
 q &= \frac{R_1}{R_1 + R_2} = 0.502 \pm 0.006 \\
 \tau &= R_3 C_1 = 101 \pm 4 \; \si{\micro\s}
@@ -564,64 +590,128 @@ q &= \frac{R_1}{R_1 + R_2} = 0.502 \pm 0.006 \\
 Abbiamo come valori attesi per i tempi caratteristici alto $t_H$ e basso
 $t_L$ ed il periodo $T$ dell'onda quadra generata dal multivibratore:
 \begin{align}
-t_H &= \tau \ln\left(\frac{1 - q\frac{V_{OL}}{V_{OH}}}{1-q}\right) = 1.04 \pm 0.04 ms\\
-t_L &= \tau \ln\left(\frac{1 - q\frac{V_{OH}}{V_{OL}}}{1-q}\right) = 1.16 \pm 0.05 ms\\
+t_H &= \tau \ln\left(\frac{1 - q\frac{V_{OL}}{V_{OH}}}{1-q}\right) =
+1.04 \pm 0.04 \; \si{m\s} \\
+t_L &= \tau \ln\left(\frac{1 - q\frac{V_{OH}}{V_{OL}}}{1-q}\right) =
+1.16 \pm 0.05 \; \si{m\s} \\
 \end{align}
-Conseguentemente il valore del periodo e duty cycle atteso valgono:
+Conseguentemente il valore del periodo e duty-cycle atteso valgono:
 \begin{align}
-T = t_H + t_L = 2.2 \pm 0.09 \si{m\s} \;
-DC = \frac{t_H}{T}=47.2 \pm 2.6 \; \%
+T &= t_H + t_L = 2.20 \pm 0.06 \; \si{m\s} \\
+\mathrm{dc} &= \frac{t_H}{T} = 47 \pm 3 \; \%
 \end{align}
 
 \setcounter{subsection}{2}
 \subsection{Studio dei segnali in ingresso e uscita}
+Osservando il segnale in uscita $V\ped{out} (t)$ ci si aspetta di trovare
+un'onda quadra di ampiezza picco-picco $\approx \SI{8}{\V}$, periodo
+$2.15 \pm 0.03 \; \si{m\s}$ e duty-cycle $50 \%$. Infatti come tensioni
+di saturazione alta $V_{OH}$ e bassa $V_{OL}$ dell'onda si è misurato
+\begin{align*}
+\begin{cases}
+V_{OH} &= 4.18 \pm 0.04 \; \si{\V} \\
+V_{OL} &= -3.47 \pm 0.03 \; \si{\V}  \implies V\ped{out}^{pp} = 7.65 \pm 0.05
+\end{cases}
+\end{align*}
 
+Mentre come $v_+ (t)$ ci aspettiamo un'onda della stessa forma di
+$V\ped{out} (t)$, ma ridotta in ampiezza di un fattore di partizione
+$q \approx 0.5$. Questo corrisponde all'andamento osservato di questi due
+segnali, che riportiamo in \cref{fig: v+vout}
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.4]{V+Vout}
-\caption{Grafico segnale in $V_+$ e segnale in $V_{out}$}
+\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
+segnali $v_+ (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: v+vout}}
 \end{figure}
 
+Osservando $v_- (t)$, infine, ci si aspetta di vedere un segnale ``a pinna di
+squalo'', caratteristico del processo di carica/scarica del condensatore e
+con la stessa ampiezza di $v_+ (t)$, data dalle tensioni di transizione per
+il comparatore/trigger di Schmitt, come riportato in \cref{fig: v-vout}.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.4]{V-Vout}
-\caption{Grafico segnale in $V_-$ e segnale in $V_{out}$}
+\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
+segnali $v_- (t)$ (CH1) e $V\ped{out}$ (CH2). \label{fig: v-vout}}
 \end{figure}
 
-Osservando il segnale in uscita Vout ci si aspetta di osservare un’onda quadra
-di ampiezza picco-picco $\approx \SI{8}{\V}$ e periodo $2.15 \pm 0.03 \; \si{m\s}$ e
-duty cycle $50 \%$.
-Osservando $V_+$ ci si aspetta un segnale identico a $V\ped{out}$, ma ridotto di
-un fattore $\beta \approx 0.5$.
-Osservando $V_-$, infine, ci si aspetta di vedere un segnale ``a pinna di
-squalo'', caratteristico del processo di carica/scarica di un condensatore,
-con la stessa ampiezza picco-picco di $V_+$.
-
 \subsection{Misure di periodo e duty cycle}
-Per misurare i periodi alti e bassi e duty cycle abbiamo utilizzato i cursori sull'asse x per misurare il tempo in cui l'onda quadra era in saturazione positiva (o negativa) e il tempo di 8 periodi d'onda per ricavare il periodo
-Abbiamo poi misurato i valori:
-\begin{align}
-t_H &=1.03 \pm 0.02 ms \\
-t_L &=1.12 \pm 0.02 ms\\
-T &=2.14 \pm 0.01 ms\\
-\end{align}
-\[
-DC = \frac{t_H}{T}=47.9 \pm 1.0 \; \si{\%}
-\]
-Dato che le misure dei tempi in saturazione positiva e negativa e del periodo sono perfettamente compatibili entro una barra di errore dal valore atteso, ne deduco che lo sia anche il duty cycle
+Per misurare il periodo dell'onda quadra $V\ped{out} (t)$ e la durata dei
+tempi in cui è in saturazione positiva $t_H$ (e negativa $t_L$) si è fatto
+uso dei cursori sull'asse $X$:
+\begin{align*}
+t_H &= 1.03 \pm 0.02 \; \si{m\s} &\quad t_H = 1.00 \pm 0.02 \; \si{m\s} \\
+t_L &= 1.12 \pm 0.02 \; \si{m\s} &\quad t_L = 1.08 \pm 0.02 \; \si{m\s} \\
+T &= 2.14 \pm 0.01 \; \si{m\s}  &\quad T = 2.09 \pm 0.16 \; \si{m\s} \\
+\end{align*}
+Da queste abbiamo ricavato la nostra miglior stima del duty-cycle dell'onda
+quadra generata dal multivibratore
+\begin{align*}
+\mathrm{dc} = \frac{t_H}{T} = 47.9 \pm 1.0 \; \% \\
+\mathrm{dc} = \frac{t_H}{T} = 48.2 \pm 0.9 \; \% \\
+\end{align*}
+Le misure dei tempi in saturazione positiva, negativa e del periodo dei
+segnali studiati risultano compatibili con i loro valori attesi, per cui
+lo è anche il duty cycle.
 
 \subsection{Limite massimo in frequenza del generatore}
-Riducendo di metà il valore della resistenza $R_3$ o riducendo di metà il
-valore della capacità $C_1$ notiamo un raddoppiamento della frequenza
-del treno d'impulsi generato dovuto ad un dimezzamento del tempo
-caratteristico di carica/scarica $\tau=R_3 C_1$.
+Secondo il nostro modello il periodo dell'onda quadra generata è direttamente
+proporzionale a (e anche dello stesso ordine di) $\tau = R_3 C_1$, per cui
+se ne vogliamo aumentare la frequenza sarà sufficiente ridurre il valore
+della resistenza $R_3$ o della capacità $C_1$. Effettivamente abbiamo osservato
+un aumento di un fattore $10$ nella frequenza del treno d'impulsi generato,
+a seguito di una riduzione di $C_1$ ed $R_3$ dello stesso fattore, in accordo
+con quanto ci si aspetta di vedere per una decimazione del tempo caratteristico
+di carica/scarica $\tau$.
 
-Quando il valore del semi periodo diventa dell'ordine del $\si{\micro\s}$, il
-tempo che lo slew rate impiega per fare un salto di circa $8$V, non
-otteniamo più in uscita un'onda quadra perché l'OpAmp non riesce a passare
-in tempo da uno stato all'altro.
+L'aumento della massima frequenza generabile non è però l'unico effetto che
+si osserva per via della modifica di $\tau$: l'onda quadra in uscita risulta
+distorta, specialmente intorno ai fronti di salita e discesa che sono
+visibilmente limitati in pendenza, come si vede in \cref{fig: astable1nF}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.335]{astable1nF}
+\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
+segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2) quando il periodo dell'onda
+generata $T \sim \tau \approx 36 \; \si{\micro\s}$ è ridotto di un fattore di
+circa 10 rispetto alla configurazione originale del circuito.
+\label{fig: astable1nF}}
+\end{figure}
 
-Dato che $SR=11.1 \pm 0.3 \si{V/s}$ e che il salto tra $SAT_-$ e $SAT_+$ corrisponde circa a $8$V il periodo dell'onda deve valere come minimo $T_{min}\approx 1.5 \si{\micro\s}$ quindi $\tau=R_3 C_1$ deve essere $ >> T_{min}$
+In piena analogia con quanto visto nella \cref{sub: trglim}, quando il
+semi-periodo dell'uscita si avvicina all'ordine dei $\si{\micro\s}$, cioè il
+tempo minimo che l'OpAmp reale impiega per le transizioni di stato dell'onda
+quadra di ampiezza picco-picco $V\ped{out}^{pp} \sim \SI{8}{\V}$, il segnale
+in uscita presenta fronti di salita e discesa limitati dallo slew-rate
+dell'OpAmp, che non riesce a passare abbastanza rapidamente da uno stato
+all'altro.
+
+Per verificare che l'effetto di distorsione predominante sia dovuto allo
+slew-rate dell'OpAmp, come per il trigger di Schmitt abbiamo misurato (con
+i cursori) dalla pendenza dei fronti di salita dell'onda in uscita
+$\mathrm{SR} = 11.2 \pm 0.3 \si{V/s}$. Questo è compatibile con l'intervallo
+di valori tipici riportato nel datasheet
+($\rm SR_{min} = \SI{8}{\V/\micro\s} - SR_{typ} = \SI{13}{\V/\micro\s}$)
+in particolare ci aspettiamo che l'onda quadra generata inizi ad essere
+distorta per valori del periodo dell'onda prossimi a
+$T\ped{min} \approx 1.4 \si{\micro\s}$, compatibilmente con quanto abbiamo
+osservato.
+
+Riducendo ulteriormente i valori di resistenza e capacità
+($R_3 \approx 220 \; \si{\ohm}$, $C_1 \approx 1 \; \si{nF}$) si osservano
+deviazioni ancora più pronunciate dall'onda quadra attesa in uscita, che
+possono essere dovute al fatto che il TL081 ha guadagno finito e dipendente
+dalla frequenza di lavoro, a differenza di quanto presuppone il nostro modello. 
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.5]{astable(C=1 nF, R= 220 ohm)}
+\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
+segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2) quando il periodo dell'onda
+generata $T \approx \SI{4}{\micro\s}$ è prossimo ai limiti possibili per il
+circuito. \label{fig: astable_lim}}
+\end{figure}
+
 %=======================
 \section{Multivibratore monostabile}
 \begin{figure}[htbp]
@@ -687,12 +777,21 @@ V_{\gamma}= 549 \pm 6 \si{m\V}
 \]
 
 
+\[
+V_{OL}= -3.53 \pm 0.03 \si{\V}
+\]
+\[
+V_{\gamma}= 551 \pm 6 \si{m\V}
+\]
 
 quindi $\Delta= 0.83 \pm 0.03 \si{\micro\s}$.
 
 Dalla misura diretta ricavo
 \[
 \Delta= 784 \pm 10 \;\si{\micro\s}
+\]
+\[
+\Delta= 765 \pm 10 \;\si{\micro\s}
 \]
 che risulta distante più di una barra di errore dal valore aspettato
 \subsection{Analisi del funzionamento del circuito}
