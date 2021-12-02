@@ -219,8 +219,8 @@ $Comp
 L Amplifier_Operational:TL081 OA2
 U 1 1 619A99DE
 P 3950 2350
-F 0 "OA2" H 4150 2450 50  0000 L CNN
-F 1 "TL081" H 4150 2550 50  0000 L CNN
+F 0 "OA2" H 4100 2600 50  0000 L CNN
+F 1 "TL081" H 4100 2500 50  0000 L CNN
 F 2 "" H 4000 2400 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/tl081.pdf" H 4100 2500 50  0001 C CNN
 	1    3950 2350
@@ -333,17 +333,6 @@ Vout
 Wire Wire Line
 	6500 2100 6700 2100
 Connection ~ 6500 2100
-$Comp
-L Amplifier_Operational:TL081 OA?
-U 1 1 619E48F1
-P 8950 2100
-F 0 "OA?" H 9150 2200 50  0000 L CNN
-F 1 "TL081" H 9150 2300 50  0000 L CNN
-F 2 "" H 9000 2150 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/tl081.pdf" H 9100 2250 50  0001 C CNN
-	1    8950 2100
-	1    0    0    1   
-$EndComp
 $Comp
 L power:-5V #PWR?
 U 1 1 619E4AA9
@@ -460,10 +449,10 @@ F 3 "~" H 8250 2450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Amplifier_Operational:TL081 OA?
+L Amplifier_Operational:TL081 OA1
 U 1 1 619FAC5D
 P 2700 4650
-F 0 "OA?" H 2900 4750 50  0000 L CNN
+F 0 "OA1" H 2900 4750 50  0000 L CNN
 F 1 "TL081" H 2900 4850 50  0000 L CNN
 F 2 "" H 2750 4700 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/tl081.pdf" H 2850 4800 50  0001 C CNN
@@ -572,12 +561,6 @@ Connection ~ 2000 4550
 Wire Wire Line
 	2000 4550 2000 4650
 Wire Wire Line
-	2000 4550 1900 4550
-Wire Wire Line
-	1600 4550 1500 4550
-Wire Wire Line
-	1500 4550 1500 5000
-Wire Wire Line
 	1500 5000 1750 5000
 Wire Wire Line
 	2000 5000 2000 4950
@@ -676,13 +659,13 @@ Wire Wire Line
 $Comp
 L Diode:1N4007 D1
 U 1 1 61A49C4E
-P 1750 4550
-F 0 "D1" H 1750 4767 50  0000 C CNN
-F 1 "1N4007" H 1750 4676 50  0000 C CNN
-F 2 "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 1750 4375 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/88503/1n4001.pdf" H 1750 4550 50  0001 C CNN
-	1    1750 4550
-	1    0    0    -1  
+P 1500 4800
+F 0 "D1" H 1500 5017 50  0000 C CNN
+F 1 "1N4007" H 1500 4926 50  0000 C CNN
+F 2 "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 1500 4625 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/88503/1n4001.pdf" H 1500 4800 50  0001 C CNN
+	1    1500 4800
+	0    -1   -1   0   
 $EndComp
 $Comp
 L Diode:1N4007 D2
@@ -696,4 +679,21 @@ F 3 "http://www.vishay.com/docs/88503/1n4001.pdf" H 2100 5500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 1950 5500
+$Comp
+L Amplifier_Operational:TL081 OA1
+U 1 1 619E48F1
+P 8950 2100
+F 0 "OA1" H 9150 2200 50  0000 L CNN
+F 1 "TL081" H 9150 2300 50  0000 L CNN
+F 2 "" H 9000 2150 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tl081.pdf" H 9100 2250 50  0001 C CNN
+	1    8950 2100
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	1500 4550 1500 4650
+Wire Wire Line
+	1500 4550 2000 4550
+Wire Wire Line
+	1500 4950 1500 5000
 $EndSCHEMATC

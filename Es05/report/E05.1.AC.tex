@@ -641,9 +641,9 @@ Per misurare il periodo dell'onda quadra $V\ped{out} (t)$ e la durata dei
 tempi in cui è in saturazione positiva $t_H$ (e negativa $t_L$) si è fatto
 uso dei cursori sull'asse $X$:
 \begin{align*}
-t_H &= 1.03 \pm 0.02 \; \si{m\s} &\quad t_H = 1.00 \pm 0.02 \; \si{m\s} \\
-t_L &= 1.12 \pm 0.02 \; \si{m\s} &\quad t_L = 1.08 \pm 0.02 \; \si{m\s} \\
-T &= 2.14 \pm 0.01 \; \si{m\s}  &\quad T = 2.09 \pm 0.16 \; \si{m\s} \\
+t_H &= 1.03 \pm 0.02 \; \si{m\s} &\quad t_H &= 1.00 \pm 0.02 \; \si{m\s} \\
+t_L &= 1.12 \pm 0.02 \; \si{m\s} &\quad t_L &= 1.08 \pm 0.02 \; \si{m\s} \\
+T &= 2.14 \pm 0.01 \; \si{m\s}  &\quad T &= 2.09 \pm 0.16 \; \si{m\s} \\
 \end{align*}
 Da queste abbiamo ricavato la nostra miglior stima del duty-cycle dell'onda
 quadra generata dal multivibratore
@@ -705,7 +705,7 @@ possono essere dovute al fatto che il TL081 ha guadagno finito e dipendente
 dalla frequenza di lavoro, a differenza di quanto presuppone il nostro modello. 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.5]{astable(C=1 nF, R= 220 ohm)}
+\includegraphics[scale=0.45]{astable(C=1 nF, R= 220 ohm)}
 \caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
 segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2) quando il periodo dell'onda
 generata $T \approx \SI{4}{\micro\s}$ è prossimo ai limiti possibili per il
@@ -714,93 +714,156 @@ circuito. \label{fig: astable_lim}}
 
 %=======================
 \section{Multivibratore monostabile}
+Il multivibratore monostabile riportato in \cref{fig: mstableschm} è simile
+al circuito precedente, ma ha uno stato stabile (quello alto) e uno instabile,
+per cui viene utilizzato come generatore di impulsi. In effetti si è costruito
+il circuito a partire dallo stesso trigger di Schmitt invertente, aggiungendo
+però un sotto-circuito di trigger all'ingresso positivo dell'OpAmp e il diodo
+$D_1$ in parallelo al condensatore $C_1$ del filtro passa-basso.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[scale=1.2]{monostable}
     \caption{Schema circuitale del multivibratore monostabile costruito.
-    \label{fig: monostableschm}}
+    \label{fig: mstableschm}}
 \end{figure}
 
 \subsection{Studio dei segnali in ingresso e uscita}
-\begin{figure}[htbp]
-\centering
-\includegraphics[scale=0.42]{monostabile}
-\caption{Grafico segnale in ingresso e $V_{out}$ \label{fig: vout_mstabile}}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[scale=0.42]{monostabileV+}
-\caption{Grafico segnale in $V_+$ e $V_{out}$}
-\end{figure}
-
+La presenza del diodo in parallelo al condensatore $C_1$ limita la tensione
+ai suoi capi $V_C = v_-$, per cui ci aspettiamo di avere
+$V_C \leq V\gamma \approx 0.7 \; \si{\V}$, come si trova effettivamente in
+\cref{fig: mstabilev-}.
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.42]{monostabileV-}
-\caption{Grafico segnale in $V_-$ e $V_{out}$ \label{fig: monostabileV-}}
+\caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
+segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: mstabilev-}}
 \end{figure}
 
-I segnali osservati riproducono qualitativamente quanto atteso.
-In particolare, per $ V \ped{out} $ si osserva un'onda quadra con duty cycle,
-per $ V_{-} $ un segnale analogo a $ V\ped{out} $ ma ridotto di un fattore
-$\frac{R_2}{R_2 + R_1} \simeq 0.5 $.
+\`E per questo che lo stato con l'uscita a livello alto è stabile,
+cioè da quest'ultimo il sistema non passa spontaneamente allo stato instabile;
+quello con uscita a livello basso.
+Dunque per innescare la transizione di stato
+$V\ped{out} = V_{OH} \mapsto V_{OL}$ è necessario un circuito di trigger,
+che faccia abbassare $v_+$ al di sotto di $v_- \sim V_\gamma$.
 
-Si è misurato il tempo per cui il segnale $ V \ped{out} $ rimane ``basso'' in ogni periodo:
-
-Il valore atteso è
-\begin{equation} \label{eq: mstabile}
-t\ped{L, exp} =
-\tau \log\left[\left(1 + \frac{V_\gamma}{V \ped{out}/2}\right)
-\left(1 + \frac{R_2}{R_1}\right)\right]
-\end{equation}
-riportato senza incertezza data la natura nominale e indicativa del parametro $ V_{\gamma} \simeq \SI{0.7}{\volt} $.
-
-In assenza del sotto-circuito di trigger, il sistema presenta un solo stato stabile in cui $ V\ped{out} =  V_{\gamma} + V_{z} $.
-Come nel caso del multivibratore astabile, $ V\ped{out} $ può assumere solo come valori $ \pm V_{\gamma} + V_{z} $.
-Se il condensatore è inizialmente scarico e se è $ V\ped{out} = V_{\gamma} + V_{z} $ allora il condensatore $ C $ si carica fino a quando la caduta ai suoi capi è $ V_{\gamma} $ essendo in parallelo ad un diodo; essendo quindi $ V\ped{+} \sim V_{\gamma} \simeq \SI{0.7}{\volt} $ e $ V_{-} = \frac{R_{2}}{R_{1} + R_{2}} V\ped{out} \simeq 0.5 \times \SI{7}{\volt} = \SI{3.5}{\volt} $, l'uscita rimane ``alta''.
-Se il condensatore è inizialmente carico (con caduta ai capi pari a $ V_{\gamma} $) e se è $ V\ped{out} = -(V_{\gamma} + V_{z}) $, allora si scarica fintanto che è $ V_{-} > V_{+} \simeq -\SI{3.5}{\volt} $: a questo, essendo l'OpAmp in regime di saturazione, l'uscita passa a $ V\ped{out} = V_{\gamma} + V_{z} $ e il condensatore si carica come descritto sopra, ripristinando la condizione $ V_{+} \sim V_{\gamma} $. \\
-
-Il sotto-circuito di trigger, formato dal passa-alto con il diodo in cascata, ha la funzione di ``sovrapporre'' a $ V_{+} $ dei picchi di differenza di potenziale negativa che portano il circuito nella configurazione instabile sopra descritta, che, dopo un tempo caratteristico dato dall'equazione~\eqref{eq: mstabile} torna nella configurazione stabile. \\
-
-Come si può vedere in figura~\ref{fig: vout_mstabile}, quanto osservato 
-sperimentalmente riproduce qualitativamente l'andamento atteso dall'analisi
-teorica del circuito.
+In assenza di $V\ped{trig}$, come per il multivibratore astabile, all'ingresso
+non-invertente dell'OpAmp ci aspettiamo di trovare come segnale $v_+ (t)$ la
+stessa forma d'onda presente all'uscita, ma ridotta in ampiezza di un fattore di partizione $q = frac{R_2}{R_2 + R_1} \approx 0.5$.
+Ora però a questa si sovrappongono i picchi di differenza di potenziale che
+portano il circuito nello stato instabile sopra descritto; dopo un tempo
+caratteristico (proporzionale a $\tau = R_3 C_1$) il multivibratore torna
+nella configurazione stabile, generando così un treno di impulsi
+negativi/un'onda quadra con duty-cycle prossimo a uno.
+Questo è in linea con quanto si vede in \cref{fig: mstabilev+}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.42]{monostabileV+}
+\caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
+segnali $v_+ (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: mstabilev+}}
+\end{figure}
 
 \subsection{Durata dell'impulso generato}
-Mi aspetto di trovare una durata dell'impulso pari a $\Delta= R_3 C_1 \ln(\frac{1 - \frac{V_\gamma}{V_{OL}}}{1 - \beta})$
-Misurando coi cursori la tensione di saturazione negativa ottengo e il $V_\gamma$ come la retta orizzontale che viene formata in V- come si vede in figura ~\ref{fig: monostabileV-}:
-\[
-V_{OL}= -3.49 \pm 0.03 \si{\V}
-\]
-\[
-V_{\gamma}= 549 \pm 6 \si{m\V}
-\]
+Si è inviata all'ingresso del circuito di trigger un'onda quadra di ampiezza
+$V\ped{trig} = 1.99 \pm 0.02 \; \si{\V}$ e frequenza $100 \pm 1.6 \; \si{\Hz}$.
 
+Dunque abbiamo misurato coi cursori le tensioni di saturazione dell'uscita e 
+$V_\gamma$ dal livello di tensione costante a cui si trova $v_-$ quando il
+circuito è nello stato stabile:
+\begin{align*}
+V_{OH} &= 4.12 \pm 0.04 \; \si{\V} \quad &V_{OH} &= 4.14 \pm 0.04 \; \si{\V} \\
+V_{OL} &= -3.56 \pm 0.03 \; \si{\V} \quad &V_{OL} &= -3.49 \pm 0.03 \; \si{\V} \\
+V_{\gamma} &= 547 \pm 6 \; \si{m\V} \quad &V_{\gamma} &= 549 \pm 6 \; \si{m\V}
+\end{align*}
 
-\[
-V_{OL}= -3.53 \pm 0.03 \si{\V}
-\]
-\[
-V_{\gamma}= 551 \pm 6 \si{m\V}
-\]
+E sempre con i cursori si sono misurati i tempi per cui il segnale $V\ped{out}$
+rimane ``basso'' in ciascun circuito:
+\begin{align*}
+t_L &= 767 \pm 10 \;\si{\micro\s} \\
+t_L &= 784 \pm 10 \;\si{\micro\s}
+\end{align*}
 
-quindi $\Delta= 0.83 \pm 0.03 \si{\micro\s}$.
+Il valore atteso per la durata dell'impulso nello stato instabile è legato
+al tempo caratteristico in cui si scarica il condensatore $C_1$ dalla
+\begin{equation}\label{eq: mstable_Delta}
+t\ped{L, exp} = \tau \ln{\left(\frac{1 - V_\gamma/V_{OL}}{1 - q}\right)} =
+0.80 \pm 0.03 \; \si{\micro\s}
+\end{equation}
+Questo risulta compatibile entro l'incertezza con la durata dell'impulso
+misurata in uscita dal multivibratore.
 
-Dalla misura diretta ricavo
-\[
-\Delta= 784 \pm 10 \;\si{\micro\s}
-\]
-\[
-\Delta= 765 \pm 10 \;\si{\micro\s}
-\]
-che risulta distante più di una barra di errore dal valore aspettato
 \subsection{Analisi del funzionamento del circuito}
-a discesa di $ V\ped{trig} $ causa l'impulso in $ V\ped{out} $. La risalita in $ V\ped{out} $ accade quando $ V\ped{trig} $ è costante, prima che torni ``alto''. Tale risalita avviene infatti nel momento in cui $ V_{-} $ assume il valore minimo che fa ``scattare'' il discriminatore.
+Se il condensatore $C_1$ è inizialmente scarico e $V\ped{out} = V_{OH}$, allora
+il condensatore in parallelo a $D_1$ si carica fino a quando la d.d.p. tra le
+sue armature $V_C \approx V_{\gamma}$. Quindi, poiché $v_- \approx V_{\gamma}$
+e $v_+ = \frac{R_{2}}{R_{1} + R_{2}} V\ped{out} \approx \SI{2}{V}$, l'uscita
+rimane a livello ``alto''.
 
-Si tiene fissa l'ampiezza di $ V\ped{trig} $ e se ne varia la frequenza. Si osserva che la durata dell'impulso in $ V \ped{out} $ risulta (entro gli errori di misura) indipendente dalla frequenza del segnale in ingresso, fino a quando la durata di tale impulso è minore del periodo di $ V\ped{trig} $. Al di sopra di tale frequenza critica (sperimentalmente $ f \sim \SI{974}{\hertz} $) il circuito smette di funzionare correttamente.
+Se il condensatore è inizialmente carico (con tensione massima
+$v_- \leq V_\gamma$) e se $V\ped{out} = V_{OL}$, allora si scarica fintanto
+che vale $v_- \geq v_+ \approx - 1.7 {\V}$. Una volta scarico alla fine
+dell'impulso, poiché l'OpAmp è in regime non-lineare, l'uscita commuta
+rapidamente (entro i limiti imposti dallo slew-rate) a $V\ped{out} = V_{OH}$;
+il condensatore torna a caricarsi e il circuito ritorna alla configurazione
+stabile ($v_- \approx V_\gamma$) concludendo il ciclo.
 
-Si tiene la frequenza di $ V\ped{trig} $ e se ne varia l'ampiezza. La durata dell'impulso in $ V\ped{out} $ risulta (entro gli errori di misura) indipendente dall'ampiezza del segnale in ingresso fintanto $ V\ped{trig} $ è maggiore di una certa soglia. Si osserva sperimentalmente che al di sotto di $ V\ped{trig} \sim \SI{3.7}{\volt} $ il circuito rimane nella configurazione stabile. Infatti se $ V\ped{trig} $ è minore di una certa soglia ci aspettiamo che $ V_{+} $, dato dalla sovrapposizione dell'impulso prodotto dal sotto-circuito di trigger e del segnale uscente dal partitore, non sia abbastanza grande da rendere $ V_{+} - V_{-} $ negativo e far scattare il discriminatore.
+Il sotto-circuito di trigger, formato dal passa-alto $R_4 + C_2$ con il diodo
+$D_2$ in cascata, invia all'ingresso non-invertente dell'OpAmp dei picchi di
+differenza di potenziale. Questi sono generati grazie al condensatore $C_2$, 
+che elimina la componente continua dell'onda quadra $V\ped{trig} (t)$, di cui
+ci interessano solamente i fronti ripidi in discesa (e meno in salita).
+Infatti è la discesa di $V\ped{trig}$ a generare l'impulso negativo in uscita
+dal multivibratore, mentre il fronte di salita è responsabile per i picchi di
+tensione positiva che osserviamo in \cref{fig: mstabilev+vtrig}
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.335]{mstablev+vtrig}
+\caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
+segnali $V\ped{trig} (t)$ (CH1) e $v_+ (t)$ (CH2).
+\label{fig: mstabilev+vtrig}}
+\end{figure}
 
+La risalita del treno d'impulsi in $V\ped{out} (t)$ deve avvenire mentre
+$V\ped{trig} (t)$ è ancora costante nel semi-periodo negativo, prima che torni
+``alto''. Poiché questa risalita si verifica nel momento in cui $v_- (t)$
+assume il suo valore minimo $v_- \approx \frac{1}{2} V_{OL}$ che fa
+``scattare'' il comparatore, $C_1$ deve avere il tempo necessario di caricarsi
+prima che possa partire una nuova scarica, dunque un nuovo impulso negativo.
+
+Si è quindi tenuta fissa l'ampiezza di $V\ped{trig}$ e se ne è variata la
+frequenza. Si osserva che la durata dell'impulso in $V\ped{out}$ rimane
+(entro le incertezze di misura) indipendente dalla frequenza del segnale di
+trigger, fino a quando la durata dell'impulso è minore del semi-periodo di
+$V\ped{trig}$. Al di sopra di questa frequenza critica (sperimentalmente
+abbiamo trovato $f\ped{crit} \approx \SI{1}{k\hertz}$) il circuito smette di
+funzionare correttamente per durate dell'impulso superiori a
+$\frac{1}{2} T\ped{trig} \approx 0.5 \; \si{m\s}$ per via dei tempi di carica
+del condensatore $C_1$, come si può vedere in \cref{fig: mstabileflim}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.335]{mstable950hz}
+\caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
+segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2) alla frequenza limite
+per cui è possibile pilotare il multivibratore monostabile.
+\label{fig: mstabileflim}}
+\end{figure}
+
+Si è variato il duty-cycle dell'onda $V\ped{trig} (t)$ tenendo fissate
+frequenza ed ampiezza. Non abbiamo riscontrato una apprezzabile dipendenza
+della durata dell'impulso in $V\ped{out} (t)$ dal duty cycle per il range
+esplorato tra l'$1 \%$ e il $99 \%$, come era ragionevole aspettarsi, visto che
+utilizziamo solamente i fronti di transizione dell'onda quadra.
+
+Infine abbiamo mantenuto costanti frequenza e duty-cycle di $V\ped{trig} (t)$
+e ne abbiamo variato l'ampiezza. La durata dell'impulso in $V\ped{out} (t)$
+risulta (entro le incertezze sperimentali) indipendente dall'ampiezza del
+segnale di trigger per valori di $V\ped{trig}$ maggiori di una certa soglia.
+Si è misurato con i cursori l'ampiezza minima al di sotto della quale
+il multivibratore non riesce a compiere la transizione alto-basso,
+che risulta $V\ped{trig} 768 \pm 9 \; \si{m\V}$.
+In effetti, se $V\ped{trig}$ è minore di una certa soglia ci aspettiamo
+che $v_+ (t)$, quindi gli impulsi prodotti dal trigger sovrapposti al segnale
+in uscita dal partitore, non siano abbastanza grandi da rendere
+$v_d = v_+ - v_- < \SI{0}{\V}$ e quindi far commutare il discriminatore.
 
 %=======================
 \section*{Conclusioni e commenti finali}
@@ -817,6 +880,7 @@ ingresso e frequenze caratteristiche della loro risposta in frequenza.
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e
 originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
 hanno contribuito alla elaborazione della relazione stessa.
+
 
 \newpage
 \subsection*{Appendice}
