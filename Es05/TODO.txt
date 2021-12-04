@@ -12,11 +12,11 @@ MISURE DA RIPORTARE PER ENTRAMBI I CIRCUITI:
 [x] 4.c Massima frequenza e minima ampiezza per il circuito
 
 COSE DA RIVEDERE PRIMA DELLA CONSEGNA
-[] 1.f Misure di Time-over-Threshold incompatibili perché sovrastimate (Ho corretto il 2o, resta da correggere il primo)
-[] 1.f Stima del tempo caratteristico in cui la discesa dell'impulso è in regime lineare.
+[x] 1.f Misure di Time-over-Threshold incompatibili perché sovrastimate
+[x] 1.f Stima del tempo caratteristico in cui la discesa dell'impulso è in regime lineare.
 
 [x] 2.d Chiarire meglio quali sono i limiti in ampiezza (specialmente) e in frequenza di Schmitt
 
 [x] 3.e Discutere frequenza massima (valori attesi?)
 
-[] Spiegare notazione con indici dei valori di resistenza e capacità tabulati (R_2^a, etc...)
+[x] Spiegare notazione con indici dei valori di resistenza e capacità tabulati (R_2^a, etc...)

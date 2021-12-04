@@ -9,8 +9,8 @@
 % lets graphicx know path where figures to be included are found
 \graphicspath{{../figs/}}
 
-\author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
-\title{Es05A: Applicazioni non-lineari di amplificatori operazionali}
+\author{Gruppo 1.AC \\ Bernardo Tomelleri}
+\title{Es06A: Oscillatore sinusoidale a ponte di Wien con OpAmp}
 \begin{document}
 \date{\today}
 \maketitle
@@ -26,37 +26,17 @@ Resistenze $[\si{k\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
 $\sigma C$ \\
 \midrule
 \midrule
-$R_1^Q$	  & 100.6 	& 0.8 	 & $C_T$ & 1.00		 & 0.04 \\
-$R_1^T$	  & 9.94	& 0.08 	 & $C_F$ & 1.00		 & 0.04 \\
-$R_2^T$	  & 2.19	& 0.03	 & $C_1$ & 96		 & 4	\\
-$R_2^A$	  & 9.92	& 0.08	 & $C_2$ & 1.00		 & 0.04 \\
-$R_3$	  & 9.94	& 0.08	 & & & \\
-$R_4$	  & 9.94	& 0.08	 & & & \\
+$R_1$	  & 9.91	& 0.08	 & $C_1$ & 1.00		 & 0.04 \\
+$R_2$	  & 9.91	& 0.08 	 & $C_2$ & 1.00		 & 0.04 \\
+$R_3$	  & 9.93	& 0.08	 & & & \\
+$R_4$	  & 9.93	& 0.08	 & & & \\
+$R_5$	  & 9.95	& 0.08	 & & & \\
+$R$		  & 9.49	& 0.08	 & & & \\
 \bottomrule     
 \end{tabular}
 \caption{Valori di resistenza e capacità misurate per i componenti dei
-circuiti studiati. \label{tab: rcmes_B}}
-
-\begin{tabular}{cccccc}
-\toprule
-Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
-$\sigma C$ \\
-\midrule
-\midrule
-$R_1^Q$	  & 99.8 	& 0.8 	 & $C_T$ & 1.00		 & 0.04 \\
-$R_1^T$	  & 9.94	& 0.08 	 & $C_F$ & 1.00		 & 0.04 \\
-$R_2^T$	  & 2.19	& 0.03	 & $C_1$ & 99		 & 4	\\
-$R_2^A$	  & 9.87		& 0.08		 & $C_2$ & 1.00		 & 0.04 \\
-$R_3$	  & 10.01		& 0.08		 & & & \\
-$R_4$	  & 9.91		& 0.08		 & & & \\
-\bottomrule     
-\end{tabular}
-\caption{Valori di resistenza e capacità misurate per i componenti dei
-circuiti studiati. \label{tab: rcmes_M}}
+circuiti studiati. \label{tab: rcmes}}
 \end{table}
-Dove gli apici $Q$, $T$ e $A$ indicano i diversi valori delle resistenze che
-condividono lo stesso nome rispettivamente nei circuiti:
-amplificatore di carica, trigger di Schmitt e multivibratore astabile.
 
 Riportiamo per completezza anche i valori delle tensioni di alimentazione
 continue per l'op-amp misurate con il multimetro
@@ -64,12 +44,6 @@ continue per l'op-amp misurate con il multimetro
 V_{CC} &= 4.99 \pm 0.03 \si{\V} \\
 V_{EE} &= -4.99 \pm 0.03 \si{\V}
 \end{align*}
-
-Non è stato facile misurare i valori di capacità dei condensatori nel
-circuito con il multimetro, che a volte con i soli puntali collegati legge
-un rumore di fondo intorno ai $7 \pm 1 \; \si{n\F}$, abbastanza alto da
-saturare il fondo scala da $\SI{2}{n\F}$ con cui si vorrebbero misurare i
-valori delle capacità $C_T$, $C_F$ e $C_2$.
 
 Per tutto il resto della trattazione come ampiezze dei segnali si intendono
 misurate non ``picco - picco'', a meno che non venga esplicitato altrimenti.
@@ -80,14 +54,13 @@ implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
 mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 
 %=======================
-\section{Circuito amplificatore di carica}
-\subsection{Progettazione del circuito}
+\section{Progettazione del circuito}
 Si è costruito un amplificatore di carica a partire da un op-amp TL081CP come
 quello in \cref{fig: Qampschm}
 
 \begin{figure}[htbp]
     \centering
-	\includegraphics[scale=1.2]{Qamp}
+%	\includegraphics[scale=1.2]{Qamp}
     \caption{Schema circuitale dell'amplificatore di carica costruito.
     \label{fig: Qampschm}}
 \end{figure}
@@ -96,7 +69,10 @@ In cui abbiamo indicato i sotto-circuiti di cui è composto, da sinistra verso
 destra come: ``iniettore/rivelatore di carica'', ``circuito formatore/shaper''
 (passa-basso/integratore attivo) e ``discriminatore/comparatore''.
 
-\subsection{Funzionamento di iniettore e shaper}
+%=======================
+\section{Misura del loop-gain $\beta A_v$}
+
+\subsection{Risposta in frequenza}
 Si è inviato all'ingresso di entrambi i circuiti un'onda quadra di
 ampiezza $V_s = 999 \pm 8 \si{m\V}$ e frequenza fissata a
 $f = 100.0 \pm 1.6 \; \si{\Hz}$, che corrisponde ad una carica
@@ -113,7 +89,7 @@ Riportiamo in figura l'immagine acquisita dall'oscilloscopio con dettaglio
 sul transiente al fronte di discesa dell'onda quadra.
 \begin{figure}[htbp]
     \centering
-	\includegraphics[scale=0.335]{shaperzoom}
+%	\includegraphics[scale=0.335]{shaperzoom}
     \caption{Acquisizione del segnale in uscita dal circuito formatore con
     un'onda quadra in ingresso $V_s = \SI{1}{V}$, $f = \SI{100}{\Hz}$
     \label{fig: shzoom}}
@@ -145,7 +121,7 @@ Questo risulta compatibile con quanto si è osservato dall'oscilloscopio, che
 riportiamo per chiarezza in \cref{fig: shaper}
 \begin{figure}[htbp]
     \centering
-	\includegraphics[scale=0.335]{shaper}
+%	\includegraphics[scale=0.335]{shaper}
     \caption{Onda quadra in ingresso $V_s = \SI{1}{V}$, $f = \SI{100}{\Hz}$
     su CH1 e segnale in uscita dal circuito formatore $V\ped{sh}$ su CH2.
     \label{fig: shaper}}
@@ -156,7 +132,7 @@ con quanto atteso dalla \eqref{eq: Vsh} tramite un fit ai punti campionati
 dall'AD2, di cui riportiamo brevemente i risultati
 \begin{figure}[htbp]
     \centering
-	\includegraphics[scale=0.6]{tau}
+%	\includegraphics[scale=0.6]{tau}
     \caption{Fit con esponenziale decrescente al segnale in uscita dal
     circuito formatore $V\ped{sh}$ \label{fig: tau}}
 \end{figure}
@@ -171,8 +147,8 @@ con il valore misurato, ma anche il tempo caratteristico di smorzamento $\tau$
 risulta pienamente in accordo con il valore atteso dai componenti del
 circuito.
 
-\setcounter{subsection}{3}
-\subsection{Funzionamento del discriminatore}\label{sub: discr}
+
+\subsection{Dipendenza del loop-gain dalla resistenza del potenziometro}
 Il sotto-circuito discriminatore è un comparatore con tensione di soglia
 misurata con l'oscilloscopio $V\ped{thr} = 51.9 \pm 0.4 \si{m\V}$ e fornita
 dal generatore di tensione (con valore nominale $\SI{60}{m\V}$) \verb+W2+
@@ -216,7 +192,7 @@ segnale visualizzato all'oscilloscopio in uscita dal discriminatore in
 \cref{fig: discr}.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.335]{discrzoom}
+%	\includegraphics[scale=0.335]{discrzoom}
 	\caption{Acquisizione del segnale in uscita dal circuito comparatore con
 	un'onda quadra in ingresso $V_s = \SI{1}{V}$, $f = \SI{100}{\Hz}$
 	\label{fig: discr}}
@@ -258,143 +234,13 @@ $\pm \SI{5}{\V}$) $V_{OM} = 13.5 \cdot V_{CC} / V\ped{CC, typ} =
 13.5 /3 = 4.5 \; \si{\V}$, che risulta sicuramente più vicino a quanto
 abbiamo misurato.
 
-\subsection{Durata impulso per carica di test}
-Abbiamo scelto come ampiezza per l'onda quadra $V_s = 999 \pm 8 \si{m\V}$ e
-frequenza $f = 100.0 \pm 1.6 \; \si{k\Hz}$, dunque come carica
-iniettata $Q\ped{in} = C_T \cdot 2 V_s = 1.98 \pm 0.08 \; \si{n\coulomb}$.
-Si è scelta una frequenza abbastanza bassa, con periodo corrispondente a
-$1/f = T \gg \tau$ di modo che tra una iniezione di carica e l'altra (cioè tra
-ogni semiperiodo dell'onda quadra $V_s (t)$) i condensatori abbiano tempo di
-scaricarsi, così da poter considerare indipendente ogni iniezione di carica
-dalla precedente.
-
-L'impulso in uscita ha durata pari a $382 \pm 5 \; \si{\micro\s}$ in un
-circuito e $378 \pm 5 \; \si{\micro\s}$ nel secondo.
-
-Per quanto riguarda il valore atteso per la durata dell'impulso, possiamo
-confrontare i due valori trovati per il tempo ``alto'' con il valore atteso
-di Time-over-Threshold
-\[
-ToT = \tau \log\left(\frac{C_T}{C_F} \frac{2 V_s}{V\ped{thr}}\right) =
-370 \pm 15 \; \si{\micro\s}
-\]
-
-Che risulta compatibile con quanto abbiamo trovato sperimentalmente entro
-l'incertezza associata.
-
-\subsection{Andamento di TOT al variare di $Q\ped{in}$}
-Provando con varie ampiezze del segnale in ingresso $V_s$, il comportamento
-osservato per i due circuiti è essenzialmente lo stesso: per ampiezze maggiori
-dei $\SI{50}{m\V}$ non sono presenti particolari deformazioni nel segnale
-in uscita rispetto all'impulso atteso in uscita dal comparatore.
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[scale=0.335]{shaper_discrzoom}
-	\caption{Acquisizione del segnale in uscita dal circuito discriminatore con
-	un'onda quadra in ingresso $V_s = \SI{1}{\V}$, $f = \SI{100}{\Hz}$
-	\label{fig: shaperdiscr}}
-\end{figure}
-
-Riducendo l'ampiezza al di sotto dei $\SI{50}{m\V}$ il segnale in uscita
-inizia a deformarsi, assumendo la forma di una parabola con concavità rivolta
-verso il basso, la cui massima tensione raggiunta diminuisce in maniera
-proporzionale all'ampiezza in ingresso.
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[scale=0.335]{discr_sat}
-	\caption{Acquisizione del segnale in uscita dal circuito discriminatore con
-	un'onda quadra in ingresso $V_s = \SI{30}{m\V}$, $f = \SI{100}{\Hz}$
-	\label{fig: discr_sat}}
-\end{figure}
-
-Questo comportamento si osserva fino a circa $\SI{20}{m\V}$, quando il segnale
-in uscita dal comparatore non è più apprezzabilmente diverso dalla tensione di
-saturazione del trigger.
-
-Il fronte di salita all'uscita del discriminatore è sicuramente limitato dallo
-slew-rate finito dell'amplificatore, per cui effettivamente ci aspettiamo
-un tempo di salita dell'impulso in ingresso dell'ordine dei
-\[
-t_{oh} = V\ped{discr}^{pp}/\mathrm{SR} = 7.9 / 13 \approx 0.7 \; \si{\micro\s}
-\]
-che è in ottimo accordo con quanto si trova da una misura diretta (con i
-cursori) della durata del fronte di salita dell'impulso in uscita
-$t_{oh} = 717 \pm 10 \; \si{\micro\s}$.
-
-Mentre il fronte di discesa è meno ripido perché corrisponde alla transizione
-del discriminatore sulla discesa esponenziale di $V\ped{sh} (t)$, che ha una
-derivata ``piccola'' in prossimità della soglia. Questo infatti lascia
-presumere che esista un intervallo temporale durante il quale l'uscita di
-$V\ped{discr} (t)$ è in regime lineare. Possiamo provare a darne una stima
-come il tempo necessario perché l'onda $V\ped{sh} (t)$ decada esponenzialmente
-dalla tensione di soglia $V\ped{thr}$ al minimo valore per cui osserviamo un
-segnale $V\ped{discr} (t)$ alla tensione di saturazione positiva $V_{OH}$ in
-uscita (discussa meglio in \cref{sub: Qmin})
-\begin{equation}
-t_{ol} = \tau \ln{\left(\frac{V\ped{thr}}{V\ped{min}}\right)} =
-35.9 \pm 1.5 \; \si{\micro\s}
-\end{equation}
-che risulta compatibile con la durata del fronte di discesa dell'onda in
-uscita dal discriminatore, misurata anche stavolta con i cursori
-$t_{ol} = 36.3 \pm 0.5 \; \si{\micro\s}$.
-
-A testimonianza di questa possibile transizione al regime lineare abbiamo
-studiato la forma del segnale in uscita, per ampiezze dell'onda quadra
-prossime alla soglia.
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[scale=0.335]{shdiscthr}
-	\caption{Acquisizione del segnale in uscita dal circuito discriminatore con
-	un'onda quadra in ingresso $V_s = \SI{20}{m\V}$, $f = \SI{100}{\Hz}$
-	\label{fig: discrthr}}
-\end{figure}
-In cui è possibile riconoscere il transiente in uscita dallo shaper visto in
-\cref{fig: shzoom} amplificato dal secondo OpAmp in regime lineare.
-
-\subsection{Minima ampiezza di carica per cui si attiva il comparatore}
-\label{sub: Qmin}
-Per ottenere una misura di ampiezza minima di carica per cui si registra un
-segnale che raggiunga la soglia $V_{OH}$ in uscita dal discriminatore abbiamo
-variato l'ampiezza del segnale in ingresso $V_s$ dal generatore di forme
-d'onda, dunque abbiamo misurato con i cursori l'ampiezza critica trovata per
-i due circuiti studiati:
-\begin{align*}
-V\ped{min} &= 40.5 \pm 0.3 \; \si{m\V} \\ 
-V\ped{min} &= 43.6 \pm 0.4 \; \si{m\V}
-\end{align*}
-che corrispondono alle quantità di carica minima per gli amplificatori di
-$Q\ped{min} = C_T \cdot 2V\ped{min} =
-\{80, \; 87\} \pm  3 \; \si{\pico\coulomb}$.
-
-\subsection{Confronto con i valori attesi}
-Abbiamo eseguito un fit con legge logaritmica per l'andamento delle misure
-del Time-over-Threshold al variare dell'ampiezza di carica in ingresso
-$Q\ped{in}$, di cui riportiamo i risultati
-\begin{figure}[htbp]
-    \centering
-	\includegraphics[scale=0.75]{logfit}
-    \caption{Fit logaritmico del $ToT$ in funzione dell'ampiezza di carica in
-    ingresso $Q\ped{in}$ \label{fig: logfit}}
-\end{figure}
-\begin{align*}
-V\ped{thr} &= 40.7 \pm 0.2 \; \si{m\V}
-&\tau = 106.51 \pm 0.3 \; \si{\micro\s} \\
-\chi^2/\mathrm{ndof} &= 0.6/8 &\mathrm{cov_{norm}} = 0.82
-\end{align*}
-
-Ritroviamo che il valore del tempo di smorzamento $\tau$ è compatibile con il
-valore atteso dai componenti del circuito.
-e che la tensione di soglia trovata dal fit è compatibile con il valore di
-ampiezza del segnale in ingresso $V\ped{min}$ corrispondente alla minima
-ampiezza di carica del punto precedente.
-
 %=======================
-\section{Trigger di Schmitt}
+\section{Funzionamento dell'oscillatore a ponte di Wien}
 Abbiamo costruito un trigger di Schmitt o comparatore con isteresi a partire
 dall'OpAmp TL081CP come in \cref{fig: trgschmittschm}.
 \begin{figure}[htbp]
     \centering
-	\includegraphics[scale=1.8]{trgSchmitt}
+%	\includegraphics[scale=1.8]{trgSchmitt}
     \caption{Schema circuitale del trigger di Schmitt costruito.
     \label{fig: trgschmittschm}}
 \end{figure}
@@ -409,7 +255,7 @@ quindi la sua traccia visualizzata all'oscilloscopio risulta traslata verso
 l'alto.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.335]{schmitt}
+%	\includegraphics[scale=0.335]{schmitt}
 	\caption{Risposta del trigger di Schmitt ad un segnale sinusoidale di ampiezza
 	$V_s = \SI{1}{V}$ e frequenza $f = \SI{100}{Hz}$. \label{fig: schmittsine}}
 \end{figure}
@@ -421,7 +267,7 @@ non sono simmetriche rispetto a $\SI{0}{V}$, ma risultano traslate verso
 destra.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.6]{shmitt_isteresi}
+%	\includegraphics[scale=0.6]{shmitt_isteresi}
 	\caption{Visualizzazione XY del seno di ampiezza $V_s = \SI{2}{\V}$ e
 	frequenza $\SI{100}{\Hz}$ in ingresso e del segnale in uscita dal trigger di
 	Schmitt. \label{fig: schmittxy}}
@@ -524,7 +370,7 @@ f_L' &= 680 \pm 4 \; \si{k\Hz}
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.335]{bodeschmitt1V100Hz5MHz}
+%	\includegraphics[scale=0.335]{bodeschmitt1V100Hz5MHz}
 	\caption{Analisi in frequenza del trigger di Schmitt, con ampiezza del segnale
 	in ingresso fissata ad $\SI{1}{V}$, l'unico punto di interesse si trova a
 	circa $\SI{90}{k\Hz}$, frequenza oltre alla quale il circuito non ha più
@@ -533,7 +379,7 @@ f_L' &= 680 \pm 4 \; \si{k\Hz}
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.335]{bodeschmitt2V100Hz5MHz}
+%	\includegraphics[scale=0.335]{bodeschmitt2V100Hz5MHz}
 	\caption{Risposta in frequenza del trigger di Schmitt, con ampiezza del
 	segnale in ingresso fissata a $\SI{2}{V}$, a partire dai $\SI{700}{k\Hz}$
 	osserviamo una deviazione dall'andamento atteso.}
@@ -580,18 +426,18 @@ $65.6 \pm 1.2 \%$ per valori di $V_s$ molto vicini alla soglia) nell'onda
 quadra in uscita dal circuito.
 
 %=======================
-\section{Multivibratore astabile}
+\section{Frequenza generata e innesco dell'oscillazione}
 Il circuito in \cref{fig: astableschm} è costituito da un trigger di
 Schmitt con un filtro passa-basso RC collegato all'ingresso invertente dell'
 OpAmp.
 \begin{figure}[htbp]
     \centering
-	\includegraphics[scale=1.5]{astable}
+%	\includegraphics[scale=1.5]{astable}
     \caption{Schema circuitale del multivibratore astabile costruito.
     \label{fig: astableschm}}
 \end{figure}
 
-\subsection{Funzionamento del circuito}
+\subsection{Misura della frequenza generata dall'oscillatore}
 Per spiegarne il funzionamento è fondamentale studiare il comportamento del
 condensatore collegato all'ingresso negativo dell'OpAmp $C_1$. Questo si
 carica fino a raggiungere la stessa d.d.p. al terminale positivo
@@ -623,8 +469,7 @@ T &= t_H + t_L = 2.20 \pm 0.06 \; \si{m\s} \\
 \mathrm{dc} &= \frac{t_H}{T} = 47 \pm 2 \; \%
 \end{align}
 
-\setcounter{subsection}{2}
-\subsection{Studio dei segnali in ingresso e uscita}
+\subsection{Dipendenze dalla posizione del potenziometro}
 Osservando il segnale in uscita $V\ped{out} (t)$ ci si aspetta di trovare
 un'onda quadra di ampiezza picco-picco $\sim \SI{8}{\V}$, periodo
 $T = 2.15 \pm 0.03 \; \si{m\s}$ e duty-cycle $50 \%$. Effettivamente come
@@ -642,7 +487,7 @@ $q \approx 0.5$. Questo corrisponde all'andamento osservato di questi due
 segnali, che riportiamo in \cref{fig: v+vout}
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.4]{V+Vout}
+%	\includegraphics[scale=0.4]{V+Vout}
 	\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
 	segnali $v_+ (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: v+vout}}
 \end{figure}
@@ -653,12 +498,12 @@ con la stessa ampiezza di $v_+ (t)$, data dalle tensioni di transizione per
 il comparatore/trigger di Schmitt, come riportato in \cref{fig: v-vout}.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.4]{V-Vout}
+%	\includegraphics[scale=0.4]{V-Vout}
 	\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
 	segnali $v_- (t)$ (CH1) e $V\ped{out}$ (CH2). \label{fig: v-vout}}
 \end{figure}
 
-\subsection{Misure di periodo e duty cycle}
+\subsection{Innesco dell'auto-oscillazione}
 Per misurare il periodo dell'onda quadra $V\ped{out} (t)$ e la durata dei
 tempi in cui è in saturazione positiva $t_H$ (e negativa $t_L$) si è fatto
 uso dei cursori sull'asse X:
@@ -693,7 +538,7 @@ distorta, specialmente intorno ai fronti di salita e discesa che sono
 visibilmente limitati in pendenza, come si vede in \cref{fig: astable1nF}.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.335]{astable1nF}
+%	\includegraphics[scale=0.335]{astable1nF}
 	\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
 	segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2) quando il periodo dell'onda
 	generata $T \sim \tau \approx 36 \; \si{\micro\s}$ è ridotto di un fattore di
@@ -727,7 +572,7 @@ possono essere dovute al fatto che il TL081 ha guadagno finito e dipendente
 dalla frequenza di lavoro, a differenza di quanto presuppone il nostro modello. 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.45]{astable(C=1 nF, R= 220 ohm)}
+%	\includegraphics[scale=0.45]{astable(C=1 nF, R= 220 ohm)}
 	\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
 	segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2) quando il periodo dell'onda
 	generata $T \approx \SI{4}{\micro\s}$ è prossimo ai limiti possibili per il
@@ -735,7 +580,7 @@ dalla frequenza di lavoro, a differenza di quanto presuppone il nostro modello.
 \end{figure}
 
 %=======================
-\section{Multivibratore monostabile}
+\section{Funzione dei diodi in parallelo}
 Il multivibratore monostabile riportato in \cref{fig: mstableschm} è simile
 al circuito precedente, ma ha uno stato stabile (quello alto) e uno instabile,
 per cui viene utilizzato come generatore di impulsi. In effetti si è costruito
@@ -744,7 +589,7 @@ però un sotto-circuito di trigger all'ingresso positivo dell'OpAmp e il diodo
 $D_1$ in parallelo al condensatore $C_1$ del filtro passa-basso.
 \begin{figure}[htbp]
     \centering
-	\includegraphics[scale=1.2]{monostable}
+%	\includegraphics[scale=1.2]{monostable}
     \caption{Schema circuitale del multivibratore monostabile costruito.
     \label{fig: mstableschm}}
 \end{figure}
@@ -756,7 +601,7 @@ $V_C \leq V\gamma \approx 0.7 \; \si{\V}$, come si trova effettivamente in
 \cref{fig: mstabilev-}.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.42]{monostabileV-}
+%	\includegraphics[scale=0.42]{monostabileV-}
 	\caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
 	segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: mstabilev-}}
 \end{figure}
@@ -779,7 +624,7 @@ negativi/un'onda quadra con duty-cycle prossimo a uno.
 Questo è in linea con quanto si vede in \cref{fig: mstabilev+}.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.42]{monostabileV+}
+%	\includegraphics[scale=0.42]{monostabileV+}
 	\caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
 	segnali $v_+ (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: mstabilev+}}
 \end{figure}
@@ -839,7 +684,7 @@ dal multivibratore, mentre il fronte di salita è responsabile per i picchi di
 tensione positiva che osserviamo in \cref{fig: mstabilev+vtrig}
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.335]{mstablev+vtrig}
+%	\includegraphics[scale=0.335]{mstablev+vtrig}
 	\caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
 	segnali $V\ped{trig} (t)$ (CH1) e $v_+ (t)$ (CH2).
 	\label{fig: mstabilev+vtrig}}
@@ -863,7 +708,7 @@ $\frac{1}{2} T\ped{trig} \approx 0.5 \; \si{m\s}$ per via dei tempi di carica
 del condensatore $C_1$, come si può vedere in \cref{fig: mstabileflim}.
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.335]{mstable950hz}
+%	\includegraphics[scale=0.335]{mstable950hz}
 	\caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
 	segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2) alla frequenza limite
 	per cui è possibile pilotare il multivibratore monostabile.
@@ -893,6 +738,8 @@ $v_d = v_+ - v_- < \SI{0}{\V}$ e quindi far commutare il discriminatore; perciò
 $V\ped{out}$ rimane fisso alla tensione di saturazione alta, che
 corrisponde a quanto si è osservato dall'esperimento.
 
+\section{Misure di guadagno dell'oscillatore}
+
 %=======================
 \section*{Conclusioni e commenti finali}
 Si è riusciti a costruire e studiare alcuni dei circuiti più semplici e noti
@@ -910,78 +757,4 @@ duty-cycle sia per i segnali in ingresso che nella risposta all'uscita.
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e
 originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
 hanno contribuito alla elaborazione della relazione stessa.
-
-\newpage
-\appendix
-\subsection*{Appendice}\label{sec: appendix}
-Consideriamo il circuito formato dal condensatore $C_T$ e dal sotto-circuito
-di formazione. La trasformata di Laplace della funzione di trasferimento che
-lega $V_s$ a $V\ped{sh}$ per un amplificatore invertente con impedenze
-complesse è:
-\[
-\tilde{A}(s) =
-- \frac{\left(\frac{1}{R_1} + s C_F\right)^{-1}}{\frac{1}{s C_T}} =
-- \frac{C_T}{C_F} \frac{s}{s + \frac{1}{\tau}}
-\]
-con $\tau \coloneqq R_1 C_F$. In ingresso inviamo un'onda quadra di periodo
-$\mathcal{T} = 2T$ (per il principio di causalità la consideriamo nulla per
-tempi $t < 0$) che possiamo scrivere come
-\[
-V\ped{in}(t) = \sum_{k=0}^{+\infty} (-1)^kf(t - kT)
-\]
-dove abbiamo definito $f(t) \coloneqq V_s \left[\theta(t) -
-\theta(t - T)\right]$, la cui trasformata di Laplace è del tipo
-\[
-\tilde{f}(s) = V_s\left[\frac{1}{s} - \frac{e^{-sT}}{s}\right]
-\]
-Per cui possiamo riscrivere la trasformata dell'onda quadra in ingresso
-\[
-\tilde{V}\ped{in}(s) = \sum_{k=0}^{+\infty} (-1)^k \tilde{f}(s) e^{-kTs} = 
-\tilde{f}(s) \sum_{k=0}^{+\infty} (-1)^k e^{-kTs}
-\]
-ed arrivare alla risposta del circuito in trasformata di Laplace dal
-prodotto di convoluzione
-\[
-\tilde{V}\ped{sh}(s) = \tilde{A}(s) \tilde{V}\ped{in}(s) =  
-\tilde{A}(s)\tilde{f}(s) \sum_{k=0}^{+\infty} (-1)^ke^{-kTs} =
-\tilde{g}(s) \sum_{k=0}^{+\infty} (-1)^ke^{-kTs} =
-\mathcal{L}\left[\sum_{k=0}^{+\infty} (-1)^kg(t - kT)\right](s)
-\]
-In cui abbiamo introdotto la trasformata della funzione di Green del sistema
-\[
-\tilde{g}(s) = - V_s \frac{C_T}{C_F} \left[\frac{1}{s + \frac{1}{\tau}} -
-\frac{e^{-sT}}{s + \frac{1}{\tau}}\right]
-\]
-la cui anti-trasformata ha espressione
-\[
-g(t) = - V_s \frac{C_T}{C_F} \left[e^{-t/\tau}\theta(t) - 
-e^{-(t-T)/\tau} \theta(t - T) \right]
-\]
-
-Da cui deduciamo la risposta del circuito nel dominio del tempo:
-\begin{align}
-V\ped{sh}(t) &= - V_s \frac{C_T}{C_F} \left\{ 
-\sum_{k=0}^{+\infty} (-1)^k e^{-\frac{t - kT}{\tau}}\theta(t - kT) - 
-\sum_{k=0}^{+\infty} (-1)^k e^{-\frac{t - (k+1) T}{\tau}} \theta(t - (k+1)T)
-\right\} \\
-&= - V_s \frac{C_T}{C_F} \left\{ e^{-\frac{t}{\tau}} \theta(t) -
-2 \sum_{k=1}^{+\infty} (-1)^k e^{-\frac{t - kT}{\tau}}
-\theta(t -  kT) \right\}
-\label{eq: antlaplace}
-\end{align}
-Finalmente, trascurando il transiente iniziale $(k = 0)$ e supponendo
-che\footnote{Qui stiamo assumendo che la somma sia ben definita, come si può
-verificare dal fatto che vale (a meno di costanti fisiche)
-\[
-\sum_{k \geq 0} \theta(t-k) e^{-(t-k)} =
-\sum_{k=0}^{\lfloor t \rfloor} e^{-(t-k)} \leq \frac{e}{e-1} e^{-\{t\}}.
-\]}
-$\tau \ll T$, possiamo sviluppare l'\cref{eq: antlaplace} per avere la forma 
-d'onda attesa in uscita dallo shaper
-\begin{align}\label{eq: Vshaper}
-V\ped{sh}(t) &\approx 2 V_s \frac{C_T}{C_F} \sum_{k=1}^{+\infty} 
-(-1)^{k} e^{-\frac{t - kT}{\tau}} \theta(t - kT) \nonumber\\
-&\approx  2 V_s \frac{C_T}{C_F} \sum_{k=1}^{+\infty} 
-(-1)^{k} e^{-\frac{t - kT}{\tau}} \chi_{[kT, (k+1)T]}(t)
-\end{align}
 \end{document}
