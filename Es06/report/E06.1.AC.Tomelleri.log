@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  4 DEC 2021 19:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  5 DEC 2021 16:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1289,32 +1289,38 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
-2.
+3.
 
 (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 72.
+(hyperref)                removing `math shift' on input line 73.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\beta' on input line 72.
+(hyperref)                removing `\beta' on input line 73.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 72.
+(hyperref)                removing `subscript' on input line 73.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 72.
+(hyperref)                removing `math shift' on input line 73.
 
+<../figs//Aloop100Hz.png, id=84, 1440.88312pt x 711.4078pt>
+File: ../figs//Aloop100Hz.png Graphic file (type png)
+<use ../figs//Aloop100Hz.png>
+Package pdftex.def Info: ../figs//Aloop100Hz.png  used on input line 92.
+(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
 [1
 
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <../figs//Al
+oop100Hz.png (PNG copy)>] [3]
 
-LaTeX Warning: Reference `sub: discr' on page 1 undefined on input line 313.
+LaTeX Warning: Reference `sub: discr' on page 1 undefined on input line 326.
 
 [4] [5] [6] [7] [8] [9] (./E06.1.AC.Tomelleri.aux)
 
@@ -1323,72 +1329,42 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-
-Package rerunfilecheck Warning: File `E06.1.AC.Tomelleri.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `E06.1.AC.Tomelleri.out':
-(rerunfilecheck)             Before: F2CA5968AE89CA7895CF83AA2B876217;4315
-(rerunfilecheck)             After:  BDD228E1F90F54BBE84C534EF805C554;4618.
+Package rerunfilecheck Info: File `E06.1.AC.Tomelleri.out' has not changed.
+(rerunfilecheck)             Checksum: BDD228E1F90F54BBE84C534EF805C554;4618.
  ) 
 Here is how much of TeX's memory you used:
- 55731 strings out of 479713
- 1366623 string characters out of 5876923
- 2177126 words of memory out of 10000000
- 72662 multiletter control sequences out of 15000+600000
+ 55737 strings out of 479713
+ 1366814 string characters out of 5876923
+ 2176126 words of memory out of 10000000
+ 72674 multiletter control sequences out of 15000+600000
  422442 words of font info for 77 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,14n,125p,764b,883s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{figure.caption.24} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{equation.3.1} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.7} has been referenced but does not exist, 
-replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.6.3} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.6.2} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.6.1} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.5} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.5.4} has been referenced but does not ex
-ist, replaced by a fixed one
-
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texliv
-e/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.p
-fb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type
-1/public/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/c
-m-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
-bx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb
-><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/texli
-ve/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2021/te
-xmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/f
-onts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1
-/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm
--super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sft
-t1000.pfb>
-Output written on E06.1.AC.Tomelleri.pdf (9 pages, 344479 bytes).
+ 122i,14n,125p,764b,818s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
+ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/ty
+pe1/public/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
+/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/
+sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0600.p
+fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/tex
+live/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2021/
+texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist
+/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/typ
+e1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
+cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
+ftt1000.pfb>
+Output written on E06.1.AC.Tomelleri.pdf (9 pages, 425472 bytes).
 PDF statistics:
- 316 PDF objects out of 1000 (max. 8388607)
- 259 compressed objects within 3 object streams
- 75 named destinations out of 1000 (max. 500000)
- 157 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 310 PDF objects out of 1000 (max. 8388607)
+ 252 compressed objects within 3 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 170 words of extra memory for PDF output out of 10000 (max. 10000000)
 

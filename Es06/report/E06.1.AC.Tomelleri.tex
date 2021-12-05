@@ -26,8 +26,8 @@ Resistenze $[\si{k\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
 $\sigma C$ \\
 \midrule
 \midrule
-$R_1$	  & 9.91	& 0.08	 & $C_1$ & 1.00		 & 0.04 \\
-$R_2$	  & 9.91	& 0.08 	 & $C_2$ & 1.00		 & 0.04 \\
+$R_1$	  & 9.91	& 0.08	 & $C_1$ & 10.0		 & 0.4 \\
+$R_2$	  & 9.91	& 0.08 	 & $C_2$ & 10.0		 & 0.4 \\
 $R_3$	  & 9.93	& 0.08	 & & & \\
 $R_4$	  & 9.93	& 0.08	 & & & \\
 $R_5$	  & 9.95	& 0.08	 & & & \\
@@ -89,11 +89,23 @@ Riportiamo in figura l'immagine acquisita dall'oscilloscopio con dettaglio
 sul transiente al fronte di discesa dell'onda quadra.
 \begin{figure}[htbp]
     \centering
-%	\includegraphics[scale=0.335]{shaperzoom}
-    \caption{Acquisizione del segnale in uscita dal circuito formatore con
-    un'onda quadra in ingresso $V_s = \SI{1}{V}$, $f = \SI{100}{\Hz}$
-    \label{fig: shzoom}}
+	\includegraphics[scale=0.335]{Aloop100Hz}
+    \caption{Plot di Bode e Nyquist ottenuto dallo scan con Network tra
+    $\SI{100}{\Hz}$ e $\SI{100}{k\Hz}$ con un segnale sinusoidale in ingresso
+    all'anello di feedback invertente $A$, di ampiezza costante
+    $v\ped{in} = \SI{100}{m\V}$. \label{fig: loopbode}}
 \end{figure}
+
+Con l'aiuto dei cursori abbiamo misurato come guadagno a centro banda
+per il circuito amplificatore con resistenza $R_2^a = 5.1 \; \si{k\ohm}$
+$A_M = 14.18 \pm 0.09 \; \si{dB} = 5.12 \pm 0.05$.
+Dunque abbiamo ricavato una stima delle frequenze di taglio per i due
+amplificatori invertenti dal punto in cui il guadagno diminuisce di
+$-3.01 \; \si{dB}$ rispetto ad $A_M$:
+\begin{align*}
+f_L &= 388.0 \pm 1.1 \; \si{k\Hz} \\
+f_H &= 282.8 \pm 1.6 \; \si{k\Hz}
+\end{align*}
 
 Assumendo iniezione di carica istantanea sulle armature dei condensatori $C_T$
 e $C_F$, il segnale in uscita dal sotto-circuito formato da $C_T$ e dal
