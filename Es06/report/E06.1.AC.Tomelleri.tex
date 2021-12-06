@@ -54,39 +54,73 @@ implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
 mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 
 %=======================
-\section{Progettazione del circuito}
-Si è costruito un amplificatore di carica a partire da un op-amp TL081CP come
-quello in \cref{fig: Qampschm}
+\section{Apparato di misura del guadagno ad anello chiuso}
+Si è montato il circuito per la misura del loop-gain
+$\overline{L}(j\omega) = \beta(j\omega) \overline{A}$ nel nostro generatore di
+onde sinusoidali come quello proposto nello schema in \cref{fig: aloopschm}
 
 \begin{figure}[htbp]
     \centering
-%	\includegraphics[scale=1.2]{Qamp}
+	\includegraphics[scale=1.2]{aloopschm}
     \caption{Schema circuitale dell'amplificatore di carica costruito.
-    \label{fig: Qampschm}}
+    \label{fig: aloopschm}}
 \end{figure}
 
-In cui abbiamo indicato i sotto-circuiti di cui è composto, da sinistra verso
-destra come: ``iniettore/rivelatore di carica'', ``circuito formatore/shaper''
-(passa-basso/integratore attivo) e ``discriminatore/comparatore''.
+Il circuito è formato da un amplificatore non-invertente (trascurando
+temporaneamente la presenza dei diodi in parallelo a $R_3$) con guadagno
+indipendente dalla frequenza, in cui abbiamo trascurato il ruolo dei diodi essendo $ V\ped{S} $ ``piccolo'' rispetto alla tensione caratteristica di ``attivazione'' di questi ($ \sim \SI{0.7}{\volt} $).
+\begin{equation}\label{eq: A}
+A  = 1 + \frac{(1 - p)R + R_4 + R_3}{pR + R_5}
+\end{equation}
+in cui il parametro $p \in [0,1]$ è stato introdotto per indicare la posizione
+del contatto strisciante in POT1, o meglio la frazione di resistenza
+totale $R$ del potenziometro ideale che si trova tra il terminale centrale e
+la resistenza $R_5$. Quindi, per costruzione, quando $p = 0$ il trimmer del
+potenziometro è girato tutto verso il basso ($R_5$), mentre per $p = 1$ è
+rivolto verso l'alto ($R_4$).
+
+A cui si aggiunge un anello di feedback all'ingresso invertente dell'OpAmp
+il cui guadagno è dato dal rapporto di partizione
+\begin{equation} \label{eq:loop-gain-beta}
+  \beta(s) = \frac{Z_{2}}{Z_{1} + Z_{2}}
+\end{equation}
+con
+\[
+  Z_{1} = R_{1} + \frac{1}{sC_{1}} = R_{1} \frac{s + \omega_{1}}{s} \qquad Z_{2} = \frac{R_{2}}{1 + sC_{2} R_{2}} = R_{2} \frac{\omega_{2}}{s + \omega_{2}}
+\]
+ove $ \omega_{i} = 1/(R_{i} C_{i}) $. Più esplicitamente
+\begin{equation}
+  \beta(s) = \frac{1}{1 + \frac{Z_{1}}{Z_{2}}} = \frac{1}{1 + \frac{R_{1}}{R_{2}} \frac{(s + \omega_{1})(s + \omega_{2})}{\omega_{2} s}} = \frac{R_{2}}{R_{1}} \frac{\omega_{2} s}{\omega_{1}\omega_{2} + s^{2} + \left[\omega_{1} + \omega_{2} \left(1 + \frac{R_2}{R_{1}}\right)\right] s}
+\end{equation}
+che per valori puramente immaginari di $ s $ diventa
+\begin{equation}
+  \beta(j\omega) = \frac{R_{2}}{R_{1}} \frac{j \omega_{2} \omega}{\left(\omega_{1}\omega_{2} - \omega^{2}\right) + j \left[\omega_{1} + \omega_{2} \left(1 + \frac{R_2}{R_{1}}\right)\right] \omega}\, .
+\end{equation}
+
+Essendo $ A $ reale, la pulsazione in cui si ha sfasamento nullo si trova imponendo che $ \beta(j\omega) $ sia reale, ovvero
+\begin{equation}\label{eq:loop-gain-freq}
+  \omega_{1} \omega_{2} - {\bar{\omega}}^{2} = 0 \quad \Rightarrow \quad \bar{\omega} = \sqrt{\omega_{1} \omega_{2}}
+\end{equation}
+
+\begin{equation}\label{eq: beta}
+\beta(\omega) = \frac{1}{2 + \frac{C_2}{C_1} +j\left(\omega R_1C_2 -\frac{1}{\omega R_2C_1}\right)}.
+\end{equation}
+Per ottenere un generatore di onde quadre è necessario che sia soddisfatta la condizione di Barkhausen, ovvero trovare quei parametri per cui $\beta A = 1$. In questo caso la condizione si verifica per un particolare valore di  $p$ tale per cui $A(p) = 3$ e per $\beta(j\omega) = \frac13$.
+
 
 %=======================
 \section{Misura del loop-gain $\beta A_v$}
 
 \subsection{Risposta in frequenza}
-Si è inviato all'ingresso di entrambi i circuiti un'onda quadra di
-ampiezza $V_s = 999 \pm 8 \si{m\V}$ e frequenza fissata a
-$f = 100.0 \pm 1.6 \; \si{\Hz}$, che corrisponde ad una carica
-$Q\ped{in} = C_T \cdot 2V_s = 1.98 \pm 0.08 \; \si{n\coulomb}$, proporzionale
-al ``salto'' di tensione dal livello alto a basso (e viceversa) dell'onda,
-più semplicemente alla sua ampiezza picco-picco
-$V_s^{pp} = 2 V_s \implies Q\ped{in} = C_T \cdot V_s^{pp}$.
+Si vuole studiare la funzione di trasferimento $T(\omega) = \beta(\omega)
+A_v(\omega)$ a partire dal rapporto $V_A/V_s = \beta A_v$, per cui si è
+inviato all'ingresso non-invertente dell'amplificatore un'onda sinusoidale
+di ampiezza fissata a $V_s = 99.9 \pm 0.8 \si{m\V}$
 
-Dunque abbiamo trovato come segnale in uscita dal circuito formatore un
-segnale che dopo un breve transiente diventa un esponenziale decrescente,
-con ampiezza iniziale $V\ped{sh} (t=0) = 2007 \pm 18 \; \si{m\V}$ e
-con la stessa frequenza $99.9 \pm 1.6 \; \si{\Hz}$ dell'onda quadra.
-Riportiamo in figura l'immagine acquisita dall'oscilloscopio con dettaglio
-sul transiente al fronte di discesa dell'onda quadra.
+Dunque abbiamo studiato il segnale in uscita dal circuito nel punto \verb+A+
+al variare della frequenza del segnale in ingresso $V_s (t)$ tramite lo
+strumento Network dell'AD2. Riportiamo in \cref{fig: loopbode} modulo e fase
+misurati per $T(\omega)$ con plot di Nyquist in dettaglio a destra.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[scale=0.335]{Aloop100Hz}
@@ -98,105 +132,92 @@ sul transiente al fronte di discesa dell'onda quadra.
 
 Con l'aiuto dei cursori abbiamo misurato come guadagno a centro banda
 per il circuito amplificatore con resistenza $R_2^a = 5.1 \; \si{k\ohm}$
-$A_M = 14.18 \pm 0.09 \; \si{dB} = 5.12 \pm 0.05$.
+$A_M = -1.10 \pm 0.05 \; \si{dB} = 0.881 \pm 0.005$.
 Dunque abbiamo ricavato una stima delle frequenze di taglio per i due
 amplificatori invertenti dal punto in cui il guadagno diminuisce di
-$-3.01 \; \si{dB}$ rispetto ad $A_M$:
+$-3.01 \; \si{dB}$ rispetto ad $A_M$ e infine una misura della frequenza a
+sfasamento nullo
 \begin{align*}
-f_L &= 388.0 \pm 1.1 \; \si{k\Hz} \\
-f_H &= 282.8 \pm 1.6 \; \si{k\Hz}
+f_L &= 804 \pm 2 \; \si{\Hz} \\
+f_H &= 2875 \pm 8 \; \si{\Hz} \\
+f_0 &= 1522 \pm 2 \; \si{\Hz}
 \end{align*}
 
-Assumendo iniezione di carica istantanea sulle armature dei condensatori $C_T$
-e $C_F$, il segnale in uscita dal sotto-circuito formato da $C_T$ e dal
-formatore è legato al segnale in ingresso dalla relazione\footnote{Per una
-derivazione più rigorosa di questo risultato si confronti l'appendice
-in calce al documento.}
-\begin{align}\label{eq: Vsh}
-V\ped{sh}(t) &= \frac{Q\ped{in}}{C_F} e^{-t/\tau} =
-2V_s(t) \frac{C_T}{C_F} e^{-t/\tau} \\
-\tau &= R_1 C_F
-\end{align}
-Per i circuiti in esame i valori delle capacità sono
-$C_T \approx C_F = \SI{1}{n\F}$ e $R_1 = \SI{100}{\kilo\ohm}$,
-per cui possiamo semplificare il rapporto $C_T/C_F \approx 1$, da cui
-ricaviamo come valori attesi
+Il massimo ed il minimo guadagno al variare della posizione del trimmer
 \begin{align*}
-V\ped{sh}(t) &= 2V_s(t) e^{-t/\tau} \\
-\tau &= R_1 C_F = 100 \pm 4 \; \si{\micro\s}
+V_s &= 199 \pm 2 \; \si{m\V} \\
+V\ped{min} &= 133.0 \pm 1.1 \; \si{m\V} \implies  A\ped{v, min} = \pm \\
+V\ped{max} &= 260 \pm 2 \; \si{m\V} \implies  A\ped{v, max} = \pm \\
 \end{align*}
-Quindi complessivamente come tensione in uscita $V\ped{sh} (t)$ ci aspettiamo
-di osservare una serie di picchi seguiti da decrescite esponenziali di segno
-alternante con l'onda quadra in ingresso e di ampiezza doppia.
-
-Questo risulta compatibile con quanto si è osservato dall'oscilloscopio, che
-riportiamo per chiarezza in \cref{fig: shaper}
-\begin{figure}[htbp]
-    \centering
-%	\includegraphics[scale=0.335]{shaper}
-    \caption{Onda quadra in ingresso $V_s = \SI{1}{V}$, $f = \SI{100}{\Hz}$
-    su CH1 e segnale in uscita dal circuito formatore $V\ped{sh}$ su CH2.
-    \label{fig: shaper}}
-\end{figure}
-
-Dunque possiamo controllare che la forma d'onda esponenziale sia compatibile
-con quanto atteso dalla \eqref{eq: Vsh} tramite un fit ai punti campionati
-dall'AD2, di cui riportiamo brevemente i risultati
-\begin{figure}[htbp]
-    \centering
-%	\includegraphics[scale=0.6]{tau}
-    \caption{Fit con esponenziale decrescente al segnale in uscita dal
-    circuito formatore $V\ped{sh}$ \label{fig: tau}}
-\end{figure}
-\begin{align*}
-V\ped{sh} (t=0) &= 2021 \pm 2 \; \si{m\V}
-&\tau = 101.88 \pm 0.03 \; \si{\micro\s} \\
-\chi^2/\mathrm{ndof} &= 2774/4086 &\mathrm{cov_{norm}} = -0.75
-\end{align*}
-
-Da cui vediamo come non solo la misura di ampiezza iniziale sia compatibile
-con il valore misurato, ma anche il tempo caratteristico di smorzamento $\tau$
-risulta pienamente in accordo con il valore atteso dai componenti del
-circuito.
-
 
 \subsection{Dipendenza del loop-gain dalla resistenza del potenziometro}
-Il sotto-circuito discriminatore è un comparatore con tensione di soglia
-misurata con l'oscilloscopio $V\ped{thr} = 51.9 \pm 0.4 \si{m\V}$ e fornita
-dal generatore di tensione (con valore nominale $\SI{60}{m\V}$) \verb+W2+
-collegato all'ingresso invertente del secondo OpAmp.
 
-Supponiamo di essere sempre in regime di saturazione per l'OpAmp ideale e
-come prima assumiamo iniezione istantanea di carica sui condensatori. 
-Grazie al fatto che le tensioni di alimentazione sono pari in modulo
-$V_{CC} = - V_{EE}$ possiamo prendere come segnale atteso in uscita
-\begin{equation}\label{eq: Vdiscr}
-V\ped{discr} (t) = V_{CC} \sgn\left[V\ped{sh}(t) - V\ped{thr}\right].
-\end{equation}
+\subsubsection{Misure di guadagno al variare di $v\ped{in}$}
+Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
+e in uscita $v\ped{out}$ dall'amplificatore possiamo ricavare una misura del
+guadagno del circuito dal rapporto $A_v = \dfrac{v\ped{out}}{v\ped{in}}$.
+\begin{table}[htbp]
+\centering
+\begin{tabular}{cccc}
+\toprule
+$v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & $v\ped{out} \pm \sigma(v\ped{out})$ [V] & $A_v \pm \sigma(A_v)$ \\
+\midrule
+\midrule
+50 & $50.0 \pm 0.4$ & $256 \pm 2 \; \si{m}$ & $5.12 \pm 0.06$ \\
+100 & $100.0 \pm 0.8$ & $511 \pm 4 \; \si{m}$ & $5.11 \pm 0.06$ \\
+150 & $150.0 \pm 1.2$ & $767 \pm 6$ & $5.11 \pm 0.06$ \\
+200 & $200 \pm 1.6$ & $1022 \pm 8$ & $5.11 \pm 0.06$ \\
+250 & $250 \pm 2$ & $1278 \pm 11$ & $5.11 \pm 0.06$ \\
+300 & $300 \pm 2$ & $1534 \pm 12$ & $5.11 \pm 0.05$ \\
+350 & $349 \pm 3$ & $1790 \pm 14$ & $5.13 \pm 0.06$ \\
+400 & $399 \pm 3$ & $2046 \pm 16$ & $5.13 \pm 0.06$ \\
+450 & $449 \pm 4$ & $2302 \pm 18$ & $5.13 \pm 0.06$ \\
+500 & $499 \pm 4$ & $2.56 \pm 0.02$ & $5.13 \pm 0.06$ \\
+550 & $549 \pm 4$ & $2.82 \pm 0.02$ & $5.13 \pm 0.06$ \\
+600 & $599 \pm 5$ & $3.07 \pm 0.02$ & $5.13 \pm 0.06$ \\
+\\
+700 & $699 \pm 6$ & $3.55 \pm 0.03$ & $5.07 \pm 0.06$ \\
+800 & $799 \pm 6$ & $3.82 \pm 0.03$ & $4.78 \pm 0.05$ \\
+900 & $899 \pm 7$ & $3.86 \pm 0.03$ & $4.28 \pm 0.05$ \\
+1 V & $999 \pm 8$ & $3.86 \pm 0.03$ & $3.86 \pm 0.04$ \\
+1.2 V & $1199 \pm 9$ & $3.86 \pm 0.03$ & $3.22 \pm 0.04$ \\
+1.4 V & $1399 \pm 11$ & $3.88 \pm 0.03$ & $2.78 \pm 0.03$ \\
+1.6 V & $1599 \pm 12$ & $3.89 \pm 0.03$ & $2.43 \pm 0.03$ \\
+1.8 V & $1799 \pm 14$ & $3.90 \pm 0.03$ & $2.17 \pm 0.02$ \\
+2 V & $1999 \pm 15$ & $3.92 \pm 0.03$ & $1.96 \pm 0.02$ \\
+\bottomrule
+\end{tabular} 
+\caption{Misure di guadagno al variare della tensione in ingresso
+all'amplificatore con $R_2^a = 5.1 \; \si{k\ohm}$. Oltre i \SI{600}{m\V} di
+ampiezza del segnale in ingresso la forma d'onda in uscita inizia a
+manifestare difetti dovuti al clipping dell'op-amp al di fuori del regime
+lineare. \label{tab: gain}}
+\end{table}
 
-Più esplicitamente, ricordando che $V\ped{sh}$ ha ampiezza (iniziale) doppia
-rispetto all'ampiezza in ingresso $V_s$ (o proporzionale a $V_s^{pp}$)
-\begin{itemize}
-\item se $V_s^{pp} < V\ped{thr} \implies V\ped{discr} = V_{EE}$ costante.
-\item se $V_s^{pp} \geq V\ped{thr}$, ci aspettiamo (in un periodo dell'onda
-quadra di durata $T = 9.99 \pm 0.16 \; \si{m\s}$)
+Con un fit lineare possiamo stimare il guadagno dell'amplificatore a partire
+dal grafico di $v\ped{out} = A_v v\ped{in}$ al variare di $v\ped{in}$.
+Riportiamo quanto trovato per il primo circuito:
+\begin{figure}[htbp]
+\centering
+%\includegraphics[scale=0.7]{gain5k1}
+\caption{Fit lineare per l'andamento dell'ampiezza misurata in uscita rispetto
+all'ampiezza del segnale in ingresso. \label{fig: gainfit}}
+\end{figure}
+Da cui troviamo i seguenti parametri per la retta di best-fit
+\begin{align*}
+\mathrm{intercetta} = -0.6 \pm 0.4 \; \si{m\V} \;\;\;\mathrm{pendenza} = 5.124 \pm 0.003 \;\;\;\mathrm{correlazione} 
+= -0.72 \;\;\; \chi^2 = 0.2 \;\;\; d.o.f. = 10 \\
+\text{coefficiente angolare/senza intercetta} = 5.120 \pm 0.002 \;\;\;
+\chi^2 = 0.2 \;\;\; d.o.f. = 11
+\end{align*}
+
+Il valore atteso per il guadagno dal valore dei componenti in questa
+configurazione del circuito è pari a
 \[
-V\ped{discr}(t) =
-\begin{cases}
-V_{CC} & 0 < t < ToT \\
-V_{EE} & ToT < t < T
-\end{cases}
+A\ped{v, exp} = -\frac{R_2}{R_1} = - 5.13 \pm 0.12
 \]
-In cui $ToT$ è il tempo in cui il picco esponenzialmente decrescente è
-maggiore della tensione di soglia
-$V\ped{sh}(t) = \frac{Q\ped{in}}{C_F} e^{-t/\tau} \geq V\ped{thr}$, appunto il
-``Time-over-Threshold''.
-\begin{equation} \label{eq:ToT}
-ToT = \tau \log\left(\frac{Q\ped{in}}{C_F V\ped{thr}}\right) =
-\tau \log\left(\frac{C_T V_s^{pp}}{C_F V\ped{thr}}\right) = 
-\tau \log\left(\frac{C_T}{C_F} \frac{2 V_s}{V\ped{thr}}\right).
-\end{equation}
-\end{itemize}
+Questo è in ottimo accordo con quanto trovato sperimentalmente dalla nostra
+analisi.
 
 Mantenendo lo stesso segnale in ingresso al circuito del punto precedente
 (con ampiezza ben oltre la soglia $V_s \gg V\ped{thr}$) riportiamo il
@@ -250,12 +271,6 @@ abbiamo misurato.
 \section{Funzionamento dell'oscillatore a ponte di Wien}
 Abbiamo costruito un trigger di Schmitt o comparatore con isteresi a partire
 dall'OpAmp TL081CP come in \cref{fig: trgschmittschm}.
-\begin{figure}[htbp]
-    \centering
-%	\includegraphics[scale=1.8]{trgSchmitt}
-    \caption{Schema circuitale del trigger di Schmitt costruito.
-    \label{fig: trgschmittschm}}
-\end{figure}
 
 \subsection{Risposta ad un'onda sinusoidale}
 Abbiamo inviato all'ingresso invertente dell'OpAmp un'onda sinusoidale di
@@ -436,6 +451,18 @@ $560 \; \si{m\V}$ ad un massimo valore registrato di $1.5 \; \si{\V}$) e del
 duty cycle (a partire da un valore minimo di $50.6 \pm 1.1 \%$ fino a
 $65.6 \pm 1.2 \%$ per valori di $V_s$ molto vicini alla soglia) nell'onda
 quadra in uscita dal circuito.
+
+%=======================
+\section{Progettazione del circuito}
+Si è completato il circuito oscillatore a ponte di Wien collegando
+l'ingresso non-invertente dell'OpAmp TL081CP al punto A, quindi chiudendo
+l'anello di feedback positivo, come si vede in \cref{fig: wienschm}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=1.2]{wienschm}
+    \caption{Schema circuitale del trigger di Schmitt costruito.
+    \label{fig: wienschm}}
+\end{figure}
 
 %=======================
 \section{Frequenza generata e innesco dell'oscillazione}
