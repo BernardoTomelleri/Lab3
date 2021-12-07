@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  6 DEC 2021 19:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  7 DEC 2021 13:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1293,66 +1293,76 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
 
 (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [1
+)
 
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+pdfTeX warning: pdflatex.exe (file ../figs//aloopschm.pdf): PDF inclusion: foun
+d PDF version <1.7>, but at most version <1.5> allowed
+<../figs//aloopschm.pdf, id=72, 159.70724pt x 226.47159pt>
+File: ../figs//aloopschm.pdf Graphic file (type pdf)
+<use ../figs//aloopschm.pdf>
+Package pdftex.def Info: ../figs//aloopschm.pdf  used on input line 64.
+(pdftex.def)             Requested size: 191.6477pt x 271.76453pt.
+[1
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 111.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\beta' on input line 111.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 111.
-
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <../figs//al
+oopschm.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 111.
+(hyperref)                removing `math shift' on input line 146.
 
-<../figs//Aloop100Hz.png, id=111, 1440.88312pt x 711.4078pt>
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\beta' on input line 146.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 146.
+
+<../figs//Aloop100Hz.png, id=109, 1440.88312pt x 711.4078pt>
 File: ../figs//Aloop100Hz.png Graphic file (type png)
 <use ../figs//Aloop100Hz.png>
-Package pdftex.def Info: ../figs//Aloop100Hz.png  used on input line 125.
+Package pdftex.def Info: ../figs//Aloop100Hz.png  used on input line 161.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 154.
+(hyperref)                removing `math shift' on input line 190.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 154.
+(hyperref)                removing `subscript' on input line 190.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 154.
+(hyperref)                removing `math shift' on input line 190.
 
+[3 <../figs//Aloop100Hz.png (PNG copy)>] [4]
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 154.
+pdfTeX warning: pdflatex.exe (file ../figs//wienschm.pdf): PDF inclusion: found
+ PDF version <1.7>, but at most version <1.5> allowed
+<../figs//wienschm.pdf, id=127, 160.56079pt x 226.47159pt>
+File: ../figs//wienschm.pdf Graphic file (type pdf)
+<use ../figs//wienschm.pdf>
+Package pdftex.def Info: ../figs//wienschm.pdf  used on input line 312.
+(pdftex.def)             Requested size: 192.67195pt x 271.76453pt.
+[5 <../figs//wienschm.pdf>] [6]
 
+LaTeX Warning: Reference `sub: trglim' on page 1 undefined on input line 438.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 154.
-
-[2] [3 <../figs//Aloop100Hz.png (PNG copy)>] [4]
-
-LaTeX Warning: Reference `sub: discr' on page 1 undefined on input line 346.
-
-[5] [6] [7] [8] [9] [10] (./E06.1.AC.Tomelleri.aux)
+[7] [8] [9] (./E06.1.AC.Tomelleri.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `E06.1.AC.Tomelleri.out' has not changed.
-(rerunfilecheck)             Checksum: 8D7201BCA1CDABBAF3D1634DCE5EE40B;4884.
+(rerunfilecheck)             Checksum: 7CF07DA0ADB479EF6E48862D7AF73900;4077.
  ) 
 Here is how much of TeX's memory you used:
- 55737 strings out of 479713
- 1366860 string characters out of 5876923
- 2183126 words of memory out of 10000000
- 72673 multiletter control sequences out of 15000+600000
+ 55735 strings out of 479713
+ 1367033 string characters out of 5876923
+ 2179126 words of memory out of 10000000
+ 72681 multiletter control sequences out of 15000+600000
  420912 words of font info for 75 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,14n,125p,764b,818s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1367,17 +1377,18 @@ s/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
 xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/ty
-pe1/public/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
-/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/
-sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.p
-fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/tex
-live/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/
-texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist
-/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on E06.1.AC.Tomelleri.pdf (10 pages, 387805 bytes).
+pe1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/
+public/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-
+super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx
+1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><
+c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive
+/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texm
+f-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fon
+ts/type1/public/cm-super/sftt1000.pfb>
+Output written on E06.1.AC.Tomelleri.pdf (9 pages, 452325 bytes).
 PDF statistics:
- 302 PDF objects out of 1000 (max. 8388607)
- 249 compressed objects within 3 object streams
- 70 named destinations out of 1000 (max. 500000)
- 178 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 281 PDF objects out of 1000 (max. 8388607)
+ 225 compressed objects within 3 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 156 words of extra memory for PDF output out of 10000 (max. 10000000)
 

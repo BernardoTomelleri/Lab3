@@ -56,7 +56,7 @@ mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 %=======================
 \section{Apparato di misura del guadagno ad anello chiuso}
 Si è montato il circuito per la misura del loop-gain
-$\overline{L}(j\omega) = \beta(j\omega) \overline{A}$ nel nostro generatore di
+$\bar{L}(j\omega) = \beta(j\omega) \bar{A}$ nel nostro generatore di
 onde sinusoidali come quello proposto nello schema in \cref{fig: aloopschm}
 
 \begin{figure}[htbp]
@@ -66,11 +66,14 @@ onde sinusoidali come quello proposto nello schema in \cref{fig: aloopschm}
     \label{fig: aloopschm}}
 \end{figure}
 
-Il circuito è formato da un amplificatore non-invertente (trascurando
-temporaneamente la presenza dei diodi in parallelo a $R_3$) con guadagno
-indipendente dalla frequenza, in cui abbiamo trascurato il ruolo dei diodi essendo $ V\ped{S} $ ``piccolo'' rispetto alla tensione caratteristica di ``attivazione'' di questi ($ \sim \SI{0.7}{\volt} $).
+Il circuito è formato da un amplificatore non-invertente con guadagno
+indipendente dalla frequenza (trascurando la presenza e risposta non lineare
+dei diodi in parallelo a $R_3$ - che consideriamo dei circuiti aperti - dal
+momento che supponiamo di lavorare con $V\ped{out} \sim V_{R_3}$ vincolato ad
+essere in modulo minore rispetto alla tensione caratteristica del regime di
+conduzione in cui questi svolgono un ruolo $V_\gamma \sim \SI{0.7}{\V}$)
 \begin{equation}\label{eq: A}
-A  = 1 + \frac{(1 - p)R + R_4 + R_3}{pR + R_5}
+A  = 1 + \frac{(1 - p)R + R_3 + R_4}{pR + R_5}
 \end{equation}
 in cui il parametro $p \in [0,1]$ è stato introdotto per indicare la posizione
 del contatto strisciante in POT1, o meglio la frazione di resistenza
@@ -82,38 +85,70 @@ rivolto verso l'alto ($R_4$).
 A cui si aggiunge un anello di feedback all'ingresso invertente dell'OpAmp
 il cui guadagno è dato dal rapporto di partizione
 \begin{equation} \label{eq:loop-gain-beta}
-  \beta(s) = \frac{Z_{2}}{Z_{1} + Z_{2}}
+\beta(s) = \frac{Z_P}{Z_S + Z_P} = \frac{1}{Z_S/Z_P + 1}
 \end{equation}
-con
-\[
-  Z_{1} = R_{1} + \frac{1}{sC_{1}} = R_{1} \frac{s + \omega_{1}}{s} \qquad Z_{2} = \frac{R_{2}}{1 + sC_{2} R_{2}} = R_{2} \frac{\omega_{2}}{s + \omega_{2}}
-\]
-ove $ \omega_{i} = 1/(R_{i} C_{i}) $. Più esplicitamente
+tra un'impedenza serie RC $Z_S$ e un'impedenza ``parallelo'' $Z_P$, ovverosia
+\begin{align*}
+Z_S &= R_1 + \frac{1}{s C_1} = R_1 \frac{s + \omega_1}{s} \\
+Z_P &= \frac{R_2}{1 + s R_2 C_2} = R_2 \frac{\omega_2}{s + \omega_2}
+\end{align*}
+dove abbiamo indicato $\omega_1 = 1/(R_1 C_1)$ e con $\omega_2 = 1/(R_2 C_2)$.
+Espandendo in termini delle singole resistenze e pulsazioni possiamo riscrivere
+il fattore di feedback
 \begin{equation}
-  \beta(s) = \frac{1}{1 + \frac{Z_{1}}{Z_{2}}} = \frac{1}{1 + \frac{R_{1}}{R_{2}} \frac{(s + \omega_{1})(s + \omega_{2})}{\omega_{2} s}} = \frac{R_{2}}{R_{1}} \frac{\omega_{2} s}{\omega_{1}\omega_{2} + s^{2} + \left[\omega_{1} + \omega_{2} \left(1 + \frac{R_2}{R_{1}}\right)\right] s}
-\end{equation}
-che per valori puramente immaginari di $ s $ diventa
-\begin{equation}
-  \beta(j\omega) = \frac{R_{2}}{R_{1}} \frac{j \omega_{2} \omega}{\left(\omega_{1}\omega_{2} - \omega^{2}\right) + j \left[\omega_{1} + \omega_{2} \left(1 + \frac{R_2}{R_{1}}\right)\right] \omega}\, .
+\beta(s) = \frac{1}{1 + Z_S/Z_P} =
+\frac{1}{1 + \frac{R_1}{R_2} \frac{(s + \omega_1)(s + \omega_2)}{s \omega_2}} =
+\frac{R_2}{R_1} \frac{s \omega_2}{\omega_1 \omega_2 + s^2 +
+\left[\omega_{1} + \omega_{2} \left(1 + \frac{R_2}{R_{1}}\right)\right] s}
 \end{equation}
 
-Essendo $ A $ reale, la pulsazione in cui si ha sfasamento nullo si trova imponendo che $ \beta(j\omega) $ sia reale, ovvero
+Per la condizione di Barkhausen consideriamo solo valori puramente immaginari
+di $s = j\omega$, per cui troviamo
+\begin{equation}
+\beta(j\omega) = \frac{R_2}{R_1} \frac{j \omega \omega_2}
+{\omega_1 \omega_2 - \omega^2 + j \omega
+\left[\omega_1 + \omega_2 \left(1 + \frac{R_2}{R_1}\right)\right]} > 0
+\end{equation}
+Ora, poiché $A$ è reale, la pulsazione in cui si annulla lo sfasamento si
+trova imponendo che anche $\beta(j\omega) \in \RR^+$; il che significa
 \begin{equation}\label{eq:loop-gain-freq}
-  \omega_{1} \omega_{2} - {\bar{\omega}}^{2} = 0 \quad \Rightarrow \quad \bar{\omega} = \sqrt{\omega_{1} \omega_{2}}
+\omega_1 \omega_2 - \omega_0^2 = 0 \implies \omega_0 =
+\sqrt{\omega_1 \omega_2}
 \end{equation}
 
+Questo assume una forma ancora più semplice nel caso in cui supponiamo di avere
+(entro l'incertezza sperimentale) $R_1 = R_2 = R_0$ e $ C_1 = C_2 = C_0$,
+da cui segue $\omega_1 = \omega_2 = \omega_0$
+\[
+\beta(j\omega) = \frac{R_2}{R_1} \frac{1}{1 + \frac{R_2}{R_1} + \frac{\omega_1}{\omega_2}}
+\]
+Alle frequenze equivalenti $f_i = \omega_i/2\pi$ per $i = 0, 1, 2$ il loop-gain
+diventa
+\[
+\bar{L}(f_0) = A \frac{R_2}{R_1} \frac{1}{1 + \frac{R_{2}}{R_{1}} + \frac{f_1}{f_2}}
+\]
+cioè
+\begin{equation} \label{eq:loop-gain-approx}
+\bar{L}(\omega) = A \frac{j \omega/\omega_0}{\left(1 - \omega^2/\omega_0^2\right) + 3j \omega/\omega_0}
+\end{equation}
+e la pulsazione a sfasamento nullo è $ \bar{\omega} = \omega_0 $ e per tale frequenza si ha più semplicemente $L(\omega_0) = \vert{\bar{L}(\omega_0)}\vert =  A / 3 $.
+
+
+
+%TODO 
 \begin{equation}\label{eq: beta}
-\beta(\omega) = \frac{1}{2 + \frac{C_2}{C_1} +j\left(\omega R_1C_2 -\frac{1}{\omega R_2C_1}\right)}.
+\beta(\omega) = \frac{1}{2 + \frac{C_2}{C_1} +j\left(\omega R_1 C_2 -\frac{1}{\omega R_2C_1}\right)}.
 \end{equation}
 Per ottenere un generatore di onde quadre è necessario che sia soddisfatta la condizione di Barkhausen, ovvero trovare quei parametri per cui $\beta A = 1$. In questo caso la condizione si verifica per un particolare valore di  $p$ tale per cui $A(p) = 3$ e per $\beta(j\omega) = \frac13$.
 
 
 %=======================
-\section{Misura del loop-gain $\beta A_v$}
+\section{Misura del loop-gain $\beta A$}
 
 \subsection{Risposta in frequenza}
-Si vuole studiare la funzione di trasferimento $T(\omega) = \beta(\omega)
-A_v(\omega)$ a partire dal rapporto $V_A/V_s = \beta A_v$, per cui si è
+Si vuole studiare la funzione di trasferimento del loop di feedback positivo
+$L(j\omega) = \beta(j\omega) A(j\omega)$ a partire dal rapporto
+$V_A/V_s = \beta \bar{A} = \bar{L}(j\omega)$, per cui si è
 inviato all'ingresso non-invertente dell'amplificatore un'onda sinusoidale
 di ampiezza fissata a $V_s = 99.9 \pm 0.8 \si{m\V}$
 
@@ -152,15 +187,15 @@ V\ped{max} &= 260 \pm 2 \; \si{m\V} \implies  A\ped{v, max} = \pm \\
 
 \subsection{Dipendenza del loop-gain dalla resistenza del potenziometro}
 
-\subsubsection{Misure di guadagno al variare di $v\ped{in}$}
+\subsubsection{Misure di guadagno al variare di $V_s$}
 Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
 e in uscita $v\ped{out}$ dall'amplificatore possiamo ricavare una misura del
-guadagno del circuito dal rapporto $A_v = \dfrac{v\ped{out}}{v\ped{in}}$.
+guadagno del circuito dal rapporto $A = \dfrac{v\ped{out}}{v\ped{in}}$.
 \begin{table}[htbp]
 \centering
 \begin{tabular}{cccc}
 \toprule
-$v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & $v\ped{out} \pm \sigma(v\ped{out})$ [V] & $A_v \pm \sigma(A_v)$ \\
+$v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & $v\ped{out} \pm \sigma(v\ped{out})$ [V] & $A \pm \sigma(A)$ \\
 \midrule
 \midrule
 50 & $50.0 \pm 0.4$ & $256 \pm 2 \; \si{m}$ & $5.12 \pm 0.06$ \\
@@ -195,7 +230,7 @@ lineare. \label{tab: gain}}
 \end{table}
 
 Con un fit lineare possiamo stimare il guadagno dell'amplificatore a partire
-dal grafico di $v\ped{out} = A_v v\ped{in}$ al variare di $v\ped{in}$.
+dal grafico di $v\ped{out} = A v\ped{in}$ al variare di $v\ped{in}$.
 Riportiamo quanto trovato per il primo circuito:
 \begin{figure}[htbp]
 \centering
@@ -268,192 +303,7 @@ $\pm \SI{5}{\V}$) $V_{OM} = 13.5 \cdot V_{CC} / V\ped{CC, typ} =
 abbiamo misurato.
 
 %=======================
-\section{Funzionamento dell'oscillatore a ponte di Wien}
-Abbiamo costruito un trigger di Schmitt o comparatore con isteresi a partire
-dall'OpAmp TL081CP come in \cref{fig: trgschmittschm}.
-
-\subsection{Risposta ad un'onda sinusoidale}
-Abbiamo inviato all'ingresso invertente dell'OpAmp un'onda sinusoidale di
-ampiezza $V_s = 999 \pm 8 \; \si{m\V}$ e frequenza $f = 100.0 \pm 1.6 \; \si{\Hz}$.
-Si osserva immediatamente che né le due tensioni di saturazione, né tantomeno
-le tensioni di soglia sono uguali in valore assoluto. \`E per questo motivo
-che l'onda quadra in uscita dal trigger ha una componente continua positiva,
-quindi la sua traccia visualizzata all'oscilloscopio risulta traslata verso
-l'alto.
-\begin{figure}[htbp]
-	\centering
-%	\includegraphics[scale=0.335]{schmitt}
-	\caption{Risposta del trigger di Schmitt ad un segnale sinusoidale di ampiezza
-	$V_s = \SI{1}{V}$ e frequenza $f = \SI{100}{Hz}$. \label{fig: schmittsine}}
-\end{figure}
-
-La stessa asimmetria si riscontra nel grafico XY dei segnali in ingresso e
-uscita dal circuito, in cui le 2 rette di transizione verticali corrispondono
-ai valori delle tensioni di soglia $V_{TL}$ e $V_{TH}$ del trigger. Queste
-non sono simmetriche rispetto a $\SI{0}{V}$, ma risultano traslate verso
-destra.
-\begin{figure}[htbp]
-	\centering
-%	\includegraphics[scale=0.6]{shmitt_isteresi}
-	\caption{Visualizzazione XY del seno di ampiezza $V_s = \SI{2}{\V}$ e
-	frequenza $\SI{100}{\Hz}$ in ingresso e del segnale in uscita dal trigger di
-	Schmitt. \label{fig: schmittxy}}
-\end{figure}
-
-\subsection{Saturazione dell'OpAmp}
-Abbiamo misurato le tensioni di saturazione dell'OpAmp direttamente
-dai valori alto $V_{OH}$ e basso $V_{OL}$ -pressoché costanti- che assume
-l'onda quadra in uscita dal trigger tramite i cursori:
-\begin{align*}
-V_{OH} &= 4.28 \pm 0.04 \; \si{\V} \\
-V_{OL} &= -3.66 \pm 0.03 \; \si{\V}
-\end{align*}
-Per il secondo circuito abbiamo trovato, allo stesso modo
-\begin{align*}
-V_{OH} &= 4.21 \pm 0.04 \; \si{\V} \\
-V_{OL} &= -3.53 \pm 0.03 \; \si{\V}
-\end{align*}
-
-\subsection{Tensioni di soglia e funzionamento del trigger}
-Ora abbiamo inviato in ingresso al circuito (nonché all'ingresso invertente
-dell'OpAmp) un'onda sinusoidale di ampiezza
-$1999 \pm 15 \; \si{m\V}$ e frequenza fissata a $1000 \pm 16 \; \si{\Hz}$.
-
-Dalle intersezioni tra i canali in ingresso ed uscita abbiamo misurato le
-tensioni per cui si verificano le transizioni basso-alto $V_{TH}$ e alto-basso
-$V_{TL}$ nel primo trigger
-\begin{align*}
-V_{TH} &= -617 \pm 5 \; \si{m\V} \\
-V_{TL} &= 775 \pm 6 \; \si{m\V}
-\end{align*}
-Per il secondo circuito invece abbiamo preso una media pesata dei punti che
-giacciono sulle 2 linee verticali che si formano nelle transizioni del ciclo
-di isteresi visto nel grafico XY di \cref{fig: schmittxy}.
-\begin{align*}
-V_{TH} &= -611.6 \pm 0.5 \; \si{m\V} \\
-V_{TL} &= 780.4 \pm 0.5 \; \si{m\V}
-\end{align*}
-
-Supponiamo che l'OpAmp si comporti come il comparatore/discriminatore già
-visto nell'amplificatore di carica, quindi che la differenza
-$v_d = v_+ - v_- $ sia abbastanza grande da far sì che si trovi sempre in
-regime non lineare. In piena analogia con quanto discusso nella
-\cref{sub: discr}, come segnale in uscita dal comparatore ci aspettiamo
-\[
-V\ped{out} = V_{CC} \sgn(v_+ - v_-)
-.\]
-Inoltre, dal momento che l'ingresso non-invertente è collegato all'uscita del
-partitore di tensione costituito da $R_1$ e $R_2$, abbiamo
-\[
-v_+ = \frac{R_2}{R_1 + R_2} V \ped{out} = \beta V\ped{out}
-\]
-dove abbiamo implicitamente definito il coefficiente di partizione
-$\beta \coloneqq \frac{R_2}{R_1 + R_2}$. Quindi mettendo tutto insieme
-\[
-V\ped{out} = V_{CC} \sgn(\beta V\ped{out} - V_s)
-.\]
-
-Da cui vediamo che la tensione in uscita dal comparatore sarà al livello
-``alto'' (i.e. $V\ped{out} = V_{CC}$) quando $V\ped{out} > V_s/\beta$ e
-``basso'' (cioè $V\ped{out} = -V_{CC}$) nel caso complementare
-$V\ped{out} < V_s/\beta$. Queste condizioni definiscono le tensioni di soglia
-per cui ci aspettiamo avvengano le transizioni:
-$V_s = \pm V\ped{trn}$, dove
-\begin{equation}
-V\ped{trn} = \beta V_{CC} = \frac{V_{CC}}{1 + R_1/R_2} =
-0.90 \pm 0.03 \; \si{\V}
-\end{equation}
-
-Possiamo spiegare il funzionamento del trigger di Schmitt in termini di
-feedback positivo, che ne regola il comportamento tramite il controllo del
-segnale in ingresso. Se la tensione $V_s$ è minore di $V_{TH} < \SI{0}{\V}$
-il segnale in uscita rimane alto. Al crescere della tensione del segnale
-in ingresso fino al valore di soglia
-$V_s \geq V_{TL} \implies V\ped{out} \mapsto -V_{CC}$ il segnale in uscita
-dal circuito salta repentinamente dal livello alto a basso. Dunque
-$V\ped{out}$ rimane basso fintanto che la tensione in ingresso non diminuisce
-al di sotto della soglia opposta
-$V_s \leq V_{TH} \implies V\ped{out} \mapsto V_{CC}$, per cui il segnale in
-uscita sale velocemente al livello alto.
-
-Il che corrisponde esattamente a quanto si riesce ad osservare visualizzando
-i segnali in ingresso ed uscita con l'oscilloscopio in \cref{fig: schmittsine}.
-
-\subsection{Limiti fisici del circuito}\label{sub: trglim}
-Si osserva che il circuito si comporta come discriminatore con isteresi per
-frequenze sufficientemente basse; più precisamente possiamo individuare una
-frequenza limite $f_L$, oltre la quale il trigger smette di funzionare.
-Il valore di questa frequenza limite dipende anche dall'ampiezza dell'onda che
-si invia all'ingresso, per esempio nel caso in cui l'ampiezza sia
-$V_s = \SI{1}{\V}$ si trova $f_L \approx 90 \; \si{k\Hz}$, mentre per
-$V_s' = \SI{2}{\V}$ la frequenza limite aumenta fino a
-$f_L' \approx 700 \si{k\Hz}$. Riportiamo di seguito le misure della frequenza
-trovate da uno scan con Network per i due circuiti in queste due
-configurazioni:
-\begin{align*}
-f_L &= 92.6 \pm 0.1 \; \si{k\Hz} \\
-f_L' &= 680 \pm 4 \; \si{k\Hz}
-\end{align*}
-
-\begin{figure}[htbp]
-	\centering
-%	\includegraphics[scale=0.335]{bodeschmitt1V100Hz5MHz}
-	\caption{Analisi in frequenza del trigger di Schmitt, con ampiezza del segnale
-	in ingresso fissata ad $\SI{1}{V}$, l'unico punto di interesse si trova a
-	circa $\SI{90}{k\Hz}$, frequenza oltre alla quale il circuito non ha più
-	il comportamento atteso.}
-\end{figure}
-
-\begin{figure}[htbp]
-	\centering
-%	\includegraphics[scale=0.335]{bodeschmitt2V100Hz5MHz}
-	\caption{Risposta in frequenza del trigger di Schmitt, con ampiezza del
-	segnale in ingresso fissata a $\SI{2}{V}$, a partire dai $\SI{700}{k\Hz}$
-	osserviamo una deviazione dall'andamento atteso.}
-\end{figure}
-
-Per frequenze maggiori di $\sim \SI{10}{k\Hz}$ la pendenza della transizione
-del segnale in uscita da ``alto'' a ``basso'' e viceversa comincia ad essere
-limitata dallo slew-rate dell'OpAmp.
-Per cui dal fronte d'onda tra le transizioni dello stato del trigger abbiamo
-scelto di misurare direttamente lo slew-rate del TL081
-\begin{align*}
-\mathrm{SR} &= 11.1 \pm 0.3 \; \si{\V/\micro\s} \\
-\mathrm{SR} &= 11.3 \pm 0.3 \; \si{\V/\micro\s}
-\end{align*}
-
-Effettivamente, affinché l'OpAmp possa funzionare correttamente come
-discriminatore con isteresi, occorre che il tempo minimo di salita e discesa
-siano molto minori rispetto al periodo dei segnali in ingresso e in uscita:
-\begin{equation}\label{eq: slewlim}
-T \gg 2 t\ped{min}, \qquad t\ped{min} =
-\frac{V\ped{out}^{pp}}{\mathrm{SR}} \approx \SI{0.7}{\micro\s}
-\implies \frac{1}{T} = f \ll \SI{700}{k\Hz}.
-\end{equation}
-che risulta in accordo con quanto si è trovato sperimentalmente.
-
-Variando l'ampiezza del segnale in ingresso $V_s$ si osserva che l'ampiezza del
-segnale in uscita rimane pressoché uguale a $V\ped{out}^{pp} = V_{OH} - V_{OL}
-= 7.94 \pm 0.04$ fino a una soglia inferiore intorno a $\SI{800}{m\V}$, al di
-sotto della quale l'uscita è costante al valore di saturazione $V_{OH}$.
-Infatti per quanto abbiamo visto, affinché il circuito possa compiere il ciclo
-di isteresi, l'ampiezza (picco-picco) del segnale in ingresso deve essere
-maggiore della base del rettangolo di isteresi $V_s^{pp} \geq 2 V\ped{trn}$.
-In realtà, per via dell'asimmetria delle tensioni di soglia, è necessario
-che $V_s$ abbia ampiezza superiore alla soglia $V_{TL}$, in modulo la
-più alta delle due; come si è visto dall'esperimento.
-
-Notiamo infine che al diminuire dell'ampiezza dell'onda in ingresso (a partire
-dal massimo valore generabile di $V\ped{s, max} = \SI{5}{\V}$ fino a soglia
-$V_s \approx V_{TL} \approx \SI{800}{m\V}$)
-corrispondono un aumento della componente continua (da un minimo di circa
-$560 \; \si{m\V}$ ad un massimo valore registrato di $1.5 \; \si{\V}$) e del
-duty cycle (a partire da un valore minimo di $50.6 \pm 1.1 \%$ fino a
-$65.6 \pm 1.2 \%$ per valori di $V_s$ molto vicini alla soglia) nell'onda
-quadra in uscita dal circuito.
-
-%=======================
-\section{Progettazione del circuito}
+\section{Progettazione del circuito auto-oscillante}
 Si è completato il circuito oscillatore a ponte di Wien collegando
 l'ingresso non-invertente dell'OpAmp TL081CP al punto A, quindi chiudendo
 l'anello di feedback positivo, come si vede in \cref{fig: wienschm}
