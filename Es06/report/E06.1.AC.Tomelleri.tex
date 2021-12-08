@@ -78,12 +78,12 @@ A  = 1 + \frac{(1 - p)R + R_3 + R_4}{pR + R_5}
 in cui il parametro $p \in [0,1]$ è stato introdotto per indicare la posizione
 del contatto strisciante in POT1, o meglio la frazione di resistenza
 totale $R$ del potenziometro ideale che si trova tra il terminale centrale e
-la resistenza $R_5$. Quindi, per costruzione, quando $p = 0$ il trimmer del
-potenziometro è girato tutto verso il basso ($R_5$), mentre per $p = 1$ è
-rivolto verso l'alto ($R_4$).
+la resistenza $R_5$ (dunque massa). Quindi, per costruzione, quando $p = 0$
+il trimmer del potenziometro è girato tutto verso il basso ($R_5$), mentre per
+$p = 1$ è rivolto verso l'alto ($R_4$).
 
-A cui si aggiunge un anello di feedback all'ingresso invertente dell'OpAmp
-il cui guadagno è dato dal rapporto di partizione
+A questo si aggiunge un anello di feedback ``positivo'' il cui guadagno è dato
+dal rapporto di partizione
 \begin{equation} \label{eq:loop-gain-beta}
 \beta(s) = \frac{Z_P}{Z_S + Z_P} = \frac{1}{Z_S/Z_P + 1}
 \end{equation}
@@ -101,7 +101,6 @@ il fattore di feedback
 \frac{R_2}{R_1} \frac{s \omega_2}{\omega_1 \omega_2 + s^2 +
 \left[\omega_{1} + \omega_{2} \left(1 + \frac{R_2}{R_{1}}\right)\right] s}
 \end{equation}
-
 Per la condizione di Barkhausen consideriamo solo valori puramente immaginari
 di $s = j\omega$, per cui troviamo
 \begin{equation}
@@ -109,38 +108,64 @@ di $s = j\omega$, per cui troviamo
 {\omega_1 \omega_2 - \omega^2 + j \omega
 \left[\omega_1 + \omega_2 \left(1 + \frac{R_2}{R_1}\right)\right]} > 0
 \end{equation}
-Ora, poiché $A$ è reale, la pulsazione in cui si annulla lo sfasamento si
-trova imponendo che anche $\beta(j\omega) \in \RR^+$; il che significa
-\begin{equation}\label{eq:loop-gain-freq}
+Ora, poiché $A$ è reale, la pulsazione in cui si annulla lo sfasamento del loop
+si trova imponendo che per una certa pulsazione $\omega_0$ si
+semplifichino le $j$ nel rapporto precedente, quindi anche
+$\beta(j \omega_0) \in \RR^+$.
+Si vede immediatamente che questo si verifica quando
+\begin{equation}\label{eq: omega0}
 \omega_1 \omega_2 - \omega_0^2 = 0 \implies \omega_0 =
 \sqrt{\omega_1 \omega_2}
 \end{equation}
+A questa frequenza il guadagno $\beta$ della rete di feedback vale
+\[
+\beta(j\omega_0) =
+\frac{R_2}{R_1} \frac{1}{1 + \frac{R_2}{R_1} + \frac{\omega_1}{\omega_2}}
+\]
+da cui otteniamo la nostra espressione attesa per il loop-gain
+\begin{equation}
+L(j \omega_0) = A \beta(j \omega_0) =
+A \frac{R_2}{R_1} \frac{1}{1 + \frac{R_2}{R_1} + \frac{\omega_1}{\omega_2}}
+\end{equation}
 
 Questo assume una forma ancora più semplice nel caso in cui supponiamo di avere
-(entro l'incertezza sperimentale) $R_1 = R_2 = R_0$ e $ C_1 = C_2 = C_0$,
-da cui segue $\omega_1 = \omega_2 = \omega_0$
-\[
-\beta(j\omega) = \frac{R_2}{R_1} \frac{1}{1 + \frac{R_2}{R_1} + \frac{\omega_1}{\omega_2}}
-\]
-Alle frequenze equivalenti $f_i = \omega_i/2\pi$ per $i = 0, 1, 2$ il loop-gain
-diventa
-\[
-\bar{L}(f_0) = A \frac{R_2}{R_1} \frac{1}{1 + \frac{R_{2}}{R_{1}} + \frac{f_1}{f_2}}
-\]
-cioè
-\begin{equation} \label{eq:loop-gain-approx}
-\bar{L}(\omega) = A \frac{j \omega/\omega_0}{\left(1 - \omega^2/\omega_0^2\right) + 3j \omega/\omega_0}
+(entro l'incertezza sperimentale) $R_1 = R_2 = R_0$ e $C_1 = C_2 = C_0$,
+da cui segue che anche $\omega_1 = \omega_2 = \omega_0$. In questo caso le
+impedenze diventano
+\begin{align*}
+Z_S &= R_0 \frac{s + \omega_0}{s} \\
+Z_P &= R_0 \frac{\omega_0}{s + \omega_0}
+\end{align*}
+che portano ad un fattore di feedback
+\begin{equation}
+\beta(s) = \frac{1}{1 + Z_S/Z_P} =
+\frac{1}{1 + (s + \omega_0^2)/s \omega_0} =
+\frac{s/\omega_0}{(s/\omega_0)^2 + 3s/\omega_0 + 1}
 \end{equation}
-e la pulsazione a sfasamento nullo è $ \bar{\omega} = \omega_0 $ e per tale frequenza si ha più semplicemente $L(\omega_0) = \vert{\bar{L}(\omega_0)}\vert =  A / 3 $.
+Come prima, per la condizione di Barkhausen ci restringiamo a studiare
+\[
+\beta(s = j \omega) = 
+\frac{j \omega/\omega_0}{1 - \omega^2/\omega_0^2 + 3j \omega/\omega_0} > 0
+\]
+per cui, alla frequenza di annullamento della fase $\omega_0$
+\begin{equation}\label{eq: loop-gain-approx}
+\beta(j \omega_0) = \frac{1}{3} \implies L(j \omega_0) = A/3
+\end{equation}
 
+Per ottenere un generatore di onde quadre è necessario che sia soddisfatta la
+condizione di Barkhausen, ovvero che il denominatore della funzione di
+trasferimento dell'oscillatore reazionato ad anello chiuso
+\[
+L(j \omega_0)\beta A = 1 \quad \text{per} s = \pm j \omega_0
+\]
+che nel nostro caso significa trovare quei parametri $p$ e $\omega_0$ per cui
+vale $A(p) = 3$ e $\beta(j\omega) = 1/3$.
 
 
 %TODO 
-\begin{equation}\label{eq: beta}
-\beta(\omega) = \frac{1}{2 + \frac{C_2}{C_1} +j\left(\omega R_1 C_2 -\frac{1}{\omega R_2C_1}\right)}.
-\end{equation}
-Per ottenere un generatore di onde quadre è necessario che sia soddisfatta la condizione di Barkhausen, ovvero trovare quei parametri per cui $\beta A = 1$. In questo caso la condizione si verifica per un particolare valore di  $p$ tale per cui $A(p) = 3$ e per $\beta(j\omega) = \frac13$.
-
+%\begin{equation}\label{eq: beta}
+%\beta(\omega) = \frac{1}{2 + \frac{C_2}{C_1} +j\left(\omega R_1 C_2 -\frac{1}{\omega %R_2C_1}\right)}.
+%\end{equation}
 
 %=======================
 \section{Misura del loop-gain $\beta A$}
@@ -150,12 +175,12 @@ Si vuole studiare la funzione di trasferimento del loop di feedback positivo
 $L(j\omega) = \beta(j\omega) A(j\omega)$ a partire dal rapporto
 $V_A/V_s = \beta \bar{A} = \bar{L}(j\omega)$, per cui si è
 inviato all'ingresso non-invertente dell'amplificatore un'onda sinusoidale
-di ampiezza fissata a $V_s = 99.9 \pm 0.8 \si{m\V}$
+di ampiezza fissata a $V_s = 99.9 \pm 0.8 \; \si{m\V}$
 
 Dunque abbiamo studiato il segnale in uscita dal circuito nel punto \verb+A+
 al variare della frequenza del segnale in ingresso $V_s (t)$ tramite lo
 strumento Network dell'AD2. Riportiamo in \cref{fig: loopbode} modulo e fase
-misurati per $T(\omega)$ con plot di Nyquist in dettaglio a destra.
+misurati per $\bar{L}(\omega)$ con plot di Nyquist in dettaglio a destra.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[scale=0.335]{Aloop100Hz}
@@ -165,27 +190,32 @@ misurati per $T(\omega)$ con plot di Nyquist in dettaglio a destra.
     $v\ped{in} = \SI{100}{m\V}$. \label{fig: loopbode}}
 \end{figure}
 
-Con l'aiuto dei cursori abbiamo misurato come guadagno a centro banda
-per il circuito amplificatore con resistenza $R_2^a = 5.1 \; \si{k\ohm}$
-$A_M = -1.10 \pm 0.05 \; \si{dB} = 0.881 \pm 0.005$.
-Dunque abbiamo ricavato una stima delle frequenze di taglio per i due
-amplificatori invertenti dal punto in cui il guadagno diminuisce di
-$-3.01 \; \si{dB}$ rispetto ad $A_M$ e infine una misura della frequenza a
-sfasamento nullo
+Si è misurata direttamente la frequenza propria dell'oscillatore posizionando
+i cursori nel punto in cui la fase si annulla, che corrisponde anche alla
+frequenza di centro banda, dove il guadagno della rete di sfasamento è massimo
 \begin{align*}
-f_L &= 804 \pm 2 \; \si{\Hz} \\
-f_H &= 2875 \pm 8 \; \si{\Hz} \\
-f_0 &= 1522 \pm 2 \; \si{\Hz}
+f_0 &= 1522 \pm 2 \; \si{\Hz} \\
+A_M &= \abs{\beta(j \omega_0) \bar{A}} =
+-1.10 \pm 0.05 \; \si{dB} = 0.881 \pm 0.005
 \end{align*}
 
-Il massimo ed il minimo guadagno al variare della posizione del trimmer
+Dunque abbiamo ricavato una stima delle frequenze di taglio dal punto in cui
+il guadagno diminuisce di $-3.01 \; \si{dB}$ rispetto ad $A_M$
 \begin{align*}
-V_s &= 199 \pm 2 \; \si{m\V} \\
-V\ped{min} &= 133.0 \pm 1.1 \; \si{m\V} \implies  A\ped{v, min} = \pm \\
-V\ped{max} &= 260 \pm 2 \; \si{m\V} \implies  A\ped{v, max} = \pm \\
+f_L &= 804 \pm 2 \; \si{\Hz} \\
+f_H &= 2875 \pm 8 \; \si{\Hz}
 \end{align*}
 
 \subsection{Dipendenza del loop-gain dalla resistenza del potenziometro}
+Riportiamo le misure di massimo e minimo guadagno $A_v = V\ped{out}/V_s$
+trovate al variare della posizione del trimmer:
+\begin{align*}
+V_s &= 199 \pm 2 \; \si{m\V} \\
+V\ped{min} &= 133.0 \pm 1.1 \; \si{m\V} \implies  A\ped{v, min} =
+0.668 \pm 0.009\\
+V\ped{max} &= 260 \pm 2 \; \si{m\V} \implies  A\ped{v, max} =
+1.306 \pm 0.016\\
+\end{align*}
 
 \subsubsection{Misure di guadagno al variare di $V_s$}
 Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
@@ -234,7 +264,7 @@ dal grafico di $v\ped{out} = A v\ped{in}$ al variare di $v\ped{in}$.
 Riportiamo quanto trovato per il primo circuito:
 \begin{figure}[htbp]
 \centering
-%\includegraphics[scale=0.7]{gain5k1}
+\includegraphics[scale=0.7]{gainfit}
 \caption{Fit lineare per l'andamento dell'ampiezza misurata in uscita rispetto
 all'ampiezza del segnale in ingresso. \label{fig: gainfit}}
 \end{figure}
@@ -254,53 +284,17 @@ A\ped{v, exp} = -\frac{R_2}{R_1} = - 5.13 \pm 0.12
 Questo è in ottimo accordo con quanto trovato sperimentalmente dalla nostra
 analisi.
 
-Mantenendo lo stesso segnale in ingresso al circuito del punto precedente
-(con ampiezza ben oltre la soglia $V_s \gg V\ped{thr}$) riportiamo il
-segnale visualizzato all'oscilloscopio in uscita dal discriminatore in
-\cref{fig: discr}.
+Per completezza riportiamo in un grafico anche le misure che non abbiamo
+considerato nel fit perché oltre la regione in cui l'op-amp ha comportamento
+lineare
 \begin{figure}[htbp]
-	\centering
-%	\includegraphics[scale=0.335]{discrzoom}
-	\caption{Acquisizione del segnale in uscita dal circuito comparatore con
-	un'onda quadra in ingresso $V_s = \SI{1}{V}$, $f = \SI{100}{\Hz}$
-	\label{fig: discr}}
+\centering
+\includegraphics[scale=0.7]{VoutVs}
+\caption{Andamento reale dell'ampiezza del segnale in uscita al variare
+dell'ampiezza del segnale in ingresso, anche oltre il regime lineare
+dell'amplificatore misurati per il circuito con $R_2^a = 5.1 \; \si{k\ohm}$
+\label{fig: gainsat}}
 \end{figure}
-
-Risulta già chiaro dal dettaglio a destra, in corrispondenza del fronte di
-discesa dell'onda quadra, come il segnale in uscita non abbia né livelli basso
-e alto simmetrici rispetto a $\SI{0}{V}$, né pendenza uguale (idealmente
-infinita) nel passaggio tra questi due, al contrario di quanto atteso dal
-nostro modello semplificato.
-
-Possiamo caratterizzare il segnale $V\ped{discr} (t)$ trovato come un impulso
-di tensione con livello basso $V_{OL}$ e livello alto $V_{OH}$ di durata
-$T_{OH}$ che si ripete periodicamente con la stessa frequenza dell'onda quadra
-in ingresso $V_s (t)$.
-Riportiamo le misure dirette effettuate con i cursori
-delle tensioni di saturazione del comparatore e una misura del tempo ``alto''
-dell'impulso definita in maniera compatibile con la funzione automatica di
-misura ``PosWidth'' (cioè come il tempo in cui la tensione si trova al di
-sopra della metà del valore positivo dell'impulso, che quindi tenderà a dare
-una sovrastima per la pendenza visibilmente non ideale dei fronti d'onda).
-\begin{align*}
-V_{OH} &= 4.38 \pm 0.03 \; \si{\V} \\
-V_{OL} &= -3.53 \pm 0.02 \; \si{\V} \\
-T_{OH} &= 382 \pm 5 \; \si{\micro\s}
-\end{align*}
-
-Osserviamo quindi che i valori di saturazione alta e bassa misurati non sono
-compatibili con quelli attesi, ma sono entrambi inferiori (in modulo). Questo
-può essere dovuto al fatto che in realtà il TL081 in regime di saturazione
-produce al massimo tensioni entro il suo (Maximum Output) \emph{Voltage swing}
-riportato come valore tipico nel datasheet $V\ped{OM, typ} = 13.5$,
-sensibilmente inferiore rispetto al valore di tensione di alimentazione tipico
-a cui è riferito $V\ped{CC, typ} = 15 \; \si{\V}$.
-
-Quindi, volendo ragionare per analogia ci aspettiamo un'escursione massima tra
-le tensioni di saturazione (date le nostre tensioni di alimentazione a
-$\pm \SI{5}{\V}$) $V_{OM} = 13.5 \cdot V_{CC} / V\ped{CC, typ} =
-13.5 /3 = 4.5 \; \si{\V}$, che risulta sicuramente più vicino a quanto
-abbiamo misurato.
 
 %=======================
 \section{Progettazione del circuito auto-oscillante}
