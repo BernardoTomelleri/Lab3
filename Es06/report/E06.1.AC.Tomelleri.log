@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  8 DEC 2021 20:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  9 DEC 2021 04:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1324,58 +1324,58 @@ File: ../figs//Aloop100Hz.png Graphic file (type png)
 Package pdftex.def Info: ../figs//Aloop100Hz.png  used on input line 186.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
 [3 <../figs//Aloop100Hz.png (PNG copy)>]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 220.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 220.
+Overfull \hbox (10.04659pt too wide) in paragraph at lines 225--244
+ [][] 
+ []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 220.
+(hyperref)                removing `math shift' on input line 247.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 247.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 247.
 
 <../figs//gainfit.pdf, id=118, 579.60541pt x 364.9635pt>
 File: ../figs//gainfit.pdf Graphic file (type pdf)
 <use ../figs//gainfit.pdf>
-Package pdftex.def Info: ../figs//gainfit.pdf  used on input line 267.
+Package pdftex.def Info: ../figs//gainfit.pdf  used on input line 294.
 (pdftex.def)             Requested size: 405.72101pt x 255.4727pt.
-[4]
-<../figs//VoutVs.pdf, id=125, 667.0521pt x 430.0065pt>
+<../figs//VoutVs.pdf, id=119, 667.0521pt x 430.0065pt>
 File: ../figs//VoutVs.pdf Graphic file (type pdf)
 <use ../figs//VoutVs.pdf>
-Package pdftex.def Info: ../figs//VoutVs.pdf  used on input line 292.
+Package pdftex.def Info: ../figs//VoutVs.pdf  used on input line 318.
 (pdftex.def)             Requested size: 466.93327pt x 301.00249pt.
 
 
 pdfTeX warning: pdflatex.exe (file ../figs//wienschm.pdf): PDF inclusion: found
  PDF version <1.7>, but at most version <1.5> allowed
-<../figs//wienschm.pdf, id=127, 160.56079pt x 226.47159pt>
+<../figs//wienschm.pdf, id=121, 160.56079pt x 226.47159pt>
 File: ../figs//wienschm.pdf Graphic file (type pdf)
 <use ../figs//wienschm.pdf>
-Package pdftex.def Info: ../figs//wienschm.pdf  used on input line 306.
+Package pdftex.def Info: ../figs//wienschm.pdf  used on input line 332.
 (pdftex.def)             Requested size: 192.67195pt x 271.76453pt.
-[5 <../figs//gainfit.pdf>] [6 <../figs//VoutVs.pdf> <../figs//wienschm.pdf>]
-[7]
+[4] [5 <../figs//gainfit.pdf>] [6 <../figs//VoutVs.pdf>] [7 <../figs//wienschm.
+pdf>]
 
-LaTeX Warning: Reference `sub: trglim' on page 1 undefined on input line 432.
+LaTeX Warning: Reference `sub: trglim' on page 1 undefined on input line 458.
 
 [8] [9] [10] (./E06.1.AC.Tomelleri.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `E06.1.AC.Tomelleri.out' has not changed.
 (rerunfilecheck)             Checksum: 7CF07DA0ADB479EF6E48862D7AF73900;4077.
  ) 
 Here is how much of TeX's memory you used:
- 55753 strings out of 479713
- 1367467 string characters out of 5876923
- 2179126 words of memory out of 10000000
- 72697 multiletter control sequences out of 15000+600000
+ 55756 strings out of 479713
+ 1367514 string characters out of 5876923
+ 2185125 words of memory out of 10000000
+ 72699 multiletter control sequences out of 15000+600000
  420912 words of font info for 75 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,14n,125p,764b,818s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1401,10 +1401,10 @@ s/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
 blic/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-su
 per/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt10
 00.pfb>
-Output written on E06.1.AC.Tomelleri.pdf (10 pages, 632064 bytes).
+Output written on E06.1.AC.Tomelleri.pdf (10 pages, 631219 bytes).
 PDF statistics:
- 344 PDF objects out of 1000 (max. 8388607)
- 271 compressed objects within 3 object streams
- 62 named destinations out of 1000 (max. 500000)
+ 345 PDF objects out of 1000 (max. 8388607)
+ 272 compressed objects within 3 object streams
+ 63 named destinations out of 1000 (max. 500000)
  166 words of extra memory for PDF output out of 10000 (max. 10000000)
 

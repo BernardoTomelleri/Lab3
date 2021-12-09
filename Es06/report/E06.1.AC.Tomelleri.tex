@@ -31,7 +31,7 @@ $R_2$	  & 9.91	& 0.08 	 & $C_2$ & 10.0		 & 0.4 \\
 $R_3$	  & 9.93	& 0.08	 & & & \\
 $R_4$	  & 9.93	& 0.08	 & & & \\
 $R_5$	  & 9.95	& 0.08	 & & & \\
-$R$		  & 9.49	& 0.08	 & & & \\
+$R$		  & 9.53	& 0.08	 & & & \\
 \bottomrule     
 \end{tabular}
 \caption{Valori di resistenza e capacità misurate per i componenti dei
@@ -198,8 +198,7 @@ f_0 &= 1522 \pm 2 \; \si{\Hz} \\
 A_M &= \abs{\beta(j \omega_0) \bar{A}} =
 -1.10 \pm 0.05 \; \si{dB} = 0.881 \pm 0.005
 \end{align*}
-
-Dunque abbiamo ricavato una stima delle frequenze di taglio dal punto in cui
+Inoltre abbiamo ricavato una stima delle frequenze di taglio dal punto in cui
 il guadagno diminuisce di $-3.01 \; \si{dB}$ rispetto ad $A_M$
 \begin{align*}
 f_L &= 804 \pm 2 \; \si{\Hz} \\
@@ -211,11 +210,39 @@ Riportiamo le misure di massimo e minimo guadagno $A_v = V\ped{out}/V_s$
 trovate al variare della posizione del trimmer:
 \begin{align*}
 V_s &= 199 \pm 2 \; \si{m\V} \\
-V\ped{min} &= 133.0 \pm 1.1 \; \si{m\V} \implies  A\ped{v, min} =
-0.668 \pm 0.009\\
-V\ped{max} &= 260 \pm 2 \; \si{m\V} \implies  A\ped{v, max} =
-1.306 \pm 0.016\\
+V\ped{min} &= 403 \pm 3 \; \si{m\V} \implies  A\ped{v, min} =
+2.02 \pm 0.03 \\
+V\ped{max} &= 790 \pm 6 \; \si{m\V} \implies  A\ped{v, max} =
+3.97 \pm 0.05\\
 \end{align*}
+questo ci rassicura del fatto che tra i due estremi esista un certo valore di
+$p$ per cui il guadagno vale $A(p) = 3$ come richiesto dalla condizione di
+auto-oscillazione.
+
+Abbiamo raccolto 
+\begin{table}[htbp]
+\centering
+\begin{tabular}{@{}llllllll@{}}
+\toprule
+$p$ [arb un.] & $Rp$ [kohm] & dR         & Vout [mV] & dVout      & Vout fs [mV] & Av         & dAv        \\
+\midrule
+6.29591E-05  & 0.0006     & 0.000200058 & 403        & 3.287890661 & 90            & 2.025125628 & 0.026214959 \\
+0.040083945  & 0.382      & 0.003652278 & 442        & 3.635578817 & 100           & 2.221105528 & 0.028845566 \\
+0.102518363  & 0.977      & 0.008067828 & 483        & 3.763716027 & 100           & 2.427135678 & 0.030866508 \\
+0.162644281  & 1.55       & 0.012560255 & 520        & 4.104063027 & 110           & 2.613065327 & 0.033391865 \\
+0.233997901  & 2.23       & 0.026800478 & 560        & 4.45421149  & 120           & 2.814070352 & 0.036067651 \\
+0.330535152  & 3.15       & 0.032172038 & 599        & 4.689441154 & 125           & 3.010050251 & 0.038346835 \\
+0.429171039  & 4.09       & 0.038348382 & 642        & 5.161146513 & 140           & 3.226130653 & 0.041520162 \\
+0.541448059  & 5.16       & 0.045869798 & 680        & 5.281413952 & 140           & 3.417085427 & 0.043402433 \\
+0.655823715  & 6.25       & 0.053851648 & 721        & 5.6343611   & 150           & 3.623115578 & 0.046125587 \\
+0.818467996  & 7.8        & 0.065526788 & 759        & 5.977905848 & 160           & 3.814070352 & 0.048700672 \\
+1            & 9.53       & 0.078819652 & 790        & 6.299669303 & 170           & 3.969849246 & 0.05093124  \\ \bottomrule
+\end{tabular}
+\caption{Misure di guadagno al variare della tensione in ingresso $V_s$
+all'anello di feedback. La forma d'onda in uscita non manifesta difetti
+dovuti al clipping dell'op-amp al di fuori del regime lineare.
+\label{tab: VoutRp}}
+\end{table}
 
 \subsubsection{Misure di guadagno al variare di $V_s$}
 Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
@@ -270,10 +297,9 @@ all'ampiezza del segnale in ingresso. \label{fig: gainfit}}
 \end{figure}
 Da cui troviamo i seguenti parametri per la retta di best-fit
 \begin{align*}
-\mathrm{intercetta} = -0.6 \pm 0.4 \; \si{m\V} \;\;\;\mathrm{pendenza} = 5.124 \pm 0.003 \;\;\;\mathrm{correlazione} 
-= -0.72 \;\;\; \chi^2 = 0.2 \;\;\; d.o.f. = 10 \\
-\text{coefficiente angolare/senza intercetta} = 5.120 \pm 0.002 \;\;\;
-\chi^2 = 0.2 \;\;\; d.o.f. = 11
+\text{intercetta} = 18.7 \pm 1.3 \; \si{m\V} \;\;\;
+\text{pendenza} = 2.544 \pm 0.004 \;\;\; \text{correlazione} = -0.90
+\;\;\; \chi^2 = 29 \;\;\; \text{d.o.f.} = 70
 \end{align*}
 
 Il valore atteso per il guadagno dal valore dei componenti in questa
