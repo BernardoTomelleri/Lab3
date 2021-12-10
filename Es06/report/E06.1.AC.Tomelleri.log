@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  9 DEC 2021 04:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  10 DEC 2021 19:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1324,47 +1324,66 @@ File: ../figs//Aloop100Hz.png Graphic file (type png)
 Package pdftex.def Info: ../figs//Aloop100Hz.png  used on input line 186.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
 [3 <../figs//Aloop100Hz.png (PNG copy)>]
-Overfull \hbox (10.04659pt too wide) in paragraph at lines 225--244
- [][] 
- []
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 252.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 247.
+(hyperref)                removing `subscript' on input line 252.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 247.
+(hyperref)                removing `math shift' on input line 252.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 247.
-
-<../figs//gainfit.pdf, id=118, 579.60541pt x 364.9635pt>
+<../figs//Aloop100mV.png, id=120, 1440.88312pt x 711.4078pt>
+File: ../figs//Aloop100mV.png Graphic file (type png)
+<use ../figs//Aloop100mV.png>
+Package pdftex.def Info: ../figs//Aloop100mV.png  used on input line 266.
+(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
+<../figs//Aloop1.7V.png, id=122, 1440.88312pt x 711.4078pt>
+File: ../figs//Aloop1.7V.png Graphic file (type png)
+<use ../figs//Aloop1.7V.png>
+Package pdftex.def Info: ../figs//Aloop1.7V.png  used on input line 278.
+(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
+<../figs//Aloop3V.png, id=124, 1440.88312pt x 711.4078pt>
+File: ../figs//Aloop3V.png Graphic file (type png)
+<use ../figs//Aloop3V.png>
+Package pdftex.def Info: ../figs//Aloop3V.png  used on input line 293.
+(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
+[4] [5 <../figs//Aloop100mV.png (PNG copy)> <../figs//Aloop1.7V.png (PNG copy)>
+]
+<../figs//Aloop4.5V.png, id=140, 1440.88312pt x 711.4078pt>
+File: ../figs//Aloop4.5V.png Graphic file (type png)
+<use ../figs//Aloop4.5V.png>
+Package pdftex.def Info: ../figs//Aloop4.5V.png  used on input line 304.
+(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
+<../figs//gainfit.pdf, id=141, 579.60541pt x 364.9635pt>
 File: ../figs//gainfit.pdf Graphic file (type pdf)
 <use ../figs//gainfit.pdf>
-Package pdftex.def Info: ../figs//gainfit.pdf  used on input line 294.
+Package pdftex.def Info: ../figs//gainfit.pdf  used on input line 314.
 (pdftex.def)             Requested size: 405.72101pt x 255.4727pt.
-<../figs//VoutVs.pdf, id=119, 667.0521pt x 430.0065pt>
+ [6 <../figs//Aloop3V.png (PNG copy)> <../figs//Aloop4.5V.png (PNG copy)>]
+<../figs//VoutVs.pdf, id=147, 667.0521pt x 430.0065pt>
 File: ../figs//VoutVs.pdf Graphic file (type pdf)
 <use ../figs//VoutVs.pdf>
-Package pdftex.def Info: ../figs//VoutVs.pdf  used on input line 318.
+Package pdftex.def Info: ../figs//VoutVs.pdf  used on input line 338.
 (pdftex.def)             Requested size: 466.93327pt x 301.00249pt.
 
 
 pdfTeX warning: pdflatex.exe (file ../figs//wienschm.pdf): PDF inclusion: found
  PDF version <1.7>, but at most version <1.5> allowed
-<../figs//wienschm.pdf, id=121, 160.56079pt x 226.47159pt>
+<../figs//wienschm.pdf, id=149, 160.56079pt x 226.47159pt>
 File: ../figs//wienschm.pdf Graphic file (type pdf)
 <use ../figs//wienschm.pdf>
-Package pdftex.def Info: ../figs//wienschm.pdf  used on input line 332.
+Package pdftex.def Info: ../figs//wienschm.pdf  used on input line 352.
 (pdftex.def)             Requested size: 192.67195pt x 271.76453pt.
-[4] [5 <../figs//gainfit.pdf>] [6 <../figs//VoutVs.pdf>] [7 <../figs//wienschm.
-pdf>]
+[7 <../figs//gainfit.pdf>] [8 <../figs//VoutVs.pdf> <../figs//wienschm.pdf>]
+[9]
 
-LaTeX Warning: Reference `sub: trglim' on page 1 undefined on input line 458.
+LaTeX Warning: Reference `sub: trglim' on page 1 undefined on input line 495.
 
-[8] [9] [10] (./E06.1.AC.Tomelleri.aux)
+[10] [11] [12] (./E06.1.AC.Tomelleri.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1372,10 +1391,10 @@ Package rerunfilecheck Info: File `E06.1.AC.Tomelleri.out' has not changed.
 (rerunfilecheck)             Checksum: 7CF07DA0ADB479EF6E48862D7AF73900;4077.
  ) 
 Here is how much of TeX's memory you used:
- 55756 strings out of 479713
- 1367514 string characters out of 5876923
- 2185125 words of memory out of 10000000
- 72699 multiletter control sequences out of 15000+600000
+ 55813 strings out of 479713
+ 1368691 string characters out of 5876923
+ 2179126 words of memory out of 10000000
+ 72747 multiletter control sequences out of 15000+600000
  420912 words of font info for 75 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,14n,125p,764b,818s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1401,10 +1420,10 @@ s/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
 blic/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-su
 per/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt10
 00.pfb>
-Output written on E06.1.AC.Tomelleri.pdf (10 pages, 631219 bytes).
+Output written on E06.1.AC.Tomelleri.pdf (12 pages, 1023744 bytes).
 PDF statistics:
- 345 PDF objects out of 1000 (max. 8388607)
- 272 compressed objects within 3 object streams
- 63 named destinations out of 1000 (max. 500000)
- 166 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 365 PDF objects out of 1000 (max. 8388607)
+ 286 compressed objects within 3 object streams
+ 68 named destinations out of 1000 (max. 500000)
+ 186 words of extra memory for PDF output out of 10000 (max. 10000000)
 

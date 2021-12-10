@@ -26,8 +26,8 @@ Resistenze $[\si{k\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
 $\sigma C$ \\
 \midrule
 \midrule
-$R_1$	  & 9.91	& 0.08	 & $C_1$ & 10.0		 & 0.4 \\
-$R_2$	  & 9.91	& 0.08 	 & $C_2$ & 10.0		 & 0.4 \\
+$R_1$	  & 9.95	& 0.08	 & $C_1$ & 10.4		 & 0.4 \\
+$R_2$	  & 9.92	& 0.08 	 & $C_2$ & 10.5		 & 0.4 \\
 $R_3$	  & 9.93	& 0.08	 & & & \\
 $R_4$	  & 9.93	& 0.08	 & & & \\
 $R_5$	  & 9.95	& 0.08	 & & & \\
@@ -152,9 +152,9 @@ per cui, alla frequenza di annullamento della fase $\omega_0$
 \beta(j \omega_0) = \frac{1}{3} \implies L(j \omega_0) = A/3
 \end{equation}
 
-Per ottenere un generatore di onde quadre è necessario che sia soddisfatta la
-condizione di Barkhausen, ovvero che il denominatore della funzione di
-trasferimento dell'oscillatore reazionato ad anello chiuso
+Per ottenere un generatore di onde sinusoidali è necessario che sia
+soddisfatta la condizione di Barkhausen, ovvero che il denominatore della
+funzione di trasferimento dell'oscillatore reazionato ad anello chiuso
 \[
 L(j \omega_0)\beta A = 1 \quad \text{per} s = \pm j \omega_0
 \]
@@ -206,7 +206,7 @@ f_H &= 2875 \pm 8 \; \si{\Hz}
 \end{align*}
 
 \subsection{Dipendenza del loop-gain dalla resistenza del potenziometro}
-Riportiamo le misure di massimo e minimo guadagno $A_v = V\ped{out}/V_s$
+Riportiamo le misure di massimo e minimo guadagno $A = V\ped{out}/V_s$
 trovate al variare della posizione del trimmer:
 \begin{align*}
 V_s &= 199 \pm 2 \; \si{m\V} \\
@@ -219,26 +219,28 @@ questo ci rassicura del fatto che tra i due estremi esista un certo valore di
 $p$ per cui il guadagno vale $A(p) = 3$ come richiesto dalla condizione di
 auto-oscillazione.
 
-Abbiamo raccolto 
+Abbiamo raccolto le nostre misure del guadagno al variare della posizione del
+contatto strisciante del potenziometro (o più semplicemente del valore di $p$)
+nella \cref{tab: VoutRp}.
 \begin{table}[htbp]
 \centering
-\begin{tabular}{ccccc}
+\begin{tabular}{ccccccc}
 \toprule
-$p$ [arb un.] & $Rp$ $[\si{\ohm}]$ & $\sigma(Rp)$ & $V\ped{out}$ [mV] &
-$\sigma(V\ped{out}$ \\
+$p$ [arb. un.] & $Rp$ $[\si{\ohm}]$ & $\sigma(Rp)$ & $V\ped{out}$ [mV] &
+$\sigma(V\ped{out})$ & $A = V\ped{out}/V_s$ & $\sigma(A)$ \\
 \midrule
 \midrule
-$6.3 \times 10^{-5}$  	& 0.6     & 0.2 	& 790        & 6		\\
-$0.04$   				& 382     & 4 		& 759        & 6 		\\
-$0.10$   				& 977     & 8 		& 721        & 6   		\\
-$0.16$   				& 1550    & 13 		& 680        & 5 		\\
-$0.23$   				& 2.23 k  & 0.03 k 	& 642        & 5 		\\
-$0.33$   				& 3.15 k  & 0.03 k	& 599        & 5		\\
-$0.43$   				& 4.09 k  & 0.04 k	& 560        & 4  		\\
-$0.54$   				& 5.16 k  & 0.05 k	& 520        & 4 		\\
-$0.66$   				& 6.25 k  & 0.05 k	& 483        & 4 		\\
-$0.82$   				& 7.80 k  & 0.06 k	& 442        & 4 		\\
-$1$             		& 9.53 k  & 0.08 k	& 403        & 4 		\\         
+$6.3 \times 10^{-5}$  	& 0.6     & 0.2 	& 403        & 4 & 2.02 & 0.03	\\
+$0.04$   				& 382     & 4 		& 442        & 4 & 2.22	& 0.03	\\
+$0.10$   				& 977     & 8 		& 483        & 4 & 2.43 & 0.03	\\
+$0.16$   				& 1550    & 13 		& 520        & 4 & 2.61 & 0.03	\\
+$0.23$   				& 2.23 k  & 0.03 k 	& 560        & 4 & 2.81 & 0.04	\\
+$0.33$   				& 3.15 k  & 0.03 k	& 599        & 5 & 3.01 & 0.04	\\
+$0.43$   				& 4.09 k  & 0.04 k	& 642        & 5 & 3.23 & 0.04	\\
+$0.54$   				& 5.16 k  & 0.05 k	& 680        & 5 & 3.42 & 0.04	\\
+$0.66$   				& 6.25 k  & 0.05 k	& 721        & 6 & 3.62 & 0.05	\\
+$0.82$   				& 7.80 k  & 0.06 k	& 759        & 6 & 3.81 & 0.05	\\
+$1$             		& 9.53 k  & 0.08 k	& 790        & 6 & 3.97 & 0.05	\\         
 \bottomrule
 \end{tabular}
 \caption{Misure di guadagno al variare della tensione in ingresso $V_s$
@@ -248,46 +250,61 @@ dovuti al clipping dell'op-amp al di fuori del regime lineare.
 \end{table}
 
 \subsubsection{Misure di guadagno al variare di $V_s$}
-Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $v\ped{in}$
+Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $V_s$
 e in uscita $v\ped{out}$ dall'amplificatore possiamo ricavare una misura del
 guadagno del circuito dal rapporto $A = \dfrac{v\ped{out}}{v\ped{in}}$.
-\begin{table}[htbp]
-\centering
-\begin{tabular}{cccc}
-\toprule
-$v\ped{in}(\si{m\V})$ (nom.) & $v\ped{in} \pm \sigma(v\ped{in})$ [mV] & $v\ped{out} \pm \sigma(v\ped{out})$ [V] & $A \pm \sigma(A)$ \\
-\midrule
-\midrule
-50 & $50.0 \pm 0.4$ & $256 \pm 2 \; \si{m}$ & $5.12 \pm 0.06$ \\
-100 & $100.0 \pm 0.8$ & $511 \pm 4 \; \si{m}$ & $5.11 \pm 0.06$ \\
-150 & $150.0 \pm 1.2$ & $767 \pm 6$ & $5.11 \pm 0.06$ \\
-200 & $200 \pm 1.6$ & $1022 \pm 8$ & $5.11 \pm 0.06$ \\
-250 & $250 \pm 2$ & $1278 \pm 11$ & $5.11 \pm 0.06$ \\
-300 & $300 \pm 2$ & $1534 \pm 12$ & $5.11 \pm 0.05$ \\
-350 & $349 \pm 3$ & $1790 \pm 14$ & $5.13 \pm 0.06$ \\
-400 & $399 \pm 3$ & $2046 \pm 16$ & $5.13 \pm 0.06$ \\
-450 & $449 \pm 4$ & $2302 \pm 18$ & $5.13 \pm 0.06$ \\
-500 & $499 \pm 4$ & $2.56 \pm 0.02$ & $5.13 \pm 0.06$ \\
-550 & $549 \pm 4$ & $2.82 \pm 0.02$ & $5.13 \pm 0.06$ \\
-600 & $599 \pm 5$ & $3.07 \pm 0.02$ & $5.13 \pm 0.06$ \\
-\\
-700 & $699 \pm 6$ & $3.55 \pm 0.03$ & $5.07 \pm 0.06$ \\
-800 & $799 \pm 6$ & $3.82 \pm 0.03$ & $4.78 \pm 0.05$ \\
-900 & $899 \pm 7$ & $3.86 \pm 0.03$ & $4.28 \pm 0.05$ \\
-1 V & $999 \pm 8$ & $3.86 \pm 0.03$ & $3.86 \pm 0.04$ \\
-1.2 V & $1199 \pm 9$ & $3.86 \pm 0.03$ & $3.22 \pm 0.04$ \\
-1.4 V & $1399 \pm 11$ & $3.88 \pm 0.03$ & $2.78 \pm 0.03$ \\
-1.6 V & $1599 \pm 12$ & $3.89 \pm 0.03$ & $2.43 \pm 0.03$ \\
-1.8 V & $1799 \pm 14$ & $3.90 \pm 0.03$ & $2.17 \pm 0.02$ \\
-2 V & $1999 \pm 15$ & $3.92 \pm 0.03$ & $1.96 \pm 0.02$ \\
-\bottomrule
-\end{tabular} 
-\caption{Misure di guadagno al variare della tensione in ingresso
-all'amplificatore con $R_2^a = 5.1 \; \si{k\ohm}$. Oltre i \SI{600}{m\V} di
-ampiezza del segnale in ingresso la forma d'onda in uscita inizia a
-manifestare difetti dovuti al clipping dell'op-amp al di fuori del regime
-lineare. \label{tab: gain}}
-\end{table}
+
+Riportiamo l'andamento qualitativo della forma d'onda in uscita al crescere
+dell'ampiezza del segnale in ingresso come visualizzato all'oscilloscopio:
+
+Per ampiezza $V_s = 99.9 \pm 0.8 \; \si{m\V}$ il segnale osservato in uscita
+nel dominio dei tempi risulta in buona approssimazione sinusoidale,
+riportiamo un fermo immagine dei due segnali studiati come visualizzati
+dall'oscilloscopio dell'AD2 in \cref{fig: aloop0.1}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.335]{Aloop100mV}
+	\caption{Acquisizione presa dall'oscilloscopio dell'andamento nel tempo dei
+	segnali $V_s (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: aloop0.1}}
+\end{figure}
+
+Per ampiezze maggiori dell'ingresso il segnale osservato in uscita cresce
+linearmente in ampiezza senza distorsioni apprezzabili, fino a circa
+$V_s = 1699 \pm 13 \; \si{m\V}$ per cui la forma d'onda $V\ped{out} (t)$
+inizia ad essere affetta da ``clipping'' nel suo semi-periodo negativo
+(\cref{fig: aloop1.7}) .
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.335]{Aloop1.7V}
+	\caption{Acquisizione presa dall'oscilloscopio dell'andamento nel tempo dei
+	segnali $V_s (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: aloop1.7}}
+\end{figure}
+
+Continuando ad aumentare l'ampiezza fino a $V_s = 3.01 \pm 0.02 \; \si{\V}$
+entrambi i picchi di $V\ped{out} (t)$ vengono tosati alle tensioni di
+saturazione positiva e negativa dell'OpAmp (\cref{fig: aloop3}); che quando
+abbiamo trattato il Trigger di Schmitt avevamo indicato con
+\begin{align*}
+V_{OH} &= 4.19 \pm 0.04 \; \si{\V} \\
+V_{OL} &= -3.62 \pm 0.03 \; \si{\V}
+\end{align*} 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.335]{Aloop3V}
+	\caption{Acquisizione presa dall'oscilloscopio dell'andamento nel tempo dei
+	segnali $V_s (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: aloop3}}
+\end{figure}
+
+Infine, quando l'ampiezza in ingresso supera $V_{OH}$ osserviamo l'onda quadra
+in uscita commutare livello due volte nello stesso periodo, proprio in
+corrispondenza del passaggio di $V_s (t)$ dalle tensioni di saturazione del
+TL081 (\cref{fig: aloop4.5}).
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.335]{Aloop4.5V}
+	\caption{Acquisizione presa dall'oscilloscopio dell'andamento nel tempo dei
+	segnali $V_s (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: aloop4.5}}
+\end{figure}
 
 Con un fit lineare possiamo stimare il guadagno dell'amplificatore a partire
 dal grafico di $v\ped{out} = A v\ped{in}$ al variare di $v\ped{in}$.
@@ -333,21 +350,38 @@ l'anello di feedback positivo, come si vede in \cref{fig: wienschm}
 \begin{figure}[htbp]
     \centering
 	\includegraphics[scale=1.2]{wienschm}
-    \caption{Schema circuitale del trigger di Schmitt costruito.
+    \caption{Schema circuitale dell'oscillatore a ponte di Wien studiato.
     \label{fig: wienschm}}
 \end{figure}
 
 %=======================
 \section{Frequenza generata e innesco dell'oscillazione}
-Il circuito in \cref{fig: astableschm} è costituito da un trigger di
-Schmitt con un filtro passa-basso RC collegato all'ingresso invertente dell'
-OpAmp.
-\begin{figure}[htbp]
-    \centering
-%	\includegraphics[scale=1.5]{astable}
-    \caption{Schema circuitale del multivibratore astabile costruito.
-    \label{fig: astableschm}}
-\end{figure}
+Per il valore minimo della resistenza del potenziometro per cui osserviamo
+un segnale oscillante in uscita dal circuito
+$Rp\ped{min} = 2.96 \pm 0.03 \; \si{k\ohm}$ abbiamo misurato la frequenza del
+segnale mediante tre sistemi diversi:
+fft
+\[
+f_0 = 1.52 \pm 0.02 \; \si{k\Hz}
+\]
+measurement
+\[
+f_0 = 1517 \pm 15 \; \si{\Hz}
+\]
+cursori
+\begin{align*}
+T_0 &= 660 \pm 8 \\
+f_0 &= 1516 \pm 18 \; \si{\Hz}
+\end{align*}
+
+che è compatibile con il valore atteso
+\begin{equation}
+f_0 =\frac{1}{2 \pi \sqrt{R_1 C_1 R_2 C_2}} = 1.53 \pm 0.06 \; \si{k\Hz}
+\end{equation}
+
+Rpdist a 2.17 kohm
+Rpint a 1.454 kohm
+
 
 \subsection{Misura della frequenza generata dall'oscillatore}
 Per spiegarne il funzionamento è fondamentale studiare il comportamento del
