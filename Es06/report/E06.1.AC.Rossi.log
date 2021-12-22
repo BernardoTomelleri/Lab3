@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  15 DEC 2021 21:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  16 DEC 2021 21:56
 entering extended mode
 **./E06.1.AC.Rossi.tex
 (E06.1.AC.Rossi.tex
@@ -1487,59 +1487,55 @@ Package pdftex.def Info: ../figs//3a_nyquist.png  used on input line 133.
 <../figs//arinzarunza.png, id=98, 1166.4378pt x 632.3625pt>
 File: ../figs//arinzarunza.png Graphic file (type png)
 <use ../figs//arinzarunza.png>
-Package pdftex.def Info: ../figs//arinzarunza.png  used on input line 163.
+Package pdftex.def Info: ../figs//arinzarunza.png  used on input line 164.
 (pdftex.def)             Requested size: 466.56686pt x 252.94052pt.
  [4 <../figs//3a_nyquist.png (PNG copy)>]
-<../figs//Draft2.png, id=106, 1154.51324pt x 550.4565pt>
+<../figs//Draft2.png, id=106, 444.4605pt x 550.4565pt>
 File: ../figs//Draft2.png Graphic file (type png)
 <use ../figs//Draft2.png>
-Package pdftex.def Info: ../figs//Draft2.png  used on input line 201.
-(pdftex.def)             Requested size: 577.25522pt x 275.22757pt.
-
-Overfull \hbox (93.55835pt too wide) in paragraph at lines 201--203
- [][] 
- []
+Package pdftex.def Info: ../figs//Draft2.png  used on input line 202.
+(pdftex.def)             Requested size: 222.2297pt x 275.22757pt.
 
 [5 <../figs//arinzarunza.png>]
 <../figs//4.60.png, id=114, 1152.7065pt x 553.46774pt>
 File: ../figs//4.60.png Graphic file (type png)
 <use ../figs//4.60.png>
-Package pdftex.def Info: ../figs//4.60.png  used on input line 209.
+Package pdftex.def Info: ../figs//4.60.png  used on input line 210.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
 <../figs//4.2360.png, id=115, 1152.7065pt x 553.46774pt>
 File: ../figs//4.2360.png Graphic file (type png)
 <use ../figs//4.2360.png>
-Package pdftex.def Info: ../figs//4.2360.png  used on input line 217.
+Package pdftex.def Info: ../figs//4.2360.png  used on input line 218.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
  [6 <../figs//Draft2.png> <../figs//4.60.png (PNG copy)>]
 <../figs//5.7.26.png, id=123, 1152.7065pt x 553.46774pt>
 File: ../figs//5.7.26.png Graphic file (type png)
 <use ../figs//5.7.26.png>
-Package pdftex.def Info: ../figs//5.7.26.png  used on input line 230.
+Package pdftex.def Info: ../figs//5.7.26.png  used on input line 231.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
 <../figs//5.7.63.png, id=124, 1152.7065pt x 553.46774pt>
 File: ../figs//5.7.63.png Graphic file (type png)
 <use ../figs//5.7.63.png>
-Package pdftex.def Info: ../figs//5.7.63.png  used on input line 236.
+Package pdftex.def Info: ../figs//5.7.63.png  used on input line 237.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
  [7 <../figs//4.2360.png (PNG copy)>]
 <../figs//senzadiodi.png, id=131, 1152.7065pt x 553.46774pt>
 File: ../figs//senzadiodi.png Graphic file (type png)
 <use ../figs//senzadiodi.png>
-Package pdftex.def Info: ../figs//senzadiodi.png  used on input line 245.
+Package pdftex.def Info: ../figs//senzadiodi.png  used on input line 246.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
  [8 <../figs//5.7.26.png (PNG copy)> <../figs//5.7.63.png (PNG copy)>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 252.
+(hyperref)                removing `math shift' on input line 253.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 252.
+(hyperref)                removing `subscript' on input line 253.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 252.
+(hyperref)                removing `math shift' on input line 253.
 
 [9 <../figs//senzadiodi.png (PNG copy)>] (E06.1.AC.Rossi.aux)
 
@@ -1576,7 +1572,7 @@ c/amsfonts/cm/cmr5.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type
 ts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/rossi/AppData/Local/Programs/MiK
 TeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rossi/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on E06.1.AC.Rossi.pdf (9 pages, 892131 bytes).
+Output written on E06.1.AC.Rossi.pdf (9 pages, 880153 bytes).
 PDF statistics:
  409 PDF objects out of 1000 (max. 8388607)
  42 named destinations out of 1000 (max. 500000)
