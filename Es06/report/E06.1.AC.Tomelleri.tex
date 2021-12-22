@@ -156,7 +156,7 @@ Per ottenere un generatore di onde sinusoidali è necessario che sia
 soddisfatta la condizione di Barkhausen, ovvero che il denominatore della
 funzione di trasferimento dell'oscillatore reazionato ad anello chiuso
 \[
-L(j \omega_0)\beta A = 1 \quad \text{per} s = \pm j \omega_0
+L(j \omega_0) = \beta A = 1 \quad \text{per} \quad s = \pm j \omega_0
 \]
 che nel nostro caso significa trovare quei parametri $p$ e $\omega_0$ per cui
 vale $A(p) = 3$ e $\beta(j\omega) = 1/3$.
@@ -245,7 +245,7 @@ $1$             		& 9.53 k  & 0.08 k	& 790        & 6 & 3.97 & 0.05	\\
 \end{tabular}
 \caption{Misure di guadagno al variare della tensione in ingresso $V_s$
 all'anello di feedback. La forma d'onda in uscita non manifesta difetti
-dovuti al clipping dell'op-amp al di fuori del regime lineare.
+dovuti al clipping dell'op-amp quando questo esce dal regime lineare.
 \label{tab: VoutRp}}
 \end{table}
 
@@ -257,8 +257,8 @@ guadagno del circuito dal rapporto $A = \dfrac{v\ped{out}}{v\ped{in}}$.
 Riportiamo l'andamento qualitativo della forma d'onda in uscita al crescere
 dell'ampiezza del segnale in ingresso come visualizzato all'oscilloscopio:
 
-Per ampiezza $V_s = 99.9 \pm 0.8 \; \si{m\V}$ il segnale osservato in uscita
-nel dominio dei tempi risulta in buona approssimazione sinusoidale,
+Per un'ampiezza di $V_s = 99.9 \pm 0.8 \; \si{m\V}$ il segnale osservato in
+uscita nel dominio dei tempi risulta in buona approssimazione sinusoidale,
 riportiamo un fermo immagine dei due segnali studiati come visualizzati
 dall'oscilloscopio dell'AD2 in \cref{fig: aloop0.1}
 \begin{figure}[htbp]
@@ -268,8 +268,8 @@ dall'oscilloscopio dell'AD2 in \cref{fig: aloop0.1}
 	segnali $V_s (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: aloop0.1}}
 \end{figure}
 
-Per ampiezze maggiori dell'ingresso il segnale osservato in uscita cresce
-linearmente in ampiezza senza distorsioni apprezzabili, fino a circa
+Per ampiezze maggiori dell'onda in ingresso il segnale osservato in uscita
+cresce linearmente in ampiezza senza distorsioni apprezzabili, fino a circa
 $V_s = 1699 \pm 13 \; \si{m\V}$ per cui la forma d'onda $V\ped{out} (t)$
 inizia ad essere affetta da ``clipping'' nel suo semi-periodo negativo
 (\cref{fig: aloop1.7}) .
@@ -322,6 +322,7 @@ Da cui troviamo i seguenti parametri per la retta di best-fit
 \;\;\; \chi^2 = 29 \;\;\; \text{d.o.f.} = 70
 \end{align*}
 
+%TODO valore atteso per il guadagno, misura di Rp o equivalenti
 Il valore atteso per il guadagno dal valore dei componenti in questa
 configurazione del circuito è pari a
 \[
@@ -356,37 +357,45 @@ l'anello di feedback positivo, come si vede in \cref{fig: wienschm}
 
 %=======================
 \section{Frequenza generata e innesco dell'oscillazione}
-
 \subsection{Misura della frequenza generata dall'oscillatore}
 Per il valore minimo della resistenza del potenziometro per cui osserviamo
-un segnale oscillante in uscita dal circuito
+un segnale oscillante in uscita dal circuito %TODO 2.96 convince poco
 $Rp\ped{min} = 2.96 \pm 0.03 \; \si{k\ohm}$ abbiamo misurato la frequenza del
-segnale mediante tre sistemi diversi:
-fft
+segnale con tre metodi diversi:
+Come prima stima della frequenza propria dell'oscillatore abbiamo preso la
+frequenza in cui si osserva l'unico picco presente nella FFT del segnale
+$v\ped{out} (t)$ determinata con l'uso dei cursori
 \[
 f_0 = 1.52 \pm 0.02 \; \si{k\Hz}
 \]
-measurement
+Tramite la funzione di misura automatica ``Measurements > frequency''
+dell'AD2
 \[
 f_0 = 1517 \pm 15 \; \si{\Hz}
 \]
-cursori
+Perfettamente compatibile con una misura diretta del periodo del segnale nel
+dominio dei tempi, fatta sempre utilizzando i cursori
 \begin{align*}
 T_0 &= 660 \pm 8 \\
 f_0 &= 1516 \pm 18 \; \si{\Hz}
 \end{align*}
 
-che è compatibile con il valore atteso
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.335]{Rpminosc}
+	\caption{Fermo immagine preso dall'oscilloscopio per illustrare i tre
+	metodi di misura sperimentati. Le tracce dei segnali corrispondono a
+	$v_+ (t)$ (CH1) e $v\ped{out} (t)$ (CH2). \label{fig: Rpdist}}
+\end{figure}
+
+Tutti e tre i metodi forniscono misure compatibili con il valore atteso
 \begin{equation}
 f_0 =\frac{1}{2 \pi \sqrt{R_1 C_1 R_2 C_2}} = 1.53 \pm 0.06 \; \si{k\Hz}
 \end{equation}
 
-Rpdist a 2.17 kohm
-Rpint a 1.454 kohm
-
 \subsection{Dipendenze dalla posizione del potenziometro}
 Ampiezza minima di $V\ped{out, min} = 877 \pm 6 \; \si{m\V}$, frequenza massima di
-$f\ped{max} = 1516.2 \; \si{\Hz}$ (compatibile con il valore misurato di $f_0$)
+$f\ped{max} = 1516.2 \pm \; \si{\Hz}$ (compatibile con il valore misurato di $f_0$)
 
 All'aumentare della resistenza $Rp$ l'ampiezza cresce fino ad un'ampiezza
 picco-picco massima di $V\ped{out, max} = 7.78 \pm 0.04 \; \si{\V}$
@@ -395,8 +404,10 @@ negativa $V_{OH} - V_{OL} = 7.81 \pm 0.05 \; \si{\V}$)
 la frequenza dell'onda diminuisce fino al valore minimo osservato di
 $f\ped{min} = 1423.4 \; \si{\Hz}$.
 
+
+%TODO commentare andamento dell'onda al variare della posizione del trimmer
 Osservando il segnale in uscita $V\ped{out} (t)$ ci si aspetta di trovare
-un'onda quadra di ampiezza picco-picco $\sim \SI{8}{\V}$, periodo
+un'onda sinusoidale di ampiezza picco-picco $\sim \SI{8}{\V}$, periodo
 $T = 2.15 \pm 0.03 \; \si{m\s}$ e duty-cycle $50 \%$. Effettivamente come
 tensioni di saturazione alta $V_{OH}$ e bassa $V_{OL}$ dell'onda si è misurato
 \begin{align*}
@@ -406,26 +417,51 @@ V_{OL} &= -3.47 \pm 0.03 \; \si{\V}  \implies V\ped{out}^{pp} = 7.65 \pm 0.05
 \end{cases}
 \end{align*}
 
-Mentre come $v_+ (t)$ ci aspettiamo un'onda della stessa forma di
-$V\ped{out} (t)$, ma ridotta in ampiezza di un fattore di partizione
-$q \approx 0.5$. Questo corrisponde all'andamento osservato di questi due
-segnali, che riportiamo in \cref{fig: v+vout}
+Ora come $v_+ (t) = V_A (t)$ ci aspettiamo un'onda della stessa forma di
+$v\ped{out} (t)$, ma ridotta in ampiezza dalla funzione di trasferimento $A(p)$
+Questo corrisponde all'andamento osservato dei due segnali, che riportiamo
+nelle seguenti figure al variare della frazione di resistenza del potenziometro
+$p$ 
+
+Qui per
+$Rp\ped{dist} = 2.17 \pm 0.03 \; \si{k\ohm} \implies p = 0.228 \pm 0.004$ 
+abbiamo come fattore di riscalamento $A \approx 0.308$. 
 \begin{figure}[htbp]
 	\centering
-%	\includegraphics[scale=0.4]{V+Vout}
+	\includegraphics[scale=0.335]{Rpdistosc800mV}
+	\includegraphics[scale=0.37]{Rpdistosc800mVfft}
 	\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
-	segnali $v_+ (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: v+vout}}
+	segnali $v_+ (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: Rpdist}}
 \end{figure}
 
 Osservando $v_- (t)$, infine, ci si aspetta di vedere un segnale ``a pinna di
 squalo'', caratteristico del processo di carica/scarica del condensatore e
 con la stessa ampiezza di $v_+ (t)$, data dalle tensioni di transizione per
-il comparatore/trigger di Schmitt, come riportato in \cref{fig: v-vout}.
+il comparatore/trigger di Schmitt, come riportato in \cref{fig: Rpint}.
+
+Qui per $Rp\ped{int} = 1454 \pm 12 \; \si{\ohm} \implies p = 0.153 \pm 0.002$ 
+abbiamo come fattore di riscalamento $A = 0.290$. 
 \begin{figure}[htbp]
 	\centering
-%	\includegraphics[scale=0.4]{V-Vout}
+	\includegraphics[scale=0.335]{Rpint1.2V}	
+	\includegraphics[scale=0.37]{Rpint1.2Vfft}
 	\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
-	segnali $v_- (t)$ (CH1) e $V\ped{out}$ (CH2). \label{fig: v-vout}}
+	segnali $v_+ (t)$ (CH1) e $V\ped{out}$ (CH2) e . \label{fig: Rpint}}
+\end{figure}
+
+Spostando il contatto strisciante fino al massimo valore del potenziometro
+la forma d'onda in uscita risulta affetto da clipping in entrambi i semiperiodi
+del segnale
+Quindi per
+$Rp\ped{max} = 9.53 \pm 0.08 \; \si{k\ohm} \implies p = 1.000^{+0}_{-0.012}$ 
+abbiamo come fattore di riscalamento $A \approx 0.495$. 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.335]{Rpmax1.5V}
+	\includegraphics[scale=0.37]{Rpmax1.5Vfft}
+	\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
+	segnali $v_+ (t)$ (CH1) e $V\ped{out} (t)$ (CH2) e relative trasformate di
+	Fourier. \label{fig: Rpmax}}
 \end{figure}
 
 \subsection{Innesco dell'auto-oscillazione}
