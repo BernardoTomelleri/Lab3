@@ -157,7 +157,8 @@ $551 \pm 5 $ &	$9.60 \pm 0.08 k$	& $201 \pm 2$ 	&	$ 749 \pm 6$&$3.72 \pm 0.05$\\
 \end{tabular}
 \caption{Misura del guadagno in funzione della posizione del potenziometro}
 \end{table}
-Chiaramente si vede subito che come ci si aspettava dall'equazione (1) di A in funzione delle varie resistenze, cambiando il valore del potenziometro il guadagno non cambia linearmente: per verificare quanto detto si è condotto un fit basato sui minimi quadrati con python sulla stessa equazione, sostituendo $R_{p1} = p R_{pot}$ e $R_{p2}=(1-p)R_{pot}$ e utilizzando $p \in [0,1]$ come variabile, e $R_{pot}$ come incognita.
+Chiaramente si vede subito che come ci si aspettava dall'equazione (1) di A in funzione delle varie resistenze, cambiando il valore del potenziometro il guadagno non cambia linearmente: per verificare quanto detto si è condotto un fit basato sui minimi quadrati e sulle incertezze efficaci con python sulla stessa equazione, sostituendo $R_{p1} = p R_{pot}$ e $R_{p2}=(1-p)R_{pot}$ e utilizzando $p \in [0,1]$ come variabile, e $R_{pot}$ come incognita.
+Mi aspetto inoltre che il grafico di best fit del guadagno sia più alto dei dati raccolti per valori di guadagno più alti; questo è dovuto dall'effetto dei diodi che per guadagni alti entrano in conduzione e diminuiscono il guadagno complessivo dell'anello.
 \begin{figure}[H]
     \centering
 	\includegraphics[scale=0.4]{arinzarunza}
@@ -166,7 +167,7 @@ Chiaramente si vede subito che come ci si aspettava dall'equazione (1) di A in f
 \end{figure}
 Di seguito i valori che si sono riscontrati:\\
 $R_{pot}=10.0 \pm 0.4 \si{k\ohm}$\\$chisq=23.1$\\$ndof=9$\\
-Da questo si deduce che il modello è compatibile con le misure entro la prima barra di errore.
+Da questo si deduce che il modello è compatibile, e lo è anche il valore ricavato della resistenza del potenziometro. 
 \subsection{Dipendenza dall'ampiezza dell'onda in ingresso}
 Come nella sezione precedente si è inviato al circuito un'onda di ampiezza variabile e frequenza fissata a $f_0$, misurando di volta in volta l'ampiezza dell'onda in entrata e uscita da Out calcolandone il guadagno. Durante le misure si è tenuta fissata anche la posizione del potenziometro a $R_{p1}=3.28 \pm 0.03 \si{k\ohm}$ e $R_{p2}=6.89 \pm 0.06\si{k\ohm}$
 \begin{table}[H]
