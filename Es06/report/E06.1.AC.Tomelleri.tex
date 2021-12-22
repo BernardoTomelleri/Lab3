@@ -356,6 +356,8 @@ l'anello di feedback positivo, come si vede in \cref{fig: wienschm}
 
 %=======================
 \section{Frequenza generata e innesco dell'oscillazione}
+
+\subsection{Misura della frequenza generata dall'oscillatore}
 Per il valore minimo della resistenza del potenziometro per cui osserviamo
 un segnale oscillante in uscita dal circuito
 $Rp\ped{min} = 2.96 \pm 0.03 \; \si{k\ohm}$ abbiamo misurato la frequenza del
@@ -382,40 +384,17 @@ f_0 =\frac{1}{2 \pi \sqrt{R_1 C_1 R_2 C_2}} = 1.53 \pm 0.06 \; \si{k\Hz}
 Rpdist a 2.17 kohm
 Rpint a 1.454 kohm
 
-
-\subsection{Misura della frequenza generata dall'oscillatore}
-Per spiegarne il funzionamento è fondamentale studiare il comportamento del
-condensatore collegato all'ingresso negativo dell'OpAmp $C_1$. Questo si
-carica fino a raggiungere la stessa d.d.p. al terminale positivo
-dell'operazionale, a questo punto il trigger cambia rapidamente stato da alto
-a basso e, di conseguenza, la tensione all'ingresso non-invertente si abbassa.
-Dunque il condensatore comincia a scaricarsi fino a che la d.d.p. ai suoi capi
-non raggiunge la stessa tensione ora presente all'ingresso non invertente
-dell'amplificatore operazionale.
-Il ciclo quindi si ripete generando un'onda quadra in uscita, il cui
-periodo di oscillazione è proporzionale al doppio del tempo caratteristico
-$\tau = R_3 C_1$ in cui il condensatore è in grado di caricarsi/scaricarsi.
-
-Più precisamente, una volta definite
-\begin{align*}
-q &= \frac{R_2}{R_1 + R_2} = 0.502 \pm 0.003 \\
-\tau &= R_3 C_1 = 95 \pm 4 \; \si{\micro\s}
-\end{align*}
-Abbiamo come valori attesi per i tempi caratteristici alto $t_H$ e basso
-$t_L$ ed il periodo $T$ dell'onda quadra generata dal multivibratore:
-\begin{align}
-t_H &= \tau \ln\left(\frac{1 - q\frac{V_{OL}}{V_{OH}}}{1-q}\right) =
-1.04 \pm 0.04 \; \si{m\s} \\
-t_L &= \tau \ln\left(\frac{1 - q\frac{V_{OH}}{V_{OL}}}{1-q}\right) =
-1.16 \pm 0.05 \; \si{m\s} \\
-\end{align}
-Conseguentemente il valore del periodo e duty-cycle atteso valgono:
-\begin{align}
-T &= t_H + t_L = 2.20 \pm 0.06 \; \si{m\s} \\
-\mathrm{dc} &= \frac{t_H}{T} = 47 \pm 2 \; \%
-\end{align}
-
 \subsection{Dipendenze dalla posizione del potenziometro}
+Ampiezza minima di $V\ped{out, min} = 877 \pm 6 \; \si{m\V}$, frequenza massima di
+$f\ped{max} = 1516.2 \; \si{\Hz}$ (compatibile con il valore misurato di $f_0$)
+
+All'aumentare della resistenza $Rp$ l'ampiezza cresce fino ad un'ampiezza
+picco-picco massima di $V\ped{out, max} = 7.78 \pm 0.04 \; \si{\V}$
+(compatibile con la differenza tra le tensioni di saturazione positiva e
+negativa $V_{OH} - V_{OL} = 7.81 \pm 0.05 \; \si{\V}$)
+la frequenza dell'onda diminuisce fino al valore minimo osservato di
+$f\ped{min} = 1423.4 \; \si{\Hz}$.
+
 Osservando il segnale in uscita $V\ped{out} (t)$ ci si aspetta di trovare
 un'onda quadra di ampiezza picco-picco $\sim \SI{8}{\V}$, periodo
 $T = 2.15 \pm 0.03 \; \si{m\s}$ e duty-cycle $50 \%$. Effettivamente come
@@ -685,7 +664,10 @@ $V\ped{out}$ rimane fisso alla tensione di saturazione alta, che
 corrisponde a quanto si è osservato dall'esperimento.
 
 \section{Misure di guadagno dell'oscillatore}
-
+\begin{align*}
+V_s &= 200 \pm 2 \; \si{m\V} \\
+V\ped{min} &= 608 \pm 5 \; \si{m\V} \implies  A_v = 3.04 \pm 0.04
+\end{align*}
 %=======================
 \section*{Conclusioni e commenti finali}
 Si è riusciti a costruire e studiare alcuni dei circuiti più semplici e noti
