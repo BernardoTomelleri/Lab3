@@ -158,8 +158,125 @@ Chiaramente essendo un amplificatore di differenza tra 2 segnali, nel caso in cu
 \end{figure}
 %=======================
 \section{Controllo integrale}
+Successivamente si è montato il circuito di controllo integrale, un semplice circuito integratore, utilizzando la resistenza data dal potenziometro e una capacità $C_1$, utilizzando lo schema in figura
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.7]{controlgenint}
+    \caption{schema circuitale del controllore ad azione integrale.
+    \label{fig: Draft1}}
+\end{figure}
+quindi abbiamo collegato l'uscita control al driver per la luce di controllo e l'uscita del circuito di generazione errore all'entrata del circuito di controllo integrale.
+Arrivati a questo punto è bastato spegnere il generatore di luce di disturbo e cambiare la posizione del potenziometro per permettere la led di controllo di accendersi.
+Si nota subito come la risposta del led di controllo sia fortemente influenzata dalla quantità di luce che arriva alla fotoresistenza; si consiglia infatti di spostare il circuito distante da eventuali sorgenti di disturbo casuali, come per esempio persone che camminano in prossimità della fotoresistenza. 
+Dopodiché si è provato a verificare la risposta del led di controllo ad un intervento esterno di riduzione della luce, abbiamo quindi posizionato delle buste di plastica semitrasparenti tra il diodo e la fotoresistenza: di conseguenza il led ha aumentato l'intensità luminosa.
+\subsection{Risposta ad un'onda quadra}
+Si è quindi passati alla verifica della risposta ad una luce di disturbo, in questo caso pilotata da un'onda quadra compresa tra 0 e 150 mV.
+Per cominciare si deve fissare il valore di riferimento set: per farlo è bastato scegliere un'intensità luminosa casuale, per esempio quella che meas viene a registrare quando uno dei 2 driver led è pilotato con una tensione di 1 Volt, e utilizzare il potenziometro R11 per far combaciare i valori in meas e set.
+A questo punto abbiamo inviato al led driver di disturbo un'onda quadra tra 0 e 150 mV con frequenza pari a 1 Hz.
+Osservando il valore di control e meas ci rendiamo conto di quello che fa effettivamente il circuito, ovvero cerca di mantenere il valore di meas costante nel tempo.
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.7]{control7.meas}
+    \caption{grafico degli andamenti di control (rispetto a massa) in blu e di meas (sempre rispetto a massa) in giallo
+    \label{fig: Draft1}}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.7]{control7}
+    \caption{grafico del segnale control in blu e dell'onda pilota del led di disturbo in giallo
+    \label{fig: Draft1}}
+\end{figure}
+Successivamente abbiamo misurato il canale error rispetto a massa per varie posizioni del potenziometro. In generale il segnale del canale error ha un andamento simile per ogni posizione, cambiano soltanto i tempi in cui il segnale torna ad essere 0.
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.7]{7}
+    \caption{Andamento del segnale error in blu, rispetto al segnale pilota del led di disturbo
+    \label{fig: Draft1}}
+\end{figure}
+Tramite cursori si è poi preso il tempo con cui il segnale oscilla e lo abbiamo paragonato al tempo caratteristico del circuito integratore definito come $\tau = R_9C_1$.
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+$Resistenza Eq.$ & $Tempo C. misurato$ & $Tempo C. Atteso$\\
+\midrule
+$103.4 \pm 0.8 $ k$\ohm$ & $20.7 \pm 0.3$ ms  	& $ 21.4 \pm 0.9$ ms	\\
+$92.8 \pm 0.8$ k$\ohm$ & $19.0 \pm 0.2$ ms 	& $ 19.2 \pm 0.8 $ ms	\\
+$67.7 \pm 0.6$ k$\ohm$ & $15.3 \pm 0.2$ ms 	& $ 14.0 \pm 0.6 $ ms\\
+$41.5 \pm 0.4$ k$\ohm$ & $10.2 \pm 0.1$ 	ms & $ 8.6 \pm 0.3 $ ms\\
+$25.5 \pm 0.3$ k$\ohm$ & $7.78 \pm 0.05$ 	ms & $ 5.3 \pm 0.2 $ ms\\
+$7.34 \pm0.06$ k$\ohm$ & $3.24 \pm 0.05$ 	ms & $ 1.52 \pm 0.06$ ms\\
+
+\bottomrule
+\end{tabular}
+\caption{Misura dei tempi caratteristici delle oscillazioni del segnale di errore}
+\end{table}
+Nonostante le prime  2 o 3 misure risultino compatibili tra di loro, le altre si distaccano anche di molto dall'andamento previsto; si è notato inoltre come il tempo caratteristico misurato dipendesse anche dal valore di Set, parametro che non era presente nell'equazione di riferimento.
+\subsection{Risposta ad una rampa}
+Riportando il valore della resistenza equivalente al potenziometro a $100 k\ohm$ si è pilotato il driver led di disturbo con un'onda triangolare tra 0 e 150 mV a 10 Hz e nelle condizioni in cui il duty cycle fosse $10 \percent$ e $90 \percent$
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.7]{8}
+    \caption{grafico degli andamenti di error (rispetto a massa) in blu e del segnale in ingresso al led di disturbo (sempre rispetto a massa) in giallo pilotato con l'onda triangolare sopracitata con duty cycle $10 \percent$
+    \label{fig: Draft1}}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.7]{8.1}
+    \caption{grafico degli andamenti di error (rispetto a massa) in blu e del segnale in ingresso al led di disturbo (sempre rispetto a massa) in giallo pilotato con l'onda triangolare sopracitata con duty cycle $90 \percent$
+    \label{fig: Draft1}}
+\end{figure}
+In questo caso il circuito di amplificazione dell'errore si comporta quasi come un derivatore: in fin dei conti è quello che ci si aspetta, dato che il controllo deve integrare il segnale di errore, per poter bilanciare il cambiamento di luce, c'è bisogno che anche l'uscita del controllo sia un'onda triangolare simmetrica a quella con cui pilotiamo il led di disturbo. Inoltre dato che il circuito integratore agisce in un tempo non trascurabile di fronte a dei cambiamenti,il segnale di errore non potrà mai essere nullo, infatti se lo fosse il controllore non produrrebbe alcun cambiamento, cosa che può sussistere solo nel caso in cui si abbia una luce di disturbo costante nel tempo.
+\subsection{Risposta in frequenza}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.7]{103.4k}
+    \caption{scan di network della funzione di trasferimento tra il generatore di disturbo e error con $R_9= 103.4 \pm 0.8 k\ohm$
+    \label{fig: Draft1}}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.7]{76.1k}
+    \caption{scan di network della funzione di trasferimento tra il generatore di disturbo e error con $R_9=76.1 \pm 0.6 k\ohm$
+    \label{fig: Draft1}}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.7]{43.9k}
+    \caption{scan di network della funzione di trasferimento tra il generatore di disturbo e error con $R_9= 43.9 \pm 0.4 k\ohm$
+    \label{fig: Draft1}}
+\end{figure}
 %=======================
 \section{Controllo proporzionale}
+Infine si è montato il circuito di controllo proporzionale al posto di quello integrale, scambiando il condensatore $C_1$ con una resistenza da$100 k\ohm$, secondo lo schema in figura.
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.7]{controlgenprop}
+    \caption{schema circuitale del controllore ad azione proporzionale.
+    \label{fig: Draft1}}
+\end{figure}
+\subsection{Risposta ad un'onda quadra}
+Come precedentemente fatto, dopo aver variato il potenziometro $R_9$ fino alla resistenza equivalente da $100 k\ohm$, abbiamo pilotato il driver led di disturbo con un'onda quadra tra 0 e 150 mV di 1Hz. Abbiamo quindi verificato la nuova situazione controllando i segnali prodotti da error, control e meas.
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.7]{proportional}
+    \caption{grafico dei segnali error in blu e dell'onda pilota di disturbo in giallo.
+    \label{fig: Draft1}}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.7]{proportional.meas}
+    \caption{grafico dei segnali error in blu e di meas rispetto a set in giallo.
+    \label{fig: Draft1}}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.7]{proportional.control}
+    \caption{grafico dei segnali control in blu e dell'onda pilota di disturbo in giallo.
+    \label{fig: Draft1}}
+\end{figure}
+Come ci si aspettava il controllo proporzionale non mantiene meas invariato, dato che il circuito completo non è altro che una cascata di amplificatori, di cui il primo differenziale di guadagno $\approx 10$, e il secondo invertente di guadagno pari a $\frac{R_{10}}{R_9}$
 %=======================
 \section*{Conclusioni e commenti finali}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  22 DEC 2021 19:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  23 DEC 2021 19:39
 entering extended mode
 **./E07.1.AC.tex
 (E07.1.AC.tex
@@ -1287,6 +1287,84 @@ LaTeX Warning: Label `fig: Draft1' multiply defined.
 
 LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
 
+
+LaTeX Warning: Label `fig: Draft1' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1' multiply defined.
+
+
+LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+
 )
 \openout1 = `E07.1.AC.aux'.
 
@@ -1416,7 +1494,7 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<../figs//noisegen.png, id=26, 308.352pt x 167.4255pt>
+<../figs//noisegen.png, id=42, 308.352pt x 167.4255pt>
 File: ../figs//noisegen.png Graphic file (type png)
 <use ../figs//noisegen.png>
 Package pdftex.def Info: ../figs//noisegen.png  used on input line 84.
@@ -1425,12 +1503,12 @@ Package pdftex.def Info: ../figs//noisegen.png  used on input line 84.
 [1
 
 {C:/Users/rossi/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-<../figs//errorgen.png, id=49, 236.082pt x 108.405pt>
+<../figs//errorgen.png, id=65, 236.082pt x 108.405pt>
 File: ../figs//errorgen.png Graphic file (type png)
 <use ../figs//errorgen.png>
 Package pdftex.def Info: ../figs//errorgen.png  used on input line 119.
 (pdftex.def)             Requested size: 165.25626pt x 75.88297pt.
-<../figs//error.set.png, id=50, 1152.7065pt x 553.46774pt>
+<../figs//error.set.png, id=66, 1152.7065pt x 553.46774pt>
 File: ../figs//error.set.png Graphic file (type png)
 <use ../figs//error.set.png>
 Package pdftex.def Info: ../figs//error.set.png  used on input line 127.
@@ -1440,7 +1518,7 @@ Overfull \hbox (323.19218pt too wide) in paragraph at lines 127--129
  [][] 
  []
 
-<../figs//error.meas.png, id=51, 1152.7065pt x 553.46774pt>
+<../figs//error.meas.png, id=67, 1152.7065pt x 553.46774pt>
 File: ../figs//error.meas.png Graphic file (type png)
 <use ../figs//error.meas.png>
 Package pdftex.def Info: ../figs//error.meas.png  used on input line 133.
@@ -1452,12 +1530,12 @@ Overfull \hbox (323.19218pt too wide) in paragraph at lines 133--135
 
 [2 <../figs//noisegen.png> <../figs//errorgen.png>] [3 <../figs//error.set.png 
 (PNG copy)>]
-<../figs//setgen.png, id=68, 89.73524pt x 80.09924pt>
+<../figs//setgen.png, id=84, 89.73524pt x 80.09924pt>
 File: ../figs//setgen.png Graphic file (type png)
 <use ../figs//setgen.png>
 Package pdftex.def Info: ../figs//setgen.png  used on input line 148.
 (pdftex.def)             Requested size: 62.81422pt x 56.06906pt.
-<../figs//meas.same.set.png, id=69, 1152.7065pt x 553.46774pt>
+<../figs//meas.same.set.png, id=85, 1152.7065pt x 553.46774pt>
 File: ../figs//meas.same.set.png Graphic file (type png)
 <use ../figs//meas.same.set.png>
 Package pdftex.def Info: ../figs//meas.same.set.png  used on input line 155.
@@ -1467,22 +1545,153 @@ Overfull \hbox (323.19218pt too wide) in paragraph at lines 155--157
  [][] 
  []
 
-[4 <../figs//error.meas.png (PNG copy)> <../figs//setgen.png>] [5 <../figs//mea
-s.same.set.png (PNG copy)>] (E07.1.AC.aux)
+[4 <../figs//error.meas.png (PNG copy)> <../figs//setgen.png>]
+<../figs//controlgenint.png, id=93, 309.40594pt x 154.32657pt>
+File: ../figs//controlgenint.png Graphic file (type png)
+<use ../figs//controlgenint.png>
+Package pdftex.def Info: ../figs//controlgenint.png  used on input line 164.
+(pdftex.def)             Requested size: 216.58267pt x 108.02785pt.
+ [5 <../figs//meas.same.set.png (PNG copy)> <../figs//controlgenint.png>]
+<../figs//control7.meas.png, id=100, 1152.7065pt x 553.46774pt>
+File: ../figs//control7.meas.png Graphic file (type png)
+<use ../figs//control7.meas.png>
+Package pdftex.def Info: ../figs//control7.meas.png  used on input line 179.
+(pdftex.def)             Requested size: 806.88905pt x 387.42477pt.
+
+Overfull \hbox (323.19218pt too wide) in paragraph at lines 179--181
+ [][] 
+ []
+
+<../figs//control7.png, id=101, 1152.7065pt x 553.46774pt>
+File: ../figs//control7.png Graphic file (type png)
+<use ../figs//control7.png>
+Package pdftex.def Info: ../figs//control7.png  used on input line 185.
+(pdftex.def)             Requested size: 806.88905pt x 387.42477pt.
+
+Overfull \hbox (323.19218pt too wide) in paragraph at lines 185--187
+ [][] 
+ []
+
+[6 <../figs//control7.meas.png (PNG copy)>]
+<../figs//7.png, id=107, 1019.007pt x 328.22626pt>
+File: ../figs//7.png Graphic file (type png)
+<use ../figs//7.png>
+Package pdftex.def Info: ../figs//7.png  used on input line 192.
+(pdftex.def)             Requested size: 713.30005pt x 229.7568pt.
+
+Overfull \hbox (229.60318pt too wide) in paragraph at lines 192--194
+ [][] 
+ []
+
+[7 <../figs//control7.png (PNG copy)> <../figs//7.png (PNG copy)>]
+<../figs//8.png, id=115, 1152.7065pt x 553.46774pt>
+File: ../figs//8.png Graphic file (type png)
+<use ../figs//8.png>
+Package pdftex.def Info: ../figs//8.png  used on input line 219.
+(pdftex.def)             Requested size: 806.88905pt x 387.42477pt.
+
+Overfull \hbox (323.19218pt too wide) in paragraph at lines 219--221
+ [][] 
+ []
+
+<../figs//8.1.png, id=116, 1152.7065pt x 553.46774pt>
+File: ../figs//8.1.png Graphic file (type png)
+<use ../figs//8.1.png>
+Package pdftex.def Info: ../figs//8.1.png  used on input line 226.
+(pdftex.def)             Requested size: 806.88905pt x 387.42477pt.
+
+Overfull \hbox (323.19218pt too wide) in paragraph at lines 226--228
+ [][] 
+ []
+
+[8 <../figs//8.png (PNG copy)>]
+<../figs//103.4k.png, id=123, 1152.7065pt x 553.46774pt>
+File: ../figs//103.4k.png Graphic file (type png)
+<use ../figs//103.4k.png>
+Package pdftex.def Info: ../figs//103.4k.png  used on input line 234.
+(pdftex.def)             Requested size: 806.88905pt x 387.42477pt.
+
+Overfull \hbox (323.19218pt too wide) in paragraph at lines 234--236
+ [][] 
+ []
+
+<../figs//76.1k.png, id=124, 1152.7065pt x 553.46774pt>
+File: ../figs//76.1k.png Graphic file (type png)
+<use ../figs//76.1k.png>
+Package pdftex.def Info: ../figs//76.1k.png  used on input line 240.
+(pdftex.def)             Requested size: 806.88905pt x 387.42477pt.
+
+Overfull \hbox (323.19218pt too wide) in paragraph at lines 240--242
+ [][] 
+ []
+
+[9 <../figs//8.1.png (PNG copy)>]
+<../figs//43.9k.png, id=130, 1152.7065pt x 553.46774pt>
+File: ../figs//43.9k.png Graphic file (type png)
+<use ../figs//43.9k.png>
+Package pdftex.def Info: ../figs//43.9k.png  used on input line 246.
+(pdftex.def)             Requested size: 806.88905pt x 387.42477pt.
+
+Overfull \hbox (323.19218pt too wide) in paragraph at lines 246--248
+ [][] 
+ []
+
+[10 <../figs//103.4k.png (PNG copy)>] [11 <../figs//76.1k.png (PNG copy)>]
+<../figs//controlgenprop.png, id=141, 247.52475pt x 123.46124pt>
+File: ../figs//controlgenprop.png Graphic file (type png)
+<use ../figs//controlgenprop.png>
+Package pdftex.def Info: ../figs//controlgenprop.png  used on input line 255.
+(pdftex.def)             Requested size: 173.26613pt x 86.42226pt.
+<../figs//proportional.png, id=142, 1152.7065pt x 553.46774pt>
+File: ../figs//proportional.png Graphic file (type png)
+<use ../figs//proportional.png>
+Package pdftex.def Info: ../figs//proportional.png  used on input line 263.
+(pdftex.def)             Requested size: 806.88905pt x 387.42477pt.
+
+Overfull \hbox (323.19218pt too wide) in paragraph at lines 263--265
+ [][] 
+ []
+
+<../figs//proportional.meas.png, id=143, 1152.7065pt x 553.46774pt>
+File: ../figs//proportional.meas.png Graphic file (type png)
+<use ../figs//proportional.meas.png>
+Package pdftex.def Info: ../figs//proportional.meas.png  used on input line 269
+.
+(pdftex.def)             Requested size: 806.88905pt x 387.42477pt.
+
+Overfull \hbox (323.19218pt too wide) in paragraph at lines 269--271
+ [][] 
+ []
+
+[12 <../figs//43.9k.png (PNG copy)> <../figs//controlgenprop.png>]
+<../figs//proportional.control.png, id=151, 1152.7065pt x 553.46774pt>
+File: ../figs//proportional.control.png Graphic file (type png)
+<use ../figs//proportional.control.png>
+Package pdftex.def Info: ../figs//proportional.control.png  used on input line 
+275.
+(pdftex.def)             Requested size: 806.88905pt x 387.42477pt.
+
+Overfull \hbox (323.19218pt too wide) in paragraph at lines 275--277
+ [][] 
+ []
+
+[13 <../figs//proportional.png (PNG copy)>] [14 <../figs//proportional.meas.png
+ (PNG copy)>] [15 <../figs//proportional.control.png (PNG copy)>] (E07.1.AC.aux
+)
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `E07.1.AC.out' has not changed.
-(rerunfilecheck)             Checksum: 299F7F3219534D915289DAF663F07E4C;821.
+(rerunfilecheck)             Checksum: 3B64441CC3FA5DAE5B06B5E7FFF5A76C;1552.
  ) 
 Here is how much of TeX's memory you used:
- 56002 strings out of 478927
- 1387244 string characters out of 2852534
+ 56186 strings out of 478927
+ 1391092 string characters out of 2852534
  2191522 words of memory out of 3000000
- 73092 multiletter control sequences out of 15000+600000
+ 73237 multiletter control sequences out of 15000+600000
  416044 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 122i,12n,125p,757b,789s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,12n,125p,757b,793s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\rossi\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti
 1000.pk> <C:\Users\rossi\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ectt1000.pk> <C:\Users\rossi\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -1499,9 +1708,9 @@ rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C
 .pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmr7.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb>
-Output written on E07.1.AC.pdf (5 pages, 485391 bytes).
+Output written on E07.1.AC.pdf (15 pages, 1454335 bytes).
 PDF statistics:
- 310 PDF objects out of 1000 (max. 8388607)
- 24 named destinations out of 1000 (max. 500000)
- 83 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 422 PDF objects out of 1000 (max. 8388607)
+ 52 named destinations out of 1000 (max. 500000)
+ 180 words of extra memory for PDF output out of 10000 (max. 10000000)
 
