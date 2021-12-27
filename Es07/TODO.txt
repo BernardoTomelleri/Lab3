@@ -1,5 +1,9 @@
 MISURE DA RIPORTARE PER ENTRAMBI I CIRCUITI:
-[]
+[]misure di bernardo
 
 COSE DA RIVEDERE PRIMA DELLA CONSEGNA
-[]
+[]ampliare e rileggere se ho scritto qualche stronzata
+[]7. Dare una spiegazione sul perché i tempi caratteristici siano differenti da quelli aspettati.
+[]8.Rileggere se quello che ho scritto ha senso o se esiste qualche altra motivazione
+[]9.Eventuale fit funzione di trasferimento e modello; teoria sulla funzione di trasferimento
+[]10.Dare una spiegazione sul perché error sia diverso da zero, e su come cambia la risposta variando  R9
