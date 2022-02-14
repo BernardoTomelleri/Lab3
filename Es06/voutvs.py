@@ -9,7 +9,7 @@ from phylab import (np, plt, grid, tick, mesrange, propfit, errcor, prnpar, chit
 import phylab as lab
 
 ''' Variables that control the script '''
-tix = True  # manually choose spacing between axis ticks
+tix = False  # manually choose spacing between axis ticks
 tex = True  # LaTeX typesetting maths and descriptions
 
 # Modello lineare
@@ -56,4 +56,11 @@ ax.errorbar(vin, vout, dvout, dvin, **lab.rc.MEASURE_MARKER)
 ax.plot(x, model(x, *pars), label='Measured linear gain', zorder=5)
 ax.axhline(3.90, c='r', alpha=0.5, label='Amplifier output saturation $= 3.90\pm 0.02$ V')
 ax.axhline(3.90 + 2e-2, c='r', ls='--', alpha=0.3); ax.axhline(3.90 - 2e-2, c='r', ls='--', alpha=0.3)
+legend = ax.legend(loc='best')
+
+# Gain as function of Vs
+vout /= vin; dvout /= vin**2
+fig, ax = plt.subplots()
+grid(ax, xlab=r'Input amplitude $V_s$ [V]', ylab=r'Gain $V_{\rm out}/V_s$ [arb. un.]')
+ax.errorbar(vin, vout, dvout, dvin, **lab.rc.MEASURE_MARKER)
 legend = ax.legend(loc='best')

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  22 DEC 2021 18:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  9 FEB 2022 13:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1167,14 +1167,7 @@ LaTeX Font Info:    Trying to load font information for T1+txtt on input line 6
 
 (c:/texlive/2021/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
-)) (../../latex/math.tex) (./E06.1.AC.Tomelleri.aux
-
-LaTeX Warning: Label `fig: Rpdist' multiply defined.
-
-
-LaTeX Warning: Label `fig: Rpdist@cref' multiply defined.
-
-)
+)) (../../latex/math.tex) (./E06.1.AC.Tomelleri.aux)
 \openout1 = `E06.1.AC.Tomelleri.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
@@ -1196,7 +1189,8 @@ LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 Package hyperref Info: Link coloring ON on input line 14.
- (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
 (c:/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1294,184 +1288,211 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
-3.
+(./E06.1.AC.Tomelleri.toc)
+\tf@toc=\write5
+\openout5 = `E06.1.AC.Tomelleri.toc'.
 
-(c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
+2.
+ (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
+) [1
+
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 pdfTeX warning: pdflatex.exe (file ../figs//aloopschm.pdf): PDF inclusion: foun
 d PDF version <1.7>, but at most version <1.5> allowed
-<../figs//aloopschm.pdf, id=72, 159.70724pt x 226.47159pt>
+<../figs//aloopschm.pdf, id=121, 159.70724pt x 226.47159pt>
 File: ../figs//aloopschm.pdf Graphic file (type pdf)
 <use ../figs//aloopschm.pdf>
-Package pdftex.def Info: ../figs//aloopschm.pdf  used on input line 64.
+Package pdftex.def Info: ../figs//aloopschm.pdf  used on input line 63.
 (pdftex.def)             Requested size: 191.6477pt x 271.76453pt.
-[1
-
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <../figs//al
-oopschm.pdf>]
+[2 <../figs//aloopschm.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 171.
+(hyperref)                removing `math shift' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\beta' on input line 171.
+(hyperref)                removing `\beta' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 171.
+(hyperref)                removing `math shift' on input line 165.
 
-<../figs//Aloop100Hz.png, id=109, 1440.88312pt x 711.4078pt>
+<../figs//Aloop100Hz.png, id=137, 1440.88312pt x 711.4078pt>
 File: ../figs//Aloop100Hz.png Graphic file (type png)
 <use ../figs//Aloop100Hz.png>
-Package pdftex.def Info: ../figs//Aloop100Hz.png  used on input line 186.
+Package pdftex.def Info: ../figs//Aloop100Hz.png  used on input line 180.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-[3 <../figs//Aloop100Hz.png (PNG copy)>]
+[3]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 252.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 252.
+(hyperref)                removing `math shift' on input line 246.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 252.
+(hyperref)                removing `subscript' on input line 246.
 
-<../figs//Aloop100mV.png, id=120, 1440.88312pt x 711.4078pt>
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 246.
+
+[4 <../figs//Aloop100Hz.png (PNG copy)>]
+<../figs//Aloop100mV.png, id=159, 1440.88312pt x 711.4078pt>
 File: ../figs//Aloop100mV.png Graphic file (type png)
 <use ../figs//Aloop100mV.png>
-Package pdftex.def Info: ../figs//Aloop100mV.png  used on input line 266.
+Package pdftex.def Info: ../figs//Aloop100mV.png  used on input line 260.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-<../figs//Aloop1.7V.png, id=122, 1440.88312pt x 711.4078pt>
+<../figs//Aloop1.7V.png, id=161, 1440.88312pt x 711.4078pt>
 File: ../figs//Aloop1.7V.png Graphic file (type png)
 <use ../figs//Aloop1.7V.png>
-Package pdftex.def Info: ../figs//Aloop1.7V.png  used on input line 278.
+Package pdftex.def Info: ../figs//Aloop1.7V.png  used on input line 272.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-<../figs//Aloop3V.png, id=124, 1440.88312pt x 711.4078pt>
+ [5 <../figs//Aloop100mV.png (PNG copy)> <../figs//Aloop1.7V.png (PNG copy)>]
+<../figs//Aloop3V.png, id=169, 1440.88312pt x 711.4078pt>
 File: ../figs//Aloop3V.png Graphic file (type png)
 <use ../figs//Aloop3V.png>
-Package pdftex.def Info: ../figs//Aloop3V.png  used on input line 293.
+Package pdftex.def Info: ../figs//Aloop3V.png  used on input line 287.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-[4] [5 <../figs//Aloop100mV.png (PNG copy)> <../figs//Aloop1.7V.png (PNG copy)>
-]
-<../figs//Aloop4.5V.png, id=140, 1440.88312pt x 711.4078pt>
+<../figs//Aloop4.5V.png, id=171, 1440.88312pt x 711.4078pt>
 File: ../figs//Aloop4.5V.png Graphic file (type png)
 <use ../figs//Aloop4.5V.png>
-Package pdftex.def Info: ../figs//Aloop4.5V.png  used on input line 304.
+Package pdftex.def Info: ../figs//Aloop4.5V.png  used on input line 298.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-<../figs//gainfit.pdf, id=141, 579.60541pt x 364.9635pt>
+<../figs//gainfit.pdf, id=172, 579.60541pt x 364.9635pt>
 File: ../figs//gainfit.pdf Graphic file (type pdf)
 <use ../figs//gainfit.pdf>
-Package pdftex.def Info: ../figs//gainfit.pdf  used on input line 314.
+Package pdftex.def Info: ../figs//gainfit.pdf  used on input line 308.
 (pdftex.def)             Requested size: 405.72101pt x 255.4727pt.
  [6 <../figs//Aloop3V.png (PNG copy)> <../figs//Aloop4.5V.png (PNG copy)>]
-<../figs//VoutVs.pdf, id=147, 667.0521pt x 430.0065pt>
+<../figs//VoutVs.pdf, id=181, 667.0521pt x 430.0065pt>
 File: ../figs//VoutVs.pdf Graphic file (type pdf)
 <use ../figs//VoutVs.pdf>
-Package pdftex.def Info: ../figs//VoutVs.pdf  used on input line 339.
+Package pdftex.def Info: ../figs//VoutVs.pdf  used on input line 334.
 (pdftex.def)             Requested size: 466.93327pt x 301.00249pt.
 
 
 pdfTeX warning: pdflatex.exe (file ../figs//wienschm.pdf): PDF inclusion: found
  PDF version <1.7>, but at most version <1.5> allowed
-<../figs//wienschm.pdf, id=149, 160.56079pt x 226.47159pt>
+<../figs//wienschm.pdf, id=183, 160.56079pt x 226.47159pt>
 File: ../figs//wienschm.pdf Graphic file (type pdf)
 <use ../figs//wienschm.pdf>
-Package pdftex.def Info: ../figs//wienschm.pdf  used on input line 353.
+Package pdftex.def Info: ../figs//wienschm.pdf  used on input line 347.
 (pdftex.def)             Requested size: 192.67195pt x 271.76453pt.
-<../figs//Rpminosc.png, id=150, 1440.88312pt x 711.4078pt>
+<../figs//Rpminosc.png, id=184, 1440.88312pt x 711.4078pt>
 File: ../figs//Rpminosc.png Graphic file (type png)
 <use ../figs//Rpminosc.png>
-Package pdftex.def Info: ../figs//Rpminosc.png  used on input line 385.
+Package pdftex.def Info: ../figs//Rpminosc.png  used on input line 379.
 (pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
 [7 <../figs//gainfit.pdf>] [8 <../figs//VoutVs.pdf> <../figs//wienschm.pdf>]
-<../figs//Rpdistosc800mV.png, id=220, 1440.88312pt x 711.4078pt>
+<../figs//Rpdistosc800mV.png, id=255, 1440.88312pt x 711.4078pt>
 File: ../figs//Rpdistosc800mV.png Graphic file (type png)
 <use ../figs//Rpdistosc800mV.png>
-Package pdftex.def Info: ../figs//Rpdistosc800mV.png  used on input line 431.
-(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-<../figs//Rpdistosc800mVfft.png, id=221, 1301.61281pt x 342.5297pt>
+Package pdftex.def Info: ../figs//Rpdistosc800mV.png  used on input line 447.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+<../figs//Rpdistosc800mVfft.png, id=256, 1301.61281pt x 342.5297pt>
 File: ../figs//Rpdistosc800mVfft.png Graphic file (type png)
 <use ../figs//Rpdistosc800mVfft.png>
-Package pdftex.def Info: ../figs//Rpdistosc800mVfft.png  used on input line 432
+Package pdftex.def Info: ../figs//Rpdistosc800mVfft.png  used on input line 448
 .
-(pdftex.def)             Requested size: 481.5892pt x 126.734pt.
-<../figs//Rpint1.2V.png, id=223, 1440.88312pt x 711.4078pt>
+(pdftex.def)             Requested size: 483.69687pt x 127.28801pt.
+<../figs//Rpint1.2V.png, id=258, 1440.88312pt x 711.4078pt>
 File: ../figs//Rpint1.2V.png Graphic file (type png)
 <use ../figs//Rpint1.2V.png>
-Package pdftex.def Info: ../figs//Rpint1.2V.png  used on input line 446.
-(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-<../figs//Rpint1.2Vfft.png, id=224, 1301.61281pt x 436.63126pt>
+Package pdftex.def Info: ../figs//Rpint1.2V.png  used on input line 464.
+(pdftex.def)             Requested size: 483.69371pt x 211.2638pt.
+<../figs//Rpint1.2Vfft.png, id=259, 1301.61281pt x 436.63126pt>
 File: ../figs//Rpint1.2Vfft.png Graphic file (type png)
 <use ../figs//Rpint1.2Vfft.png>
-Package pdftex.def Info: ../figs//Rpint1.2Vfft.png  used on input line 447.
-(pdftex.def)             Requested size: 481.5892pt x 161.55103pt.
-<../figs//Rpmax1.5V.png, id=225, 1440.88312pt x 711.4078pt>
-File: ../figs//Rpmax1.5V.png Graphic file (type png)
-<use ../figs//Rpmax1.5V.png>
-Package pdftex.def Info: ../figs//Rpmax1.5V.png  used on input line 460.
-(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
-<../figs//Rpmax1.5Vfft.png, id=226, 1301.61281pt x 436.63126pt>
-File: ../figs//Rpmax1.5Vfft.png Graphic file (type png)
-<use ../figs//Rpmax1.5Vfft.png>
-Package pdftex.def Info: ../figs//Rpmax1.5Vfft.png  used on input line 461.
-(pdftex.def)             Requested size: 481.5892pt x 161.55103pt.
+Package pdftex.def Info: ../figs//Rpint1.2Vfft.png  used on input line 465.
+(pdftex.def)             Requested size: 483.69687pt x 162.25725pt.
 
 [9 <../figs//Rpminosc.png (PNG copy)>] [10 <../figs//Rpdistosc800mV.png (PNG co
-py)> <../figs//Rpdistosc800mVfft.png (PNG copy)>] [11 <../figs//Rpint1.2V.png (
-PNG copy)> <../figs//Rpint1.2Vfft.png (PNG copy)>] [12 <../figs//Rpmax1.5V.png 
-(PNG copy)> <../figs//Rpmax1.5Vfft.png (PNG copy)>]
-
-LaTeX Warning: Reference `sub: trglim' on page 1 undefined on input line 510.
-
-[13] [14] [15] (./E06.1.AC.Tomelleri.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
+py)> <../figs//Rpdistosc800mVfft.png (PNG copy)>]
+<../figs//Rpmax1.5V.png, id=272, 1440.88312pt x 711.4078pt>
+File: ../figs//Rpmax1.5V.png Graphic file (type png)
+<use ../figs//Rpmax1.5V.png>
+Package pdftex.def Info: ../figs//Rpmax1.5V.png  used on input line 481.
+(pdftex.def)             Requested size: 483.69371pt x 211.2638pt.
+<../figs//Rpmax1.5Vfft.png, id=273, 1301.61281pt x 436.63126pt>
+File: ../figs//Rpmax1.5Vfft.png Graphic file (type png)
+<use ../figs//Rpmax1.5Vfft.png>
+Package pdftex.def Info: ../figs//Rpmax1.5Vfft.png  used on input line 482.
+(pdftex.def)             Requested size: 483.69687pt x 162.25725pt.
+<../figs//Rpminstop.png, id=275, 1440.88312pt x 711.4078pt>
+File: ../figs//Rpminstop.png Graphic file (type png)
+<use ../figs//Rpminstop.png>
+Package pdftex.def Info: ../figs//Rpminstop.png  used on input line 494.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+ [11 <../figs//Rpint1.2V.png (PNG copy)> <../figs//Rpint1.2Vfft.png (PNG copy)>
+] [12 <../figs//Rpmax1.5V.png (PNG copy)> <../figs//Rpmax1.5Vfft.png (PNG copy)
+> <../figs//Rpminstop.png (PNG copy)>]
+<../figs//propR9.png, id=288, 1440.88312pt x 711.4078pt>
+File: ../figs//propR9.png Graphic file (type png)
+<use ../figs//propR9.png>
+Package pdftex.def Info: ../figs//propR9.png  used on input line 536.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+<../figs//start2.2V.png, id=291, 1440.88312pt x 711.4078pt>
+File: ../figs//start2.2V.png Graphic file (type png)
+<use ../figs//start2.2V.png>
+Package pdftex.def Info: ../figs//start2.2V.png  used on input line 557.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+<../figs//start3.96V.png, id=292, 1440.88312pt x 711.4078pt>
+File: ../figs//start3.96V.png Graphic file (type png)
+<use ../figs//start3.96V.png>
+Package pdftex.def Info: ../figs//start3.96V.png  used on input line 567.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+ [13 <../figs//propR9.png (PNG copy)>] [14 <../figs//start2.2V.png (PNG copy)> 
+<../figs//start3.96V.png (PNG copy)>]
+<../figs//startnod.png, id=311, 1440.88312pt x 711.4078pt>
+File: ../figs//startnod.png Graphic file (type png)
+<use ../figs//startnod.png>
+Package pdftex.def Info: ../figs//startnod.png  used on input line 618.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+<../figs//AloopNOD.png, id=312, 1440.88312pt x 711.4078pt>
+File: ../figs//AloopNOD.png Graphic file (type png)
+<use ../figs//AloopNOD.png>
+Package pdftex.def Info: ../figs//AloopNOD.png  used on input line 637.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+ [15 <../figs//startnod.png (PNG copy)>] [16 <../figs//AloopNOD.png (PNG copy)>
+] (./E06.1.AC.Tomelleri.aux)
 Package rerunfilecheck Info: File `E06.1.AC.Tomelleri.out' has not changed.
-(rerunfilecheck)             Checksum: 7CF07DA0ADB479EF6E48862D7AF73900;4077.
+(rerunfilecheck)             Checksum: CB00EC9F641C53F4578D3595D1B973DB;3958.
  ) 
 Here is how much of TeX's memory you used:
- 55897 strings out of 479713
- 1370753 string characters out of 5876923
+ 55969 strings out of 479713
+ 1372316 string characters out of 5876923
  2179126 words of memory out of 10000000
- 72826 multiletter control sequences out of 15000+600000
- 420912 words of font info for 75 fonts, out of 8000000 for 9000
+ 72895 multiletter control sequences out of 15000+600000
+ 419899 words of font info for 72 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,14n,125p,764b,818s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/tex
-live/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2021/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
-.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/t
-exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/s
-ymbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1
-000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c
-:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/
-2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf
--dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/font
-s/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
-blic/cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-su
-per/sftt1000.pfb>
-Output written on E06.1.AC.Tomelleri.pdf (15 pages, 1521144 bytes).
+ 122i,11n,125p,764b,924s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
+pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/tex
+live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/a
+msfonts/symbols/msam10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfo
+nts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/
+sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.p
+fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/tex
+live/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/
+texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist
+/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/typ
+e1/public/cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
+cm-super/sftt1000.pfb>
+Output written on E06.1.AC.Tomelleri.pdf (16 pages, 2096964 bytes).
 PDF statistics:
- 376 PDF objects out of 1000 (max. 8388607)
- 289 compressed objects within 3 object streams
+ 426 PDF objects out of 1000 (max. 8388607)
+ 330 compressed objects within 4 object streams
  68 named destinations out of 1000 (max. 500000)
- 221 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 251 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -12,12 +12,11 @@
 \author{Gruppo 1.AC \\ Bernardo Tomelleri}
 \title{Es06A: Oscillatore sinusoidale a ponte di Wien con OpAmp}
 \begin{document}
-\date{\today}
+\date{9 gennaio 2022}
 \maketitle
 
-\setcounter{section}{0}
-
-\section*{Misura componenti dei circuiti}
+\tableofcontents
+\section{Misura componenti dei circuiti}
 \begin{table}[htbp]
 \centering
 \begin{tabular}{cccccc}
@@ -48,7 +47,7 @@ V_{EE} &= -4.99 \pm 0.03 \si{\V}
 Per tutto il resto della trattazione come ampiezze dei segnali si intendono
 misurate non ``picco - picco'', a meno che non venga esplicitato altrimenti.
 
-\subsection*{Nota sul metodo di fit}
+\subsection{Nota sul metodo di fit}
 Per determinare i parametri ottimali e le rispettive covarianze si \`e
 implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
 mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
@@ -87,7 +86,8 @@ dal rapporto di partizione
 \begin{equation} \label{eq:loop-gain-beta}
 \beta(s) = \frac{Z_P}{Z_S + Z_P} = \frac{1}{Z_S/Z_P + 1}
 \end{equation}
-tra un'impedenza serie RC $Z_S$ e un'impedenza ``parallelo'' $Z_P$, ovverosia
+tra un'impedenza RC ``serie'' $Z_S$ e un'impedenza ``parallelo'' $Z_P$,
+ovverosia
 \begin{align*}
 Z_S &= R_1 + \frac{1}{s C_1} = R_1 \frac{s + \omega_1}{s} \\
 Z_P &= \frac{R_2}{1 + s R_2 C_2} = R_2 \frac{\omega_2}{s + \omega_2}
@@ -161,12 +161,6 @@ L(j \omega_0) = \beta A = 1 \quad \text{per} \quad s = \pm j \omega_0
 che nel nostro caso significa trovare quei parametri $p$ e $\omega_0$ per cui
 vale $A(p) = 3$ e $\beta(j\omega) = 1/3$.
 
-
-%TODO 
-%\begin{equation}\label{eq: beta}
-%\beta(\omega) = \frac{1}{2 + \frac{C_2}{C_1} +j\left(\omega R_1 C_2 -\frac{1}{\omega %R_2C_1}\right)}.
-%\end{equation}
-
 %=======================
 \section{Misura del loop-gain $\beta A$}
 
@@ -230,17 +224,17 @@ $p$ [arb. un.] & $Rp$ $[\si{\ohm}]$ & $\sigma(Rp)$ & $V\ped{out}$ [mV] &
 $\sigma(V\ped{out})$ & $A = V\ped{out}/V_s$ & $\sigma(A)$ \\
 \midrule
 \midrule
-$6.3 \times 10^{-5}$  	& 0.6     & 0.2 	& 403        & 4 & 2.02 & 0.03	\\
-$0.04$   				& 382     & 4 		& 442        & 4 & 2.22	& 0.03	\\
-$0.10$   				& 977     & 8 		& 483        & 4 & 2.43 & 0.03	\\
-$0.16$   				& 1550    & 13 		& 520        & 4 & 2.61 & 0.03	\\
-$0.23$   				& 2.23 k  & 0.03 k 	& 560        & 4 & 2.81 & 0.04	\\
-$0.33$   				& 3.15 k  & 0.03 k	& 599        & 5 & 3.01 & 0.04	\\
-$0.43$   				& 4.09 k  & 0.04 k	& 642        & 5 & 3.23 & 0.04	\\
-$0.54$   				& 5.16 k  & 0.05 k	& 680        & 5 & 3.42 & 0.04	\\
-$0.66$   				& 6.25 k  & 0.05 k	& 721        & 6 & 3.62 & 0.05	\\
-$0.82$   				& 7.80 k  & 0.06 k	& 759        & 6 & 3.81 & 0.05	\\
-$1$             		& 9.53 k  & 0.08 k	& 790        & 6 & 3.97 & 0.05	\\         
+6.3 $\times 10^{-5}$      & 0.6    & 0.2 		& 790    & 6    & 3.97 & 0.05 \\
+0.04         & 382		  & 4  	   & 759        & 6      & 3.81 & 0.05 \\
+0.10         & 977		  & 8	   & 721        & 6      & 3.62 & 0.05 \\
+0.16         & 1550       & 13     & 680        & 5      & 3.42 & 0.04 \\
+0.23         & 2.23 k	  & 0.03 k & 642        & 5      & 3.23 & 0.04 \\
+0.33         & 3.15 k	  & 0.03 k & 599        & 5      & 3.01 & 0.04 \\
+0.43         & 4.09 k	  & 0.04 k & 560        & 4      & 2.81 & 0.04 \\
+0.54         & 5.16 k	  & 0.05 k & 520        & 4      & 2.61 & 0.03 \\
+0.66         & 6.25 k     & 0.05 k & 483        & 4      & 2.43 & 0.03 \\
+0.82         & 7.80 k     & 0.07 k & 442        & 4      & 2.22 & 0.03 \\
+1            & 9.53 k     & 0.08 k & 403        & 3      & 2.03 & 0.03 \\  
 \bottomrule
 \end{tabular}
 \caption{Misure di guadagno al variare della tensione in ingresso $V_s$
@@ -249,7 +243,7 @@ dovuti al clipping dell'op-amp quando questo esce dal regime lineare.
 \label{tab: VoutRp}}
 \end{table}
 
-\subsubsection{Misure di guadagno al variare di $V_s$}
+\subsubsection{Misure di guadagno al variare di $V_s$}\label{sbs: Vout/Vs}
 Misurando con l'oscilloscopio l'ampiezza dei segnali in ingresso $V_s$
 e in uscita $v\ped{out}$ dall'amplificatore possiamo ricavare una misura del
 guadagno del circuito dal rapporto $A = \dfrac{v\ped{out}}{v\ped{in}}$.
@@ -322,25 +316,25 @@ Da cui troviamo i seguenti parametri per la retta di best-fit
 \;\;\; \chi^2 = 29 \;\;\; \text{d.o.f.} = 70
 \end{align*}
 
-%TODO valore atteso per il guadagno, misura di Rp o equivalenti
-Il valore atteso per il guadagno dal valore dei componenti in questa
-configurazione del circuito è pari a
+Il valore atteso per il guadagno calcolato a partire dal valore dei componenti
+in questa configurazione del circuito
+($Rp = 5.43 \pm 0.05 \; \si{k\ohm} \implies p = 0.570 \pm 0.007$)
+è data dalla \cref{eq: A}
 \[
-A\ped{v, exp} = -\frac{R_2}{R_1} = - 5.13 \pm 0.12
+A\ped{exp} = \frac{R + R_3 + R_4 + R_5}{Rp + R_5} = 2.55 \pm 0.03
 \]
 Questo è in ottimo accordo con quanto trovato sperimentalmente dalla nostra
 analisi.
 
-Per completezza riportiamo in un grafico anche le misure che non abbiamo
-considerato nel fit perché oltre la regione in cui l'op-amp ha comportamento
-lineare
+Per completezza riportiamo in \cref{fig: gainsat} anche le misure che non
+abbiamo considerato nel fit perché oltre la regione in cui l'op-amp ha
+comportamento lineare
 \begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.7]{VoutVs}
 \caption{Andamento reale dell'ampiezza del segnale in uscita al variare
 dell'ampiezza del segnale in ingresso, anche oltre il regime lineare
-dell'amplificatore misurati per il circuito con $R_2^a = 5.1 \; \si{k\ohm}$
-\label{fig: gainsat}}
+dell'amplificatore. \label{fig: gainsat}}
 \end{figure}
 
 %=======================
@@ -358,9 +352,9 @@ l'anello di feedback positivo, come si vede in \cref{fig: wienschm}
 %=======================
 \section{Frequenza generata e innesco dell'oscillazione}
 \subsection{Misura della frequenza generata dall'oscillatore}
-Per il valore minimo della resistenza del potenziometro per cui osserviamo
-un segnale oscillante in uscita dal circuito %TODO 2.96 convince poco
-$Rp\ped{min} = 2.96 \pm 0.03 \; \si{k\ohm}$ abbiamo misurato la frequenza del
+Per il valore massimo della resistenza del potenziometro per cui osserviamo
+un segnale oscillante in uscita dal circuito
+$Rp\ped{max} = 2.96 \pm 0.03 \; \si{k\ohm}$ abbiamo misurato la frequenza del
 segnale con tre metodi diversi:
 Come prima stima della frequenza propria dell'oscillatore abbiamo preso la
 frequenza in cui si osserva l'unico picco presente nella FFT del segnale
@@ -385,336 +379,320 @@ f_0 &= 1516 \pm 18 \; \si{\Hz}
 	\includegraphics[scale=0.335]{Rpminosc}
 	\caption{Fermo immagine preso dall'oscilloscopio per illustrare i tre
 	metodi di misura sperimentati. Le tracce dei segnali corrispondono a
-	$v_+ (t)$ (CH1) e $v\ped{out} (t)$ (CH2). \label{fig: Rpdist}}
+	$v_+ (t)$ (CH1) e $v\ped{out} (t)$ (CH2). Dalle trasformate di Fourier dei
+	segnali non si riescono ad apprezzare armoniche superiori alla fondamentale
+	 \label{fig: Rpmin}}
 \end{figure}
 
 Tutti e tre i metodi forniscono misure compatibili con il valore atteso
-\begin{equation}
-f_0 =\frac{1}{2 \pi \sqrt{R_1 C_1 R_2 C_2}} = 1.53 \pm 0.06 \; \si{k\Hz}
+\begin{equation}\label{eq: f0exp}
+f_0 = \frac{1}{2 \pi \sqrt{R_1 C_1 R_2 C_2}} = 1.53 \pm 0.06 \; \si{k\Hz}
 \end{equation}
 
 \subsection{Dipendenze dalla posizione del potenziometro}
-Ampiezza minima di $V\ped{out, min} = 877 \pm 6 \; \si{m\V}$, frequenza massima di
-$f\ped{max} = 1516.2 \pm \; \si{\Hz}$ (compatibile con il valore misurato di $f_0$)
+Al variare del parametro $p$ del potenziometro si evidenziano tre principali
+regimi di operazione del circuito:
+\begin{description}
+\item[$1 < p < p\ped{max}$]
+dove in uscita dall'OpAmp non si riesce ad osservare il segnale sinusoidale
+che intendiamo generare. In questa configurazione qualsiasi segnale viene
+attenuato dal circuito fino a non essere distinguibile dal rumore di fondo
+dello strumento.
+\item[$p\ped{max} < p < p\ped{dist}$]\label{item: posc}
+dove il segnale in uscita $V\ped{out} (t)$ è in buona approssimazione
+una sinusoide con frequenza prossima a quella propria dell'oscillatore $f_0$.
+In questa configurazione il guadagno del circuito è sufficiente per sostenere
+l'oscillazione sinusoidale in maniera stabile senza che l'uscita del circuito
+diverga fino alla saturazione.
+\item[$p\ped{dist} < p < 0$]
+dove $V\ped{out} (t)$ mostra significative distorsioni non lineari dovute alla
+presenza dei diodi e dalla potenza finita che il TL081 è in grado di erogare.
+In questa configurazione il guadagno dell'anello amplificatore tende a
+divergere, quindi qualsiasi segnale cresce in ampiezza fino a raggiungere la
+saturazione dell'OpAmp.
+\end{description}
 
-All'aumentare della resistenza $Rp$ l'ampiezza cresce fino ad un'ampiezza
-picco-picco massima di $V\ped{out, max} = 7.78 \pm 0.04 \; \si{\V}$
+In corrispondenza del valore massimo di $p$ per cui riusciamo ad osservare un
+seno in uscita dall'oscillatore abbiamo misurato il valore minimo assunto
+dall'ampiezza del segnale in uscita $V\ped{out, min} = 471 \pm 4 \; \si{m\V}$
+alla sua frequenza massima di $f\ped{max} = 1516.2 \pm \; \si{\Hz}$
+(compatibile con il valore misurato di $f_0$)
+
+Al decrescere della resistenza $Rp$ si vede che l'ampiezza aumenta fino ad
+un'ampiezza picco-picco massima di $V\ped{out, max} = 7.78 \pm 0.04 \; \si{\V}$
 (compatibile con la differenza tra le tensioni di saturazione positiva e
-negativa $V_{OH} - V_{OL} = 7.81 \pm 0.05 \; \si{\V}$)
+negativa $V_{OH} - V_{OL} = 7.81 \pm 0.05 \; \si{\V}$), mentre
 la frequenza dell'onda diminuisce fino al valore minimo osservato di
 $f\ped{min} = 1423.4 \; \si{\Hz}$.
 
-
-%TODO commentare andamento dell'onda al variare della posizione del trimmer
 Osservando il segnale in uscita $V\ped{out} (t)$ ci si aspetta di trovare
-un'onda sinusoidale di ampiezza picco-picco $\sim \SI{8}{\V}$, periodo
-$T = 2.15 \pm 0.03 \; \si{m\s}$ e duty-cycle $50 \%$. Effettivamente come
-tensioni di saturazione alta $V_{OH}$ e bassa $V_{OL}$ dell'onda si è misurato
-\begin{align*}
-\begin{cases}
-V_{OH} &= 4.18 \pm 0.04 \; \si{\V} \\
-V_{OL} &= -3.47 \pm 0.03 \; \si{\V}  \implies V\ped{out}^{pp} = 7.65 \pm 0.05
-\end{cases}
-\end{align*}
+un'onda sinusoidale di ampiezza picco-picco massima $\sim \SI{8}{\V}$ e
+frequenza dello stesso ordine di grandezza di quella propria dell'oscillatore
+$f_0$, vista in \cref{eq: f0exp}.
+Mentre come $v_+ (t) = V_A (t)$ ci aspettiamo un'onda della stessa forma di
+$v\ped{out} (t) = A(p) v_+ (t)$, ma ridotta in ampiezza dalla funzione di
+trasferimento reale $1/A$ e lo stesso segnale all'ingresso negativo.
 
-Ora come $v_+ (t) = V_A (t)$ ci aspettiamo un'onda della stessa forma di
-$v\ped{out} (t)$, ma ridotta in ampiezza dalla funzione di trasferimento $A(p)$
-Questo corrisponde all'andamento osservato dei due segnali, che riportiamo
-nelle seguenti figure al variare della frazione di resistenza del potenziometro
-$p$ 
+Questo corrisponde all'andamento osservato dei segnali, che riportiamo
+nelle seguenti figure al variare della frazione di resistenza del
+potenziometro $p$. 
 
-Qui per
+Per un valore di resistenza pari a
 $Rp\ped{dist} = 2.17 \pm 0.03 \; \si{k\ohm} \implies p = 0.228 \pm 0.004$ 
-abbiamo come fattore di riscalamento $A \approx 0.308$. 
+abbiamo come fattore di riscalamento $1/A = 0.308 \pm 0.003$
+e si iniziano a notare le distorsioni dell'onda in uscita rispetto ad una
+sinusoide (\cref{fig: Rpdist}).
 \begin{figure}[htbp]
-	\centering
-	\includegraphics[scale=0.335]{Rpdistosc800mV}
-	\includegraphics[scale=0.37]{Rpdistosc800mVfft}
+	\begin{center}
+	\includegraphics[width=\textwidth]{Rpdistosc800mV}
+	\includegraphics[width=\textwidth]{Rpdistosc800mVfft}
 	\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
-	segnali $v_+ (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: Rpdist}}
+	segnali $v_+ (t)$ (CH1) e $V\ped{out} (t)$ (CH2). Nelle FFT dei segnali si
+	nota bene la presenza di armoniche spurie multiple della fondamentale $f_0$.
+	\label{fig: Rpdist}}
+	\end{center}
 \end{figure}
 
-Osservando $v_- (t)$, infine, ci si aspetta di vedere un segnale ``a pinna di
-squalo'', caratteristico del processo di carica/scarica del condensatore e
-con la stessa ampiezza di $v_+ (t)$, data dalle tensioni di transizione per
-il comparatore/trigger di Schmitt, come riportato in \cref{fig: Rpint}.
-
-Qui per $Rp\ped{int} = 1454 \pm 12 \; \si{\ohm} \implies p = 0.153 \pm 0.002$ 
-abbiamo come fattore di riscalamento $A = 0.290$. 
+Dunque per
+$Rp\ped{int} = 1454 \pm 12 \; \si{\ohm} \implies p = 0.153 \pm 0.002$ 
+abbiamo come fattore di riscalamento $1/A = 0.290 \pm 0.003$; in particolare
+la forma d'onda in uscita ora ha semiperiodo negativo tagliato a
+$V_{OL} \approx 3.5 \; \si{\V}$ in maniera simile al regime di interdizione
+visto per un amplificatore con BJT a emettitore comune (\cref{fig: Rpint}).
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.335]{Rpint1.2V}	
-	\includegraphics[scale=0.37]{Rpint1.2Vfft}
+	\includegraphics[width=\textwidth, height=.25\paperheight]{Rpint1.2V}	
+	\includegraphics[width=\textwidth]{Rpint1.2Vfft}
 	\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
-	segnali $v_+ (t)$ (CH1) e $V\ped{out}$ (CH2) e . \label{fig: Rpint}}
+	segnali $v_+ (t)$ (CH1) e $V\ped{out}$ (CH2). Dalle trasformate di Fourier
+	(di sotto) si nota un significativo aumento nel numero di picchi, a ulteriore
+	conferma del fatto che non ci troviamo più in regime lineare.
+	\label{fig: Rpint}}
 \end{figure}
 
-Spostando il contatto strisciante fino al massimo valore del potenziometro
-la forma d'onda in uscita risulta affetto da clipping in entrambi i semiperiodi
-del segnale
-Quindi per
-$Rp\ped{max} = 9.53 \pm 0.08 \; \si{k\ohm} \implies p = 1.000^{+0}_{-0.012}$ 
-abbiamo come fattore di riscalamento $A \approx 0.495$. 
+Spostando il contatto strisciante fino al minimo valore del potenziometro
+la forma d'onda in uscita risulta affetta da clipping in entrambi i semiperiodi
+del segnale; inoltre per
+$Rp = 2.3 \pm 0.2 \; \si{k\ohm} \implies p = (2.4 \pm 0.8) \times 10^{-4}$ 
+abbiamo come fattore di riscalamento $1/A \approx 0.253 \pm 0.003$
+(\cref{fig: Rpmax}).
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.335]{Rpmax1.5V}
-	\includegraphics[scale=0.37]{Rpmax1.5Vfft}
+	\includegraphics[width=\textwidth, height=.25\paperheight]{Rpmax1.5V}
+	\includegraphics[width=\textwidth]{Rpmax1.5Vfft}
 	\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
 	segnali $v_+ (t)$ (CH1) e $V\ped{out} (t)$ (CH2) e relative trasformate di
 	Fourier. \label{fig: Rpmax}}
 \end{figure}
 
 \subsection{Innesco dell'auto-oscillazione}
-Per misurare il periodo dell'onda quadra $V\ped{out} (t)$ e la durata dei
-tempi in cui è in saturazione positiva $t_H$ (e negativa $t_L$) si è fatto
-uso dei cursori sull'asse X:
-\begin{align*}
-t_H &= 1.03 \pm 0.02 \; \si{m\s} &\quad t_H &= 1.00 \pm 0.02 \; \si{m\s} \\
-t_L &= 1.12 \pm 0.02 \; \si{m\s} &\quad t_L &= 1.08 \pm 0.02 \; \si{m\s} \\
-T &= 2.14 \pm 0.01 \; \si{m\s}  &\quad T &= 2.09 \pm 0.16 \; \si{m\s} \\
-\end{align*}
-Da queste abbiamo ricavato la nostra miglior stima del duty-cycle dell'onda
-quadra generata dal multivibratore
-\begin{align*}
-\mathrm{dc} = \frac{t_H}{T} = 47.9 \pm 1.0 \; \% \\
-\mathrm{dc} = \frac{t_H}{T} = 48.2 \pm 0.9 \; \% \\
-\end{align*}
-Le misure dei tempi in saturazione positiva, negativa e del periodo dei
-segnali studiati risultano compatibili con i loro valori attesi, per cui
-lo è anche il duty cycle.
-
-\subsection{Limite massimo in frequenza del generatore}
-Secondo il nostro modello il periodo dell'onda quadra generata è direttamente
-proporzionale a (e anche dello stesso ordine di) $\tau = R_3 C_1$, per cui
-se ne vogliamo aumentare la frequenza sarà sufficiente ridurre il valore
-della resistenza $R_3$ o della capacità $C_1$. Effettivamente abbiamo osservato
-un aumento di un fattore $10$ nella frequenza del treno d'impulsi generato,
-a seguito di una riduzione di $C_1$ ed $R_3$ dello stesso fattore, in accordo
-con quanto ci si aspetta di vedere per una decimazione del tempo caratteristico
-di carica/scarica $\tau$.
-
-L'aumento della massima frequenza generabile non è però l'unico effetto che
-si osserva per via della modifica di $\tau$: l'onda quadra in uscita risulta
-distorta, specialmente intorno ai fronti di salita e discesa che sono
-visibilmente limitati in pendenza, come si vede in \cref{fig: astable1nF}.
+Mettendo in corto-circuito il parallelo di $R_3$ con i diodi si riesce a
+bloccare l'oscillazione del segnale in uscita dal circuito, come si vede in
+\cref{fig: Rpminstop}.
 \begin{figure}[htbp]
 	\centering
-%	\includegraphics[scale=0.335]{astable1nF}
-	\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
-	segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2) quando il periodo dell'onda
-	generata $T \sim \tau \approx 36 \; \si{\micro\s}$ è ridotto di un fattore di
-	circa 10 rispetto alla configurazione originale del circuito.
-	\label{fig: astable1nF}}
+	\includegraphics[width=\textwidth]{Rpminstop}
+	\caption{Acquisizione dell'arresto dei segnali oscillanti $v_+ (t)$ (CH1) e
+	$V\ped{out} (t)$ (CH2) non appena i diodi vengono disconnessi dal
+	circuito. \label{fig: Rpminstop}}
 \end{figure}
 
-In piena analogia con quanto visto nella \cref{sub: trglim}, quando il
-semi-periodo dell'uscita si avvicina all'ordine dei $\si{\micro\s}$, cioè il
-tempo minimo che l'OpAmp reale impiega per le transizioni di stato dell'onda
-quadra di ampiezza picco-picco $V\ped{out}^{pp} \sim \SI{8}{\V}$, il segnale
-in uscita presenta fronti di salita e discesa limitati dallo slew-rate
-dell'OpAmp, che non riesce a passare abbastanza rapidamente da uno stato
-all'altro.
+Questo perché la condizione di Barkhausen è soddisfatta solamente quando vale
+$\beta A = 1$ esattamente. Ma (a causa degli inevitabili difetti fisici nei
+componenti del circuito) non è possibile soddisfare questa condizione ideale
+a meno che non si introduca una non linearità nella risposta -che tenda a
+riportare il sistema nello stato ottimale per sostenere le oscillazioni- per
+porre rimedio a questo problema facciamo uso dei due diodi.
 
-Per verificare che l'effetto di distorsione predominante sia dovuto allo
-slew-rate dell'OpAmp, come per il trigger di Schmitt abbiamo misurato (con
-i cursori) dalla pendenza dei fronti di salita dell'onda in uscita
-$\mathrm{SR} = 11.2 \pm 0.3 \si{V/s}$. Questo è compatibile con l'intervallo
-di valori tipici riportato nel datasheet
-($\rm SR_{min} = \SI{8}{\V/\micro\s} - SR_{typ} = 13 \; \si{\V/\micro\s}$)
-in particolare ci aspettiamo che l'onda quadra generata inizi ad essere
-distorta per valori del periodo dell'onda prossimi a
-$T\ped{min} \approx 1.4 \; \si{\micro\s}$, compatibilmente con quanto abbiamo
-osservato.
+Senza di questi, a seconda delle condizioni di lavoro del circuito, possono
+succedere sostanzialmente due cose:
+\begin{enumerate}
+\item $|\beta A| < 1$ $\implies$ Il circuito si trova in regime stabile,
+quindi non inizia mai ad oscillare. Perché se $p$ è troppo grande, cioè
+tale che $A < 3 \implies L(j\omega) < 1$, dalla teoria generale sui sistemi
+con feedback sappiamo che l'inviluppo di $V\ped{out}(t)$ decade
+esponenzialmente nel tempo.
+\item $|\beta A| > 1$ $\implies$ Il circuito è in zona instabile e
+l'oscillazione diverge fino alla saturazione dell'uscita dell'OpAmp.
+Perché al contrario, quando $A(p) > 3 \implies L(j\omega) > 1$,
+l'inviluppo del segnale in uscita cresce esponenzialmente. In realtà la
+crescita esponenziale è limitata dal \emph{voltage swing} dell'operazionale
+(i.e. dal massimo valore della d.d.p erogabile, nel nostro caso come riportato
+nel datasheet $\pm 13.6 \; \si{\V}$ per tensioni di alimentazione pari a
+$V_{CC} = - V_{EE} = 15 \; \si{\V}$.).
+\label{item: case2}
+\end{enumerate}
 
-Riducendo ulteriormente i valori di resistenza e capacità
-($R_3 \approx 220 \; \si{\ohm}$, $C_1 \approx 1 \; \si{nF}$) si osservano
-deviazioni ancora più pronunciate dall'onda quadra attesa in uscita, che
-possono essere dovute al fatto che il TL081 ha guadagno finito e dipendente
-dalla frequenza di lavoro, a differenza di quanto presuppone il nostro modello. 
+Allora è possibile studiare l'innesco dell'auto-oscillazione grazie
+all'oscilloscopio semplicemente eliminando il corto-circuito dopo aver avviato
+l'acquisizione in modalità single-shot. Ne riportiamo alcuni esempi al
+variare del valore della resistenza del potenziometro $Rp$, in cui come misura
+della durata del transiente si è preso l'intervallo di tempo necessario perché
+$V\ped{out} (t)$ cresca dal $10\%$ al $90\%$ del suo valore massimo (misurato
+con i cursori dall'ampiezza dell'auto-oscillazione nel regime stabile, una
+volta terminato il transiente).
 \begin{figure}[htbp]
 	\centering
-%	\includegraphics[scale=0.45]{astable(C=1 nF, R= 220 ohm)}
-	\caption{Fermo immagine preso dall'oscilloscopio dell'andamento nel tempo dei
-	segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2) quando il periodo dell'onda
-	generata $T \approx \SI{4}{\micro\s}$ è prossimo ai limiti possibili per il
-	circuito. \label{fig: astable_lim}}
+	\includegraphics[width=\textwidth]{propR9}
+	\caption{Acquisizione dell'innesco dell'oscillazione in $v_+ (t)$ (CH1) e
+	$v\ped{out} (t)$ (CH2) quando i diodi vengono collegati nel circuito.
+	Per il valore di resistenza ottimale del potenziometro
+	$Rp\ped{max} = 2.96 \pm 0.03 \; \si{k\ohm}$ si registra una durata del
+	transiente pari a $t = 130 \pm 2 \; \si{m\s}$.
+	\label{fig: startmax}}
+\end{figure}
+
+Più è alto il guadagno dell'anello amplificatore $A(p)$ e meno tempo il
+circuito impiega a raggiungere il regime di funzionamento stabile (non nullo).
+Dunque ci aspettiamo che il tempo necessario perché l'oscillazione si
+stabilizzi alla sua ampiezza massima sia sempre più breve al diminuire del
+valore della resistenza $Rp < Rp\ped{max}$. Questo corrisponde a quanto
+abbiamo osservato direttamente dalle acquisizioni in \cref{fig: start2.2V}
+e \cref{fig: start3.9V}, dove il guadagno è così alto che il segnale in
+uscita dall'OpAmp viene tagliato alla tensione di saturazione inferiore
+$V_{OL} \approx -3.5 \; \si{\V}$.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{start2.2V}
+	\caption{Acquisizione dell'innesco dell'oscillazione in $v_+ (t)$ (CH1) e
+	$v\ped{out} (t)$ (CH2). Per un valore di resistenza del potenziometro di
+	$Rp = 2.27 \pm 0.03 \; \si{k\ohm}$ si registra una durata del transiente
+	pari a $t = 2.97 \pm 0.15 \; \si{m\s}$.
+	\label{fig: start2.2V}}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{start3.96V}
+	\caption{Acquisizione dell'innesco dell'oscillazione in $v_+ (t)$ (CH1) e
+	$v\ped{out} (t)$ (CH2). Per un valore di resistenza del potenziometro di
+	$Rp = 1.073 \pm 0.03 \; \si{k\ohm}$ si registra una durata del transiente
+	pari a $t = 1.21 \pm 0.05 \; \si{m\s}$.
+	\label{fig: start3.9V}}
 \end{figure}
 
 %=======================
 \section{Funzione dei diodi in parallelo}
-Il multivibratore monostabile riportato in \cref{fig: mstableschm} è simile
-al circuito precedente, ma ha uno stato stabile (quello alto) e uno instabile,
-per cui viene utilizzato come generatore di impulsi. In effetti si è costruito
-il circuito a partire dallo stesso trigger di Schmitt invertente, aggiungendo
-però un sotto-circuito di trigger all'ingresso positivo dell'OpAmp e il diodo
-$D_1$ in parallelo al condensatore $C_1$ del filtro passa-basso.
+\subsection{Studio dei segnali in ingresso e uscita}
+Come già accennato sopra, fintanto che la tensione ai capi dei diodi non è
+abbastanza alta da farli entrare in polarizzazione diretta, nel nostro
+modello il parallelo di $D1$ e $D2$ può essere assimilato ad un circuito
+aperto.
+Dunque per innescare l'auto-oscillazione si posiziona il contatto
+strisciante del potenziometro di modo che il circuito venga a trovarsi nella
+condizione descritta alla \cref{item: case2}, cioè sfruttiamo il fatto che
+l'ampiezza del segnale tenderà a crescere tanto da portare i diodi in
+conduzione, che a loro volta abbasseranno il guadagno fino a soddisfare la
+condizione di Barkhausen.
+A questo punto il segnale in uscita dall'OpAmp si stabilizza alla sua ampiezza
+massima e il circuito oscilla nel regime stabile descritto nella
+\cref{item: posc}.
+
+Ripetendo il procedimento senza aver collegato i diodi invece osserviamo che
+l'uscita del sistema continua a crescere in ampiezza fino a che non raggiunge
+la tensione di saturazione più bassa $V_{OL}$, nonostante il parametro del
+potenziometro sia come prima $p \lesssim p\ped{max} \approx 0.3$, per cui
+avevamo risposta lineare in $V\ped{out} (t)$.
+
+Questo perché la condizione di Barkhausen non è esattamente soddisfatta:
+se supponiamo di avere un loop-gain leggermente maggiore dell'unità
+$L(j\omega) = \beta A = 1 + \epsilon$, questo porta ad una divergenza
+esponenziale del segnale in uscita, che per i limiti fisici del circuito
+si traduce nella saturazione che osserviamo. Il ruolo dei diodi infatti è in
+un certo senso (che discuteremo più nel dettaglio di seguito) quello di
+``stabilizzare'' il segnale grazie alla resistenza dinamica del parallelo
+$R_d := R_3 // D1 // D2$, dipendente dall'ampiezza di $V\ped{out} (t)$.
+
+Questo fa sì che quando $V\ped{out}$ tende ai limiti di saturazione
+$R_d \approx r_D$ (dove con $r_D \ll R_3$ indichiamo la resistenza dinamica
+del diodo attivo nel semiperiodo corrispondente dell'onda in uscita)
+quindi il guadagno $A$ diminuisce in modo da confinare l'OpAmp nel regime
+di linearità.
+Mentre nel secondo caso senza diodi $R_d \equiv R_3$, il guadagno rimane
+indipendentemente dall'ampiezza $V\ped{out}$ quello atteso dall'
+\cref{eq: A}, per cui il segnale può arrivare alla saturazione come osservato. 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{startnod}
+\caption{Acquisizione dell'innesco dell'oscillazione in $v_+ (t)$ (CH1) e
+	$v\ped{out} (t)$ (CH2) senza i diodi. Si nota come il segnale
+	cresca esponenzialmente in ampiezza fino raggiungere il limite
+	di saturazione inferiore, si può ipotizzare che questo conferisca una non
+	linearità sufficiente a stabilizzare il segnale in uscita.}
+\label{startnod}
+\end{figure}
+
+Si è studiata nuovamente la risposta in frequenza del circuito oscillatore in
+assenza dei diodi con lo strumento Network dell'AD2 e, tramite cursore,
+abbiamo rimisurato la frequenza tale per cui $\phi = 0$, che risulta identica
+a quella trovata sopra. Si nota che il guadagno massimo (nello stesso punto)
+è apprezzabilmente più alto di quello misurato con i diodi ($\sim - 1$ dB),
+infatti ora abbiamo $A_M = |\beta(j\omega_0 \bar{A}| = 2.32 \pm 0.08 \; \si{dB}
+= 1.307 \pm 0.007$
+
 \begin{figure}[htbp]
     \centering
-%	\includegraphics[scale=1.2]{monostable}
-    \caption{Schema circuitale del multivibratore monostabile costruito.
-    \label{fig: mstableschm}}
+	\includegraphics[width=\textwidth]{AloopNOD}
+    \caption{Plot di Bode ottenuto dallo scan con Network tra
+    $\SI{100}{\Hz}$ e $\SI{100}{k\Hz}$ con un segnale sinusoidale in ingresso
+    all'anello di feedback invertente $A$, di ampiezza costante
+    $v\ped{in} = \SI{100}{m\V}$ per il circuito senza diodi.
+    \label{fig: loopnod}}
 \end{figure}
 
-\subsection{Studio dei segnali in ingresso e uscita}
-La presenza del diodo in parallelo al condensatore $C_1$ limita la tensione
-ai suoi capi $V_C = v_-$, per cui ci aspettiamo di avere
-$V_C \leq V\gamma \approx 0.7 \; \si{\V}$, come si trova effettivamente in
-\cref{fig: mstabilev-}.
-\begin{figure}[htbp]
-	\centering
-%	\includegraphics[scale=0.42]{monostabileV-}
-	\caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
-	segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: mstabilev-}}
-\end{figure}
+\subsection{Analisi del funzionamento dei diodi}
+In estrema sintesi il ruolo svolto dai due diodi è di limitare l'ampiezza
+massima dell'auto-oscillazione. Poiché questa limitazione è realizzata dagli
+elementi non lineari nel circuito (la coppia di diodi alternativamente in
+conduzione e interdizione) ci limitiamo a dare una descrizione qualitativa del comportamento del circuito.
 
-\`E per questo che lo stato con l'uscita a livello alto è stabile,
-cioè da quest'ultimo il sistema non passa spontaneamente allo stato instabile;
-quello con uscita a livello basso.
-Dunque per innescare la transizione di stato
-$V\ped{out} = V_{OH} \mapsto V_{OL}$ è necessario un circuito di trigger,
-che faccia abbassare $v_+$ al di sotto di $v_- \sim V_\gamma$.
+Come prima studiamo il caso in cui $L(j\omega) > 1$, l'inviluppo del segnale
+$V\ped{out}$ cresce esponenzialmente fino a che la differenza di potenziale
+ai capi dei diodi in parallelo è sufficiente a polarizzarne uno direttamente.
+Supponendo di poter stimare ragionevolmente il guadagno dell'anello $A$ con la
+forma del partitore
+\[
+A\ped{exp} = \frac{R + R_d + R_4 + R_5}{Rp + R_5}
+\]
+Quando i diodi entrano in conduzione, la loro resistenza abbassa il valore di
+$R_d < R_3$ al numeratore, portando quindi ad una diminuzione del guadagno.
+Il parallelo di diodi introduce in questa maniera un effetto di feedback
+negativo che stabilizza il segnale ad una ampiezza massima (in funzione della
+posizione $p$ del trimmer).
 
-In assenza di $V\ped{trig}$, come per il multivibratore astabile, all'ingresso
-non-invertente dell'OpAmp ci aspettiamo di trovare come segnale $v_+ (t)$ la
-stessa forma d'onda presente all'uscita, ma ridotta in ampiezza di un fattore di partizione $q = \dfrac{R_2}{R_2 + R_1} \approx 0.5$.
-Ora però a questa si sovrappongono i picchi di differenza di potenziale che
-portano il circuito nello stato instabile sopra descritto; dopo un tempo
-caratteristico (proporzionale a $\tau = R_3 C_1$) il multivibratore torna
-nella configurazione stabile, generando così un treno di impulsi
-negativi/un'onda quadra con duty-cycle prossimo a uno.
-Questo è in linea con quanto si vede in \cref{fig: mstabilev+}.
-\begin{figure}[htbp]
-	\centering
-%	\includegraphics[scale=0.42]{monostabileV+}
-	\caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
-	segnali $v_+ (t)$ (CH1) e $V\ped{out} (t)$ (CH2). \label{fig: mstabilev+}}
-\end{figure}
+Per valori dell'ampiezza dell'oscillazione ancora più grandi di $V_\gamma$, ma
+pur sempre minori del \emph{Voltage swing}, la risposta non lineare dei diodi
+non è più ben descritta dal nostro modello per $A(p)$. Infatti la loro
+presenza continua ad avere l'effetto di abbassare la resistenza dinamica del
+ramo di feedback, ma introducono anche distorsioni nella forma d'onda in
+uscita, che come abbiamo visto (anche da un'analisi in frequenza) non è più
+sinusoidale.
 
-\subsection{Durata dell'impulso generato}
-Si è inviata all'ingresso del circuito di trigger un'onda quadra di ampiezza
-$V\ped{trig} = 1.99 \pm 0.02 \; \si{\V}$ e frequenza $100 \pm 1.6 \; \si{\Hz}$.
-
-Dunque abbiamo misurato coi cursori le tensioni di saturazione dell'uscita e 
-$V_\gamma$ dal livello di tensione costante a cui si trova $v_-$ quando il
-circuito è nello stato stabile:
-\begin{align*}
-V_{OH} &= 4.12 \pm 0.04 \; \si{\V} \quad &V_{OH} &= 4.14 \pm 0.04 \; \si{\V} \\
-V_{OL} &= -3.56 \pm 0.03 \; \si{\V} \quad &V_{OL} &= -3.49 \pm 0.03 \; \si{\V} \\
-V_{\gamma} &= 547 \pm 6 \; \si{m\V} \quad &V_{\gamma} &= 549 \pm 6 \; \si{m\V}
-\end{align*}
-
-E sempre con i cursori si sono misurati i tempi per cui il segnale $V\ped{out}$
-rimane ``basso'' in ciascun circuito:
-\begin{align*}
-t_L &= 767 \pm 10 \;\si{\micro\s} \\
-t_L &= 784 \pm 10 \;\si{\micro\s}
-\implies \mathrm{dc} = 1 - \frac{t_L}{T} = 92.2 \pm 1.5 \% 
-\end{align*}
-
-Il valore atteso per la durata dell'impulso nello stato instabile è legato
-al tempo caratteristico in cui si scarica il condensatore $C_1$ dalla
-\begin{equation}\label{eq: mstable_Delta}
-t\ped{L, exp} = \tau \ln{\left(\frac{1 - V_\gamma/V_{OL}}{1 - q}\right)} =
-0.80 \pm 0.03 \; \si{\micro\s}
-\end{equation}
-Questo risulta compatibile entro l'incertezza con la durata dell'impulso
-misurata in uscita dal multivibratore.
-
-\subsection{Analisi del funzionamento del circuito}
-Se il condensatore $C_1$ è inizialmente scarico e $V\ped{out} = V_{OH}$, allora
-il condensatore in parallelo a $D_1$ si carica fino a quando la d.d.p. tra le
-sue armature $V_C \approx V_{\gamma}$. Quindi, poiché $v_- \approx V_{\gamma}$
-e $v_+ = \frac{R_{2}}{R_{1} + R_{2}} V\ped{out} \approx \SI{2}{V}$, l'uscita
-rimane a livello ``alto''.
-
-Se il condensatore è inizialmente carico (con tensione massima
-$v_- \leq V_\gamma$) e se $V\ped{out} = V_{OL}$, allora si scarica fintanto
-che vale $v_- \geq v_+ \approx - 1.7 {\V}$. Una volta scarico alla fine
-dell'impulso, poiché l'OpAmp è in regime non-lineare, l'uscita commuta
-rapidamente (entro i limiti imposti dallo slew-rate) a $V\ped{out} = V_{OH}$;
-il condensatore torna a caricarsi e il circuito ritorna alla configurazione
-stabile ($v_- \approx V_\gamma$) concludendo il ciclo.
-
-Il sotto-circuito di trigger, formato dal passa-alto $R_4 + C_2$ con il diodo
-$D_2$ in cascata, invia all'ingresso non-invertente dell'OpAmp dei picchi di
-differenza di potenziale. Questi sono generati grazie al condensatore $C_2$, 
-che elimina la componente continua dell'onda quadra $V\ped{trig} (t)$, di cui
-ci interessano solamente i fronti ripidi in discesa (e meno in salita).
-Infatti è la discesa di $V\ped{trig}$ a generare l'impulso negativo in uscita
-dal multivibratore, mentre il fronte di salita è responsabile per i picchi di
-tensione positiva che osserviamo in \cref{fig: mstabilev+vtrig}
-\begin{figure}[htbp]
-	\centering
-%	\includegraphics[scale=0.335]{mstablev+vtrig}
-	\caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
-	segnali $V\ped{trig} (t)$ (CH1) e $v_+ (t)$ (CH2).
-	\label{fig: mstabilev+vtrig}}
-\end{figure}
-
-La risalita del treno d'impulsi in $V\ped{out} (t)$ deve avvenire mentre
-$V\ped{trig} (t)$ è ancora costante nel semi-periodo negativo, prima che torni
-``alto''. Poiché questa risalita si verifica nel momento in cui $v_- (t)$
-assume il suo valore minimo $v_- \approx \frac{1}{2} V_{OL}$ che fa
-``scattare'' il comparatore, $C_1$ deve avere il tempo necessario di caricarsi
-prima che possa partire una nuova scarica, dunque un nuovo impulso negativo.
-
-Si è quindi tenuta fissa l'ampiezza di $V\ped{trig}$ e se ne è variata la
-frequenza. Si osserva che la durata dell'impulso in $V\ped{out}$ rimane
-(entro le incertezze di misura) indipendente dalla frequenza del segnale di
-trigger, fino a quando la durata dell'impulso è minore del semi-periodo di
-$V\ped{trig}$. Al di sopra di questa frequenza critica (sperimentalmente
-abbiamo trovato $f\ped{crit} \approx \SI{1}{k\hertz}$) il circuito smette di
-funzionare correttamente per durate dell'impulso superiori a
-$\frac{1}{2} T\ped{trig} \approx 0.5 \; \si{m\s}$ per via dei tempi di carica
-del condensatore $C_1$, come si può vedere in \cref{fig: mstabileflim}.
-\begin{figure}[htbp]
-	\centering
-%	\includegraphics[scale=0.335]{mstable950hz}
-	\caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
-	segnali $v_- (t)$ (CH1) e $V\ped{out} (t)$ (CH2) alla frequenza limite
-	per cui è possibile pilotare il multivibratore monostabile.
-	\label{fig: mstabileflim}}
-\end{figure}
-
-Si è variato il duty-cycle dell'onda $V\ped{trig} (t)$ tenendo fissate
-frequenza ed ampiezza. Non abbiamo riscontrato una apprezzabile dipendenza
-della durata dell'impulso in $V\ped{out} (t)$ dal duty cycle per il range
-esplorato tra l'$1 \%$ e il $99 \%$, come era ragionevole aspettarsi, visto che
-utilizziamo solamente i fronti di transizione dell'onda quadra.
-
-Infine abbiamo mantenuto costanti frequenza e duty-cycle di $V\ped{trig} (t)$
-e ne abbiamo variato l'ampiezza. La durata dell'impulso in $V\ped{out} (t)$
-risulta (entro le incertezze sperimentali) indipendente dall'ampiezza del
-segnale di trigger per valori di $V\ped{trig}$ maggiori di una certa soglia.
-Si è misurato con i cursori l'ampiezza minima al di sotto della quale
-il multivibratore non riesce a compiere la transizione alto-basso,
-che risulta
-\begin{align*}
-V\ped{trig}\ap{min} = 768 \pm 6 \; \si{m\V}
-\end{align*}
-In effetti, se $V\ped{trig}$ è minore di questa soglia ci aspettiamo
-che $v_+ (t)$, quindi gli impulsi prodotti dal trigger sovrapposti al segnale
-in uscita dal partitore, non siano abbastanza grandi da rendere
-$v_d = v_+ - v_- < \SI{0}{\V}$ e quindi far commutare il discriminatore; perciò
-$V\ped{out}$ rimane fisso alla tensione di saturazione alta, che
-corrisponde a quanto si è osservato dall'esperimento.
-
-\section{Misure di guadagno dell'oscillatore}
+\section{Misura di guadagno dell'oscillatore}
+Come nel punto \ref{sbs: Vout/Vs} abbiamo studiato il guadagno
+$A_v = V\ped{out}/V_s$ del circuito in \ref{fig: aloopschm} inviando un
+segnale sinusoidale $V_s (t)$ all'ingresso positivo dell'OpAmp; una volta
+fissato il terminale centrale del potenziometro nella posizione per cui si
+osserva l'innesco dell'auto-oscillazione.
 \begin{align*}
 V_s &= 200 \pm 2 \; \si{m\V} \\
 V\ped{min} &= 608 \pm 5 \; \si{m\V} \implies  A_v = 3.04 \pm 0.04
 \end{align*}
+
+Quanto trovato è compatibile con il guadagno atteso, che in queste condizioni
+ci aspettiamo valga $A = 3$ per soddisfare la condizione di Barkhausen.
+
 %=======================
 \section*{Conclusioni e commenti finali}
-Si è riusciti a costruire e studiare alcuni dei circuiti più semplici e noti
-che fanno uso di amplificatori operazionali in regime non lineare, tra cui:
-un amplificatore di carica, un trigger di Schmitt e due multivibratori; uno
-astabile e uno monostabile.
+Si è riusciti a costruire e studiare un circuito oscillatore a ponte di Wien
+facendo uso di un amplificatore operazionale TL081.
 
 In particolare siamo riusciti a descrivere e verificare sperimentalmente il
-funzionamento dei circuiti e a caratterizzarne tempi e frequenze
-caratteristici; dunque anche i limiti fisici in frequenza, ampiezza e
-duty-cycle sia per i segnali in ingresso che nella risposta all'uscita.
+funzionamento del circuito e a caratterizzarne la risposta in uscita sia nel
+dominio dei tempi che delle frequenze al variare dei parametri da cui dipende
+il guadagno dell'oscillatore reazionato ad anello.
 
 %=======================
 \section*{Dichiarazione}

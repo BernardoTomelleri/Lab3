@@ -1,0 +1,8 @@
+#Digilent WaveForms Oscilloscope Measurements
+#Device Name: Discovery2NI
+#Serial Number: SN:210321AD1509
+#Date Time: 2022-02-09 22:24:29.042
+
+,Name,Value,Acq,Average
+C2,PosWidth, 1.8845 ms, 1.4197 ms, 2.5876 ms
+C1,Average, 2.6909 V, 2.6858 V, 2.7064 V
