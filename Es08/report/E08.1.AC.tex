@@ -80,14 +80,14 @@ Di seguito quello che otteniamo dall'oscilloscopio:
 Come detto prima, il momento in cui la corrente è maggiore (nel grafico a sinistra è sufficiente soffermarsi a vedere l'andamento di CH2) si ottiene quando $V_{GS}$ è pari a 0, che nello stesso grafico è quando la rampa di WG2 misurata da CH1 è più alta (perchè in quel caso $V_S$ è pari a $V_G$ ovvero $V_{SS}$.
 Inoltre si può vedere che oltre un certo punto l'andamento di CH2 risulta approssimativamente costante: questo si ottiene quando viene superata la tensione di pinch-off, che siamo andati a misurare tramite cursori:
 \[
-V_p=2.62 \pm 0.03 V
+V_p=-2.62 \pm 0.03 V
 \]
 Infine, sempre utilizzando i cursori, abbiamo misurato la corrente nella traccia in cui $V_{GS}=0$, nel grafico di sinistra è la curva più alta; da cui abbiamo ricavato:
 \[
 I_{dss}=9.4 \pm 0.1 mA
 \]
 Confrontando col datasheet risulta che entrambi i valori risultano compatibili con gli intervalli dichiarati dai costruttori (dato che noi abbiamo utilizzato valori di $V_{DS}$ minori di quelli utilizzati nel datasheet)
-\subsection{Amplificatore e punto di lavoro}
+\section{Amplificatore e punto di lavoro}
 A questo punto abbiamo costruito il circuito per l'amplificatore di tensione:
 \begin{figure}[htbp]
     \centering
@@ -101,17 +101,133 @@ Sappiamo infatti che dato $V_{GS}$ e $V_p$ e se il JFET è in regime di saturazi
 \begin{equation}
 I_{ds}=\frac{I_{dss}}{V_p ^2}(V_{GS}-V_p)^2
 \end{equation}
+Per misurare $V_{GS}$ abbiamo si è calcolata la differenza tra le misure di $V_G$ e $V_S$:
+\[
+V_{GS}=-882 \pm 7 mV
+\]
+\[
+V_{DS}=4.94 \pm 0.03 V
+\]
+Dato che $V_{DS} > V_{GS} - V_p$ si ricava che siamo in zona di saturazione, a questo punto basta applicare l'equazione; si ottiene quindi 
+\[
+I_{ds}(V_{GS},V_p,I_{dss})=4.14 \pm 0.07 mA
+\]
+Che risulta essere compatibile con quanto misurato.
+Stimiamo infine la transconduttanza tramite la formula
+\begin{equation}
+g_m = \frac{2 I_{dss}}{|V_p|}\sqrt{\frac{I_{d}}{I_{dss}}}
+\end{equation}
+da cui ricaviamo $g_m = 4.73 \si{m\mho}$, andando quindi a ricercare nel datasheet il valore fornito da costruttore, troviamo un grafico di $g_m$ in funzione della frequenza a cui opera il JFET, in particolare notiamo che per frequenze minori di circa 500 Mhz la transconduttanza deve essere compresa approssimativamente tra 4 e 5, similarmente anche la transammettenza deve essere compresa tra 3 e 6.5 $\si{m\mho}$; il valore misurato rissulta quindi compatibile.
+%=======================
+\section{Amplificatore di segnale}
+A questo punto si è collegato l'ingresso $V_in$ all'entrata dell'amplificatore, e lo abbiamo pilotato con un'onda sinusoidale di 1 kHz con un'ampiezza compresa tra 100 mV e 2.8 V a passi di 100 mV.
+\begin{table}[H]
+\centering
+\begin{tabular}{cccccc}
+
+$V_{in} [V]$ & $\Delta V_{in}[V]$ & $V_{out} [V]$ & $\Delta V_{out} [V]$ & $|A|$ & $\Delta A$ \\
+\midrule
+100 m & 1 m  & 206 m & 2 m   & 2.06 & 0.02 \\
+200 m & 2 m  & 411 m & 4 m   & 2.05 & 0.02 \\
+300 m & 3 m  & 616 m & 7 m  & 2.05 & 0.03 \\
+400 m & 4 m  & 821 m & 7 m  & 2.05 & 0.02 \\
+501 m & 4 m  & 1.03  & 8 m  & 2.05 & 0.02 \\
+601 m & 7 m  & 1.22  & 18 m & 2.04 & 0.04 \\
+701 m & 7 m  & 1.42  & 19 m & 2.03 & 0.03 \\
+801 m & 7 m  & 1.62  & 20 m & 2.02 & 0.03 \\
+901 m & 7 m  & 1.80  & 0.02 & 2.00 & 0.03 \\
+1.00  & 8 m  & 1.99  & 0.02 & 1.99 & 0.03 \\
+1.10  & 8 m  & 2.16  & 0.02 & 1.96 & 0.02 \\
+1.20  & 8 m  & 2.31  & 0.02 & 1.93 & 0.02 \\
+1.30  & 9 m  & 2.46  & 0.02 & 1.89 & 0.02 \\
+1.40  & 9 m  & 2.59  & 0.03 & 1.86 & 0.02 \\
+1.50  & 0.02 & 2.71  & 0.04 & 1.82 & 0.03 \\
+1.60  & 0.02 & 2.84  & 0.04 & 1.78 & 0.03 \\
+1.70  & 0.02 & 2.93  & 0.04 & 1.72 & 0.03 \\
+1.80  & 0.02 & 3.05  & 0.04 & 1.69 & 0.03 \\
+1.90  & 0.02 & 3.15  & 0.04 & 1.65 & 0.03 \\
+2.00  & 0.02 & 3.25  & 0.04 & 1.62 & 0.03 \\
+2.10  & 0.02 & 3.34  & 0.04 & 1.59 & 0.02 \\
+2.20  & 0.02 & 3.48  & 0.04 & 1.56 & 0.02 \\
+2.30  & 0.02 & 3.53  & 0.04 & 1.53 & 0.02 \\
+2.40  & 0.02 & 3.59  & 0.04 & 1.49 & 0.02 \\
+2.50  & 0.02 & 3.61  & 0.04 & 1.44 & 0.02 \\
+2.60  & 0.03 & 3.63  & 0.04 & 1.39 & 0.02 \\
+2.71  & 0.03 & 3.63  & 0.04 & 1.34 & 0.02 \\
+2.81  & 0.04 & 3.64  & 0.04 & 1.29 & 0.02 \\
+\bottomrule
+\end{tabular}
+\end{table}
+Data la caratteristica del circuito di essere in configurazione common source, possiamo modellare il guadagno come
+\begin{equation}
+A_v =-\frac{g_m R_d}{1+g_mR_s}
+\end{equation}
+Utilizzando i dati ottenuti prima possiamo ricavare il valore atteso:
+\[
+A_v=-2.33 \pm 0.02
+\]
+Ci accorgiamo subito che questo risultato non risulta essere compatibile con quanto misurato prima.
+Essendo il guadagno negativo se ne deduce che l'amplificatore sarà di tipo invertente, cosa che si vede immediatamente dai grafici di $V_{in}$ e $V_{out}$.
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{amp.200}
+    \caption{Grafici di $V_{in}$ e $V_{out}$ in funzione del tempo con ampiezza $V_{in}=200 mV$}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{amp.1000}
+    \caption{Grafici di $V_{in}$ e $V_{out}$ in funzione del tempo con ampiezza $V_{in}=1000 mV$; in questa situazione si nota una distorsione nel segnale in uscita, in particolare la parte inferiore dell'onda risulta schiacciata verso lo 0}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{amp.2000}
+    \caption{Grafici di $V_{in}$ e $V_{out}$ in funzione del tempo con ampiezza $V_{in}=2000 mV$; qua la distorsione della parte inferiore dell'onda è molto più pronunciata}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{amp.2500}
+    \caption{Grafici di $V_{in}$ e $V_{out}$ in funzione del tempo con ampiezza $V_{in}=2500 mV$; si inizia a intravedere un taglio nella parte superiore dell'onda, mentre la parte inferiore risulta ancora distorta}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{amp.3000}
+    \caption{Grafici di $V_{in}$ e $V_{out}$ in funzione del tempo con ampiezza $V_{in}=3000 mV$; il taglio della parte alta dell'onda risulta ora più evidente}
+\end{figure}
+
 
 %=======================
-\section{Amplificatore del Noise rispetto al Set}
-
-
+\section{Risposta in frequenza}
+Utilizzando lo strumento Network analyzer siamo passati a misurare la risposta in frequenza del circuito tra i 5Hz e i 10 Mhz utilizzando una $V_{in}=200 mV$\\
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{network}
+    \caption{Risposta in frequenza del circuito amplificatore a common source}
+\end{figure}
+Si è quindi misurato il guadagno di centro banda, che risulta essere pari a $6.31 dB$ che convertendolo in $A_v$ si ottiene $2.07$, che risulta compatibile con quanto misurato al punto precedente.
+A partire da ciò abbiamo ricavato le frequenze di taglio (basso e alto) tramite cursori, ricercando quando la curva del guadagno vale 3.31 dB:
+\[
+F_{TA}=3.54 \pm 0.02Mhz
+\]
+\[
+F_{TB}= 16.0 \pm 0.1Hz
+\]
 %=======================
-\section{Controllo integrale}
-
+\section{Aumento del guadagno}
+Abbiamo ora inserito un condensatore elettrolitico in parallelo a $R_s$, chiamato $C_E$.
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{amp.200.cap}
+    \caption{Grafici di $V_{in}$ e $V_{out}$ in funzione del tempo con ampiezza $V_{in}=200 mV$ con condensatore elettrolitico $C_E$ in parallelo a $R_s$}
+\end{figure}
+Possiamo subito notare che il guadagno è aumentato come ci si aspettava ed è passato ad $A_v =3.20 \pm 0.04$
 %=======================
-\section{Controllo proporzionale}
-
+\section{Impedenza in ingresso}
+Si è infine provata a misurare l'impedenza in ingresso al circuito mettendo in serie a $V_{in}$ un resistenza $R_S$ dello stesso ordine di grandezza dell'impedenza del circuito attesa, ed utilizzando lo strumento impedance analyzer di waveform in configurazione “W1-C1-R-C2-DUT-GND”; si è così valutata l'impedenza $Z_{IN}$ e la reattanza in parallelo $X_P$ in funzione della frequenza, compresa tra 1 e 10 kHz.
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{impedance}
+    \caption{Grafici di impedenza in ingresso e reattanza parallelo in funzione della frequenza per $R_S=100 \si{k\ohm}$}
+\end{figure}
 %=======================
 \section*{Conclusioni e commenti finali}
 
