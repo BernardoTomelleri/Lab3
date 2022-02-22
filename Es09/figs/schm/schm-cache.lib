@@ -41,11 +41,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# Device_Speaker_Crystal
+# Device_Speaker_Ultrasound
 #
-DEF Device_Speaker_Crystal LS 0 0 Y N 1 F N
+DEF Device_Speaker_Ultrasound LS 0 0 Y N 1 F N
 F0 "LS" 25 225 50 H V R CNN
-F1 "Device_Speaker_Crystal" 25 150 50 H V R CNN
+F1 "Device_Speaker_Ultrasound" 25 150 50 H V R CNN
 F2 "" -35 -50 50 H I C CNN
 F3 "" -35 -50 50 H I C CNN
 ALIAS Speaker_Ultrasound

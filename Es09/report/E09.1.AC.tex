@@ -10,7 +10,7 @@
 \graphicspath{{../figs/}}
 
 \author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
-\title{Es07A: PID}
+\title{Es09: Misura della velocità del suono}
 \begin{document}
 \date{\today}
 \maketitle
@@ -20,55 +20,25 @@
 \section*{Misura componenti dei circuiti}
 \begin{table}[htbp]
 \centering
-\begin{tabular}{cccccc}
+\begin{tabular}{ccc|ccc}
 \toprule
-Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
-$\sigma C$ \\
+Resistenze $[\si{k\ohm}]$ & $R$ & $\sigma R$ & Resistenze $[\si{k\ohm}]$ & $R$ &
+$\sigma R$ \\
 \midrule
 \midrule
-$R_1$	  	& 992 	& 8		& $C_1$ & 212	& 9 \\
-$R_2$	  	& 992	& 8		& & & \\
-$R_4$	  	& 991	& 8		& & & \\
-$R_5$	  	& 9.96 k	& 0.08	k& & & \\
-$R_6$	  	& 99.9 k	& 0.8	k& & & \\
-$R_7$	  	& 9.96 k& 0.08	k	& & & \\
-$R_8$	  	& 104.6	k& 8		k& & & \\
-$R_9$	  	& 103.0	k& 0.8	k	& & & \\
-$R_{10}$  	& 100.6	k& 8		k& & & \\
-$R_{11}$  	& 1.911	& 8		& & & \\
-\bottomrule     
+$R_1$	  	& 9.95 	& 0.08		& $R_1$ & 212	& 9 \\
+$R_T$	  	& 992	& 0.08		& $R_T$ & 212	& 9 \\
+\bottomrule
 \end{tabular}
-\caption{Valori di resistenza e capacità misurate per i componenti dei
-circuiti studiati. \label{tab: rcmes_B}}
-
-\begin{tabular}{cccccc}
-\toprule
-Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
-$\sigma C$ \\
-\midrule
-\midrule
-$R_1$	  	& 996 	& 8		& $C_1$ & 207	& 9 \\
-$R_2$	  	& 994	& 8		& & & \\
-$R_4$	  	& 999	& 8		& & & \\
-$R_5$	  	& 9.95	k& 0.08	k& & & \\
-$R_6$	  	& 99.1	k& 0.8	k& & & \\
-$R_7$	  	& 9.96	k& 0.08		k& & & \\
-$R_8$	  	& 99.6	k& 0.8		k& & & \\
-$R_{10}$  	& 99.8	k& 0.8		k& & & \\
-$Pot_{R_9}$ & 103.4 k & 0.8 k& & & \\
-$Pot_{R_{11}}$ & 1.99 k & 0.08 k& & &\\
-\bottomrule   
-\end{tabular}
-\caption{Valori di resistenza e capacità misurate per i componenti dei
-circuiti studiati. \label{tab: rcmes_M}}
+\caption{Valori di resistenza misurate con il multimetro dei componenti dei
+due circuiti studiati. \label{tab: rcmes_B}}
 \end{table}
 
-Riportiamo per completezza anche i valori delle tensioni di alimentazione
-continue per l'op-amp misurate con il multimetro
-\begin{align*}
-V_{CC} &= 4.99 \pm 0.03 \si{\V} \\
-V_{EE} &= -4.99 \pm 0.03 \si{\V}
-\end{align*}
+Riportiamo per completezza anche il valore della tensione di alimentazione
+continua per il sensore a ultrasuoni misurata con il multimetro.
+\[
+V_{CC} = 4.99 \pm 0.03 \si{\V}
+\]
 
 \subsection*{Nota sul metodo di fit}
 Per determinare i parametri ottimali e le rispettive covarianze si \`e
@@ -76,7 +46,7 @@ implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
 mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 
 %=======================
-\section{Generatore di Noise}
+\section{Apparato strumentale e analisi del circuito}
 Il primo passo per la costruzione del circuito P.I.D. è la realizzazione del
 circuito di lettura. Nel nostro caso abbiamo realizzato un sistema di
 rilevazione di intensità luminosa costituito da due circuiti identici che
@@ -86,7 +56,7 @@ $R_3$ e una fotoresistenza $R_4$.
 
 \begin{figure}[htbp]
     \centering
-	\includegraphics[scale=0.7]{noisegen}
+	\includegraphics[scale=0.7]{schm}
     \caption{Schema dei circuiti di emissione e rilevazione di intensità
     luminosa.
     \label{schm: mesctrl}}
@@ -131,8 +101,9 @@ Come ci aspettavamo il valore di $V\ped{meas}$ cresce all'aumentare
 dell'intensità della luce incidente sulla fotoresistenza, cioè aumentando la
 tensione in ingresso $V\ped{gen}$.
 
+\iffalse
 %=======================
-\section{Amplificatore del Noise rispetto al Set}
+\section{Misura della velocità del suono}
 Si è costruito un amplificatore differenziale con guadagno $\approx 10$ a
 partire dalle resistenze $R_5$, $R_6$ e $R_7$, $R_8$ secondo lo schema in
 figura.
@@ -329,9 +300,12 @@ Come precedentemente fatto, dopo aver variato il potenziometro $R_9$ fino alla r
     \label{fig: Draft1}}
 \end{figure}
 Come ci si aspettava il controllo proporzionale non mantiene meas invariato, dato che il circuito completo non è altro che una cascata di amplificatori, di cui il primo differenziale di guadagno $\approx 10$, e il secondo invertente di guadagno pari a $\frac{R_{10}}{R_9}$
+\fi
 %=======================
 \section*{Conclusioni e commenti finali}
-
+Si è riusciti a dare una misura ragionevole della velocità del suono in aria
+e si è riusciti ad apprezzare la sua dipendenza dalla temperatura ambientale
+con un semplice sensore ad ultrasuoni ed un termistore.
 
 %=======================
 \section*{Dichiarazione}
