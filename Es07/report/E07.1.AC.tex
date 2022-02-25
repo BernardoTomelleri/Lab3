@@ -10,7 +10,7 @@
 \graphicspath{{../figs/}}
 
 \author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
-\title{Es07A: PID}
+\title{Es07A: Controllore Proporzionale-Integrale}
 \begin{document}
 \date{\today}
 \maketitle
@@ -190,40 +190,48 @@ $(V_{EE}, V_{CC})$ attraverso l'uso di un potenziometro da $R_11 = 2 k\ohm$.
     riferimento.
     \label{schm: setgen}}
 \end{figure}
-%TODO
-Per verifica del buon funzionamento del circuito amplificatore di differenza
-tra i 2 segnali in ingresso, sappiamo che nel caso in cui \verb+MEAS+ e
-\verb+SET+ siano uguali allora la differenza dev'essere nulla, ovverosia
-in uscita dev'essere $V\ped{ERROR} = 0$.
-Difatti, collegando i terminali differenziali del canale 1 dell'oscilloscopio
+
+Per verificare il corretto funzionamento del circuito amplificatore di
+differenza tra i 2 segnali in ingresso, sappiamo che nel caso in cui
+\verb+MEAS+ e \verb+SET+ siano uguali allora la differenza dev'essere nulla,
+ovverosia in uscita dovremmo trovare $V\ped{ERROR} = 0$ V.
+Difatti, collegando i terminali differenziali del CH1 dell'oscilloscopio
 per misurare il segnale $V\ped{MEAS} (t)$ rispetto al segnale $V\ped{SET} (t)$
-(per registrare la loro differenza) e il canale 2 per misurare
-$V\ped{ERROR} (t)$ all'uscita rispetto a massa troviamo che entrambi sono
-costanti e compatibili con $\SI{0}{\V}$ come ci si aspettava.
-\begin{figure}[H]
+(registrando così la loro differenza) e CH2 per misurare $V\ped{ERROR} (t)$
+all'uscita rispetto a massa troviamo che entrambi sono costanti e compatibili
+con $\SI{0}{\V}$ come volevamo.
+\begin{figure}[htbp]
     \centering
 	\includegraphics[scale=0.4]{meas.same.set}
     \caption{segnali nella condizione in cui il valore di set e meas sono uguali, nel canale uno si misura il valore di meas rispetto a set, nel canale due invece error rispetto a massa.
-    \label{fig: Draft1}}
+    \label{fig: meas=set}}
 \end{figure}
 
 %=======================
 \section{Controllo integrale}
-Successivamente si è montato il circuito di controllo integrale, un semplice circuito integratore, utilizzando la resistenza data dal potenziometro e una capacità $C_1$, utilizzando lo schema in figura
-\begin{figure}[H]
+Successivamente si è montato il circuito di controllo integrale, cioè un
+circuito integratore RC costituito dalla resistenza $R_9$ del potenziometro e
+da una condensatore $C_1$, montati secondo lo schema in \cref{fig: ctrlint}.
+\begin{figure}[htbp]
     \centering
 	\includegraphics[scale=0.4]{controlgenint}
     \caption{schema circuitale del controllore ad azione integrale.
-    \label{fig: Draft1}}
+    \label{fig: ctrlint}}
 \end{figure}
-quindi abbiamo collegato l'uscita control al driver per la luce di controllo e l'uscita del circuito di generazione errore all'entrata del circuito di controllo integrale.
-Arrivati a questo punto è bastato spegnere il generatore di luce di disturbo e cambiare la posizione del potenziometro per permettere la led di controllo di accendersi.
-Si nota subito come la risposta del led di controllo sia fortemente influenzata dalla quantità di luce che arriva alla fotoresistenza; si consiglia infatti di spostare il circuito distante da eventuali sorgenti di disturbo casuali, come per esempio persone che camminano in prossimità della fotoresistenza. 
-Dopodiché si è provato a verificare la risposta del led di controllo ad un intervento esterno di riduzione della luce, abbiamo quindi posizionato delle buste di plastica semitrasparenti tra il diodo e la fotoresistenza: di conseguenza il led ha aumentato l'intensità luminosa.
+
+Dunque abbiamo collegato l'uscita \verb+CONTROL+ al driver per la luce di
+controllo e l'uscita del circuito di generazione errore all'entrata del
+circuito di controllo integrale.
+A questo punto è stato sufficiente passivare il generatore di luce di
+disturbo e spostare il contatto strisciante di $R_9 = 100 \; \si{k\ohm}$ a
+fine corsa per poter osservare l'accensione del LED di controllo.
+%TODO
+Si nota subito come la risposta del LED di controllo sia fortemente influenzata dalla quantità di luce che arriva alla fotoresistenza; si consiglia infatti di spostare il circuito distante da eventuali sorgenti di disturbo casuali, come per esempio persone che camminano in prossimità della fotoresistenza. 
+Dopodiché si è provato a verificare la risposta del LED di controllo ad un intervento esterno di riduzione della luce, abbiamo quindi posizionato delle buste di plastica semitrasparenti tra il diodo e la fotoresistenza: di conseguenza il LED ha aumentato l'intensità luminosa.
 \subsection{Risposta ad un'onda quadra}
 Si è quindi passati alla verifica della risposta ad una luce di disturbo, in questo caso pilotata da un'onda quadra compresa tra 0 e 150 mV.
-Per cominciare si deve fissare il valore di riferimento set: per farlo è bastato scegliere un'intensità luminosa casuale, per esempio quella che meas viene a registrare quando uno dei 2 driver led è pilotato con una tensione di 1 Volt, e utilizzare il potenziometro R11 per far combaciare i valori in meas e set.
-A questo punto abbiamo inviato al led driver di disturbo un'onda quadra tra 0 e 150 mV con frequenza pari a 1 Hz.
+Per cominciare si deve fissare il valore di riferimento set: per farlo è bastato scegliere un'intensità luminosa casuale, per esempio quella che meas viene a registrare quando uno dei 2 driver LED è pilotato con una tensione di 1 Volt, e utilizzare il potenziometro R11 per far combaciare i valori in meas e set.
+A questo punto abbiamo inviato al LED driver di disturbo un'onda quadra tra 0 e 150 mV con frequenza pari a 1 Hz.
 Osservando il valore di control e meas ci rendiamo conto di quello che fa effettivamente il circuito, ovvero cerca di mantenere il valore di meas costante nel tempo.
 \begin{figure}[H]
     \centering
@@ -234,14 +242,14 @@ Osservando il valore di control e meas ci rendiamo conto di quello che fa effett
 \begin{figure}[H]
     \centering
 	\includegraphics[scale=0.4]{control7}
-    \caption{grafico del segnale control in blu e dell'onda pilota del led di disturbo in giallo
+    \caption{grafico del segnale control in blu e dell'onda pilota del LED di disturbo in giallo
     \label{fig: Draft1}}
 \end{figure}
 Successivamente abbiamo misurato il canale error rispetto a massa per varie posizioni del potenziometro. In generale il segnale del canale error ha un andamento simile per ogni posizione, cambiano soltanto i tempi in cui il segnale torna ad essere 0.
 \begin{figure}[H]
     \centering
 	\includegraphics[scale=0.4]{7}
-    \caption{Andamento del segnale error in blu, rispetto al segnale pilota del led di disturbo
+    \caption{Andamento del segnale error in blu, rispetto al segnale pilota del LED di disturbo
     \label{fig: Draft1}}
 \end{figure}
 Tramite cursori si è poi preso il tempo con cui il segnale oscilla e lo abbiamo paragonato al tempo caratteristico del circuito integratore definito come $\tau = R_9C_1$.
@@ -264,21 +272,21 @@ $7.34 \pm0.06$ k$\ohm$ & $3.24 \pm 0.05$ 	ms & $ 1.52 \pm 0.06$ ms\\
 \end{table}
 Nonostante le prime  2 o 3 misure risultino compatibili tra di loro, le altre si distaccano anche di molto dall'andamento previsto; si è notato inoltre come il tempo caratteristico misurato dipendesse anche dal valore di Set, parametro che non era presente nell'equazione di riferimento.
 \subsection{Risposta ad una rampa}
-Riportando il valore della resistenza equivalente al potenziometro a $100 k\ohm$ si è pilotato il driver led di disturbo con un'onda triangolare tra 0 e 150 mV a 10 Hz e nelle condizioni in cui il duty cycle fosse $10 \percent$ e $90 \percent$
+Riportando il valore della resistenza equivalente al potenziometro a $100 k\ohm$ si è pilotato il driver LED di disturbo con un'onda triangolare tra 0 e 150 mV a 10 Hz e nelle condizioni in cui il duty cycle fosse $10 \percent$ e $90 \percent$
 \begin{figure}[H]
     \centering
 	\includegraphics[scale=0.4]{8}
-    \caption{grafico degli andamenti di error (rispetto a massa) in blu e del segnale in ingresso al led di disturbo (sempre rispetto a massa) in giallo pilotato con l'onda triangolare sopracitata con duty cycle $10 \percent$
+    \caption{grafico degli andamenti di error (rispetto a massa) in blu e del segnale in ingresso al LED di disturbo (sempre rispetto a massa) in giallo pilotato con l'onda triangolare sopracitata con duty cycle $10 \percent$
     \label{fig: Draft1}}
 \end{figure}
 
 \begin{figure}[H]
     \centering
 	\includegraphics[scale=0.4]{8.1}
-    \caption{grafico degli andamenti di error (rispetto a massa) in blu e del segnale in ingresso al led di disturbo (sempre rispetto a massa) in giallo pilotato con l'onda triangolare sopracitata con duty cycle $90 \percent$
+    \caption{grafico degli andamenti di error (rispetto a massa) in blu e del segnale in ingresso al LED di disturbo (sempre rispetto a massa) in giallo pilotato con l'onda triangolare sopracitata con duty cycle $90 \percent$
     \label{fig: Draft1}}
 \end{figure}
-In questo caso il circuito di amplificazione dell'errore si comporta quasi come un derivatore: in fin dei conti è quello che ci si aspetta, dato che il controllo deve integrare il segnale di errore, per poter bilanciare il cambiamento di luce, c'è bisogno che anche l'uscita del controllo sia un'onda triangolare simmetrica a quella con cui pilotiamo il led di disturbo. Inoltre dato che il circuito integratore agisce in un tempo non trascurabile di fronte a dei cambiamenti,il segnale di errore non potrà mai essere nullo, infatti se lo fosse il controllore non produrrebbe alcun cambiamento, cosa che può sussistere solo nel caso in cui si abbia una luce di disturbo costante nel tempo.
+In questo caso il circuito di amplificazione dell'errore si comporta quasi come un derivatore: in fin dei conti è quello che ci si aspetta, dato che il controllo deve integrare il segnale di errore, per poter bilanciare il cambiamento di luce, c'è bisogno che anche l'uscita del controllo sia un'onda triangolare simmetrica a quella con cui pilotiamo il LED di disturbo. Inoltre dato che il circuito integratore agisce in un tempo non trascurabile di fronte a dei cambiamenti,il segnale di errore non potrà mai essere nullo, infatti se lo fosse il controllore non produrrebbe alcun cambiamento, cosa che può sussistere solo nel caso in cui si abbia una luce di disturbo costante nel tempo.
 \subsection{Risposta in frequenza}
 \begin{figure}[H]
     \centering
@@ -309,7 +317,7 @@ Infine si è montato il circuito di controllo proporzionale al posto di quello i
     \label{fig: Draft1}}
 \end{figure}
 \subsection{Risposta ad un'onda quadra}
-Come precedentemente fatto, dopo aver variato il potenziometro $R_9$ fino alla resistenza equivalente da $100 k\ohm$, abbiamo pilotato il driver led di disturbo con un'onda quadra tra 0 e 150 mV di 1Hz. Abbiamo quindi verificato la nuova situazione controllando i segnali prodotti da error, control e meas.
+Come precedentemente fatto, dopo aver variato il potenziometro $R_9$ fino alla resistenza equivalente da $100 k\ohm$, abbiamo pilotato il driver LED di disturbo con un'onda quadra tra 0 e 150 mV di 1Hz. Abbiamo quindi verificato la nuova situazione controllando i segnali prodotti da error, control e meas.
 \begin{figure}[H]
     \centering
 	\includegraphics[scale=0.4]{proportional}
