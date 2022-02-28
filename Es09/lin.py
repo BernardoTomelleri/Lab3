@@ -17,7 +17,7 @@ TEMP = False
 def lin(x, m=1, q=0):
     return m*x + q
 
-time, dist, temp = np.genfromtxt('./data/railtime.csv',  float, delimiter=',',
+time, dist, temp = np.genfromtxt('C:/Users/rossi/OneDrive/Documenti/GitHub/Lab3/Es09/data/railtime.csv',  float, delimiter=',',
                      skip_header=1, usecols=(0,1,3), unpack = True)
 t_min = 0; t_max = 5
 dt = np.ones_like(time)*0.005; ds = 15*np.ones_like(dist)
