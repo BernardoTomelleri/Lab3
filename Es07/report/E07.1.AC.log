@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  14 FEB 2022 13:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  28 FEB 2022 12:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1169,105 +1169,33 @@ LaTeX Font Info:    Trying to load font information for T1+txtt on input line 6
 File: t1txtt.fd 2000/12/15 v3.1
 )) (../../latex/math.tex) (./E07.1.AC.aux
 
-LaTeX Warning: Label `fig: Draft1' multiply defined.
+LaTeX Warning: Label `fig: errmeas' multiply defined.
 
 
-LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1' multiply defined.
-
-
-LaTeX Warning: Label `fig: Draft1@cref' multiply defined.
+LaTeX Warning: Label `fig: errmeas@cref' multiply defined.
 
 )
 \openout1 = `E07.1.AC.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-Package hyperref Info: Link coloring ON on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+Package hyperref Info: Link coloring ON on input line 11.
  (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -1279,16 +1207,16 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count362
 )
-LaTeX Info: Redefining \ref on input line 14.
-LaTeX Info: Redefining \pageref on input line 14.
-LaTeX Info: Redefining \nameref on input line 14.
+LaTeX Info: Redefining \ref on input line 11.
+LaTeX Info: Redefining \pageref on input line 11.
+LaTeX Info: Redefining \nameref on input line 11.
 
 (./E07.1.AC.out) (./E07.1.AC.out)
 \@outlinefile=\write4
 \openout4 = `E07.1.AC.out'.
 
 Package translations Info: no dictionary file `translations-basic-dictionary-it
-alian.trsl' found. on input line 14.
+alian.trsl' found. on input line 11.
 
 (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1349,155 +1277,161 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \it@ocap on input line 14.
-LaTeX Info: Redefining \it@ccap on input line 14.
+LaTeX Info: Redefining \it@ocap on input line 11.
+LaTeX Info: Redefining \it@ccap on input line 11.
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.18} (current compat level: 1.15).
 
 \c@lstlisting=\count369
-LaTeX Font Info:    Trying to load font information for U+msa on input line 16.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
 
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
-5.
+0.
 
 (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<../figs//noisegen.png, id=43, 308.352pt x 167.4255pt>
+<../figs//noisegen.png, id=51, 308.352pt x 167.4255pt>
 File: ../figs//noisegen.png Graphic file (type png)
 <use ../figs//noisegen.png>
-Package pdftex.def Info: ../figs//noisegen.png  used on input line 89.
+Package pdftex.def Info: ../figs//noisegen.png  used on input line 85.
 (pdftex.def)             Requested size: 215.84492pt x 117.19704pt.
  [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<../figs//errorgen.png, id=66, 236.082pt x 108.405pt>
+<../figs//measgrad.png, id=72, 1440.88312pt x 711.4078pt>
+File: ../figs//measgrad.png Graphic file (type png)
+<use ../figs//measgrad.png>
+Package pdftex.def Info: ../figs//measgrad.png  used on input line 136.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+<../figs//errorgen.png, id=73, 236.082pt x 108.405pt>
 File: ../figs//errorgen.png Graphic file (type png)
 <use ../figs//errorgen.png>
-Package pdftex.def Info: ../figs//errorgen.png  used on input line 141.
+Package pdftex.def Info: ../figs//errorgen.png  used on input line 150.
 (pdftex.def)             Requested size: 188.86584pt x 86.7241pt.
-<../figs//error.set.png, id=67, 1152.7065pt x 553.46774pt>
+<../figs//error.set.png, id=74, 1152.7065pt x 553.46774pt>
 File: ../figs//error.set.png Graphic file (type png)
 <use ../figs//error.set.png>
-Package pdftex.def Info: ../figs//error.set.png  used on input line 153.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//error.meas.png, id=68, 1152.7065pt x 553.46774pt>
+Package pdftex.def Info: ../figs//error.set.png  used on input line 162.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//error.meas.png, id=75, 1152.7065pt x 553.46774pt>
 File: ../figs//error.meas.png Graphic file (type png)
 <use ../figs//error.meas.png>
-Package pdftex.def Info: ../figs//error.meas.png  used on input line 161.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
- [2 <../figs//noisegen.png> <../figs//errorgen.png>] [3 <../figs//error.set.png
- (PNG copy)> <../figs//error.meas.png (PNG copy)>]
-<../figs//setgen.png, id=85, 89.73524pt x 80.09924pt>
+Package pdftex.def Info: ../figs//error.meas.png  used on input line 170.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//setgen.png, id=76, 89.73524pt x 80.09924pt>
 File: ../figs//setgen.png Graphic file (type png)
 <use ../figs//setgen.png>
-Package pdftex.def Info: ../figs//setgen.png  used on input line 188.
+Package pdftex.def Info: ../figs//setgen.png  used on input line 198.
 (pdftex.def)             Requested size: 62.81422pt x 56.06906pt.
-<../figs//meas.same.set.png, id=86, 1152.7065pt x 553.46774pt>
+ [2 <../figs//noisegen.png>] [3 <../figs//measgrad.png (PNG copy)> <../figs//er
+rorgen.png> <../figs//error.set.png (PNG copy)>]
+<../figs//meas.same.set.png, id=93, 1152.7065pt x 553.46774pt>
 File: ../figs//meas.same.set.png Graphic file (type png)
 <use ../figs//meas.same.set.png>
-Package pdftex.def Info: ../figs//meas.same.set.png  used on input line 205.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//controlgenint.png, id=87, 309.40594pt x 154.32657pt>
+Package pdftex.def Info: ../figs//meas.same.set.png  used on input line 215.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//controlgenint.png, id=95, 309.40594pt x 154.32657pt>
 File: ../figs//controlgenint.png Graphic file (type png)
 <use ../figs//controlgenint.png>
-Package pdftex.def Info: ../figs//controlgenint.png  used on input line 215.
-(pdftex.def)             Requested size: 123.76018pt x 61.72952pt.
- [4 <../figs//setgen.png> <../figs//meas.same.set.png (PNG copy)>]
-<../figs//control7.meas.png, id=95, 1152.7065pt x 553.46774pt>
+Package pdftex.def Info: ../figs//controlgenint.png  used on input line 230.
+(pdftex.def)             Requested size: 185.64499pt x 92.59663pt.
+ [4 <../figs//error.meas.png (PNG copy)> <../figs//setgen.png>]
+[5 <../figs//meas.same.set.png (PNG copy)> <../figs//controlgenint.png>]
+<../figs//control7.meas.png, id=109, 1152.7065pt x 553.46774pt>
 File: ../figs//control7.meas.png Graphic file (type png)
 <use ../figs//control7.meas.png>
-Package pdftex.def Info: ../figs//control7.meas.png  used on input line 230.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//control7.png, id=96, 1152.7065pt x 553.46774pt>
+Package pdftex.def Info: ../figs//control7.meas.png  used on input line 272.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//control7.png, id=110, 1152.7065pt x 553.46774pt>
 File: ../figs//control7.png Graphic file (type png)
 <use ../figs//control7.png>
-Package pdftex.def Info: ../figs//control7.png  used on input line 236.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-
-[5 <../figs//controlgenint.png> <../figs//control7.meas.png (PNG copy)>]
-<../figs//7.png, id=103, 1019.007pt x 328.22626pt>
+Package pdftex.def Info: ../figs//control7.png  used on input line 280.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//7.png, id=111, 1019.007pt x 328.22626pt>
 File: ../figs//7.png Graphic file (type png)
 <use ../figs//7.png>
-Package pdftex.def Info: ../figs//7.png  used on input line 243.
-(pdftex.def)             Requested size: 407.59558pt x 131.28816pt.
-<../figs//8.png, id=104, 1152.7065pt x 553.46774pt>
+Package pdftex.def Info: ../figs//7.png  used on input line 298.
+(pdftex.def)             Requested size: 483.69687pt x 155.7989pt.
+
+[6 <../figs//control7.meas.png (PNG copy)> <../figs//control7.png (PNG copy)>]
+<../figs//8.png, id=118, 1152.7065pt x 553.46774pt>
 File: ../figs//8.png Graphic file (type png)
 <use ../figs//8.png>
-Package pdftex.def Info: ../figs//8.png  used on input line 270.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-
-[6 <../figs//control7.png (PNG copy)> <../figs//7.png (PNG copy)>]
-<../figs//8.1.png, id=112, 1152.7065pt x 553.46774pt>
+Package pdftex.def Info: ../figs//8.png  used on input line 344.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//8.1.png, id=119, 1152.7065pt x 553.46774pt>
 File: ../figs//8.1.png Graphic file (type png)
 <use ../figs//8.1.png>
-Package pdftex.def Info: ../figs//8.1.png  used on input line 277.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//103.4k.png, id=113, 1152.7065pt x 553.46774pt>
+Package pdftex.def Info: ../figs//8.1.png  used on input line 352.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//103.4k.png, id=120, 1152.7065pt x 553.46774pt>
 File: ../figs//103.4k.png Graphic file (type png)
 <use ../figs//103.4k.png>
-Package pdftex.def Info: ../figs//103.4k.png  used on input line 285.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//76.1k.png, id=114, 1152.7065pt x 553.46774pt>
+Package pdftex.def Info: ../figs//103.4k.png  used on input line 365.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+
+[7 <../figs//7.png (PNG copy)>] [8 <../figs//8.png (PNG copy)> <../figs//8.1.pn
+g (PNG copy)>]
+<../figs//76.1k.png, id=134, 1152.7065pt x 553.46774pt>
 File: ../figs//76.1k.png Graphic file (type png)
 <use ../figs//76.1k.png>
-Package pdftex.def Info: ../figs//76.1k.png  used on input line 291.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
- [7 <../figs//8.png (PNG copy)> <../figs//8.1.png (PNG copy)>]
-<../figs//43.9k.png, id=122, 1152.7065pt x 553.46774pt>
+Package pdftex.def Info: ../figs//76.1k.png  used on input line 375.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//43.9k.png, id=135, 1152.7065pt x 553.46774pt>
 File: ../figs//43.9k.png Graphic file (type png)
 <use ../figs//43.9k.png>
-Package pdftex.def Info: ../figs//43.9k.png  used on input line 297.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
- [8 <../figs//103.4k.png (PNG copy)> <../figs//76.1k.png (PNG copy)>]
-<../figs//controlgenprop.png, id=129, 247.52475pt x 123.46124pt>
+Package pdftex.def Info: ../figs//43.9k.png  used on input line 385.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//controlgenprop.png, id=137, 247.52475pt x 123.46124pt>
 File: ../figs//controlgenprop.png Graphic file (type png)
 <use ../figs//controlgenprop.png>
-Package pdftex.def Info: ../figs//controlgenprop.png  used on input line 307.
-(pdftex.def)             Requested size: 99.00813pt x 49.3836pt.
-<../figs//proportional.png, id=130, 1152.7065pt x 553.46774pt>
+Package pdftex.def Info: ../figs//controlgenprop.png  used on input line 401.
+(pdftex.def)             Requested size: 148.51599pt x 74.0773pt.
+<../figs//proportional.png, id=139, 1152.7065pt x 553.46774pt>
 File: ../figs//proportional.png Graphic file (type png)
 <use ../figs//proportional.png>
-Package pdftex.def Info: ../figs//proportional.png  used on input line 315.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//proportional.meas.png, id=131, 1152.7065pt x 553.46774pt>
+Package pdftex.def Info: ../figs//proportional.png  used on input line 417.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//proportional.meas.png, id=140, 1152.7065pt x 553.46774pt>
 File: ../figs//proportional.meas.png Graphic file (type png)
 <use ../figs//proportional.meas.png>
-Package pdftex.def Info: ../figs//proportional.meas.png  used on input line 321
+Package pdftex.def Info: ../figs//proportional.meas.png  used on input line 424
 .
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//proportional.control.png, id=132, 1152.7065pt x 553.46774pt>
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//proportional.control.png, id=141, 1152.7065pt x 553.46774pt>
 File: ../figs//proportional.control.png Graphic file (type png)
 <use ../figs//proportional.control.png>
 Package pdftex.def Info: ../figs//proportional.control.png  used on input line 
-327.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
- [9 <../figs//43.9k.png (PNG copy)> <../figs//controlgenprop.png> <../figs//pro
-portional.png (PNG copy)>] [10 <../figs//proportional.meas.png (PNG copy)> <../
-figs//proportional.control.png (PNG copy)>] (./E07.1.AC.aux)
+432.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+ [9 <../figs//103.4k.png (PNG copy)>] [10 <../figs//76.1k.png (PNG copy)> <../f
+igs//43.9k.png (PNG copy)> <../figs//controlgenprop.png>]
+[11 <../figs//proportional.png (PNG copy)> <../figs//proportional.meas.png (PNG
+ copy)>] [12 <../figs//proportional.control.png (PNG copy)>] (./E07.1.AC.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `E07.1.AC.out' has not changed.
-(rerunfilecheck)             Checksum: EC72BF57EFE36E0A9E9A3C804827A928;1689.
+(rerunfilecheck)             Checksum: 83B66A8AD31B6EA0BDB4E071932434C7;2213.
  ) 
 Here is how much of TeX's memory you used:
- 55859 strings out of 479713
- 1370035 string characters out of 5876923
+ 55906 strings out of 479713
+ 1370843 string characters out of 5876923
  2185076 words of memory out of 10000000
- 72809 multiletter control sequences out of 15000+600000
- 416044 words of font info for 63 fonts, out of 8000000 for 9000
+ 72850 multiletter control sequences out of 15000+600000
+ 417578 words of font info for 65 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,11n,125p,754b,793s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,11n,125p,754b,816s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
 ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist
@@ -1511,10 +1445,10 @@ xmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/f
 onts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1
 /public/cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm
 -super/sftt1000.pfb>
-Output written on E07.1.AC.pdf (10 pages, 1487761 bytes).
+Output written on E07.1.AC.pdf (12 pages, 1578417 bytes).
 PDF statistics:
- 219 PDF objects out of 1000 (max. 8388607)
- 156 compressed objects within 2 object streams
- 47 named destinations out of 1000 (max. 500000)
- 180 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 240 PDF objects out of 1000 (max. 8388607)
+ 174 compressed objects within 2 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 201 words of extra memory for PDF output out of 10000 (max. 10000000)
 
