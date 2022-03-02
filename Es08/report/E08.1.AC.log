@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  16 FEB 2022 11:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  2 MAR 2022 18:04
 entering extended mode
 **./E08.1.AC.tex
 (E08.1.AC.tex
@@ -1462,54 +1462,50 @@ Package pdftex.def Info: ../figs//amp.200.cap.png  used on input line 219.
 <../figs//impedance.png, id=105, 1152.7065pt x 553.46774pt>
 File: ../figs//impedance.png Graphic file (type png)
 <use ../figs//impedance.png>
-Package pdftex.def Info: ../figs//impedance.png  used on input line 228.
+Package pdftex.def Info: ../figs//impedance.png  used on input line 232.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
 
 [8 <../figs//amp.200.cap.png (PNG copy)> <../figs//impedance.png (PNG copy)>]
-(E08.1.AC.aux)
+[9] (E08.1.AC.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `E08.1.AC.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `E08.1.AC.out':
-(rerunfilecheck)             Before: 4A38143B82C39160F6D58E841D7FA56C;1019
-(rerunfilecheck)             After:  086B562753DE09422041155B27E037CE;1005.
+Package rerunfilecheck Info: File `E08.1.AC.out' has not changed.
+(rerunfilecheck)             Checksum: 086B562753DE09422041155B27E037CE;1005.
  ) 
 Here is how much of TeX's memory you used:
- 56081 strings out of 478927
- 1388591 string characters out of 2852534
+ 56082 strings out of 478927
+ 1388590 string characters out of 2852534
  2183522 words of memory out of 3000000
  73150 multiletter control sequences out of 15000+600000
  418591 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  122i,13n,125p,757b,792s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{subsection.1.1} has been referenced but does not 
-exist, replaced by a fixed one
-
- <C:\Users\rossi\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti10
-00.pk> <C:\Users\rossi\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
-ectt1000.pk> <C:\Users\rossi\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
-pi600\ecbx1200.pk> <C:\Users\rossi\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappe
-n/ec/dpi600\ecrm1000.pk> <C:\Users\rossi\AppData\Local\MiKTeX\fonts/pk/ljfour/j
-knappen/ec/dpi600\tcrm1000.pk> <C:\Users\rossi\AppData\Local\MiKTeX\fonts/pk/lj
-four/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\rossi\AppData\Local\MiKTeX\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\rossi\AppData\Local\MiKTeX
-\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk><C:/Users/rossi/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/rossi/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ros
-si/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/U
-sers/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.p
-fb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmr7.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/amsfonts/symbols/msbm10.pfb>
-Output written on E08.1.AC.pdf (8 pages, 1050365 bytes).
+{C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
+er-t1.enc}{C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-supe
+r/cm-super-ts1.enc}<C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmex10.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/rossi/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/rossi/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/rossi/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rossi/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/r
+ossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/
+Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmsy7.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/symbols/msbm10.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/cm-super/sfbx1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Users/rossi/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/cm-super/sfrm1000.pfb><C:/Users/rossi/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Users/rossi/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Users/ro
+ssi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfti1000.pfb><C:/
+Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1000.
+pfb>
+Output written on E08.1.AC.pdf (9 pages, 1146638 bytes).
 PDF statistics:
- 369 PDF objects out of 1000 (max. 8388607)
- 37 named destinations out of 1000 (max. 500000)
+ 208 PDF objects out of 1000 (max. 8388607)
+ 38 named destinations out of 1000 (max. 500000)
  116 words of extra memory for PDF output out of 10000 (max. 10000000)
 

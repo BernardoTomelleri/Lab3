@@ -137,7 +137,7 @@ da \verb+W2+ tramite script definito in Wavegen.
     \caption{Acquisizione presa dall'oscilloscopio dell'andamento nel tempo dei
 	segnali in ingresso $W_2 (t)$ (CH1) e uscita $V\ped{MEAS} (t)$ (CH2)
 	del partitore di tensione con \texttt{CONTROL} collegato a massa.
-    \label{fig: errmeas}}
+    \label{fig: measgrad}}
 \end{figure}
 
 %=======================
@@ -267,32 +267,37 @@ Osservando l'andamento nel tempo dei segnali $V\ped{CONTROL} (t)$ e
 $V\ped{MEAS} (t)$ si riesce ad apprezzare il comportamento del circuito sotto
 studio; questo cerca di ``correggere'' il disturbo esterno al fine di
 mantenere il valore dell'osservabile $V\ped{MEAS}$ costante nel tempo.
+Infatti il segnale in \verb+CONTROL+ è un'onda quadra in opposizione di fase
+a quella di disturbo ma con difetti di \emph{overshoot}, dovuti al tempo
+caratteristico di risposta del circuito integratore alla variazione rapida
+nei fronti di discesa e salita dell'onda quadra $W_2 (t)$.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{control7.meas}
     \caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
-    segnali in \texttt{CONTROL} (CH1) e di \texttt{MEAS} (CH2) rispetto a
+    segnali in \texttt{MEAS} (CH1) e di \texttt{CONTROL} (CH2) rispetto a
     massa.
     \label{fig: ctrlmeas}}
 \end{figure}
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{control7}
-    \caption{Acquisizione all'oscilloscopio dei segnali $V\ped{CONTROL} (t)$
-    (CH1) e dell'onda pilota del LED di disturbo $W_2 (t)$ (CH2).
+    \caption{Acquisizione all'oscilloscopio dei segnali $W_2 (t)$
+    (CH1) e dell'onda pilota del LED di disturbo $V\ped{CONTROL} (t)$ (CH2).
     \label{fig: ctrlnoise}}
 \end{figure}
 
 Dunque abbiamo osservato il comportamento del segnale in \verb+error+ al
-variare della resistenza del potenziometro $R_9$. Si nota che il segnale
-ha un andamento `inversamente' proporzionale all'onda quadra di disturbo,
-ovvero rimane costante durante i periodi alti e bassi, mentre in
-corrispondenza dei fronti di discesa e salita di $W_2 (t)$ assume la forma di
-un'oscillazione smorzata esponenzialmente. In altre parole $V\ped{ERROR} (t)$
-è sempre un'onda quadra con overshoot in opposizione di fase all'onda quadra in
+variare della resistenza del potenziometro $R_9$. Si nota che anche questo
+segnale ha un andamento `inversamente' proporzionale all'onda quadra di
+disturbo, cioè rimane costante a $0$ V durante i periodi alti e bassi, mentre
+in corrispondenza dei fronti di discesa e salita di $W_2 (t)$ assume la forma
+di un'oscillazione smorzata esponenzialmente. Per essere più precisi
+$V\ped{ERROR} (t)$ ha sempre la forma di una serie di oscillazioni smorzate di
+segno alternante che si ripetono ogni semi-periodo dell'onda quadra in
 \verb+NOISE+, ma al variare della posizione del trimmer cambia sensibilmente
-il tempo di smorzamento $\tau$ dopo il quale il segnale torna ad essere 0 una
-volta che l'oscillazione si è spenta.
+il tempo di smorzamento $\tau$ dopo cui l'uscita dell'amplificatore
+differenziale torna ad essere nulla, una volta che l'oscillazione si è spenta.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{7}
@@ -301,9 +306,10 @@ volta che l'oscillazione si è spenta.
     \label{fig: errnoise}}
 \end{figure}
 
-Tramite cursori si è quindi misurato il tempo di smorzamento dell'overshoot e
-lo abbiamo confrontato con il tempo caratteristico di risposta del circuito
-integratore definito da $\tau\ped{RC} = R_9 C_1$.
+Tramite cursori si è quindi misurato il tempo di smorzamento
+dell'oscillazione/`overshoot' in \verb+ERROR+ e lo abbiamo confrontato con il
+tempo caratteristico di risposta del circuito integratore definito da
+$\tau\ped{RC} = R_9 C_1$.
 \begin{table}[htbp]
 \centering
 \begin{tabular}{@{}lll@{}}
@@ -331,9 +337,6 @@ Da cui vediamo che le prime misure di tempo risultano compatibili con i loro
 valori attesi, mentre per valori di resistenza $R_9 < \SI{10}{k\ohm}$ queste
 tendono a discostarvisi sempre di più al diminuire del valore di resistenza.
 
-%TODO in che modo dipende da set?
-si è notato inoltre come il tempo caratteristico misurato dipendesse anche dal valore di Set, parametro che non era presente nell'equazione di riferimento.
-
 \section{Risposta ad una rampa}
 Come prima si è reimpostato il valore della resistenza del potenziometro al
 massimo ($100 k\ohm$ nominali) ma stavolta si è pilotato il driver LED di
@@ -356,8 +359,7 @@ $f = 10 \; \si{\Hz}$ e duty-cycle $\text{dc} = 10 \percent$, $90 \percent$.
     \label{fig: erramp90}}
 \end{figure}
 
-%TODO in quello prima non era lo stesso un derivatore?
-In questo caso il circuito di amplificazione dell'errore si comporta quasi come un derivatore: in fin dei conti è quello che ci si aspetta, dato che il controllo deve integrare il segnale di errore, per poter bilanciare il cambiamento di luce, c'è bisogno che anche l'uscita del controllo sia un'onda triangolare simmetrica a quella con cui pilotiamo il LED di disturbo. Inoltre dato che il circuito integratore agisce in un tempo non trascurabile di fronte a dei cambiamenti,il segnale di errore non potrà mai essere nullo, infatti se lo fosse il controllore non produrrebbe alcun cambiamento, cosa che può sussistere solo nel caso in cui si abbia una luce di disturbo costante nel tempo.
+Anche in questo caso il circuito di amplificazione dell'errore si comporta quasi come un derivatore: in fin dei conti è quello che ci si aspetta, dato che il controllo deve integrare il segnale di errore, per poter bilanciare il cambiamento di luce, c'è bisogno che anche l'uscita del controllo sia un'onda triangolare simmetrica a quella con cui pilotiamo il LED di disturbo. Inoltre dato che il circuito integratore agisce in un tempo non trascurabile di fronte a dei cambiamenti,il segnale di errore non potrà mai essere nullo, infatti se lo fosse il controllore non produrrebbe alcun cambiamento, cosa che può sussistere solo nel caso in cui si abbia una luce di disturbo costante nel tempo.
 
 \section{Risposta in frequenza}
 \begin{figure}[htbp]
@@ -452,7 +454,6 @@ In particolare siamo riusciti a descrivere e verificarne sperimentalmente il
 funzionamento e a caratterizzarne la risposta al variare dei parametri di
 costruzione del circuito e delle fonti di disturbo nel dominio dei tempi e
 delle frequenze.
-
 %=======================
 \section*{Dichiarazione}
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e

@@ -11,15 +11,15 @@ import phylab as lab
 ''' Variables that control the script '''
 tix = False  # manually choose spacing between axis ticks
 tex = False  # LaTeX typesetting maths and descriptions
-TEMP= False
-# Modello lineare
+
+# Modello velocità (radice)
 def velt(x, v0):
     return v0*np.sqrt((x+273.15)/(273.15))
 
 def therm(R):
     return 1/(1./T_0 + (np.log(R/R_0))/B)
 
-time, Vtemp = np.genfromtxt('C:/Users/rossi/OneDrive/Documenti/GitHub/Lab3/Es09/data/temptime.csv',  float, delimiter=',',
+time, Vtemp = np.genfromtxt('./data/temptime.csv',  float, delimiter=',',
                      skip_header=1, usecols=(0,1), unpack = True)
 t_min = 0; t_max = 300
 R=9950
@@ -42,17 +42,16 @@ dT=dT*(1/R_0/(T/R_0)/B)*(1/T_0 + np.log(T/R_0)/B)**(-2)
 T=therm(T)
 print(T)
 print(dT)
-# Linear fit
 
+# fit
 T=T-273.15
 x, y, dx, dy = mesrange(T,vel, dx=dT, dy=dv,
                         x_min=t_min, x_max=t_max)
 
-
 # Preliminary plot to visualize the sub-interval of data to analyze
 lab.rc.typeset(usetex=tex, fontsize=12)
 fig, ax = plt.subplots()
-grid(ax, xlab=r'Temperature [Celsius]', ylab=r'travel distance $s(t)$ [mm]')
+grid(ax, xlab=r'Temperature [Celsius]', ylab=r'Speed of sound $v_s (T)$ [m/s]')
 ax.errorbar(x, y, dy, dx, 'k.', ls='-', ms=2, alpha=0.8)
 
 # linear fit
@@ -68,16 +67,9 @@ chisq, ndof, resn = chitest(model(x, *pars), y, unc=deff, ddof=len(pars), v=True
 # linear fit graphs
 fig, (axf, axr) = pltfitres(model, x, y, dx, deff, pars=pars)
 axf.set_ylabel(r'Speed of sound [m/s]')
-if tix: tick(axf, xmaj=0.1, ymaj=0.2)
-if TEMP:
-    axt = axf.twinx()
-    axt.errorbar(x, temp, 0.001, dx,'b.', ls='',  label='Therm data')
-    axt.set_ylabel('Thermistor Voltage $V(TH)$ V')
-    axt.axhline(2.69, c='r', alpha=0.5, label='Thermistor Voltage $= 2.69\pm 0.01$ V')
-    axt.axhline(2.69 + 1e-3, c='r', ls='--', alpha=0.3); axt.axhline(2.69 - 1e-3, c='r', ls='--', alpha=0.3)
-
-
 axr.set_xlabel(r'Temperature [Celsius]', x=0.8)
-if tix: tick(axr, xmaj=0.1, ymaj=0.5)
+if tix: 
+    tick(axf, xmaj=0.1, ymaj=0.2)
+    tick(axr, xmaj=0.1, ymaj=0.5)
 legend = axf.legend(loc='best')
 plt.show()
