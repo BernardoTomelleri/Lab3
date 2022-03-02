@@ -331,9 +331,6 @@ Da cui vediamo che le prime misure di tempo risultano compatibili con i loro
 valori attesi, mentre per valori di resistenza $R_9 < \SI{10}{k\ohm}$ queste
 tendono a discostarvisi sempre di più al diminuire del valore di resistenza.
 
-%TODO in che modo dipende da set?
-si è notato inoltre come il tempo caratteristico misurato dipendesse anche dal valore di Set, parametro che non era presente nell'equazione di riferimento.
-
 \section{Risposta ad una rampa}
 Come prima si è reimpostato il valore della resistenza del potenziometro al
 massimo ($100 k\ohm$ nominali) ma stavolta si è pilotato il driver LED di
@@ -356,8 +353,10 @@ $f = 10 \; \si{\Hz}$ e duty-cycle $\text{dc} = 10 \percent$, $90 \percent$.
     \label{fig: erramp90}}
 \end{figure}
 
-%TODO in quello prima non era lo stesso un derivatore?
-In questo caso il circuito di amplificazione dell'errore si comporta quasi come un derivatore: in fin dei conti è quello che ci si aspetta, dato che il controllo deve integrare il segnale di errore, per poter bilanciare il cambiamento di luce, c'è bisogno che anche l'uscita del controllo sia un'onda triangolare simmetrica a quella con cui pilotiamo il LED di disturbo. Inoltre dato che il circuito integratore agisce in un tempo non trascurabile di fronte a dei cambiamenti,il segnale di errore non potrà mai essere nullo, infatti se lo fosse il controllore non produrrebbe alcun cambiamento, cosa che può sussistere solo nel caso in cui si abbia una luce di disturbo costante nel tempo.
+
+
+
+Anche in questo caso il circuito di amplificazione dell'errore si comporta quasi come un derivatore: in fin dei conti è quello che ci si aspetta, dato che il controllo deve integrare il segnale di errore, per poter bilanciare il cambiamento di luce, c'è bisogno che anche l'uscita del controllo sia un'onda triangolare simmetrica a quella con cui pilotiamo il LED di disturbo. Inoltre dato che il circuito integratore agisce in un tempo non trascurabile di fronte a dei cambiamenti,il segnale di errore non potrà mai essere nullo, infatti se lo fosse il controllore non produrrebbe alcun cambiamento, cosa che può sussistere solo nel caso in cui si abbia una luce di disturbo costante nel tempo.
 
 \section{Risposta in frequenza}
 \begin{figure}[htbp]
@@ -443,8 +442,7 @@ il secondo invertente di guadagno variabile in funzione della resistenza del
 potenziometro $\frac{R_{10}}{R_9}$.
 %=======================
 \section*{Conclusioni e commenti finali}
-%TODO da scrivere
-
+Si è riusciti a studiare il circuito a controllo proporzionale e integrale, riuscendo a verificare le aspettative per entrambe le funzioni utilizzate, e ricostruendo la curva della risposta in frequenza per il circuito.
 %=======================
 \section*{Dichiarazione}
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e
