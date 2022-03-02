@@ -1,0 +1,317 @@
+\documentclass[10pt, a4paper, italian]{article}
+\input{../../latex/preamble}
+\input{../../latex/math}
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+
+% indexes subsections with letters, sections with numbers (1.a, 1.b, ...)
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+% lets graphicx know path where figures to be included are found
+\graphicspath{{../figs/}}
+
+\author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
+\title{Es11: Esperimenti di Interferometria per misure di lunghezze d'onda}
+\begin{document}
+\date{\today}
+\maketitle
+
+\setcounter{section}{0}
+
+\section*{Misura componenti dei circuiti}
+\begin{table}[htbp]
+\centering
+\begin{tabular}{ccc|ccc}
+\toprule
+Resistenze $[\si{k\ohm}]$ & $R$ & $\sigma R$ & Resistenze $[\si{k\ohm}]$ & $R$ &
+$\sigma R$ \\
+\midrule
+\midrule
+$R_1$	  	& 9.95 	& 0.08		& $R_1$ & 212	& 9 \\
+$R_T$	  	& 992	& 0.08		& $R_T$ & 212	& 9 \\
+\bottomrule
+\end{tabular}
+\caption{Valori di resistenza misurate con il multimetro dei componenti dei
+due circuiti studiati. \label{tab: rcmes_B}}
+\end{table}
+
+Riportiamo per completezza anche il valore della tensione di alimentazione
+continua per il sensore a ultrasuoni misurata con il multimetro.
+\[
+V_{CC} = 4.99 \pm 0.03 \si{\V}
+\]
+
+\subsection*{Nota sul metodo di fit}
+Per determinare i parametri ottimali e le rispettive covarianze si \`e
+implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
+mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
+
+%=======================
+\section{Apparato strumentale e analisi del circuito}
+Il primo passo per la costruzione del circuito P.I.D. è la realizzazione del
+circuito di lettura. Nel nostro caso abbiamo realizzato un sistema di
+rilevazione di intensità luminosa costituito da due circuiti identici che
+emettono luce grazie a due LED bianchi (uno per il disturbo e l'altro di
+controllo) e da un partitore di tensione dato dalla serie di una resistenza
+$R_3$ e una fotoresistenza $R_4$.
+
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.7]{schm}
+    \caption{Schema dei circuiti di emissione e rilevazione di intensità
+    luminosa.
+    \label{schm: mesctrl}}
+\end{figure}
+
+\subsection{Analisi del funzionamento del circuito}
+La fotoresistenza è una resistenza variabile in funzione dell'intensità
+luminosa che incide su di essa. In particolare sappiamo che il valore di
+resistenza $R_4$ e intensità della luce incidente sulla superficie della
+fotoresistenza sono inversamente proporzionali.
+
+Dalla formula del partitore di tensione sappiamo che il valore dell'uscita
+\verb+MEAS+ dev'essere pari a
+\begin{equation}
+V\ped{MEAS} = (V_{CC} -  V_{EE})\frac{R_4}{R_4 + R_3} + V_{EE}
+\end{equation}
+Ci aspettiamo allora che aumentando la luce (quindi nel nostro caso pilotando
+l'ingresso del LED driver di disturbo con una rampa), il valore di
+$V\ped{MEAS}$ andrà ad aumentare sempre entro l'intervallo di tensioni
+$(V_{EE}, V_{CC})$.
+
+Riportiamo una serie di misure di $V\ped{MEAS}$ al variare del valore della
+tensione continua generata all'ingresso \verb+W2+.
+\begin{table}[htbp]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+$V\ped{gen} [\si{\V}]$ & $V\ped{meas} [\si{\V}]$\\
+\midrule
+$-4.2 \pm 0.3$ m 	& $ -4.99 \pm 0.05$	\\
+$995 \pm 7$ m 	& $ -2.11 \pm 0.02 $	\\
+$1.99 \pm 0.02$ 	& $ -1.01 \pm 0.08 $\\
+$2.98 \pm 0.04$ 	& $ -359 \pm 3 $ m\\
+$3.98 \pm 0.04$ 	& $ 42.1 \pm 0.7 $ m\\
+$4.98 \pm 0.05$ 	& $ 335 \pm 3$ m\\
+\bottomrule
+\end{tabular}
+\caption{Misure di $V\ped{MEAS}$ in funzione della tensione in ingresso nel
+LED driver di disturbo}
+\end{table}
+Come ci aspettavamo il valore di $V\ped{meas}$ cresce all'aumentare
+dell'intensità della luce incidente sulla fotoresistenza, cioè aumentando la
+tensione in ingresso $V\ped{gen}$.
+
+\iffalse
+%=======================
+\section{Misura della velocità del suono}
+Si è costruito un amplificatore differenziale con guadagno $\approx 10$ a
+partire dalle resistenze $R_5$, $R_6$ e $R_7$, $R_8$ secondo lo schema in
+figura.
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.8]{errorgen}
+    \caption{Schema circuitale dell'amplificatore differenziale realizzato
+    \label{schm: errgen}}
+\end{figure}
+Lo scopo del circuito in figura è quello di amplificare la differenza tra i
+segnali $V\ped{SET}$ e $V\ped{MEAS}$ di un fattore 10.
+Si è quindi misurato il guadagno per entrambi gli ingressi dell'OpAmp,
+inviando un segnale a uno e collegando l'altro a massa. Ci si aspetta che nel
+caso in cui SET sia collegato al segnale in ingresso, l'uscita dev'essere
+invertita, mentre nel caso opposto MEAS e ERROR devono essere in fase.
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.4]{error.set}
+    \caption{Acquisizione presa dall'oscilloscopio dell'andamento nel tempo dei
+	segnali in ingresso $V\ped{SET} (t)$ (CH1) e uscita $V\ped{ERROR} (t)$ (CH2)
+	dall'amplificatore differenziale con \texttt{MEAS} collegato a massa.
+    \label{fig: errset}}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.4]{error.meas}
+    \caption{Acquisizione presa dall'oscilloscopio dell'andamento nel tempo dei
+	segnali in ingresso $V\ped{MEAS} (t)$ (CH1) e uscita $V\ped{ERROR} (t)$ (CH2)
+	dall'amplificatore differenziale con \texttt{SET} collegato a massa.
+    \label{fig: errmeas}}
+\end{figure}
+
+Abbiamo quindi misurato il guadagno per i due ingressi dell'OpAmp definito
+come $A = \frac{V\ped{ERROR}}{V\ped{in}}$, da cui risulta
+\begin{align*}
+A\ped{SET} &= -10.01 \pm 0.14 \\
+A\ped{MEAS} &= 10.01 \pm 0.14
+\end{align*}
+
+Per l'ingresso invertente \verb+SET+ e non-invertente \verb+MEAS+
+rispettivamente, questi risultano compatibili con i valori di guadagno attesi
+per l'amplificatore differenziale:
+\begin{align*}
+A\ped{SET} &= - \frac{R_8}{R_7} = -10.00 \pm 0.11 \\
+A\ped{MEAS} &= \frac{R_6}{R_5} = 9.96 \pm 0.11
+\end{align*}
+
+Per controllare la tensione di riferimento si è poi costruito un circuito che
+permettesse di variare $V\ped{SET}$ nello stesso intervallo
+$(V_{EE}, V_{CC})$ attraverso l'uso di un potenziometro da $R_11 = 2 k\ohm$.
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.7]{setgen}
+    \caption{Schema del circuito per la configurazione della tensione di
+    riferimento.
+    \label{schm: setgen}}
+\end{figure}
+%TODO Riscrivere
+Per verifica del buon funzionamento del circuito amplificatore di differenza
+tra i 2 segnali in ingresso, sappiamo che nel caso in cui \verb+MEAS+ e
+\verb+SET+ siano uguali allora la differenza dev'essere nulla, ovverosia
+in uscita dev'essere $V\ped{ERROR} = 0$.
+Difatti, collegando i terminali differenziali del canale 1 dell'oscilloscopio
+per misurare il segnale $V\ped{MEAS} (t)$ rispetto al segnale $V\ped{SET} (t)$
+(per registrare la loro differenza) e il canale 2 per misurare
+$V\ped{ERROR} (t)$ all'uscita rispetto a massa troviamo che entrambi sono
+costanti e compatibili con $\SI{0}{\V}$ come ci si aspettava.
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{meas.same.set}
+    \caption{segnali nella condizione in cui il valore di set e meas sono uguali, nel canale uno si misura il valore di meas rispetto a set, nel canale due invece error rispetto a massa.
+    \label{fig: Draft1}}
+\end{figure}
+
+%=======================
+\section{Controllo integrale}
+Successivamente si è montato il circuito di controllo integrale, un semplice circuito integratore, utilizzando la resistenza data dal potenziometro e una capacità $C_1$, utilizzando lo schema in figura
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{controlgenint}
+    \caption{schema circuitale del controllore ad azione integrale.
+    \label{fig: Draft1}}
+\end{figure}
+quindi abbiamo collegato l'uscita control al driver per la luce di controllo e l'uscita del circuito di generazione errore all'entrata del circuito di controllo integrale.
+Arrivati a questo punto è bastato spegnere il generatore di luce di disturbo e cambiare la posizione del potenziometro per permettere la led di controllo di accendersi.
+Si nota subito come la risposta del led di controllo sia fortemente influenzata dalla quantità di luce che arriva alla fotoresistenza; si consiglia infatti di spostare il circuito distante da eventuali sorgenti di disturbo casuali, come per esempio persone che camminano in prossimità della fotoresistenza. 
+Dopodiché si è provato a verificare la risposta del led di controllo ad un intervento esterno di riduzione della luce, abbiamo quindi posizionato delle buste di plastica semitrasparenti tra il diodo e la fotoresistenza: di conseguenza il led ha aumentato l'intensità luminosa.
+\subsection{Risposta ad un'onda quadra}
+Si è quindi passati alla verifica della risposta ad una luce di disturbo, in questo caso pilotata da un'onda quadra compresa tra 0 e 150 mV.
+Per cominciare si deve fissare il valore di riferimento set: per farlo è bastato scegliere un'intensità luminosa casuale, per esempio quella che meas viene a registrare quando uno dei 2 driver led è pilotato con una tensione di 1 Volt, e utilizzare il potenziometro R11 per far combaciare i valori in meas e set.
+A questo punto abbiamo inviato al led driver di disturbo un'onda quadra tra 0 e 150 mV con frequenza pari a 1 Hz.
+Osservando il valore di control e meas ci rendiamo conto di quello che fa effettivamente il circuito, ovvero cerca di mantenere il valore di meas costante nel tempo.
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{control7.meas}
+    \caption{grafico degli andamenti di control (rispetto a massa) in blu e di meas (sempre rispetto a massa) in giallo
+    \label{fig: Draft1}}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{control7}
+    \caption{grafico del segnale control in blu e dell'onda pilota del led di disturbo in giallo
+    \label{fig: Draft1}}
+\end{figure}
+Successivamente abbiamo misurato il canale error rispetto a massa per varie posizioni del potenziometro. In generale il segnale del canale error ha un andamento simile per ogni posizione, cambiano soltanto i tempi in cui il segnale torna ad essere 0.
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{7}
+    \caption{Andamento del segnale error in blu, rispetto al segnale pilota del led di disturbo
+    \label{fig: Draft1}}
+\end{figure}
+Tramite cursori si è poi preso il tempo con cui il segnale oscilla e lo abbiamo paragonato al tempo caratteristico del circuito integratore definito come $\tau = R_9C_1$.
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+$Resistenza Eq.$ & $Tempo C. misurato$ & $Tempo C. Atteso$\\
+\midrule
+$103.4 \pm 0.8 $ k$\ohm$ & $20.7 \pm 0.3$ ms  	& $ 21.4 \pm 0.9$ ms	\\
+$92.8 \pm 0.8$ k$\ohm$ & $19.0 \pm 0.2$ ms 	& $ 19.2 \pm 0.8 $ ms	\\
+$67.7 \pm 0.6$ k$\ohm$ & $15.3 \pm 0.2$ ms 	& $ 14.0 \pm 0.6 $ ms\\
+$41.5 \pm 0.4$ k$\ohm$ & $10.2 \pm 0.1$ 	ms & $ 8.6 \pm 0.3 $ ms\\
+$25.5 \pm 0.3$ k$\ohm$ & $7.78 \pm 0.05$ 	ms & $ 5.3 \pm 0.2 $ ms\\
+$7.34 \pm0.06$ k$\ohm$ & $3.24 \pm 0.05$ 	ms & $ 1.52 \pm 0.06$ ms\\
+
+\bottomrule
+\end{tabular}
+\caption{Misura dei tempi caratteristici delle oscillazioni del segnale di errore}
+\end{table}
+Nonostante le prime  2 o 3 misure risultino compatibili tra di loro, le altre si distaccano anche di molto dall'andamento previsto; si è notato inoltre come il tempo caratteristico misurato dipendesse anche dal valore di Set, parametro che non era presente nell'equazione di riferimento.
+\subsection{Risposta ad una rampa}
+Riportando il valore della resistenza equivalente al potenziometro a $100 k\ohm$ si è pilotato il driver led di disturbo con un'onda triangolare tra 0 e 150 mV a 10 Hz e nelle condizioni in cui il duty cycle fosse $10 \percent$ e $90 \percent$
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{8}
+    \caption{grafico degli andamenti di error (rispetto a massa) in blu e del segnale in ingresso al led di disturbo (sempre rispetto a massa) in giallo pilotato con l'onda triangolare sopracitata con duty cycle $10 \percent$
+    \label{fig: Draft1}}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{8.1}
+    \caption{grafico degli andamenti di error (rispetto a massa) in blu e del segnale in ingresso al led di disturbo (sempre rispetto a massa) in giallo pilotato con l'onda triangolare sopracitata con duty cycle $90 \percent$
+    \label{fig: Draft1}}
+\end{figure}
+In questo caso il circuito di amplificazione dell'errore si comporta quasi come un derivatore: in fin dei conti è quello che ci si aspetta, dato che il controllo deve integrare il segnale di errore, per poter bilanciare il cambiamento di luce, c'è bisogno che anche l'uscita del controllo sia un'onda triangolare simmetrica a quella con cui pilotiamo il led di disturbo. Inoltre dato che il circuito integratore agisce in un tempo non trascurabile di fronte a dei cambiamenti,il segnale di errore non potrà mai essere nullo, infatti se lo fosse il controllore non produrrebbe alcun cambiamento, cosa che può sussistere solo nel caso in cui si abbia una luce di disturbo costante nel tempo.
+\subsection{Risposta in frequenza}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{103.4k}
+    \caption{scan di network della funzione di trasferimento tra il generatore di disturbo e error con $R_9= 103.4 \pm 0.8 k\ohm$
+    \label{fig: Draft1}}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{76.1k}
+    \caption{scan di network della funzione di trasferimento tra il generatore di disturbo e error con $R_9=76.1 \pm 0.6 k\ohm$
+    \label{fig: Draft1}}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{43.9k}
+    \caption{scan di network della funzione di trasferimento tra il generatore di disturbo e error con $R_9= 43.9 \pm 0.4 k\ohm$
+    \label{fig: Draft1}}
+\end{figure}
+
+%=======================
+\section{Controllo proporzionale}
+Infine si è montato il circuito di controllo proporzionale al posto di quello integrale, scambiando il condensatore $C_1$ con una resistenza da$100 k\ohm$, secondo lo schema in figura.
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{controlgenprop}
+    \caption{schema circuitale del controllore ad azione proporzionale.
+    \label{fig: Draft1}}
+\end{figure}
+\subsection{Risposta ad un'onda quadra}
+Come precedentemente fatto, dopo aver variato il potenziometro $R_9$ fino alla resistenza equivalente da $100 k\ohm$, abbiamo pilotato il driver led di disturbo con un'onda quadra tra 0 e 150 mV di 1Hz. Abbiamo quindi verificato la nuova situazione controllando i segnali prodotti da error, control e meas.
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{proportional}
+    \caption{grafico dei segnali error in blu e dell'onda pilota di disturbo in giallo.
+    \label{fig: Draft1}}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{proportional.meas}
+    \caption{grafico dei segnali error in blu e di meas rispetto a set in giallo.
+    \label{fig: Draft1}}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{proportional.control}
+    \caption{grafico dei segnali control in blu e dell'onda pilota di disturbo in giallo.
+    \label{fig: Draft1}}
+\end{figure}
+Come ci si aspettava il controllo proporzionale non mantiene meas invariato, dato che il circuito completo non è altro che una cascata di amplificatori, di cui il primo differenziale di guadagno $\approx 10$, e il secondo invertente di guadagno pari a $\frac{R_{10}}{R_9}$
+\fi
+%=======================
+\section*{Conclusioni e commenti finali}
+Si è riusciti a dare una misura ragionevole della velocità del suono in aria
+e si è riusciti ad apprezzare la sua dipendenza dalla temperatura ambientale
+con un semplice sensore ad ultrasuoni ed un termistore.
+
+%=======================
+\section*{Dichiarazione}
+I firmatari di questa relazione dichiarano che il contenuto della relazione \`e
+originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
+hanno contribuito alla elaborazione della relazione stessa.
+
+
+\end{document}
