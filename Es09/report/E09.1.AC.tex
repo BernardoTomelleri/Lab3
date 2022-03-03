@@ -151,6 +151,15 @@ $q [\frac{m}{s}]$& $\sigma V_s$ \\
 \caption{Risultati del fit lineare per la velocità del suono}
 \end{table}
 Nel primo caso (distanze brevi), per misurare correttamente la distanza, senza esagerare con l'errore associato, è stata ricavata la posizione del cristallo piezoelettrico inserendo un piccolo oggetto in carta (in modo da non danneggiare nulla) all'interno dei due occhi del sensore, da cui abbiamo ricavato che ci sono circa 5 mm di distanza tra il cristallo e la rete di protezione esterna. Per cui è stato possibile diminuire l'incertezza sulla distanza fino a 2 millimetri. Nell'altro esperimento invece è stata presa la distanza a partire dal punto medio dell'occhio, utilizzando come incertezza la metà dello spessore. Per quanto riguarda i tempi invece sono stati presi alla stessa maniera, utilizzando il metodo dei cursori sull'asse x e misurando la durata dell'impulso in \verb+ECHO+. I 2 esperimenti sono stati eseguiti all'interno di 2 case diverse in città diverse, quindi con condizioni di umidità relative diverse, nonostante ciò sono risultate perfettamente compatibili tra di loro, e con la velocità aspettata di $343 \frac{m}{s}$ a $20 \degree C$ entro le 3 barre di errore massime.
+\subsection{jitter}
+Un fenomeno a cui va data particolare attenzione è il ritardo con cui il segnale echo ritorna a essere basso dopo che il sensore ha ricevuto l'onda. Questo ritardo, denominato jitter, è dovuto al fatto che il sensore salta il primo fronte d'onda perché questo a sua volta non genera un livello di tensione sufficiente da far scattare i circuiti integrati. Cercando su internet per la schematica completa del sensore notiamo la presenza di 3 circuiti principali, denominati U1, U2 e U3: mentre U1 e U3 servono solo per il controllo dei segnali di echo e della generazione dell'onda sonora, U2 è impiegato nel riconoscere il segnale acustico.
+Infatti questo circuito è composto da vari componenti tra cui un filtro passa banda e un amplificatore. Collegandosi direttamente al pin 10 dell'U2 è possibile vedere le onde a 40 kHz isolate e amplificate dal circuito (ammesso che siano state captate).
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{jitter2}
+    \caption{Segnale in uscita dal pin 10 del circuito U2 su CH2, segnale in uscita da echo su CH1}
+\end{figure}
+Misurando il ritardo con i cursori si arriva a concludere che, se presente, inciderà sul travel time di 25 $\mu s$ che è proprio il periodo di un'onda a 40 kHz.
 %=======================
 \section{Dipendenza della velocità dalla temperatura}
 Sappiamo che la velocità del suono attraverso l'aria non è costante ma varia, principalmente a causa della temperatura e dell'umidità.
@@ -164,13 +173,19 @@ A quel punto sappiamo che la temperatura e la resistenza sono legati dall'equazi
 \begin{equation}
 \frac{1}{T}= \frac{1}{T_0} + \frac{ln(\frac{R}{R_0})}{B}
 \end{equation}
+Possiamo riscriverla come:
+\begin{equation}
+T=\frac{T_0 B}{B+T_0 \ln{\frac{R}{R_0}}}
+\end{equation}
 Inoltre la velocità del suono e la temperatura sono legati da:
 \begin{equation}
 V_s=v_0\sqrt{\frac{T+273.15}{273.15}}
 \end{equation}
-Dove T è la temperatura espressa in Celsius e $V_0$ la velocità del suono a 0 gradi Celsius.
+Dove T è la temperatura espressa in Celsius e $v_0$ la velocità del suono a 0 gradi Celsius.
 \subsection{Misura}
-Come prima, abbiamo misurato la durata dell'impulso ECHO a distanza fissa di $252 \pm 2 \; mm$ (anche in questo caso si è diminuita l'incertezza prendendo come punto di partenza delle onde 5 mm dalla fine dell'occhio del sensore) a diverse temperature, lasciando il circuito montato e fisso sempre nello stesso punto. Nonostante risulti semplice lasciare il circuito montato e funzionante, siamo riusciti a misurare un intervallo di solo $5 \degree C$ compresi tra i 15 e i 20; che sono stati comunque sufficienti per ricavare $v_0$. Abbiamo quindi preso le misure dei tempi tramite cursori sulle x misurando la durata dell'impulso di echo e dei valori di $V_2$ tramite la funzione VOLTMETER di Waveforms.
+Come prima, abbiamo misurato la durata dell'impulso ECHO a distanza fissa di $252 \pm 2 \; mm$ (anche in questo caso si è diminuita l'incertezza prendendo come punto di partenza delle onde 5 mm dalla fine dell'occhio del sensore) a diverse temperature, lasciando il circuito montato e fisso sempre nello stesso punto.
+Per quanto riguarda i parametri B e $R_0$ siamo andati a ricercarli nel datasheet del termistore, e per il nostro interesse risultano essere $B=3950 K \pm 1 \percent$ e $R_0 = 10 k\ohm \pm 1 \percent$; successivamente si è provato ad eseguire una lettura per la misura della temperatura piazzando il circuito a fianco di un termostato per verificare che il circuito funzionasse: dai risultati abbiamo ottenuto $V_2=2.81 \pm 0.02 V$ la cui temperatura si ricava essere $19.4 \pm 0.4 \degree C$ quando il termostato segnava $19.5  \degree C$ (il quale aveva una risoluzione di 1 decimo di grado), quindi risulta compatibile.
+Nonostante risulti semplice lasciare il circuito montato e funzionante, siamo riusciti a misurare un intervallo di solo $5 \degree C$ compresi tra i 15 e i 20; che sono stati comunque sufficienti per ricavare $v_0$. Abbiamo quindi preso le misure dei tempi tramite cursori sulle x misurando la durata dell'impulso di echo e dei valori di $V_2$ tramite la funzione VOLTMETER di Waveforms.
 \begin{table}[H]
 \centering
 \begin{tabular}{ccc}
@@ -186,13 +201,13 @@ Time [ms] & $V_2$ & Temperatura sul termostato \\
 \end{tabular}
 \caption{Tabella dei tempi di percorrenza in funzione della temperatura}
 \end{table}
-A questo punto abbiamo combinato le equazioni (2) e (3) per ricavare i dati di velocità e temperatura e le incertezze propagandole dalle medesime funzioni. In seguito si è condotto un fit con modello l'eq. (5) per ricavare $v_0$.
+A questo punto abbiamo combinato le equazioni (2) e (4) per ricavare i dati di velocità e temperatura e le incertezze propagandole dalle medesime funzioni. In seguito si è condotto un fit con modello l'eq. (5) per ricavare $v_0$.
 \begin{figure}[H]
     \centering
 	\includegraphics[scale=0.3]{Temperature}
     \caption{Fit e residui per la velocità del suono in funzione della temperatura}
 \end{figure}
-Da qui abbiamo ottenuto che $v_0 =331 \pm 1 \; m/s$ che risulta essere perfettamente compatibile con il valore atteso. Ovviamente bisogna stare attenti a riportare le misure in uscita dall'equazione (3) in Celsius, altrimenti è sufficiente rivedere l'equazione (4).
+Da qui abbiamo ottenuto che $v_0 =331 \pm 1 \; m/s$ che risulta essere perfettamente compatibile con il valore atteso. Ovviamente bisogna stare attenti a riportare le misure in uscita dall'equazione (4) in Celsius, altrimenti è sufficiente rivedere l'equazione (5).
 %=======================
 \section*{Conclusioni e commenti finali}
 Si è riusciti a dare una misura ragionevole della velocità del suono in aria
