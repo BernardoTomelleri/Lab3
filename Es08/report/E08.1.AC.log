@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  2 MAR 2022 18:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  3 MAR 2022 12:57
 entering extended mode
 **./E08.1.AC.tex
 (E08.1.AC.tex
@@ -1401,68 +1401,71 @@ Package pdftex.def Info: ../figs//Draft1.png  used on input line 69.
 [1
 
 {C:/Users/rossi/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-<../figs//time.png, id=54, 1152.7065pt x 553.46774pt>
+<../figs//time.png, id=54, 623.32875pt x 504.6855pt>
 File: ../figs//time.png Graphic file (type png)
 <use ../figs//time.png>
 Package pdftex.def Info: ../figs//time.png  used on input line 77.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
+(pdftex.def)             Requested size: 249.32707pt x 201.87062pt.
+<../figs//vgs.png, id=55, 392.667pt x 489.027pt>
+File: ../figs//vgs.png Graphic file (type png)
+<use ../figs//vgs.png>
+Package pdftex.def Info: ../figs//vgs.png  used on input line 82.
+(pdftex.def)             Requested size: 157.06401pt x 195.60732pt.
  [2 <../figs//Draft1.png> <../figs//time.png (PNG copy)>]
-<../figs//Draft2.png, id=62, 345.08925pt x 365.56575pt>
+<../figs//Draft2.png, id=63, 345.08925pt x 365.56575pt>
 File: ../figs//Draft2.png Graphic file (type png)
 <use ../figs//Draft2.png>
-Package pdftex.def Info: ../figs//Draft2.png  used on input line 94.
+Package pdftex.def Info: ../figs//Draft2.png  used on input line 99.
 (pdftex.def)             Requested size: 241.56082pt x 255.89427pt.
- [3 <../figs//Draft2.png>]
-<../figs//amp.200.png, id=73, 1152.7065pt x 553.46774pt>
+ [3 <../figs//vgs.png (PNG copy)>]
+[4 <../figs//Draft2.png>]
+<../figs//amp.200.png, id=80, 1152.7065pt x 553.46774pt>
 File: ../figs//amp.200.png Graphic file (type png)
 <use ../figs//amp.200.png>
-Package pdftex.def Info: ../figs//amp.200.png  used on input line 173.
+Package pdftex.def Info: ../figs//amp.200.png  used on input line 178.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//amp.1000.png, id=74, 1152.7065pt x 553.46774pt>
+<../figs//amp.1000.png, id=81, 1152.7065pt x 553.46774pt>
 File: ../figs//amp.1000.png Graphic file (type png)
 <use ../figs//amp.1000.png>
-Package pdftex.def Info: ../figs//amp.1000.png  used on input line 178.
+Package pdftex.def Info: ../figs//amp.1000.png  used on input line 183.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
- [4]
-<../figs//amp.2000.png, id=81, 1152.7065pt x 553.46774pt>
+<../figs//amp.2000.png, id=82, 1152.7065pt x 553.46774pt>
 File: ../figs//amp.2000.png Graphic file (type png)
 <use ../figs//amp.2000.png>
-Package pdftex.def Info: ../figs//amp.2000.png  used on input line 183.
+Package pdftex.def Info: ../figs//amp.2000.png  used on input line 188.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//amp.2500.png, id=82, 1152.7065pt x 553.46774pt>
+<../figs//amp.2500.png, id=83, 1152.7065pt x 553.46774pt>
 File: ../figs//amp.2500.png Graphic file (type png)
 <use ../figs//amp.2500.png>
-Package pdftex.def Info: ../figs//amp.2500.png  used on input line 188.
+Package pdftex.def Info: ../figs//amp.2500.png  used on input line 193.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-
-[5 <../figs//amp.200.png (PNG copy)> <../figs//amp.1000.png (PNG copy)>]
-<../figs//amp.3000.png, id=89, 1152.7065pt x 553.46774pt>
+ [5 <../figs//amp.200.png (PNG copy)> <../figs//amp.1000.png (PNG copy)>]
+<../figs//amp.3000.png, id=91, 1152.7065pt x 553.46774pt>
 File: ../figs//amp.3000.png Graphic file (type png)
 <use ../figs//amp.3000.png>
-Package pdftex.def Info: ../figs//amp.3000.png  used on input line 193.
+Package pdftex.def Info: ../figs//amp.3000.png  used on input line 198.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-
-[6 <../figs//amp.2000.png (PNG copy)> <../figs//amp.2500.png (PNG copy)>]
-<../figs//network.png, id=96, 1019.007pt x 502.2765pt>
+ [6 <../figs//amp.2000.png (PNG copy)> <../figs//amp.2500.png (PNG copy)>]
+<../figs//network.png, id=98, 1019.007pt x 502.2765pt>
 File: ../figs//network.png Graphic file (type png)
 <use ../figs//network.png>
-Package pdftex.def Info: ../figs//network.png  used on input line 203.
+Package pdftex.def Info: ../figs//network.png  used on input line 207.
 (pdftex.def)             Requested size: 407.59558pt x 200.90704pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 200--205
+Underfull \hbox (badness 10000) in paragraph at lines 204--209
 
  []
 
-<../figs//amp.200.cap.png, id=97, 1152.7065pt x 553.46774pt>
+<../figs//amp.200.cap.png, id=99, 1152.7065pt x 553.46774pt>
 File: ../figs//amp.200.cap.png Graphic file (type png)
 <use ../figs//amp.200.cap.png>
-Package pdftex.def Info: ../figs//amp.200.cap.png  used on input line 219.
+Package pdftex.def Info: ../figs//amp.200.cap.png  used on input line 223.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
 [7 <../figs//amp.3000.png (PNG copy)> <../figs//network.png (PNG copy)>]
-<../figs//impedance.png, id=105, 1152.7065pt x 553.46774pt>
+<../figs//impedance.png, id=107, 1152.7065pt x 553.46774pt>
 File: ../figs//impedance.png Graphic file (type png)
 <use ../figs//impedance.png>
-Package pdftex.def Info: ../figs//impedance.png  used on input line 232.
+Package pdftex.def Info: ../figs//impedance.png  used on input line 234.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
 
 [8 <../figs//amp.200.cap.png (PNG copy)> <../figs//impedance.png (PNG copy)>]
@@ -1474,10 +1477,10 @@ Package rerunfilecheck Info: File `E08.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: 086B562753DE09422041155B27E037CE;1005.
  ) 
 Here is how much of TeX's memory you used:
- 56082 strings out of 478927
- 1388590 string characters out of 2852534
- 2183522 words of memory out of 3000000
- 73150 multiletter control sequences out of 15000+600000
+ 56093 strings out of 478927
+ 1388789 string characters out of 2852534
+ 2182522 words of memory out of 3000000
+ 73161 multiletter control sequences out of 15000+600000
  418591 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  122i,13n,125p,757b,792s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1486,26 +1489,22 @@ er-t1.enc}{C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-supe
 r/cm-super-ts1.enc}<C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmex10.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/rossi/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/rossi/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/rossi/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rossi/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/r
-ossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/
-Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmsy7.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
-msfonts/symbols/msbm10.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/cm-super/sfbx1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Users/rossi/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/cm-super/sfrm1000.pfb><C:/Users/rossi/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Users/rossi/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Users/ro
-ssi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfti1000.pfb><C:/
-Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1000.
-pfb>
-Output written on E08.1.AC.pdf (9 pages, 1146638 bytes).
+TeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/rossi/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rossi/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/rossi/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/
+rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.
+pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/s
+fbx1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm
+-super/sfbx1440.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/cm-super/sfrm1000.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/cm-super/sfrm1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Users/rossi/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/cm-super/sfti1000.pfb><C:/Users/rossi/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on E08.1.AC.pdf (9 pages, 1090598 bytes).
 PDF statistics:
- 208 PDF objects out of 1000 (max. 8388607)
+ 194 PDF objects out of 1000 (max. 8388607)
  38 named destinations out of 1000 (max. 500000)
- 116 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 121 words of extra memory for PDF output out of 10000 (max. 10000000)
 
