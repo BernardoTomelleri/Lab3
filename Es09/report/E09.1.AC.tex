@@ -27,6 +27,7 @@ $\sigma R$ \\
 \midrule
 \midrule
 $R_1$	  	& 9.95 	& 0.08		& $R_1$ & 9.98	& 0.08 \\
+$R_T$ a $20 \degreeCelsius$ & 5.73 & 0.06 & & \\ 
 \bottomrule
 \end{tabular}
 \caption{Valori di resistenza misurate con il multimetro dei componenti dei
@@ -58,7 +59,7 @@ Come primo passo per realizzare la misura, si è costruito il circuito indicato 
 \subsection{Analisi del funzionamento del circuito}
 Il componente principale è il Sensore HC-SR04, un sensore ad ultrasuoni che se utilizzato correttamente fornisce il tempo di viaggio (andata e ritorno) di un'onda sonora ad alta frequenza, sono udibile dall'uomo.
 Questo componente deve essere alimentato da una tensione di 5 V; se al pin \verb+TRIG+ viene inviato un segnale di trigger (che deve soddisfare le condizioni di durata specifiche, vale a dire che l'impulso deve avere una durata superiore ai $10 \mu S$) il componente genera un segnale continuo alto nel pin \verb+ECHO+ e un'onda sonora che si propaga finché non incontra un ostacolo, per cui tornerà indietro e verrà captato dal sensore piezoelettrico,; a questo punto, il segnale alto presente nel pin \verb+ECHO+ tornerà ad essere basso. Controllando quindi quest'ultimo pin tramite l'oscilloscopio sarà possibile individuare un segnale della stessa durata che impiega l'onda sonora a propagarsi, riflettersi su un oggetto, e ritornare indietro.
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
 	\includegraphics[scale=0.4]{echo}
     \caption{Segnali di Trigger (in giallo, su CH1) ed Echo (in blu, su CH2) per una misura con bersaglio a 15 cm di distanza}
@@ -70,10 +71,13 @@ v= \frac{2 D}{\Delta T}
 \end{equation}
 \subsection{Misura}
 Si è proceduto con la misura di tempi di viaggio per diversi valori di distanza sensore oggetto. Successivamente abbiamo fatto un plot con python della distanza in funzione del tempo, facendo poi un fit lineare e ricavandone il coefficiente angolare e l'intercetta; In particolare si sono divise le situazioni di distanze corte (tra 15 e 25 cm) e distanze più lunghe (sopra i 25 cm).
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \begin{tabular}{cc}
+\toprule
 Travel Time [ms] & Distance [cm] \\
+\midrule
+\midrule
 0.86 & 15   \\
 0.92 & 16   \\
 0.98 & 17   \\
@@ -83,15 +87,18 @@ Travel Time [ms] & Distance [cm] \\
 1.21 & 21   \\
 1.27 & 22   \\
 1.32 & 23  \\
-1.39 & 24 
+1.39 & 24 \\
+\bottomrule
 \end{tabular}
 \caption{Tabella con distanze e tempi di viaggio impiegati nell'esperimento delle distanze brevi}
 \end{table}
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 	\begin{tabular}{cc}
-	\hline
-	Travel Time [ms] & Travel Space [mm] \\ \hline
+	\toprule
+	Travel Time [ms] & Travel Space [mm] \\
+	\midrule
+	\midrule
 	1.44                              & 504                                  \\
 	1.50                              & 524                                  \\
 	1.56                              & 540                                  \\
@@ -111,25 +118,27 @@ Travel Time [ms] & Distance [cm] \\
 	2.33                              & 820                                  \\
 	2.41                              & 840                                  \\
 	2.47                              & 860                                  \\
-	2.51                              & 880                                 
+	2.51                              & 880                                  \\
+	\bottomrule
 	\end{tabular}
 	\caption{Tabella con spazi percorsi e tempi di viaggio impiegati nell'esperimento delle distanze lunghe}
 \end{table}
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
-	\includegraphics[scale=0.3]{2}
+	\includegraphics[width=\textwidth]{2}
     \caption{Distanze corte in funzione del tempo}
 \end{figure}
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
-	\includegraphics[scale=0.7]{railtime}
+	\includegraphics[width=\textwidth]{railtime}
     \caption{Distanze lunghe in funzione del tempo}
 \end{figure}
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \begin{tabular}{cc|c}
 \toprule
 $V_s [\frac{m}{s}]$& $\sigma V_s$ & $Temperatura [Celsius]$ \\
+\midrule
 \midrule
 348.0 & 1.8 & 20\\
 347.3 & 3.0 & 19\\
@@ -138,7 +147,7 @@ $V_s [\frac{m}{s}]$& $\sigma V_s$ & $Temperatura [Celsius]$ \\
 \caption{Risultati del fit lineare per la velocità del suono}
 \end{table}
 In entrambi i casi abbiamo ottenuto anche un'intercetta che fosse compatibile con 0:
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \begin{tabular}{cc}
 \toprule
@@ -154,9 +163,9 @@ Nel primo caso (distanze brevi), per misurare correttamente la distanza, senza e
 \subsection{jitter}
 Un fenomeno a cui va data particolare attenzione è il ritardo con cui il segnale echo ritorna a essere basso dopo che il sensore ha ricevuto l'onda. Questo ritardo, denominato jitter, è dovuto al fatto che il sensore salta il primo fronte d'onda perché questo a sua volta non genera un livello di tensione sufficiente da far scattare i circuiti integrati. Cercando su internet per la schematica completa del sensore notiamo la presenza di 3 circuiti principali, denominati U1, U2 e U3: mentre U1 e U3 servono solo per il controllo dei segnali di echo e della generazione dell'onda sonora, U2 è impiegato nel riconoscere il segnale acustico.
 Infatti questo circuito è composto da vari componenti tra cui un filtro passa banda e un amplificatore. Collegandosi direttamente al pin 10 dell'U2 è possibile vedere le onde a 40 kHz isolate e amplificate dal circuito (ammesso che siano state captate).
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
-	\includegraphics[scale=0.4]{jitter2}
+	\includegraphics[width=\textwidth]{jitter2}
     \caption{Segnale in uscita dal pin 10 del circuito U2 su CH2, segnale in uscita da echo su CH1}
 \end{figure}
 Misurando il ritardo con i cursori si arriva a concludere che, se presente, inciderà sul travel time di 25 $\mu s$ che è proprio il periodo di un'onda a 40 kHz.
@@ -186,25 +195,27 @@ Dove T è la temperatura espressa in Celsius e $v_0$ la velocità del suono a 0 
 Come prima, abbiamo misurato la durata dell'impulso ECHO a distanza fissa di $252 \pm 2 \; mm$ (anche in questo caso si è diminuita l'incertezza prendendo come punto di partenza delle onde 5 mm dalla fine dell'occhio del sensore) a diverse temperature, lasciando il circuito montato e fisso sempre nello stesso punto.
 Per quanto riguarda i parametri B e $R_0$ siamo andati a ricercarli nel datasheet del termistore, e per il nostro interesse risultano essere $B=3950 K \pm 1 \percent$ e $R_0 = 10 k\ohm \pm 1 \percent$; successivamente si è provato ad eseguire una lettura per la misura della temperatura piazzando il circuito a fianco di un termostato per verificare che il circuito funzionasse: dai risultati abbiamo ottenuto $V_2=2.81 \pm 0.02 V$ la cui temperatura si ricava essere $19.4 \pm 0.4 \degree C$ quando il termostato segnava $19.5  \degree C$ (il quale aveva una risoluzione di 1 decimo di grado), quindi risulta compatibile.
 Nonostante risulti semplice lasciare il circuito montato e funzionante, siamo riusciti a misurare un intervallo di solo $5 \degree C$ compresi tra i 15 e i 20; che sono stati comunque sufficienti per ricavare $v_0$. Abbiamo quindi preso le misure dei tempi tramite cursori sulle x misurando la durata dell'impulso di echo e dei valori di $V_2$ tramite la funzione VOLTMETER di Waveforms.
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \begin{tabular}{ccc}
 \toprule
 Time [ms] & $V_2$ & Temperatura sul termostato \\
+\midrule
 \midrule
 1.49 & 3.11 & 15 \\
 1.49 & 3.03 & 16 \\
 1.48 & 2.98 & 17 \\
 1.48 & 2.93 & 18 \\
 1.47 & 2.88 & 19 \\
-1.47 & 2.83 & 20
+1.47 & 2.83 & 20 \\
+\bottomrule
 \end{tabular}
 \caption{Tabella dei tempi di percorrenza in funzione della temperatura}
 \end{table}
 A questo punto abbiamo combinato le equazioni (2) e (4) per ricavare i dati di velocità e temperatura e le incertezze propagandole dalle medesime funzioni. In seguito si è condotto un fit con modello l'eq. (5) per ricavare $v_0$.
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
-	\includegraphics[scale=0.3]{Temperature}
+	\includegraphics[width=\textwidth]{Temperature}
     \caption{Fit e residui per la velocità del suono in funzione della temperatura}
 \end{figure}
 Da qui abbiamo ottenuto che $v_0 =331 \pm 1 \; m/s$ che risulta essere perfettamente compatibile con il valore atteso. Ovviamente bisogna stare attenti a riportare le misure in uscita dall'equazione (4) in Celsius, altrimenti è sufficiente rivedere l'equazione (5).

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  3 MAR 2022 16:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  4 MAR 2022 00:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1288,7 +1288,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
-4.
+5.
 
 (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
@@ -1296,51 +1296,57 @@ File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 
 pdfTeX warning: pdflatex.exe (file ../figs//schm.pdf): PDF inclusion: found PDF
  version <1.7>, but at most version <1.5> allowed
-<../figs//schm.pdf, id=27, 171.50087pt x 172.21695pt>
+<../figs//schm.pdf, id=31, 171.50087pt x 172.21695pt>
 File: ../figs//schm.pdf Graphic file (type pdf)
 <use ../figs//schm.pdf>
-Package pdftex.def Info: ../figs//schm.pdf  used on input line 53.
+Package pdftex.def Info: ../figs//schm.pdf  used on input line 54.
 (pdftex.def)             Requested size: 171.50044pt x 172.2165pt.
-<../figs//echo.png, id=28, 1152.7065pt x 553.46774pt>
+<../figs//echo.png, id=32, 1152.7065pt x 553.46774pt>
 File: ../figs//echo.png Graphic file (type png)
 <use ../figs//echo.png>
-Package pdftex.def Info: ../figs//echo.png  used on input line 63.
+Package pdftex.def Info: ../figs//echo.png  used on input line 64.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
 [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../figs//schm.p
 df>]
-<../figs//2.png, id=51, 1387.584pt x 694.5147pt>
+<../figs//2.png, id=56, 1387.584pt x 694.5147pt>
 File: ../figs//2.png Graphic file (type png)
 <use ../figs//2.png>
-Package pdftex.def Info: ../figs//2.png  used on input line 120.
-(pdftex.def)             Requested size: 416.27841pt x 208.356pt.
- [2 <../figs//echo.png (PNG copy)>]
-<../figs//railtime.pdf, id=60, 578.88268pt x 354.12299pt>
+Package pdftex.def Info: ../figs//2.png  used on input line 128.
+(pdftex.def)             Requested size: 483.69687pt x 242.09822pt.
+<../figs//railtime.pdf, id=58, 578.88268pt x 354.12299pt>
 File: ../figs//railtime.pdf Graphic file (type pdf)
 <use ../figs//railtime.pdf>
-Package pdftex.def Info: ../figs//railtime.pdf  used on input line 125.
-(pdftex.def)             Requested size: 405.2151pt x 247.88438pt.
- [3 <../figs//2.png>] [4 <../figs//railtime.pdf>]
-<../figs//Temperature.png, id=104, 1387.584pt x 694.5147pt>
+Package pdftex.def Info: ../figs//railtime.pdf  used on input line 133.
+(pdftex.def)             Requested size: 483.69687pt x 295.89426pt.
+ [2 <../figs//echo.png (PNG copy)>] [3 <../figs//2.png>]
+<../figs//jitter2.png, id=75, 1152.7065pt x 553.46774pt>
+File: ../figs//jitter2.png Graphic file (type png)
+<use ../figs//jitter2.png>
+Package pdftex.def Info: ../figs//jitter2.png  used on input line 168.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+ [4 <../figs//railtime.pdf>]
+<../figs//Temperature.png, id=111, 1387.584pt x 694.5147pt>
 File: ../figs//Temperature.png Graphic file (type png)
 <use ../figs//Temperature.png>
-Package pdftex.def Info: ../figs//Temperature.png  used on input line 192.
-(pdftex.def)             Requested size: 416.27841pt x 208.356pt.
- [5 <../figs//Temperature.png>] [6] (./E09.1.AC.aux)
+Package pdftex.def Info: ../figs//Temperature.png  used on input line 218.
+(pdftex.def)             Requested size: 483.69687pt x 242.09822pt.
+ [5 <../figs//jitter2.png (PNG copy)>] [6 <../figs//Temperature.png>] (./E09.1.
+AC.aux)
 Package rerunfilecheck Info: File `E09.1.AC.out' has not changed.
-(rerunfilecheck)             Checksum: 53147DE6F1548C8254838A6C73658A81;886.
+(rerunfilecheck)             Checksum: C07FBB1B030BF4AE1434E74A8A3AF3AC;973.
  ) 
 Here is how much of TeX's memory you used:
- 55668 strings out of 479713
- 1365777 string characters out of 5876923
- 2169076 words of memory out of 10000000
- 72643 multiletter control sequences out of 15000+600000
+ 55681 strings out of 479713
+ 1366055 string characters out of 5876923
+ 2171074 words of memory out of 10000000
+ 72653 multiletter control sequences out of 15000+600000
  418591 words of font info for 68 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,11n,125p,1163b,791s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/tex
-live/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2021/
+ 122i,13n,125p,1163b,779s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
+ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
@@ -1356,10 +1362,10 @@ frm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pf
 b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texl
 ive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2021/t
 exmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on E09.1.AC.pdf (6 pages, 568738 bytes).
+Output written on E09.1.AC.pdf (6 pages, 662982 bytes).
 PDF statistics:
- 196 PDF objects out of 1000 (max. 8388607)
- 141 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 78 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 203 PDF objects out of 1000 (max. 8388607)
+ 147 compressed objects within 2 object streams
+ 34 named destinations out of 1000 (max. 500000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 
