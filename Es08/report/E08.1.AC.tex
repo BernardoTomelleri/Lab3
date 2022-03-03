@@ -25,9 +25,9 @@
 $R_1$	  	& $100 \pm 1 \si{\ohm}$\\
 $C_{in}$	  	& $99 \pm 4 \si{\F}$	\\
 $C_{out}$	& $9.6 \pm 0.4 \si{n\F}$	\\
-$C_E$	  	& $88 \pm 5 \si{\micro \F}$\\
-$R_s$	  	& $217 \pm 3 \si{\ohm}$	\\
-$R_d$	  	& $996 \pm 8 \si{\ohm}$\\
+$C_E$	  	& $95 \pm 5 \si{\micro \F}$\\
+$R_s$	  	& $219 \pm 3 \si{\ohm}$	\\
+$R_d$	  	& $997 \pm 8 \si{\ohm}$\\
 $R_g$	  	& $1.02 \pm 0.1 \si{M\ohm}$\\
 $R_S$	  	& $99.6 \pm 0.8 \si{k\ohm}$\\
 
@@ -70,21 +70,26 @@ Come primo passo abbiamo verificato il corretto funzionamento del JFET utilizzan
     \caption{Schema circuitale per la verifica di funzionamento del JFET}
 \end{figure}
 Vista la struttura del jfet, sappiamo che aumentando $V_{GS}$ le zone della giunzione vengono svuotate dai portatori di carica, fino a che non si raggiunge un potenziale di pinch-off $V_p$ in cui il canale risulta completamente svuotato e la corrente di drain tende a 0. Al contrario invece, quando $V_{GS}=0$ il canale risulta "aperto", perciò misureremo in questa situazione il massimo di corrente; quando invece $V_{GS}>V_p$ la corrente sarà pressoché nulla.
-Abbiamo quindi inviato a $V_{SS}$ una tensione continua di -4.75 V, a WG1 una rampa a scalini di 250 mV partendo da -4.75V fino a 0 V, e a WG2 che per ogni gradino fatto da WG1 genera una rampa che parte dal valore corrente di WG1 e arriva fino a 5V.
+Abbiamo quindi inviato a $V_{SS}$ una tensione continua di -5 V, a WG1 una rampa a scalini di 250 mV partendo da -5V fino a 0 V, e a WG2 che per ogni gradino fatto da WG1 genera una rampa che parte dal valore corrente di WG1 e arriva fino a 5V.
 Di seguito quello che otteniamo dall'oscilloscopio:
 \begin{figure}[H]
     \centering
 	\includegraphics[scale=0.4]{time}
-    \caption{Grafici di CH1, CH2 e math1 (definito come CH2/R1) in funzione del tempo a sinistra, grafico di math1 in funzione di CH1 a destra}
+    \caption{Grafici di CH1, CH2 e math1 (definito come CH2/R1) in funzione del tempo}
+\end{figure}
+\begin{figure}[H]
+    \centering
+	\includegraphics[scale=0.4]{vgs}
+    \caption{Curve caratteristiche del jfet per $I_{DS}$ su $V_{DS}$}
 \end{figure}
 Come detto prima, il momento in cui la corrente è maggiore (nel grafico a sinistra è sufficiente soffermarsi a vedere l'andamento di CH2) si ottiene quando $V_{GS}$ è pari a 0, che nello stesso grafico è quando la rampa di WG2 misurata da CH1 è più alta (perchè in quel caso $V_S$ è pari a $V_G$ ovvero $V_{SS}$.
 Inoltre si può vedere che oltre un certo punto l'andamento di CH2 risulta approssimativamente costante: questo si ottiene quando viene superata la tensione di pinch-off, che siamo andati a misurare tramite cursori:
 \[
-V_p=-2.62 \pm 0.03 V
+V_p=-4.0 \pm 0.2 V
 \]
 Infine, sempre utilizzando i cursori, abbiamo misurato la corrente nella traccia in cui $V_{GS}=0$, nel grafico di sinistra è la curva più alta; da cui abbiamo ricavato:
 \[
-I_{dss}=9.4 \pm 0.1 mA
+I_{dss}=12.6 \pm 0.2 mA
 \]
 Confrontando col datasheet risulta che entrambi i valori risultano compatibili con gli intervalli dichiarati dai costruttori (dato che noi abbiamo utilizzato valori di $V_{DS}$ minori di quelli utilizzati nel datasheet)
 \section{Amplificatore e punto di lavoro}
@@ -95,7 +100,7 @@ A questo punto abbiamo costruito il circuito per l'amplificatore di tensione:
     \caption{Schema circuitale per l'amplificazione di segnale tramite JFET}
 \end{figure}
 Quindi si è collegato $V_{CC}$ a 5V e $V_{EE}$ a -5V tenendo scollegato $V_{in}$ per verificare il punto di lavoro del JFET.
-Misurando la Caduta di potenziale ai capi della resistenza $R_D$ abbiamo calcolato la corrente di quiescenza con la legge di ohm, da cui si ricava $I_{ds}=4.09 \pm 0.04 mA$ che risulta essere circa la metà della $I_{dss}$.
+Misurando la Caduta di potenziale ai capi della resistenza $R_D$ abbiamo calcolato la corrente di quiescenza con la legge di ohm, da cui si ricava $I_{ds}=7.29 \pm 0.07 mA$ che risulta essere circa la metà della $I_{dss}$.
 Si è quindi proseguito con la misura di $V_{GS}$ e di $V_DS$ per verificare quello che abbiamo appena misurato.
 Sappiamo infatti che dato $V_{GS}$ e $V_p$ e se il JFET è in regime di saturazione:
 \begin{equation}
@@ -103,10 +108,10 @@ I_{ds}=\frac{I_{dss}}{V_p ^2}(V_{GS}-V_p)^2
 \end{equation}
 Per misurare $V_{GS}$ abbiamo si è calcolata la differenza tra le misure di $V_G$ e $V_S$:
 \[
-V_{GS}=-882 \pm 7 mV
+V_{GS}=-886 \pm 7 mV
 \]
 \[
-V_{DS}=4.94 \pm 0.03 V
+V_{DS}=2.35 \pm 0.01 V
 \]
 Dato che $V_{DS} > V_{GS} - V_p$ si ricava che siamo in zona di saturazione, a questo punto basta applicare l'equazione; si ottiene quindi 
 \[
@@ -194,7 +199,6 @@ Essendo il guadagno negativo se ne deduce che l'amplificatore sarà di tipo inve
     \caption{Grafici di $V_{in}$ e $V_{out}$ in funzione del tempo con ampiezza $V_{in}=3000 mV$; il taglio della parte alta dell'onda risulta ora più evidente}
 \end{figure}
 
-
 %=======================
 \section{Risposta in frequenza}
 Utilizzando lo strumento Network analyzer siamo passati a misurare la risposta in frequenza del circuito tra i 5Hz e i 10 Mhz utilizzando una $V_{in}=200 mV$\\
@@ -219,10 +223,7 @@ Abbiamo ora inserito un condensatore elettrolitico in parallelo a $R_s$, chiamat
 	\includegraphics[scale=0.4]{amp.200.cap}
     \caption{Grafici di $V_{in}$ e $V_{out}$ in funzione del tempo con ampiezza $V_{in}=200 mV$ con condensatore elettrolitico $C_E$ in parallelo a $R_s$}
 \end{figure}
-Aggiungendo il condensatore $C_E$ viene a modificarsi l'impedenza in parallelo con $R_s$, di conseguenza l'equazione (3) diverrà
-\begin{equation}
-A_v =-\frac{g_m R_d}{1+g_m \frac{R_s}{1-\omega ^2 R_s^2 C_E^2}}
-\end{equation}
+Aggiungendo il condensatore $C_E$ viene a modificarsi l'impedenza in parallelo con $R_s$, che diminuisce, aumentando così il guadagno
 Utilizzando sempre la frequenza di 1 kHz ci si aspetta $A_v =$
 Possiamo subito notare che il guadagno è aumentato come ci si aspettava ed è passato ad $A_v =3.20 \pm 0.04$
 %=======================
