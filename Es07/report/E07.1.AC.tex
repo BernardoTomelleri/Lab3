@@ -108,9 +108,10 @@ Riportiamo una serie di misure di $V\ped{MEAS}$ al variare del valore della
 tensione continua generata all'ingresso \verb+W2+.
 \begin{table}[htbp]
 \centering
-\begin{tabular}{@{}ll@{}}
+\begin{tabular}{@{}cc@{}}
 \toprule
-$V\ped{gen} [\si{\V}]$ & $V\ped{meas} [\si{\V}]$\\
+$V\ped{gen} \; [\si{\V}]$ & $V\ped{MEAS} \; [\si{\V}]$\\
+\midrule
 \midrule
 $-4.2 \pm 0.3$ m 	& $ -4.99 \pm 0.05$	\\
 $995 \pm 7$ m 	& $ -2.11 \pm 0.02 $	\\
@@ -516,8 +517,14 @@ possiamo scrivere la trasformata di Laplace dell'errore come
 \tilde{e}(s) = \frac{1}{s} \frac{1 + 2\xi \tau s + (\tau s)^2}
 {1 + K_p A_0 + 2 \xi \tau s + (\tau s)^2}
 \end{equation}
-da cui è possibile vedere (come nel caso
-%TODO finire Laplace
+da cui è possibile vedere (al contrario del caso precedente) che il
+controllore ad azione proporzionale non riesce ad annullare l'errore neanche
+a regime, infatti dal teorema del valore finale abbiamo:
+\begin{equation}\label{eq: Pfv}
+e (t = +\infty) = \lim_{s \to 0} s \tilde{e}(s) = \frac{1}{1 + K_p A_0}
+\end{equation}
+che tende a 0 al crescere di $K_p$ soltanto nel limite in cui $K_p A_0 \gg 1$.
+
 \section{Risposta ad un'onda quadra}
 Esattamente come all'inizio della \cref{sec: intsqwresp} si è reimpostato
 il potenziometro $R_9$ fino alla sua massima resistenza e si è pilotato il
@@ -553,27 +560,27 @@ l'andamento temporale dei segnali nelle uscite \verb+ERROR+, \verb+CONTROL+ e
 
 Per mostrare come si modifica la risposta del segnale $V\ped{ERROR} (t)$ al
 variare della resistenza $R_9$ si riportano in un unico grafico varie
-acquisizione del suo andamento nel tempo osservato dall'oscilloscopio 
+acquisizioni del suo andamento nel tempo osservate all'oscilloscopio 
 in \cref{fig: propR9}.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{propR9}
     \caption{Acquisizione all'oscilloscopio della modifica del segnale
-    $V\ped{ERROR} (t)$ (CH2) al variare della resistenza del potenziometro
-    $R_9$. In ordine di ampiezza iniziale decrescente per $R_9 =
-    (103.0 \pm 0.6 \; \si{k\ohm})$, $(40.2 \pm 0.4 \; \si{k\ohm})$,
-    $(11.98 \pm 0.10 \; \si{k\ohm})$, $(2.78 \pm 0.03 \; \si{k\ohm})$ e
-    $(197 \pm 2 \; \si{\ohm})$.
+    $V\ped{ERROR} (t)$ (CH2) al diminuire della resistenza del potenziometro
+    $R_9$. Dal basso verso l'alto in ordine di offset decrescente (in modulo)
+    per $R_9 \approx (60 \; \si{k\ohm})$, $(40 \si{k\ohm})$,
+    $(12 \; \si{k\ohm})$, $(3 \; \si{k\ohm})$.
     In giallo l'onda quadra di disturbo $W_2 (t)$ su (CH1).
     \label{fig: propR9}}
 \end{figure}
-Da cui notiamo come l'errore non è nullo in risposta ad un'onda quadra e ad un
-aumento di $K_p$ corrisponde una riduzione dell'offset osservato in
-\verb+ERROR+ come ci aspettavamo dal modello.
 
-%TODO Ok, ma a che domanda risponde questa cosa?
-%Come ci si aspettava il controllo proporzionale non mantiene $V\ped{MEAS} (t)$
-%invariato, 
+Da cui notiamo che il segnale d'errore ha la forma di un'onda quadra in
+opposizione di fase a quella in \verb+NOISE+ di ampiezza e offset decrescenti
+al diminuire della resistenza $R_9$, ma che per nessun valore di questa arriva
+al livello $0$ V. Questo risulta compatibile con la risposta attesa per
+l'offset osservato in \verb+ERROR+ dalla \cref{eq: Pfv} in conseguenza
+dell'aumento di $K_p \propto A_e$ dovuto alla riduzione del valore di
+resistenza $R_9$.
 
 %=======================
 \section*{Conclusioni e commenti finali}
@@ -585,11 +592,10 @@ In particolare siamo riusciti a descrivere e verificarne sperimentalmente il
 funzionamento e a caratterizzarne la risposta al variare dei parametri di
 costruzione del circuito e delle fonti di disturbo nel dominio dei tempi e
 delle frequenze.
+
 %=======================
 \section*{Dichiarazione}
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e
 originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
 hanno contribuito alla elaborazione della relazione stessa.
-
-
 \end{document}
