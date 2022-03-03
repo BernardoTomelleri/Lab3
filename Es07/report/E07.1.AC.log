@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  2 MAR 2022 22:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  3 MAR 2022 18:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1353,92 +1353,122 @@ Package pdftex.def Info: ../figs//control7.png  used on input line 284.
 <../figs//7.png, id=111, 1019.007pt x 328.22626pt>
 File: ../figs//7.png Graphic file (type png)
 <use ../figs//7.png>
-Package pdftex.def Info: ../figs//7.png  used on input line 303.
+Package pdftex.def Info: ../figs//7.png  used on input line 304.
 (pdftex.def)             Requested size: 483.69687pt x 155.7989pt.
 
 [6 <../figs//control7.meas.png (PNG copy)> <../figs//control7.png (PNG copy)>]
-<../figs//8.png, id=118, 1152.7065pt x 553.46774pt>
+<../figs//sqwrespfunction.png, id=119, 1440.88312pt x 711.4078pt>
+File: ../figs//sqwrespfunction.png Graphic file (type png)
+<use ../figs//sqwrespfunction.png>
+Package pdftex.def Info: ../figs//sqwrespfunction.png  used on input line 353.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+<../figs//8.png, id=122, 1152.7065pt x 553.46774pt>
 File: ../figs//8.png Graphic file (type png)
 <use ../figs//8.png>
-Package pdftex.def Info: ../figs//8.png  used on input line 347.
+Package pdftex.def Info: ../figs//8.png  used on input line 382.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//8.1.png, id=119, 1152.7065pt x 553.46774pt>
+<../figs//8.1.png, id=123, 1152.7065pt x 553.46774pt>
 File: ../figs//8.1.png Graphic file (type png)
 <use ../figs//8.1.png>
-Package pdftex.def Info: ../figs//8.1.png  used on input line 355.
-(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//103.4k.png, id=120, 1152.7065pt x 553.46774pt>
-File: ../figs//103.4k.png Graphic file (type png)
-<use ../figs//103.4k.png>
-Package pdftex.def Info: ../figs//103.4k.png  used on input line 367.
+Package pdftex.def Info: ../figs//8.1.png  used on input line 390.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
 
-[7 <../figs//7.png (PNG copy)>] [8 <../figs//8.png (PNG copy)> <../figs//8.1.pn
-g (PNG copy)>]
-<../figs//76.1k.png, id=134, 1152.7065pt x 553.46774pt>
+[7 <../figs//7.png (PNG copy)>]
+<../figs//103.4k.png, id=134, 1152.7065pt x 553.46774pt>
+File: ../figs//103.4k.png Graphic file (type png)
+<use ../figs//103.4k.png>
+Package pdftex.def Info: ../figs//103.4k.png  used on input line 438.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//76.1k.png, id=135, 1152.7065pt x 553.46774pt>
 File: ../figs//76.1k.png Graphic file (type png)
 <use ../figs//76.1k.png>
-Package pdftex.def Info: ../figs//76.1k.png  used on input line 377.
+Package pdftex.def Info: ../figs//76.1k.png  used on input line 448.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//43.9k.png, id=135, 1152.7065pt x 553.46774pt>
-File: ../figs//43.9k.png Graphic file (type png)
-<use ../figs//43.9k.png>
-Package pdftex.def Info: ../figs//43.9k.png  used on input line 387.
-(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//controlgenprop.png, id=137, 247.52475pt x 123.46124pt>
+<../figs//netR9func.png, id=137, 1440.88312pt x 711.4078pt>
+File: ../figs//netR9func.png Graphic file (type png)
+<use ../figs//netR9func.png>
+Package pdftex.def Info: ../figs//netR9func.png  used on input line 463.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+ [8 <../figs//sqwrespfunction.png (PNG copy)>]
+[9 <../figs//8.png (PNG copy)> <../figs//8.1.png (PNG copy)>] [10 <../figs//103
+.4k.png (PNG copy)> <../figs//76.1k.png (PNG copy)>]
+<../figs//controlgenprop.png, id=165, 247.52475pt x 123.46124pt>
 File: ../figs//controlgenprop.png Graphic file (type png)
 <use ../figs//controlgenprop.png>
-Package pdftex.def Info: ../figs//controlgenprop.png  used on input line 403.
+Package pdftex.def Info: ../figs//controlgenprop.png  used on input line 495.
 (pdftex.def)             Requested size: 148.51599pt x 74.0773pt.
-<../figs//proportional.png, id=139, 1152.7065pt x 553.46774pt>
+ [11 <../figs//netR9func.png (PNG copy)> <../figs//controlgenprop.png>]
+<../figs//proportional.png, id=179, 1152.7065pt x 553.46774pt>
 File: ../figs//proportional.png Graphic file (type png)
 <use ../figs//proportional.png>
-Package pdftex.def Info: ../figs//proportional.png  used on input line 419.
+Package pdftex.def Info: ../figs//proportional.png  used on input line 531.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//proportional.meas.png, id=140, 1152.7065pt x 553.46774pt>
+<../figs//proportional.meas.png, id=180, 1152.7065pt x 553.46774pt>
 File: ../figs//proportional.meas.png Graphic file (type png)
 <use ../figs//proportional.meas.png>
-Package pdftex.def Info: ../figs//proportional.meas.png  used on input line 426
+Package pdftex.def Info: ../figs//proportional.meas.png  used on input line 538
 .
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//proportional.control.png, id=141, 1152.7065pt x 553.46774pt>
+<../figs//proportional.control.png, id=181, 1152.7065pt x 553.46774pt>
 File: ../figs//proportional.control.png Graphic file (type png)
 <use ../figs//proportional.control.png>
 Package pdftex.def Info: ../figs//proportional.control.png  used on input line 
-434.
+546.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
- [9 <../figs//103.4k.png (PNG copy)>] [10 <../figs//76.1k.png (PNG copy)> <../f
-igs//43.9k.png (PNG copy)> <../figs//controlgenprop.png>]
-[11 <../figs//proportional.png (PNG copy)> <../figs//proportional.meas.png (PNG
- copy)>] [12 <../figs//proportional.control.png (PNG copy)>] (./E07.1.AC.aux)
+
+
+LaTeX Warning: Reference `fig: propR9' on page 1 undefined on input line 556.
+
+<../figs//propR9.png, id=182, 1440.88312pt x 711.4078pt>
+File: ../figs//propR9.png Graphic file (type png)
+<use ../figs//propR9.png>
+Package pdftex.def Info: ../figs//propR9.png  used on input line 559.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+[12 <../figs//proportional.png (PNG copy)>] [13 <../figs//proportional.meas.png
+ (PNG copy)> <../figs//proportional.control.png (PNG copy)>] [14 <../figs//prop
+R9.png (PNG copy)>] (./E07.1.AC.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `E07.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: 83B66A8AD31B6EA0BDB4E071932434C7;2213.
  ) 
 Here is how much of TeX's memory you used:
- 55908 strings out of 479713
- 1370878 string characters out of 5876923
+ 55947 strings out of 479713
+ 1371710 string characters out of 5876923
  2185076 words of memory out of 10000000
- 72852 multiletter control sequences out of 15000+600000
- 417578 words of font info for 65 fonts, out of 8000000 for 9000
+ 72881 multiletter control sequences out of 15000+600000
+ 419884 words of font info for 68 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,11n,125p,754b,816s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,11n,125p,765b,818s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
 ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb
-><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texli
-ve/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/te
-xmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/f
-onts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1
-/public/cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm
--super/sftt1000.pfb>
-Output written on E07.1.AC.pdf (12 pages, 1579059 bytes).
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><
+c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/
+2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/p
+ublic/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-s
+uper/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1
+440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c
+:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/
+2021/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2021/texmf
+-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/font
+s/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pu
+blic/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-su
+per/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt10
+00.pfb>
+Output written on E07.1.AC.pdf (14 pages, 1900970 bytes).
 PDF statistics:
- 240 PDF objects out of 1000 (max. 8388607)
- 174 compressed objects within 2 object streams
- 51 named destinations out of 1000 (max. 500000)
- 201 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 312 PDF objects out of 1000 (max. 8388607)
+ 223 compressed objects within 3 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 211 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -224,7 +224,7 @@ con $\SI{0}{\V}$ come volevamo.
 \section{Controllo integrale}
 Successivamente si è montato il circuito di controllo integrale, cioè un
 circuito integratore RC costituito dalla resistenza $R_9$ del potenziometro e
-da una condensatore $C_1$, montati secondo lo schema in \cref{fig: ctrlint}.
+da un condensatore $C_1$, montati secondo lo schema in \cref{fig: ctrlint}.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[scale=0.6]{controlgenint}
@@ -295,14 +295,16 @@ in corrispondenza dei fronti di discesa e salita di $W_2 (t)$ assume la forma
 di un'oscillazione smorzata esponenzialmente. Per essere più precisi
 $V\ped{ERROR} (t)$ ha sempre la forma di una serie di oscillazioni smorzate di
 segno alternante che si ripetono ogni semi-periodo dell'onda quadra in
-\verb+NOISE+, ma al variare della posizione del trimmer cambia sensibilmente
-il tempo di smorzamento $\tau$ dopo cui l'uscita dell'amplificatore
-differenziale torna ad essere nulla, una volta che l'oscillazione si è spenta.
+\verb+NOISE+, ma al variare della posizione del trimmer cambiano sensibilmente
+l'ampiezza iniziale, la frequenza e il tempo di smorzamento $\tau$ dopo cui
+l'uscita dell'amplificatore differenziale torna ad essere nulla, una volta che
+l'oscillazione si è spenta.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{7}
-    \caption{Acquisizione presa dall'oscilloscopio dell'andamento dei segnali
-    $V\ped{ERROR}$ (CH1) rispetto all'onda quadra $W_2 (t)$ di disturbo (CH2).
+    \caption{Acquisizione presa dall'oscilloscopio dell'andamento del segnale
+    $V\ped{ERROR} (t)$ (CH2) rispetto all'onda quadra $W_2 (t)$ di disturbo
+    (CH1).
     \label{fig: errnoise}}
 \end{figure}
 
@@ -336,17 +338,50 @@ dell'integratore al variare di $R_9$.}
 Da cui vediamo che le prime misure di tempo risultano compatibili con i loro
 valori attesi, mentre per valori di resistenza $R_9 < \SI{10}{k\ohm}$ queste
 tendono a discostarvisi sempre di più al diminuire del valore di resistenza.
+Risulta difficile da valutare se questa deviazione sia dovuta ad accoppiamenti
+capacitivi fra basetta, fili e componenti passivi del circuito, alle capacità
+parassite dentro il TL081 o ad entrambi, che non stiamo considerando nel
+nostro modello.
+
+Per evidenziare ancora meglio l'effetto che la diminuzione della resistenza
+del potenziometro $R_9$ (quindi dello smorzamento/dissipazione) e il
+conseguente aumento del guadagno del controllore integrale hanno sul transiente
+in \verb+ERROR+ se ne riporta in \cref{fig: intR9osc} la sovrapposizione degli
+andamenti nel tempo osservati dall'oscilloscopio
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{sqwrespfunction}
+    \caption{Acquisizione all'oscilloscopio della modifica del segnale
+    $V\ped{ERROR} (t)$ (CH2) al variare della resistenza del potenziometro
+    $R_9$. In ordine di ampiezza iniziale decrescente per $R_9 =
+    (103.0 \pm 0.6 \; \si{k\ohm})$, $(40.2 \pm 0.4 \; \si{k\ohm})$,
+    $(11.98 \pm 0.10 \; \si{k\ohm})$, $(2.78 \pm 0.03 \; \si{k\ohm})$ e
+    $(197 \pm 2 \; \si{\ohm})$.
+    In giallo la risposta costante dell'osservabile in \texttt{MEAS} su (CH1).
+    \label{fig: intR9osc}}
+\end{figure}
+Da cui vediamo come l'oscillazione prima che il sistema e $V\ped{ERROR} (t)$
+tornino a regime è inizialmente sovrasmorzata ed è sempre più debolmente
+smorzata, decrescente in ampiezza e di frequenza crescente al diminuire della
+resistenza $R_9$. Questo è compatibile con quanto ci aspettiamo dalla funzione
+di trasferimento del controllore, per cui ad una diminuzione del tempo di
+risposta dell'azione integrale corrisponde un aumento della frequenza e del
+tempo di smorzamento del transitorio dopo la risposta ad un gradino di
+tensione, cioè ad una riduzione del margine di stabilità del sistema.
 
 \section{Risposta ad una rampa}
 Come prima si è reimpostato il valore della resistenza del potenziometro al
-massimo ($100 k\ohm$ nominali) ma stavolta si è pilotato il driver LED di
-disturbo con un'onda triangolare compresa tra $0$ e $150 \si{m\V}$ di frequenza
-$f = 10 \; \si{\Hz}$ e duty-cycle $\text{dc} = 10 \percent$, $90 \percent$.
+massimo ($100 \; \si{k\ohm}$ nominali) ma stavolta si è pilotato il driver LED
+di disturbo con un'onda triangolare compresa tra $0$ e $150 \si{m\V}$ di
+frequenza $f = 10 \; \si{\Hz}$ e duty-cycle $\text{dc} = (10 \percent$),
+($90 \percent$). Ne riportiamo la risposta osservata in \verb+ERROR+ come
+campionata dall'oscilloscopio per i due valori di duty-cycle in
+\cref{fig: erramp10} e \cref{fig: erramp90}.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{8}
     \caption{Acquisizione dall'oscilloscopio degli andamenti nel tempo dei
-    segnali in \texttt{ERROR} (CH1) e del segnale di disturbo $W_2 (t)$
+    segnali in \texttt{ERROR} (CH2) e del segnale di disturbo $W_2 (t)$ (CH1)
     con l'onda triangolare di duty-cycle $10 \percent$
     \label{fig: erramp10}}
 \end{figure}
@@ -354,14 +389,50 @@ $f = 10 \; \si{\Hz}$ e duty-cycle $\text{dc} = 10 \percent$, $90 \percent$.
     \centering
 	\includegraphics[width=\textwidth]{8.1}
     \caption{Acquisizione dall'oscilloscopio degli andamenti nel tempo dei
-    segnali in \texttt{ERROR} (CH1) e del segnale di disturbo $W_2 (t)$
+    segnali in \texttt{ERROR} (CH2) e del segnale di disturbo $W_2 (t)$ (CH1)
     con l'onda triangolare di duty-cycle $10 \percent$.
     \label{fig: erramp90}}
 \end{figure}
 
-Anche in questo caso il circuito di amplificazione dell'errore si comporta quasi come un derivatore: in fin dei conti è quello che ci si aspetta, dato che il controllo deve integrare il segnale di errore, per poter bilanciare il cambiamento di luce, c'è bisogno che anche l'uscita del controllo sia un'onda triangolare simmetrica a quella con cui pilotiamo il LED di disturbo. Inoltre dato che il circuito integratore agisce in un tempo non trascurabile di fronte a dei cambiamenti,il segnale di errore non potrà mai essere nullo, infatti se lo fosse il controllore non produrrebbe alcun cambiamento, cosa che può sussistere solo nel caso in cui si abbia una luce di disturbo costante nel tempo.
+Anche in questo caso il circuito di amplificazione dell'errore si comporta
+in maniera simile ad un derivatore. Questo è ragionevole, dal momento che il
+segnale di controllo dev'essere proporzionale all'integrale del
+segnale di errore, e per poter bilanciare il disturbo luminoso in \verb+NOISE+,
+l'uscita del circuito di controllo dev'essere un'onda triangolare in
+opposizione di fase a quella con cui pilotiamo il LED di disturbo; dunque
+l'ingresso \verb+ERROR+ del regolatore dev'essere proporzionale alla derivata
+del segnale all'uscita \verb+CONTROL+.
+
+In corrispondenza del fronte ripido della rampa di disturbo asimmetrica
+$W_2 (t)$, in $V\ped{ERROR} (t)$ troviamo una serie di picchi smorzati
+simili ai transienti osservati prima nella risposta ad un'onda quadra
+in \cref{sec: intsqwresp} dovuti al tempo finito di risposta del controllore
+ad azione integrale.
+In effetti possiamo considerare il fronte ripido del segnale di disturbo come
+il fronte di salita di un gradino come prima, solo con un tempo di salita
+molto più lungo\footnote{Mentre prima avevamo come tempo di salita
+$t\ap{sqw}\ped{rise} \approx 20 \; \si{n\s}$ per l'onda triangolare abbiamo
+misurato $t\ap{trg}\ped{rise} = 10.0 \pm 0.4 \; \si{m\s}$, che differiscono
+di quasi 6 ordini di grandezza.} di quello caratteristico dell'onda quadra
+generata dall'AD2.
+
+Sempre per via del fatto che il circuito integratore reagisce in un tempo
+finito (dell'ordine di $\tau_{RC} = R_9 C_1$) in risposta a dei cambiamenti
+di $V\ped{MEAS} (t)$ rispetto a $V\ped{SET}$, il segnale di errore non potrà
+mai essere nullo. Infatti se lo fosse il controllore non attuerebbe alcun
+cambiamento, e questo dovrebbe avvenire solamente nel caso in cui si abbia
+una fonte di disturbo luminosa in \verb+NOISE+ costante nel tempo.
 
 \section{Risposta in frequenza}
+Si è misurata la funzione di trasferimento tra il generatore di disturbo e
+il segnale di errore per diverse posizioni del contatto strisciante del
+potenziometro $R_9$ per cui il sistema ha il funzionamento atteso tramite
+lo strumento Network dell'AD2.
+In particolare si è inviato come segnale in ingresso (\verb+NOISE+) una
+sinusoide di frequenza compresa tra $\SI{1}{\Hz}$ e $\SI{1}{k\Hz}$ di
+ampiezza costante pari a $100 \; \si{m\V}$ e offset di $50 \; \si{m\V}$
+e si è registrata la risposta in frequenza del sistema monitorandone l'uscita
+in \verb+ERROR+.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{103.4k}
@@ -382,16 +453,37 @@ Anche in questo caso il circuito di amplificazione dell'errore si comporta quasi
 	valore di resistenza del potenziometro $R_9 = 76.1 \pm 0.6 \; \si{k\ohm}$.
     \label{fig: netR76}}
 \end{figure}
+
+Per riuscire a evidenziare meglio come si modifica al variare di $R_9$ la
+risposta in frequenza del circuito riportiamo in un unico grafico la
+sovrapposizione di alcuni scan di Network condotti alla stessa maniera dei
+primi due in \cref{fig: netR9func}.
 \begin{figure}[htbp]
     \centering
-	\includegraphics[width=\textwidth]{43.9k}
-    \caption{Plot di Bode ottenuto dallo scan con Network tra $\SI{1}{\Hz}$ e
-	$\SI{1}{k\Hz}$ con un segnale sinusoidale in ingresso al LED di disturbo di
-	ampiezza $v\ped{in} = \SI{100}{m\V}$ e offset costante di $\SI{50}{m\V}$.
-	In azzurro la risposta in frequenza del segnale in \texttt{ERROR} per un
-	valore di resistenza del potenziometro $R_9 = 43.9 \pm 0.4 k\ohm$.
-    \label{fig: netR44}}
+	\includegraphics[width=\textwidth]{netR9func}
+    \caption{Sovrapposizione dei plot di Bode ottenuti da scan di Network tra
+    $\SI{1}{\Hz}$ e $\SI{1}{k\Hz}$ con un segnale sinusoidale in ingresso al
+    LED di disturbo (ampiezza $v\ped{in} = \SI{100}{m\V}$, offset costante
+    $\SI{50}{m\V}$) al variare della resistenza del potenziometro. 
+	Rispettivamente in azzurro, verde e rosso la risposta in frequenza del
+	segnale in \texttt{ERROR} per $R_9 = (103.0 \pm 0.6 \; \si{k\ohm})$,
+	$(40.2 \pm 0.4 \; \si{k\ohm})$ e $(11.98 \pm 0.10 \; \si{k\ohm})$.
+    \label{fig: netR9func}}
 \end{figure}
+
+Da cui si riesce a notare come la funzione di trasferimento abbia lo stesso
+andamento asintotico per frequenze $f > \SI{1}{k\Hz}$, ma guadagno diverso
+alle basse frequenze $f \sim 1 - 10 \; \si{\Hz}$ con cui si era disturbato in
+precedenza. Questo risulta quindi compatibile con i risultati ottenuti nelle
+sezioni precedenti e con l'andamento atteso del modulo della funzione di
+trasferimento del controllore PI con un polo in $s = 0$, per cui\footnote{
+indichiamo con $\tilde{f} (s)$ la trasformata di Laplace di $f(t)$, per cui
+applicando il Teorema del valore finale}
+\begin{equation}
+V\ped{ERROR} (t = +\infty) = \lim_{s \to 0} s \tilde{V}\ped{ERROR}(s) = 0
+\end{equation}
+Notiamo infine che dall'andamento trovato il prodotto banda-guadagno per
+gli amplificatori operazionali impiegati risulta almeno visivamente costante.
 
 %=======================
 \section*{Controllo proporzionale}
@@ -405,11 +497,32 @@ $R_{10} = 100 \; \si{k\ohm}$ (nominali) secondo lo schema in \cref{schm: prop}.
     \label{schm: prop}}
 \end{figure}
 
+Dunque ora il circuito completo non è altro che una cascata di
+amplificatori, di cui il primo differenziale di guadagno nominale
+$A_d = \frac{R_6}{R_5} = \frac{R_8}{R_7} = 10$, e il secondo invertente di
+guadagno variabile in funzione della resistenza del potenziometro
+$A_e = -\frac{R_{10}}{R_9}$.
+
+Assumendo di poter descrivere la risposta complessiva del sensore di misura e
+del controllore ad azione proporzionale di guadagno $K_p$ con una funzione di
+trasferimento della forma
+\begin{equation}
+G(s) = \frac{A_0}{1 + 2\xi \tau s + \tau^2 s^2} \quad \text{con} \; \xi > 1
+\end{equation}
+Introducendo le notazioni più concise per i segnali di riferimento $r(t)$,
+l'osservabile $y(t)$ e la loro differenza o errore $e(t) = r(t) - y(t)$
+possiamo scrivere la trasformata di Laplace dell'errore come
+\begin{equation}
+\tilde{e}(s) = \frac{1}{s} \frac{1 + 2\xi \tau s + (\tau s)^2}
+{1 + K_p A_0 + 2 \xi \tau s + (\tau s)^2}
+\end{equation}
+da cui è possibile vedere (come nel caso
+%TODO finire Laplace
 \section{Risposta ad un'onda quadra}
-Esattamente come in \cref{sec: intsqwresp} si è reimpostato il potenziometro
-$R_9$ fino alla sua massima resistenza e si è pilotato il driver LED di
-disturbo con un'onda quadra compresa tra $0$ e $150 \; \si{m\V}$ con frequenza
-fissata a $f = 1 \si{\Hz}$.
+Esattamente come all'inizio della \cref{sec: intsqwresp} si è reimpostato
+il potenziometro $R_9$ fino alla sua massima resistenza e si è pilotato il
+driver LED di disturbo con un'onda quadra compresa tra $0$ e
+$150 \; \si{m\V}$ con frequenza fissata a $f = 1 \si{\Hz}$.
 
 Dunque si è studiata nuovamente la risposta del circuito osservando
 l'andamento temporale dei segnali nelle uscite \verb+ERROR+, \verb+CONTROL+ e
@@ -438,11 +551,29 @@ l'andamento temporale dei segnali nelle uscite \verb+ERROR+, \verb+CONTROL+ e
     \label{fig: propctrlnoise}}
 \end{figure}
 
-Come ci si aspettava il controllo proporzionale non mantiene $V\ped{MEAS} (t)$
-invariato, dato che il circuito completo non è altro che una cascata di
-amplificatori, di cui il primo differenziale di guadagno $\approx 10$, e
-il secondo invertente di guadagno variabile in funzione della resistenza del
-potenziometro $\frac{R_{10}}{R_9}$.
+Per mostrare come si modifica la risposta del segnale $V\ped{ERROR} (t)$ al
+variare della resistenza $R_9$ si riportano in un unico grafico varie
+acquisizione del suo andamento nel tempo osservato dall'oscilloscopio 
+in \cref{fig: propR9}.
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{propR9}
+    \caption{Acquisizione all'oscilloscopio della modifica del segnale
+    $V\ped{ERROR} (t)$ (CH2) al variare della resistenza del potenziometro
+    $R_9$. In ordine di ampiezza iniziale decrescente per $R_9 =
+    (103.0 \pm 0.6 \; \si{k\ohm})$, $(40.2 \pm 0.4 \; \si{k\ohm})$,
+    $(11.98 \pm 0.10 \; \si{k\ohm})$, $(2.78 \pm 0.03 \; \si{k\ohm})$ e
+    $(197 \pm 2 \; \si{\ohm})$.
+    In giallo l'onda quadra di disturbo $W_2 (t)$ su (CH1).
+    \label{fig: propR9}}
+\end{figure}
+Da cui notiamo come l'errore non è nullo in risposta ad un'onda quadra e ad un
+aumento di $K_p$ corrisponde una riduzione dell'offset osservato in
+\verb+ERROR+ come ci aspettavamo dal modello.
+
+%TODO Ok, ma a che domanda risponde questa cosa?
+%Come ci si aspettava il controllo proporzionale non mantiene $V\ped{MEAS} (t)$
+%invariato, 
 
 %=======================
 \section*{Conclusioni e commenti finali}
