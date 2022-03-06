@@ -27,7 +27,6 @@ $\sigma R$ \\
 \midrule
 \midrule
 $R_1$	  	& 9.95 	& 0.08		& $R_1$ & 9.98	& 0.08 \\
-$R_T$ a $20 \degreeCelsius$ & 5.73 & 0.06 & & \\ 
 \bottomrule
 \end{tabular}
 \caption{Valori di resistenza misurate con il multimetro dei componenti dei
@@ -47,189 +46,379 @@ mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 
 %=======================
 \section{Misura velocità del suono}
-Come primo passo per realizzare la misura, si è costruito il circuito indicato in figura sotto.
-
+\subsection{Progettazione del circuito}
+Si è costruito il nostro apparato per la misura della velocità del suono
+secondo lo schema circuitale riportato in \cref{schm: mesctrl}.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[scale=1]{schm}
-    \caption{Schematica del circuito per la misurazione della velocità del suono e della temperatura
+    \caption{Schematica del circuito per la misurazione della velocità del
+    suono e della temperatura. I due sotto-circuiti condividono la stessa
+    tensione di alimentazione $V_{CC}$.
     \label{schm: mesctrl}}
 \end{figure}
 
-\subsection{Analisi del funzionamento del circuito}
-Il componente principale è il Sensore HC-SR04, un sensore ad ultrasuoni che se utilizzato correttamente fornisce il tempo di viaggio (andata e ritorno) di un'onda sonora ad alta frequenza, sono udibile dall'uomo.
-Questo componente deve essere alimentato da una tensione di 5 V; se al pin \verb+TRIG+ viene inviato un segnale di trigger (che deve soddisfare le condizioni di durata specifiche, vale a dire che l'impulso deve avere una durata superiore ai $10 \mu S$) il componente genera un segnale continuo alto nel pin \verb+ECHO+ e un'onda sonora che si propaga finché non incontra un ostacolo, per cui tornerà indietro e verrà captato dal sensore piezoelettrico,; a questo punto, il segnale alto presente nel pin \verb+ECHO+ tornerà ad essere basso. Controllando quindi quest'ultimo pin tramite l'oscilloscopio sarà possibile individuare un segnale della stessa durata che impiega l'onda sonora a propagarsi, riflettersi su un oggetto, e ritornare indietro.
+In cui si è cercato di mettere in evidenza la geometria del componente
+principale, il sensore ad ultrasuoni di tipo riflettente HC-SR04, in cui
+il trasmettitore ed il ricevitore sono separati di una distanza di circa
+$\SI{2}{c\m}$.
+
+Nello stesso schema si riporta anche il sotto-circuito di misura della
+temperatura ambientale, costituito da un partitore di tensione/la
+serie di due resistori, il secondo dei quali ha valore di resistenza $R_T$
+dipendente dalla temperatura.
+
+\subsection{Analisi del funzionamento dell'apparato}
+Il sensore ad ultrasuoni fornisce una stima del tempo di viaggio $t$ in aria
+(andata e ritorno) di un'onda sonora dalla frequenza superiore alla soglia
+dell'udito umano $\sim 20 \; \si{k\Hz}$ sotto forma di un impulso TTL di
+durata proporzionale a $t$.
+
+Sempre per la convenzione TTL il sensore dev'essere alimentato da una
+differenza di potenziale di livello alto $+\SI{5}{\V}$ e per avviare il
+processo di misura al pin \verb+TRIG+ si deve inviare un segnale di trigger
+(un impulso che deve soddisfare le condizioni di ampiezza, durata e periodo
+specificate nel datasheet del componente). Nel nostro caso si è generata in
+\verb+W1+ una serie di impulsi compresi tra 0 e $\SI{5}{\V}$ di durata pari a
+$10 \si{\micro\s}$ e periodo di $50 \; \si{m\s}$, per permettere all'HC-SR04
+di portare a termine il suo ciclo di misura (scelto in base alla durata
+massima del segnale di eco $\sim 38 \; \si{m\s}$, corrispondente al caso in
+cui il ricevitore non rileva alcun ostacolo che riflette gli impulsi emessi)
+e torni ad essere pronto a ricevere un nuovo impulso di trigger da $W_2 (t)$.
+
+Sul fronte di discesa dell'impulso di trigger il sensore genera un segnale
+continuo alto nel pin \verb+ECHO+ e un'onda sonora costituita da un treno
+d'impulsi da $f = 40 \; \si{k\Hz}$ nel trasmettitore.
+Questa si propaga finché non incontra un ostacolo piano e opaco da cui viene
+riflesso in modo da essere captato dal ricevitore piezoelettrico nel sensore
+al ritorno. Non appena il cristallo piezoelettrico riceve uno di questi
+impulsi di ritorno emessi ogni $1/f = 25 \; \si{m\s}$ il segnale alto presente
+nel pin \verb+ECHO+ torna ad essere $SI{0}{\V}$. Controllando quindi
+quest'ultimo pin tramite l'oscilloscopio è possibile osservare un gradino di
+tensione dalla durata direttamente proporzionale al tempo $t$ che l'onda a
+ultrasuoni impiega a percorrere 2 volte la distanza $D$ tra il sensore e
+l'oggetto riflettente.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[scale=0.4]{echo}
-    \caption{Segnali di Trigger (in giallo, su CH1) ed Echo (in blu, su CH2) per una misura con bersaglio a 15 cm di distanza}
+    \caption{Acquisizione all'oscilloscopio dei segnali di trigger $W_2 (t)$
+    (in giallo, su CH1) e $V\ped{ECHO} (t)$ (in blu, su CH2) per una misura
+    con bersaglio a una distanza $D = \SI{15}{cm}$.}
 \end{figure}
-Inoltre è stato montato anche un sensore di temperatura tramite un partitore di tensione con una resistenza da $10 k\ohm$ e un termistore con $R_0 =10 k\ohm$, e misurando la tensione presente tra i due.
-Conoscendo quindi la distanza D del sensore dell'oggetto, è possibile ricavare la velocità del suono come
-\begin{equation}
-v= \frac{2 D}{\Delta T}
+
+In contemporanea al ciclo di misura dell'HC-SR04 si monitora la temperatura
+dell'aria circostante misurando l'uscita del partitore di tensione/la caduta
+di tensione ai capi del termistore $V_T$ con $R_0 = 10 \pm 1 \percent \;
+\si{k\ohm}$ (tabulata da datasheet a temperatura ambiente $\sim 25 \;
+\degreeCelsius$).
+
+\subsection{Raccolta e analisi dati}\label{sbs: data}
+Dunque una volta misurata la distanza sensore-oggetto con un metro a nastro,
+è possibile ricavare la velocità del suono dalle misure di tempo fornite dal
+sensore tramite la \cref{eq: d/t}
+\begin{equation}\label{eq: d/t}
+v = \frac{2 D}{t}
 \end{equation}
-\subsection{Misura}
-Si è proceduto con la misura di tempi di viaggio per diversi valori di distanza sensore oggetto. Successivamente abbiamo fatto un plot con python della distanza in funzione del tempo, facendo poi un fit lineare e ricavandone il coefficiente angolare e l'intercetta; In particolare si sono divise le situazioni di distanze corte (tra 15 e 25 cm) e distanze più lunghe (sopra i 25 cm).
+
+Avendo cura di incidere su un oggetto quanto meno scabro, fisso e a distanza
+$D$ abbastanza grande da poter trascurare la distanza $b \approx 2 \; \si{cm}$
+tra trasmettitore e ricevitore dell'HC-SR04 nel tragitto del segnale a
+ultrasuoni; si è proceduto con la misura dei tempi di viaggio al variare di
+$D$ facendo avanzare l'apparato lungo delle guide rettilinee. In particolare
+si è scelto di ripetere la presa dati sia per distanze brevi (tra $15$ e
+$25 \; \si{c\m}$) e distanze più lunghe (dai $25$ ai $44 \; \si{c\m}$) ma
+comunque sotto i $50 \; \si{c\m}$ per ridurre l'influenza di interferenza da
+parte di altri corpi lungo il percorso dell'onda trasmessa.
+
+Nel primo caso (distanze brevi) per misurare correttamente la distanza e
+ridurre la sua incertezza associata, si è stimata la posizione del cristallo
+piezoelettrico nei canali del trasmettitore e del ricevitore inserendo una
+piccola sonda all'interno dei due occhi del sensore. Da cui abbiamo ricavato
+che ci sono circa $h = 5 \pm 1 \; \si{m\m}$ di distanza tra il cristallo e la
+rete di protezione esterna, quindi si è scelto di prendere come incertezza
+sulla distanza percorsa $\SI{2}{m\m}$. Nell'altro esperimento si è invece
+misurata la distanza $D$ a partire dal punto di mezzo dei canali di lunghezza
+$a = 15 \; \si{m\m}$ (dal datasheet), per cui si è associata un incertezza
+$\sigma D = a/2$.
+
+Per quanto riguarda le misure di $t$ invece abbiamo sempre utilizzato i
+cursori sulla scala dei tempi dell'oscilloscopio per monitorare la durata
+dell'impulso in \verb+ECHO+. Tutto questo controllando che la temperatura
+rimanesse costante durante le prese dati, sia grossolanamente con le
+termocoppie del multimetro, sia assicurandoci che la caduta di
+tensione ai capi del termistore rimanesse costante nel tempo entro
+l'incertezza.
 \begin{table}[htbp]
 \centering
 \begin{tabular}{cc}
 \toprule
-Travel Time [ms] & Distance [cm] \\
+Travel Time $t$ $(\pm 0.02)$ [ms] & Distance $D$ $(\pm 0.2)$ [cm] \\
 \midrule
 \midrule
-0.86 & 15   \\
-0.92 & 16   \\
-0.98 & 17   \\
-1.03 & 18  \\
-1.10 & 19   \\
-1.15 & 20   \\
-1.21 & 21   \\
-1.27 & 22   \\
-1.32 & 23  \\
-1.39 & 24 \\
+0.86 & 15.0 \\
+0.92 & 16.0 \\
+0.98 & 17.0 \\
+1.03 & 18.0	\\
+1.10 & 19.0 \\
+1.15 & 20.0 \\
+1.21 & 21.0 \\
+1.27 & 22.0 \\
+1.32 & 23.0 \\
+1.39 & 24.0 \\
 \bottomrule
 \end{tabular}
-\caption{Tabella con distanze e tempi di viaggio impiegati nell'esperimento delle distanze brevi}
+\caption{Distanze e tempi di viaggio misurati nell'esperimento su distanze
+brevi.}
 \end{table}
+
 \begin{table}[htbp]
 \centering
 	\begin{tabular}{cc}
 	\toprule
-	Travel Time [ms] & Travel Space [mm] \\
+	Travel time $t$ $(\pm 0.02)$ [ms] & Travel length $s = 2D$ $(\pm 1.5)$ [cm] \\
 	\midrule
 	\midrule
-	1.44                              & 504                                  \\
-	1.50                              & 524                                  \\
-	1.56                              & 540                                  \\
-	1.60                              & 564                                  \\
-	1.65                              & 582                                  \\
-	1.71                              & 600                                  \\
-	1.74                              & 622                                  \\
-	1.83                              & 644                                  \\
-	1.88                              & 664                                  \\
-	1.94                              & 682                                  \\
-	2.00                              & 700                                  \\
-	2.05                              & 720                                  \\
-	2.11                              & 740                                  \\
-	2.18                              & 756                                  \\
-	2.23                              & 784                                  \\
-	2.29                              & 800                                  \\
-	2.33                              & 820                                  \\
-	2.41                              & 840                                  \\
-	2.47                              & 860                                  \\
-	2.51                              & 880                                  \\
+	1.44                              & 50.4                                  \\
+	1.50                              & 52.4                                  \\
+	1.56                              & 54.0                                  \\
+	1.60                              & 56.4                                  \\
+	1.65                              & 58.2                                  \\
+	1.71                              & 60.0                                  \\
+	1.74                              & 62.2                                  \\
+	1.83                              & 64.4                                  \\
+	1.88                              & 66.4                                  \\
+	1.94                              & 68.2                                  \\
+	2.00                              & 70.0                                  \\
+	2.05                              & 72.0                                  \\
+	2.11                              & 74.0                                  \\
+	2.18                              & 75.6                                  \\
+	2.23                              & 78.4                                  \\
+	2.29                              & 80.0                                  \\
+	2.33                              & 82.0                                  \\
+	2.41                              & 84.0                                  \\
+	2.47                              & 86.0                                  \\
+	2.51                              & 88.0                                  \\
 	\bottomrule
 	\end{tabular}
-	\caption{Tabella con spazi percorsi e tempi di viaggio impiegati nell'esperimento delle distanze lunghe}
+	\caption{Distanze percorse e tempi di viaggio misurati nell'esperimento su
+	distanze lunghe.}
 \end{table}
+
+Infine si è eseguito un fit lineare a partire dal grafico delle distanze
+percorse $s(t) = 2D = v_s t + q$ in funzione del tempo per ricavarne dal
+coefficiente angolare la misura della velocità del suono $v_s$ di nostro
+interesse.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{2}
-    \caption{Distanze corte in funzione del tempo}
+    \caption{Fit lineare all'andamento delle distanze (corte) in funzione del
+    tempo}
 \end{figure}
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{railtime}
-    \caption{Distanze lunghe in funzione del tempo}
+    \caption{Fit lineare all'andamento delle distanze (lunghe) in funzione del
+    tempo}
 \end{figure}
+
 \begin{table}[htbp]
 \centering
-\begin{tabular}{cc|c}
+\begin{tabular}{cccc|c}
 \toprule
-$V_s [\frac{m}{s}]$& $\sigma V_s$ & $Temperatura [Celsius]$ \\
+$v_s$ [m/s]& $q$ [mm] & $\chi^2/\text{d.o.f}$ & norm. cov. &
+Temperature $T$ [\degreeCelsius] \\
 \midrule
 \midrule
-348.0 & 1.8 & 20\\
-347.3 & 3.0 & 19\\
+$348 \pm 2$ & $0.4 \pm 1.0$ & $0.4/6$ & $-0.97$ & $20 \pm 1$ \\
+$347 \pm 3$ & $0 \pm 6$ & $1.6/18$ & $-0.99$ & $21 \pm 1$ \\
 \bottomrule
 \end{tabular}
-\caption{Risultati del fit lineare per la velocità del suono}
+\caption{Risultati del fit lineare per la velocità del suono dalle misure
+su distanze brevi e lunghe rispettivamente}
 \end{table}
-In entrambi i casi abbiamo ottenuto anche un'intercetta che fosse compatibile con 0:
-\begin{table}[htbp]
-\centering
-\begin{tabular}{cc}
-\toprule
-$q [\frac{m}{s}]$& $\sigma V_s$ \\
-\midrule
--0.3 & 6.1 \\
--0.4 & 1.0 \\
-\bottomrule
-\end{tabular}
-\caption{Risultati del fit lineare per la velocità del suono}
-\end{table}
-Nel primo caso (distanze brevi), per misurare correttamente la distanza, senza esagerare con l'errore associato, è stata ricavata la posizione del cristallo piezoelettrico inserendo un piccolo oggetto in carta (in modo da non danneggiare nulla) all'interno dei due occhi del sensore, da cui abbiamo ricavato che ci sono circa 5 mm di distanza tra il cristallo e la rete di protezione esterna. Per cui è stato possibile diminuire l'incertezza sulla distanza fino a 2 millimetri. Nell'altro esperimento invece è stata presa la distanza a partire dal punto medio dell'occhio, utilizzando come incertezza la metà dello spessore. Per quanto riguarda i tempi invece sono stati presi alla stessa maniera, utilizzando il metodo dei cursori sull'asse x e misurando la durata dell'impulso in \verb+ECHO+. I 2 esperimenti sono stati eseguiti all'interno di 2 case diverse in città diverse, quindi con condizioni di umidità relative diverse, nonostante ciò sono risultate perfettamente compatibili tra di loro, e con la velocità aspettata di $343 \frac{m}{s}$ a $20 \degree C$ entro le 3 barre di errore massime.
-\subsection{jitter}
-Un fenomeno a cui va data particolare attenzione è il ritardo con cui il segnale echo ritorna a essere basso dopo che il sensore ha ricevuto l'onda. Questo ritardo, denominato jitter, è dovuto al fatto che il sensore salta il primo fronte d'onda perché questo a sua volta non genera un livello di tensione sufficiente da far scattare i circuiti integrati. Cercando su internet per la schematica completa del sensore notiamo la presenza di 3 circuiti principali, denominati U1, U2 e U3: mentre U1 e U3 servono solo per il controllo dei segnali di echo e della generazione dell'onda sonora, U2 è impiegato nel riconoscere il segnale acustico.
-Infatti questo circuito è composto da vari componenti tra cui un filtro passa banda e un amplificatore. Collegandosi direttamente al pin 10 dell'U2 è possibile vedere le onde a 40 kHz isolate e amplificate dal circuito (ammesso che siano state captate).
+
+In entrambi i casi abbiamo ottenuto un'intercetta compatibile con 0, che ci
+suggerisce che le distanze tra sensore e oggetto riflettente siano state
+stimate in maniera corretta entro l'incertezza.
+
+I 2 esperimenti sono stati eseguiti all'interno di case diverse in città
+diverse, quindi con condizioni di umidità relative differenti. Nonostante
+questo sono risultate perfettamente compatibili tra di loro e con il valore
+di riferimento per la velocità del suono di $343 \; \si{\m/\s}$ a
+$20 \; \si{\degreeCelsius}$ entro meno di 3 barre d'errore.
+
+\subsection{Jitter discreto nelle misure di tempo}
+Un fenomeno che ci è sembrato meritevole di particolare attenzione è la natura
+delle oscillazioni delle misure di tempo prese dal fronte di discesa del
+segnale in \verb+ECHO+.
+Abbiamo notato che, pur mantenendo fisso l'apparato strumentale, il tempo
+in cui il segnale di eco torna ad essere $\SI{0}{\V}$ dopo aver ricevuto l'onda
+riflessa tende a oscillare tra almeno un paio di valori tutti grossomodo
+separati di uno stesso tempo caratteristico.
+
+Si è provato a dare una spiegazione di questo effetto di ``jitter'' discreto 
+a partire dalla schematica completa dell'HC-SR04: questo è composto da 3
+circuiti principali, denominati U1, U2 e U3. Il primo e l'ultimo sono impiegati
+per la generazione del segnale di eco e dell'onda sonora trasmessa, mentre U2 è
+dedicato a riconoscere il segnale acustico di ritorno.
+Quest'ultimo è costituito (oltre a vari altri componenti) principalmente da un
+filtro passa-banda e un amplificatore; per cui collegandoci al pin 10 dell'U2
+è stato possibile osservare il segnale corrispondente all'arrivo treno
+d'impulsi a $40 \; \si{k\Hz}$ isolato e amplificato dal circuito.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{jitter2}
-    \caption{Segnale in uscita dal pin 10 del circuito U2 su CH2, segnale in uscita da echo su CH1}
+    \caption{Acquisizione all'oscilloscopio del segnale in uscita dal pin 10
+    dell'integrato U2 (in blu su CH2) e dell'uscita in \texttt{ECHO} (in giallo
+    su CH1}
 \end{figure}
-Misurando il ritardo con i cursori si arriva a concludere che, se presente, inciderà sul travel time di 25 $\mu s$ che è proprio il periodo di un'onda a 40 kHz.
+
+Da questo ipotizziamo che il jitter discreto sia dovuto al fatto che il
+sensore abbassi la tensione dell'impulso in uscita da \verb+ECHO+ in maniera
+inconsistente quando, ad esempio, il primo fronte dell'onda di ritorno non
+genera nel trasduttore una differenza di potenziale sufficiente a farne
+registrare l'arrivo dai circuiti integrati.
+Misurando il ritardo tra il primo impulso e quello che fa effettivamente
+scattare il segnale in \verb+ECHO+ con i cursori si trova un valore
+perfettamente compatibile con $1/f = 25 \; \si{\micro\s}$, pari al
+periodo dell'onda a ultrasuoni che non viene percepita dal ricevitore.
+
 %=======================
 \section{Dipendenza della velocità dalla temperatura}
-Sappiamo che la velocità del suono attraverso l'aria non è costante ma varia, principalmente a causa della temperatura e dell'umidità.
-Nel nostro caso proveremo a misurare questo cambiamento tramite un sensore detto termistore che varia la sua resistenza in funzione della temperatura.
-Tramite un partitore di tensione possiamo misurare il potenziale compreso tra il una resistenza da 10 $k\ohm$ e il termistore per poi ricavarne il valore.
+Sappiamo che la velocità del suono in aria non è costante, ma varia nelle
+nostre condizioni sperimentali principalmente a causa della temperatura e
+dell'umidità\footnote{in linea di principio $v_s$ dipende anche dalla
+frequenza dell'onda di pressione che si propaga in aria, ma stiamo
+considerando un unico valore di frequenza fissato da $f = 40 \; \si{k\Hz}$}.
+
+Non potendo monitorare né controllare le condizioni di umidità dell'aria
+possiamo solamente limitarci a dire che (a parità di temperatura) ci
+aspettiamo che la percentuale di umidità relativa contribuisca ad aumentare
+il valore di $v_s$ misurato. Infatti, assumendo di poter esprimere la velocità
+del mezzo nella forma
 \begin{equation}
-R_t=\frac{R_1V_2}{V_{cc}-V_2}
+v_s(\rho) = \sqrt{\frac{k}{\rho}}
 \end{equation}
-Dove $V_2$ è la tensione misurata da CH1.
-A quel punto sappiamo che la temperatura e la resistenza sono legati dall'equazione:
+sappiamo che la densità di massa per unità di volume $\rho$ dell'aria
+diminuisce in presenza di molecole d'acqua poiché hanno massa minore di quelle
+d'aria. Ad ogni modo non ci aspettiamo una deviazione dai valori attesi
+(che assumono aria perfettamente secca/di umidità relativa $0 \percent$) di più
+di $\sim SI{2}{\m/\s}$, quindi entro la nostra incertezza di misura.
+
+\subsection{Descrizione del metodo di misura}
+In particolare quindi ci concentriamo sulla misura della dipendenza di $v_s$
+dalla temperatura tramite la misura indiretta della resistenza $R_T$ di un
+termistore NTC (modello MF52D-103f-3950).
+
+Dalla formula del partitore di tensione $R_1 + R_T$ possiamo ricavare una
+stima della resistenza del termistore misurando la caduta di tensione ai suoi
+capi $V_T$.
 \begin{equation}
-\frac{1}{T}= \frac{1}{T_0} + \frac{ln(\frac{R}{R_0})}{B}
+R_T = R_1 \frac{V_T}{V_{CC} - V_T} = \frac{R_1}{V_{CC}/V_T - 1}
 \end{equation}
-Possiamo riscriverla come:
+
+Dunque possiamo ottenere la nostra misura della temperatura assoluta $T$
+(in Kelvin) dall'equazione di Steinhart-Hart
+\begin{equation}\label{eq: STH}
+\frac{1}{T} = \frac{1}{T_0} + \frac{\ln{\left(\frac{R_T}{R_0}\right)}}{B}
+\end{equation}
+da cui si vede ancora come la temperatura sia legata in maniera inversamente
+proporzionale alla resistenza $R_T$.
 \begin{equation}
-T=\frac{T_0 B}{B+T_0 \ln{\frac{R}{R_0}}}
+T = \frac{T_0 B}{B + T_0 \ln{\frac{R}{R_0}}}
 \end{equation}
-Inoltre la velocità del suono e la temperatura sono legati da:
-\begin{equation}
-V_s=v_0\sqrt{\frac{T+273.15}{273.15}}
+
+Finalmente possiamo ottenere una stima del valore della velocità del suono a
+temperatura $T_C = \SI{0}{\degreeCelsius} = 289.15 \; \si{\K} \coloneq T_0$
+dall'equazione che descrive l'andamento di $v_s$ al variare di $T_C$
+(espressa in gradi Celsius)
+\begin{equation}\label{eq: v(T)}
+v_s = v_0 \sqrt{\frac{T_C + 273.15}{273.15}}
 \end{equation}
-Dove T è la temperatura espressa in Celsius e $v_0$ la velocità del suono a 0 gradi Celsius.
-\subsection{Misura}
-Come prima, abbiamo misurato la durata dell'impulso ECHO a distanza fissa di $252 \pm 2 \; mm$ (anche in questo caso si è diminuita l'incertezza prendendo come punto di partenza delle onde 5 mm dalla fine dell'occhio del sensore) a diverse temperature, lasciando il circuito montato e fisso sempre nello stesso punto.
-Per quanto riguarda i parametri B e $R_0$ siamo andati a ricercarli nel datasheet del termistore, e per il nostro interesse risultano essere $B=3950 K \pm 1 \percent$ e $R_0 = 10 k\ohm \pm 1 \percent$; successivamente si è provato ad eseguire una lettura per la misura della temperatura piazzando il circuito a fianco di un termostato per verificare che il circuito funzionasse: dai risultati abbiamo ottenuto $V_2=2.81 \pm 0.02 V$ la cui temperatura si ricava essere $19.4 \pm 0.4 \degree C$ quando il termostato segnava $19.5  \degree C$ (il quale aveva una risoluzione di 1 decimo di grado), quindi risulta compatibile.
-Nonostante risulti semplice lasciare il circuito montato e funzionante, siamo riusciti a misurare un intervallo di solo $5 \degree C$ compresi tra i 15 e i 20; che sono stati comunque sufficienti per ricavare $v_0$. Abbiamo quindi preso le misure dei tempi tramite cursori sulle x misurando la durata dell'impulso di echo e dei valori di $V_2$ tramite la funzione VOLTMETER di Waveforms.
+
+\subsection{Raccolta e analisi dati}
+In questo caso abbiamo misurato il tempo $t$ di percorrenza del segnale a
+ultrasuoni lasciando fissa la distanza $D = 252 \pm 2 \; \si{m\m}$
+(sempre prendendo come punto di partenza delle onde $h = \SI{5}{m\m}$ dalla
+fine dei canali del sensore) al variare della temperatura dell'aria nella
+stanza.
+
+Per verificare il corretto funzionamento del circuito di misura della
+temperatura si è posizionato l'apparato a fianco di un termostato per eseguire
+una sorta di grossolana calibrazione del termistore.
+Da una misura con i cursori della caduta di tensione ai capi di $R_T$ abbiamo
+ottenuto $V_T = 2.81 \pm 0.02 \si{\V}$, dunque dall'\cref{eq: STH} si ricava
+una misura di temperatura $T_C = 19.4 \pm 0.4 \; \si{\degreeCelsius}$, in
+ottimo accordo con la lettura indicata dal termostato di
+$19.5 \; \si{\degreeCelsius}$ (il quale ha risoluzione di 1 decimo di grado).
+
+Da cui concludiamo che i valori dei parametri di costruzione del termistore
+$R_0 = 10 \; \si{k\ohm}$ e $B = 3950 \; \si{\K}$ riportati nel datasheet con
+relative tolleranze dell'$1 \percent$ possono fornire una stima ragionevole
+della temperatura ambientale, una volta inserite nella \cref{eq: STH}.
+
+Nonostante basti lasciare il circuito in ciclo continuo di presa dati ed
+aspettare il cambiamento naturale di temperatura nel giorno, siamo riusciti
+a compiere le nostre misure entro un intervallo di soli $5 \degreeCelsius$ di
+escursione termica, compresi tra i 15 e i $20 \degreeCelsius$.
+
+In maniera del tutto analoga a prima abbiamo preso le misure dei tempi di
+volo $t$ tramite cursori sulla scala dei tempi dell'oscilloscopio dalla
+durata dell'impulso in \verb+ECHO+. In contemporanea si monitora la temperatura
+dell'aria con le termocoppie del multimetro, il termostato e dalla lettura di
+$V_T$ con i cursori sull'altro canale dell'oscilloscopio.
 \begin{table}[htbp]
 \centering
-\begin{tabular}{ccc}
+\begin{tabular}{cccc}
 \toprule
-Time [ms] & $V_2$ & Temperatura sul termostato \\
+Travel time $t$ ($\pm 0.02$) [ms] & $V_T$ $(\pm 0.02)$ [V] & $T_C$ $(\pm 0.4)$
+[\degreeCelsius] & Termostato-DMM ($\pm 1$) [\degreeCelsius] \\
 \midrule
 \midrule
-1.49 & 3.11 & 15 \\
-1.49 & 3.03 & 16 \\
-1.48 & 2.98 & 17 \\
-1.48 & 2.93 & 18 \\
-1.47 & 2.88 & 19 \\
-1.47 & 2.83 & 20 \\
+1.49 & 3.11 & 14.3 & 15 \\
+1.49 & 3.03 & 15.6 & 16 \\
+1.48 & 2.98 & 16.6 & 17 \\
+1.48 & 2.93 & 17.5 & 18 \\
+1.47 & 2.88 & 18.3 & 19 \\
+1.47 & 2.83 & 19.2 & 20 \\
 \bottomrule
 \end{tabular}
-\caption{Tabella dei tempi di percorrenza in funzione della temperatura}
+\caption{Misure dei tempi di volo al variare della temperatura
+ambientale registrata durante l'arco di una giornata.}
 \end{table}
-A questo punto abbiamo combinato le equazioni (2) e (4) per ricavare i dati di velocità e temperatura e le incertezze propagandole dalle medesime funzioni. In seguito si è condotto un fit con modello l'eq. (5) per ricavare $v_0$.
+
+Abbiamo nuovamente usato l'\cref{eq: d/t} per ottenere le nostre misure di
+velocità, dunque a partire dalle misure di temperatura ricavate da
+\cref{eq: STH} si è potuto ricostruire l'andamento di $v_s$ in funzione
+della temperatura $T$. Infine si è condotto un fit a questi dati con la legge
+di potenza \cref{eq: v(T)} per stimare $v_0$ e verificare l'accordo con
+l'andamento da questa previsto.
 \begin{figure}[htbp]
     \centering
-	\includegraphics[width=\textwidth]{Temperature}
-    \caption{Fit e residui per la velocità del suono in funzione della temperatura}
+	\includegraphics[width=\textwidth]{temptime}
+    \caption{Grafico del fit e residui normalizzati per l'andamento della
+    velocità del suono in funzione della temperatura}
 \end{figure}
-Da qui abbiamo ottenuto che $v_0 =331 \pm 1 \; m/s$ che risulta essere perfettamente compatibile con il valore atteso. Ovviamente bisogna stare attenti a riportare le misure in uscita dall'equazione (4) in Celsius, altrimenti è sufficiente rivedere l'equazione (5).
+
+Dai risultati del fit abbiamo ottenuto $v_0 = 331 \pm 1 \; \si{\m/\s}$
+$(\chi^2/\text{d.o.f} = 1.8/5)$ che risulta pienamente compatibile con il
+valore atteso per la velocità del suono in aria $331.45 \; \si{\m/\s}$ a
+temperatura $T_0 = \SI{0}{\degreeCelsius}$. 
+
 %=======================
 \section*{Conclusioni e commenti finali}
 Si è riusciti a dare una misura ragionevole della velocità del suono in aria
 e si è riusciti ad apprezzare la sua dipendenza dalla temperatura ambientale
 con un semplice sensore ad ultrasuoni ed un termistore.
 
+Nonostante gli esperimenti siano stati svolti in luoghi e condizioni di
+temperatura, umidità e altitudine differenti; i risultati trovati risultano
+compatibili tra loro e con i valori attesi dalla teoria.
+
 %=======================
 \section*{Dichiarazione}
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e
 originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
 hanno contribuito alla elaborazione della relazione stessa.
-
 
 \end{document}

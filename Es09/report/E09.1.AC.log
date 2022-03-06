@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  4 MAR 2022 00:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  6 MAR 2022 19:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1288,7 +1288,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
-5.
+4.
 
 (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
@@ -1296,76 +1296,82 @@ File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 
 pdfTeX warning: pdflatex.exe (file ../figs//schm.pdf): PDF inclusion: found PDF
  version <1.7>, but at most version <1.5> allowed
-<../figs//schm.pdf, id=31, 171.50087pt x 172.21695pt>
+<../figs//schm.pdf, id=40, 171.50087pt x 172.21695pt>
 File: ../figs//schm.pdf Graphic file (type pdf)
 <use ../figs//schm.pdf>
 Package pdftex.def Info: ../figs//schm.pdf  used on input line 54.
 (pdftex.def)             Requested size: 171.50044pt x 172.2165pt.
-<../figs//echo.png, id=32, 1152.7065pt x 553.46774pt>
-File: ../figs//echo.png Graphic file (type png)
-<use ../figs//echo.png>
-Package pdftex.def Info: ../figs//echo.png  used on input line 64.
-(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
 [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../figs//schm.p
 df>]
-<../figs//2.png, id=56, 1387.584pt x 694.5147pt>
+<../figs//echo.png, id=63, 1152.7065pt x 553.46774pt>
+File: ../figs//echo.png Graphic file (type png)
+<use ../figs//echo.png>
+Package pdftex.def Info: ../figs//echo.png  used on input line 103.
+(pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
+ [2 <../figs//echo.png (PNG copy)>]
+<../figs//2.png, id=72, 1387.584pt x 694.5147pt>
 File: ../figs//2.png Graphic file (type png)
 <use ../figs//2.png>
-Package pdftex.def Info: ../figs//2.png  used on input line 128.
+Package pdftex.def Info: ../figs//2.png  used on input line 213.
 (pdftex.def)             Requested size: 483.69687pt x 242.09822pt.
-<../figs//railtime.pdf, id=58, 578.88268pt x 354.12299pt>
+<../figs//railtime.pdf, id=74, 597.6729pt x 389.5353pt>
 File: ../figs//railtime.pdf Graphic file (type pdf)
 <use ../figs//railtime.pdf>
-Package pdftex.def Info: ../figs//railtime.pdf  used on input line 133.
-(pdftex.def)             Requested size: 483.69687pt x 295.89426pt.
- [2 <../figs//echo.png (PNG copy)>] [3 <../figs//2.png>]
-<../figs//jitter2.png, id=75, 1152.7065pt x 553.46774pt>
+Package pdftex.def Info: ../figs//railtime.pdf  used on input line 219.
+(pdftex.def)             Requested size: 483.69687pt x 315.25438pt.
+ [3] [4 <../figs//2.png> <../figs//railtime.pdf>]
+<../figs//jitter2.png, id=116, 1152.7065pt x 553.46774pt>
 File: ../figs//jitter2.png Graphic file (type png)
 <use ../figs//jitter2.png>
-Package pdftex.def Info: ../figs//jitter2.png  used on input line 168.
+Package pdftex.def Info: ../figs//jitter2.png  used on input line 270.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
- [4 <../figs//railtime.pdf>]
-<../figs//Temperature.png, id=111, 1387.584pt x 694.5147pt>
-File: ../figs//Temperature.png Graphic file (type png)
-<use ../figs//Temperature.png>
-Package pdftex.def Info: ../figs//Temperature.png  used on input line 218.
-(pdftex.def)             Requested size: 483.69687pt x 242.09822pt.
- [5 <../figs//jitter2.png (PNG copy)>] [6 <../figs//Temperature.png>] (./E09.1.
-AC.aux)
+ [5 <../figs//jitter2.png (PNG copy)>]
+<../figs//temptime.pdf, id=137, 581.77347pt x 392.42609pt>
+File: ../figs//temptime.pdf Graphic file (type pdf)
+<use ../figs//temptime.pdf>
+Package pdftex.def Info: ../figs//temptime.pdf  used on input line 398.
+(pdftex.def)             Requested size: 483.69687pt x 326.28242pt.
+ [6] [7 <../figs//temptime.pdf>] (./E09.1.AC.aux)
 Package rerunfilecheck Info: File `E09.1.AC.out' has not changed.
-(rerunfilecheck)             Checksum: C07FBB1B030BF4AE1434E74A8A3AF3AC;973.
+(rerunfilecheck)             Checksum: 593F89F95CBBF8DEC6A4561366753081;1755.
  ) 
 Here is how much of TeX's memory you used:
- 55681 strings out of 479713
- 1366055 string characters out of 5876923
- 2171074 words of memory out of 10000000
- 72653 multiletter control sequences out of 15000+600000
- 418591 words of font info for 68 fonts, out of 8000000 for 9000
+ 55698 strings out of 479713
+ 1366230 string characters out of 5876923
+ 2173076 words of memory out of 10000000
+ 72664 multiletter control sequences out of 15000+600000
+ 420121 words of font info for 70 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,13n,125p,1163b,779s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,14n,125p,754b,808s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
 ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12
-.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/te
-xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
-cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
-frm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pf
-b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texl
-ive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2021/t
-exmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on E09.1.AC.pdf (6 pages, 662982 bytes).
+ic/amsfonts/cm/cmmi5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7
+.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/t
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/202
+1/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
+b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texl
+ive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/t
+exmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c:/texlive/2021/texmf-dist/
+fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/2021/texmf-dist/fonts/type
+1/public/cm-super/sfrm0800.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/c
+m-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
+rm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb
+><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texli
+ve/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on E09.1.AC.pdf (7 pages, 732341 bytes).
 PDF statistics:
- 203 PDF objects out of 1000 (max. 8388607)
- 147 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 287 PDF objects out of 1000 (max. 8388607)
+ 214 compressed objects within 3 object streams
+ 38 named destinations out of 1000 (max. 500000)
+ 107 words of extra memory for PDF output out of 10000 (max. 10000000)
 

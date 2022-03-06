@@ -10,7 +10,7 @@ import phylab as lab
 
 ''' Variables that control the script '''
 tix = False  # manually choose spacing between axis ticks
-tex = False  # LaTeX typesetting maths and descriptions
+tex = True  # LaTeX typesetting maths and descriptions
 
 # Modello velocità (radice)
 def velt(x, v0):
@@ -32,7 +32,7 @@ dM=0.03
 s=252
 ds=1
 vel=2*s/time
-dtime=time*0.001
+dtime=np.full_like(time, 0.001)
 dv=np.sqrt((2*ds/time)**2 + (2*s*dtime/(time**2))**2)
 T=Vtemp*R/(M-Vtemp)
 dVtemp=Vtemp*0.005
@@ -43,7 +43,7 @@ T=therm(T)
 print(T)
 print(dT)
 
-# fit
+# subset of data
 T=T-273.15
 x, y, dx, dy = mesrange(T,vel, dx=dT, dy=dv,
                         x_min=t_min, x_max=t_max)
@@ -59,17 +59,17 @@ init = [331]
 model = velt
 
 deff = dy
-pars, covm = lab.curve_fit(model, x, y, sigma=dy, p0=init)
+pars, covm = lab.curve_fit(model, x, y, sigma=dy, p0=init, absolute_sigma=True)
 perr, pcor = errcor(covm)
 prnpar(pars, perr, model)
 chisq, ndof, resn = chitest(model(x, *pars), y, unc=deff, ddof=len(pars), v=True)
 
 # linear fit graphs
 fig, (axf, axr) = pltfitres(model, x, y, dx, deff, pars=pars)
-axf.set_ylabel(r'Speed of sound [m/s]')
-axr.set_xlabel(r'Temperature [Celsius]', x=0.8)
+axf.set_ylabel(r'Speed of sound $v_s (T)$ [m/s]')
+axr.set_xlabel(r'Temperature  $T$ [$^\circ C$]', x=0.8)
 if tix: 
     tick(axf, xmaj=0.1, ymaj=0.2)
-    tick(axr, xmaj=0.1, ymaj=0.5)
+tick(axr, xmaj=1, ymaj=0.5)
 legend = axf.legend(loc='best')
 plt.show()
