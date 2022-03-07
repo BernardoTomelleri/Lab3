@@ -12,7 +12,7 @@
 \author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
 \title{Es09: Misura della velocità del suono}
 \begin{document}
-\date{\today}
+\date{3 marzo 2022}
 \maketitle
 
 \setcounter{section}{0}
@@ -36,7 +36,7 @@ due circuiti studiati. \label{tab: rcmes_B}}
 Riportiamo per completezza anche il valore della tensione di alimentazione
 continua per il sensore a ultrasuoni misurata con il multimetro.
 \[
-V_{CC} = 4.99 \pm 0.03 \si{\V}
+V_{CC} = 4.99 \pm 0.03 \; \si{\V}
 \]
 
 \subsection*{Nota sul metodo di fit}
@@ -48,7 +48,7 @@ mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 \section{Misura velocità del suono}
 \subsection{Progettazione del circuito}
 Si è costruito il nostro apparato per la misura della velocità del suono
-secondo lo schema circuitale riportato in \cref{schm: mesctrl}.
+secondo lo schema circuitale riportato in \cref{schm: mesctrl}
 \begin{figure}[htbp]
     \centering
 	\includegraphics[scale=1]{schm}
@@ -58,7 +58,7 @@ secondo lo schema circuitale riportato in \cref{schm: mesctrl}.
     \label{schm: mesctrl}}
 \end{figure}
 
-In cui si è cercato di mettere in evidenza la geometria del componente
+in cui si è cercato di mettere in evidenza la geometria del componente
 principale, il sensore ad ultrasuoni di tipo riflettente HC-SR04, in cui
 il trasmettitore ed il ricevitore sono separati di una distanza di circa
 $\SI{2}{c\m}$.
@@ -71,7 +71,7 @@ dipendente dalla temperatura.
 \subsection{Analisi del funzionamento dell'apparato}
 Il sensore ad ultrasuoni fornisce una stima del tempo di viaggio $t$ in aria
 (andata e ritorno) di un'onda sonora dalla frequenza superiore alla soglia
-dell'udito umano $\sim 20 \; \si{k\Hz}$ sotto forma di un impulso TTL di
+dell'udito umano ($\sim 20 \; \si{k\Hz}$) sotto forma di un impulso TTL di
 durata proporzionale a $t$.
 
 Sempre per la convenzione TTL il sensore dev'essere alimentato da una
@@ -80,7 +80,7 @@ processo di misura al pin \verb+TRIG+ si deve inviare un segnale di trigger
 (un impulso che deve soddisfare le condizioni di ampiezza, durata e periodo
 specificate nel datasheet del componente). Nel nostro caso si è generata in
 \verb+W1+ una serie di impulsi compresi tra 0 e $\SI{5}{\V}$ di durata pari a
-$10 \si{\micro\s}$ e periodo di $50 \; \si{m\s}$, per permettere all'HC-SR04
+$10 \; \si{\micro\s}$ e periodo di $50 \; \si{m\s}$, per permettere all'HC-SR04
 di portare a termine il suo ciclo di misura (scelto in base alla durata
 massima del segnale di eco $\sim 38 \; \si{m\s}$, corrispondente al caso in
 cui il ricevitore non rileva alcun ostacolo che riflette gli impulsi emessi)
@@ -92,8 +92,8 @@ d'impulsi da $f = 40 \; \si{k\Hz}$ nel trasmettitore.
 Questa si propaga finché non incontra un ostacolo piano e opaco da cui viene
 riflesso in modo da essere captato dal ricevitore piezoelettrico nel sensore
 al ritorno. Non appena il cristallo piezoelettrico riceve uno di questi
-impulsi di ritorno emessi ogni $1/f = 25 \; \si{m\s}$ il segnale alto presente
-nel pin \verb+ECHO+ torna ad essere $SI{0}{\V}$. Controllando quindi
+impulsi di ritorno emessi ogni $1/f = 25 \; \si{\micro\s}$ il segnale alto
+presente nel pin \verb+ECHO+ torna ad essere $\SI{0}{\V}$. Controllando quindi
 quest'ultimo pin tramite l'oscilloscopio è possibile osservare un gradino di
 tensione dalla durata direttamente proporzionale al tempo $t$ che l'onda a
 ultrasuoni impiega a percorrere 2 volte la distanza $D$ tra il sensore e
@@ -113,7 +113,7 @@ di tensione ai capi del termistore $V_T$ con $R_0 = 10 \pm 1 \percent \;
 \degreeCelsius$).
 
 \subsection{Raccolta e analisi dati}\label{sbs: data}
-Dunque una volta misurata la distanza sensore-oggetto con un metro a nastro,
+Dunque, una volta misurata la distanza sensore-oggetto con un metro a nastro,
 è possibile ricavare la velocità del suono dalle misure di tempo fornite dal
 sensore tramite la \cref{eq: d/t}
 \begin{equation}\label{eq: d/t}
@@ -283,6 +283,10 @@ scattare il segnale in \verb+ECHO+ con i cursori si trova un valore
 perfettamente compatibile con $1/f = 25 \; \si{\micro\s}$, pari al
 periodo dell'onda a ultrasuoni che non viene percepita dal ricevitore.
 
+Per questo scegliamo di prendere come miglior stima del tempo di andata e
+ritorno dal sensore il minimo valore di $t$ tra cui oscilla il fronte di
+discesa del segnale di eco per ogni valore di distanza fissata.
+
 %=======================
 \section{Dipendenza della velocità dalla temperatura}
 Sappiamo che la velocità del suono in aria non è costante, ma varia nelle
@@ -303,7 +307,7 @@ sappiamo che la densità di massa per unità di volume $\rho$ dell'aria
 diminuisce in presenza di molecole d'acqua poiché hanno massa minore di quelle
 d'aria. Ad ogni modo non ci aspettiamo una deviazione dai valori attesi
 (che assumono aria perfettamente secca/di umidità relativa $0 \percent$) di più
-di $\sim SI{2}{\m/\s}$, quindi entro la nostra incertezza di misura.
+di $\sim \SI{2}{\m/\s}$, quindi entro la nostra incertezza di misura.
 
 \subsection{Descrizione del metodo di misura}
 In particolare quindi ci concentriamo sulla misura della dipendenza di $v_s$
@@ -325,11 +329,11 @@ Dunque possiamo ottenere la nostra misura della temperatura assoluta $T$
 da cui si vede ancora come la temperatura sia legata in maniera inversamente
 proporzionale alla resistenza $R_T$.
 \begin{equation}
-T = \frac{T_0 B}{B + T_0 \ln{\frac{R}{R_0}}}
+T = \frac{T_0 B}{B + T_0 \ln\left({\frac{R_T}{R_0}}\right)}
 \end{equation}
 
 Finalmente possiamo ottenere una stima del valore della velocità del suono a
-temperatura $T_C = \SI{0}{\degreeCelsius} = 289.15 \; \si{\K} \coloneq T_0$
+temperatura $T_C = \SI{0}{\degreeCelsius} = 289.15 \; \si{\K} \coloneqq T_0$
 dall'equazione che descrive l'andamento di $v_s$ al variare di $T_C$
 (espressa in gradi Celsius)
 \begin{equation}\label{eq: v(T)}
@@ -401,7 +405,7 @@ l'andamento da questa previsto.
 \end{figure}
 
 Dai risultati del fit abbiamo ottenuto $v_0 = 331 \pm 1 \; \si{\m/\s}$
-$(\chi^2/\text{d.o.f} = 1.8/5)$ che risulta pienamente compatibile con il
+$(\chi^2/\text{d.o.f} = 1.8/5)$ che risulta in ottimo accordo con il
 valore atteso per la velocità del suono in aria $331.45 \; \si{\m/\s}$ a
 temperatura $T_0 = \SI{0}{\degreeCelsius}$. 
 
