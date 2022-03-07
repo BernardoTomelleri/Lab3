@@ -80,7 +80,7 @@ Abbiamo quindi inviato a $V_{SS}$ una tensione continua di -5 V, a WG1 una rampa
 Di seguito quello che otteniamo dall'oscilloscopio:
 \begin{figure}[htbp]
     \centering
-	\includegraphics[scale=0.4]{time}
+	\includegraphics[scale=0.4]{timey}
     \caption{Acquisizione all'oscilloscopio di $V_{DS}$ (CH1), $V_{R_1}$ (CH2)
     e $I_{DS} = V_{R_1}/R_1$ in funzione del tempo}
 \end{figure}
@@ -91,18 +91,28 @@ da verificare.
 \subsection{Curve caratteristiche ottenute}
 \begin{figure}[htbp]
     \centering
-	\includegraphics[scale=0.4]{vgs}
-    \caption{Curve caratteristiche del jfet per $I_{DS}$ su $V_{DS}$}
+	\includegraphics[scale=0.4]{xy}
+    \caption{Curve caratteristiche del jfet per $I_{DS}$ su $V_{DS}$ col primo JFET}
 \end{figure}
-
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.4]{vgs}
+    \caption{Curve caratteristiche del jfet per $I_{DS}$ su $V_{DS}$ col secondo JFET}
+\end{figure}
 \subsection{Confronto con datasheet}
 Come detto prima, il momento in cui la corrente è maggiore (nel grafico a sinistra è sufficiente soffermarsi a vedere l'andamento di CH2) si ottiene quando $V_{GS}$ è pari a 0, che nello stesso grafico è quando la rampa di WG2 misurata da CH1 è più alta (perchè in quel caso $V_S$ è pari a $V_G$ ovvero $V_{SS}$.
 Inoltre si può vedere che oltre un certo punto l'andamento di CH2 risulta approssimativamente costante: questo si ottiene quando viene superata la tensione di pinch-off, che siamo andati a misurare tramite cursori:
+\[
+V_p = -3.0 \pm 0.2 \; \si{\V}
+\]
 \[
 V_p = -4.0 \pm 0.2 \; \si{\V}
 \]
 in cui l'incertezza associata sarà uguale al passo dei nostri scalini.
 Infine, sempre utilizzando i cursori, abbiamo misurato la corrente nella traccia in cui $V_{GS} = 0$, nel grafico di sinistra è la curva più alta; da cui abbiamo ricavato:
+\[
+I_{DSS} = 8.62 \pm 0.07 \; \si{m\A}
+\]
 \[
 I_{DSS} = 12.6 \pm 0.2 \; \si{m\A}
 \]
@@ -117,7 +127,7 @@ A questo punto abbiamo costruito il circuito per l'amplificatore di tensione:
 \end{figure}
 Quindi si è collegato $V_{CC}$ a 5V e $V_{SS}$ a -5V tenendo scollegato $V\ped{in}$ per verificare il punto di lavoro del JFET.
 \subsection{Corrente di quiescenza}
-Misurando la Caduta di potenziale ai capi della resistenza $R_D$ abbiamo calcolato la corrente di quiescenza con la legge di ohm, da cui si ricava $I_{DS}=6.27 \pm 0.06 \; \si{m\A}$ che risulta essere compatibile con la metà della $I_{DSS}$.
+Misurando la Caduta di potenziale ai capi della resistenza $R_D$ abbiamo calcolato la corrente di quiescenza con la legge di ohm, da cui si ricava $I_{DS}=4.06 \pm 0.05 \; \si{m\A}$ e $I_{DS}=6.42 \pm 0.08 \; \si{m\A}$ che risultano essere circa la metà delle rispettive $I_{DSS}$.
 Si è quindi proseguito con la misura di $V_{GS}$ e di $V_{DS}$ per verificare quello che abbiamo appena misurato.
 Sappiamo infatti che dato $V_{GS}$ e $V_p$ e se il JFET è in regime di saturazione:
 \begin{equation}
@@ -130,20 +140,41 @@ V_{GS}=-886 \pm 7 \; \si{m\V}
 \[
 V_{DS}=2.35 \pm 0.01 \; \si{\V}
 \]
-Dato che $V_{DS} > V_{GS} - V_p$ si ricava che siamo in zona di saturazione, a questo punto basta applicare l'equazione; si ottiene quindi 
+mentre per il secondo JFET risulta:
 \[
-I_{DS}(V_{GS},V_p,I_{DSS})=4.14 \pm 0.07 \; \si{m\A}
+V_{GS}=-994 \pm 8 \; \si{m\V}
 \]
+\[
+V_{DS}=2.10 \pm 0.02 \; \si{\V}
+\]
+Dato che $V_{DS} > V_{GS} - V_p$ si ricava che siamo in zona di saturazione nel caso del primo jfet, mentre per il secondo siamo ancora in zona ohmica. A questo punto basta applicare l'equazione solo per il primo; si ottiene quindi 
+\[
+I_{DS}(V_{GS},V_p,I_{DSS})=4.3\pm 0.4 \; \si{m\A}
+\]
+
 Che risulta essere compatibile con quanto misurato.
+Dato che il secondo JFET non sembra essere entrato in saturazione applichiamo la seguente formula per stimare $I_{DS}$ nella regione ohmica:
+\begin{equation}
+I_{DS}=\frac{I_{DSS}}{V_P^2}[2(V_{GS}-V_P) - V_{DS}]V_{DS}
+\end{equation}
+da cui si ottiene $I_{DS}= 6.47 \pm 0.06 \; mA$, che risulta perfettamente compatibile con la misura.
 Stimiamo infine la transconduttanza tramite la formula
 \begin{equation}
 g_m = \frac{2 I_{DSS}}{|V_p|}\sqrt{\frac{I_{d}}{I_{DSS}}}
 \end{equation}
-da cui ricaviamo $g_m = 4.73 \si{m\mho}$, andando quindi a ricercare nel datasheet il valore fornito da costruttore, troviamo un grafico di $g_m$ in funzione della frequenza a cui opera il JFET, in particolare notiamo che per frequenze minori di circa 500 Mhz la transconduttanza deve essere compresa approssimativamente tra 4 e 5, similarmente anche la transammettenza deve essere compresa tra 3 e 6.5 $\si{m\mho}$; il valore misurato rissulta quindi compatibile.
+da cui ricaviamo $g_m = 3.94 \si{m\mho}$ e $g_m = 4.51 \si{m\mho}$.
+A questo punto abbiamo invece provato a misurarla dal grafico, facendo il rapporto tra la differenza nella corrente $I_{DS} $ e la differenza di potenziale di $V_{GS}$ tra le 2 curve associate più vicine al punto di lavoro (vista la "risoluzione" di 250 mV abbiamo preso come punti per effettuare la misura $V_{GS}=-0.75 V$ e $V_{GS}= -1 V$) e a parità di $V_{DS}$ da cui abbiamo ricavato
+\[
+g_m=3.92\pm 0.05 \; \si{m\mho}
+\]
+\[
+g_m=4.49\pm 0.05 \; \si{m\mho}
+\]
+Successivamente siamo andati a ricercare nel datasheet il valore fornito da costruttore, troviamo un grafico di $g_m$ in funzione della frequenza a cui opera il JFET, in particolare notiamo che per frequenze minori di circa 500 Mhz la transconduttanza deve essere compresa approssimativamente tra 4 e 5, similarmente anche la transammettenza deve essere compresa tra 3 e 6.5 $\si{m\mho}$; i valori misurati sono quindi compatibili con quelli nel datasheet e con quelli ricavati usando l'equazione (2).
 %=======================
 \section{Amplificatore di segnale}
-A questo punto si è collegato l'ingresso $V\ped{in}$ all'entrata dell'amplificatore, e lo abbiamo pilotato con un'onda sinusoidale di 1 kHz con un'ampiezza compresa tra 100 mV e 2.8 V a passi di 100 mV. Dall'ampiezza della risposta in uscita $V\ped{out}$ abbiamo misurato il guadagno $A_v = \frac{V\ped{in}}{V\ped{out}}$
-\begin{table}[htbp]
+A questo punto si è collegato l'ingresso $V\ped{in}$ all'entrata del primo amplificatore (dato che il secondo nonostante i nostri tentativi non entrasse in conduzione), e lo abbiamo pilotato con un'onda sinusoidale di 1 kHz con un'ampiezza compresa tra 100 mV e 2.8 V a passi di 100 mV. Dall'ampiezza della risposta in uscita $V\ped{out}$ abbiamo misurato il guadagno $A_v = \frac{V\ped{in}}{V\ped{out}}$
+\begin{table}[H]
 \centering
 \begin{tabular}{cccccc}
 \toprule
@@ -187,9 +218,9 @@ A_v = -\frac{g_m R_d}{1+g_mR_s}
 \end{equation}
 Utilizzando i dati ottenuti prima possiamo ricavare il valore atteso:
 \[
-A_v = -2.33 \pm 0.02
+A_v = -2.10 \pm 0.03
 \]
-Ci accorgiamo subito che questo risultato non risulta essere compatibile con quanto misurato prima.
+Ci accorgiamo subito che questo risultato risulta essere perfettamente compatibile con quanto misurato (a piccole ampiezze di segnale).
 Essendo il guadagno negativo se ne deduce che l'amplificatore sarà di tipo invertente, cosa che si vede immediatamente dai grafici di $V\ped{in}$ e $V\ped{out}$.
 \begin{figure}[htbp]
     \centering
@@ -219,13 +250,14 @@ Essendo il guadagno negativo se ne deduce che l'amplificatore sarà di tipo inve
 
 %=======================
 \section{Risposta in frequenza}
+Analizzando il circuito ci si accorge che funzioni anche come filtro passa banda, in cui la frequenza di taglio del passa alto sarà definita come $\frac{1}{2 \pi R_G C_{in}} = 1.64 \pm 0.07 Hz$, perché la combinazione di $R_G$ e $C_{in}$ in quella determinata configurazione costituiscono un filtro passa alto. Inoltre  l'effetto Miller amplifica la capacità parassita tra l'input e l'output del Jfet, diminuendo così l'amplificazione ad alte frequenze
 Utilizzando lo strumento Network analyzer siamo passati a misurare la risposta in frequenza del circuito tra i 5Hz e i 10 Mhz utilizzando una $V\ped{in}=200 \; \si{m\V}$\\
 \begin{figure}[htbp]
     \centering
-	\includegraphics[scale=0.4]{network}
+	\includegraphics[scale=0.4]{net}
     \caption{Risposta in frequenza del circuito amplificatore a common source}
 \end{figure}
-Si è quindi misurato il guadagno di centro banda, che risulta essere pari a $6.31 dB$ che convertendolo in $A_v$ si ottiene $2.07$, che risulta compatibile con quanto misurato al punto precedente.
+Si è quindi misurato il guadagno di centro banda, che risulta essere pari a $6.31 \pm 0.07 dB$ che convertendolo in $A_v$ si ottiene $2.07 \pm 0.02$, che risulta compatibile con quanto misurato al punto precedente.
 A partire da ciò abbiamo ricavato le frequenze di taglio (basso e alto) tramite cursori, ricercando quando la curva del guadagno vale 3.31 dB:
 \[
 F_{TA}=3.54 \pm 0.02Mhz
@@ -233,6 +265,7 @@ F_{TA}=3.54 \pm 0.02Mhz
 \[
 F_{TB}= 16.0 \pm 0.1Hz
 \]
+La misura della frequenza di passa alto non è quindi compatibile con quanto misurato.
 %=======================
 \section{Aumento del guadagno}
 Abbiamo ora inserito un condensatore elettrolitico in parallelo a $R_S$, chiamato $C_E$.
@@ -249,15 +282,18 @@ dove $R_{eq}$ è l'impedenza in parallelo tra $R_s$ e $C_E$ che vale:
 \begin{equation}
 R_{eq} = \frac{R_s}{j\omega C R_s +1}
 \end{equation}
-Utilizzando sempre la frequenza di 1 kHz ci si aspetta $A_v =$
-Possiamo subito notare che il guadagno è aumentato come ci si aspettava ed è passato ad $A_v =3.20 \pm 0.04$
+che è un numero complesso.
+Ricavandone il modulo si ottiene un valore di resistenza parallelo $C_E \parallel R_S$ di $1.68 \pm 0.09 \ohm$ per una frequenza di 1 kHz.
+A questo punto si può ricavare il nuovo guadagno utilizzando la (4):
+$A_v =3.88 \pm 0.06$.
+A questo punto siamo passati a prendere delle misure per il guadagno a 1 kHz con un'ampiezza in ingresso di 100 mV, da cui si ricava $A_v=3.89 \pm 0.05$, risultato compatibile entro una barra di errore con l'aspettativa. Per effettuare al meglio questa misura è stato necessario agire più volte sul circuito, smontandolo e rimontandolo in seguito, e spostando i componenti (lasciando invariata la schematica), perché lo stesso era estremamente instabile e il fattore di amplificazione cambiava notevolmente anche al più piccolo urto sul tavolo, rendendo da quel momento in poi impossibile effettuare la misura.
 %=======================
 \section{Impedenza in ingresso}
 Si è infine provata a misurare l'impedenza in ingresso al circuito mettendo in serie a $V\ped{in}$ un resistenza $R_S$ dello stesso ordine di grandezza dell'impedenza del circuito attesa, ed utilizzando lo strumento impedance analyzer di waveform in configurazione “W1-C1-R-C2-DUT-GND”; si è così valutata l'impedenza $Z_{IN}$ e la reattanza in parallelo $X_P$ in funzione della frequenza, compresa tra 1 e 10 kHz.
 \begin{figure}[htbp]
     \centering
-	\includegraphics[scale=0.4]{impedance}
-    \caption{Grafici di impedenza in ingresso e reattanza parallelo in funzione della frequenza per $R_S=100 \si{k\ohm}$}
+	\includegraphics[scale=0.4]{amp}
+    \caption{Grafici di impedenza in ingresso e reattanza parallelo in funzione della frequenza per $R_S=1 \si{M\ohm}$}
 \end{figure}
 
 %=======================
