@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  7 MAR 2022 17:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  7 MAR 2022 18:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1288,114 +1288,126 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 6
-1.
+8.
 
 (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<../figs//Draft1.png, id=52, 357.7365pt x 401.70074pt>
+<../figs//Draft1.png, id=60, 357.7365pt x 401.70074pt>
 File: ../figs//Draft1.png Graphic file (type png)
 <use ../figs//Draft1.png>
-Package pdftex.def Info: ../figs//Draft1.png  used on input line 71.
+Package pdftex.def Info: ../figs//Draft1.png  used on input line 78.
 (pdftex.def)             Requested size: 178.8678pt x 200.84987pt.
-<../figs//time.png, id=54, 623.32875pt x 504.6855pt>
+<../figs//time.png, id=62, 623.32875pt x 504.6855pt>
 File: ../figs//time.png Graphic file (type png)
 <use ../figs//time.png>
-Package pdftex.def Info: ../figs//time.png  used on input line 83.
+Package pdftex.def Info: ../figs//time.png  used on input line 95.
 (pdftex.def)             Requested size: 249.32707pt x 201.87062pt.
-<../figs//vgs.png, id=55, 392.667pt x 489.027pt>
-File: ../figs//vgs.png Graphic file (type png)
-<use ../figs//vgs.png>
-Package pdftex.def Info: ../figs//vgs.png  used on input line 94.
-(pdftex.def)             Requested size: 157.06401pt x 195.60732pt.
  [1
 
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <../figs//Dr
-aft1.png> <../figs//time.png (PNG copy)> <../figs//vgs.png (PNG copy)>]
-<../figs//Draft2.png, id=85, 345.08925pt x 365.56575pt>
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<../figs//vgs.png, id=85, 392.667pt x 489.027pt>
+File: ../figs//vgs.png Graphic file (type png)
+<use ../figs//vgs.png>
+Package pdftex.def Info: ../figs//vgs.png  used on input line 107.
+(pdftex.def)             Requested size: 157.06401pt x 195.60732pt.
+ [2 <../figs//Draft1.png> <../figs//time.png (PNG copy)>]
+<../figs//Draft2.png, id=93, 345.08925pt x 365.56575pt>
 File: ../figs//Draft2.png Graphic file (type png)
 <use ../figs//Draft2.png>
-Package pdftex.def Info: ../figs//Draft2.png  used on input line 115.
+Package pdftex.def Info: ../figs//Draft2.png  used on input line 131.
 (pdftex.def)             Requested size: 241.56082pt x 255.89427pt.
- [3 <../figs//Draft2.png>]
-<../figs//amp.200.png, id=94, 1152.7065pt x 553.46774pt>
+ [3 <../figs//vgs.png (PNG copy)> <../figs//Draft2.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 162.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 162.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 162.
+
+<../figs//amp.200.png, id=101, 1152.7065pt x 553.46774pt>
 File: ../figs//amp.200.png Graphic file (type png)
 <use ../figs//amp.200.png>
-Package pdftex.def Info: ../figs//amp.200.png  used on input line 196.
+Package pdftex.def Info: ../figs//amp.200.png  used on input line 242.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//amp.1000.png, id=95, 1152.7065pt x 553.46774pt>
+<../figs//amp.1000.png, id=102, 1152.7065pt x 553.46774pt>
 File: ../figs//amp.1000.png Graphic file (type png)
 <use ../figs//amp.1000.png>
-Package pdftex.def Info: ../figs//amp.1000.png  used on input line 201.
+Package pdftex.def Info: ../figs//amp.1000.png  used on input line 247.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//amp.2000.png, id=96, 1152.7065pt x 553.46774pt>
+<../figs//amp.2000.png, id=103, 1152.7065pt x 553.46774pt>
 File: ../figs//amp.2000.png Graphic file (type png)
 <use ../figs//amp.2000.png>
-Package pdftex.def Info: ../figs//amp.2000.png  used on input line 206.
+Package pdftex.def Info: ../figs//amp.2000.png  used on input line 252.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//amp.2500.png, id=97, 1152.7065pt x 553.46774pt>
+<../figs//amp.2500.png, id=104, 1152.7065pt x 553.46774pt>
 File: ../figs//amp.2500.png Graphic file (type png)
 <use ../figs//amp.2500.png>
-Package pdftex.def Info: ../figs//amp.2500.png  used on input line 211.
+Package pdftex.def Info: ../figs//amp.2500.png  used on input line 257.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-<../figs//amp.3000.png, id=98, 1152.7065pt x 553.46774pt>
+<../figs//amp.3000.png, id=105, 1152.7065pt x 553.46774pt>
 File: ../figs//amp.3000.png Graphic file (type png)
 <use ../figs//amp.3000.png>
-Package pdftex.def Info: ../figs//amp.3000.png  used on input line 216.
+Package pdftex.def Info: ../figs//amp.3000.png  used on input line 262.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-
-[4]
-<../figs//network.png, id=108, 1019.007pt x 502.2765pt>
+<../figs//network.png, id=106, 1019.007pt x 502.2765pt>
 File: ../figs//network.png Graphic file (type png)
 <use ../figs//network.png>
-Package pdftex.def Info: ../figs//network.png  used on input line 225.
+Package pdftex.def Info: ../figs//network.png  used on input line 271.
 (pdftex.def)             Requested size: 407.59558pt x 200.90704pt.
-<../figs//amp.200.cap.png, id=109, 1152.7065pt x 553.46774pt>
+[4] [5 <../figs//amp.200.png (PNG copy)>] [6 <../figs//amp.1000.png (PNG copy)>
+ <../figs//amp.2000.png (PNG copy)>] [7 <../figs//amp.2500.png (PNG copy)> <../
+figs//amp.3000.png (PNG copy)>]
+<../figs//amp.200.cap.png, id=137, 1152.7065pt x 553.46774pt>
 File: ../figs//amp.200.cap.png Graphic file (type png)
 <use ../figs//amp.200.cap.png>
-Package pdftex.def Info: ../figs//amp.200.cap.png  used on input line 241.
+Package pdftex.def Info: ../figs//amp.200.cap.png  used on input line 286.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
- [5 <../figs//amp.200.png (PNG copy)> <../figs//amp.1000.png (PNG copy)>]
-[6 <../figs//amp.2000.png (PNG copy)> <../figs//amp.2500.png (PNG copy)>]
-[7 <../figs//amp.3000.png (PNG copy)> <../figs//network.png (PNG copy)>]
-<../figs//impedance.png, id=129, 1152.7065pt x 553.46774pt>
+ [8 <../figs//network.png (PNG copy)> <../figs//amp.200.cap.png (PNG copy)>]
+<../figs//impedance.png, id=145, 1152.7065pt x 553.46774pt>
 File: ../figs//impedance.png Graphic file (type png)
 <use ../figs//impedance.png>
-Package pdftex.def Info: ../figs//impedance.png  used on input line 259.
+Package pdftex.def Info: ../figs//impedance.png  used on input line 305.
 (pdftex.def)             Requested size: 461.07443pt x 221.38316pt.
-
-[8 <../figs//amp.200.cap.png (PNG copy)>] [9 <../figs//impedance.png (PNG copy)
->] (./E08.1.AC.aux)
+ [9 <../figs//impedance.png (PNG copy)>]
+(./E08.1.AC.aux)
 Package rerunfilecheck Info: File `E08.1.AC.out' has not changed.
-(rerunfilecheck)             Checksum: 22CD01ED32FAA5CB67F54C79AE5853B5;1893.
+(rerunfilecheck)             Checksum: 45BFAE9273046B6887183A8C2BC66971;2482.
  ) 
 Here is how much of TeX's memory you used:
- 55765 strings out of 479713
- 1367711 string characters out of 5876923
- 2182076 words of memory out of 10000000
- 72725 multiletter control sequences out of 15000+600000
- 416379 words of font info for 64 fonts, out of 8000000 for 9000
+ 55781 strings out of 479713
+ 1367908 string characters out of 5876923
+ 2181076 words of memory out of 10000000
+ 72735 multiletter control sequences out of 15000+600000
+ 418591 words of font info for 68 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,11n,125p,754b,800s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,10n,125p,754b,816s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
 ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pf
-b><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive
-/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texm
-f-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fon
-ts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/p
-ublic/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-s
-uper/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1
-000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on E08.1.AC.pdf (9 pages, 1084989 bytes).
+ype1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fo
+nts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/
+public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-
+super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm
+1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><
+c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive
+/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on E08.1.AC.pdf (9 pages, 1106464 bytes).
 PDF statistics:
- 225 PDF objects out of 1000 (max. 8388607)
- 167 compressed objects within 2 object streams
- 44 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 243 PDF objects out of 1000 (max. 8388607)
+ 181 compressed objects within 2 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
