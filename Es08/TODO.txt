@@ -3,5 +3,5 @@ Scemo chi legge
 []ES.4 discutere linearità del circuito, limiti e clipping
 []Es.5 Formule frequenze di taglio
 [x]Es.6 Valore atteso Guadagno con CE
-[]Es.7 Impedenza in ingresso attesa
+[x]Es.7 Impedenza in ingresso attesa
 Arinza arunza poi scrivi conclusioni del tipo "Donato sei un bastardo e siamo riusciti a fare il tuo esperimento di merda; W Tellini"
