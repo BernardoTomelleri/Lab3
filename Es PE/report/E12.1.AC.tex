@@ -13,7 +13,7 @@
 \graphicspath{{../figs/}}
 
 \author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
-\title{Es10: Misura del rapporto carica-massa dell'elettrone $e/m_e$}
+\title{Es12: Misura del rapporto $h/e$ per effetto fotoelettrico}
 \begin{document}
 \date{\today}
 \maketitle
@@ -27,7 +27,7 @@ accelerati da una differenza di potenziale nota.
 
 \begin{figure}[htbp]
     \centering
-	%\includegraphics[scale=0.7]{schm}
+	\includegraphics[scale=0.7]{schm}
     \caption{Schema dei circuiti di emissione e rilevazione di intensità
     luminosa.
     \label{schm: mesctrl}}
@@ -85,7 +85,7 @@ v^2 = 2 V\ped{acc} \frac{e}{m_e} \implies \left(\frac{e}{m_e} B R\right)^2 =
 2 V\ped{acc} \frac{e}{m_e}
 \]
 Da cui otteniamo l'equazione tramite cui vogliamo stimare il rapporto
-\begin{equation}\label{eq: fit}
+\begin{equation}\label{eq:fit}
 \frac{e}{m_{e}} = \frac{2 \Delta V}{(BR)^2}.
 \end{equation}
 
@@ -101,30 +101,15 @@ circolare) le fotografie del moto nel bulbo.
 \subsection{Mappatura del campo magnetico lungo l'asse delle bobine}
 
 \subsection{Calibrazione dell'apparato per l'acquisizione delle traiettorie}
-\label{sec: conv}
 
 \subsection{Misura del raggio della traiettoria}
-Sulle foto sopra menzionate si è effettuato un campionamento dei punti
-sull'arco interno e sull'arco esterno. Le coordinate dei pixel così ricavate
-sono state interpolate con un \emph{fit} circolare per ottenere una stima del
-raggio interno ed esterno. Si è poi assunto come valore efficace del raggio
-dell'orbita la media del raggio del cerchio interno e di quello esterno,
-e si è attribuito un errore pari alla semi-dispersione degli stessi.
-I raggi così ottenuti sono stati poi convertiti in unità fisiche come spiegato
-nella~\cref{sec: conv}. \\
+Sulle foto sopra menzionate si è effettuato un campionamento dei punti sull'arco interno e sull'arco esterno. Le coordinate dei pixel così ricavate sono state interpolate con un \emph{fit} circolare per ottenere una stima del raggio interno ed esterno. Si è poi assunto come valore efficace del raggio dell'orbita la media del raggio del cerchio interno e di quello esterno, e si è attribuito un errore pari alla semi-dispersione degli stessi. I raggi così ottenuti sono stati poi convertiti in unità fisiche come spiegato nella Sezione~\ref{sec:conv}. \\
 
 \section{Analisi dati e stima del rapporto $e/m$}
-La stima del rapporto $ e/m_{e} $ è stata poi ottenuta in due modi diversi:
-come media pesata delle singole misure ottenute dalla~\eqref{eq: fit} ed
-effettuando un \emph{fit} lineare di $ 2\Delta V $ al variare di
-$ (B R)^{2} $ e ottenendo $ e/m_{e} $ dal coefficiente angolare della retta
-di \emph{best-fit}.
-
-Prendendo come valori esatti $e = \SI{1.602176634e11}{\coulomb}$ e
-$m_{e} = \SI{9.10938370e-31}{\kilogram}$ il valore atteso per il loro
-rapporto è
+La stima del rapporto $ e/m_{e} $ è stata poi ottenuta in due modi diversi: come media pesata delle singole stime di tale rapporto ottenute dalla~\eqref{eq:fit} ed effettuando un \emph{fit} lineare di $ 2\Delta V $ al variare di $ (B R)^{2} $ e ottenendo $ e/m_{e} $ dal coefficiente angolare della retta di \emph{best-fit}. \\
+Assumendo $ e = \SI{1.602176634e11}{\coulomb} $ e $ m_{e} = \SI{9.10938370e-31}{\kilogram} $ il valore atteso del loro rapporto è
 \begin{equation}\label{eq: e-m-exp}
-\left(\frac{e}{m_{e}}\right)\ped{exp} = \SI{175.882e9}{\coulomb/\kilogram}
+    \left(\frac{e}{m_{e}}\right)\ped{exp} = \SI[]{ 175.882e9 }{ \coulomb/\kilogram }
 \end{equation}
 
 %=======================
