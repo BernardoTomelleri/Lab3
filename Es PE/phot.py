@@ -10,7 +10,7 @@ import phylab as lab
 
 ''' Variables that control the script '''
 tix = False  # manually choose spacing between axis ticks
-tex = True  # LaTeX typesetting maths and descriptions
+tex = False  # LaTeX typesetting maths and descriptions
 
 # Modello lineare
 def lin(x, m=1, q=0):
@@ -54,7 +54,8 @@ legend = axf.legend(loc='best')
 
 # re save dark currents for later use
 xD, yD, dxD, dyD = x, y, dx, dy 
-
+print('Equivalent resistance 1/m = %f +- %f Gohm'  %(-1./pars[0]*1e3, perr[0]/pars[0]**2 *1e3))
+print(pcor[0][1])
 # Power step model
 b, I0 = pars
 def inp(V, a, V0, alpha):
@@ -66,7 +67,7 @@ def IV(V, a, V0, alpha, b, I0):
 V, I = np.genfromtxt('./data/450nm.csv',  float, delimiter=',',
                      skip_header=1, usecols=(0,1), unpack = True)
 
-V_min = 0.02; V_max = 2
+V_min = 0.4; V_max = 2
 dV = np.sqrt((V*5e-3)**2 + (25e-3/np.sqrt(12))**2)
 dI = np.sqrt((4e-3*I)**2 + (5e-3*I)**2 + (20e-3/np.sqrt(12))**2)
 I*=1e3; dI*=1e3
@@ -117,7 +118,8 @@ fig, (axf, axr) = plt.subplots(**lab.rc.PLOT_FIT_RESIDUALS)
 grid(axf, xlab=False); grid(axr)
 lambdas = ['450 nm', '499 nm', '546 nm', '577 nm']
 colours = ['blueviolet', 'aquamarine', 'lime', 'yellow']
-V0s = []; dV0s = []  
+V0s = []; dV0s = []
+alphas = []; dalphas = []
 for V, I, l, c  in zip(Vs, Is, lambdas, colours):
     # subset of data extraction
     dV = np.sqrt((V*5e-3)**2 + (25e-3/np.sqrt(12))**2)
@@ -125,7 +127,7 @@ for V, I, l, c  in zip(Vs, Is, lambdas, colours):
     I*=1e3; dI*=1e3
     x, y, dx, dy = mesrange(V, I, dx=dV, dy=dI,
                         x_min=V_min, x_max=V_max)
-    pars, covm = lab.curve_fit(model, x, y, sigma=dy, p0=init, absolute_sigma=False, method='trf')
+    pars, covm = lab.curve_fit(model, x, y, sigma=dy, p0=init, absolute_sigma=True, method='lm')
     perr, pcor = errcor(covm)
     prnpar(pars, perr, model)
     chisq, ndof, resn = chitest(model(x, *pars), y, unc=dy, ddof=len(pars), v=True)
@@ -140,6 +142,7 @@ for V, I, l, c  in zip(Vs, Is, lambdas, colours):
     axr.errorbar(x, resn, None, None, marker='o', ms=2, elinewidth=0.5, capsize=0.5,
                  ls='--', lw=1, color=c)
     V0s.append(pars[1]); dV0s.append(perr[1])
+    alphas.append(pars[2]); dalphas.append(perr[2])
     
 axf.errorbar(xD, yD, dyD, dxD, marker='.', ms=3, color='k',
         elinewidth=1., capsize=1.5, ls='', label=r'dark current $I_0$', zorder=0)
@@ -154,9 +157,9 @@ if tix: tick(axr, xmaj=0.1, ymaj=0.5)
 legend = axf.legend(loc='best')
 
 #linear fit for h/e ratio
-x = np.array([.668, .601, .549, .520])
-dx = np.array([9.6, 11.7, 11.1, 10.])/np.array([450, 499, 546, 577]) * x/2.
-y, dy = V0s, dV0s
+x = np.array([0.6666667, 0.6012024, 0.5494505, 0.5199307])
+dx = np.array([9.6, 11.7, 11.1, 10.])/np.array([450, 499, 546, 577]) * x/np.sqrt(12)
+y, dy = np.asarray(V0s), np.asarray(dV0s)
 
 # linear fit
 init = [4, 0]
