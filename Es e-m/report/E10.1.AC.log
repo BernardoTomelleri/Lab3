@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  21 MAR 2022 18:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  22 MAR 2022 16:43
 entering extended mode
 **./E10.1.AC.tex
 (E10.1.AC.tex
@@ -1385,58 +1385,76 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/rossi/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-<../figs//cal1.jpg, id=86, 1110.0672pt x 740.0448pt>
+<../figs//sounasegaiochiamalocomecazzotiparetantocifounasegaio.png, id=86, 1387
+.584pt x 694.5147pt>
+File: ../figs//sounasegaiochiamalocomecazzotiparetantocifounasegaio.png Graphic
+ file (type png)
+<use ../figs//sounasegaiochiamalocomecazzotiparetantocifounasegaio.png>
+Package pdftex.def Info: ../figs//sounasegaiochiamalocomecazzotiparetantocifoun
+asegaio.png  used on input line 109.
+(pdftex.def)             Requested size: 483.69687pt x 242.09822pt.
+<../figs//riferimentoB.png, id=88, 1003.75pt x 610.28pt>
+File: ../figs//riferimentoB.png Graphic file (type png)
+<use ../figs//riferimentoB.png>
+Package pdftex.def Info: ../figs//riferimentoB.png  used on input line 113.
+(pdftex.def)             Requested size: 483.69687pt x 294.09508pt.
+<../figs//cal1.jpg, id=89, 1110.0672pt x 740.0448pt>
 File: ../figs//cal1.jpg Graphic file (type jpg)
 <use ../figs//cal1.jpg>
-Package pdftex.def Info: ../figs//cal1.jpg  used on input line 118.
-(pdftex.def)             Requested size: 444.01901pt x 296.01268pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 123--131
+Package pdftex.def Info: ../figs//cal1.jpg  used on input line 124.
+(pdftex.def)             Requested size: 483.69687pt x 322.45891pt.
+ [2 <../figs//sounasegaiochiamalocomecazzotiparetantocifounasegaio.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 129--137
 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 132.
+(hyperref)                removing `math shift' on input line 138.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 132.
+(hyperref)                removing `math shift' on input line 138.
 
-[2]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 151.
-
+[3 <../figs//riferimentoB.png (PNG copy)>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 151.
+(hyperref)                removing `math shift' on input line 157.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 151.
+(hyperref)                removing `math shift' on input line 157.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 151.
+(hyperref)                removing `math shift' on input line 157.
 
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 157.
+
+[4 <../figs//cal1.jpg>]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-76.
+82.
+
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-[3 <../figs//cal1.jpg>] [4] (E10.1.AC.aux)
+[5] (E10.1.AC.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `E10.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: BDA5EB74D8E00FE3031555EE754F3646;3633.
  ) 
 Here is how much of TeX's memory you used:
- 55977 strings out of 478927
- 1386323 string characters out of 2852534
+ 56002 strings out of 478927
+ 1387387 string characters out of 2852534
  2182522 words of memory out of 3000000
- 73064 multiletter control sequences out of 15000+600000
+ 73086 multiletter control sequences out of 15000+600000
  419135 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 122i,8n,125p,827b,911s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,7n,125p,827b,780s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-t1.enc}<C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmex10.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/pu
@@ -1456,9 +1474,9 @@ s/type1/public/cm-super/sfrm1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiK
 TeX/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Users/rossi/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/public/cm-super/sfti1000.pfb><C:/Users/rossi/AppData/Lo
 cal/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on E10.1.AC.pdf (4 pages, 4059186 bytes).
+Output written on E10.1.AC.pdf (5 pages, 4226832 bytes).
 PDF statistics:
- 186 PDF objects out of 1000 (max. 8388607)
- 29 named destinations out of 1000 (max. 500000)
- 130 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 197 PDF objects out of 1000 (max. 8388607)
+ 32 named destinations out of 1000 (max. 500000)
+ 140 words of extra memory for PDF output out of 10000 (max. 10000000)
 

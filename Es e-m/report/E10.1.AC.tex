@@ -45,7 +45,7 @@ congiungente i centri delle bobine (ovvero il piano della traiettoria degli
 elettroni) il campo magnetico è parallelo all'asse $z$ delle spire ed ha
 valore massimo della componente lungo lo stesso asse:
 \begin{equation}\label{eq: Bmax}
-Bz\ped{MAX} = 7.40 10^{-4} I\ped{coil}
+Bz\ped{MAX} = 7.40 10^{-4} \left[\frac{T}{A}\right] I\ped{coil}
 \end{equation}
 
 
@@ -99,18 +99,21 @@ A questo punto abbiamo alimentato le bobine, facendo attenzione a non utilizzare
 \[
 I_{coil}=2.00 \pm 0.03 A
 \]
-Facendo un veloce calcolo con l'equazione \ref{eq: Bmax} e con il valore misurato di $I_{coil}$ ci si accorge immediatamente che l'intensità del campo magnetico massimo misurato sarà dell'ordine del millesimo di Tesla (circa 1.4 mT); se ne deduce che quindi il sensore Hall da solo non è sufficiente per misurare approfonditamente le variazioni del campo magnetico (il sensore produrrebbe una d.d.p di circa 70 mV al massimo).
+Facendo un veloce calcolo con l'equazione \ref{eq: Bmax} e con il valore misurato di $I_{coil}$ ci si aspetta che l'intensità del campo magnetico massimo misurato dovrà essere $1.48 \pm 0.02 \si{mT}$; se ne deduce che quindi il sensore Hall da solo non è sufficiente per misurare approfonditamente le variazioni del campo magnetico (il sensore produrrebbe una d.d.p di circa 70 mV al massimo).
 Si è quindi inserito tra la sonda e il multimetro un amplificatore-sottrattore (da calibrare) con un coefficiente di amplificazione pari a $11.1 \pm 0.1$.
 Dato che l'errore sul valore letto dal multimetro è circa $0.7 \percent + 1 digit$ contro al $2 \percent + 1 \percent$ derivante dal circuito sonda + Amplificatore, lo abbiamo trascurato, prendendo in considerazione solo quelli del circuito sopracitato.\\
-Il primo passo è stato quello di calibrare il circuito amplificatore-sottrattore, aggiustando l'offset, in modo che il multimetro misurasse lo stesso valore ma di segno invertito ruotando la sonda di $180 \degree$; da questa procedura ci accorgiamo che la sonda misura un campo magnetico residuo, infatti dal multimetro leggiamo una tensione di circa 19 mV, che convertendoli ci danno come risultato un campo magnetico di circa $34.2 \pm 0.7 \mu T$, compatibile con l'intensità del campo magnetico terrestre.\\
-Successivamente è stato acceso il generatore e si è inserita la sonda nell'apposita fessura nel punto medio tra le bobine, tagliandole lungo il diametro, e abbiamo misurato il valore in uscita dall'amplificatore a ogni cm fatto con la sonda.
+Il primo passo è stato quello di calibrare il circuito amplificatore-sottrattore, aggiustando l'offset, in modo che il multimetro misurasse lo stesso valore ma di segno invertito ruotando la sonda di $180 \degree$; da questa procedura ci accorgiamo che la sonda misura un campo magnetico residuo, infatti dal multimetro leggiamo una tensione di circa 19 mV, che convertendoli ci danno come risultato un campo magnetico di circa $34.2 \pm 0.7 \mu T$, compatibile con l'intensità del campo magnetico terrestre. Ci accorgiamo che questo contributo, che non è quindi trascurabile, andrà ad aumentare il campo magnetico misurato di circa il $2 \percent$, rendendo la nuova aspettativa di $1.51 \pm 0.02$.\\
+Successivamente è stato acceso il generatore che alimenta le bobine e si è inserita la sonda nell'apposita guida rettilinea situata nel punto medio tra le bobine, tagliandole lungo il diametro. Dunque abbiamo misurato il valore in uscita dal multimetro all'avanzare a ogni centimetro della sonda.
+Considerando che il campo magnetico massimo misurato, trovato in corrispondenza del centro delle spire, è pari a $1.47 \pm 0.03 \;mT$ possiamo affermare che il valore è compatibile con le aspettative entro le 2 barre di errore.
 \begin{figure}
-
+\includegraphics[width=\textwidth]{sounasegaiochiamalocomecazzotiparetantocifounasegaio}
+\caption{Andamento misurato per l'intensità del campo magnetico nel piano centrale tra le spire in funzione della distanza dal centro}
 \end{figure}
-%TODO inserire il porcoddio di grafico e funzione di fit per l'intensità del campo magnetico in funzione della distanza dal centro, insomma quello che si è fatto con la sonda hall. Se si trova la funzione di fit c'è da aggiungere un offset dovuto al campo terrestre
-
-
-
+\begin{figure}
+\includegraphics[width=\textwidth]{riferimentoB}
+\caption{Andamento previsto per l'intensità del campo magnetico nel piano centrale tra le spire in funzione della distanza dal centro}
+\end{figure}
+La mappatura delle intensità del campo magnetico risulta quindi qualitativamente compatibile con quanto aspettato.
 \subsection{Calibrazione dell'apparato per l'acquisizione delle traiettorie}
 \label{sec: conv}
 A questo punto si è potuto procedere con l'acquisizione delle misure del raggio.
@@ -118,7 +121,7 @@ Per farlo abbiamo fatto uso di una fotocamera la quale è stata posizionata in m
 Come impostazioni per la fotocamera abbiamo utilizzato un ISO di 400 e un'esposizione di 10 secondi, in modo da vedere al meglio i limiti interni ed esterni del pennello elettronico e stimare con maggiore precisione il raggio della traiettoria.\\
 Per cominciare abbiamo scattato una foto in cui si vedono 2 righelli (risoluzione 1 mm) posizionati ognuno in una bobina, questo per valutare gli effetti della geometria proiettiva (e ottenere una scala di conversione pixel-cm) e per valutare successivamente gli effetti di distorsione del bulbo.
 \begin{figure}
-\includegraphics[scale=0.4]{cal1}
+\includegraphics[width=\textwidth]{cal1}
 \caption{Foto di calibrazione in assenza di bulbo, da questa ricaveremo una scala per convertire successivamente i dati da pixel a cm}
 \end{figure}
 Abbiamo quindi alimentato il dispositivo di emissione di elettroni con una tensione di 6 Volt e abbiamo aspettato che il filamento si scaldasse il più possibile, dopodiché abbiamo iniziato a variare la tensione di accelerazione: inizialmente, nonostante si variasse $V_{acc}$, il pennello elettronico non era visibile in quanto non avevamo aspettato ancora abbastanza e il filamento doveva ancora raggiungere la temperatura ottimale. Dopo circa 10 minuti (in totale) il pennello elettronico aveva raggiunto lo stato di massima luminosità, quindi si sono spente le luci e abbiamo scattato diverse fotografie a diverse tensioni di accelerazioni e correnti $I_{coil}$; come ci si aspettava aumentando la tensione di accelerazione aumenta il raggio di curvatura, diminuendo $I_{coil}$ aumenta il raggio.
