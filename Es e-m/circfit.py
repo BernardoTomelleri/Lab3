@@ -28,7 +28,8 @@ if gen:
     data = np.asarray(Ell_coords(*init, step=npts))
     noise = np.random.normal(loc=0, scale=0.1*init[2], size=data.shape)
     data += noise
-else: data = np.loadtxt('./data/circ.txt', unpack=True)
+else: data = np.genfromtxt('C:/Users/rossi/OneDrive/Documenti/GitHub/Lab3/Es e-m/data/112.csv',  float, delimiter=',',
+                     skip_header=0, usecols=(0,1), unpack = True)
 dx = std_unc(data[0]); dy = std_unc(data[1]);
 rsq = (data**2).sum(axis=0); dr = np.sqrt(dx**2 + dy**2)
 
@@ -95,4 +96,7 @@ ax3d.set_zlim(0, None)
 if tex: ax3d.set_title(r'$\displaystyle \chi^2(x_c, y_c) = \sum_{i=1}^n'
                 r'\left(\frac{r_i^2 - (2x_c x_i + 2y_c y_i + R_c^2)}{\sigma_{r^2_i}}\right)^2$'
                 r'of circle fit $(x_i^2 + y_i^2 := r_i^2)$' , fontsize=12)
+raggio=0.01*705*0.0046801
+B=1.40*0.00074101
+print(2*150/((B*raggio)**2))
 plt.show()
