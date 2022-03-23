@@ -18,7 +18,7 @@ def lin(x, m=1, q=0):
 
 V, I = np.genfromtxt('./data/dark.csv',  float, delimiter=',',
                      skip_header=1, usecols=(0,1), unpack = True)
-V_min = 0.1; V_max = 2
+V_min = 0.005; V_max = 2
 dV = np.sqrt((V*5e-3)**2 + (25e-3/np.sqrt(12))**2)
 dI = np.sqrt((4e-3*I)**2 + (5e-3*I)**2 + (20e-3/np.sqrt(12))**2)
 I*=1e3; dI*=1e3
@@ -58,16 +58,16 @@ print('Equivalent resistance 1/m = %f +- %f Gohm'  %(-1./pars[0]*1e3, perr[0]/pa
 print(pcor[0][1])
 # Power step model
 b, I0 = pars
-def inp(V, a, V0, alpha):
+def inp(V, a, V0):
     # return np.heaviside(V0 - V, 0)*a*(V0 - V)**alpha  + b*V + I0
-    return np.piecewise(V, [V < V0, V > V0], [lambda V: a*(V0 - V)**alpha, lambda V: b*V + I0])
+    return np.piecewise(V, [V < V0, V > V0], [lambda V: a*(V0 - V)**2.4806, lambda V: b*V + I0])
 def IV(V, a, V0, alpha, b, I0):
     return np.piecewise(V, [V < V0, V > V0], [lambda V: a*(V0 - V)**alpha, lambda V: b*V + I0])
 
 V, I = np.genfromtxt('./data/450nm.csv',  float, delimiter=',',
                      skip_header=1, usecols=(0,1), unpack = True)
 
-V_min = 0.4; V_max = 2
+V_min = 0.05; V_max = 2
 dV = np.sqrt((V*5e-3)**2 + (25e-3/np.sqrt(12))**2)
 dI = np.sqrt((4e-3*I)**2 + (5e-3*I)**2 + (20e-3/np.sqrt(12))**2)
 I*=1e3; dI*=1e3
@@ -83,7 +83,7 @@ grid(ax, xlab=r'Bias voltage $V$ [V]', ylab=r'Photocurrent intensity $I(V)$ [pA]
 ax.errorbar(x, y, dy, dx, 'k.', ls='-', ms=2, alpha=0.8)
 
 # power law fit
-init = [700, 1.09, 2.5]
+init = [700, 1.09]
 model = inp
 
 deff = dy
@@ -142,7 +142,7 @@ for V, I, l, c  in zip(Vs, Is, lambdas, colours):
     axr.errorbar(x, resn, None, None, marker='o', ms=2, elinewidth=0.5, capsize=0.5,
                  ls='--', lw=1, color=c)
     V0s.append(pars[1]); dV0s.append(perr[1])
-    alphas.append(pars[2]); dalphas.append(perr[2])
+    #alphas.append(pars[2]); dalphas.append(perr[2])
     
 axf.errorbar(xD, yD, dyD, dxD, marker='.', ms=3, color='k',
         elinewidth=1., capsize=1.5, ls='', label=r'dark current $I_0$', zorder=0)
@@ -157,24 +157,26 @@ if tix: tick(axr, xmaj=0.1, ymaj=0.5)
 legend = axf.legend(loc='best')
 
 #linear fit for h/e ratio
-x = np.array([0.6666667, 0.6012024, 0.5494505, 0.5199307])
+x = np.array([0.6666667, 0.6012024, 0.5494505, 0.5199307])*1e3
 dx = np.array([9.6, 11.7, 11.1, 10.])/np.array([450, 499, 546, 577]) * x/np.sqrt(12)
 y, dy = np.asarray(V0s), np.asarray(dV0s)
+x, dx, y, dy = y, dy, x, dx
 
 # linear fit
 init = [4, 0]
 model = lin
 
-pars, covm, deff = propfit(model, x, y, dy=dy, p0=init)
+deff=dy
+pars, covm = lab.curve_fit(model, x, y, sigma=dy, p0=init, absolute_sigma=True)
 perr, pcor = errcor(covm)
 prnpar(pars, perr, model)
 chisq, ndof, resn = chitest(model(x, *pars), y, unc=deff, ddof=len(pars), v=True)
 
 # linear fit graphs
 fig, (axf, axr) = pltfitres(model, x, y, dx, deff, pars=pars)
-axf.set_ylabel(r'Stopping voltage $V_0$ [V]')
+axr.set_xlabel(r'Stopping voltage $V_0$ [V]', x=0.7)
 if tix: tick(axf, xmaj=0.1, ymaj=50)
 
-axr.set_xlabel(r'Light frequency $\nu$ [PHz]', x=0.7)
+axf.set_ylabel(r'Light frequency $\nu$ [THz]')
 if tix: tick(axr, xmaj=0.1, ymaj=0.5)
 legend = axf.legend(loc='best')

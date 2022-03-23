@@ -2,7 +2,7 @@
 \input{../../latex/preamble}
 \input{../../latex/math}
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
-
+\usepackage{svg}
 % makes all hyperlinks the same color as text
 \hypersetup{
 	linktoc=all,
@@ -99,7 +99,7 @@ A questo punto abbiamo alimentato le bobine, facendo attenzione a non utilizzare
 \[
 I_{coil}=2.00 \pm 0.03 A
 \]
-Facendo un veloce calcolo con l'equazione \ref{eq: Bmax} e con il valore misurato di $I_{coil}$ ci si aspetta che l'intensità del campo magnetico massimo misurato dovrà essere $1.48 \pm 0.02 \si{mT}$; se ne deduce che quindi il sensore Hall da solo non è sufficiente per misurare approfonditamente le variazioni del campo magnetico (il sensore produrrebbe una d.d.p di circa 70 mV al massimo).
+Facendo un veloce calcolo con l'equazione \cref{eq: Bmax} e con il valore misurato di $I_{coil}$ ci si aspetta che l'intensità del campo magnetico massimo misurato dovrà essere $1.48 \pm 0.02 \si{mT}$; se ne deduce che quindi il sensore Hall da solo non è sufficiente per misurare approfonditamente le variazioni del campo magnetico (il sensore produrrebbe una d.d.p di circa 70 mV al massimo).
 Si è quindi inserito tra la sonda e il multimetro un amplificatore-sottrattore (da calibrare) con un coefficiente di amplificazione pari a $11.1 \pm 0.1$.
 Dato che l'errore sul valore letto dal multimetro è circa $0.7 \percent + 1 digit$ contro al $2 \percent + 1 \percent$ derivante dal circuito sonda + Amplificatore, lo abbiamo trascurato, prendendo in considerazione solo quelli del circuito sopracitato.\\
 Il primo passo è stato quello di calibrare il circuito amplificatore-sottrattore, aggiustando l'offset, in modo che il multimetro misurasse lo stesso valore ma di segno invertito ruotando la sonda di $180 \degree$; da questa procedura ci accorgiamo che la sonda misura un campo magnetico residuo, infatti dal multimetro leggiamo una tensione di circa 19 mV, che convertendoli ci danno come risultato un campo magnetico di circa $34.2 \pm 0.7 \mu T$, compatibile con l'intensità del campo magnetico terrestre. Ci accorgiamo che questo contributo, che non è quindi trascurabile, andrà ad aumentare il campo magnetico misurato di circa il $2 \percent$, rendendo la nuova aspettativa di $1.51 \pm 0.02$.\\
@@ -125,6 +125,27 @@ Per cominciare abbiamo scattato una foto in cui si vedono 2 righelli (risoluzion
 \caption{Foto di calibrazione in assenza di bulbo, da questa ricaveremo una scala per convertire successivamente i dati da pixel a cm}
 \end{figure}
 Abbiamo quindi alimentato il dispositivo di emissione di elettroni con una tensione di 6 Volt e abbiamo aspettato che il filamento si scaldasse il più possibile, dopodiché abbiamo iniziato a variare la tensione di accelerazione: inizialmente, nonostante si variasse $V_{acc}$, il pennello elettronico non era visibile in quanto non avevamo aspettato ancora abbastanza e il filamento doveva ancora raggiungere la temperatura ottimale. Dopo circa 10 minuti (in totale) il pennello elettronico aveva raggiunto lo stato di massima luminosità, quindi si sono spente le luci e abbiamo scattato diverse fotografie a diverse tensioni di accelerazioni e correnti $I_{coil}$; come ci si aspettava aumentando la tensione di accelerazione aumenta il raggio di curvatura, diminuendo $I_{coil}$ aumenta il raggio.
+
+Con riferimento alla Figura~\ref{fig:conversione}, fissiamo un ``cono visivo''. Questo sottende sul righello più vicino alla fotocamera la distanza $ x $, su quello più lontano la distanza $ y $. Il rapporto $x/y$ può essere determinato confrontando le scale graduate dei due righelli (quello del Fermilab e quello dell'apparato sperimentale) nella relativa figura fornita. Chiamiamo $ D_{x} $, $ D_{y} $, $ D_{xy} $ le distanze dalla fotocamera ai/tra i vari piani. $ D_{xe} $ è invece la distanza tra il righello $ x $ e il piano del moto degli elettroni.
+Per similitudine
+\[ \frac{y}{x} = \frac{D_{y}}{D_{x}} = 1 + \frac{D_{xy}}{D_{x}}. \]
+Quindi la relazione tra il raggio misurato dal righello $ y $ e il raggio reale è
+\[
+    R = R_{y} \frac{D_{x} + D_{xe}}{D_{x} + D_{xy}} =
+    R_{y} \left[ \frac{D_{xe}}{D_{xy}} + \frac{x}{y} \left(1 - \frac{D_{xe}}{D_{xy}}\right) \right]
+    = \gamma R_{y}.
+\]
+Sia $ \kappa $ il fattore di conversione tra pixel e i centimetri del righello $ y $. Allora abbiamo
+\[ R[\si{\centi\meter}] = \frac{\gamma}{\kappa} R_{y}[\mathrm{px}]. \]
+Dalle misure riportate nella scheda dell'esperienza si ottiene, attribuendo un'incertezza di \SI{1}{\milli\meter} a tutte le lunghezze in gioco
+\[ \gamma = \num{ 906+-5e-3 } \qquad \kappa = \num{ 9.91+-0.07e3 }. \]
+
+\begin{figure}[htbp]
+    \centering
+    \includesvg[width=\textwidth]{geometria}
+    \caption{\label{fig:conversione}schema della geometria usata per la conversione pixel $ \to \si{\centi\meter} $ e per la correzione dell'effetto prospettico.}
+\end{figure}
+
 \subsection{Misura del raggio della traiettoria}
 Utilizzando le foto sopra menzionate si è effettuato un campionamento dei punti
 sull'arco interno e sull'arco esterno delle traiettorie (dato che il pennello elettronico ha uno spessore non trascurabile). Le coordinate dei pixel così ricavate

@@ -76,12 +76,12 @@ keepspaces=true,
 	{\immediate\write18{#3}}\fi%
 }
 % input .svg --> .pdf_tex graphs
-\newcommand{\includesvg}[1]{%
-	\executeiffilenewer{#1.svg}{#1.pdf}%
-	{inkscape -z -D --file=#1.svg %
-	--export-pdf=#1.pdf --export-latex}%
-	\input{#1.pdf_tex}%
-}
+%\newcommand{\includesvg}[1]{%
+%	\executeiffilenewer{#1.svg}{#1.pdf}%
+%	{inkscape -z -D --file=#1.svg %
+%	--export-pdf=#1.pdf --export-latex}%
+%	\input{#1.pdf_tex}%
+%}
 % Thanks UniPi's Department of Physics E. Fermi
 \newcommand{\thanksdf}{(\thanks{Dipartimento di Fisica E.~Fermi,%
 Universit\`a di Pisa - Pisa, Italy.}\;)}

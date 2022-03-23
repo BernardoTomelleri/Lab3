@@ -34,76 +34,83 @@ da R.A. Millikan, 1914-16).
     \label{schm: mesctrl}}
 \end{figure}
 
-\section{Metodo di misura}
-Si sfrutta l'effetto fotoelettrico, secondo cui un elettrone può essere estratto da un metallo assorbendo un fotone con energia superiore al lavoro di estrazione $ W_{0} $ e venire emesso con energia cinetica data dalla conservazione dell'energia
-\[ K = h f - W_{0} \]
-dove $ f $ è la frequenza della radiazione elettromagnetica incidente sul metallo. Gli elettroni estratti per effetto fotoelettrico verranno chiamati
-
-Si può calcolare il campo magnetico nella regione vicino al centro di ciascuna
-bobina dalla legge di Biot-Savart e, quando queste sono poste ad una distanza
-$a = r$ pari al loro raggio -cioè in configurazione di Helmholtz- si può
-ricavare un'espressione per il campo totale come sovrapposizione dei due campi
-\begin{equation}\label{eq: B-helm}
-    B = \frac{\mu_0 N r^2 I\ped{coil}}{\left[r^2 + \left(\dfrac{r}{2}\right)^2
-    \right]^\frac{3}{2}} =
-    \left(\frac{4}{5}\right)^{\frac{3}{2}} \frac{\mu_{0} N}{r} I\ped{coil}.
+\section{Metodo di misura del potenziale frenante}
+L'effetto fotoelettrico prevede che un elettrone può essere estratto da un
+metallo assorbendo un fotone con energia superiore al lavoro di estrazione
+$W_{0}$ e venire emesso con energia cinetica pari a
+\begin{equation}\label{eq: cons}
+E = h \nu - W_0
 \end{equation}
-Nel piano parallelo alle spire passante per il punto medio dell'asse
-congiungente i centri delle bobine (ovvero il piano della traiettoria degli
-elettroni) il campo magnetico è parallelo all'asse $z$ delle spire ed ha
-valore massimo della componente lungo lo stesso asse:
-\[
-Bz\ped{MAX} = 7.40 10^{-4} I\ped{coil}
-\]
+dove $\nu$ è la frequenza della radiazione elettromagnetica incidente sul
+metallo e $h \nu$ l'energia trasportata da ogni fotone di cui è costituita.
 
-Un catodo, riscaldato da un filamento incandescente alimentato con una
-tensione $V\ped{heat} = \SI{6}{\V}$ emette elettroni per effetto termoionico.
-Gli elettroni vengono accelerati da una d.d.p. $V\ped{acc}$ compresa tra 150
-e 250 V e, all'uscita dal cannone elettronico urtano gli atomi del gas
-rarefatto (He, a pressione di $10^{-1} \; \si{\Pa}$) presente nell'ampolla,
-i quali emettono la radiazione che consente di visualizzare il pennello e
-misurarne l'orbita.
+Nel nostro apparato sperimentale i \emph{fotoelettroni}, i.e. gli elettroni
+estratti per effetto fotoelettrico dal catodo di una cella fotoelettrica
+Leybold 5587 determinano una \emph{fotocorrente} verso l'anodo, che
+colleghiamo all'ingresso di un picoamperometro (mod. Keithley 595: Quasistatic
+C-V Meter) per riuscire a misurarne l'intensità $I_{ph}$.
 
-Una volta liberati dal catodo, nella regione in cui supponiamo assente il
-campo elettrico $V\ped{acc}$, per la conservazione dell'energia vale
-\begin{equation}\label{eq: T=qV}
-    \frac{1}{2} m_{e} v^{2} = e V\ped{acc}
-\end{equation}
-Per cui, assumendo che il campo magnetico sia statico e uniforme lungo $z$ e
-che il fascio di elettroni abbia velocità ortogonale all'asse delle spire,
-ci aspettiamo che gli elettroni rimangano in moto circolare uniforme nel
-piano ortogonale $x-y$.
-
-Dalla condizione di moto circolare di raggio $R$ dovuto alla forza di Lorentz
-abbiamo che
-\[
-m_{e} \frac{v^2}{R} = e v B \implies v = \frac{e}{m_e} B R
-\]
-Combinando l'~\cref{eq: T=qV} con la precedente troviamo
-\[
-v^2 = 2 V\ped{acc} \frac{e}{m_e} \implies \left(\frac{e}{m_e} B R\right)^2 =
-2 V\ped{acc} \frac{e}{m_e}
-\]
-Da cui otteniamo l'equazione tramite cui vogliamo stimare il rapporto
-\begin{equation}\label{eq:fit}
-\frac{e}{m_{e}} = \frac{2 \Delta V}{(BR)^2}.
+Questi elettroni vengono `frenati' da un campo elettrico di verso concorde al
+loro moto, generato da una tensione regolabile $V\ped{bias}$ applicata tra
+anodo e catodo, al fine di trovare la differenza di potenziale critica $V_0$
+per cui l'intensità di corrente $I_{ph}(V\ped{bias})$ si annulla.
+La barriera di potenziale $eV_0$ corrispondente alla tensione che arresta il
+flusso di fotoelettroni ci fornisce quindi una stima della massima
+energia cinetica da essi raggiunta, che possiamo mettere in relazione alla
+frequenza della radiazione incidente (per conservazione dell'energia
+\cref{eq: cons})
+\begin{equation}\label{eq: V0}
+V_0 = \frac{h}{e} \nu - \frac{W_0}{e}
 \end{equation}
 
+Questa è proprio la relazione lineare tra energia e frequenza che intendiamo
+verificare, tramite cui possiamo stimare il valore del rapporto $h/e$ a
+partire dal coefficiente angolare della retta di best-fit.
+
+%=======================
+\section{Descrizione delle misure}
 Dal momento che tutte le variabili nel RHS sono direttamente controllabili
 configurando le tensioni di alimentazione e possiamo misurare il raggio
 della traiettoria $R$ analizzando (come faremo ad esempio con un fit
 circolare) le fotografie del moto nel bulbo.
 
-%=======================
-\section{Descrizione delle misure}
-\subsection{Orientazione delle bobine rispetto al campo magnetico terrestre}
 
-\subsection{Mappatura del campo magnetico lungo l'asse delle bobine}
+\subsection{Stima dell'esponente $\alpha$}
+Si è notato che la stima dei valori del potenziale frenante critico e
+dell'esponente $\alpha$ esibivano una apprezzabile dipendenza dall'intervallo
+di tensioni di bias considerate nel fit della fotocorrente.
 
-\subsection{Calibrazione dell'apparato per l'acquisizione delle traiettorie}
+Considerando valori di $V_{bias} \sim 0$, oltre
+a quelle vicine al ginocchio in $V_{0}$, si è visto che il valore
+dell'esponente $\alpha$ assume un andamento monotono crescente in funzione
+della lunghezza d'onda in maniera analoga a quanto osservato finora per il
+parametro $a$.
 
-\subsection{Misura del raggio della traiettoria}
-Sulle foto sopra menzionate si è effettuato un campionamento dei punti sull'arco interno e sull'arco esterno. Le coordinate dei pixel così ricavate sono state interpolate con un \emph{fit} circolare per ottenere una stima del raggio interno ed esterno. Si è poi assunto come valore efficace del raggio dell'orbita la media del raggio del cerchio interno e di quello esterno, e si è attribuito un errore pari alla semi-dispersione degli stessi. I raggi così ottenuti sono stati poi convertiti in unità fisiche come spiegato nella Sezione~\ref{sec:conv}. \\
+Si è scelto quindi di fissare il valore di $\alpha$ come media pesata dei
+valori ottimali stimati dai fit prendendo in considerazione l'intero range di
+tensioni esplorato, dunque di eseguire un nuovo fit ai 4 dataset lasciando
+liberi solamente i restanti parametri dipendenti dalla frequenza della luce
+incidente: $V_{0}$ e $a$.
+
+In particolare, dal fit con alpha libero si trova
+np.mean(alphas)
+Out[27]: 2.4806408028824034
+
+np.mean(dalphas)
+Out[28]: 0.010212701821352213
+
+1/pars[0]
+Out[29]: 3.568317911720477
+Quindi un valore del rapporto h/e sottostimato di circa il $15 \%$ rispetto al
+valore atteso.
+
+Mentre dai valori di $V_{0}$ ricavati fissando $\alpha$ proponiamo un fit
+lineare alla relazione inversa
+\begin{equation}
+\nu = \frac{e}{h} V_{0} - W_{0}/h
+\end{equation}
+da cui otteniamo come valore del rapporto $h/e = 4.19 \pm 0.13 \; \si{\V \s}$,
+che è compatibile entro l'incertezza con il valore tabulato di 4.14.
 
 \section{Analisi dati e stima del rapporto $e/m$}
 La stima del rapporto $ e/m_{e} $ è stata poi ottenuta in due modi diversi: come media pesata delle singole stime di tale rapporto ottenute dalla~\eqref{eq:fit} ed effettuando un \emph{fit} lineare di $ 2\Delta V $ al variare di $ (B R)^{2} $ e ottenendo $ e/m_{e} $ dal coefficiente angolare della retta di \emph{best-fit}. \\
@@ -114,15 +121,51 @@ Assumendo $ e = \SI{1.602176634e11}{\coulomb} $ e $ m_{e} = \SI{9.10938370e-31}{
 
 %=======================
 \section{Valutazione degli effetti sistematici}
-\subsection{Spessore del pennello elettronico}
+In realtà il nostro apparato è racchiuso da una scatola metallica per
+schermarlo dalla luce e dal rumore elettronico ambientale, ma la misura
+di $h/e$ è affetta da diverse fonti di errore sistematico.
 
-\subsection{Dipendenza della stima di $e/m$ dal raggio dell'orbita $R$}
+\subsection{Effetto fotoelettrico sull'anodo}
+Dal datasheet della cella fotoelettrica sappiamo che questa è composta da un
+anodo in lega di platino e rodio, che è una spira di $SI{3}{c\meter}$ e da un
+catodo in potassio rivestito di ossido d'argento, costituito da un arco
+delle dimensioni di $\SI{4}{c\meter}$.
 
-\subsection{Distorsione del bulbo di vetro}
+Per minimizzare il contributo alla corrente inversa dato dall'emissione di
+fotoelettroni dall'anodo quando viene investito dagli aloni del fascio di
+luce incidente viene ridotta l'apertura del diaframma così che la sua
+immagine, messa a fuoco al centro del catodo, abbia dimensioni molto
+inferiori al raggio dell'anodo.
 
-\subsection{Campo magnetico terrestre}
+Non solo, il potassio, in quanto metallo alcalino è caratterizzato da un
+lavoro di estrazione $W\ped{0, K} \approx 2.15 \; \si{\V}$ più basso di quello
+del platino $W\ped{0, Pt} \approx 5.29 \; \si{\V}$
 
-\subsection{Disuniformità del campo magnetico sulla traiettoria}
+Il raggio di luce monocromatica viene focalizzato dal diaframma a iride così da incidere sul catodo della fotocellula. I fotoelettroni emessi dal catodo si spostano poi verso l'anodo dando luogo a una una corrente.
+
+Tuttavia parte della luce incidente potrebbe incidere sull'anodo dando luogo a una corrente inversa: purché minoritaria, questa diventa più rilevante per valori prossimi a $V\ped{0}$ in quanto i fotoelettroni emessi dall'anodo vengono accelerati dalla differenza di potenziale. Per $ V > V_{0} $ la corrente prodotta dai fotoelettroni emessi dal catodo si annulla e la corrente inversa dell'anodo è misurabile.
+
+Questo effetto è limitabile modificando l'apertura del diaframma. Inoltre cambiando filtro e dunque cambiando lunghezza d'onda, aree differenti del catodo potrebbero essere illuminate: questo effetto è da evitare il più possibile essendo il lavoro di estrazione $W\ped{0}$ dipendente dalle caratteristiche di omogeneità della superficie del materiale.
+
+\subsection{Effetto termoionico e connessione ohmica tra gli elettrodi}
+A differenza dell'effetto precedentemente citato ci sono due effetti che non possono essere soppressi.
+\begin{itemize}
+    \item L'effetto termoionico si ha sia sul catodo che sull'anodo e diventa pià significativo all'aumentare della tensione di \emph{bias}. La corrente $ I\ped{inv} $ misurata per $ V > V\ped{0}$ è principalmente attribuibile a questo contributo e dovrebbe essere osservabile (e quindi quantificabile in modo più preciso) anche in assenza di illuminazione;
+
+    \item I cavi coassiali uscenti dalla scatola metallica in cui è contenuto l'apparato sono connessi al catodo e all'anodo e poi esternamente collegati rispettivamente in parallelo al voltmetro e in serie al picoamperometro. La scatola metallica scherma dal rumore elettronico, ma le guaine di rivestimento dei cavi non sono perfettamente isolanti e questo può comportare una ulteriore corrente inversa tra gli elettrodi, che per via dell'ordine di grandezza delle correnti in gioco, diventa non trascurabile.
+\end{itemize}
+
+\subsection{Considerazioni sul metodo \texttt{A}}
+Nel \hyperref[sec:metodoA]{metodo \texttt{A}} si determina il valore della corrente inversa interpolando le misure nella regione $I \leq 0 $ con un modello lineare. I parametri $ b $ e $ I_{0} $ non dovrebbero dipendere dalla lunghezza d'onda della radiazione incidente: considerando un modello del tipo equazione di Shockley per un diodo a giunzione per la fotocellula, il modello lineare dovrebbe essere uno sviluppo al primo ordine dell'equazione caratteristica nel range considerato, con $ b $ parametro nell'esponenziale e $ I_{0} $ valore asintotico della corrente.
+
+Tuttavia dalla~\eqref{fig:fit-oscuro} è possibile notare come $ I\ped{inv} $ abbia in realtà andamenti diversi al variare della lunghezza d'onda: per le lunghezze d'onda minori, quindi per fotoni più energetici, il potenziale di frenamento $ V_{0} $ è più elevato e dunque la corrente tende più lentamente al valore asintotico. Questo comporta una deviazione significativa dall'andamento lineare e dunque i parametri del \emph{fit} manifestano necessariamente una dipendenza dalla lunghezza d'onda impiegata.
+
+\subsection{Considerazioni sul metodo \texttt{B}}
+Nel \hyperref[sec:metodoB]{metodo \texttt{B}} si adopera l'equazione~\eqref{eq:modello-magico} e in tale caso i parametri $ b $ e $ I_{0} $ risultano compatibili. Nella zona di transizione $ V\sim V_{0} $, il parametro $ a $ tiene conto della dipendenza dalla lunghezza d'onda: dai parametri di \emph{best-fit} si nota infatti che $ a $ cambia significativamente al variare della lunghezza d'onda ed è monotona crescente nella lunghezza d'onda.
+
+L'origine fisica del parametro $\alpha$ nella legge di potenza può essere compresa descrivendo, in prima approssimazione, il gas di elettroni nella banda di conduzione del metallo alcalino di cui è costituito il catodo come un gas degenere di Fermi: ovviamente questo modello considera gli elettroni nel metallo come liberi e non tiene conto delle successive interazioni dei fotoelettroni con il bulbo della fotocella. Si ottengono infatti valori maggiori di $ 3/2 $, gli $ \alpha $ di \emph{best-fit} non risultano compatibili tra loro e risultano monotoni crescenti nella lunghezza d'onda.
+
+
 
 %=======================
 \section*{Conclusioni e commenti finali}
