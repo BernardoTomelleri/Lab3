@@ -138,50 +138,94 @@ Quindi la relazione tra il raggio misurato dal righello $ y $ e il raggio reale 
 Sia $ \kappa $ il fattore di conversione tra pixel e i centimetri del righello $ y $. Allora abbiamo
 \[ R[\si{\centi\meter}] = \frac{\gamma}{\kappa} R_{y}[\mathrm{px}]. \]
 Dalle misure riportate nella scheda dell'esperienza si ottiene, attribuendo un'incertezza di \SI{1}{\milli\meter} a tutte le lunghezze in gioco
-\[ \gamma = \num{ 906+-5e-3 } \qquad \kappa = \num{ 9.91+-0.07e3 }. \]
+\[ \gamma = \num{ 906\pm 5 e-3 } \qquad \kappa = \num{ 141 \pm 6 }. \]
 
+%TODO scommentare sto blocco che sennò a me non fa compilare dio porco
+\iffalse
 \begin{figure}[htbp]
     \centering
     \includesvg[width=\textwidth]{geometria}
     \caption{\label{fig:conversione}schema della geometria usata per la conversione pixel $ \to \si{\centi\meter} $ e per la correzione dell'effetto prospettico.}
 \end{figure}
-
+\fi
 \subsection{Misura del raggio della traiettoria}
 Utilizzando le foto sopra menzionate si è effettuato un campionamento dei punti
 sull'arco interno e sull'arco esterno delle traiettorie (dato che il pennello elettronico ha uno spessore non trascurabile). Le coordinate dei pixel così ricavate
 sono state interpolate con un \emph{fit} circolare per ottenere una stima del
-raggio interno ed esterno. Si è poi assunto come valore efficace del raggio
+raggio interno ed esterno.
+\begin{figure}
+\includegraphics[width=\textwidth]{circfit}
+\caption{Grafico del fit lineare (ed ellittico) dei punti selezionati, in questo caso rappresentanti l'orbita interna degli elettroni nella fotografia fatta con $V_{acc}=290 V$; il fit ellittico non evidenziava particolarità, e i due fuochi erano compatibili e coincidevano, quini come raggio abbiamo utilizzato quello in uscita dal fit circolare}
+\end{figure}
+Si è poi assunto come valore efficace del raggio
 dell'orbita la media del raggio del cerchio interno e di quello esterno,
 e si è attribuito un errore pari alla semi-dispersione degli stessi.
 I raggi così ottenuti sono stati poi convertiti in unità fisiche come spiegato
 nella~\cref{sec: conv}. \\
+\begin{table}[htbp]
+\centering
+\begin{tabular}{cc|c}
+\toprule
+$\Delta V_{acc} \; [\si{V}]$ & Raggio $[\si{cm}]$ & $I_{coil} [A]$ \\
+\midrule
 
+$150 \pm 1$ & $4.2 \pm 0.3$ & $1.40 \pm 0.02$\\
+$170 \pm 1$ & $4.5 \pm 0.3$ & \\
+$190 \pm 1$ & $4.8 \pm 0.3$ & \\
+$210 \pm 1$ & $5.0 \pm 0.3$ & \\
+$230 \pm 1$ & $5.2 \pm 0.3$ & \\
+$250 \pm 1$ & $5.5 \pm 0.3$ & \\
+$270 \pm 1$ & $5.7 \pm 0.3$ & \\
+$290 \pm 1$ & $5.9 \pm 0.3$ & \\
+\bottomrule
+\end{tabular}
+\caption{Valori dei raggi estrapolati dalle traiettorie in funzione delle tensioni di accelerazione a $I_{coil}$ fissa}
+\end{table}
+Ovviamente si ricorda che al campo magnetico generato dalle bobine bisogna aggiungere un contributo non trascurabile del campo magnetico terrestre pari a 34 mT.
+Durante il campionamento dei punti per il fit circolare ci siamo resi conto che la seconda metà della traiettoria "circolare" compiuta dagli elettroni è leggermente deviata verso il dispositivo di emissione degli elettroni, per cui abbiamo campionato i punti solo nella prima metà della traiettoria (considerando indicativamente solo il primo semicerchio compiuto dalla traiettoria uscendo dal cannone).
 \section{Analisi dati e stima del rapporto $e/m$}
-La stima del rapporto $ e/m_{e} $ è stata poi ottenuta in due modi diversi:
-come media pesata delle singole misure ottenute dalla~\eqref{eq: fit} ed
-effettuando un \emph{fit} lineare di $ 2\Delta V $ al variare di
-$ (B R)^{2} $ e ottenendo $ e/m_{e} $ dal coefficiente angolare della retta
-di \emph{best-fit}.
-
 Prendendo come valori esatti $e = \SI{1.602176634e11}{\coulomb}$ e
 $m_{e} = \SI{9.10938370e-31}{\kilogram}$ il valore atteso per il loro
 rapporto è
 \begin{equation}\label{eq: e-m-exp}
-\left(\frac{e}{m_{e}}\right)\ped{exp} = \SI{175.882e9}{\coulomb/\kilogram}
+\left(\frac{e}{m_{e}}\right)\ped{exp} = 1.76\times 10^{11}\; \si{\coulomb/\kilogram}
 \end{equation}
+La stima del rapporto $ e/m_{e} $ è stata poi ottenuta in due modi diversi:
+come media pesata delle singole misure ottenute dalla~\eqref{eq: fit} ed
+effettuando un \emph{fit} lineare di $ (BR)^2 $ al variare di
+$ 2 \Delta V_{acc} $ e ottenendo $ m_e/e $ dal coefficiente angolare della retta
+di \emph{best-fit}.
+Utilizzando quindi l'equazioni \ref{eq: fit} e \ref{eq: Bmax} e facendone poi la media pesata abbiamo ricavato un valore di $\frac{e}{m}=1.55 \pm 0.07 \; \times 10^{11} \frac{C}{Kg}$ 
+\begin{figure}
+\includegraphics[width=\textwidth]{medpes}
+\caption{Grafico e residui della media pesata sulle singole misure di e su m}
+\end{figure}
+Dopodiché è stato condotto un fit lineare usando come modello la funzione $(BR)^2 = (\frac{m}{e})2\Delta V_{acc} +q$, in modo che le incertezze sulle x ($2\Delta V_{acc}$) propagate attraverso il modello fossero trascurabili rispetto a quelle sulle y (prodotto B$\times$R): quindi dovremo poi fare il reciproco del coefficiente angolare per ricavare il rapporto cercato. Dal fit si ricava che $\frac{e}{m}=1.52 \pm 0.03 \; \times 10^{11} \frac{C}{Kg}$.
+\begin{figure}
+\includegraphics[width=\textwidth]{linfit}
+\caption{\label{fig:linfit}Grafico e residui del fit lineare in cui come modello è stata scelta quella di una retta generica, di coefficiente angolare $\frac{m}{e}$.}
+\end{figure}
+Dal grafico dei residui visibile in figura \ref{fig:linfit} non risulta esserci una dipendenza apprezzabile del rapporto dal raggio della traiettoria.
+Possiamo infine concludere che i risultati ottenuti sono compatibili tra di loro, ma distanti dalle aspettative di circa il $14 \percent$.
 
 %=======================
 \section{Valutazione degli effetti sistematici}
 
 \subsection{Spessore del pennello elettronico}
-
-\subsection{Dipendenza della stima di $e/m$ dal raggio dell'orbita $R$}
-
+Un fattore che gioca un ruolo importante nella stima del raggio è lo spessore del pennello elettronico: quest'ultimo infatti ha uno spessore di circa 20 pixel già a partire dal cannone elettronico ( ovviamente prendendo lo spessore in un punto successivo della traiettoria è ancora più grande) che corrisponde a 1.4 mm. Per poter prendere le misure al meglio abbiamo diminuito l'ISO della fotocamera e aumentato il tempo di esposizione in modo che il raggio interno ed esterno del pennello (in pratica i punti che delimitano la parte più luminosa) fossero facilmente riconoscibili in qualunque punto della traiettoria. Dopodiché abbiamo fatto una media tra i raggi delle circonferenze che si trovavano singolarmente ed abbiamo utilizzato quel valore come raggio effettivo della traiettoria, e come incertezza abbiamo calcolato la loro semi-dispersione attorno alla media.
 \subsection{Distorsione del bulbo di vetro}
+Dato che abbiamo posizionato la fotocamera allineata col centro del bulbo, ci si aspettava che, data la posizione del cannone di elettroni, il fit lineare evidenziasse una dipendenza del rapporto $e/m$ in funzione del raggio dell'orbita: questo perchè cambiando il raggio si varia la posizione dei singoli punti appartenenti alla traiettoria, e più in particolare aumentando il raggio si spostano sempre più punti nella zona di distorsione massima (quelli più lontani dal centro della sfera di vetro, la zona di minima distorsione è invece quella più vicina al centro), andando così a compromettere il valore del raggio ricavato.
+Dal grafico dei residui invece notiamo che i singoli punti sono distribuiti casualmente attorno al modello, per cui si è potuto affermare che anche se la distorsione è presente, non influenza i dati a tal punto da provocare cambiamenti apprezzabili.
 
+%TODO boh se vuoi espandi
 \subsection{Campo magnetico terrestre}
-
+Avendo misurato il valore dell'intensità del campo magnetico terrestre abbiamo notato che il valore non risulta essere trascurabile, di conseguenza durante l'analisi dati abbiamo considerato come campo magnetico totale:
+\[
+B_t =Bz\ped{MAX} + 34 \;\mu T
+\]
 \subsection{Disuniformità del campo magnetico sulla traiettoria}
+A partire da quanto misurato durante la fase di mappatura del campo magnetico e dalla dimensione del bulbo di vetro possiamo affermare che finché la traiettoria rientra all'interno dell'area compresa entro i 7 cm dal centro del bulbo, la disuniformità del campo magnetico è tale da poter essere trascurata, essendo una variazione compresa all'interno dell'incertezza del valore d'intensità massima.
+Dai datasheet reperibili online si trova che il diametro del bulbo è pari a 15.5 cm, e considerando le dimensioni e la posizione del cannone elettronico, possiamo affermare che tutte le traiettorie da noi analizzate sono comprese entro l'area di con variazione di intensità del campo magnetico non apprezzabile.
 
 %=======================
 \section*{Conclusioni e commenti finali}

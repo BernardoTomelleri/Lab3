@@ -14,17 +14,23 @@ tex = False  # LaTeX typesetting maths and descriptions
 TEMP = False
 
 # Modello lineare
-def lin(x, m=1, q=0):
+def lin(x,m,q):
     return m*x + q
 
-time, dist, temp = np.genfromtxt('./data/railtime.csv',  float, delimiter=',',
-                     skip_header=1, usecols=(0,1,3), unpack = True)
-t_min = 0; t_max = 5
-dt = np.ones_like(time)*0.005; ds = 15*np.ones_like(dist)
 # Linear fit
-x, y, dx, dy = mesrange(time, dist, dx=dt, dy=ds,
-                        x_min=t_min, x_max=t_max)
-
+R=np.array([4.4,4.7,5.0,5.2,5.4,5.7,5.9,6.1])/100-0.002
+dR=np.array([0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3])/100
+B=0.00074101*1.40
+dB=0.02*0.00074101
+Vacc=np.array([150,170,190,210,230,250,270,290])
+dVacc=np.array([1,1,1,1,1,1,1,1])
+rap=2*Vacc/((R*B)**2)
+drap=np.sqrt((dR*(4*Vacc*R*B*B/((R*R*B*B)**2)))**2 + (dB*(4*Vacc*R*R*B/((R*R*B*B)**2)))**2+ (2*dVacc*R*R*B*B/((R*R*B*B)**2))**2)
+x=(B*R)**2
+dx=np.sqrt((2*B*B*R*dR)**2 + (2*B*R*R*dB)**2)
+y=2*Vacc
+dy=2*dVacc
+print(len(dy))
 # Preliminary plot to visualize the sub-interval of data to analyze
 lab.rc.typeset(usetex=tex, fontsize=12)
 fig, ax = plt.subplots()
