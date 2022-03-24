@@ -38,7 +38,7 @@ init = [3, 0]
 model = lin
 
 deff = dy
-pars, covm = lab.curve_fit(model, x, y, sigma=dy, p0=init, absolute_sigma=False)
+pars, covm = lab.curve_fit(model, x, y, sigma=dy, p0=init, absolute_sigma=True)
 perr, pcor = errcor(covm)
 prnpar(pars, perr, model)
 chisq, ndof, resn = chitest(model(x, *pars), y, unc=deff, ddof=len(pars), v=True)
@@ -162,6 +162,7 @@ dx = np.array([9.6, 11.7, 11.1, 10.])/np.array([450, 499, 546, 577]) * x/np.sqrt
 y, dy = np.asarray(V0s), np.asarray(dV0s)
 x, dx, y, dy = y, dy, x, dx
 
+x = np.array([1.20, 0.99, 0.76, 0.64]); dx = np.full_like(x, 0.02)
 # linear fit
 init = [4, 0]
 model = lin

@@ -26,14 +26,6 @@ del rapporto tra la costante di Planck e la carica dell'elettrone $h/e$
 utilizzando il metodo del potenziale frenante (implementato per la prima volta
 da R.A. Millikan, 1914-16).
 
-\begin{figure}[htbp]
-    \centering
-	\includegraphics[scale=0.7]{schm}
-    \caption{Schema dei circuiti di emissione e rilevazione di intensità
-    luminosa.
-    \label{schm: mesctrl}}
-\end{figure}
-
 \section{Metodo di misura del potenziale frenante}
 L'effetto fotoelettrico prevede che un elettrone può essere estratto da un
 metallo assorbendo un fotone con energia superiore al lavoro di estrazione
@@ -67,13 +59,196 @@ Questa è proprio la relazione lineare tra energia e frequenza che intendiamo
 verificare, tramite cui possiamo stimare il valore del rapporto $h/e$ a
 partire dal coefficiente angolare della retta di best-fit.
 
+\subsection{Sovrapposizione di correnti spurie}
+La corrente $I(V\ped{bias})$ che misuriamo tra anodo e catodo in realtà è il
+risultato di una combinazione con altre correnti ``inverse'' (cioè
+associate alla migrazione di elettroni dall'anodo verso il catodo) alla
+fotocorrente catodica, che continuano a essere presenti anche per valori
+di $V\ped{bias} > V_0$.
+
+Queste ci permettono al più di ricavare una stima preliminare dell'ordine di
+grandezza di $V_0$, ricercando visivamente la transizione fra il regime in cui
+misuriamo $I>0$ o $I \sim 0$ dalle curve corrente-tensione ottenute al variare
+della lunghezza d'onda (come in.
+
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{546nm}
+    \caption{Acquisizione della curva tensione $V\ped{bias}(t)$ (CH1)
+    corrente (Math1 in mnA = pA) per lunghezza d'onda $546 \; \si{n\m}$, in
+    cui si vede un ginocchio verso $I=0$ intorno a
+    $V_0 \approx 0.75 \; \si{\V}$
+    \label{fig: 546nm}}
+\end{figure}
+
+Ipotizziamo che queste correnti siano dovute alla sovrapposizione di vari
+effetti di natura diversa:
+\begin{enumerate}
+        \item emissione di fotoelettroni dall'anodo, dovuta a imperfezioni nel
+        sistema di illuminazione del catodo che può investire anche l'anodo
+        (schematizzato in \cref{fig: lamp});
+        \item estrazione di elettroni dall'anodo per effetto termoionico
+        (corrente oscura).
+        \item connessione ohmica tra gli elettrodi dovuta al non perfetto
+        isolamento delle guaine di rivestimento dei cavi
+        $(R \sim 10^{11-12} \; \si{\ohm})$.
+    \end{enumerate}
+
+Nonostante ci aspettiamo contributi di gran lunga minoritari rispetto alla
+fotocorrente in assenza di bias tra gli elettrodi, già da adesso notiamo come
+i primi due crescano con la tensione di frenamento (per questi elettroni il
+campo elettrico è accelerante) diventando sempre più significativi,
+specialmente per tensioni prossime a quella di azzeramento $V_0$ dove
+$I_{ph}$ si estingue.
+
+Per poter ovviare a queste contaminazioni date dalle correnti inverse
+$I = I_{ph} + I\ped{inv}$, ne teniamo conto misurandone l'intensità, la quale
+supponiamo per semplicità linearmente dipendente dalla tensione di bias
+\begin{equation}\label{eq: I0fit}
+I\ped{inv} = bV + I_0
+\end{equation}
+
+per cui ci aspettiamo che i parametri $b$ e $I_0$ non dipendano dalla
+frequenza della luce incidente, ma puramente dalle caratteristiche fisiche
+della cella fotoelettrica. Nel caso particolare la corrente inversa fosse di
+natura puramente ohmica ci aspettiamo proporzionalità diretta
+$I\ped{inv} \propto V\ped{bias}$ e offset $I_0$ nullo.
+
+Assumendo una distribuzione di Fermi-Dirac per gli elettroni liberi nella
+banda di conduzione del catodo, senza tenere conto dell'interazione con i
+fotoni, possiamo modellare l'andamento della fotocorrente in funzione della
+tensione di frenamento come una legge di potenza che si annulla\footnote{
+indicando con $\theta(x)$ la funzione gradino di Heaviside $\theta(x) \coloneqq
+\begin{cases} 1 & x > 0 \\ 0 & x \leq 0 \end{cases}$} in $V_0$
+\[
+I_{ph} = (V_0 - V)^{3/2} \theta(V_0 - V)
+\]
+
+Dunque possiamo ottenere una misura più attendibile della tensione di
+azzeramento -per ogni valore della lunghezza d'onda- tramite fit alla corrente
+complessiva, con un modello del tipo:
+\begin{equation}\label{eq: Ifit}
+I(V) = I_{ph} + I\ped{inv} = a(V_0 - V)^\alpha \theta(V_0 - V) + bV + I_0
+\end{equation}
+
+Come prima è ragionevole assumere che l'esponente $\alpha$ sia indipendente
+dalle caratteristiche della luce incidente (visto che fisicamente dipende
+dalla densità degli stati elettronici del metallo nella banda di conduzione e
+da effetti legati all'interazione dei fotoelettroni con il bulbo della
+fotocella).
+
+Mentre il parametro $a$, legato alla normalizzazione della fotocorrente,
+dovrebbe racchiudere la dipendenza dalla frequenza della luce incidente, poiché
+vi dipendono sia l'intensità spettrale della lampada nella banda di selezione
+del filtro, che la sezione d'urto dell'effetto fotoelettrico alla
+corrispondente energia.
+
 %=======================
 \section{Descrizione delle misure}
-Dal momento che tutte le variabili nel RHS sono direttamente controllabili
-configurando le tensioni di alimentazione e possiamo misurare il raggio
-della traiettoria $R$ analizzando (come faremo ad esempio con un fit
-circolare) le fotografie del moto nel bulbo.
+Nella realizzazione pratica dell'esperimento la radiazione luminosa è
+inizialmente emessa secondo uno spettro -praticamente- continuo da una
+lampada a LED, viene collimato da un diaframma circolare, dunque focalizzato
+da un paio di lenti convergenti prima di essere filtrato e incidere sul catodo
+della fotocella (come visto in \cref{fig: lamp}).
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.7]{lamp}
+    \caption{Rappresentazione schematica dell'apparato di illuminazione della
+    fotocella
+    \label{fig: lamp}}
+\end{figure}
 
+Per variare la frequenza $\nu$ della radiazione che illumina la cella
+fotoelettrica utilizziamo 4 filtri di tipo interferenziale, per cui la luce
+trasmessa non è monocromatica, ma viene dispersa intorno al valore nominale
+centrale secondo una distribuzione di intensità spettrale pressoché uniforme
+su intervalli di larghezza $\text{FWHM} \approx 10 \; \si{n\m}$ attorno alla
+lunghezza d'onda centrale CWL.
+
+Teniamo conto della dispersione dello spettro incidente associando alla
+lunghezza d'onda centrale (riportata nei rispettivi datasheet) un'incertezza
+pari alla deviazione standard della curva di trasmissione a partire dalla
+larghezza a metà altezza FWHM (anch'essa tabulata) secondo la formula
+\[
+\lambda \pm \sigma_\lambda = \text{CWL} \pm \text{FWHM}/\sqrt{12}
+\]
+
+Per variare la tensione $V\ped{bias} \in [0, 2] \; \si{\V}$, intervallo entro
+il quale ci aspettiamo di trovare la tensione di frenamento critica $V_0$,
+generiamo in \verb+WG1+ una rampa di tensione compresa tra i due estremi e la
+misuriamo con il \verb+CH1+ dell'oscilloscopio di un AD2 secondo lo schema in
+\cref{schm: Imeas}.
+Con il secondo canale misuriamo contemporaneamente quella generata dal
+convertitore corrente-tensione all'uscita del picoamperometro: nel
+nostro setup il fattore di conversione vale $\kappa = \SI{1}{n\A/\V}$
+($\pm 0.4 \%$ dato dall'incertezza sulla lettura della corrente)
+per cui misuriamo $I = \kappa V_{CH2} = V \cdot 10^{-9} \; [\si{A}]$
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.2]{schm}
+    \caption{Schema del circuito equivalente per la misura dell'energia
+    cinetica dei fotoelettroni.
+    \label{schm: Imeas}}
+\end{figure}
+
+Finalmente usiamo la funzionalità di plot XY dell'oscilloscopio per ottenere
+i grafici della corrente che attraversa la fotocella in funzione della
+tensione di bias (come riportato a destra di \cref{fig: 546nm} in rosso le
+ordinate Math1, sulle ascisse $V\ped{bias}$ misurata da CH1).
+
+\subsection{Misura della corrente inversa}
+Per effettuare la misura della corrente inversa abbiamo acquisito i dati come
+sopra con la lampada accesa, con la sola differenza che il vano della
+fotocella è stato opportunamente oscurato con un setto opaco, ricavando così
+l'andamento della corrente inversa in funzione della tensione di bias nello
+stesso intervallo di misura della fotocorrente riportato in \cref{fig: dark}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{dark}
+    \caption{Stampa a schermo dell'oscilloscopio per la misura della corrente
+    senza luce incidente sulla cella fotoelettrica. Una volta superato il
+    transiente iniziale all'inizio della rampa di tensione è già possibile
+    notare un andamento lineare dei dati.
+    \label{fig: dark}}
+\end{figure}
+
+%=======================
+\section{Analisi dati e stima del rapporto $h/e$}
+La stima del rapporto $h/e$ è stata poi ottenuta in due modi diversi: dal coefficiente angolare della retta di \emph{best-fit} da una stima preliminare e dal metodo della corrente inversa.
+
+Assumendo $e = 1.602176634 \times 10^{-19}{\coulomb} $ e $h = \si 6.62607015 \times 10^{-34} \; \si{\J\s} $ il valore atteso del loro rapporto è
+\begin{equation}\label{eq: e/h}
+\left(\frac{h}{e}\right)\ped{exp} = 4.14 \times 10^{-15} \; \si{\V\s}
+\end{equation}
+
+\subsection{Metodo della corrente inversa}
+Da un fit lineare alla corrente inversa si ricava
+m = -2.58 +- 0.10
+q = -1.78 +- 0.13
+Chi square/ndof = 92.4/7945
+Equivalent resistance 1/m = 388.333157 +- 15.527957 Gohm
+corr=-0.8580018344212901
+
+Da un primo fit con \cref{eq: Ifit} lasciando tutti i parametri liberi si
+trova
+\begin{table}
+\centering
+\begin{tabular}{ccccccc}
+\toprule
+$\lambda \; [\si{n\m}]$ & $a \; [\si{p\A/\V^\alpha}] $ & $V_0 \; [\si{m\V}]$ &
+$\alpha$ [arb. un.] & $b \; [\si{p\mho}]$ & $I_0 \; [\si{pA}]$ & $\chi^2/\text{ndof}$ \\
+\midrule
+$450 \pm 3$ & $492 \pm 3$ & $1273 \pm 2$ & $2.264 \pm 0.007$ & $-4.4 \pm 0.5$ &
+$-0.6 \pm 0.8$ & $599/7817$ \\
+$499 \pm 3$ & $756 \pm 4$ & $1061 \pm 2$ & $2.441 \pm 0.009$ & $-3.1 \pm 0.4$ &
+$-2.5 \pm 0.6$ & $555/7817$ \\
+$546 \pm 3$ & $1066 \pm 6$ & $863 \pm 3$ & $2.547 \pm 0.012$ & $-2.6 \pm 0.3$ &
+$-2.9 \pm 0.4$ & $368/7817$ \\
+$577 \pm 3$ & $1595 \pm 8$ & $751 \pm 3$ & $2.603 \pm 0.016$ & $-2.4 \pm 0.2$ &
+$-3.2 \pm 0.3$ & $210/7817$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Stima dell'esponente $\alpha$}
 Si è notato che la stima dei valori del potenziale frenante critico e
@@ -112,13 +287,6 @@ lineare alla relazione inversa
 da cui otteniamo come valore del rapporto $h/e = 4.19 \pm 0.13 \; \si{\V \s}$,
 che è compatibile entro l'incertezza con il valore tabulato di 4.14.
 
-\section{Analisi dati e stima del rapporto $e/m$}
-La stima del rapporto $ e/m_{e} $ è stata poi ottenuta in due modi diversi: come media pesata delle singole stime di tale rapporto ottenute dalla~\eqref{eq:fit} ed effettuando un \emph{fit} lineare di $ 2\Delta V $ al variare di $ (B R)^{2} $ e ottenendo $ e/m_{e} $ dal coefficiente angolare della retta di \emph{best-fit}. \\
-Assumendo $ e = \SI{1.602176634e11}{\coulomb} $ e $ m_{e} = \SI{9.10938370e-31}{\kilogram} $ il valore atteso del loro rapporto è
-\begin{equation}\label{eq: e-m-exp}
-    \left(\frac{e}{m_{e}}\right)\ped{exp} = \SI[]{ 175.882e9 }{ \coulomb/\kilogram }
-\end{equation}
-
 %=======================
 \section{Valutazione degli effetti sistematici}
 In realtà il nostro apparato è racchiuso da una scatola metallica per
@@ -133,22 +301,19 @@ delle dimensioni di $\SI{4}{c\meter}$.
 
 Per minimizzare il contributo alla corrente inversa dato dall'emissione di
 fotoelettroni dall'anodo quando viene investito dagli aloni del fascio di
-luce incidente viene ridotta l'apertura del diaframma così che la sua
+luce incidente si è ridotta l'apertura del diaframma così che la sua
 immagine, messa a fuoco al centro del catodo, abbia dimensioni molto
 inferiori al raggio dell'anodo.
 
-Non solo, il potassio, in quanto metallo alcalino è caratterizzato da un
-lavoro di estrazione $W\ped{0, K} \approx 2.15 \; \si{\V}$ più basso di quello
-del platino $W\ped{0, Pt} \approx 5.29 \; \si{\V}$
-
-Il raggio di luce monocromatica viene focalizzato dal diaframma a iride così da incidere sul catodo della fotocellula. I fotoelettroni emessi dal catodo si spostano poi verso l'anodo dando luogo a una una corrente.
-
-Tuttavia parte della luce incidente potrebbe incidere sull'anodo dando luogo a una corrente inversa: purché minoritaria, questa diventa più rilevante per valori prossimi a $V\ped{0}$ in quanto i fotoelettroni emessi dall'anodo vengono accelerati dalla differenza di potenziale. Per $ V > V_{0} $ la corrente prodotta dai fotoelettroni emessi dal catodo si annulla e la corrente inversa dell'anodo è misurabile.
-
-Questo effetto è limitabile modificando l'apertura del diaframma. Inoltre cambiando filtro e dunque cambiando lunghezza d'onda, aree differenti del catodo potrebbero essere illuminate: questo effetto è da evitare il più possibile essendo il lavoro di estrazione $W\ped{0}$ dipendente dalle caratteristiche di omogeneità della superficie del materiale.
+Non solo: il potassio -come tipico per i metalli alcalini- ha lavoro di
+estrazione $W\ped{0, K} \approx 2.15 \; \si{\V}$ più basso di quello di altri
+metalli, come il platino $W\ped{0, Pt} \approx 5.29 \; \si{\V}$ con cui è
+stato realizzato l'anodo sempre per questo motivo.
 
 \subsection{Effetto termoionico e connessione ohmica tra gli elettrodi}
-A differenza dell'effetto precedentemente citato ci sono due effetti che non possono essere soppressi.
+A differenza del caso precedente ci sono due effetti che non possono
+essere soppressi altrettanto facilmente, per cui ci aspettiamo forniscano
+il contributo maggioritario alla corrente inversa:
 \begin{itemize}
     \item L'effetto termoionico si ha sia sul catodo che sull'anodo e diventa pià significativo all'aumentare della tensione di \emph{bias}. La corrente $ I\ped{inv} $ misurata per $ V > V\ped{0}$ è principalmente attribuibile a questo contributo e dovrebbe essere osservabile (e quindi quantificabile in modo più preciso) anche in assenza di illuminazione;
 
