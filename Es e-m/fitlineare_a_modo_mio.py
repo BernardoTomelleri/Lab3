@@ -2,30 +2,26 @@ from scipy.optimize import curve_fit
 import numpy as np
 from matplotlib import pyplot as plt
 def fun(x,m,q):
-    return m*x+q
+    return -m*x+q
 
-R=np.array([4.4,4.7,5.0,5.2,5.4,5.7,5.9,6.1])/100-0.002
-dR=np.array([0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3])/100
-B=0.00074101*1.40
-dB=0.02*0.00074101
-Vacc=np.array([150,170,190,210,230,250,270,290])
-dVacc=np.array([1,1,1,1,1,1,1,1])
-rap=2*Vacc/((R*B)**2)
-drap=np.sqrt((dR*(4*Vacc*R*B*B/((R*R*B*B)**2)))**2 + (dB*(4*Vacc*R*R*B/((R*R*B*B)**2)))**2+ (2*dVacc*R*R*B*B/((R*R*B*B)**2))**2)
-em=((1./(drap**2))*rap).sum()/((1./(drap**2)).sum())
-dem=1./(np.sqrt((1./(drap**2)).sum()))
-print(em)
-print(dem)
-plt.subplot(2,1,1)
-plt.errorbar(Vacc,rap,drap,dVacc,linestyle="none",color="orange")
+y=np.array([0.999809740729011,0.999121073453136,0.998429436317025,0.997752260867739,0.997061569550801,0.996367946819669,0.995666118847986,0.994972348739954,0.994264908345292,0.993589499015151,0.992918148781308,0.992256777447181,0.991566966250193,0.990894600331773,0.990197552700962,0.989475983305458,0.988830915140003,0.988115893151981,0.987433183857282,0.986732527910173,0.986069942036222,0.985392260423192,0.984699580016622,0.984051531236334,0.983391039558287,0.982779861075824])
+x=np.linspace(0,len(y),len(y))
+dy=np.array([7.77714154741341E-06,2.31435450569614E-05,3.76166948446179E-05,5.16152030808066E-05,6.58126748823443E-05,8.00164382491712E-05,0.000109201033627679,0.000123543216210472,0.000138079123742121,0.000151888790957192,0.000165559372514752,0.000178978502961616,0.000192928528623897,0.000206483929585413,0.000220496127025511,0.00025905084010525,0.000272077906469174,0.000286462057415118,0.000300145193689464,0.000289595110296128,0.000302710236227208,0.000316093181747966,0.000329740415636572,0.000342479468801278,0.000339663919758795,0.000351634505455542])
+dx=np.zeros(len(x))
+plt.errorbar(x,y,dy,linestyle="none",color="orange")
+popt,pcov=curve_fit(fun,x,y,sigma=dy)
+print(popt)
+print(np.sqrt(pcov.diagonal()))
+z=np.linspace(0,26,1000)
+plt.plot(z,fun(z,*popt))
 plt.grid()
-plt.xlabel("Vacc [V]")
-plt.ylabel("e/m [C/Kg]")
-plt.axhline(em,ls="--",color="black")
-plt.subplot(2,1,2)
-plt.errorbar(Vacc,(rap-em)/drap,linestyle="--",color="black")
-plt.xlabel("Vacc [V]")
-plt.ylabel("norm. res.")
-plt.grid()
-plt.axhline(0)
+plt.xlabel("m")
+plt.ylabel("sin(theta_m)")
+
 plt.show()
+
+a=np.array([5.5,5.4])
+b=np.array([0.4,0.4])
+print(np.average(a,weights=b))
+s=1/(np.sqrt((1/b**2).sum()))
+print(s)
