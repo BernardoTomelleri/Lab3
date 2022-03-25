@@ -15,297 +15,136 @@
 \date{\today}
 \maketitle
 
-\setcounter{section}{0}
+%=======================
+\section{Scopo dell'esperienza}
+Lo scopo dell'esperienza è misurare la lunghezza d'onda di un laser
+a semiconduttore studiando il pattern di diffrazione generato da un suo
+fascio incidente sulla scala millimetrata di un calibro.
 
-\section*{Misura componenti dei circuiti}
-\begin{table}[htbp]
-\centering
-\begin{tabular}{ccc|ccc}
-\toprule
-Resistenze $[\si{k\ohm}]$ & $R$ & $\sigma R$ & Resistenze $[\si{k\ohm}]$ & $R$ &
-$\sigma R$ \\
-\midrule
-\midrule
-$R_1$	  	& 9.95 	& 0.08		& $R_1$ & 212	& 9 \\
-$R_T$	  	& 992	& 0.08		& $R_T$ & 212	& 9 \\
-\bottomrule
-\end{tabular}
-\caption{Valori di resistenza misurate con il multimetro dei componenti dei
-due circuiti studiati. \label{tab: rcmes_B}}
-\end{table}
+\section{Descrizione della misura}
+Per la misura si utilizza il righello graduato di un calibro come reticolo di diffrazione in riflessione con passo reticolare $ d = \SI{1}{\milli\meter} $.  Si fa incidere, ad angolo radente, un fascio laser sul reticolo, questo produce su uno schermo posto a distanza $ D $ una serie di ordini di diffrazione indicizzati con la lettera $m \in \ZZ$, come è illustrato in Figura~\ref{fig:schema}. I massimi di diffrazione si hanno in corrispondenza degli spot del laser sullo schermo e sono individuati dagli angoli $\theta_{\mathrm{d},m}$ in figura.
 
-Riportiamo per completezza anche il valore della tensione di alimentazione
-continua per il sensore a ultrasuoni misurata con il multimetro.
+Nell'esperienza gli angoli $\theta_{\mathrm{d},m}$ si ricavano dagli angoli $\alpha_m = \pi/2 - \theta_{\mathrm{d},m}$ rispetto all'orizzontale, questi ultimi ottenuti dalla misura sperimentale delle altezze $h_m = D \tan\alpha_m$ del centro di ogni spot rispetto allo zero dell'asse verticale che corrisponde alla quota del calibro.
+
+L'equazione del reticolo che lega la posizione dei massimi di diffrazione alla lunghezza d'onda $\lambda$ della luce incidente e al passo reticolare $d$ è:
+\begin{equation}\label{eq:fit}
+    m \lambda = d \left(\sin{\theta\ped{i}} - \sin{\theta_{\mathrm{d},m}}\right).
+\end{equation}
+
+La relazione che lega la lunghezza d'onda all'angolo di riflessione $\theta_m$ è:
 \[
-V_{CC} = 4.99 \pm 0.03 \si{\V}
+{\sin{\theta_m}=sin{\theta_i}-\frac{m\lambda}{d}}{theta}
+\]
+dove $d=\SI{1}{\milli \meter}$ è il passo reticolare e $\theta_i$ l'angolo di riflessione. L'angolo di incidenza si ricava dalle altezze misurate sulla carta millimetrata $h_m$ rispetto alla baseline (altezza del calibro) con:
+\[
+{\sin{\theta_m}=\left[ 1+\left(\frac{h_m}{D}\right)^2\right]^{-\frac{1}{2}}}
+\]
+dove $D$ è la distanza dal centro dello spot di luce sul calibro al muro. Poichè l'incidenza del laser è quasi radente lo spot sul calibro è allungato, per misurarlo è stato utilizzato il centro dello spot come valore di misura e la semilarghezza come errore, la media pesata delle misure dei componenti del gruppo da 
+\[
+{D= \SI{304.3 \pm 1.7}{\centi \meter}}
+\]
+Mentre la baseline stimata come media tra l'ordine 0 di interferenza (riflessione pura) e il fascio non diffratto è (per ogni componente del gruppo):
+\[
+\begin{array}{lccc}
+\toprule
+\mathrm{Componente} & 1& 2 &3 \\
+\midrule
+BL \; \si{\centi \meter}&18.0 & 18.3 &18.0 \\
+\sigma(BL)\; \si{\centi \meter}& 0.4&  0.4 & 0.5\\
+\bottomrule
+\end{array}
+\]
+Per quanto riguarda le altezze, bisogna considerare che gli spot sulla carta millimetrata sono allungati, per tenerne conto è stato considerato un errore circa pari alla semilarghezza degli spot di luce sulla carta millimetrata, sommato in quadratura all'errore di lettura del valore centrale rispetto alla carta millimetrata. Dopo di che è stata sottratta la baseline sommando in quadratura gli errori. \newline
+In tabella \ref{hm} sono riportate le medie pesate dei dati di ogni componente del gruppo, e dunque il valore corrispondente di $\sin{\theta_m}$ e il corrispondente errore:
+\[
+\begin{array}{ccccc}
+\toprule
+m & h_m \; (\si{\centi \meter}) & \sigma(h_m) \; (\si{\centi \meter}) & \sin{\theta_m} & \sigma(\sin{\theta_m}) \\
+\midrule
+0&7.6     & 0.4 & 0.99970  & 0.00004 \\
+1&13.4    & 0.4 & 0.99905  &  0.00006 \\
+2&17.2    & 0.4 & 0.99842  &  0.00007\\
+3&20.3    & 0.4&  0.9977  & 0.0001   \\
+4&23.2    & 0.4&  0.9971 & 0.0001\\
+5&25.5    & 0.3 & 0.9964 & 0.0001\\
+6&27.9    & 0.3 & 0.99579 &0.00013\\
+7&29.9    & 0.3 & 0.99516 & 0.00014 \\
+8&31.9    & 0.3 & 0.99455 &0.00015\\
+9&33.6    & 0.3 & 0.99393 &0.00016\\
+10&35.5   & 0.3 & 0.99327 &0.00017\\
+11&37.2   & 0.3& 0.9926  &0.0002 \\
+12&38.8   & 0.3& 0.9920  & 0.0002\\
+13&40.2   & 0.3& 0.9914 & 0.0002\\
+14&41.7   & 0.3& 0.9907 & 0.0002 \\
+15&43.3   & 0.3& 0.9900  &0.0002 \\
+16&44.6  &  0.3& 0.9894  & 0.0002\\
+17&45.8  &  0.3& 0.9888   &0.0002\\
+18&47.2  &  0.3 & 0.9882  & 0.0002\\
+19&48.4  &  0.3  & 0.9875  & 0.0002\\
+20&49.6   &  0.3   &0.9869   & 0.0002\\ 
+21&50.9   & 0.3    & 0.9863  &0.0003 \\
+22&52.0   &  0.3 & 0.9857 & 0.0003\\
+\bottomrule
+\end{array}
+\]
+\captionof{table}{Tabella dei dati di altezze e angoli (media pesata). \label{hm}}
+\vspace{0.2cm}
+A questo punto tramite un fit lineare $\sin{\theta_m}$ vs $m$ partendo dall'equazione \eqref{theta} è possibile stimare il parametro $\frac{\lambda}{d}$ e dunque $\lambda$. Nell'effettuare il fit è stato tenuto conto che la maggior parte degli errori è di tipo sistematico (incertezza su D, data dal metro a nastro e dalla posizione dello spot, e dalla posizione degli spot su carta millimetrata rispetto alla loro estensione) ed è stato utilizzato il flag absolute\textunderscore sigma=True in modo che la funzione curve\textunderscore fit non riscalasse gli errori dati in input. \newline
+Il grafico della retta di best fit e dei residui è riportato in figura \ref{fit}
+\begin{center}
+%   \includegraphics[width=\textwidth]{lin}
+    \captionof{figure}{Retta di best fit e grafico dei residui \label{fit}}
+\end{center}
+I parametri stimati sono:
+
+\[
+{\lambda= \SI{639 \pm 4}{\nano \meter} \;\; \chi^2 /\mathrm{dof}=0.80/21}
+\]
+Compatibile con il valore indicato sul datasheet del laser: $\lambda=\SI{636\pm1}{\nano \meter}$
+
+%=======================
+\section{Interferometro di Michelson: lunghezza d'onda lampada Hg}
+\subsection{Stima del fattore di conversione della vite}
+Per stimare il fattore di conversione tra lo spostamento del nonio della vite e lo spostamento dello specchio mobile M1 del Michelson, è stato utilizzato un laser He-Ne a lunghezza d'onda nota $\lambda= \SI{632.8}{\nano \meter}$\footnote{L'incertezza, in genere $<\SI{1}{\nano \meter}$ per laser a HeNe, dunque dell'ordine di alcune parti per mille, è stata trascurata in quanto si vedrà in seguito che gli errori su $\eta$ dati dagli altri parametri sono molto più significativi}. Da cui tramite la relazione tra il numero di frange contate ($m$) e lo spostamento del braccio ($\Delta L$) (equazione che definisce il funzionamento del Michelson)
+\[
+{\Delta L=\frac{m \lambda}{2}}{michelson}
+\]
+si ricava il fattore $\eta$:
+\[
+\eta=\frac{\Delta L}{\Delta L'}= \frac{m \lambda}{2 \Delta L'}
+\]
+Con $\Delta L'$ spostamento della vite. \newline
+\subsubsection*{$L'\simeq \SI{0}{\micro \meter}$}
+Nella seguente tabella si riportano i valori delle frange contate e degli spostamenti della vite misurati dai diversi componenti del gruppo. L'errore sulle frange è dovuto al fatto che durante la misura la vite in alcuni momenti scorreva nel verso opposto rendendo difficile contare le frange correttamente, anche con il video rallentato. La presa dati è stata spezzata in due parti (dette a e b) in modo da verificare la consistenza dei parametri trovati ed è indicata nella colonna a sinistra. I separatori individuano le misure dei diversi componenti del gruppo.
+
+A questo punto è possibile calcolare i fattori eta in ciascuna delle due parti delle prese dati e quello considerando invece lo spostamento complessivo, facendo una media pesata delle misure di $m $ e $\Delta L'$ presi dai componenti del gruppo si trova
+\[
+\def\arraystretch{1.5}
+\begin{array}{rcl}
+\eta_{1a} & = & 1.97\pm 0.14\\
+\eta_{1b} & = & 1.45\pm 0.11\\
+\eta_{1}&=&1.67 \pm 0.09
+\end{array}
 \]
 
-\subsection*{Nota sul metodo di fit}
-Per determinare i parametri ottimali e le rispettive covarianze si \`e
-implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
-mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
+Conoscendo il fattore di proporzionalità tra $\Delta L$ e $ \Delta L'$ è possibile ora stimare la $\lambda_{Hg}$ dalla stessa relazione \eqref{michelson}:
+\[
+{\lambda=\frac{2 \Delta L}{m}=\frac{2\eta \Delta L'}{m}}
+\]
+Utilizzando la media pesata di $\eta$ nelle zone 1 e 2 si ottiene:
+\[
+{\lambda=\SI{607\pm62}{\nano \meter}}
+\]
+Questo valore è compatibile con il valore atteso ($\SI{546}{\nano \meter}$).\newline
+Come accennato nella sezione precedente, si potrebbe ipotizzare (a posteriori) che il funzionamento della vite nella zona 1 abbia dei problemi, e dunque scartare questo valore di $\eta$, utilizzando per il calcolo di $\lambda_{Hg}$ il solo valore $\eta_2$ si ottiene:
+\[
+{\lambda=\SI{549\pm54}{\nano \meter}}
+\]
+Valore compatibile con quanto atteso e con un valore centrale più vicino al valore atteso.
 
-%=======================
-\section{Apparato strumentale e analisi del circuito}
-Il primo passo per la costruzione del circuito P.I.D. è la realizzazione del
-circuito di lettura. Nel nostro caso abbiamo realizzato un sistema di
-rilevazione di intensità luminosa costituito da due circuiti identici che
-emettono luce grazie a due LED bianchi (uno per il disturbo e l'altro di
-controllo) e da un partitore di tensione dato dalla serie di una resistenza
-$R_3$ e una fotoresistenza $R_4$.
-
-\begin{figure}[htbp]
-    \centering
-	\includegraphics[scale=0.7]{schm}
-    \caption{Schema dei circuiti di emissione e rilevazione di intensità
-    luminosa.
-    \label{schm: mesctrl}}
-\end{figure}
-
-\subsection{Analisi del funzionamento del circuito}
-La fotoresistenza è una resistenza variabile in funzione dell'intensità
-luminosa che incide su di essa. In particolare sappiamo che il valore di
-resistenza $R_4$ e intensità della luce incidente sulla superficie della
-fotoresistenza sono inversamente proporzionali.
-
-Dalla formula del partitore di tensione sappiamo che il valore dell'uscita
-\verb+MEAS+ dev'essere pari a
-\begin{equation}
-V\ped{MEAS} = (V_{CC} -  V_{EE})\frac{R_4}{R_4 + R_3} + V_{EE}
-\end{equation}
-Ci aspettiamo allora che aumentando la luce (quindi nel nostro caso pilotando
-l'ingresso del LED driver di disturbo con una rampa), il valore di
-$V\ped{MEAS}$ andrà ad aumentare sempre entro l'intervallo di tensioni
-$(V_{EE}, V_{CC})$.
-
-Riportiamo una serie di misure di $V\ped{MEAS}$ al variare del valore della
-tensione continua generata all'ingresso \verb+W2+.
-\begin{table}[htbp]
-\centering
-\begin{tabular}{@{}ll@{}}
-\toprule
-$V\ped{gen} [\si{\V}]$ & $V\ped{meas} [\si{\V}]$\\
-\midrule
-$-4.2 \pm 0.3$ m 	& $ -4.99 \pm 0.05$	\\
-$995 \pm 7$ m 	& $ -2.11 \pm 0.02 $	\\
-$1.99 \pm 0.02$ 	& $ -1.01 \pm 0.08 $\\
-$2.98 \pm 0.04$ 	& $ -359 \pm 3 $ m\\
-$3.98 \pm 0.04$ 	& $ 42.1 \pm 0.7 $ m\\
-$4.98 \pm 0.05$ 	& $ 335 \pm 3$ m\\
-\bottomrule
-\end{tabular}
-\caption{Misure di $V\ped{MEAS}$ in funzione della tensione in ingresso nel
-LED driver di disturbo}
-\end{table}
-Come ci aspettavamo il valore di $V\ped{meas}$ cresce all'aumentare
-dell'intensità della luce incidente sulla fotoresistenza, cioè aumentando la
-tensione in ingresso $V\ped{gen}$.
-
-\iffalse
-%=======================
-\section{Misura della velocità del suono}
-Si è costruito un amplificatore differenziale con guadagno $\approx 10$ a
-partire dalle resistenze $R_5$, $R_6$ e $R_7$, $R_8$ secondo lo schema in
-figura.
-\begin{figure}[htbp]
-    \centering
-	\includegraphics[scale=0.8]{errorgen}
-    \caption{Schema circuitale dell'amplificatore differenziale realizzato
-    \label{schm: errgen}}
-\end{figure}
-Lo scopo del circuito in figura è quello di amplificare la differenza tra i
-segnali $V\ped{SET}$ e $V\ped{MEAS}$ di un fattore 10.
-Si è quindi misurato il guadagno per entrambi gli ingressi dell'OpAmp,
-inviando un segnale a uno e collegando l'altro a massa. Ci si aspetta che nel
-caso in cui SET sia collegato al segnale in ingresso, l'uscita dev'essere
-invertita, mentre nel caso opposto MEAS e ERROR devono essere in fase.
-\begin{figure}[htbp]
-    \centering
-	\includegraphics[scale=0.4]{error.set}
-    \caption{Acquisizione presa dall'oscilloscopio dell'andamento nel tempo dei
-	segnali in ingresso $V\ped{SET} (t)$ (CH1) e uscita $V\ped{ERROR} (t)$ (CH2)
-	dall'amplificatore differenziale con \texttt{MEAS} collegato a massa.
-    \label{fig: errset}}
-\end{figure}
-\begin{figure}[htbp]
-    \centering
-	\includegraphics[scale=0.4]{error.meas}
-    \caption{Acquisizione presa dall'oscilloscopio dell'andamento nel tempo dei
-	segnali in ingresso $V\ped{MEAS} (t)$ (CH1) e uscita $V\ped{ERROR} (t)$ (CH2)
-	dall'amplificatore differenziale con \texttt{SET} collegato a massa.
-    \label{fig: errmeas}}
-\end{figure}
-
-Abbiamo quindi misurato il guadagno per i due ingressi dell'OpAmp definito
-come $A = \frac{V\ped{ERROR}}{V\ped{in}}$, da cui risulta
-\begin{align*}
-A\ped{SET} &= -10.01 \pm 0.14 \\
-A\ped{MEAS} &= 10.01 \pm 0.14
-\end{align*}
-
-Per l'ingresso invertente \verb+SET+ e non-invertente \verb+MEAS+
-rispettivamente, questi risultano compatibili con i valori di guadagno attesi
-per l'amplificatore differenziale:
-\begin{align*}
-A\ped{SET} &= - \frac{R_8}{R_7} = -10.00 \pm 0.11 \\
-A\ped{MEAS} &= \frac{R_6}{R_5} = 9.96 \pm 0.11
-\end{align*}
-
-Per controllare la tensione di riferimento si è poi costruito un circuito che
-permettesse di variare $V\ped{SET}$ nello stesso intervallo
-$(V_{EE}, V_{CC})$ attraverso l'uso di un potenziometro da $R_11 = 2 k\ohm$.
-\begin{figure}[htbp]
-    \centering
-	\includegraphics[scale=0.7]{setgen}
-    \caption{Schema del circuito per la configurazione della tensione di
-    riferimento.
-    \label{schm: setgen}}
-\end{figure}
-%TODO Riscrivere
-Per verifica del buon funzionamento del circuito amplificatore di differenza
-tra i 2 segnali in ingresso, sappiamo che nel caso in cui \verb+MEAS+ e
-\verb+SET+ siano uguali allora la differenza dev'essere nulla, ovverosia
-in uscita dev'essere $V\ped{ERROR} = 0$.
-Difatti, collegando i terminali differenziali del canale 1 dell'oscilloscopio
-per misurare il segnale $V\ped{MEAS} (t)$ rispetto al segnale $V\ped{SET} (t)$
-(per registrare la loro differenza) e il canale 2 per misurare
-$V\ped{ERROR} (t)$ all'uscita rispetto a massa troviamo che entrambi sono
-costanti e compatibili con $\SI{0}{\V}$ come ci si aspettava.
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{meas.same.set}
-    \caption{segnali nella condizione in cui il valore di set e meas sono uguali, nel canale uno si misura il valore di meas rispetto a set, nel canale due invece error rispetto a massa.
-    \label{fig: Draft1}}
-\end{figure}
-
-%=======================
-\section{Controllo integrale}
-Successivamente si è montato il circuito di controllo integrale, un semplice circuito integratore, utilizzando la resistenza data dal potenziometro e una capacità $C_1$, utilizzando lo schema in figura
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{controlgenint}
-    \caption{schema circuitale del controllore ad azione integrale.
-    \label{fig: Draft1}}
-\end{figure}
-quindi abbiamo collegato l'uscita control al driver per la luce di controllo e l'uscita del circuito di generazione errore all'entrata del circuito di controllo integrale.
-Arrivati a questo punto è bastato spegnere il generatore di luce di disturbo e cambiare la posizione del potenziometro per permettere la led di controllo di accendersi.
-Si nota subito come la risposta del led di controllo sia fortemente influenzata dalla quantità di luce che arriva alla fotoresistenza; si consiglia infatti di spostare il circuito distante da eventuali sorgenti di disturbo casuali, come per esempio persone che camminano in prossimità della fotoresistenza. 
-Dopodiché si è provato a verificare la risposta del led di controllo ad un intervento esterno di riduzione della luce, abbiamo quindi posizionato delle buste di plastica semitrasparenti tra il diodo e la fotoresistenza: di conseguenza il led ha aumentato l'intensità luminosa.
-\subsection{Risposta ad un'onda quadra}
-Si è quindi passati alla verifica della risposta ad una luce di disturbo, in questo caso pilotata da un'onda quadra compresa tra 0 e 150 mV.
-Per cominciare si deve fissare il valore di riferimento set: per farlo è bastato scegliere un'intensità luminosa casuale, per esempio quella che meas viene a registrare quando uno dei 2 driver led è pilotato con una tensione di 1 Volt, e utilizzare il potenziometro R11 per far combaciare i valori in meas e set.
-A questo punto abbiamo inviato al led driver di disturbo un'onda quadra tra 0 e 150 mV con frequenza pari a 1 Hz.
-Osservando il valore di control e meas ci rendiamo conto di quello che fa effettivamente il circuito, ovvero cerca di mantenere il valore di meas costante nel tempo.
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{control7.meas}
-    \caption{grafico degli andamenti di control (rispetto a massa) in blu e di meas (sempre rispetto a massa) in giallo
-    \label{fig: Draft1}}
-\end{figure}
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{control7}
-    \caption{grafico del segnale control in blu e dell'onda pilota del led di disturbo in giallo
-    \label{fig: Draft1}}
-\end{figure}
-Successivamente abbiamo misurato il canale error rispetto a massa per varie posizioni del potenziometro. In generale il segnale del canale error ha un andamento simile per ogni posizione, cambiano soltanto i tempi in cui il segnale torna ad essere 0.
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{7}
-    \caption{Andamento del segnale error in blu, rispetto al segnale pilota del led di disturbo
-    \label{fig: Draft1}}
-\end{figure}
-Tramite cursori si è poi preso il tempo con cui il segnale oscilla e lo abbiamo paragonato al tempo caratteristico del circuito integratore definito come $\tau = R_9C_1$.
-\begin{table}[H]
-\centering
-\begin{tabular}{@{}lll@{}}
-\toprule
-$Resistenza Eq.$ & $Tempo C. misurato$ & $Tempo C. Atteso$\\
-\midrule
-$103.4 \pm 0.8 $ k$\ohm$ & $20.7 \pm 0.3$ ms  	& $ 21.4 \pm 0.9$ ms	\\
-$92.8 \pm 0.8$ k$\ohm$ & $19.0 \pm 0.2$ ms 	& $ 19.2 \pm 0.8 $ ms	\\
-$67.7 \pm 0.6$ k$\ohm$ & $15.3 \pm 0.2$ ms 	& $ 14.0 \pm 0.6 $ ms\\
-$41.5 \pm 0.4$ k$\ohm$ & $10.2 \pm 0.1$ 	ms & $ 8.6 \pm 0.3 $ ms\\
-$25.5 \pm 0.3$ k$\ohm$ & $7.78 \pm 0.05$ 	ms & $ 5.3 \pm 0.2 $ ms\\
-$7.34 \pm0.06$ k$\ohm$ & $3.24 \pm 0.05$ 	ms & $ 1.52 \pm 0.06$ ms\\
-
-\bottomrule
-\end{tabular}
-\caption{Misura dei tempi caratteristici delle oscillazioni del segnale di errore}
-\end{table}
-Nonostante le prime  2 o 3 misure risultino compatibili tra di loro, le altre si distaccano anche di molto dall'andamento previsto; si è notato inoltre come il tempo caratteristico misurato dipendesse anche dal valore di Set, parametro che non era presente nell'equazione di riferimento.
-\subsection{Risposta ad una rampa}
-Riportando il valore della resistenza equivalente al potenziometro a $100 k\ohm$ si è pilotato il driver led di disturbo con un'onda triangolare tra 0 e 150 mV a 10 Hz e nelle condizioni in cui il duty cycle fosse $10 \percent$ e $90 \percent$
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{8}
-    \caption{grafico degli andamenti di error (rispetto a massa) in blu e del segnale in ingresso al led di disturbo (sempre rispetto a massa) in giallo pilotato con l'onda triangolare sopracitata con duty cycle $10 \percent$
-    \label{fig: Draft1}}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{8.1}
-    \caption{grafico degli andamenti di error (rispetto a massa) in blu e del segnale in ingresso al led di disturbo (sempre rispetto a massa) in giallo pilotato con l'onda triangolare sopracitata con duty cycle $90 \percent$
-    \label{fig: Draft1}}
-\end{figure}
-In questo caso il circuito di amplificazione dell'errore si comporta quasi come un derivatore: in fin dei conti è quello che ci si aspetta, dato che il controllo deve integrare il segnale di errore, per poter bilanciare il cambiamento di luce, c'è bisogno che anche l'uscita del controllo sia un'onda triangolare simmetrica a quella con cui pilotiamo il led di disturbo. Inoltre dato che il circuito integratore agisce in un tempo non trascurabile di fronte a dei cambiamenti,il segnale di errore non potrà mai essere nullo, infatti se lo fosse il controllore non produrrebbe alcun cambiamento, cosa che può sussistere solo nel caso in cui si abbia una luce di disturbo costante nel tempo.
-\subsection{Risposta in frequenza}
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{103.4k}
-    \caption{scan di network della funzione di trasferimento tra il generatore di disturbo e error con $R_9= 103.4 \pm 0.8 k\ohm$
-    \label{fig: Draft1}}
-\end{figure}
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{76.1k}
-    \caption{scan di network della funzione di trasferimento tra il generatore di disturbo e error con $R_9=76.1 \pm 0.6 k\ohm$
-    \label{fig: Draft1}}
-\end{figure}
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{43.9k}
-    \caption{scan di network della funzione di trasferimento tra il generatore di disturbo e error con $R_9= 43.9 \pm 0.4 k\ohm$
-    \label{fig: Draft1}}
-\end{figure}
-
-%=======================
-\section{Controllo proporzionale}
-Infine si è montato il circuito di controllo proporzionale al posto di quello integrale, scambiando il condensatore $C_1$ con una resistenza da$100 k\ohm$, secondo lo schema in figura.
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{controlgenprop}
-    \caption{schema circuitale del controllore ad azione proporzionale.
-    \label{fig: Draft1}}
-\end{figure}
-\subsection{Risposta ad un'onda quadra}
-Come precedentemente fatto, dopo aver variato il potenziometro $R_9$ fino alla resistenza equivalente da $100 k\ohm$, abbiamo pilotato il driver led di disturbo con un'onda quadra tra 0 e 150 mV di 1Hz. Abbiamo quindi verificato la nuova situazione controllando i segnali prodotti da error, control e meas.
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{proportional}
-    \caption{grafico dei segnali error in blu e dell'onda pilota di disturbo in giallo.
-    \label{fig: Draft1}}
-\end{figure}
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{proportional.meas}
-    \caption{grafico dei segnali error in blu e di meas rispetto a set in giallo.
-    \label{fig: Draft1}}
-\end{figure}
-\begin{figure}[H]
-    \centering
-	\includegraphics[scale=0.4]{proportional.control}
-    \caption{grafico dei segnali control in blu e dell'onda pilota di disturbo in giallo.
-    \label{fig: Draft1}}
-\end{figure}
-Come ci si aspettava il controllo proporzionale non mantiene meas invariato, dato che il circuito completo non è altro che una cascata di amplificatori, di cui il primo differenziale di guadagno $\approx 10$, e il secondo invertente di guadagno pari a $\frac{R_{10}}{R_9}$
-\fi
 %=======================
 \section*{Conclusioni e commenti finali}
-Si è riusciti a dare una misura ragionevole della velocità del suono in aria
-e si è riusciti ad apprezzare la sua dipendenza dalla temperatura ambientale
-con un semplice sensore ad ultrasuoni ed un termistore.
+In quest'esperienza è stato possibile determinare con successo la lunghezza d'onda di un laser a semiconduttore utilizzando un calibro come reticolo di diffrazione. Inoltre, utilizzando un interferometro di Michelson è stata stimata la lunghezza d'onda della riga verde di una lampada a mercurio. Nonostante alcune difficoltà incontrate in quest'ultima stima e le sorgenti di errore abbastanza rilevanti, è stato possibile ottenere una stima compatibile con il valore atteso.
 
 %=======================
 \section*{Dichiarazione}
