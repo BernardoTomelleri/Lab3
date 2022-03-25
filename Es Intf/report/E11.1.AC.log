@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  25 MAR 2022 12:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  25 MAR 2022 14:21
 entering extended mode
 **./E11.1.AC.tex
 (E11.1.AC.tex
@@ -1389,41 +1389,61 @@ File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 <../figs//0.jpg, id=30, 629.9535pt x 342.68025pt>
 File: ../figs//0.jpg Graphic file (type jpg)
 <use ../figs//0.jpg>
-Package pdftex.def Info: ../figs//0.jpg  used on input line 32.
+Package pdftex.def Info: ../figs//0.jpg  used on input line 33.
 (pdftex.def)             Requested size: 483.69687pt x 263.1221pt.
+
+
+LaTeX Warning: Reference `eq:diff' on page 1 undefined on input line 41.
+
+
+LaTeX Warning: Reference `schema1' on page 1 undefined on input line 49.
 
 [1
 
 {C:/Users/rossi/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2 <../figs//0.
 jpg>] (E11.1.AC.aux)
-Package rerunfilecheck Info: File `E11.1.AC.out' has not changed.
-(rerunfilecheck)             Checksum: F8EC355C8959A05D78B874A11B94BC44;1690.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `E11.1.AC.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `E11.1.AC.out':
+(rerunfilecheck)             Before: 0B6072B2D29E03677ABA68682DA680E6;1696
+(rerunfilecheck)             After:  F8EC355C8959A05D78B874A11B94BC44;1690.
  ) 
 Here is how much of TeX's memory you used:
- 55927 strings out of 478927
- 1385639 string characters out of 2852534
- 2175522 words of memory out of 3000000
- 73028 multiletter control sequences out of 15000+600000
- 416044 words of font info for 63 fonts, out of 8000000 for 9000
+ 55936 strings out of 478927
+ 1385740 string characters out of 2852534
+ 2179522 words of memory out of 3000000
+ 73035 multiletter control sequences out of 15000+600000
+ 416820 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 122i,7n,125p,805b,766s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,7n,125p,805b,770s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-t1.enc}<C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmmi10.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmmi7.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rossi/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Users/rossi/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Users/rossi/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1000.pfb><C:/Users/r
-ossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1200.pfb><C:
-/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1728
-.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/
-sfti1000.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/c
-m-super/sftt1000.pfb>
-Output written on E11.1.AC.pdf (2 pages, 221083 bytes).
+X/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/rossi/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rossi/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1000.pfb><C:/Users/rossi/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Users/ro
+ssi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:/
+Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1000.
+pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/s
+frm1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm
+-super/sfrm1728.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/cm-super/sfti1000.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/cm-super/sftt1000.pfb>
+Output written on E11.1.AC.pdf (2 pages, 249930 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 500000)
+ 120 PDF objects out of 1000 (max. 8388607)
+ 16 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
