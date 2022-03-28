@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  24 MAR 2022 18:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  28 MAR 2022 09:18
 entering extended mode
 **./E10.1.AC.tex
 (E10.1.AC.tex
@@ -1448,34 +1448,65 @@ LaTeX Warning: Reference `fig:conversione' on page 3 undefined on input line 12
 9.
 
 [3 <../figs//riferimentoB.png (PNG copy)>]
+
+Package svg Warning: You didn't enable `shell escape' (or `write18')
+(svg)                so it wasn't possible to launch the Inkscape export
+(svg)                for `../figs//geometria.svg' on input line 145.
+
+
+! Package svg Error: File `geometria_svg-tex.pdf' is missing.
+
+See the svg package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.145     \includesvg[width=\textwidth]{geometria}
+                                                  
+Did you run the export with Inkscape? There's no file
+`./svg-inkscape/geometria_svg-tex.pdf'
+although `../figs//geometria.svg' was found.
+
+
+! Package svg Error: File `geometria_svg-tex.pdf_tex' is missing.
+
+See the svg package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.145     \includesvg[width=\textwidth]{geometria}
+                                                  
+Did you run the export with Inkscape? There's no file
+`./svg-inkscape/geometria_svg-tex.pdf_tex'
+although `../figs//geometria.svg' was found.
+
 <../figs//circfit.png, id=99, 1387.584pt x 694.5147pt>
 File: ../figs//circfit.png Graphic file (type png)
 <use ../figs//circfit.png>
-Package pdftex.def Info: ../figs//circfit.png  used on input line 157.
+Package pdftex.def Info: ../figs//circfit.png  used on input line 155.
 (pdftex.def)             Requested size: 483.69687pt x 242.09822pt.
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 184.
+
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 186.
+(hyperref)                removing `math shift' on input line 184.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 186.
-
-<../figs//medpes.png, id=104, 462.528pt x 346.896pt>
+[4 <../figs//cal1.jpg>] [5 <../figs//circfit.png>]
+<../figs//medpes.png, id=118, 462.528pt x 346.896pt>
 File: ../figs//medpes.png Graphic file (type png)
 <use ../figs//medpes.png>
-Package pdftex.def Info: ../figs//medpes.png  used on input line 200.
+Package pdftex.def Info: ../figs//medpes.png  used on input line 198.
 (pdftex.def)             Requested size: 483.69687pt x 362.79062pt.
-<../figs//linfit.png, id=105, 1387.584pt x 694.5147pt>
+<../figs//linfit.png, id=119, 1387.584pt x 694.5147pt>
 File: ../figs//linfit.png Graphic file (type png)
 <use ../figs//linfit.png>
-Package pdftex.def Info: ../figs//linfit.png  used on input line 205.
+Package pdftex.def Info: ../figs//linfit.png  used on input line 203.
 (pdftex.def)             Requested size: 483.69687pt x 242.09822pt.
-[4 <../figs//cal1.jpg>] [5 <../figs//circfit.png>] [6 <../figs//medpes.png>]
+ [6 <../figs//medpes.png>]
 [7 <../figs//linfit.png>]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
-47.
+45.
 
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
@@ -1484,17 +1515,20 @@ File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `E10.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: 8D37CF43C424479711EEFC315082FDE1;3281.
  ) 
 Here is how much of TeX's memory you used:
- 56876 strings out of 478927
- 1406067 string characters out of 2852534
+ 56897 strings out of 478927
+ 1406579 string characters out of 2852534
  2182522 words of memory out of 3000000
- 73925 multiletter control sequences out of 15000+600000
+ 73939 multiletter control sequences out of 15000+600000
  419911 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 122i,11n,125p,913b,780s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,11n,125p,913b,814s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-t1.enc}<C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmex10.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/pu
@@ -1515,9 +1549,9 @@ TeX/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Users/rossi/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Users/rossi/AppData/Lo
 cal/Programs/MiKTeX/fonts/type1/public/cm-super/sfti1000.pfb><C:/Users/rossi/Ap
 pData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on E10.1.AC.pdf (8 pages, 4437672 bytes).
+Output written on E10.1.AC.pdf (8 pages, 4438137 bytes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 38 named destinations out of 1000 (max. 500000)
+ 229 PDF objects out of 1000 (max. 8388607)
+ 39 named destinations out of 1000 (max. 500000)
  147 words of extra memory for PDF output out of 10000 (max. 10000000)
 

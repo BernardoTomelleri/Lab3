@@ -140,14 +140,12 @@ Sia $ \kappa $ il fattore di conversione tra pixel e i centimetri del righello $
 Dalle misure riportate nella scheda dell'esperienza si ottiene, attribuendo un'incertezza di \SI{1}{\milli\meter} a tutte le lunghezze in gioco
 \[ \gamma = \num{ 906\pm 5 e-3 } \qquad \kappa = \num{ 141 \pm 6 }. \]
 
-%TODO scommentare sto blocco che sennò a me non fa compilare dio porco
-\iffalse
 \begin{figure}[htbp]
     \centering
     \includesvg[width=\textwidth]{geometria}
     \caption{\label{fig:conversione}schema della geometria usata per la conversione pixel $ \to \si{\centi\meter} $ e per la correzione dell'effetto prospettico.}
 \end{figure}
-\fi
+
 \subsection{Misura del raggio della traiettoria}
 Utilizzando le foto sopra menzionate si è effettuato un campionamento dei punti
 sull'arco interno e sull'arco esterno delle traiettorie (dato che il pennello elettronico ha uno spessore non trascurabile). Le coordinate dei pixel così ricavate
@@ -179,7 +177,7 @@ $270 \pm 1$ & $5.7 \pm 0.3$ & \\
 $290 \pm 1$ & $5.9 \pm 0.3$ & \\
 \bottomrule
 \end{tabular}
-\caption{Valori dei raggi estrapolati dalle traiettorie in funzione delle tensioni di accelerazione a $I_{coil}$ fissa}
+\caption{Valori dei raggi estrapolati dalle traiettorie in funzione delle tensioni di accelerazione mantenendo $I_{coil}$ fissa}
 \end{table}
 Ovviamente si ricorda che al campo magnetico generato dalle bobine bisogna aggiungere un contributo non trascurabile del campo magnetico terrestre pari a 34 mT.
 Durante il campionamento dei punti per il fit circolare ci siamo resi conto che la seconda metà della traiettoria "circolare" compiuta dagli elettroni è leggermente deviata verso il dispositivo di emissione degli elettroni, per cui abbiamo campionato i punti solo nella prima metà della traiettoria (considerando indicativamente solo il primo semicerchio compiuto dalla traiettoria uscendo dal cannone).
