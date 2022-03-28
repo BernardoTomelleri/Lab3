@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  28 MAR 2022 17:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  28 MAR 2022 17:52
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1303,7 +1303,7 @@ File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 <../figs//thetafit.pdf, id=64, 596.95016pt x 348.34142pt>
 File: ../figs//thetafit.pdf Graphic file (type pdf)
 <use ../figs//thetafit.pdf>
-Package pdftex.def Info: ../figs//thetafit.pdf  used on input line 166.
+Package pdftex.def Info: ../figs//thetafit.pdf  used on input line 167.
 (pdftex.def)             Requested size: 483.69687pt x 282.25598pt.
  [2 <../figs//0.jpg>] [3 <../figs//thetafit.pdf>] [4] (./E11.1.AC.aux)
 Package rerunfilecheck Info: File `E11.1.AC.out' has not changed.
@@ -1311,7 +1311,7 @@ Package rerunfilecheck Info: File `E11.1.AC.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  55639 strings out of 479713
- 1365111 string characters out of 5876923
+ 1365115 string characters out of 5876923
  2175107 words of memory out of 10000000
  72623 multiletter control sequences out of 15000+600000
  418354 words of font info for 66 fonts, out of 8000000 for 9000
@@ -1337,7 +1337,7 @@ per/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx12
 dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts
 /type1/public/cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pub
 lic/cm-super/sftt1000.pfb>
-Output written on E11.1.AC.pdf (4 pages, 438429 bytes).
+Output written on E11.1.AC.pdf (4 pages, 438440 bytes).
 PDF statistics:
  203 PDF objects out of 1000 (max. 8388607)
  148 compressed objects within 2 object streams

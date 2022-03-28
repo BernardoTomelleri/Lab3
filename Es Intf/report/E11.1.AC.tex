@@ -26,10 +26,10 @@ Un reticolo di diffrazione è un apparato capace di disperdere un fascio
 luminoso incidente in funzione della sua lunghezza d'onda. Il fenomeno alla
 base di tale separazione è l'interferenza luminosa, per la quale è possibile
 determinare la seguente relazione tra lunghezza d'onda della riga spettrale
-diffratta e la sua posizone angolare
+diffratta e la sua posizione angolare
 \begin{equation}
 d(\sin(\theta _i) - \sin(\theta _m)) = m \lambda
-\label{eq:diff}
+\label{eq: diff}
 \end{equation}
 in cui $m (\in \ZZ$) è l'ordine di interferenza per cui si individuano le
 posizioni dei massimi principali, $\lambda$ è la lunghezza d'onda del fascio
@@ -40,10 +40,10 @@ L'angolo di incidenza sul reticolo viene denominato $\theta _i$.
 
 Dalla misura degli angoli di diffrazione, noto il loro ordine e noto il passo
 reticolare, possiamo individuare una relazione lineare che ci permetta di
-ricavare la lunghezza d'onda come evidenziata in \ref{eq:diff}:
+ricavare la lunghezza d'onda come evidenziata in \cref{eq: diff}:
 \begin{equation}
 y = -x \frac{\lambda}{d} + q
-\label{eq:fit}
+\label{eq: fit}
 \end{equation}
 dove $y,x$ e $q$ sono rispettivamente $\sin(\theta _m)$, $m$ e
 $\sin(\theta _i)$.
@@ -81,7 +81,7 @@ $d = 1 \; \si{m\m}$.
 %TODO INCERTEZZA SUL PASSO DA COSTRUTTORE DEL CALIBRO
 
 Noto il valore del passo reticolare, viene eseguita una stima dell'angolo di
-diffrazione usando \cref{eq:fit} applicata a partire dall'ordine $m = 0$.
+diffrazione usando \cref{eq: fit} applicata a partire dall'ordine $m = 0$.
 Per fare questo è stato prima necessario determinare la distanza tra l'origine
 dei fasci e lo schermo su cui essi erano proiettati:
 \[
@@ -152,7 +152,7 @@ corrispondenti seni degli angoli associati al variare degli ordini di
 diffrazione. \label{tab: hm}}
 \end{table}
 
-A questo punto si effettua un fit lineare sulla base dell'\cref{eq:fit},
+A questo punto si effettua un fit lineare sulla base dell'\cref{eq: fit},
 da cui è possibile stimare il coefficiente angolare $\frac{\lambda}{d}$ e
 dunque $\lambda$ della radiazione emessa.
 
@@ -162,12 +162,13 @@ Data l'origine sistematica degli errori sulle misure di distanza $D$ e delle
 posizioni dei centri dei massimi di diffrazione abbiamo impostato il flag
 \verb+absolute_sigma=True+ in modo che la funzione curve\_fit non riscalasse
 le incertezze fornite in ingresso.
+
 \begin{figure}
 \includegraphics[width=\textwidth]{thetafit}
 \caption{Grafico della retta di best-fit e residui normalizzati per
 l'andamento delle posizioni angolari $\sin{\theta_m}$ in funzione dell'ordine
 di diffrazione $m$. Il grafico dei residui non evidenzia nessun andamento
-che devii in maniera sistematica dal modello utilizzato (\cref{eq:fit}).
+che devii in maniera sistematica dal modello utilizzato (\cref{eq: fit}).
 \label{fig: linfit}}
 \end{figure}
 
