@@ -59,7 +59,18 @@ Questa è proprio la relazione lineare tra energia e frequenza che intendiamo
 verificare, tramite cui possiamo stimare il valore del rapporto $h/e$ a
 partire dal coefficiente angolare della retta di best-fit.
 
+Assumendo come valori esatti $e = 1.602176634 \times 10^{-19}{\coulomb}$ e
+$h = 6.62607015 \times 10^{-34} \; \si{\J\s} $ il valore atteso del loro
+rapporto è
+\begin{equation}\label{eq: e/h}
+\left(\frac{h}{e}\right)\ped{exp} = 4.14 \times 10^{-15} \; \si{\V\s}
+\end{equation}
+
 \subsection{Sovrapposizione di correnti spurie}
+In realtà il nostro apparato è racchiuso da una scatola metallica per
+schermarlo dalla luce e dal rumore elettronico ambientale, ma la misura
+di $h/e$ è affetta da diverse fonti di errore sistematico.
+
 La corrente $I(V\ped{bias})$ che misuriamo tra anodo e catodo in realtà è il
 risultato di una combinazione con altre correnti ``inverse'' (cioè
 associate alla migrazione di elettroni dall'anodo verso il catodo) alla
@@ -67,9 +78,9 @@ fotocorrente catodica, che continuano a essere presenti anche per valori
 di $V\ped{bias} > V_0$.
 
 Queste ci permettono al più di ricavare una stima preliminare dell'ordine di
-grandezza di $V_0$, ricercando visivamente la transizione fra il regime in cui
+grandezza di $V_0$, ricercando la transizione fra il regime in cui
 misuriamo $I>0$ o $I \sim 0$ dalle curve corrente-tensione ottenute al variare
-della lunghezza d'onda (come in.
+della lunghezza d'onda (di cui riportiamo un esempio in \cref{fig: 546nm}).
 
 \begin{figure}[htbp]
     \centering
@@ -90,8 +101,7 @@ effetti di natura diversa:
         \item estrazione di elettroni dall'anodo per effetto termoionico
         (corrente oscura).
         \item connessione ohmica tra gli elettrodi dovuta al non perfetto
-        isolamento delle guaine di rivestimento dei cavi
-        $(R \sim 10^{11-12} \; \si{\ohm})$.
+        isolamento delle guaine di rivestimento dei cavi.
     \end{enumerate}
 
 Nonostante ci aspettiamo contributi di gran lunga minoritari rispetto alla
@@ -214,23 +224,114 @@ stesso intervallo di misura della fotocorrente riportato in \cref{fig: dark}
 
 %=======================
 \section{Analisi dati e stima del rapporto $h/e$}
-La stima del rapporto $h/e$ è stata poi ottenuta in due modi diversi: dal coefficiente angolare della retta di \emph{best-fit} da una stima preliminare e dal metodo della corrente inversa.
+Abbiamo ottenuto una stima preliminare della tensione di azzeramento $V_0$
+estraendo dalle curve corrente-tensione i valori di $V\ped{bias}$ per cui la
+corrente anodica $I$ si discosta meno di due barre d'errore dalla corrente di
+buio misurata senza luce incidente, da cui otteniamo:
+\begin{table}
+\centering
+\begin{tabular}{cccccc}
+\toprule
+$\lambda \; [\si{n\m}]$ & $\sigma(\lambda) \; [\si{n\m}]$ &
+$\nu \; [\si{T \Hz}]$ & $\sigma(\nu) \; [\si{T \Hz}]$ &
+$V_0 \; [\si{\V}]$ & $\sigma(V_0) \; [\si{\V}]$ \\
+\midrule
+450 & 3 & 667 & 4 & 1.20 & 0.03 \\
+499 & 3 & 601 & 4 & 0.99 & 0.03 \\
+546 & 3 & 549 & 3 & 0.76 & 0.03 \\
+577 & 3 & 520 & 3 & 0.64 & 0.03 \\
+\bottomrule
+\end{tabular}
+\caption{Stime preliminari della tensione di frenamento critica $V_0$ trovate
+al variare della frequenza della luce incidente sulla fotocella
+\label{tab: V0prel}}
+\end{table}
 
-Assumendo $e = 1.602176634 \times 10^{-19}{\coulomb} $ e $h = \si 6.62607015 \times 10^{-34} \; \si{\J\s} $ il valore atteso del loro rapporto è
-\begin{equation}\label{eq: e/h}
-\left(\frac{h}{e}\right)\ped{exp} = 4.14 \times 10^{-15} \; \si{\V\s}
-\end{equation}
+Dunque si è riusciti a stimare il valore del rapporto $h/e$ con un fit
+lineare dell'andamento di $V_0$ in funzione di $\nu$, propagando
+opportunamente gli errori sulle frequenze (in questo caso le incertezze sulla
+variabile indipendente non sono trascurabili, in quanto
+$\frac{h}{e} \sigma_\nu \sim \sigma_{V_0}$) che riportiamo in
+\cref{fig: heprel}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{heprel}
+    \caption{Grafico con retta di best-fit e residui normalizzati con i valori
+    di $V_0(\nu)$ stimati in maniera grossolana dalle curve corrente-tensione.
+    \label{fig: heprel}}
+\end{figure}
 
 \subsection{Metodo della corrente inversa}
-Da un fit lineare alla corrente inversa si ricava
-m = -2.58 +- 0.10
-q = -1.78 +- 0.13
-Chi square/ndof = 92.4/7945
-Equivalent resistance 1/m = 388.333157 +- 15.527957 Gohm
-corr=-0.8580018344212901
+Per studiare la corrente inversa eseguiamo un fit lineare sia sui dati
+acquisiti per la corrente inversa senza luce incidente sia sui punti delle
+curve della fotocorrente nella regione in cui $V\ped{bias} > V_0$ per ciascun
+valore di lunghezza d'onda studiato.
+Riportiamo i risultati dei fit in \cref{fig: darkfit} e \cref{tab: Invfit}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{darkfit}
+    \caption{Fit lineare all'andamento della corrente inversa $I\ped{inv}$ in
+    funzione della rampa di potenziale di frenamento $V\ped{bias}$ in assenza
+    di illuminazione
+    \label{fig: darkfit}}
+\end{figure}
 
-Da un primo fit con \cref{eq: Ifit} lasciando tutti i parametri liberi si
-trova
+\begin{table}
+\centering
+\begin{tabular}{ccccc}
+\toprule
+$\lambda \; [\si{n\m}]$ & $b \; [\si{p\mho}]$ & $I_0 \; [\si{pA}]$ &
+$\chi^2/\text{ndof}$ & norm. cov. \\
+\midrule
+- &  $-2.58 \pm 0.10$ & $-1.78 \pm 0.13$ & $92/7945$ & $-0.858$ \\
+$450 \pm 3$ & $-3.5 \pm 0.8$ & $-2.3 \pm 1.4$ & $8/2495$ & $-0.997$ \\
+$499 \pm 3$ & $-1.9 \pm 1.0$ & $-4.6 \pm 1.7$ & $6/1689$ & $-0.997$ \\
+$546 \pm 3$ & $-1.5 \pm 1.0$ & $-4.8 \pm 1.7$ & $11/1689$ & $-0.997$ \\
+$577 \pm 3$ & $-1.7 \pm 1.0$ & $-4.5 \pm 1.7$ & $5/1688$ & $-0.997$ \\
+\bottomrule
+\end{tabular}
+\caption{Risultati dei fit lineari per la misura della corrente inversa
+al variare della lunghezza d'onda della radiazione incidente
+\label{tab: Invfit}}
+\end{table}
+
+Da cui notiamo che, in primo luogo $I_0$ non risulta compatibile con $0$, né
+indipendente dalla lunghezza d'onda della luce incidente, ma che nonostante
+questo il modello lineare continua a descrivere fedelmente l'andamento dei
+dati.
+
+Anche per quanto riguarda il parametro $b$, i valori trovati dai 4 fit lineari
+sulle fotocorrenti non risultano costanti al variare di $\lambda$, ma comunque
+compatibili tra loro entro non più di due barre d'errore.
+
+Prendendo una media pesata di questi si ottiene:
+\begin{equation}\label{eq: bweight}
+b = \frac{\sum_i b_i/\sigma_i^2}{\sum_i 1/\sigma_i^2} \pm
+\frac{1}{\sqrt{\sum_i 1/\sigma_i^2}} = -2.1 \pm 0.5
+\end{equation}
+che risulta compatibile con il valore trovato dal fit sui dati senza luce
+incidente.
+
+Dunque possiamo ottenere dal fit lineare in assenza di illuminazione una stima
+attendibile della resistenza equivalente percepita tra anodo e catodo
+\[
+1/\abs{b} = 388 \pm 16 \; \si{G\ohm}
+\]
+che risulta dello stesso ordine di grandezza atteso per via del cattivo
+schermaggio tra gli elettrodi dovuto alle imperfezioni nelle guaine isolanti
+dei cavi $(R \sim 10^{11-12} \; \si{\ohm})$.
+
+Per provare a spiegare la dipendenza dei parametri del fit dalla frequenza
+del fascio incidente notiamo che per le lunghezze d'onda più corte (per
+fotoni più energetici) ci si aspetta che la tensione di azzeramento $V_0$ sia
+più elevata, dunque che la corrente tenda più lentamente al suo valore
+asintotico. Ipotizziamo che questo diverso andamento della corrente, dunque di
+$I\ped{inv}$, al variare della lunghezza d'onda sia responsabile per la
+dipendenza osservata dei parametri di fit da $\lambda$.
+
+Da un primo fit con \cref{eq: Ifit} alle curve di fotocorrente acquisite,
+lasciando tutti i parametri liberi si ottengono i risultati riassunti in
+\cref{tab: Ifree} e \cref{fig: Ifree}
 \begin{table}
 \centering
 \begin{tabular}{ccccccc}
@@ -248,54 +349,137 @@ $577 \pm 3$ & $1595 \pm 8$ & $751 \pm 3$ & $2.603 \pm 0.016$ & $-2.4 \pm 0.2$ &
 $-3.2 \pm 0.3$ & $210/7817$ \\
 \bottomrule
 \end{tabular}
+\caption{Risultati dei fit alle curve corrente-tensione con \cref{eq: Ifit}
+lasciando tutti i parametri liberi.
+\label{tab: Ifree}}
 \end{table}
 
-\subsection{Stima dell'esponente $\alpha$}
-Si è notato che la stima dei valori del potenziale frenante critico e
-dell'esponente $\alpha$ esibivano una apprezzabile dipendenza dall'intervallo
-di tensioni di bias considerate nel fit della fotocorrente.
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{IV}
+    \caption{Grafico dei fit con legge di potenza \cref{eq: Ifit} e residui
+    normalizzati per le curve delle fotocorrenti acquisite in funzione del
+    potenziale di frenamento $V\ped{bias}$
+    \label{fig: Ifree}}
+\end{figure}
 
-Considerando valori di $V_{bias} \sim 0$, oltre
-a quelle vicine al ginocchio in $V_{0}$, si è visto che il valore
-dell'esponente $\alpha$ assume un andamento monotono crescente in funzione
-della lunghezza d'onda in maniera analoga a quanto osservato finora per il
-parametro $a$.
+Da cui possiamo osservare come tutti i parametri del fit assumono andamento
+monotono in funzione della lunghezza d'onda, benché nel nostro modello
+solamente i primi due dovrebbero racchiudere la dipendenza dalle
+caratteristiche della luce incidente.
+In particolare, i valori ottimali di $a$, $\alpha$ e $b$ risultano monotoni
+crescenti in funzione di $\lambda$, mentre i parametri $V_0$ e $I_0$
+(fortemente anticorrelati rispettivamente ad $a$ - $\alpha$ e $b$) hanno
+andamento monotono decrescente.
+
+Supponiamo quindi che gli $\alpha$ di best-fit risultino tutti sistematicamente
+maggiori di $3/2$ e non compatibili tra di loro poiché nel nostro modello
+consideriamo gli elettroni liberi nel metallo e non teniamo conto delle
+successive interazioni dei fotoelettroni con il bulbo della fotocella.
+
+\subsection{Dipendenza dei parametri ottimali dall'intervallo di misura}
+Anche una volta fissati i valori di $I_0$ e $b$ dai risultati ottenuti nella
+sezione precedente si è notato che la stima dei valori del potenziale frenante
+critico $V_0$ e dell'esponente $\alpha$ continuavano ad esibire
+un'apprezzabile dipendenza dall'intervallo di tensioni di bias considerate nei
+fit della fotocorrente.
+
+Considerando valori di $V\ped{bias} \sim 0$, oltre a quelle vicine al ginocchio
+in $V_0$, si è visto che il valore dell'esponente $\alpha$ assume un
+andamento monotono crescente in funzione della lunghezza d'onda in maniera
+analoga a quello osservato per i parametri $a$ e $b$. Viceversa, restringendo
+sempre di più i dati alla regione in cui $V\ped{bias} \sim V_0$, i valori
+ottimali di $\alpha$ assumono valori tendenzialmente minori (di non più del
+$20 \%$) di quelli in \cref{tab: Ifree}, ma con andamento difficilmente
+prevedibile ed estremamente sensibile a variazioni dell'intervallo di misura.
 
 Si è scelto quindi di fissare il valore di $\alpha$ come media pesata dei
 valori ottimali stimati dai fit prendendo in considerazione l'intero range di
-tensioni esplorato, dunque di eseguire un nuovo fit ai 4 dataset lasciando
-liberi solamente i restanti parametri dipendenti dalla frequenza della luce
-incidente: $V_{0}$ e $a$.
+tensioni esplorato, dunque di eseguire un nuovo fit simultaneo ai 4 dataset
+lasciando liberi solamente i restanti parametri dipendenti dalla frequenza
+della luce incidente: $V_0$ e $a$.
 
-In particolare, dal fit con alpha libero si trova
-np.mean(alphas)
-Out[27]: 2.4806408028824034
+Dal primo fit simultaneo con $\alpha$ parametro libero si trova, dalla
+media pesata dei valori ottimali (come in \cref{eq: bweight})
+\[
+\alpha = 2.481 \pm 0.005
+\]
 
-np.mean(dalphas)
-Out[28]: 0.010212701821352213
+dunque riportiamo i risultati del secondo fit simultaneo a due parametri, da
+cui si sono ottenute le nostre misure più accurate della tensione di
+azzeramento della fotocorrente $V_0$ in \cref{tab: inp} e \cref{fig: inp}
+\begin{table}
+\centering
+\begin{tabular}{ccccc}
+\toprule
+$\nu \; [\si{T\Hz}]$ & $a \; [\si{p\A/\V^{2.481}}] $ & $V_0 \; [\si{m\V}]$ &
+$\chi^2/\text{ndof}$ & norm. cov. \\
+\midrule
+$667 \pm 4$ & $411.9 \pm 0.6$ & $1345.6 \pm 0.6$ & $2070/7820$ & $-0.976$ \\
+$601 \pm 4$ & $739 \pm 1$ & $1072.1 \pm 0.5$ & $806/7820$ & $-0.978$ \\
+$549 \pm 3$ & $1097 \pm 2$ & $848.9 \pm 0.5$ & $522/7820$ & $-0.983$ \\
+$520 \pm 3$ & $1644 \pm 4$ & $728.8 \pm 0.5$ & $505/7820$ & $-0.977$ \\
+\bottomrule
+\end{tabular}
+\caption{Risultati dei fit con leggi di potenza con esponente $\alpha$ fissato
+al variare della lunghezza d'onda $\lambda$ della radiazione incidente
+\label{tab: inp}}
+\end{table}
 
-1/pars[0]
-Out[29]: 3.568317911720477
-Quindi un valore del rapporto h/e sottostimato di circa il $15 \%$ rispetto al
-valore atteso.
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{inp}
+    \caption{Grafico del fit simultaneo con legge di potenza ($\alpha$ fissato)
+    e residui normalizzati per le curve delle fotocorrenti acquisite in
+    funzione della tensione $V\ped{bias}$
+    \label{fig: inp}}
+\end{figure}
 
-Mentre dai valori di $V_{0}$ ricavati fissando $\alpha$ proponiamo un fit
-lineare alla relazione inversa
-\begin{equation}
-\nu = \frac{e}{h} V_{0} - W_{0}/h
+Finalmente, dai valori di $V_0$ ricavati fissando l'esponente $\alpha$ al suo
+valore ottimale proponiamo un fit lineare con la relazione inversa della
+\cref{eq: V0}
+\begin{equation}\label{eq: eh}
+\nu = \frac{e}{h} V_0 - W_0/h
 \end{equation}
-da cui otteniamo come valore del rapporto $h/e = 4.19 \pm 0.13 \; \si{\V \s}$,
-che è compatibile entro l'incertezza con il valore tabulato di 4.14.
+dal momento che ora $\frac{h}{e} \sigma_\nu \gg \sigma_{V_0}$, per cui
+possiamo trascurare le incertezze su $V_0$ nel fit ai minimi quadrati
+(i cui risultati si riportano in \cref{fig: eh} e \cref{tab: he}).
 
-%=======================
-\section{Valutazione degli effetti sistematici}
-In realtà il nostro apparato è racchiuso da una scatola metallica per
-schermarlo dalla luce e dal rumore elettronico ambientale, ma la misura
-di $h/e$ è affetta da diverse fonti di errore sistematico.
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{heprel}
+    \caption{Grafico con retta di best-fit e residui normalizzati per la
+    relazione inversa \cref{eq: eh}.
+    \label{fig: eh}}
+\end{figure}
 
-\subsection{Effetto fotoelettrico sull'anodo}
+\begin{table}
+\centering
+\begin{tabular}{ccccc}
+\toprule
+Metodo & $h/e \; [\si{\V \s}]$ & $W_0/e \; [\si{\V}]$ &
+$\chi^2/\text{ndof}$ & norm. cov. \\
+\midrule
+Prel. & $3.9 \pm 0.2$ & $1.35 \pm 0.12$ & $1.7/2$ & $-0.995$ \\
+$I\ped{inv}$ & $4.21 \pm 0.13$ & $1.46 \pm 0.21$ & $0.1/2$ & $-0.971$ \\
+\bottomrule
+\end{tabular}
+\caption{Risultati dei fit lineari per la misura del rapporto $h/e$ ottenuti
+dai due metodi impiegati: la stima preliminare e quello della corrente inversa
+\label{tab: he}}
+\end{table}
+
+Da cui otteniamo come valore del rapporto $h/e = 4.21 \pm 0.13 \; \si{\V \s}$,
+che è compatibile entro l'incertezza con il valore atteso.
+
+%1/pars[0]
+%Out[29]: 3.568317911720477
+%Quindi un valore del rapporto h/e sottostimato di circa il $15 \%$ rispetto al
+%valore atteso.
+
+\subsection{Effetto fotoelettrico sull'anodo e lavoro di estrazione}
 Dal datasheet della cella fotoelettrica sappiamo che questa è composta da un
-anodo in lega di platino e rodio, che è una spira di $SI{3}{c\meter}$ e da un
+anodo in lega di platino e rodio, che è una spira di $\SI{3}{c\meter}$ e da un
 catodo in potassio rivestito di ossido d'argento, costituito da un arco
 delle dimensioni di $\SI{4}{c\meter}$.
 
@@ -306,50 +490,33 @@ immagine, messa a fuoco al centro del catodo, abbia dimensioni molto
 inferiori al raggio dell'anodo.
 
 Non solo: il potassio -come tipico per i metalli alcalini- ha lavoro di
-estrazione $W\ped{0, K} \approx 2.15 \; \si{\V}$ più basso di quello di altri
-metalli, come il platino $W\ped{0, Pt} \approx 5.29 \; \si{\V}$ con cui è
+estrazione $W\ped{0, K} \approx 2.15 \; \si{e\V}$ più basso di quello di altri
+metalli, come il platino $W\ped{0, Pt} \approx 5.29 \; \si{e\V}$ con cui è
 stato realizzato l'anodo sempre per questo motivo.
 
-\subsection{Effetto termoionico e connessione ohmica tra gli elettrodi}
-A differenza del caso precedente ci sono due effetti che non possono
-essere soppressi altrettanto facilmente, per cui ci aspettiamo forniscano
-il contributo maggioritario alla corrente inversa:
-\begin{itemize}
-    \item L'effetto termoionico si ha sia sul catodo che sull'anodo e diventa pià significativo all'aumentare della tensione di \emph{bias}. La corrente $ I\ped{inv} $ misurata per $ V > V\ped{0}$ è principalmente attribuibile a questo contributo e dovrebbe essere osservabile (e quindi quantificabile in modo più preciso) anche in assenza di illuminazione;
-
-    \item I cavi coassiali uscenti dalla scatola metallica in cui è contenuto l'apparato sono connessi al catodo e all'anodo e poi esternamente collegati rispettivamente in parallelo al voltmetro e in serie al picoamperometro. La scatola metallica scherma dal rumore elettronico, ma le guaine di rivestimento dei cavi non sono perfettamente isolanti e questo può comportare una ulteriore corrente inversa tra gli elettrodi, che per via dell'ordine di grandezza delle correnti in gioco, diventa non trascurabile.
-\end{itemize}
-
-\subsection{Considerazioni sul metodo \texttt{A}}
-Nel \hyperref[sec:metodoA]{metodo \texttt{A}} si determina il valore della corrente inversa interpolando le misure nella regione $I \leq 0 $ con un modello lineare. I parametri $ b $ e $ I_{0} $ non dovrebbero dipendere dalla lunghezza d'onda della radiazione incidente: considerando un modello del tipo equazione di Shockley per un diodo a giunzione per la fotocellula, il modello lineare dovrebbe essere uno sviluppo al primo ordine dell'equazione caratteristica nel range considerato, con $ b $ parametro nell'esponenziale e $ I_{0} $ valore asintotico della corrente.
-
-Tuttavia dalla~\eqref{fig:fit-oscuro} è possibile notare come $ I\ped{inv} $ abbia in realtà andamenti diversi al variare della lunghezza d'onda: per le lunghezze d'onda minori, quindi per fotoni più energetici, il potenziale di frenamento $ V_{0} $ è più elevato e dunque la corrente tende più lentamente al valore asintotico. Questo comporta una deviazione significativa dall'andamento lineare e dunque i parametri del \emph{fit} manifestano necessariamente una dipendenza dalla lunghezza d'onda impiegata.
-
-\subsection{Considerazioni sul metodo \texttt{B}}
-Nel \hyperref[sec:metodoB]{metodo \texttt{B}} si adopera l'equazione~\eqref{eq:modello-magico} e in tale caso i parametri $ b $ e $ I_{0} $ risultano compatibili. Nella zona di transizione $ V\sim V_{0} $, il parametro $ a $ tiene conto della dipendenza dalla lunghezza d'onda: dai parametri di \emph{best-fit} si nota infatti che $ a $ cambia significativamente al variare della lunghezza d'onda ed è monotona crescente nella lunghezza d'onda.
-
-L'origine fisica del parametro $\alpha$ nella legge di potenza può essere compresa descrivendo, in prima approssimazione, il gas di elettroni nella banda di conduzione del metallo alcalino di cui è costituito il catodo come un gas degenere di Fermi: ovviamente questo modello considera gli elettroni nel metallo come liberi e non tiene conto delle successive interazioni dei fotoelettroni con il bulbo della fotocella. Si ottengono infatti valori maggiori di $ 3/2 $, gli $ \alpha $ di \emph{best-fit} non risultano compatibili tra loro e risultano monotoni crescenti nella lunghezza d'onda.
-
-
+Dalla nostra analisi i risultati ottenuti per $W_0$ risultano compatibili con
+il valore dell'intercetta attesa dal datasheet della fotocella e in
+particolare risultano anche in accordo con il valore del lavoro di estrazione
+del potassio. Prendendo nuovamente la media pesata dei valori ottimali come in
+\cref{eq: bweight} infatti abbiamo
+\[
+W_0/e = 1.37 \pm 0.08 \; \si{\V} \implies W_0 = 2.19 \pm 0.12 \; \si{e\V}
+\]
 
 %=======================
 \section*{Conclusioni e commenti finali}
-Si è riusciti a dare una misura ragionevole del rapporto carica/massa
-dell'elettrone a partire da un'analisi delle fotografie della sua traiettoria
-elicoidale in presenza di un campo magnetico uniforme.
+Si è riusciti a dare una stima ragionevole del rapporto $h/e$ tramite due
+varianti del metodo del potenziale frenante. Nonostante la semplicità della
+procedura già da una stima preliminare si è riusciti ad ottenere un valore
+con scarto dell'$8 \%$ circa. Con il metodo della corrente inversa si riesce
+a migliorare significativamente la precisione (incertezza relativa del $3 \%$)
+e l'accuratezza (scarto del $2 \%$) della misura dello stesso rapporto,
+seppure questo richieda particolare attenzione nelle procedure di fit.
 
 %=======================
 \section*{Dichiarazione}
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e
 originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
 hanno contribuito alla elaborazione della relazione stessa.
-
-%=======================
-\begin{thebibliography}{1}
-\bibitem{Coope}{I. D. Coope, Circle fitting by linear and nonlinear least
-squares, Department of Mathematics, University of Canterbury, Christchurch,
-New Zealand, N.60, May, 1992,
-\url{https://ir.canterbury.ac.nz/bitstream/handle/10092/11104/coope_report_no69_1992.pdf?sequence=1&isAllowed=y}}
-\end{thebibliography}
 
 \end{document}

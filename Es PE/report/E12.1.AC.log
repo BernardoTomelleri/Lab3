@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  24 MAR 2022 14:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  28 MAR 2022 06:45
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1289,121 +1289,113 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 19.
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<../figs//546nm.png, id=60, 1440.88312pt x 711.4078pt>
+<../figs//546nm.png, id=45, 1440.88312pt x 711.4078pt>
 File: ../figs//546nm.png Graphic file (type png)
 <use ../figs//546nm.png>
-Package pdftex.def Info: ../figs//546nm.png  used on input line 76.
+Package pdftex.def Info: ../figs//546nm.png  used on input line 87.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
  [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<../figs//lamp.png, id=88, 523.9575pt x 155.07938pt>
+<../figs//lamp.png, id=74, 523.9575pt x 155.07938pt>
 File: ../figs//lamp.png Graphic file (type png)
 <use ../figs//lamp.png>
-Package pdftex.def Info: ../figs//lamp.png  used on input line 155.
+Package pdftex.def Info: ../figs//lamp.png  used on input line 165.
 (pdftex.def)             Requested size: 366.76775pt x 108.55481pt.
  [2 <../figs//546nm.png (PNG copy)>]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-78.
+88.
 
 (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<../figs//schm.png, id=105, 1189.44376pt x 539.01375pt>
+<../figs//schm.png, id=92, 1189.44376pt x 539.01375pt>
 File: ../figs//schm.png Graphic file (type png)
 <use ../figs//schm.png>
-Package pdftex.def Info: ../figs//schm.png  used on input line 188.
+Package pdftex.def Info: ../figs//schm.png  used on input line 198.
 (pdftex.def)             Requested size: 237.88454pt x 107.80083pt.
-<../figs//dark.png, id=108, 1440.88312pt x 711.4078pt>
+<../figs//dark.png, id=95, 1440.88312pt x 711.4078pt>
 File: ../figs//dark.png Graphic file (type png)
 <use ../figs//dark.png>
-Package pdftex.def Info: ../figs//dark.png  used on input line 207.
+Package pdftex.def Info: ../figs//dark.png  used on input line 217.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 216.
+(hyperref)                removing `math shift' on input line 226.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 216.
+(hyperref)                removing `math shift' on input line 226.
 
 [3 <../figs//lamp.png> <../figs//schm.png>]
+<../figs//heprel.pdf, id=104, 603.45451pt x 354.12299pt>
+File: ../figs//heprel.pdf Graphic file (type pdf)
+<use ../figs//heprel.pdf>
+Package pdftex.def Info: ../figs//heprel.pdf  used on input line 258.
+(pdftex.def)             Requested size: 483.69687pt x 283.84991pt.
+<../figs//darkfit.pdf, id=107, 672.11098pt x 388.81259pt>
+File: ../figs//darkfit.pdf Graphic file (type pdf)
+<use ../figs//darkfit.pdf>
+Package pdftex.def Info: ../figs//darkfit.pdf  used on input line 272.
+(pdftex.def)             Requested size: 483.69687pt x 279.82025pt.
+ [4 <../figs//dark.png (PNG copy)>]
+[5 <../figs//heprel.pdf> <../figs//darkfit.pdf>]
+<../figs//IV.pdf, id=166, 587.55508pt x 362.07271pt>
+File: ../figs//IV.pdf Graphic file (type pdf)
+<use ../figs//IV.pdf>
+Package pdftex.def Info: ../figs//IV.pdf  used on input line 359.
+(pdftex.def)             Requested size: 483.69687pt x 298.07832pt.
+<../figs//inp.pdf, id=173, 578.16pt x 353.40028pt>
+File: ../figs//inp.pdf Graphic file (type pdf)
+<use ../figs//inp.pdf>
+Package pdftex.def Info: ../figs//inp.pdf  used on input line 431.
+(pdftex.def)             Requested size: 483.69687pt x 295.65707pt.
+ [6] [7 <../figs//IV.pdf>]
+File: ../figs//heprel.pdf Graphic file (type pdf)
+<use ../figs//heprel.pdf>
+Package pdftex.def Info: ../figs//heprel.pdf  used on input line 450.
+(pdftex.def)             Requested size: 483.69687pt x 283.84991pt.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 253.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\alpha' on input line 253.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 253.
-
-[4 <../figs//dark.png (PNG copy)>]
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 323.
-
-
-LaTeX Warning: Hyper reference `sec:metodoA' on page 5 undefined on input line 
-324.
-
-
-LaTeX Warning: Reference `fig:fit-oscuro' on page 5 undefined on input line 326
-.
-
-
-LaTeX Warning: Hyper reference `sec:metodoB' on page 5 undefined on input line 
-329.
-
-
-LaTeX Warning: Reference `eq:modello-magico' on page 5 undefined on input line 
-329.
-
-[5] [6] (./E12.1.AC.aux)
-
-LaTeX Warning: There were undefined references.
-
+[8 <../figs//inp.pdf>] [9] (./E12.1.AC.aux)
 Package rerunfilecheck Info: File `E12.1.AC.out' has not changed.
-(rerunfilecheck)             Checksum: FC018977FB5D716B30C8FAD02ECCEB86;2884.
+(rerunfilecheck)             Checksum: 61AEAC505A10E2674C972E50DA753F96;2202.
  ) 
 Here is how much of TeX's memory you used:
- 55713 strings out of 479713
- 1366188 string characters out of 5876923
- 2173107 words of memory out of 10000000
- 72678 multiletter control sequences out of 15000+600000
- 423623 words of font info for 82 fonts, out of 8000000 for 9000
+ 55763 strings out of 479713
+ 1367222 string characters out of 5876923
+ 2178106 words of memory out of 10000000
+ 72724 multiletter control sequences out of 15000+600000
+ 422199 words of font info for 79 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,13n,125p,754b,810s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
-ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
-t/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2021/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive
-/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsf
-onts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super
-/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.
-pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/te
-xlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c:/texlive/2021
-/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/2021/texmf-dis
-t/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2021/texmf-dist/fonts/ty
-pe1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
-/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/
-sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.p
-fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb><c:/tex
-live/2021/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on E12.1.AC.pdf (6 pages, 681226 bytes).
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2021/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
+c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/
+2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols
+/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pf
+b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texl
+ive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c:/texlive/2021/t
+exmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/2021/texmf-dist/
+fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2021/texmf-dist/fonts/type
+1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/c
+m-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
+rm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb
+><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on E12.1.AC.pdf (9 pages, 3654519 bytes).
 PDF statistics:
- 262 PDF objects out of 1000 (max. 8388607)
- 197 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 500000)
- 137 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 404 PDF objects out of 1000 (max. 8388607)
+ 264 compressed objects within 3 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 125 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -10,7 +10,7 @@ import phylab as lab
 
 ''' Variables that control the script '''
 tix = False  # manually choose spacing between axis ticks
-tex = False  # LaTeX typesetting maths and descriptions
+tex = True  # LaTeX typesetting maths and descriptions
 
 # Modello lineare
 def lin(x, m=1, q=0):
@@ -44,8 +44,17 @@ prnpar(pars, perr, model)
 chisq, ndof, resn = chitest(model(x, *pars), y, unc=deff, ddof=len(pars), v=True)
 
 # linear fit graphs
-fig, (axf, axr) = pltfitres(model, x, y, dx, deff, pars=pars)
-axf.set_ylabel(r'Dark current intensity $I_0$ [pA]')
+fig, (axf, axr) = plt.subplots(**lab.rc.PLOT_FIT_RESIDUALS)
+grid(axf, xlab=False); grid(axr, ylab='residuals')
+axf.errorbar(x[::10], y[::10], dy[::10], dx[::10], marker='.', ms=3, color='k',
+        elinewidth=.5, capsize=1.5, ls='', label='data')
+axf.plot(x, model(x, *pars), ls='-', marker=None, color='red',
+         label=r'linear fit $\chi^2 = %.f/%d$' % (chisq, ndof), zorder=10)
+
+axr.errorbar(x[::10], resn[::10], None, None, marker='o', ms=2, elinewidth=0.5, capsize=0.5,
+             ls='--', lw=1, color='k')
+
+axf.set_ylabel(r'Inverse current intensity $I_{\mathrm{inv}}$ [pA]')
 if tix: tick(axf, xmaj=0.1, ymaj=50)
 
 axr.set_xlabel(r'Bias voltage $V$ [V]', x=0.8)
@@ -60,8 +69,8 @@ print(pcor[0][1])
 b, I0 = pars
 def inp(V, a, V0):
     # return np.heaviside(V0 - V, 0)*a*(V0 - V)**alpha  + b*V + I0
-    return np.piecewise(V, [V < V0, V > V0], [lambda V: a*(V0 - V)**2.4806, lambda V: b*V + I0])
-def IV(V, a, V0, alpha, b, I0):
+    return np.piecewise(V, [V < V0, V > V0], [lambda V: a*(V0 - V)**2.481, lambda V: b*V + I0])
+def IV(V, a, V0, alpha):
     return np.piecewise(V, [V < V0, V > V0], [lambda V: a*(V0 - V)**alpha, lambda V: b*V + I0])
 
 V, I = np.genfromtxt('./data/450nm.csv',  float, delimiter=',',
@@ -130,6 +139,7 @@ for V, I, l, c  in zip(Vs, Is, lambdas, colours):
     pars, covm = lab.curve_fit(model, x, y, sigma=dy, p0=init, absolute_sigma=True, method='lm')
     perr, pcor = errcor(covm)
     prnpar(pars, perr, model)
+    lab.prncor(pcor, model)
     chisq, ndof, resn = chitest(model(x, *pars), y, unc=dy, ddof=len(pars), v=True)
 
     # power law fit graphs
@@ -145,7 +155,7 @@ for V, I, l, c  in zip(Vs, Is, lambdas, colours):
     #alphas.append(pars[2]); dalphas.append(perr[2])
     
 axf.errorbar(xD, yD, dyD, dxD, marker='.', ms=3, color='k',
-        elinewidth=1., capsize=1.5, ls='', label=r'dark current $I_0$', zorder=0)
+        elinewidth=1., capsize=1.5, ls='', label=r'Inverse current $I_{\mathrm{inv}}$', zorder=0)
 axr.axhline(0, **lab.rc.RES_HLINE)
 
 axf.set_ylabel(r'Photocurrent intensity $I(V)$ [pA]')
@@ -162,7 +172,7 @@ dx = np.array([9.6, 11.7, 11.1, 10.])/np.array([450, 499, 546, 577]) * x/np.sqrt
 y, dy = np.asarray(V0s), np.asarray(dV0s)
 x, dx, y, dy = y, dy, x, dx
 
-x = np.array([1.20, 0.99, 0.76, 0.64]); dx = np.full_like(x, 0.02)
+#y = np.array([1.20, 0.99, 0.76, 0.64]); dy = np.full_like(x, 0.025)
 # linear fit
 init = [4, 0]
 model = lin
@@ -176,8 +186,8 @@ chisq, ndof, resn = chitest(model(x, *pars), y, unc=deff, ddof=len(pars), v=True
 # linear fit graphs
 fig, (axf, axr) = pltfitres(model, x, y, dx, deff, pars=pars)
 axr.set_xlabel(r'Stopping voltage $V_0$ [V]', x=0.7)
-if tix: tick(axf, xmaj=0.1, ymaj=50)
+if tix: tick(axf, xmaj=25, ymaj=0.2)
 
-axf.set_ylabel(r'Light frequency $\nu$ [THz]')
+axf.set_ylabel(r'Light frequency $\nu$ [THz]', x=0.8)
 if tix: tick(axr, xmaj=0.1, ymaj=0.5)
 legend = axf.legend(loc='best')
