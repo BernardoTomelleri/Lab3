@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  28 MAR 2022 09:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  28 MAR 2022 17:05
 entering extended mode
 **./E11.1.AC.tex
 (E11.1.AC.tex
@@ -1383,25 +1383,22 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <../figs//0.jpg, id=31, 629.9535pt x 342.68025pt>
 File: ../figs//0.jpg Graphic file (type jpg)
 <use ../figs//0.jpg>
-Package pdftex.def Info: ../figs//0.jpg  used on input line 37.
+Package pdftex.def Info: ../figs//0.jpg  used on input line 39.
 (pdftex.def)             Requested size: 483.69687pt x 263.1221pt.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 61.
+               Default added (so using `tbp') on input line 63.
 
 <../figs//fit1.png, id=35, 462.528pt x 346.896pt>
 File: ../figs//fit1.png Graphic file (type png)
 <use ../figs//fit1.png>
-Package pdftex.def Info: ../figs//fit1.png  used on input line 101.
+Package pdftex.def Info: ../figs//fit1.png  used on input line 104.
 (pdftex.def)             Requested size: 483.69687pt x 362.79062pt.
 [1
 
 {C:/Users/rossi/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2 <../figs//0.
 jpg>] [3 <../figs//fit1.png>] [4] (E11.1.AC.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `E11.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: 5ABCBAE9273D3EF255BC10041EB19188;1307.
  ) 
@@ -1412,7 +1409,7 @@ Here is how much of TeX's memory you used:
  73038 multiletter control sequences out of 15000+600000
  415821 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 122i,11n,125p,805b,770s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,11n,125p,757b,776s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-t1.enc}<C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmex10.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/pu
@@ -1430,7 +1427,7 @@ fbx1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm
 ublic/cm-super/sfrm1000.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/cm-super/sfrm1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on E11.1.AC.pdf (4 pages, 286138 bytes).
+Output written on E11.1.AC.pdf (4 pages, 284605 bytes).
 PDF statistics:
  146 PDF objects out of 1000 (max. 8388607)
  20 named destinations out of 1000 (max. 500000)

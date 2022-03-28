@@ -22,17 +22,19 @@ a semiconduttore studiando il pattern di diffrazione generato da un suo
 fascio incidente sulla scala millimetrata di un calibro.
 
 \section{Descrizione della misura}
-Dalla teoria sulla natura ondulatoria della luce sappiamo che quando un'onda incide su un reticolo di diffrazione viene diffratta in diversi fasci: il fascio di luce che non subisce deviazioni e che viene trasmesso direttamente viene chiamato ordine 0, che può essere individuato sullo schermo come il punto di massima luminosità. Se poi andiamo a calcolare l'angolo di diffrazione degli altri fasci di luce deviati rispetto a un punto di riferimento, e considerando che i raggi vengono anche riflessi dal nostro reticolo, possiamo stabilire un relazione che collega la posizione dei massimi di rifrazione con la lunghezza d'onda $\lambda$, gli angoli degli ordini di diffrazione $\theta _m$, il passo del reticolo $d$ e l'angolo di incidenza sul reticolo $\theta _i$
+Dalla teoria sulla natura ondulatoria della luce sappiamo che quando delle onde, in fase e della stessa lunghezza d'onda, incidono su un reticolo di diffrazione vengono deviate e si verrà a formare un pattern di diffrazione.
+Utilizzando come reticolo la scala graduata di un calibro, invieremo un fascio di luce prodotta da un laser con angolo d'incidenza quasi radente, e visualizzeremo su uno schermo posto a distanza $D$ l'immagine prodotta dalla diffrazione.
+Possiamo stabilire una relazione che collega la posizione dei massimi di rifrazione con la lunghezza d'onda $\lambda$, gli angoli degli ordini di diffrazione $\theta _m$, il passo del reticolo $d$ e l'angolo di incidenza sul reticolo $\theta _i$ (che mi aspetto essere $\pi /2$)
 \begin{equation}
 d(\sin(\theta _i) - \sin(\theta _m))=m \lambda
 \label{eq:diff}
 \end{equation}
-Possiamo riscrivere l'equazione \ref{eq:diff} come:
+Manipolando algebricamente la \ref{eq:diff} posso riscriverla come
 \begin{equation}
-Y= -X \frac{\lambda}{d} +Q
+\sin(\theta _m) = -m \frac{\lambda}{d} + \sin(\theta _i) 
 \label{eq:fit}
 \end{equation}
-dove Y,X e Q sono rispettivamente $\sin(\theta _m)$, m e $\sin(\theta _i)$; da cui si riconosce subito l'equazione di una retta, con coefficiente angolare $\frac{\lambda}{d}$.
+ da cui si riconosce subito l'equazione di una retta, con coefficiente angolare $\frac{\lambda}{d}$.
 \begin{figure}
 \includegraphics[width=\textwidth]{0}
 \caption{ \label{schema1} Schema di riferimento dell'apparato sperimentale utilizzato}
@@ -44,19 +46,19 @@ Per determinare i seni degli angoli $\theta _m$ dei vari fasci è sufficiente ut
 \end{equation}
 dove $h_m$ sono le altezze relative dei massimi di diffrazione rispetto al punto di riferimento (nel nostro caso sarà l'altezza a cui si trova il calibro).
 \subsection{Apparato}
-Utilizzeremo un diodo laser con una lunghezza d'onda pari a $636 \pm 1 \; nm$, reperibile nel datasheet.
-Come reticolo di diffrazione abbiamo utilizzato la superficie riflettente di un calibro (quindi con passo $d=1 \; mm$).
+Utilizzeremo un diodo laser con una lunghezza d'onda pari a $636 \pm 1 \; nm$ (luce rossa), reperibile nel datasheet e come detto prima utilizzeremo la scala graduata di un calibro (passo $d= 1mm$) come reticolo di diffrazione.
 Utilizzando lo schema in figura \ref{schema1} si è cominciato misurando la distanza tra lo schermo e il punto d'incidenza del fascio luminoso sul calibro:
 \[
 D=2.90 \pm 0.03 m
 \]
 il valore dell'incertezza deriva dal fatto che il punto preciso in cui il fascio laser incide sul calibro è difficile da stimare, perché invece di un punto si osserva una regione luminosa lunga circa 6 cm (d'altronde $\theta _i$ è molto vicino a $\pi /2$), di conseguenza abbiamo preso come errore la semilarghezza dello spot luminoso.
-Successivamente si è spostato il calibro in modo che solo una porzione del fascio incidesse sulla scala del calibro, mentre il restante continuasse la sua traiettoria rettilinea senza essere riflesso.
-Si ottiene così un'immagine da cui si può stimare il piano di riferimento da cui far partire le misure di $h_m$ prendendo il punto medio tra il punto dove incideva il fascio riflesso, e il punto in cui incideva il fascio "diretto"; da qui abbiamo stimato il valore di $h_0$:
+Successivamente si è spostato il calibro in modo che solo una porzione del fascio di luce incidesse sulla scala del calibro, mentre il restante continuasse la sua traiettoria rettilinea senza essere riflesso.
+Sullo schermo si ottiene un'immagine caratterizzata da solo 2 punti di massimo, uno più basso (derivante dalla porzione del fascio non riflesso) e uno più alto (quello riflesso).
+misurando la distanza tra questi punti si può stimare il piano di riferimento da cui far partire le misure di $h_m$ prendendo il punto medio tra il punto basso e quello alto; da qui abbiamo stimato il valore di $h_0$:
 \[
 h_0=5.3 \pm 0.1 cm
 \]
-per concludere le misure abbiamo registrato le altezze di 25 massimi di diffrazione rispetto al piano di riferimento, ognuno con la relativa incertezza (derivata dallo spessore non trascurabile dei singoli spot luminosi).
+Per concludere le misure abbiamo registrato le altezze di 25 massimi di diffrazione rispetto al piano di riferimento, ognuno con la relativa incertezza (derivata dallo spessore non trascurabile dei singoli spot luminosi).
 Utilizzando poi l'equazione \ref{eq:gon} abbiamo stimato i corrispettivi $\sin(\theta _m)$.
 \begin{table}[]
 \centering
@@ -65,31 +67,31 @@ Utilizzando poi l'equazione \ref{eq:gon} abbiamo stimato i corrispettivi $\sin(\
 $h_m [cm]$ & $\sigma h_m [mm]$ & $\sin(\theta _m)$ & $\sigma \sin(\theta _m)$\\
 \midrule
 5,3 & 1 & 1,00 & 7 E-06 \\
-11,53 & 1 & 9,99E-01 & 2 E-05 \\
-15,48 & 1 & 9,99E-01 & 3 E-05 \\
-18,57 & 1 & 9,98E-01 & 5 E-05 \\
-21,27 & 1 & 9,97E-01 & 6 E-05 \\
-23,69 & 1 & 9,97E-01 & 7 E-05 \\
-25,91 & 2 & 9,96E-01 & 1 E-04 \\
-27,93 & 2 & 9,95E-01 & 1 E-04 \\
-29,86 & 2 & 9,95E-01 & 1 E-04 \\
-31,60 & 2 & 9,94E-01 & 1 E-04 \\
-33,24 & 2 & 9,93E-01 & 2 E-04 \\
-34,78 & 2 & 9,93E-01 & 2 E-04 \\
-36,33 & 2 & 9,92E-01 & 2 E-04 \\
-37,78 & 2 & 9,92E-01 & 2 E-04 \\
-39,22 & 2 & 9,91E-01 & 2 E-04 \\
-40,67 & 3 & 9,90E-01 & 2 E-04 \\
-41,92 & 3 & 9,90E-01 & 3 E-04 \\
-43,28 & 3 & 9,89E-01 & 3 E-04 \\
-44,53 & 3 & 9,88E-01 & 3 E-04 \\
-45,78 & 2 & 9,88E-01 & 3 E-04 \\
-46,94 & 2 & 9,87E-01 & 3 E-04 \\
-48,10 & 2 & 9,86E-01 & 3 E-04 \\
-49,26 & 2 & 9,86E-01 & 3 E-04 \\
-50,32 & 2 & 9,85E-01 & 3 E-04 \\
-51,38 & 1 & 9,85E-01 & 3 E-04 \\
-52,35 & 1 & 9,84E-01 & 3 E-04
+11,5 & 1 & 9,99E-01 & 2 E-05 \\
+15,5 & 1 & 9,99E-01 & 3 E-05 \\
+18,6 & 1 & 9,98E-01 & 5 E-05 \\
+21,3 & 1 & 9,97E-01 & 6 E-05 \\
+23,7 & 1 & 9,97E-01 & 7 E-05 \\
+25,9 & 2 & 9,96E-01 & 1 E-04 \\
+27,9 & 2 & 9,95E-01 & 1 E-04 \\
+29,9 & 2 & 9,95E-01 & 1 E-04 \\
+31,6 & 2 & 9,94E-01 & 1 E-04 \\
+33,2 & 2 & 9,93E-01 & 2 E-04 \\
+34,8 & 2 & 9,93E-01 & 2 E-04 \\
+36,3 & 2 & 9,92E-01 & 2 E-04 \\
+37,8 & 2 & 9,92E-01 & 2 E-04 \\
+39,2 & 2 & 9,91E-01 & 2 E-04 \\
+40,7 & 3 & 9,90E-01 & 2 E-04 \\
+41,9 & 3 & 9,90E-01 & 3 E-04 \\
+43,3 & 3 & 9,89E-01 & 3 E-04 \\
+44,5 & 3 & 9,88E-01 & 3 E-04 \\
+45,8 & 2 & 9,88E-01 & 3 E-04 \\
+46,9 & 2 & 9,87E-01 & 3 E-04 \\
+48,1 & 2 & 9,86E-01 & 3 E-04 \\
+49,3 & 2 & 9,86E-01 & 3 E-04 \\
+50,3 & 2 & 9,85E-01 & 3 E-04 \\
+51,4 & 1 & 9,85E-01 & 3 E-04 \\
+52,4 & 1 & 9,84E-01 & 3 E-04
 \end{tabular}
 \caption{Dati dei vari $h_m$ (in ordine a partire dall'ordine 0) e dei corrispettivi angoli \label{hm}}
 \end{table}
@@ -97,11 +99,12 @@ $h_m [cm]$ & $\sigma h_m [mm]$ & $\sin(\theta _m)$ & $\sigma \sin(\theta _m)$\\
 
 
 A questo punto tramite un fit lineare $\sin{\theta_m}$ vs $m$ partendo dall'equazione \ref{eq:fit} è possibile stimare il parametro $\frac{\lambda}{d}$ e dunque $\lambda$; nel fare il fit abbiamo escluso il punto $h_0$ per vedere se Q fosse compatibile col suo valore.
+Data l'origine sistematica degli errori sulla distanza $D$ e dei centri dei massimi di diffrazione abbiamo utilizzato il flag absolute\textunderscore sigma=True in modo che la funzione curve\textunderscore fit non riscalasse le incertezze dategli in ingresso.
 \begin{figure}
 \includegraphics[width=\textwidth]{fit1}
 \caption{\label{linfit1} Fit lineare con modello \ref{eq:fit}, il grafico dei residui non evidenzia nessun andamento particolare che possa compromettere la nostra misura o il modello utilizzato.}
 \end{figure}
-Dal fit si ricava $\frac{\lambda}{d}=6.35 \pm 0.01 \;\times 10^{-4} \; m$ e $\sin(\theta _i) =1.00 \pm (2 \times 10^{-6})\;$; da questi risultati si ottiene $\lambda=635 \pm 1 \;nm$.
+Dal fit si ricava $\frac{\lambda}{d}=6.35 \pm 0.01 \;\times 10^{-4} \; m$ e $\sin(\theta _i) =0.99 \pm (2 \times 10^{-6})\;$; da questi risultati si ottiene $\lambda=635 \pm 1 \;nm$.
 Deduciamo quindi che i valori sono compatibili con le aspettative entro 2 barre di errore.
 %=======================
 \section{Interferometro di Michelson: lunghezza d'onda lampada Hg}
@@ -141,7 +144,7 @@ Abbiamo quindi sostituito la sorgente di radiazione luminosa con una lampada al 
 facendo quindi la media pesata si ricava $\lambda _{Hg}=545\pm 28 \; nm$ che risulta totalmente compatibile con le aspettative
 %=======================
 \section*{Conclusioni e commenti finali}
-Siamo riusciti a stimare con successo la lunghezza d'onda di un laser utilizzando come reticolo di diffrazione un calibro. Successivamente utilizzando l'interferometro di Michelson, calibrato grazie ad un laser He-Ne, siamo riusciti a stimare la lunghezza d'onda di una lampada al mercurio compatibile con le aspettative cercando di mantenere le incertezze più basse possibile.
+Siamo riusciti a stimare con successo la lunghezza d'onda di un laser utilizzando come reticolo di diffrazione un calibro. Successivamente utilizzando l'interferometro di Michelson, calibrato grazie ad un laser He-Ne, siamo riusciti a stimare la lunghezza d'onda di una lampada al mercurio compatibile con le aspettative cercando di mantenere le incertezze più piccole possibile.
 
 %=======================
 \section*{Dichiarazione}
