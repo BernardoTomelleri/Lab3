@@ -11,7 +11,6 @@ import phylab as lab
 ''' Variables that control the script '''
 tix = False  # manually choose spacing between axis ticks
 tex = False  # LaTeX typesetting maths and descriptions
-TEMP = False
 
 # Modello lineare
 def lin(x,m,q):
@@ -28,7 +27,7 @@ dx=np.zeros(len(x))
 # Preliminary plot to visualize the sub-interval of data to analyze
 lab.rc.typeset(usetex=tex, fontsize=12)
 fig, ax = plt.subplots()
-grid(ax, xlab=r'ordine di diffrazione', ylab=r'sin (theta_m)')
+grid(ax, xlab=r'Order of diffraction $m$', ylab=r'Angular position $\sin (\theta_m)$')
 ax.errorbar(x, y, dy, dx, 'k.', ls='-', ms=2, alpha=0.8)
 # y=y
 dy=dy
@@ -54,17 +53,10 @@ chisq, ndof, resn = chitest(model(x, *pars), y, unc=deff, ddof=len(pars), v=True
 
 # linear fit graphs
 fig, (axf, axr) = pltfitres(model, x, y, dx, deff, pars=pars)
-axf.set_ylabel(r'sin(theta_m)')
+axf.set_ylabel(r'Angular position $\sin (\theta_m)$')
 if tix: tick(axf, xmaj=0.1, ymaj=0.2)
-if TEMP:
-    axt = axf.twinx()
-    axt.errorbar(x, temp, 0.001, dx,'b.', ls='',  label='Therm data')
-    axt.set_ylabel('Thermistor Voltage $V(TH)$ V')
-    axt.axhline(2.69, c='r', alpha=0.5, label='Thermistor Voltage $= 2.69\pm 0.01$ V')
-    axt.axhline(2.69 + 1e-3, c='r', ls='--', alpha=0.3); axt.axhline(2.69 - 1e-3, c='r', ls='--', alpha=0.3)
 
-
-axr.set_xlabel(r'ordine di diffrazione', x=0.8)
+axr.set_xlabel(r'Order of diffraction $m$', x=0.8)
 if tix: tick(axr, xmaj=0.1, ymaj=0.5)
 legend = axf.legend(loc='best')
 plt.show()

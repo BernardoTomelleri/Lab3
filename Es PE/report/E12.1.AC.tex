@@ -227,7 +227,8 @@ stesso intervallo di misura della fotocorrente riportato in \cref{fig: dark}
 Abbiamo ottenuto una stima preliminare della tensione di azzeramento $V_0$
 estraendo dalle curve corrente-tensione i valori di $V\ped{bias}$ per cui la
 corrente anodica $I$ si discosta meno di due barre d'errore dalla corrente di
-buio misurata senza luce incidente, da cui otteniamo:
+buio misurata senza luce incidente, di cui riportiamo i risultati in
+\cref{tab: V0prel}
 \begin{table}
 \centering
 \begin{tabular}{cccccc}
@@ -502,6 +503,11 @@ del potassio. Prendendo nuovamente la media pesata dei valori ottimali come in
 \[
 W_0/e = 1.37 \pm 0.08 \; \si{\V} \implies W_0 = 2.19 \pm 0.12 \; \si{e\V}
 \]
+
+\subsection{Nota sul metodo di fit}
+Per determinare i parametri ottimali e le rispettive covarianze si \`e
+implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
+mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 
 %=======================
 \section*{Conclusioni e commenti finali}

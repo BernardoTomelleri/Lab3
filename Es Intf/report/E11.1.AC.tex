@@ -21,133 +21,256 @@ Lo scopo dell'esperienza è misurare la lunghezza d'onda di un laser
 a semiconduttore studiando il pattern di diffrazione generato da un suo
 fascio incidente sulla scala millimetrata di un calibro.
 
-\section{Descrizione della misura}
-Dalla teoria sulla natura ondulatoria della luce sappiamo che quando un'onda incide su un reticolo di diffrazione viene diffratta in diversi fasci: il fascio di luce che non subisce deviazioni e che viene trasmesso direttamente viene chiamato ordine 0, che può essere individuato sullo schermo come il punto di massima luminosità. Se poi andiamo a calcolare l'angolo di diffrazione degli altri fasci di luce deviati rispetto a un punto di riferimento, e considerando che i raggi vengono anche riflessi dal nostro reticolo, possiamo stabilire un relazione che collega la posizione dei massimi di rifrazione con la lunghezza d'onda $\lambda$, gli angoli degli ordini di diffrazione $\theta _m$, il passo del reticolo $d$ e l'angolo di incidenza sul reticolo $\theta _i$
+\section{Metodo di misura}
+Un reticolo di diffrazione è un apparato capace di disperdere un fascio
+luminoso incidente in funzione della sua lunghezza d'onda. Il fenomeno alla
+base di tale separazione è l'interferenza luminosa, per la quale è possibile
+determinare la seguente relazione tra lunghezza d'onda della riga spettrale
+diffratta e la sua posizone angolare
 \begin{equation}
-d(\sin(\theta _i) - \sin(\theta _m))=m \lambda
+d(\sin(\theta _i) - \sin(\theta _m)) = m \lambda
 \label{eq:diff}
 \end{equation}
-Possiamo riscrivere l'equazione \ref{eq:diff} come:
+in cui $m (\in \ZZ$) è l'ordine di interferenza per cui si individuano le
+posizioni dei massimi principali, $\lambda$ è la lunghezza d'onda del fascio
+incidente (come di quello riflesso), $\theta _m$ è l'angolo che
+individua la posizioni di diffrazione relativa all'$m$-esimo ordine, $d$ è il
+passo del reticolo.
+L'angolo di incidenza sul reticolo viene denominato $\theta _i$.
+
+Dalla misura degli angoli di diffrazione, noto il loro ordine e noto il passo
+reticolare, possiamo individuare una relazione lineare che ci permetta di
+ricavare la lunghezza d'onda come evidenziata in \ref{eq:diff}:
 \begin{equation}
-Y= -X \frac{\lambda}{d} +Q
+y = -x \frac{\lambda}{d} + q
 \label{eq:fit}
 \end{equation}
-dove Y,X e Q sono rispettivamente $\sin(\theta _m)$, m e $\sin(\theta _i)$; da cui si riconosce subito l'equazione di una retta, con coefficiente angolare $\frac{\lambda}{d}$.
+dove $y,x$ e $q$ sono rispettivamente $\sin(\theta _m)$, $m$ e
+$\sin(\theta _i)$.
+
 \begin{figure}
 \includegraphics[width=\textwidth]{0}
-\caption{ \label{schema1} Schema di riferimento dell'apparato sperimentale utilizzato}
+\caption{Schema di riferimento dell'apparato sperimentale utilizzato
+\label{fig: schema}}
 \end{figure}
-Per determinare i seni degli angoli $\theta _m$ dei vari fasci è sufficiente utilizzare la definizione di $\sin$ per arrivare alla conclusione che
+
+I valori degli angoli si intendono in riferimento al sistema che ha come
+origine il punto in cui è posto il calibro, di modo da poter ricavare
+direttamente come misure di altezza i massimi di diffrazione.
+
+Infatti si vede facilmente come
 \begin{equation}
-\sin(\theta _m)=\frac{D}{\sqrt{D^2 + h_m^2}}=(1+ (\frac{h_m}{D})^2)^{-\frac{1}{2}}
-\label{eq:gon}
+\sin(\theta _m) = \frac{D}{\sqrt{D^2 + h_m^2}} = 
+\left(1 + \left(\frac{h_m}{D}\right)^2\right)^{-\frac{1}{2}}
+\label{eq: gon}
 \end{equation}
-dove $h_m$ sono le altezze relative dei massimi di diffrazione rispetto al punto di riferimento (nel nostro caso sarà l'altezza a cui si trova il calibro).
-\subsection{Apparato}
-Utilizzeremo un diodo laser con una lunghezza d'onda pari a $636 \pm 1 \; nm$, reperibile nel datasheet.
-Come reticolo di diffrazione abbiamo utilizzato la superficie riflettente di un calibro (quindi con passo $d=1 \; mm$).
-Utilizzando lo schema in figura \ref{schema1} si è cominciato misurando la distanza tra lo schermo e il punto d'incidenza del fascio luminoso sul calibro:
+dove $h_m$ sono le altezze relative dei massimi di diffrazione misurate
+rispetto al punto di riferimento.
+
+\subsection{Nota sul metodo di fit}
+Per determinare i parametri ottimali e le rispettive covarianze si \`e
+implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
+mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
+
+\subsection{Descrizione delle misure}
+Si utilizza un diodo laser con lunghezza d'onda pari a $636 \pm 1 \; \si{n\m}$
+(reperibile da datasheet) che incide sul reticolo di diffrazione in
+riflessione costituito dalla scala graduata di un calibro ventesimale.
+Da questo sappiamo che il valore del passo reticolare è pari a
+$d = 1 \; \si{m\m}$.
+%TODO INCERTEZZA SUL PASSO DA COSTRUTTORE DEL CALIBRO
+
+Noto il valore del passo reticolare, viene eseguita una stima dell'angolo di
+diffrazione usando \cref{eq:fit} applicata a partire dall'ordine $m = 0$.
+Per fare questo è stato prima necessario determinare la distanza tra l'origine
+dei fasci e lo schermo su cui essi erano proiettati:
 \[
-D=2.90 \pm 0.03 m
+D = 2.90 \pm 0.03 \; \si{\m}
 \]
-il valore dell'incertezza deriva dal fatto che il punto preciso in cui il fascio laser incide sul calibro è difficile da stimare, perché invece di un punto si osserva una regione luminosa lunga circa 6 cm (d'altronde $\theta _i$ è molto vicino a $\pi /2$), di conseguenza abbiamo preso come errore la semilarghezza dello spot luminoso.
-Successivamente si è spostato il calibro in modo che solo una porzione del fascio incidesse sulla scala del calibro, mentre il restante continuasse la sua traiettoria rettilinea senza essere riflesso.
-Si ottiene così un'immagine da cui si può stimare il piano di riferimento da cui far partire le misure di $h_m$ prendendo il punto medio tra il punto dove incideva il fascio riflesso, e il punto in cui incideva il fascio "diretto"; da qui abbiamo stimato il valore di $h_0$:
+dove l'incertezza risente della larghezza dello spot del fascio proiettato,
+che per l'ordine $m = 0$ corrisponde a una regione luminosa di diametro
+$6.0 \pm 0.1 \; \si{c\m}$ sull'asta del calibro.
+Dal momento che il fascio risulta (entro la sensibilità sperimentale)
+ortogonale allo schermo e al reticolo, si trascurano possibili effetti di
+distorsione e si sceglie di individuare il punto di massima intensità luminosa
+al suo centro, associando alla sua posizione un'incertezza corrispondente
+alla semilarghezza dell'intera regione illuminata (come si farà per le.
+
+Successivamente si è spostato il calibro in modo che solo una porzione del fascio incidesse sulla sua scala.
+
+Abbiamo quindi definito un valore di azzeramento per tutte le seguenti misure di
+angoli, scegliendo il valore medio tra la proiezione del fascio diretto e
+quello riflesso all'ordine zero. Da cui troviamo come valore stimato per
+l'altezza di riferimento:
 \[
-h_0=5.3 \pm 0.1 cm
+h_0 = 5.3 \pm 0.1 \; \si{c\m}
 \]
-per concludere le misure abbiamo registrato le altezze di 25 massimi di diffrazione rispetto al piano di riferimento, ognuno con la relativa incertezza (derivata dallo spessore non trascurabile dei singoli spot luminosi).
-Utilizzando poi l'equazione \ref{eq:gon} abbiamo stimato i corrispettivi $\sin(\theta _m)$.
-\begin{table}[]
+
+Abbiamo registrato le altezze di 25 massimi di diffrazione, di cui si
+riportano in \cref{tab: hm} i valori dei seni degli angoli misurati $\sin{\theta_m}$
+relativi al punto di azzeramento. L'incertezza associata alle misure deriva dallo
+spessore non trascurabile dei singoli spot luminosi, in maniera simile a quanto
+visto in precedenza per determinare la posizione dell'ordine 0.
+\begin{table}[htbp]
 \centering
-\begin{tabular}{cc|cc}
+\begin{tabular}{ccccc}
 \toprule
-$h_m [cm]$ & $\sigma h_m [mm]$ & $\sin(\theta _m)$ & $\sigma \sin(\theta _m)$\\
+ordine di diffrazione $m$ & $h_m \; [\si{c\m}]$ &
+$\sigma (h_m) \; [\si{m\m}]$ & $\sin(\theta _m)$ & $\sigma(\sin{\theta _m})$ \\
 \midrule
-5,3 & 1 & 1,00 & 7 E-06 \\
-11,53 & 1 & 9,99E-01 & 2 E-05 \\
-15,48 & 1 & 9,99E-01 & 3 E-05 \\
-18,57 & 1 & 9,98E-01 & 5 E-05 \\
-21,27 & 1 & 9,97E-01 & 6 E-05 \\
-23,69 & 1 & 9,97E-01 & 7 E-05 \\
-25,91 & 2 & 9,96E-01 & 1 E-04 \\
-27,93 & 2 & 9,95E-01 & 1 E-04 \\
-29,86 & 2 & 9,95E-01 & 1 E-04 \\
-31,60 & 2 & 9,94E-01 & 1 E-04 \\
-33,24 & 2 & 9,93E-01 & 2 E-04 \\
-34,78 & 2 & 9,93E-01 & 2 E-04 \\
-36,33 & 2 & 9,92E-01 & 2 E-04 \\
-37,78 & 2 & 9,92E-01 & 2 E-04 \\
-39,22 & 2 & 9,91E-01 & 2 E-04 \\
-40,67 & 3 & 9,90E-01 & 2 E-04 \\
-41,92 & 3 & 9,90E-01 & 3 E-04 \\
-43,28 & 3 & 9,89E-01 & 3 E-04 \\
-44,53 & 3 & 9,88E-01 & 3 E-04 \\
-45,78 & 2 & 9,88E-01 & 3 E-04 \\
-46,94 & 2 & 9,87E-01 & 3 E-04 \\
-48,10 & 2 & 9,86E-01 & 3 E-04 \\
-49,26 & 2 & 9,86E-01 & 3 E-04 \\
-50,32 & 2 & 9,85E-01 & 3 E-04 \\
-51,38 & 1 & 9,85E-01 & 3 E-04 \\
-52,35 & 1 & 9,84E-01 & 3 E-04
+\midrule
+0  & 5.3 & 1.0 & 1.00000 & $1 \times 10^{-6}$ \\
+1  & 11.5 & 1.0 & 0.99921 & $2 \times 10^{-5}$ \\
+2  & 15.5 & 1.0 & 0.99857 & $3 \times 10^{-5}$ \\
+3  & 18.6 & 1.0 & 0.99795 & $5 \times 10^{-5}$ \\
+4  & 21.3 & 1.0 & 0.99731 & $6 \times 10^{-5}$ \\
+5  & 23.7 & 1.0 & 0.99667 & $7 \times 10^{-5}$ \\
+6  & 26 & 2 & 0.9960 & $1 \times 10^{-4}$ \\
+7  & 28 & 2 & 0.9954 & $1 \times 10^{-4}$ \\
+8  & 30 & 2 & 0.9947 & $1 \times 10^{-4}$ \\
+9  & 32 & 2 & 0.9941 & $1 \times 10^{-4}$ \\
+10 & 33 & 2 & 0.9935 & $2 \times 10^{-4}$ \\
+11 & 35 & 2 & 0.9929 & $2 \times 10^{-4}$ \\
+12 & 36 & 2 & 0.9922 & $2 \times 10^{-4}$ \\
+13 & 38 & 2 & 0.9916 & $2 \times 10^{-4}$ \\
+14 & 39 & 2 & 0.9909 & $2 \times 10^{-4}$ \\
+15 & 41 & 3 & 0.9903 & $2 \times 10^{-4}$ \\
+16 & 42 & 3 & 0.9897 & $3 \times 10^{-4}$ \\
+17 & 43 & 3 & 0.9890 & $3 \times 10^{-4}$ \\
+18 & 44 & 3 & 0.9884 & $3 \times 10^{-4}$ \\
+19 & 46 & 2 & 0.9877 & $3 \times 10^{-4}$ \\
+20 & 47 & 2 & 0.9871 & $3 \times 10^{-4}$ \\
+21 & 48 & 2 & 0.9865 & $3 \times 10^{-4}$ \\
+22 & 49 & 2 & 0.9858 & $3 \times 10^{-4}$ \\
+23 & 50 & 2 & 0.9852 & $3 \times 10^{-4}$ \\
+24 & 51 & 1 & 0.9846 & $3 \times 10^{-4}$ \\
+25 & 52 & 1 & 0.9841 & $3 \times 10^{-4}$ \\
+\bottomrule
 \end{tabular}
-\caption{Dati dei vari $h_m$ (in ordine a partire dall'ordine 0) e dei corrispettivi angoli \label{hm}}
+\caption{Misure delle altezze delle proiezioni dei fasci riflessi e
+corrispondenti seni degli angoli associati al variare degli ordini di
+diffrazione. \label{tab: hm}}
 \end{table}
 
+A questo punto si effettua un fit lineare sulla base dell'\cref{eq:fit},
+da cui è possibile stimare il coefficiente angolare $\frac{\lambda}{d}$ e
+dunque $\lambda$ della radiazione emessa.
 
-
-A questo punto tramite un fit lineare $\sin{\theta_m}$ vs $m$ partendo dall'equazione \ref{eq:fit} è possibile stimare il parametro $\frac{\lambda}{d}$ e dunque $\lambda$; nel fare il fit abbiamo escluso il punto $h_0$ per vedere se Q fosse compatibile col suo valore.
+Dalla procedura di fit viene escluso il valore $h_0$ al fine di verificare che
+l'intercetta risultasse compatibile con questo.
+Data l'origine sistematica degli errori sulle misure di distanza $D$ e delle
+posizioni dei centri dei massimi di diffrazione abbiamo impostato il flag
+\verb+absolute_sigma=True+ in modo che la funzione curve\_fit non riscalasse
+le incertezze fornite in ingresso.
 \begin{figure}
-\includegraphics[width=\textwidth]{fit1}
-\caption{\label{linfit1} Fit lineare con modello \ref{eq:fit}, il grafico dei residui non evidenzia nessun andamento particolare che possa compromettere la nostra misura o il modello utilizzato.}
+\includegraphics[width=\textwidth]{thetafit}
+\caption{Grafico della retta di best-fit e residui normalizzati per
+l'andamento delle posizioni angolari $\sin{\theta_m}$ in funzione dell'ordine
+di diffrazione $m$. Il grafico dei residui non evidenzia nessun andamento
+che devii in maniera sistematica dal modello utilizzato (\cref{eq:fit}).
+\label{fig: linfit}}
 \end{figure}
-Dal fit si ricava $\frac{\lambda}{d}=6.35 \pm 0.01 \;\times 10^{-4} \; m$ e $\sin(\theta _i) =1.00 \pm (2 \times 10^{-6})\;$; da questi risultati si ottiene $\lambda=635 \pm 1 \;nm$.
-Deduciamo quindi che i valori sono compatibili con le aspettative entro 2 barre di errore.
+
+\begin{table}
+\centering
+\begin{tabular}{ccccc}
+\toprule
+$\lambda/d$ [arb. un.] & $\sin{\theta_i}$ [arb. un.] &
+$\chi^2/\text{ndof}$ & norm. cov. \\
+\midrule
+$I\ped{inv}$ & $636 \pm 1 \; \times 10^{-6}$
+& $999.8 \pm 0.2 \; \times 10^{-3}$ & $0.3/23$ & $-0.99$ \\
+\bottomrule
+\end{tabular}
+\caption{Risultati del fit lineare per la misura del rapporto $\lambda/d$
+\label{tab: linfit}}
+\end{table}
+
+Dal fit ricaviamo quindi (moltiplicando per il passo reticolare noto) che
+$\lambda = 635.7 \pm 0.5 \; \si{n\m}$, che il valore ottimale di $\theta_i$
+risulta compatibile con $\pi/2$ entro l'incertezza e che la nostra misura di
+$\lambda$ risulta in ottimo accordo con quanto tabulato nel datasheet del
+laser.
+
 %=======================
-\section{Interferometro di Michelson: lunghezza d'onda lampada Hg}
+\section{Interferometro di Michelson: lunghezza d'onda della lampada Hg}
 \subsection{Stima del fattore di demoltiplica}
-Per calibrare l'apparato e stimare il fattore di demoltiplica della vite-specchio M1 è stato utilizzato un laser He-Ne di lunghezza d'onda nota ($632.8 nm$).
-Per prima cosa è stato necessario calibrare lo specchio M2 in modo che sullo schermo appaia un pattern circolare di interferenza dovuto allo sfasamento dei 2 fasci di luce prodotti dalle lenti dell'interferometro.
-Una volta posizionato M2 nella posizione corretta abbiamo iniziato a variare la posizione di M1 contando il numero di fronti d'onda passanti da un punto qualunque fisso sullo schermo (per comodità il centro) in funzione dello spostamento effettuato dalla vite di M1. Da qui abbiamo utilizzato l'equazione :
-\begin{equation}
-\eta= \frac{m \lambda}{2 \Delta L}
-\label{dem}
+Per calibrare l'apparato e stimare il fattore di demoltiplica tra lo
+spostamento del nonio della vite micrometrica e lo spostamento dello
+specchio mobile M1 è stato utilizzato un laser He-Ne di lunghezza d'onda nota
+($632.8 \; \si{n\m}$).
+Per prima cosa si è calibrata la posizione dello specchio M2 in modo che sul
+centro dello schermo apparisse un pattern circolare di interferenza dovuto
+allo sfasamento tra i 2 fasci di luce prodotto dai diversi cammini ottici
+lungo i bracci dell'interferometro.
+Una volta fissata la posizione di M2 abbiamo iniziato a variare la distanza
+di M1 contando il numero di fronti d'onda passanti da un punto qualunque
+sullo schermo (per comodità il centro) in funzione dello spostamento
+effettuato dalla vite di M1. 
+
+Il fattore di demoltiplica $\kappa$ si può stimare a partire dall'equazione
+fondamentale tra il numero di frange $m$ che si vedono passare per il centro
+$m$ e lo spostamento $\Delta L$ del braccio dello specchio M1
+\begin{equation}\label{eq: fond}
+2 \Delta L = m \lambda
+\end{equation}
+tramite l'equazione
+\begin{equation}\label{eq: dem}
+\kappa = \frac{m \lambda}{2 \Delta L}
 \end{equation}
 
-per ricavare il fattore di demoltiplica $\eta$.
-Ripetendo la misura 2 volte abbiamo ottenuto 
-  \[
+Ripetendo la misura al variare degli spostamenti $Delta L$ 2 volte abbiamo
+ottenuto 
+\[
 \def\arraystretch{1.5}
 \begin{array}{rcl}
-\eta_1 & = & 198 \pm 9 \times 10^{-3}\\
-\eta_2 & = & 0.21 \pm 0.01\\
+\kappa_1 & = & 198 \pm 9 \times 10^{-3} \\
+\kappa_2 & = & 0.21 \pm 0.01 \\
 \end{array}
 \]
-facendo poi la media pesata delle misure si ricava $\eta_M =206 \pm 8 \; \times 10^{-3}$.
+facendo poi la media pesata delle misure si è ricavata la nostra stima
+ottimale del fattore di conversione
+$\kappa = 206 \pm 8 \; \times 10^{-3}$.
 
 \subsubsection{Misura della lunghezza d'onda della lampada Hg}
-Modificando l'equazione \ref{dem} si giunge a trovare una formula per la stima della lunghezza d'onda in funzione del numero dei fronti d'onda, del fattore di demoltiplica e dello spostamento effettuato dalla vite micrometrica.
+Manipolando l'\cref{eq: dem} si arriva alla formula usata per la misura della
+lunghezza d'onda di una sorgente in funzione del numero dei fronti
+d'onda $m$, del fattore di demoltiplica $\kappa$ e dello spostamento effettuato
+dalla vite micrometrica $\Delta L$.
 \[
-\lambda=\frac{2\Delta L \eta}{m}
+\lambda = \frac{2 \Delta L \kappa}{m}
 \]
-Abbiamo quindi sostituito la sorgente di radiazione luminosa con una lampada al mercurio di lunghezza d'onda $\lambda=546 nm$; dopodiché utilizzando la stessa procedura di prima abbiamo contato i fronti d'onda in funzione dello spostamento della vite micrometrica.
-  \[
+Abbiamo quindi sostituito la sorgente di radiazione luminosa con una lampada
+al mercurio di lunghezza d'onda attesa $\lambda\ped{exp} = 546 \; \si{n\m}$;
+dopodiché, seguendo la stessa procedura di prima abbiamo contato i fronti
+d'onda in funzione dello spostamento della vite micrometrica, da cui troviamo
+\[
 \def\arraystretch{1.5}
 \begin{array}{rcl}
-\lambda_1 & = & 5.5 \pm 0.4 \times 10^{-7} m\\
-\lambda_2 & = & 5.4 \pm 0.4 \times 10^{-7} m\\
+\lambda_1 & = & 5.5 \pm 0.4 \times 10^{-7} \; \si{m} \\
+\lambda_2 & = & 5.4 \pm 0.4 \times 10^{-7} \; \si{m} \\
 \end{array}
 \]
-facendo quindi la media pesata si ricava $\lambda _{Hg}=545\pm 28 \; nm$ che risulta totalmente compatibile con le aspettative
+
+Di nuovo da una media pesata delle due misure si è ottenuta la nostra miglior
+stima della lunghezza d'onda $\lambda\ped{Hg} = 545 \pm 28 \; \si{n\m}$ che
+risulta compatibile con le aspettative.
+
 %=======================
 \section*{Conclusioni e commenti finali}
-Siamo riusciti a stimare con successo la lunghezza d'onda di un laser utilizzando come reticolo di diffrazione un calibro. Successivamente utilizzando l'interferometro di Michelson, calibrato grazie ad un laser He-Ne, siamo riusciti a stimare la lunghezza d'onda di una lampada al mercurio compatibile con le aspettative cercando di mantenere le incertezze più basse possibile.
+Siamo riusciti a stimare la lunghezza d'onda di un laser a diodo utilizzando
+come reticolo di diffrazione in riflessione un calibro ventesimale.
+Dunque, utilizzando un interferometro di Michelson si è ottenuta una misura
+ragionevole della lunghezza d'onda di una lampada al mercurio.
+Le misure di queste grandezze sono affette da diverse sorgenti di errore non
+trascurabili, principalmente dovute alla difficoltà nell'individuare posizioni
+esatte per le immagini dei fenomeni luminosi studiati (ampiezze non puntiformi
+degli spot luminosi e frange d'interferenza non perfettamente distinguibili).
 
 %=======================
 \section*{Dichiarazione}
 I firmatari di questa relazione dichiarano che il contenuto della relazione \`e
 originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
 hanno contribuito alla elaborazione della relazione stessa.
-
 
 \end{document}
