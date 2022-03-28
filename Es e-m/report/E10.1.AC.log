@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  28 MAR 2022 15:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  28 MAR 2022 20:45
 entering extended mode
 **./E10.1.AC.tex
 (E10.1.AC.tex
@@ -1430,24 +1430,24 @@ File: ../figs//sounasegaiochiamalocomecazzotiparetantocifounasegaio.png Graphic
  file (type png)
 <use ../figs//sounasegaiochiamalocomecazzotiparetantocifounasegaio.png>
 Package pdftex.def Info: ../figs//sounasegaiochiamalocomecazzotiparetantocifoun
-asegaio.png  used on input line 115.
+asegaio.png  used on input line 118.
 (pdftex.def)             Requested size: 483.69687pt x 242.09822pt.
 <../figs//riferimentoB.png, id=88, 1003.75pt x 610.28pt>
 File: ../figs//riferimentoB.png Graphic file (type png)
 <use ../figs//riferimentoB.png>
-Package pdftex.def Info: ../figs//riferimentoB.png  used on input line 119.
+Package pdftex.def Info: ../figs//riferimentoB.png  used on input line 122.
 (pdftex.def)             Requested size: 483.69687pt x 294.09508pt.
 <../figs//cal1.jpg, id=89, 1110.0672pt x 740.0448pt>
 File: ../figs//cal1.jpg Graphic file (type jpg)
 <use ../figs//cal1.jpg>
-Package pdftex.def Info: ../figs//cal1.jpg  used on input line 130.
+Package pdftex.def Info: ../figs//cal1.jpg  used on input line 133.
 (pdftex.def)             Requested size: 483.69687pt x 322.45891pt.
  [2] [3 <../figs//sounasegaiochiamalocomecazzotiparetantocifounasegaio.png> <..
-/figs//riferimentoB.png (PNG copy)>]
+/figs//riferimentoB.png (PNG copy)>] [4 <../figs//cal1.jpg>]
 
 Package svg Warning: You didn't enable `shell escape' (or `write18')
 (svg)                so it wasn't possible to launch the Inkscape export
-(svg)                for `../figs//geometria.svg' on input line 153.
+(svg)                for `../figs//geometria.svg' on input line 156.
 
 
 ! Package svg Error: File `geometria_svg-tex.pdf' is missing.
@@ -1456,7 +1456,7 @@ See the svg package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.153     \includesvg[width=\textwidth]{geometria}
+l.156     \includesvg[width=\textwidth]{geometria}
                                                   
 Did you run the export with Inkscape? There's no file
 `./svg-inkscape/geometria_svg-tex.pdf'
@@ -1469,64 +1469,52 @@ See the svg package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.153     \includesvg[width=\textwidth]{geometria}
+l.156     \includesvg[width=\textwidth]{geometria}
                                                   
 Did you run the export with Inkscape? There's no file
 `./svg-inkscape/geometria_svg-tex.pdf_tex'
 although `../figs//geometria.svg' was found.
 
-<../figs//circfit.png, id=104, 1387.584pt x 694.5147pt>
+<../figs//circfit.png, id=110, 1387.584pt x 694.5147pt>
 File: ../figs//circfit.png Graphic file (type png)
 <use ../figs//circfit.png>
-Package pdftex.def Info: ../figs//circfit.png  used on input line 163.
+Package pdftex.def Info: ../figs//circfit.png  used on input line 166.
 (pdftex.def)             Requested size: 483.69687pt x 242.09822pt.
-[4 <../figs//cal1.jpg>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 191.
+(hyperref)                removing `math shift' on input line 194.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 191.
+(hyperref)                removing `math shift' on input line 194.
 
-[5 <../figs//circfit.png>]
-<../figs//medpes.png, id=123, 462.528pt x 346.896pt>
+<../figs//medpes.png, id=115, 462.528pt x 346.896pt>
 File: ../figs//medpes.png Graphic file (type png)
 <use ../figs//medpes.png>
-Package pdftex.def Info: ../figs//medpes.png  used on input line 205.
+Package pdftex.def Info: ../figs//medpes.png  used on input line 208.
 (pdftex.def)             Requested size: 483.69687pt x 362.79062pt.
-<../figs//linfit.png, id=124, 1387.584pt x 694.5147pt>
+<../figs//linfit.png, id=116, 1387.584pt x 694.5147pt>
 File: ../figs//linfit.png Graphic file (type png)
 <use ../figs//linfit.png>
-Package pdftex.def Info: ../figs//linfit.png  used on input line 210.
+Package pdftex.def Info: ../figs//linfit.png  used on input line 213.
 (pdftex.def)             Requested size: 483.69687pt x 242.09822pt.
- [6 <../figs//medpes.png>]
-
-LaTeX Warning: Reference `sec:map' on page 7 undefined on input line 234.
-
-[7 <../figs//linfit.png>]
+[5] [6 <../figs//circfit.png> <../figs//medpes.png>] [7 <../figs//linfit.png>]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
-54.
+57.
 
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 [8] (E10.1.AC.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `E10.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: B71E7A2165A1E8A49338F4E61939BA58;3482.
  ) 
 Here is how much of TeX's memory you used:
- 56902 strings out of 478927
- 1406644 string characters out of 2852534
- 2182522 words of memory out of 3000000
- 73942 multiletter control sequences out of 15000+600000
- 419911 words of font info for 76 fonts, out of 8000000 for 9000
+ 56900 strings out of 478927
+ 1406622 string characters out of 2852534
+ 2183522 words of memory out of 3000000
+ 73941 multiletter control sequences out of 15000+600000
+ 419135 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  122i,11n,125p,901b,814s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
@@ -1541,17 +1529,16 @@ Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/ro
 ssi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:
 /Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7
 .pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/
-sfbx1000.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/c
-m-super/sfbx1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/cm-super/sfbx1440.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/font
-s/type1/public/cm-super/sfrm1000.pfb><C:/Users/rossi/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Users/rossi/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Users/rossi/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/cm-super/sfti1000.pfb><C:/Users/rossi/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on E10.1.AC.pdf (8 pages, 4442206 bytes).
+sfbx1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/c
+m-super/sfbx1440.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/cm-super/sfrm1000.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/font
+s/type1/public/cm-super/sfrm1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Users/rossi/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/cm-super/sfti1000.pfb><C:/Users/rossi/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on E10.1.AC.pdf (8 pages, 4431077 bytes).
 PDF statistics:
- 235 PDF objects out of 1000 (max. 8388607)
+ 231 PDF objects out of 1000 (max. 8388607)
  41 named destinations out of 1000 (max. 500000)
  155 words of extra memory for PDF output out of 10000 (max. 10000000)
 

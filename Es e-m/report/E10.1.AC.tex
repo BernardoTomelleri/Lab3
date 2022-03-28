@@ -83,32 +83,35 @@ Da cui otteniamo l'equazione tramite cui vogliamo stimare il rapporto
 \end{equation}
 
 Dal momento che tutte le variabili nel RHS sono direttamente controllabili
-configurando le tensioni di alimentazione e possiamo misurare il raggio
+configurando le tensioni di alimentazione possiamo misurare il raggio
 della traiettoria $R$ analizzando (come faremo ad esempio con un fit
 circolare) le fotografie del moto nel bulbo.
 
 %=======================
 \section{Descrizione delle misure}
 \subsection{Orientazione delle bobine rispetto al campo magnetico terrestre}
-Usando le due bussole in dotazione e la bussola di un cellulare abbiamo per
+Usando le due bussole in dotazione abbiamo per
 prima cosa orientato l'apparato in modo che il campo magnetico generato dalle
 bobine avesse la stessa direzione del campo magnetico terrestre: in questo modo non avremo componenti del campo magnetico che modificherebbero la traiettoria rendendo il moto elicoidale anziché circolare.
+Si è utilizzata anche la bussola di un telefono dotato di gps, dato che le 2 bussole non erano in accordo tra di loro, probabilmente per usura di una di queste; introducendo una terza bussola (quella del telefono) abbiamo eliminato la bussola malfunzionante e abbiamo orientato l'apparato usando le rimanenti.
 \subsection{Mappatura del campo magnetico lungo l'asse delle bobine}
 \label{sec:map}
-Si vuole a questo punto misurare la variazione d'intensità del campo magnetico lungo il piano in cui avverrà il moto degli elettroni (il piano equidistante dalle 2 bobine): per farlo ci serviamo di una sonda ad effetto hall con fattore di conversione di $\rho=5.0 \pm 0.1 \frac{mV}{G} = 50 \pm 1 \frac{V}{T}$.
+A questo punto si vuole misurare la variazione d'intensità del campo magnetico lungo il piano in cui avverrà il moto degli elettroni (il piano equidistante dalle 2 bobine) per verificare che non ci saranno effetti indesiderati che renderebbero l'analisi del moto più complicata dovuti alla non uniformità del campo magnetico nella regione di spazio che sarà poi occupata dal bulbo: questa zona può essere definita come una sfera di raggio di $7 cm$ con centro corrispondente all'intersezione tra l'asse delle spire e il piano equidistante tra le medesime.
+Per farlo ci serviamo di una sonda ad effetto hall con fattore di conversione di $\rho=5.0 \pm 0.1 \frac{mV}{G} = 50 \pm 1 \frac{V}{T}$.
 A questo punto abbiamo alimentato le bobine, facendo attenzione a non sovraccaricarle utilizzando una corrente maggiore di quella consigliata dal costruttore (2 A di corrente); abbiamo quindi misurato il valore della corrente di alimentazione:
 \[
 I_{coil}=2.00 \pm 0.03 A
 \]
 Facendo un veloce calcolo con l'equazione \cref{eq: Bmax} e con il valore misurato di $I_{coil}$ ci si aspetta che l'intensità del campo magnetico massimo misurato dovrà essere $B_{MAX} = 1.48 \pm 0.02 \si{mT}$; se ne deduce che quindi il sensore Hall da solo non è sufficiente per misurare approfonditamente le variazioni del campo magnetico (il sensore produrrebbe una d.d.p di circa 70 mV al massimo).
-Si è quindi inserito tra la sonda e il multimetro un amplificatore-sottrattore (da calibrare) con un coefficiente di amplificazione pari a $G=11.1 \pm 0.1$, da cui utilizzeremo l'equazione
+Si è quindi inserito tra la sonda e il multimetro un amplificatore-sottrattore (da calibrare in modo da annullare l'offset) con un coefficiente di amplificazione pari a $G=11.1 \pm 0.1$, da cui utilizzeremo l'equazione
 \begin{equation}
 B=\frac{\Delta V}{G \rho}
 \end{equation}
 per convertire il valore letto dal multimetro ($\Delta V$) in unità di campo magnetico (per comodità utilizzeremo Tesla, ricordando che $1 Gauss = 10^{-4} Tesla$).
 Dato che l'errore sul valore letto dal multimetro è circa $0.7 \percent + 1 digit$ contro $2 \percent + 1 \percent$ derivante dal circuito sonda + Amplificatore, lo abbiamo trascurato, prendendo in considerazione solo quelli del circuito di amplificazione.\\
-Il primo passo è stato quello di calibrare il circuito amplificatore-sottrattore, aggiustando l'offset: abbiamo variato la manopola che controlla l'offset finché dal multimetro non si leggesse 2 valori uguali ma di segno opposto girando la sonda di $180 \degree$; da questa procedura ci accorgiamo che la sonda misura un campo magnetico residuo.
-Si è inserita la sonda nella guida rettilinea presente nell'apparato, la quale si trova nel punto medio tra le due bobine ed è posizionata in modo che passi dal loro centro tagliandole lungo il diametro: si legge dal multimetro una tensione di circa 19 mV, che convertendoli ci danno come risultato un campo magnetico di circa $34.2 \pm 0.7 \mu T$, compatibile con l'intensità del campo magnetico terrestre. Ci si accorge che questo contributo, che non è quindi trascurabile non essendo compreso nell'incertezza di $B_{MAX}$, andrà ad aumentare il campo magnetico misurato di circa il $2 \percent$, rendendo la nuova aspettativa di $1.51 \pm 0.02$.\\
+Il primo passo è stato quello di calibrare il circuito amplificatore-sottrattore, aggiustando l'offset in modo che diventasse nullo: essendo presente un campo magnetico residuo non si può semplicemente ruotare la manopola finché il valore letto sul multimetro non si annulla, in quanto significherebbe proprio che l'offset in quel caso vale l'opposto del valore in ingresso nel sottrattore.
+Di conseguenza abbiamo aggiustato l'offset in modo che dal multimetro si leggessero 2 valori di modulo uguale ma di segno opposto nel caso in cui si girasse la sonda di $180 \degree$, che è proprio ciò che ci si aspetta dato che la sonda misura solamente la componente ortogonale del campo magnetico al suo lato piatto.
+Si è inserita la sonda nella guida rettilinea presente nell'apparato, la quale si trova nel punto medio tra le due bobine ed è posizionata in modo che passi dal loro centro tagliandole lungo il diametro, orientando la perpendicolare del sensore lungo la direzione del campo magnetico che sarà poi generato dalle bobine: si legge dal multimetro una tensione di circa 19 mV, che convertendoli ci danno come risultato un campo magnetico di circa $34.2 \pm 0.7 \mu T$, compatibile con l'intensità del campo magnetico terrestre. Ci si accorge che questo contributo, che non è quindi trascurabile non essendo compreso nell'incertezza di $B_{MAX}$, andrà ad aumentare il campo magnetico misurato di circa il $2 \percent$, rendendo la nuova aspettativa di $1.51 \pm 0.02$.\\
 Successivamente è stato acceso il generatore che alimenta le bobine e si è inserita la sonda nell'apposita guida. Abbiamo quindi misurato il valore in uscita dal multimetro all'avanzare della sonda, con un passo di 1 centimetro.
 Considerando che il campo magnetico massimo misurato, trovato in corrispondenza del centro delle spire, è pari a $1.47 \pm 0.03 \;mT$ possiamo affermare che il valore è compatibile con le aspettative entro le 2 barre di errore.
 \begin{figure}
@@ -119,19 +122,19 @@ Considerando che il campo magnetico massimo misurato, trovato in corrispondenza 
 \includegraphics[width=\textwidth]{riferimentoB}
 \caption{Andamento previsto per l'intensità del campo magnetico nel piano centrale tra le spire in funzione della distanza dal centro}
 \end{figure}
-La mappatura delle intensità del campo magnetico risulta quindi qualitativamente compatibile con quanto aspettato.
+La mappatura delle intensità del campo magnetico risulta quindi qualitativamente compatibile con quanto aspettato, inoltre l'intensità del campo magnetico risulta essere costante all'interno della zona che sarà poi occupata dall'ampolla.
 \subsection{Calibrazione dell'apparato per l'acquisizione delle traiettorie}
 
 A questo punto si è potuto procedere con l'acquisizione delle misure del raggio.
-Per farlo abbiamo fatto uso di una fotocamera la quale è stata posizionata in modo tale che l'asse centrale dell'obiettivo della fotocamera coincidesse con il centro del bulbo di vetro: in questo modo le distorsioni dovute al bulbo saranno minimizzate, di conseguenza sarà più facile stimare il raggio effettivo.
+Per farlo abbiamo fatto uso di una fotocamera la quale è stata posizionata in modo tale che l'asse centrale dell'obiettivo della fotocamera coincidesse con il centro del bulbo di vetro: in questo modo le distorsioni dovute al bulbo saranno minimizzate, di conseguenza sarà più facile stimare il raggio effettivo delle orbite.
 Come impostazioni per la fotocamera abbiamo utilizzato un ISO di 400 e un'esposizione di 10 secondi, in modo da vedere al meglio i limiti interni ed esterni del pennello elettronico e stimare con maggiore precisione il raggio della traiettoria.\\
-Per cominciare abbiamo scattato una foto senza bulbo in cui si vedono 2 righelli (risoluzione 1 mm) posizionati ognuno in una bobina, questo per valutare gli effetti della geometria proiettiva (e ottenere una scala di conversione pixel-cm) e per poter valutare gli effetti di distorsione del bulbo.
+Per cominciare abbiamo scattato una foto senza bulbo in cui si vedono 2 righelli (risoluzione 1 mm) posizionati uno per bobina, questo per valutare gli effetti della geometria proiettiva (e ottenere una scala di conversione pixel-cm) e per poter valutare gli effetti di distorsione del bulbo.
 \begin{figure}
 \includegraphics[width=\textwidth]{cal1}
 \caption{Foto di calibrazione in assenza di bulbo, da questa ricaveremo una scala per convertire successivamente i dati da pixel a cm}
 \end{figure}
-Abbiamo quindi alimentato il dispositivo di emissione di elettroni con una tensione di 6 Volt (dal datasheet si legge che la massima consentita risulta essere $6.5 V$) e si è aspettato che il filamento si scaldasse fino a raggiungere una temperatura ottimale; non appena il pennello elettronico è diventato chiaramente visibile si è iniziato a variare la tensione di accelerazione in modo che la traiettoria fosse circolare e che il fascio di elettroni non andasse a urtare contro il vetro.
-Si sono scattate quindi diverse fotografie a diverse tensioni di accelerazioni e correnti $I_{coil}$; come ci si aspettava aumentando la tensione di accelerazione aumenta il raggio di curvatura, diminuendo $I_{coil}$ aumentava il raggio.
+Abbiamo quindi alimentato il dispositivo di emissione di elettroni con una tensione di 6 Volt (dal datasheet si legge che la massima consentita risulta essere $6.5 V$) in modo che l'emissione di elettroni fosse massima  e quindi l'orbita ben visibile e si è aspettato che il filamento si scaldasse fino a raggiungere una temperatura ottimale; non appena il pennello elettronico è diventato chiaramente visibile si è iniziato a variare la tensione di accelerazione in modo che la traiettoria fosse circolare e che il fascio di elettroni non andasse a urtare contro il vetro.
+Si sono scattate quindi diverse fotografie a diverse tensioni di accelerazioni e correnti $I_{coil}$ mantenendo la macchina fotografica nella stessa posizione; come ci si aspettava aumentando la tensione di accelerazione aumenta il raggio di curvatura, diminuendo $I_{coil}$ aumentava il raggio.
 \subsection{Conversione pixel-centimetro}
 \label{sec: conv}
 Con riferimento alla Figura~\ref{fig:conversione}, fissiamo un ``cono visivo''. Questo sottende sul righello più vicino alla fotocamera la distanza $ x $, su quello più lontano la distanza $ y $. Il rapporto $x/y$ può essere determinato confrontando le scale graduate dei due righelli (quello del Fermilab e quello dell'apparato sperimentale) nella relativa figura fornita. Chiamiamo $ D_{x} $, $ D_{y} $, $ D_{xy} $ le distanze dalla fotocamera ai/tra i vari piani. $ D_{xe} $ è invece la distanza tra il righello $ x $ e il piano del moto degli elettroni.
@@ -211,7 +214,7 @@ Dopodiché è stato condotto un fit lineare usando come modello la funzione $(BR
 \caption{\label{fig:linfit}Grafico e residui del fit lineare in cui come modello è stata scelta quella di una retta generica, di coefficiente angolare $\frac{m}{e}$.}
 \end{figure}
 Dal grafico dei residui visibile in figura \ref{fig:linfit} non risulta esserci una dipendenza apprezzabile del rapporto dal raggio della traiettoria.
-Possiamo infine concludere che i risultati ottenuti sono compatibili tra di loro, ma distanti dalle aspettative di circa il $14 \percent$.
+Possiamo infine concludere che i risultati ottenuti dalle due procedure sono compatibili tra di loro, ma distanti dalle aspettative con uno scarto del $14 \percent$.
 
 %=======================
 \section{Valutazione degli effetti sistematici}
