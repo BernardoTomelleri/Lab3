@@ -45,9 +45,8 @@ congiungente i centri delle bobine (ovvero il piano della traiettoria degli
 elettroni) il campo magnetico è parallelo all'asse $z$ delle spire ed ha
 valore massimo della componente lungo lo stesso asse:
 \begin{equation}\label{eq: Bmax}
-Bz\ped{MAX} = 7.40 10^{-4} \left[\frac{T}{A}\right] I\ped{coil}
+Bz\ped{MAX} = 7.40 \times 10^{-4} \left[\frac{T}{A}\right] I\ped{coil}
 \end{equation}
-
 
 Un catodo, riscaldato da un filamento incandescente alimentato con una
 tensione $V\ped{heat} = \SI{6}{\V}$ emette elettroni per effetto termoionico.
@@ -79,7 +78,7 @@ v^2 = 2 V\ped{acc} \frac{e}{m_e} \implies \left(\frac{e}{m_e} B R\right)^2 =
 \]
 Da cui otteniamo l'equazione tramite cui vogliamo stimare il rapporto
 \begin{equation}\label{eq: fit}
-\frac{e}{m_{e}} = \frac{2 \Delta V}{(BR)^2}.
+\frac{e}{m_{e}} = \frac{2 V\ped{acc}}{(BR)^2}.
 \end{equation}
 
 Dal momento che tutte le variabili nel RHS sono direttamente controllabili
@@ -90,93 +89,251 @@ circolare) le fotografie del moto nel bulbo.
 %=======================
 \section{Descrizione delle misure}
 \subsection{Orientazione delle bobine rispetto al campo magnetico terrestre}
-Usando le due bussole in dotazione abbiamo per
-prima cosa orientato l'apparato in modo che il campo magnetico generato dalle
-bobine avesse la stessa direzione del campo magnetico terrestre: in questo modo non avremo componenti del campo magnetico che modificherebbero la traiettoria rendendo il moto elicoidale anziché circolare.
-Si è utilizzata anche la bussola di un telefono dotato di gps, dato che le 2 bussole non erano in accordo tra di loro, probabilmente per usura di una di queste; introducendo una terza bussola (quella del telefono) abbiamo eliminato la bussola malfunzionante e abbiamo orientato l'apparato usando le rimanenti.
+Usando le due bussole in dotazione abbiamo orientato l'apparato in modo che
+il campo magnetico generato dalle bobine abbia la stessa direzione del campo
+magnetico terrestre $B_T$, così da ridurre al minino componenti del campo
+magnetico che ne ne possano modificare la direzione rispetto all'asse delle
+bobine (come evidenziato in \cref{fig: compass}) dunque la traiettoria degli
+elettroni, rendendo il moto elicoidale anziché circolare.
+
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.7]{compass}
+    \caption{Disegno schematico delle due bobine viste dall'alto con il
+    vettore di induzione magnetica generato dalle due bobine rispetto alla
+    direzione Nord-Sud del campo magnetico terrestre
+    \label{fig: compass}}
+\end{figure}
+
+Introducendo una terza bussola (quella di un telefono dotato di gps) si è
+riusciti ad avere un risultato consistente, dato che le 2 bussole fornite non
+erano in accordo tra loro (probabilmente per usura di una di queste)
+per orientare l'apparato rispetto alla direzione di $B_T$.
+
 \subsection{Mappatura del campo magnetico lungo l'asse delle bobine}
 \label{sec:map}
-A questo punto si vuole misurare la variazione d'intensità del campo magnetico lungo il piano in cui avverrà il moto degli elettroni (il piano equidistante dalle 2 bobine) per verificare che non ci saranno effetti indesiderati che renderebbero l'analisi del moto più complicata dovuti alla non uniformità del campo magnetico nella regione di spazio che sarà poi occupata dal bulbo: questa zona può essere definita come una sfera di raggio di $7 cm$ con centro corrispondente all'intersezione tra l'asse delle spire e il piano equidistante tra le medesime.
-Per farlo ci serviamo di una sonda ad effetto hall con fattore di conversione di $\rho=5.0 \pm 0.1 \frac{mV}{G} = 50 \pm 1 \frac{V}{T}$.
-A questo punto abbiamo alimentato le bobine, facendo attenzione a non sovraccaricarle utilizzando una corrente maggiore di quella consigliata dal costruttore (2 A di corrente); abbiamo quindi misurato il valore della corrente di alimentazione:
-\[
-I_{coil}=2.00 \pm 0.03 A
-\]
-Facendo un veloce calcolo con l'equazione \cref{eq: Bmax} e con il valore misurato di $I_{coil}$ ci si aspetta che l'intensità del campo magnetico massimo misurato dovrà essere $B_{MAX} = 1.48 \pm 0.02 \si{mT}$; se ne deduce che quindi il sensore Hall da solo non è sufficiente per misurare approfonditamente le variazioni del campo magnetico (il sensore produrrebbe una d.d.p di circa 70 mV al massimo).
-Si è quindi inserito tra la sonda e il multimetro un amplificatore-sottrattore (da calibrare in modo da annullare l'offset) con un coefficiente di amplificazione pari a $G=11.1 \pm 0.1$, da cui utilizzeremo l'equazione
-\begin{equation}
-B=\frac{\Delta V}{G \rho}
-\end{equation}
-per convertire il valore letto dal multimetro ($\Delta V$) in unità di campo magnetico (per comodità utilizzeremo Tesla, ricordando che $1 Gauss = 10^{-4} Tesla$).
-Dato che l'errore sul valore letto dal multimetro è circa $0.7 \percent + 1 digit$ contro $2 \percent + 1 \percent$ derivante dal circuito sonda + Amplificatore, lo abbiamo trascurato, prendendo in considerazione solo quelli del circuito di amplificazione.\\
-Il primo passo è stato quello di calibrare il circuito amplificatore-sottrattore, aggiustando l'offset in modo che diventasse nullo: essendo presente un campo magnetico residuo non si può semplicemente ruotare la manopola finché il valore letto sul multimetro non si annulla, in quanto significherebbe proprio che l'offset in quel caso vale l'opposto del valore in ingresso nel sottrattore.
-Di conseguenza abbiamo aggiustato l'offset in modo che dal multimetro si leggessero 2 valori di modulo uguale ma di segno opposto nel caso in cui si girasse la sonda di $180 \degree$, che è proprio ciò che ci si aspetta dato che la sonda misura solamente la componente ortogonale del campo magnetico al suo lato piatto.
-Si è inserita la sonda nella guida rettilinea presente nell'apparato, la quale si trova nel punto medio tra le due bobine ed è posizionata in modo che passi dal loro centro tagliandole lungo il diametro, orientando la perpendicolare del sensore lungo la direzione del campo magnetico che sarà poi generato dalle bobine: si legge dal multimetro una tensione di circa 19 mV, che convertendoli ci danno come risultato un campo magnetico di circa $34.2 \pm 0.7 \mu T$, compatibile con l'intensità del campo magnetico terrestre. Ci si accorge che questo contributo, che non è quindi trascurabile non essendo compreso nell'incertezza di $B_{MAX}$, andrà ad aumentare il campo magnetico misurato di circa il $2 \percent$, rendendo la nuova aspettativa di $1.51 \pm 0.02$.\\
-Successivamente è stato acceso il generatore che alimenta le bobine e si è inserita la sonda nell'apposita guida. Abbiamo quindi misurato il valore in uscita dal multimetro all'avanzare della sonda, con un passo di 1 centimetro.
-Considerando che il campo magnetico massimo misurato, trovato in corrispondenza del centro delle spire, è pari a $1.47 \pm 0.03 \;mT$ possiamo affermare che il valore è compatibile con le aspettative entro le 2 barre di errore.
-\begin{figure}
-\includegraphics[width=\textwidth]{sounasegaiochiamalocomecazzotiparetantocifounasegaio}
-\caption{Andamento misurato per l'intensità del campo magnetico nel piano centrale tra le spire in funzione della distanza dal centro}
-\end{figure}
-\begin{figure}
-\includegraphics[width=\textwidth]{riferimentoB}
-\caption{Andamento previsto per l'intensità del campo magnetico nel piano centrale tra le spire in funzione della distanza dal centro}
-\end{figure}
-La mappatura delle intensità del campo magnetico risulta quindi qualitativamente compatibile con quanto aspettato, inoltre l'intensità del campo magnetico risulta essere costante all'interno della zona che sarà poi occupata dall'ampolla.
-\subsection{Calibrazione dell'apparato per l'acquisizione delle traiettorie}
+Per caratterizzare il campo magnetico lungo il piano del moto degli elettroni
+(il piano equidistante dalle 2 bobine) ne studiamo l'intensità al variare
+della distanza dall'asse delle bobine.
 
-A questo punto si è potuto procedere con l'acquisizione delle misure del raggio.
-Per farlo abbiamo fatto uso di una fotocamera la quale è stata posizionata in modo tale che l'asse centrale dell'obiettivo della fotocamera coincidesse con il centro del bulbo di vetro: in questo modo le distorsioni dovute al bulbo saranno minimizzate, di conseguenza sarà più facile stimare il raggio effettivo delle orbite.
-Come impostazioni per la fotocamera abbiamo utilizzato un ISO di 400 e un'esposizione di 10 secondi, in modo da vedere al meglio i limiti interni ed esterni del pennello elettronico e stimare con maggiore precisione il raggio della traiettoria.\\
-Per cominciare abbiamo scattato una foto senza bulbo in cui si vedono 2 righelli (risoluzione 1 mm) posizionati uno per bobina, questo per valutare gli effetti della geometria proiettiva (e ottenere una scala di conversione pixel-cm) e per poter valutare gli effetti di distorsione del bulbo.
-\begin{figure}
-\includegraphics[width=\textwidth]{cal1}
-\caption{Foto di calibrazione in assenza di bulbo, da questa ricaveremo una scala per convertire successivamente i dati da pixel a cm}
-\end{figure}
-Abbiamo quindi alimentato il dispositivo di emissione di elettroni con una tensione di 6 Volt (dal datasheet si legge che la massima consentita risulta essere $6.5 V$) in modo che l'emissione di elettroni fosse massima  e quindi l'orbita ben visibile e si è aspettato che il filamento si scaldasse fino a raggiungere una temperatura ottimale; non appena il pennello elettronico è diventato chiaramente visibile si è iniziato a variare la tensione di accelerazione in modo che la traiettoria fosse circolare e che il fascio di elettroni non andasse a urtare contro il vetro.
-Si sono scattate quindi diverse fotografie a diverse tensioni di accelerazioni e correnti $I_{coil}$ mantenendo la macchina fotografica nella stessa posizione; come ci si aspettava aumentando la tensione di accelerazione aumenta il raggio di curvatura, diminuendo $I_{coil}$ aumentava il raggio.
-\subsection{Conversione pixel-centimetro}
-\label{sec: conv}
-Con riferimento alla Figura~\ref{fig:conversione}, fissiamo un ``cono visivo''. Questo sottende sul righello più vicino alla fotocamera la distanza $ x $, su quello più lontano la distanza $ y $. Il rapporto $x/y$ può essere determinato confrontando le scale graduate dei due righelli (quello del Fermilab e quello dell'apparato sperimentale) nella relativa figura fornita. Chiamiamo $ D_{x} $, $ D_{y} $, $ D_{xy} $ le distanze dalla fotocamera ai/tra i vari piani. $ D_{xe} $ è invece la distanza tra il righello $ x $ e il piano del moto degli elettroni.
-Per similitudine
-\[ \frac{y}{x} = \frac{D_{y}}{D_{x}} = 1 + \frac{D_{xy}}{D_{x}}. \]
-Quindi la relazione tra il raggio misurato dal righello $ y $ e il raggio reale è
+Per farlo ci serviamo di una sonda ad effetto hall con fattore di conversione
+di $\rho = 5.0 \pm 0.1 \; \si{m\V/G} = 50 \pm 1 \; \si{\V/\tesla}$.
+
+A partire da una misura iniziale della corrente di alimentazione delle
+spire
 \[
-    R = R_{y} \frac{D_{x} + D_{xe}}{D_{x} + D_{xy}} =
-    R_{y} \left[ \frac{D_{xe}}{D_{xy}} + \frac{x}{y} \left(1 - \frac{D_{xe}}{D_{xy}}\right) \right]
-    = \gamma R_{y}.
+I\ped{coil} = 2.00 \pm 0.03 \; \si{\A}
 \]
-Sia $ \kappa $ il fattore di conversione tra pixel e i centimetri del righello $ y $. Allora abbiamo
-\[ R[\si{\centi\meter}] = \frac{\gamma}{\kappa} R_{y}[\mathrm{px}]. \]
-Dalle misure riportate nella scheda dell'esperienza si ottiene, attribuendo un'incertezza di \SI{1}{\milli\meter} a tutte le lunghezze in gioco
-\[ \gamma = \num{ 906\pm 5 e-3 } \qquad \kappa = \num{ 141 \pm 6 }. \]
+tramite l'\cref{eq: Bmax} ci aspettiamo come massima intensità del campo
+magnetico $B_{MAX} = 1.48 \pm 0.02 \; \si{m\tesla}$.
+
+Per cui il solo sensore Hall non è sufficientemente sensibile alle variazioni
+del campo magnetico (il sensore produrrebbe una d.d.p di circa 70 mV in
+corrispondenza di $B_{MAX}$).
+Si inserisce quindi tra la sonda e il multimetro un amplificatore-sottrattore
+con un coefficiente di amplificazione pari a $G = 11.1 \pm 0.1$, per cui
+facciamo riferimento all'equazione
+\begin{equation}
+B = \frac{\Delta V}{G \rho}
+\end{equation}
+per convertire il valore letto dal multimetro ($\Delta V$) in unità di campo
+magnetico (nel resto della trattazione useremo i Tesla, ricordando che
+$1 \; \si{G} = 10^{-4} \; \si{\tesla}$).
+
+Dato che l'incertezza sulla lettura del multimetro risulta (da datasheet) pari
+a $0.7 \percent + 1 \; \si{digit}$ rispetto al contributo del
+$2 \percent \oplus 1 \percent$ derivante dal circuito sonda + amplificatore,
+non ne teniamo in considerazione nella stima dell'incertezza associata alle
+misure di $\Delta V$.
+
+Calibrare il circuito amplificatore-sottrattore aggiustando l'offset non è
+banale, essendo presente un campo magnetico residuo non si può semplicemente
+cambiare la resistenza del potenziometro finché il valore letto sul multimetro
+si annulli (così staremo solamente ponendo l'offset pari al valore in
+ingresso al sottrattore).
+
+Di conseguenza abbiamo aggiustato l'offset in modo che dal multimetro si
+leggessero 2 valori di modulo uguale (compatibili entro l'incertezza) ma
+segno opposto ruotando la sonda di $180 \degree$, cioè misurando in verso
+opposto lo stesso campo d'induzione magnetica.
+
+La sonda viene inserita nella guida rettilinea posta nel punto medio tra le
+due bobine e passante per il loro centro, orientando quindi il sensore nella
+direzione perpendicolare all'asse del campo magnetico generato.
+Ad alimentazione spenta misuriamo una tensione di
+${\Delta V}_0 = 19.0 \pm 0.2 \; \si{m\V}$, corrispondente ad un campo magnetico
+di $B_0 = 34.2 \pm 0.7 \; \si{\micro \tesla}$, compatibile con l'intensità del
+campo magnetico terrestre (riportata da Wikipedia) $B_T \in [25, 65] \;
+\si{\micro\tesla})$.
+
+Notiamo che questo contributo non risulta trascurabile rispetto all'incertezza
+associata a $B_{MAX}$, per cui ci aspettiamo che il campo magnetico misurato
+risulti maggiore di circa un $2 \percent$, rendendo la nuova aspettativa di
+$B_{MAX} = 1.51 \pm 0.02 \; \si{m\tesla}$.
+
+Quindi, una volta alimentate le bobine con la stessa $I\ped{coil}$ di prima,
+abbiamo registrato le misure di intensità del campo generato ottenute dal
+multimetro all'avanzare della sonda lungo la guida a passi regolari di circa
+un centimetro, che riportiamo in \cref{fig: Bpos}.
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth]{Bdist}
+\caption{Andamento misurato dell'intensità del campo magnetico a metà tra le
+spire al variare della distanza dall'asse. \label{fig: Bpos}}
+\end{figure}
+
+Il campo magnetico generato dalle bobine in realtà non è uniforme, ma presenta
+una dipendenza sia dalla distanza dall'asse $r$ che dalla distanza dalle
+bobine lungo l'asse $z$, completamente trascurata nel nostro modello.
+
+Confrontando il grafico teorico per $B_z(r)$ in \cref{fig: Bref} normalizzato
+rispetto al valore massimo troviamo che la nostra mappatura del campo risulta
+quantomeno qualitativamente compatibile con il suo andamento atteso.
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth]{riferimentoB}
+\caption{Andamento previsto per l'intensità del campo magnetico nel piano
+centrale tra le spire in funzione della distanza dal centro \label{fig: Bref}}
+\end{figure}
+
+Notiamo esplicitamente come l'intensità del campo magnetico risulta essere
+costante (entro la sensibilità sperimentale) all'interno della zona che sarà
+poi occupata dal bulbo (che consideriamo come una sfera di raggio
+$R\ped{bulb} \approx 7 \; \si{c\m}$ con centro posto all'intersezione tra
+l'asse delle spire e il piano equidistante tra le medesime).
+
+Osserviamo infine che la massima intensità del campo magnetico misurata,
+trovata in corrispondenza del centro delle spire, è pari a
+$B_{MAX} = 1.47 \pm 0.03 \; \si{m\tesla}$, risultato compatibile con le
+aspettative entro l'incertezza.
+
+\subsection{Calibrazione dell'apparato per l'acquisizione delle traiettorie}
+Si è posizionata la fotocamera in modo tale che l'asse centrale
+dell'obiettivo coincidesse con il centro della sfera di vetro, così da
+minimizzare gli effetti di distorsione introdotti dalla rifrazione del bulbo
+(ci aspettiamo che un fascio di luce proveniente dal centro della sfera non
+subisca alcuna deviazione in uscita) sulla misura del raggio effettivo delle
+orbite.
+
+Abbiamo prima scattato una foto (riportata in \cref{fig: cal}) senza bulbo
+in cui si vedono i due righelli (risoluzione 1 mm) posizionati davanti ad una
+bobina ciascuno, per valutare gli effetti della geometria proiettiva, quindi
+ottenere un fattore di conversione pixel-cm.
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth]{cal1}
+\caption{Foto di calibrazione in assenza di bulbo da cui si ricava il fattore
+di conversione per i dati da pixel a cm \label{fig: cal}}
+\end{figure}
+
+Dunque se ne scatta una seconda, stavolta con il bulbo inserito, per dare una
+stima dell'ordine di grandezza atteso per gli effetti di distorsione del
+bulbo.
+
+Una volta alimentato il dispositivo di emissione di elettroni con una tensione
+di $6 \; \si{\V}$ e atteso il tempo necessario affinché il filamento si
+scaldasse fino a raggiungere la temperatura ottimale per cui il pennello
+elettronico diventa chiaramente visibile si è iniziata la presa dati.
+
+Si sono scattate cioè diverse fotografie al variare della tensione di
+accelerazione $V\ped{acc}$ e intensità di corrente $I_{coil}$, sempre facendo
+in modo che la traiettoria risultasse circolare e che il fascio di elettroni
+non venisse deviato dal vetro. Come ci si aspettava, aumentando $V\ped{acc}$
+aumenta il raggio di curvatura, mentre aumentando $I_{coil}$ (quindi
+l'intensità del campo magnetico) il raggio dell'orbita si restringe.
+
+Come impostazioni per la fotocamera abbiamo utilizzato un ISO di 400 e
+un tempo di esposizione di 10 secondi, per distinguere al meglio i limiti
+interni ed esterni del pennello elettronico, mantenendo la macchina fotografica
+nella stessa posizione rispetto all'apparato, in modo da poter applicare lo
+stesso fattore di scala pixel-cm per tutte le misure così effettuate.
+
+\subsection{Conversione pixel-unità di lunghezza}
+\label{sec: conv}
+Se individuiamo un cono visivo per la fotocamera, diciamo che questo individua
+sul righello della bobina più vicina la distanza $x$ e su quello più lontano
+una distanza $y$ (in blu), possiamo stimare il rapporto $x/y$ confrontando le
+scale graduate dei righelli fotografati in \ref{fig: cal}.
+Chiamiamo allora $D_x$, $D_y$, $D_{xy}$ le distanze dalla fotocamera ai/tra i
+vari piani e $D_{xe}$ la distanza tra il primo righello $x$ e il piano del
+moto degli elettroni come nello schema in \ref{fig: conversione}
+
+Allora per similitudine deve valere che
+\[
+\frac{y}{x} =
+\frac{D_y}{D_x} = 1 + \frac{D_{xy}}{D_x}
+.\]
+Da cui troviamo una relazione tra il raggio misurato dal righello sul retro
+($y$) e il raggio reale della traiettoria:
+\[
+    R = R_y \frac{D_x + D_{xe}}{D_x + D_{xy}} =
+    R_y \left[\frac{D_{xe}}{D_{xy}} +
+    \frac{x}{y} \left(1 - \frac{D_{xe}}{D_{xy}}\right) \right] = \gamma R_{y}.
+\]
+
+Detto $\eta$ il fattore di conversione tra pixel e i centimetri del righello
+$y$, abbiamo
+\[
+R \; [\si{\centi\meter}] = \frac{\gamma}{\eta} R_y [\mathrm{px}]
+.\]
+
+Dalle misure riportate nella scheda dell'esperienza si ottiene, associando
+un'incertezza di $\SI{1}{\milli\meter}$ a tutte le lunghezze appena definite
+\begin{align*}
+\gamma &= (906 \pm 5) \times 10^{-3} \\ 
+\eta &= 141 \pm 6
+\end{align*}
 
 \begin{figure}[htbp]
     \centering
     \includesvg[width=\textwidth]{geometria}
-    \caption{\label{fig:conversione}schema della geometria usata per la conversione pixel $ \to \si{\centi\meter} $ e per la correzione dell'effetto prospettico.}
+    \caption{\label{fig: conversione} Schema geometrico dell'apparato di
+    misura usato per la conversione px $\to$ cm e per la correzione
+    degli effetti di geometria proiettiva.}
 \end{figure}
 
 \subsection{Misura del raggio della traiettoria}
-Utilizzando le foto sopra menzionate si è effettuato un campionamento dei punti
-sull'arco interno e sull'arco esterno delle traiettorie (dato che il pennello elettronico ha uno spessore non trascurabile). Le coordinate dei pixel così ricavate
-sono state interpolate con un \emph{fit} circolare per ottenere una stima del
-raggio interno ed esterno.
-\begin{figure}
+Sulle foto acquisite come sopra si è effettuato un campionamento dei punti
+sull'arco interno e sull'arco esterno delle traiettorie (dato che il pennello
+elettronico ha uno spessore non trascurabile). Le coordinate dei pixel così
+ricavate sono state interpolate con un \emph{fit} circolare per ottenere una
+stima dei raggi di curvatura.
+
+Si è effettuato sulle stesse prese dati un fit ellittico; in tutte le
+fotografie i due semiassi risultano compatibili tra loro, quindi
+prendiamo come miglior stima del raggio quello ricavato dal fit circolare
+
+Durante il campionamento dei punti abbiamo osservato come la metà destra
+della traiettoria ``circolare'' sia leggermente deviata verso il cannone
+di elettroni, per cui si è scelto di considerare nel fit solamente i punti
+lungo la prima metà della traiettoria (quindi solo il semicerchio sinistro
+compiuto dagli elettroni appena emessi, come visibile in \cref{fig: circfit}
+e nella fotografia originale \cref{fig: fot}).
+\begin{figure}[htbp]
 \includegraphics[width=\textwidth]{circfit}
-\caption{Grafico del fit lineare (ed ellittico) dei punti selezionati, in questo caso rappresentanti l'orbita interna degli elettroni nella fotografia fatta con $V_{acc}=290 V$ e $I_{coil}=1.40 \pm 0.02 A$; il fit ellittico non evidenziava particolarità, e i due fuochi erano compatibili e coincidevano, quini come raggio abbiamo utilizzato quello in uscita dal fit circolare}
+\caption{Grafico del fit circolare (ed ellittico) dei punti acquisiti, in
+questo caso rappresentanti l'orbita interna degli elettroni per la fotografia
+con $V\ped{acc} = 290 \; \si{V}$ e $I\ped{coil} = 1.40 \pm 0.02 \si{A}$.
+\label{fig: circfit}}
 \end{figure}
-Si è poi assunto come valore del raggio dell'orbita la media del raggio del cerchio interno e di quello esterno,
-e si è attribuito un errore pari alla semi-dispersione degli stessi.
-I raggi così ottenuti sono stati poi convertiti in unità fisiche come spiegato
-nella~\cref{sec: conv}. \\
+
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth]{DSC_0120}
+\caption{Fotografia dell'apparato sperimentale con $V\ped{acc} = 290 \; \si{V}$
+e $I\ped{coil} = 1.40 \pm 0.02 \si{A}$.
+\label{fig: fot}}
+\end{figure}
+Scegliamo di prendere come stima ottimale del raggio delle orbite la
+media del raggio del cerchio interno e di quello esterno, a cui si associa
+un'incertezza pari alla semi-dispersione tra i due valori estremi.
+
+Le misure dei raggi sono state finalmente convertite in unità fisiche secondo
+quanto illustrato nella ~ \cref{sec: conv}, ne riportiamo in
+\cref{tab: IVrad} i valori trovati al variare della tensione di accelerazione.
 \begin{table}[htbp]
 \centering
 \begin{tabular}{cc|c}
 \toprule
 $\Delta V_{acc} \; [\si{V}]$ & Raggio $[\si{cm}]$ & $I_{coil} [A]$ \\
 \midrule
-
 $150 \pm 1$ & $4.2 \pm 0.3$ & $1.40 \pm 0.02$\\
 $170 \pm 1$ & $4.5 \pm 0.3$ & \\
 $190 \pm 1$ & $4.8 \pm 0.3$ & \\
@@ -187,50 +344,100 @@ $270 \pm 1$ & $5.7 \pm 0.3$ & \\
 $290 \pm 1$ & $5.9 \pm 0.3$ & \\
 \bottomrule
 \end{tabular}
-\caption{Valori dei raggi estrapolati dalle traiettorie in funzione delle tensioni di accelerazione mantenendo $I_{coil}$ fissa}
+\caption{Misure dei raggi estrapolati dalle traiettorie in funzione delle
+tensioni di accelerazione mantenendo $I\ped{coil}$ fissa.
+\label{tab: IVrad}}
 \end{table}
-Ovviamente si ricorda che al campo magnetico generato dalle bobine bisogna aggiungere un contributo non trascurabile del campo magnetico terrestre pari a 34 mT.
-Durante il campionamento dei punti per il fit circolare ci siamo resi conto che la seconda metà della traiettoria "circolare" compiuta dagli elettroni è leggermente deviata verso il dispositivo di emissione degli elettroni, per cui abbiamo campionato i punti solo nella prima metà della traiettoria (considerando quindi solo il primo semicerchio compiuto dalla traiettoria uscendo dal cannone).
+
 \section{Analisi dati e stima del rapporto $e/m$}
-Prendendo come valori esatti $e = \SI{1.602176634e11}{\coulomb}$ e
-$m_{e} = \SI{9.10938370e-31}{\kilogram}$ il valore atteso per il loro
-rapporto è
+Prendendo come valori esatti $e = 1.602176634 \times 10^{-19} \; \si{\coulomb}$
+e $m_{e} = 9.10938370 \times 10^{-31} \; \si{\kilogram}$ il valore atteso per
+il loro rapporto è
 \begin{equation}\label{eq: e-m-exp}
-\left(\frac{e}{m_{e}}\right)\ped{exp} = 1.76\times 10^{11}\; \si{\coulomb/\kilogram}
+\left(\frac{e}{m_e}\right)\ped{exp} =
+1.76 \times 10^{11}\; \si{\coulomb/\kilogram}
 \end{equation}
-La stima del rapporto $ e/m_{e} $ è stata poi ottenuta in due modi diversi:
-come media pesata delle singole misure ottenute dalla~\eqref{eq: fit} ed
-effettuando un \emph{fit} lineare di $ (BR)^2 $ al variare di
-$ 2 \Delta V_{acc} $ e ottenendo $ m_e/e $ dal coefficiente angolare della retta
-di \emph{best-fit}.
-Utilizzando quindi l'equazioni \ref{eq: fit} e \ref{eq: Bmax} e facendone poi la media pesata abbiamo ricavato un valore di $\frac{e}{m}=1.55 \pm 0.07 \; \times 10^{11} \frac{C}{Kg}$ 
+
+Una prima stima del rapporto $e/m_e$ si è ottenuta come media pesata delle
+singole misure ottenute dalla~\cref{eq: fit} e \cref{eq: Bmax}, che risulta
+pari a
+\[
+\frac{e}{m_e} = 1.55 \pm 0.07 \; \times 10^{11} \; \si{\coulomb/\kilogram}
+\]
+
+Si inoltre effettuato un fit lineare usando come modello la funzione
+\[
+(BR)^2 = \frac{m_e}{e} 2 V\ped{acc} + q
+\]
+di modo che le incertezze sulle ascisse ($2 V\ped{acc}$) opportunamente
+propagate fossero trascurabili rispetto a quelle sulle ordinate (${BR}^2$)
+i cui risultati sono riassunti in \cref{tab: linfit} e \cref{fig: linfit}.
+\begin{table}
+\centering
+\begin{tabular}{ccccc}
+\toprule
+$\m_e/e$ [kg/C] & $q$ [$\si{\tesla^2 m^2}$] & $\chi^2/\text{ndof}$ & norm. cov. \\
+\midrule
+$(152 \pm 3) \; \times 10^{9}$ & $(-6 \pm 5) \; \times 10^{-11}$ &
+$0.1/6$ & $-0.98$ \\
+\bottomrule
+\end{tabular}
+\caption{Risultati del fit lineare per la misura del rapporto $e/m_e$
+\label{tab: linfit}}
+\end{table}
+
+Dal reciproco del coefficiente della retta di best-fit si trova un valore del
+rapporto
+\[
+\frac{e}{m_e} = 1.52 \pm 0.03 \; \times 10^{11} \; \si{\coulomb/\kilogram}
+\]
+
+\begin{figure}
+\includegraphics[width=\textwidth]{lin}
+\caption{Grafico e residui del fit lineare in cui come modello è stata scelta
+quella una retta di coefficiente angolare $\frac{m}{e}$.
+\label{fig: linfit}}
+\end{figure}
+
+Né dal grafico dei residui del fit lineare in \cref{fig: linfit}, né dal
+grafico dell'andamento della media pesata al variare di $V\ped{acc}$ (in
+\cref{fig: medpes}) si riesce ad apprezzare una dipendenza della stima del
+rapporto $e/m_e$ dal raggio della traiettoria degli elettroni.
+
 \begin{figure}
 \includegraphics[width=\textwidth]{medpes}
-\caption{Grafico e residui della media pesata sulle singole misure di e su m}
+\caption{Grafico e residui della media pesata sulle singole misure di $e/m_e$
+\label{fig: medpes}}
 \end{figure}
-Dopodiché è stato condotto un fit lineare usando come modello la funzione $(BR)^2 = (\frac{m}{e})2\Delta V_{acc} +q$, in modo che le incertezze sulle x ($2\Delta V_{acc}$) propagate attraverso il modello fossero trascurabili rispetto a quelle sulle y (prodotto B$\times$R). Dal fit si ricava che $\frac{e}{m}=1.52 \pm 0.03 \; \times 10^{11} \frac{C}{Kg}$ e q risulta compatibile con 0.
-\begin{figure}
-\includegraphics[width=\textwidth]{linfit}
-\caption{\label{fig:linfit}Grafico e residui del fit lineare in cui come modello è stata scelta quella di una retta generica, di coefficiente angolare $\frac{m}{e}$.}
-\end{figure}
-Dal grafico dei residui visibile in figura \ref{fig:linfit} non risulta esserci una dipendenza apprezzabile del rapporto dal raggio della traiettoria.
-Possiamo infine concludere che i risultati ottenuti dalle due procedure sono compatibili tra di loro, ma distanti dalle aspettative con uno scarto del $14 \percent$.
+
+Le misure del rapporto $\frac{e}{m_e}$ ottenute dalle due procedure risultano
+compatibili tra di loro, ma distanti dal valore atteso con uno scarto del
+$14 \percent$ circa. 
 
 %=======================
 \section{Valutazione degli effetti sistematici}
 
 \subsection{Spessore del pennello elettronico}
-Un fattore che gioca un ruolo importante nella stima del raggio è lo spessore del pennello elettronico: quest'ultimo infatti ha uno spessore di circa 20 pixel già a partire dal cannone elettronico (prendendo lo spessore in un punto successivo della traiettoria è ancora più grande) che corrisponde a 1.4 mm. Per poter prendere le misure al meglio abbiamo diminuito l'ISO della fotocamera e aumentato il tempo di esposizione in modo che il raggio interno ed esterno del pennello (in pratica i punti che delimitano la parte più luminosa) fossero facilmente riconoscibili in qualunque punto della traiettoria. Dopodiché abbiamo fatto una media tra i raggi delle circonferenze che si trovavano singolarmente ed abbiamo utilizzato quel valore come raggio effettivo della traiettoria, e come incertezza abbiamo calcolato la loro semi-dispersione attorno alla media.
+Un fattore che gioca un ruolo importante nella stima del raggio è lo spessore
+del pennello elettronico: quest'ultimo infatti ha uno spessore di circa 20
+pixel già a partire dal cannone elettronico (prendendo lo spessore in un
+punto successivo della traiettoria è ancora più grande) che corrisponde
+a 1.4 mm. Per poter prendere le misure al meglio abbiamo diminuito l'ISO
+della fotocamera e aumentato il tempo di esposizione in modo che il raggio
+interno ed esterno del pennello (in pratica i punti che delimitano la parte
+più luminosa) fossero facilmente riconoscibili in qualunque punto della
+traiettoria. Dopodiché abbiamo fatto una media tra i raggi delle circonferenze che si trovavano singolarmente ed abbiamo utilizzato quel valore come raggio effettivo della traiettoria, e come incertezza abbiamo calcolato la loro semi-dispersione attorno alla media.
+
 \subsection{Distorsione del bulbo di vetro}
 Dato che abbiamo posizionato la fotocamera allineata col centro del bulbo, ci si aspettava che il fit lineare evidenziasse una dipendenza del rapporto $e/m$ in funzione del raggio dell'orbita: questo perchè aumentando il raggio aumentava il numero di punti presenti nella zona di distorsione massima (quelli più lontani dal centro dell'ampolla; la zona di minima distorsione è invece quella più vicina al centro), andando così a compromettere il valore del raggio ricavato.
-Dal grafico dei residui del fit lineare invece notiamo che i residui dei singoli punti sono distribuiti casualmente attorno al modello, per cui si è potuto affermare che anche se la distorsione è presente, non influenza i dati a tal punto da provocare cambiamenti apprezzabili.
+Dal grafico dei residui del fit lineare invece notiamo che i residui dei singoli punti sono distribuiti casualmente attorno al modello, per cui anche se la distorsione è presente, non influenza i dati a tal punto da produrre deviazioni sistematiche apprezzabili.
 
 \subsection{Campo magnetico terrestre}
-Assumendo che gli unici contributi al campo magnetico totale derivino dalle bobine e dal campo magnetico terrestre, abbiamo orientato le bobine in modo che la direzione del campo magnetico generato e quello terrestre coincidessero: in questo modo possiamo affermare che il moto compiuto dagli elettroni sia circolare e non elicoidale.
+Assumendo che gli unici contributi al campo magnetico totale derivino dalle bobine e dal campo magnetico terrestre, abbiamo orientato le bobine in modo che la direzione del campo magnetico generato e quello terrestre coincidessero
 Abbiamo fatto particolare attenzione anche al verso della corrente, in modo che sia direzione che verso dei due campi coincidessero; il modulo del campo magnetico totale è quindi dato dalla somma delle 2 intensità.
 Avendo misurato il valore dell'intensità del campo magnetico terrestre abbiamo notato che non risulta essere trascurabile rispetto al valore dell'intensità di quello generato essendo maggiore della sua incertezza; di conseguenza durante l'analisi dati abbiamo considerato come campo magnetico totale:
 \[
-B_t =Bz\ped{MAX} + B\ped{Terr.}
+B\ped{tot} = B_z + B_T
 \]
 
 \subsection{Disuniformità del campo magnetico sulla traiettoria}
@@ -241,7 +448,8 @@ Dai datasheet reperibili online si trova che il diametro del bulbo è pari a 15.
 \section*{Conclusioni e commenti finali}
 Si è riusciti a dare una misura ragionevole del rapporto carica/massa
 dell'elettrone a partire da un'analisi delle fotografie della sua traiettoria
-elicoidale in presenza di un campo magnetico uniforme.
+in presenza di un campo magnetico uniforme, nonostante le diverse fonti di
+incertezza sistematica che caratterizzano il metodo sperimentale utilizzato.
 
 %=======================
 \section*{Dichiarazione}
