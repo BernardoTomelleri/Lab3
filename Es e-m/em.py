@@ -12,6 +12,7 @@ dd=np.full_like(d,0.1)/100
 dT=np.sqrt((-T*(np.max(dT)**2)/(np.max(T)**2))**2 + (dT/np.max(T))**2)
 T=T/np.max(T)
 d=np.abs(d)
+#dT = np.array([dT, np.abs(T - np.max(T))])
 plt.errorbar(d,T,dT,dd, marker='.', ms=3, elinewidth=1., capsize=1.5)
 grid(plt.gca())
 plt.xlabel("Distanza dal centro [m]")
