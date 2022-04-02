@@ -15,7 +15,7 @@
 \author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
 \title{Es10: Misura del rapporto carica-massa dell'elettrone $e/m_e$}
 \begin{document}
-\date{\today}
+\date{29 marzo 2022}
 \maketitle
 
 %=======================
@@ -279,7 +279,7 @@ Dalle misure riportate nella scheda dell'esperienza si ottiene, associando
 un'incertezza di $\SI{1}{\milli\meter}$ a tutte le lunghezze appena definite
 \begin{align*}
 \gamma &= (906 \pm 5) \times 10^{-3} \\ 
-\eta &= 141 \pm 6
+\eta &= 142 \pm 6
 \end{align*}
 
 \begin{figure}[htbp]
@@ -318,7 +318,7 @@ con $V\ped{acc} = 290 \; \si{V}$ e $I\ped{coil} = 1.40 \pm 0.02 \si{A}$.
 \begin{figure}[htbp]
 \includegraphics[width=\textwidth]{DSC_0120}
 \caption{Fotografia dell'apparato sperimentale con $V\ped{acc} = 290 \; \si{V}$
-e $I\ped{coil} = 1.40 \pm 0.02 \si{A}$.
+e $I\ped{coil} = 1.40 \pm 0.02 \; \si{A}$.
 \label{fig: fot}}
 \end{figure}
 Scegliamo di prendere come stima ottimale del raggio delle orbite la
@@ -326,8 +326,8 @@ media del raggio del cerchio interno e di quello esterno, a cui si associa
 un'incertezza pari alla semi-dispersione tra i due valori estremi.
 
 Le misure dei raggi sono state finalmente convertite in unità fisiche secondo
-quanto illustrato nella ~ \cref{sec: conv}, ne riportiamo in
-\cref{tab: IVrad} i valori trovati al variare della tensione di accelerazione.
+quanto illustrato nella~\cref{sec: conv}, ne riportiamo in~\cref{tab: IVrad} i
+valori trovati al variare della tensione di accelerazione.
 \begin{table}[htbp]
 \centering
 \begin{tabular}{cc|c}
@@ -365,7 +365,7 @@ pari a
 \frac{e}{m_e} = 1.55 \pm 0.07 \; \times 10^{11} \; \si{\coulomb/\kilogram}
 \]
 
-Si inoltre effettuato un fit lineare usando come modello la funzione
+Si è inoltre effettuato un fit lineare usando come modello la funzione
 \[
 (BR)^2 = \frac{m_e}{e} 2 V\ped{acc} + q
 \]
@@ -402,7 +402,7 @@ quella una retta di coefficiente angolare $\frac{m}{e}$.
 Né dal grafico dei residui del fit lineare in \cref{fig: linfit}, né dal
 grafico dell'andamento della media pesata al variare di $V\ped{acc}$ (in
 \cref{fig: medpes}) si riesce ad apprezzare una dipendenza della stima del
-rapporto $e/m_e$ dal raggio della traiettoria degli elettroni.
+rapporto $e/m_e$ dal valore del raggio della traiettoria degli elettroni.
 
 \begin{figure}
 \includegraphics[width=\textwidth]{medpes}
@@ -416,33 +416,82 @@ $14 \percent$ circa.
 
 %=======================
 \section{Valutazione degli effetti sistematici}
-
 \subsection{Spessore del pennello elettronico}
-Un fattore che gioca un ruolo importante nella stima del raggio è lo spessore
-del pennello elettronico: quest'ultimo infatti ha uno spessore di circa 20
-pixel già a partire dal cannone elettronico (prendendo lo spessore in un
-punto successivo della traiettoria è ancora più grande) che corrisponde
-a 1.4 mm. Per poter prendere le misure al meglio abbiamo diminuito l'ISO
-della fotocamera e aumentato il tempo di esposizione in modo che il raggio
-interno ed esterno del pennello (in pratica i punti che delimitano la parte
-più luminosa) fossero facilmente riconoscibili in qualunque punto della
-traiettoria. Dopodiché abbiamo fatto una media tra i raggi delle circonferenze che si trovavano singolarmente ed abbiamo utilizzato quel valore come raggio effettivo della traiettoria, e come incertezza abbiamo calcolato la loro semi-dispersione attorno alla media.
+Un fattore che influisce in maniera significativa sulla stima del raggio è
+lo spessore non trascurabile del pennello elettronico: questo infatti ha uno
+spessore di circa $20$ pixel $\approx 1.4 \; \si{m\m}$ non appena uscito dal
+cannone elettronico e va ad aumentare nei punti successivi della traiettoria. 
+Per riuscire a osservarlo in maniera ottimale si è diminuito l'ISO della
+fotocamera e aumentato il tempo di esposizione (rispetto ai parametri
+suggeriti) di modo che il raggio interno ed esterno del pennello fossero
+quanto più nettamente distinguibili lungo il percorso dell'elettrone.
+
+Per tenere conto dello spessore apprezzabile del pennello si è quindi scelto
+di prendere il valor medio tra i raggi delle circonferenze (interne/esterne) di
+best-fit come miglior stima del raggio effettivo $R$ della traiettoria, dunque
+di associarvi incertezza pari alla loro semi-dispersione attorno alla media.
+
+In alternativa si potrebbe scegliere di considerare solamente i raggi più
+esterni al fine di minimizzare gli effetti di perdita di velocità degli
+elettroni dovuti alle collisioni con gli atomi di gas di He nel bulbo.
+Il manuale dell'apparato utilizzato (PASCO SE-9638) suggerisce infatti di
+mantenere valori elevati per la tensione di accelerazione (sopra i 250 V)
+per questo motivo e di considerare le traiettorie più energetiche/esterne
+nella misura del raggio di curvatura.
 
 \subsection{Distorsione del bulbo di vetro}
-Dato che abbiamo posizionato la fotocamera allineata col centro del bulbo, ci si aspettava che il fit lineare evidenziasse una dipendenza del rapporto $e/m$ in funzione del raggio dell'orbita: questo perchè aumentando il raggio aumentava il numero di punti presenti nella zona di distorsione massima (quelli più lontani dal centro dell'ampolla; la zona di minima distorsione è invece quella più vicina al centro), andando così a compromettere il valore del raggio ricavato.
-Dal grafico dei residui del fit lineare invece notiamo che i residui dei singoli punti sono distribuiti casualmente attorno al modello, per cui anche se la distorsione è presente, non influenza i dati a tal punto da produrre deviazioni sistematiche apprezzabili.
+Dato che la fotocamera è stata allineata con il centro del bulbo, ci si
+aspetta che gli effetti di distorsione del vetro sulle immagini acquisite
+non sia uniforme tra i punti interni al bulbo, infatti si osserva anche
+dalla fotografia fatta ai righelli che questi sono più accentuati per i punti
+vicino al bordo della sfera. Dalle nostre misure però non si è riusciti ad
+apprezzare una dipendenza del rapporto $e/m_e$ dal raggio dell'orbita
+nonostante aumentando il raggio debba aumentare il numero di punti campionati
+presenti nella zona di distorsione massima.
+ 
+Dal grafico del fit lineare in \cref{fig: linfit} infatti notiamo che i
+residui risultano distribuiti casualmente attorno al modello, per cui anche se
+la distorsione è presente, non influenza i dati in maniera da evidenziare
+deviazioni sistematiche apprezzabili dal nostro esperimento.
+
+Ad ogni modo gli effetti di distorsione da un confronto delle letture dalle
+scale graduate poste di fronte e dietro il bulbo (dell'ordine di non più del
+$2\%$ di differenza) non riescono a giustificare la discrepanza tra il valore
+atteso e quello misurato del rapporto $e/m_e$.
 
 \subsection{Campo magnetico terrestre}
-Assumendo che gli unici contributi al campo magnetico totale derivino dalle bobine e dal campo magnetico terrestre, abbiamo orientato le bobine in modo che la direzione del campo magnetico generato e quello terrestre coincidessero
-Abbiamo fatto particolare attenzione anche al verso della corrente, in modo che sia direzione che verso dei due campi coincidessero; il modulo del campo magnetico totale è quindi dato dalla somma delle 2 intensità.
-Avendo misurato il valore dell'intensità del campo magnetico terrestre abbiamo notato che non risulta essere trascurabile rispetto al valore dell'intensità di quello generato essendo maggiore della sua incertezza; di conseguenza durante l'analisi dati abbiamo considerato come campo magnetico totale:
+Abbiamo orientato le bobine in modo che la direzione del campo magnetico
+generato e quello terrestre coincidessero (facendo attenzione anche al verso
+della corrente, in modo che anche il verso dei due campi coincidesse) per 
+cui, assumendo che gli unici contributi al campo magnetico totale derivino
+dalle bobine e dal campo magnetico terrestre, il modulo del campo magnetico
+totale sarà dato dalla somma dei due.
+
+Avendo cercato di dare una stima dell'intensità del campo magnetico terrestre
+abbiamo notato che non risulta essere trascurabile rispetto al valore
+dell'intensità di quello prodotto dalle bobine, rimanendo comunque appena
+maggiore dell'incertezza della nostra mappatura. Per questo durante l'analisi
+dati possiamo considerare come campo magnetico totale
 \[
 B\ped{tot} = B_z + B_T
 \]
 
+ma le correzioni apportate sui valori del raggio stimate prendendo in
+considerazione il campo magnetico terrestre (ordine dell'$1\%$) rimangono
+sicuramente non in grado di spiegare la discrepanza del $14 \%$ circa tra il
+valore atteso e quello misurato del rapporto $e/m_e$.
 \subsection{Disuniformità del campo magnetico sulla traiettoria}
-A partire da quanto in \ref{sec:map} e dalla dimensione del bulbo di vetro possiamo affermare che finché la traiettoria rientra all'interno dell'area compresa entro i 7 cm dal centro del bulbo, la disuniformità del campo magnetico è tale da poter essere trascurata, essendo una variazione compresa all'interno dell'incertezza del valore d'intensità massima.
-Dai datasheet reperibili online si trova che il diametro del bulbo è pari a 15.5 cm, e considerando le dimensioni e la posizione del cannone elettronico, possiamo affermare che tutte le traiettorie da noi analizzate sono comprese entro l'area con variazione di intensità del campo magnetico non apprezzabile e compresa nel valore dell'incertezza.
+A partire da quanto discusso in \ref{sec:map} e dalla dimensione del bulbo
+di vetro supponiamo che finché la traiettoria rientra all'interno dell'area
+compresa entro i 7 cm dal centro del bulbo, la disuniformità del campo
+magnetico rimanga trascurabile, in quanto la sua variazione resta compresa
+entro l'incertezza associata al valore di intensità massima $B_{MAX}$.
+
+Dai datasheet reperibili online si trova che il diametro del bulbo è pari a
+15.5 cm, e considerando le dimensioni e la posizione del cannone elettronico,
+assumiamo che tutte le traiettorie da noi analizzate siano comprese entro
+l'area con variazione di intensità del campo magnetico non apprezzabile e
+compresa nel valore dell'incertezza.
 
 %=======================
 \section*{Conclusioni e commenti finali}

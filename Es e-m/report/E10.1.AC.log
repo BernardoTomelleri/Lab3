@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  29 MAR 2022 23:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  2 APR 2022 23:52
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1414,29 +1414,30 @@ nclusion: multiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex.exe (file ./svg-inkscape/geometria_svg-tex.pdf): PDF i
 nclusion: multiple pdfs with page group included in a single page
 > <../figs//circfit.png>] [7 <../figs//DSC_0120.jpg>]
-<../figs//lin.pdf, id=175, 570.93298pt x 363.5181pt>
+<../figs//lin.pdf, id=174, 570.93298pt x 363.5181pt>
 File: ../figs//lin.pdf Graphic file (type pdf)
 <use ../figs//lin.pdf>
 Package pdftex.def Info: ../figs//lin.pdf  used on input line 396.
 (pdftex.def)             Requested size: 483.69687pt x 307.98232pt.
-<../figs//medpes.png, id=178, 462.528pt x 346.896pt>
+<../figs//medpes.png, id=177, 462.528pt x 346.896pt>
 File: ../figs//medpes.png Graphic file (type png)
 <use ../figs//medpes.png>
 Package pdftex.def Info: ../figs//medpes.png  used on input line 408.
 (pdftex.def)             Requested size: 483.69687pt x 362.79062pt.
  [8 <../figs//lin.pdf>]
-[9 <../figs//medpes.png>]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
-65.
- (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
+[9 <../figs//medpes.png>] [10]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
+14.
+
+(c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [10] (./E10.1.AC.aux)
+) [11] (./E10.1.AC.aux)
 Package rerunfilecheck Info: File `E10.1.AC.out' has not changed.
 (rerunfilecheck)             Checksum: EF49D24791E2E071D466B357289AA4F9;3531.
  ) 
 Here is how much of TeX's memory you used:
- 56717 strings out of 479713
- 1387415 string characters out of 5876923
+ 56718 strings out of 479713
+ 1387422 string characters out of 5876923
  2176107 words of memory out of 10000000
  73628 multiletter control sequences out of 15000+600000
  421682 words of font info for 80 fonts, out of 8000000 for 9000
@@ -1463,10 +1464,10 @@ fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type
 1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/c
 m-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
 tt1000.pfb>
-Output written on E10.1.AC.pdf (10 pages, 7267418 bytes).
+Output written on E10.1.AC.pdf (11 pages, 7269054 bytes).
 PDF statistics:
- 324 PDF objects out of 1000 (max. 8388607)
- 245 compressed objects within 3 object streams
- 46 named destinations out of 1000 (max. 500000)
+ 328 PDF objects out of 1000 (max. 8388607)
+ 248 compressed objects within 3 object streams
+ 47 named destinations out of 1000 (max. 500000)
  185 words of extra memory for PDF output out of 10000 (max. 10000000)
 
