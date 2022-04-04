@@ -72,6 +72,7 @@ Come prime misure verifichiamo i valori delle tensioni di soglia tipiche in ingr
     NM_L = V\ped{IL,max} - V\ped{OL, max}
 \end{gather*}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Dove $V\ped{OH, min}$ è il minimo valore interpretato in output dalla porta come alto; analogamente possiamo descrivere le altre grandezze presenti nelle definizioni.\\
 Dalle specifiche del DS si ha che i valori attesi sono %non ho visto gli errori
 \begin{table}[htb]
@@ -99,6 +100,8 @@ datasheet dell'integrato SN7404.}
 
 Dalle nostre misure otteniamo %spiegare come abbiamo misurato
 =======
+=======
+>>>>>>> Stashed changes
 in cui abbiamo definito $V_O$ e $V_I$ le tensioni in uscita e in ingresso dalla porta logica rispettivamente (le altre diciture indicano se il valore a cui ci facciamo riferimento appartiene a uno stato logico alto o basso, e se è un minimo o un massimo).
 Estrapolando i corrispettivi valori dal datasheet, e assumendo che ogni porta logica abbia i medesimi parametri delle altre presenti nello stesso integrato, ci aspettiamo di trovare:
 \begin{gather*}
@@ -129,6 +132,9 @@ Dalle nostre misure otteniamo per il primo integrato:
     $NM_L=$ 0.35 $\pm$0.01 V
 \end{multicols}
 mentre per il secondo integrato:
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 \begin{multicols}{2}
     \centering
@@ -163,6 +169,7 @@ Arrivati a questo punto abbiamo rimosso l'amperometro e abbiamo inviato all'ingr
 \begin{gather*}
     I_{OH,1}=495 \pm 4 \mu A\\
     I_{OH,2}=315 \pm 3 \mu A\\   
+<<<<<<< Updated upstream
 \end{gather*}
 %TODO inseirire cosa sarebbe successo se avessi abbassato la tensione in uscita fino a 2.5 V circa
 Da questo si ricava che:
@@ -185,6 +192,23 @@ output a 3.4V ale 1.21 mA eli 1.13 ele 1.54mA
 (output 2 ?? ele 0.375 mA)
 \section{Circuiti logici elementari con sole porte NAND}
 =======
+=======
+\end{gather*}
+%TODO inseirire cosa sarebbe successo se avessi abbassato la tensione in uscita fino a 2.5 V circa
+Da questo si ricava che:
+\begin{gather*}
+    \mbox{Fan-out}_1=31 \pm 2\\
+    \mbox{Fan-out}_2=32 \pm 3\\
+\end{gather*}
+Valori che sono notevolmente più alti delle aspettative e non compatibili con esse, ma risultano essere compatibili tra di loro.
+\subsection{Tempi di propagazione}
+Vogliamo a questo punto misurare i tempi di propagazione della porta logica NOT osservando, tramite un oscilloscopio da laboratorio, i grafici in funzione del tempo dei pin di ingresso e di uscita; li vogliamo poi paragonare ai valori presenti sul datatsheet.
+Dal datasheet si ricavano dei tempi di propagazione pari a:
+\begin{gather*}
+    t_{PHL,max}=22 nS\\
+    t_{PLH,max}=15 nS\\
+\end{gather*}
+>>>>>>> Stashed changes
 Abbiamo quindi calcolato i valori medi tra stato basso e stato alto rispettivamente per l'entrata e per l'uscita tramite la formula:
 \begin{gather*}
 V_{O,med}=\frac{V_{OH}+V_{OL}}{2}\\

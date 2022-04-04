@@ -1,5 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  4 APR 2022 14:17
+=======
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  4 APR 2022 18:07
+>>>>>>> Stashed changes
 =======
 This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  4 APR 2022 18:07
 >>>>>>> Stashed changes
@@ -1332,12 +1336,18 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \mc@col@check@num=\count371
 )
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 (c:/texlive/2021/texmf-dist/tex/latex/diagbox/diagbox.sty
 =======
+=======
+>>>>>>> Stashed changes
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
 Package: placeins 2005/04/18  v 2.2
 )
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/diagbox\diagbox.sty
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 Package: diagbox 2020/02/09 v2.3 Making table heads with diagonal lines
 
@@ -1373,6 +1383,7 @@ File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
 \diagbox@outsepl=\dimen369
 \diagbox@outsepr=\dimen370
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ) (./E01.2.AC.aux)
 \openout1 = `E01.2.AC.aux'.
 
@@ -1397,6 +1408,8 @@ LaTeX Font Info:    ... okay on input line 16.
 Package hyperref Info: Link coloring ON on input line 16.
 (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 =======
+=======
+>>>>>>> Stashed changes
 ) (E01.2.AC.aux)
 \openout1 = `E01.2.AC.aux'.
 
@@ -1421,6 +1434,9 @@ LaTeX Font Info:    ... okay on input line 17.
 Package hyperref Info: Link coloring ON on input line 17.
 
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -1444,6 +1460,9 @@ LaTeX Info: Redefining \ref on input line 17.
 LaTeX Info: Redefining \pageref on input line 17.
 LaTeX Info: Redefining \nameref on input line 17.
  (E01.2.AC.out) (E01.2.AC.out)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 \@outlinefile=\write4
 \openout4 = `E01.2.AC.out'.
@@ -1531,6 +1550,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 6
 9.
 =======
@@ -1551,18 +1571,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 151--158
 
 Underfull \hbox (badness 10000) in paragraph at lines 151--158
 =======
+=======
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
+8.
+
+(C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+>>>>>>> Stashed changes
 )
 <../figs//NOT.jpg, id=46, 983.675pt x 688.5725pt>
 File: ../figs//NOT.jpg Graphic file (type jpg)
 <use ../figs//NOT.jpg>
 Package pdftex.def Info: ../figs//NOT.jpg  used on input line 58.
 (pdftex.def)             Requested size: 145.11053pt x 101.5688pt.
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 Overfull \hbox (2.22166pt too wide) in paragraph at lines 53--61
 $[]$ $[]$ 
  []
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 
 Underfull \hbox (badness 10000) in paragraph at lines 151--158
@@ -1574,8 +1605,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 160--166
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--210
 =======
 <../figs//not_xy1.png, id=47, 289.08pt x 473.3685pt>
 File: ../figs//not_xy1.png Graphic file (type png)
@@ -1635,9 +1664,74 @@ Package pdftex.def Info: ../figs//nand_time.png  used on input line 198.
 (pdftex.def)             Requested size: 461.07443pt x 202.3524pt.
 [6 <../figs//carica.jpg> <../figs//NAND.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 203--209
+>>>>>>> Stashed changes
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--210
+=======
+<../figs//not_xy1.png, id=47, 289.08pt x 473.3685pt>
+File: ../figs//not_xy1.png Graphic file (type png)
+<use ../figs//not_xy1.png>
+Package pdftex.def Info: ../figs//not_xy1.png  used on input line 80.
+(pdftex.def)             Requested size: 115.62994pt x 189.34404pt.
+<../figs//not_time1.png, id=48, 1152.7065pt x 553.46774pt>
+File: ../figs//not_time1.png Graphic file (type png)
+<use ../figs//not_time1.png>
+Package pdftex.def Info: ../figs//not_time1.png  used on input line 83.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+[1
+
+{C:/Users/rossi/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <../figs//NOT.jp
+g>] [2 <../figs//not_xy1.png (PNG copy)> <../figs//not_time1.png (PNG copy)>]
+<../figs//LH1.jpg, id=76, 4047.12pt x 1967.35pt>
+File: ../figs//LH1.jpg Graphic file (type jpg)
+<use ../figs//LH1.jpg>
+Package pdftex.def Info: ../figs//LH1.jpg  used on input line 160.
+(pdftex.def)             Requested size: 483.69687pt x 235.11119pt.
+<../figs//LH2.jpg, id=77, 971.3088pt x 728.4816pt>
+File: ../figs//LH2.jpg Graphic file (type jpg)
+<use ../figs//LH2.jpg>
+Package pdftex.def Info: ../figs//LH2.jpg  used on input line 163.
+(pdftex.def)             Requested size: 483.69687pt x 362.77263pt.
+<../figs//HL1.jpg, id=78, 4047.12pt x 1967.35pt>
+File: ../figs//HL1.jpg Graphic file (type jpg)
+<use ../figs//HL1.jpg>
+Package pdftex.def Info: ../figs//HL1.jpg  used on input line 166.
+(pdftex.def)             Requested size: 483.69687pt x 235.11119pt.
+<../figs//HL2.jpg, id=79, 971.3088pt x 728.4816pt>
+File: ../figs//HL2.jpg Graphic file (type jpg)
+<use ../figs//HL2.jpg>
+Package pdftex.def Info: ../figs//HL2.jpg  used on input line 169.
+(pdftex.def)             Requested size: 483.69687pt x 362.77263pt.
+[3] [4 <../figs//LH1.jpg> <../figs//LH2.jpg>] [5 <../figs//HL1.jpg> <../figs//H
+L2.jpg>]
+<../figs//carica.jpg, id=96, 971.3088pt x 728.4816pt>
+File: ../figs//carica.jpg Graphic file (type jpg)
+<use ../figs//carica.jpg>
+Package pdftex.def Info: ../figs//carica.jpg  used on input line 183.
+(pdftex.def)             Requested size: 483.69687pt x 362.77263pt.
+<../figs//NAND.png, id=97, 215.6055pt x 180.675pt>
+File: ../figs//NAND.png Graphic file (type png)
+<use ../figs//NAND.png>
+Package pdftex.def Info: ../figs//NAND.png  used on input line 191.
+(pdftex.def)             Requested size: 169.29684pt x 141.87428pt.
+
+Overfull \hbox (2.22166pt too wide) in paragraph at lines 187--194
+$[]$ $[]$ 
+ []
+
+<<<<<<< Updated upstream
+<../figs//nand_time.png, id=99, 1152.7065pt x 505.89pt>
+File: ../figs//nand_time.png Graphic file (type png)
+<use ../figs//nand_time.png>
+Package pdftex.def Info: ../figs//nand_time.png  used on input line 198.
+(pdftex.def)             Requested size: 461.07443pt x 202.3524pt.
+[6 <../figs//carica.jpg> <../figs//NAND.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 203--209
 
  []
 
+=======
+>>>>>>> Stashed changes
 <../figs//NAND_OR.png, id=106, 428.802pt x 372.79276pt>
 File: ../figs//NAND_OR.png Graphic file (type png)
 <use ../figs//NAND_OR.png>
@@ -1645,6 +1739,9 @@ Package pdftex.def Info: ../figs//NAND_OR.png  used on input line 223.
 (pdftex.def)             Requested size: 217.66211pt x 189.22871pt.
 [7 <../figs//nand_time.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 229--253
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
  []
@@ -1652,7 +1749,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 229--253
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 (caption)                particular \caption on input line 252.
+=======
+(caption)                particular \caption on input line 294.
+>>>>>>> Stashed changes
 =======
 (caption)                particular \caption on input line 294.
 >>>>>>> Stashed changes
@@ -1661,22 +1762,29 @@ See the caption package documentation for explanation.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 (caption)                particular \caption on input line 278.
 See the caption package documentation for explanation.
 
 
 Overfull \hbox (2.22168pt too wide) in paragraph at lines 241--298
 =======
+=======
+>>>>>>> Stashed changes
 (caption)                particular \caption on input line 320.
 See the caption package documentation for explanation.
 
 
 Overfull \hbox (2.22168pt too wide) in paragraph at lines 283--340
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 []$ $[]$ 
  []
 
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 Underfull \hbox (badness 10000) in paragraph at lines 241--298
 
@@ -1739,6 +1847,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 283--340
 
 [8 <../figs//NAND_OR.png>] [9] [10] (E01.2.AC.aux)
 
+=======
+Underfull \hbox (badness 10000) in paragraph at lines 283--340
+
+ []
+
+[8 <../figs//NAND_OR.png>] [9] [10] (E01.2.AC.aux)
+
+>>>>>>> Stashed changes
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `E01.2.AC.out' has not changed.
@@ -1774,5 +1890,8 @@ PDF statistics:
  223 PDF objects out of 1000 (max. 8388607)
  48 named destinations out of 1000 (max. 500000)
  148 words of extra memory for PDF output out of 10000 (max. 10000000)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
