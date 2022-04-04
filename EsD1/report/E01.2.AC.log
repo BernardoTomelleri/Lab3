@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  4 APR 2022 14:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  4 APR 2022 18:41
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1397,50 +1397,35 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 6
 
 (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [1
+)
+Underfull \hbox (badness 10000) in paragraph at lines 79--83
+
+ []
+
+[1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 151--158
+Underfull \hbox (badness 10000) in paragraph at lines 145--147
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--158
+Underfull \hbox (badness 10000) in paragraph at lines 156--163
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--158
+Underfull \hbox (badness 10000) in paragraph at lines 156--163
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--163
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 160--166
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--210
-
- []
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 252.
-See the caption package documentation for explanation.
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 278.
-See the caption package documentation for explanation.
-
-
-Overfull \hbox (2.22168pt too wide) in paragraph at lines 241--298
-[]$ $[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--298
+Underfull \hbox (badness 10000) in paragraph at lines 165--171
 
  []
 
@@ -1448,31 +1433,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 241--298
 <../figs//graybin.png, id=86, 794.97pt x 478.78876pt>
 File: ../figs//graybin.png Graphic file (type png)
 <use ../figs//graybin.png>
-Package pdftex.def Info: ../figs//graybin.png  used on input line 302.
+Package pdftex.def Info: ../figs//graybin.png  used on input line 297.
 (pdftex.def)             Requested size: 483.69687pt x 291.32283pt.
 <../figs//gray20ns.png, id=87, 794.97pt x 478.78876pt>
 File: ../figs//gray20ns.png Graphic file (type png)
 <use ../figs//gray20ns.png>
-Package pdftex.def Info: ../figs//gray20ns.png  used on input line 307.
+Package pdftex.def Info: ../figs//gray20ns.png  used on input line 303.
 (pdftex.def)             Requested size: 483.69687pt x 291.32283pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 294--307
+
+ []
+
 <../figs//gray10ns.png, id=88, 794.97pt x 478.78876pt>
 File: ../figs//gray10ns.png Graphic file (type png)
 <use ../figs//gray10ns.png>
-Package pdftex.def Info: ../figs//gray10ns.png  used on input line 315.
+Package pdftex.def Info: ../figs//gray10ns.png  used on input line 310.
 (pdftex.def)             Requested size: 483.69687pt x 291.32283pt.
- [4] [5 <../figs//graybin.png (PNG copy)> <../figs//gray20ns.png (PNG copy)>] [
-6 <../figs//gray10ns.png (PNG copy)>] [7] (./E01.2.AC.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 313--315
+
+ []
+
+[4] [5 <../figs//graybin.png (PNG copy)>] [6 <../figs//gray20ns.png (PNG copy)>
+ <../figs//gray10ns.png (PNG copy)>] [7] (./E01.2.AC.aux)
 Package rerunfilecheck Info: File `E01.2.AC.out' has not changed.
 (rerunfilecheck)             Checksum: 1E8994662358410C3201C455F2459F22;1999.
  ) 
 Here is how much of TeX's memory you used:
- 56068 strings out of 479713
- 1371656 string characters out of 5876923
+ 56076 strings out of 479713
+ 1371865 string characters out of 5876923
  2176107 words of memory out of 10000000
- 73017 multiletter control sequences out of 15000+600000
+ 73025 multiletter control sequences out of 15000+600000
  419367 words of font info for 69 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,16n,125p,754b,771s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,17n,125p,754b,780s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
 ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
@@ -1488,10 +1483,10 @@ pe1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
 /cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/
 sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.p
 fb>
-Output written on E01.2.AC.pdf (7 pages, 404296 bytes).
+Output written on E01.2.AC.pdf (7 pages, 396080 bytes).
 PDF statistics:
  199 PDF objects out of 1000 (max. 8388607)
  156 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 500000)
+ 41 named destinations out of 1000 (max. 500000)
  108 words of extra memory for PDF output out of 10000 (max. 10000000)
 

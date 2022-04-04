@@ -79,14 +79,10 @@ rientrino nelle specifiche tecniche riportate nel Data-Sheet del chip.
 Come prime misure verifichiamo i valori delle tensioni di soglia in ingresso e tipiche in uscita, da cui è possibile ricavare il Noise Margin.\\
 %la definizione di noise margin prevede di usare i valori minimi e massimi ma nella scheda chiede di trovare le tensioni tipiche: infatti anche sul datasheet sono riportate sia quelle min e max che quelle typ per i valori in output.. magari vediamo che valori ci escono
 Generiamo una rampa di tensione 0-5 V e visualizziamo i segnali prodotti:
-in questo modo è possibile costruire un grafico di $V_{out}$ in funzione di $V_{in}$.\\ %possiamo usare sia dalla modalità XY che prendendo i dati, magari possiamo fare entrambe le cose e vedere qual è meglio..
-Possiamo quindi misurare i valori del Noise Margin High e Low definiti rispettivamente
-\begin{gather*}
-    NM_H = V\ped{OH, min} - V\ped{IH, min}\\
-    NM_L = V\ped{IL,max} - V\ped{OL, max}
-\end{gather*}
+in questo modo è possibile costruire un grafico di $V\ped{out}$ in funzione di $V\ped{in}$.\\ %possiamo usare sia dalla modalità XY che prendendo i dati, magari possiamo fare entrambe le cose e vedere qual è meglio..
+
 Dove $V\ped{OH, min}$ è il minimo valore interpretato in output dalla porta come alto; analogamente possiamo descrivere le altre grandezze presenti nelle definizioni.\\
-Dalle specifiche del DS si ha che i valori attesi sono %non ho visto gli errori
+Dalle specifiche del DS si ha che i valori attesi sono
 \begin{table}[htb]
 \centering
 \begin{tabular}{cccc|c}
@@ -109,43 +105,52 @@ $I_{OH}$ &  &  & $-0.4$ & mA \\
 datasheet dell'integrato SN7404.}
 \label{tab: notDS}
 \end{table}
+Possiamo quindi ricavare i valori attesi del Noise Margin High e Low
+definiti rispettivamente come
+\begin{align*}
+    NM_H = V\ped{OH, min} - V\ped{IH, min} = 2.4 - 2 = 0.4 \; \si{\V} \\
+    NM_L = V\ped{IL, max} - V\ped{OL, max} = 0.8 - 0.4 = 0.4 \; \si{\V}
+\end{align*}
 
-Dalle nostre misure otteniamo %spiegare come abbiamo misurato
-\begin{multicols}{2}
-    \centering
-    $V_{OH,min}=$ $\pm$ V\\
-    $V_{IH,min}=$ $\pm$ V\\
-    $NM_H=$ $\pm$ V
-    
-    $V_{IL,max}=$ $\pm$ V\\
-    $V_{OL,max}=$ $\pm$ V\\
-    $NM_L=$ $\pm$ V
-\end{multicols}
-(dire se torna)
+come misure delle tensioni di operazione otteniamo
+%TODO spiegare come abbiamo misurato
+\begin{align*}
+V_{OH} = \pm \; \si{\V} \\
+V_{OL}= \pm \; \si{\V} \\
+V_{IH} = \pm \; \si{\V} \\
+V_{IL} = \pm \; \si{\V} \\
+\end{align*}
+%TODO vedere se torna
+
+Da cui troviamo le nostre stime dei valori delle soglie di rumore per le porte
+NOT studiate
+\begin{align*}
+NM_H = \pm \; \si{\V} \\
+NM_L = \pm \; \si{\V}
+\end{align*}
 
 \subsection{Misura del Fan-out}
-Il Fan-out è il numero massimo di porte che una singola porta può guidare restando entro le specifiche di funzionamento ed è definito nel seguente modo
+Il Fan-Out è il numero massimo di porte che una singola porta può guidare
+restando entro le specifiche di funzionamento ed è definito nel seguente modo
 \[
-\mbox{Fan-out}=\frac{I_{OH,max}}{I_{IH,max}}
+\text{FO} = \frac{I\ped{OH, max}}{I\ped{IH, max}}
 \]
-Dalle specifiche del DS leggiamo
-\begin{gather*}
-    I_{IH,max}=-0.4 mA\\
-    I_{OH,max}= 40 \mu A\\
-    \mbox{Fan-out}=-0.1 (?) %Probabilmente vanno presi i valori assoluti però non mi torna molto che sia minore di uno...
-\end{gather*}
-Misuriamo le correnti\\ %non so se vogliamo descrivere un minimo il procedimento come sulla scheda..
-input a 2.4V ale 12 uA eli  13uA ele 21uA
-output a 3.4V ale 1.21 mA eli 1.13 ele 1.54mA
-(output 2 ?? ele 0.375 mA)
+Dalle specifiche del DS risulta quindi che 
+\begin{align*}
+    I\ped{IH, max}= -0.4 \; \si{m\A} \\
+    I\ped{OH, max}= 40 \; \si{\micro\A} \\
+    \text{FO} = 10
+\end{align*}
+
+Misuriamo le correnti\\ 
+%TODO descrivere un minimo il procedimento
 \section{Circuiti logici elementari con sole porte NAND}
-\begin{minipage}{0.65\textwidth}
-    In questa sezione, dopo aver rimosso l'integrato analizzato nella sezione precedente, utilizziamo due integrati del tipo SN74LS00 a porte NAND a due ingressi, schematizzati nella figura a lato. Una fondamentale caratteristica delle porte NAND è la loro universalità, ossia il fatto che è possibile realizzare qualsiasi tipo di circuito: infatti, con combinazioni di porte NAND, possiamo ottenere circuiti equivalenti dalle porte AND, OR e NOT, a partire dalle quali è possibile realizzare qualsiasi circuito.
-\end{minipage}
-\begin{minipage}{0.35\textwidth}
-    %\includegraphics[width=\textwidth]{NAND.png}
-    \label{NAND}
-\end{minipage}
+Una fondamentale caratteristica delle porte NAND è la loro universalità, ossia il fatto che è possibile realizzare qualsiasi tipo di circuito: infatti, con combinazioni di porte NAND, possiamo ottenere circuiti equivalenti dalle porte AND, OR e NOT, a partire dalle quali è possibile realizzare qualsiasi circuito.
+
+\begin{figure}
+    %\includegraphics[width=\textwidth]{NAND}
+    \label{fig: NAND}
+\end{figure}
 
 \subsection{Tabella di verità}
 Dalla funzione StaticIO visualizziamo la tabella di verità e la verifichiamo utilizzando gli interruttori.\\
@@ -154,7 +159,7 @@ Dalla funzione StaticIO visualizziamo la tabella di verità e la verifichiamo ut
 \\
 Producendo, tramite la funzione Pattern, le quattro coppie degli ingressi, riportiamo le acquisizioni dei segnali visualizzati con Logic.\\
 \\
-Riportiamo inoltre il grafico (che grafico?)
+Riportiamo inoltre il grafico
 
 \subsection{Circuiti con porte NAND}
 In questa sezione vogliamo analizzare dei circuiti con il solo utilizzo di porte NAND.\\
@@ -167,33 +172,32 @@ un'acquisizione effettuata utilizzando le funzioni Pattern e Logic che dimostri 
 \subsubsection*{Porta OR}
 Come primo circuito vogliamo realizzare una porta OR: detti \textit{A} e \textit{B} gli ingressi e \textit{Y} l'uscita, nella notazione dell'algebra booleana si ha
 \[
-    Y=A+B
+    Y = A + B
 \]
 Sfruttando la legge di De Morgan si ottiene
 \[
-    Y=A+B=\overline{\overline{A}\cdot\overline{B}}
+    Y = A + B = \overline{\overline{A}\cdot\overline{B}}
 \]
 che descrive la relazione OR in termini del NAND.\\
 Nota la relazione per ottenere un NOT utilizzando porte NAND, riportiamo lo schema del circuito
-\begin{figure}[htb!]
+\begin{figure}[htbp]
     \centering
-    %\includegraphics[width=0.45\textwidth]{OR.png}
-    \label{or}
+    %\includegraphics[width=0.45\textwidth]{OR}
+    \label{fig: OR}
 \end{figure}
 
 
 \subsubsection*{Circuito selettore a due vie (multiplexer)}
 Realizziamo un circuito che permetta di assegnare all'uscita il valore di uno dei due ingressi a singolo bit tramite il valore di un terzo ingresso.
-Indichiamo con \textit{A}, \textit{B} e \textit{C} gli ingressi e con \textit{Y} l'uscita; il funzionamento del nostro circuito può essere descritto dalla tabella di Karnaugh riportata sotto\\
-\begin{minipage}{0.5\textwidth}
+Indichiamo con \textit{A}, \textit{B} e \textit{C} gli ingressi e con \textit{Y} l'uscita; 
     \[
     \begin{cases}
     C=0 \implies Y=A\\
     C=1 \implies Y=B
     \end{cases}
     \]
-\end{minipage}
-\begin{minipage}{0.3\textwidth}
+il funzionamento del nostro circuito può essere descritto dalla tabella di Karnaugh riportata sotto\\
+\begin{table}
     \centering
     \begin{tabular}{c||c|c|c|c}
         \backslashbox{C}{AB} & 00 & 01 & 11 & 10\\
@@ -203,9 +207,8 @@ Indichiamo con \textit{A}, \textit{B} e \textit{C} gli ingressi e con \textit{Y}
         \hline
         1 & 0 & 1 & 1 & 0\\
     \end{tabular}
-\end{minipage}
-\newline
-\newline
+\end{table}
+
 da cui si ricava facilmente la seguente relazione per il circuito
 \[
 Y=A\cdot\overline{C}+B\cdot C
@@ -215,44 +218,37 @@ e, sempre sfruttando De Morgan, si ha
 Y=A\cdot\overline{C}+B\cdot C=\overline{(\overline{A\cdot\overline{C}})\cdot(\overline{B\cdot C})}
 \]
 Riportiamo sotto lo schema del circuito
-\begin{figure}[htb!]
+\begin{figure}[htbp]
     \centering
-    %\includegraphics[width=0.6\textwidth]{cir2.png}
+    %\includegraphics[width=0.6\textwidth]{cir2}
     \label{circuito2}
 \end{figure}
 
 Per dimostrare il corretto funzionamento del circuito riportiamo le acquisizioni di Pattern, in cui è possibile comprendere come sono stati impostati gli ingressi, e Logic, da cui si può verificare il corretto funzionamento del circuito.
-\begin{figure}[htb!]
+\begin{figure}[htbp]
     \centering
-    %\includegraphics[width=0.8\textwidth]{pat2.png}
+    %\includegraphics[width=0.8\textwidth]{pat2}
     \caption{Pattern: DIO 0 $\equiv$ C, DIO 1 $\equiv$ A e DIO 2 $\equiv$ B}
     \label{pat2}
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[htbp]
     \centering
-    %\includegraphics[width=0.8\textwidth]{log2.png}
+    %\includegraphics[width=0.8\textwidth]{log2}
     \caption{Logic: DIO 0 $\equiv$ C, DIO 1 $\equiv$ A, DIO 2 $\equiv$ B e DIO 3 $\equiv$ Y}
 \end{figure}
 
 
 \section{Circuiti logici complessi a più chip}
 \subsection{Convertitore Gray-Binario}
-\begin{minipage}{0.7\textwidth}
-    Come ultima cosa vogliamo realizzare un circuito in grado di convertire un valore a 4 bit dalla codifica Gray in Binario utilizzando un solo integrato di tipo SN74LS86 a porte XOR, descritto nella figura a lato.\\
-    Un convertitore Gray-Binario può essere schematizzato come in Figura (\ref{gb}): il nostro obiettivo è quello di verificare che tale circuito si comporti come atteso.
-\end{minipage}
-\begin{minipage}{0.3\textwidth}
-    %\includegraphics[width=\textwidth]{XOR.png}
-\end{minipage}
-\newline
-\begin{minipage}{0.5\textwidth}
-    \centering
-    %\includegraphics[width=0.8\textwidth]{gb.png}
-    \captionof{figure}{Schema convertitore Gray-Binario}
-    \label{gb}
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
+    Come ultima cosa vogliamo realizzare un circuito in grado di convertire un valore a 4 bit dalla codifica Gray in Binario utilizzando un solo integrato di tipo SN74LS86 a porte XOR.
+    Un convertitore Gray-Binario può essere schematizzato come in \cref{fig: gb}: il nostro obiettivo è quello di verificare che tale circuito si comporti come atteso.
+\begin{figure}[htbp]
+    %\includegraphics[width=0.8\textwidth]{gb}
+    \caption{Schema convertitore Gray-Binario\label{fig: gb}}
+\end{figure}
+
+\begin{table}[htbp]
     \centering
     \begin{tabular}{c||c}
         Codice binario & Codice Gray \\
@@ -275,14 +271,13 @@ Per dimostrare il corretto funzionamento del circuito riportiamo le acquisizioni
         1110 & 1001\\
         1111 & 1000\\
         \end{tabular}
-    \captionof{table}{Conteggio a 4 bit nei due codici.}
-    \label{grbin}
-\end{minipage}
-\newline
-\newline
+    \caption{Conteggio a 4 bit nei due codici.}
+    \label{tab: grbin}
+\end{table}
+
 Il codice Gray differisce dal codice binario in quanto si passa da un intero al successivo modificando un solo bit per volta.\\
 Calcoliamo l'uscita del circuito per alcuni valori in ingresso:
-\begin{table}[htb!]
+\begin{table}[htbp]
     \centering
     \[
     \begin{array}{cccc|cccc}
@@ -296,56 +291,59 @@ Calcoliamo l'uscita del circuito per alcuni valori in ingresso:
     \]
 \end{table}
 
-Confrontando le uscite ottenute con i valori riportati in Tabella (\ref{grbin}) affermiamo che il circuito si comporta correttamente come convertitore Gray-Binario. Come conferma, riportiamo un'acquisizione.\\
-\begin{figure}[htb!]
+Confrontando le uscite ottenute con i valori riportati in \cref{tab: grbin} affermiamo che il circuito si comporta correttamente come convertitore Gray-Binario. Come conferma, riportiamo un'acquisizione.\\
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{graybin}
-    \caption{Acquisizione del Logic Analyzer per un ciclo completo (frequenza 10 Hz) dei segnali in ingresso e in uscita dal convertitore Gray-binario.}
+    \caption{Acquisizione di un ciclo completo (frequenza 1 kHz) con Logic
+    Analyzer dei segnali in ingresso e in uscita dal convertitore Gray-binario.}
 \end{figure}
-\begin{figure}[htb!]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{gray20ns.png}
-    \caption{Acquisizione del Logic Analyzer durante la transizione dal numero $15$ al numero $0$ su scala dei tempi pari a $20$ ns. Il primo cursore evidenzia la durata di una metà del glitch su DIO 9 ($10$ ns) mentre il secondo è posto a $60$ ns per individuare la durata complessiva del glitch in DIO 11.}
+    \includegraphics[width=\textwidth]{gray20ns}
+    \caption{Acquisizione del Logic Analyzer durante la transizione dal numero $15$ al numero $0$ su scala dei tempi pari a $20$ ns.}
 \end{figure}
-Per una scala dei tempi molto stretta, si registra che i tempi di propagazione non sono istantanei, distinguendo dei glitch(s) sui canali di uscita. \\
-In particolare, per DIO 9 (B1 
+Per una scala dei tempi molto stretta, si registra che i tempi di propagazione non sono istantanei, distinguendo dei glitch sui canali di uscita. \\ 
 
-\begin{figure}[htb!]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{gray10ns.png}
-    \caption{Transizione dal $15$ allo $0$ su scala temporale pari a $10$ ns. Si riporta la tendina degli Eventi rilevanti per il canale DIO 11 (output B3: MSB).}
+    \includegraphics[width=\textwidth]{gray10ns}
+    \caption{Transizione dal $15$ allo $0$ su scala temporale pari a $10$ ns.}
 \end{figure}
 (verificate il funzionamento del circuito utilizzando Pattern per generare un contatore a 4 bit con la codifica opportuna e osservando l’uscita con Logic (come ai punti precedenti);\\
-osservate su una scala molto stretta (30ns) la transizione dal numero 15 al numero 0;\\
-motivate l’osservazione del punto precedente tenendo conto del tempo di propagazione necessario per i due circuiti;\\
-riportate tutti i grafici necessari a dimostrare il funzionamento del circuito.)
+%TODO motivare l’osservazione del punto precedente tenendo conto del tempo di propagazione necessario per i due circuiti;\\
+
+%TODO riportare tutti i grafici necessari a dimostrare il funzionamento del circuito
 
 \subsection{Sommatore a 2 bit}
-Vogliamo costruire un sommatore a due bit utilizzando le dovute porte logiche. Utilizzeremo i chip \texttt{SN74LS08} (quad-AND), \texttt{SN74LS32} (quad-OR), \texttt{SN74LS86} (quad-XOR). Il circuito da montare è riportato in Fig.(\ref{fig:fulladder}).
+Vogliamo costruire un sommatore a due bit utilizzando i chip
+\texttt{SN74LS08} (quad-AND), \texttt{SN74LS32} (quad-OR), 
+\texttt{SN74LS86} (quad-XOR). Il circuito costruito è riportato in
+\cref{fig: fulladder}.
 
 \begin{figure}[htbp]
     \centering
-%    \includegraphics[width=0.6\linewidth]{fulladder.png}
+%    \includegraphics[width=0.6\linewidth]{fulladder}
     \caption{Schema circuitale di un sommatore a due bit.}
-    \label{fig:fulladder}
+    \label{fig: fulladder}
 \end{figure}
 
-Verifichiamo il funzionamento mandando in ingresso tutte le possibili combinazioni di due numeri a due bit. Per fare ciò mandiamo ai 4 ingressi del circuito un segnale che conta in binario. Il risultato è mostrato in Fig.(\ref{fig:faAD2}).
+Verifichiamo il funzionamento mandando in ingresso tutte le possibili combinazioni di due numeri a due bit. Per fare ciò mandiamo ai 4 ingressi del circuito un segnale che conta in binario. Il risultato è mostrato in \cref{fig: faAD2}.
 
 \begin{figure}[htbp]
     \centering
-%    \includegraphics[width=\linewidth]{fulladderAD2.png}
+%    \includegraphics[width=\linewidth]{fulladderAD2}
     \caption{Andamento del sommatore, si consulti la colonna di sinistra per il significato di ciascuna riga.}
-    \label{fig:faAD2}
+    \label{fig: faAD2}
 \end{figure}
 
-Aggiungiamo al circuito 4 led verdi e un led rosso: questi sono pilotati da 5 nuovi cavi dell'AD2. Per controllare il loro funzionamento aggiungiamo a \emph{Patterns} una tabella delle verità, riportata in \ref{fig:Ver}, che faccia in modo che ad ogni step si illuminino un numero di led pari al valore della somma. Il led rosso verrà usato per controllare l'overflow, ovvero la possibilità che il risultato sia maggiore o uguale a 5. Per osservare al meglio il risultato si può vedere il video registrato per l'occasione, reperibile al link seguente: \url{https://www.youtube.com/watch?v=D473oqeD6gc}.
+Aggiungiamo al circuito 4 led verdi e un led rosso: questi sono pilotati da 5 nuovi cavi dell'AD2. Per controllare il loro funzionamento aggiungiamo a Patterns una tabella delle verità, riportata in \cref{fig: Ver}, che faccia in modo che ad ogni step si illuminino un numero di led pari al valore della somma. Il led rosso verrà usato per controllare l'overflow, ovvero la possibilità che il risultato sia maggiore o uguale a 5.
 
 \begin{figure}[htbp]
     \centering
-%    \includegraphics[width=0.8\linewidth]{ROM.PNG}
+%    \includegraphics[width=0.8\linewidth]{ROM}
     \caption{Tabella delle verità usata.}
-    \label{fig:Ver}
+    \label{fig: Ver}
 \end{figure}
 
 
