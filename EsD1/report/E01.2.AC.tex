@@ -27,31 +27,9 @@
 Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ \\
 \midrule
 \midrule
-$R\ped{pot}$	& 9.53 k	& 0.08 k 		\\
-$R_0$	  		& 993		& 8				\\
-$R_1$	  		& 992		& 8	 			\\
-$R_2$	  		& 993		& 8	 			\\
-$R_3$	  		& 994		& 8	 			\\
-$R_4$	  		& 997		& 8	 			\\
-\bottomrule     
-\end{tabular}
-\caption{Valori di resistenza misurati per i componenti passivi dei circuiti
-studiati. \label{tab: rmesB}}
-\end{table}
+$R\ped{pot1}$	& 9.53 k	& 0.08 k 		\\
+$R\ped{pot2}$	& 9.78 k	& 0.08 k 		\\
 
-\begin{table}[htbp]
-\centering
-\begin{tabular}{ccc}
-\toprule
-Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ \\
-\midrule
-\midrule
-$R\ped{pot}$	& 9.53 k	& 0.08 k 		\\
-$R_0$	  		& 993		& 8				\\
-$R_1$	  		& 992		& 8	 			\\
-$R_2$	  		& 993		& 8	 			\\
-$R_3$	  		& 994		& 8	 			\\
-$R_4$	  		& 997		& 8	 			\\
 \bottomrule     
 \end{tabular}
 \caption{Valori di resistenza misurati per i componenti passivi dei circuiti
@@ -71,16 +49,24 @@ mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 
 %=======================
 \section{Caratteristiche fisiche delle porte logiche}
+<<<<<<< Updated upstream
 Si studia il comportamento delle porte NOT TTL contenute nel circuito integrato
 SN7404 misurando le tensioni e correnti di operazione e verificando che queste
 rientrino nelle specifiche tecniche riportate nel Data-Sheet del chip.
+=======
+\begin{minipage}{0.7\textwidth}
+    Il punto di questa sezione è quello di verificare che l'integrato preso in esame, SN7404 a porte NOT (raffigurato a fianco), rientri nelle specifiche del DS. Per fare questo misureremo tensioni e correnti in entrata e in uscita dalle porte logiche sia per valori H che L, tramite l'utilizzo di un amperometro e di un AD2.
+    Per le nostre misure, alimentiamo il TTL con una tensione di 5 V inviata al pin 14 (VCC) e una tensione di 0 V al pin 7 (GND).
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{NOT.jpg}
+    \label{NOT}
+\end{minipage}
+>>>>>>> Stashed changes
 
 \subsection{Tensioni di operazione}
-Come prime misure verifichiamo i valori delle tensioni di soglia in ingresso e tipiche in uscita, da cui è possibile ricavare il Noise Margin.\\
-%la definizione di noise margin prevede di usare i valori minimi e massimi ma nella scheda chiede di trovare le tensioni tipiche: infatti anche sul datasheet sono riportate sia quelle min e max che quelle typ per i valori in output.. magari vediamo che valori ci escono
-Generiamo una rampa di tensione 0-5 V e visualizziamo i segnali prodotti:
-in questo modo è possibile costruire un grafico di $V_{out}$ in funzione di $V_{in}$.\\ %possiamo usare sia dalla modalità XY che prendendo i dati, magari possiamo fare entrambe le cose e vedere qual è meglio..
-Possiamo quindi misurare i valori del Noise Margin High e Low definiti rispettivamente
+\label{TENSIONI}
+Come prime misure verifichiamo i valori delle tensioni di soglia tipiche in ingresso e in uscita, da cui è possibile ricavare il Noise Margin come :
 \begin{gather*}
     NM_H = V\ped{OH, min} - V\ped{IH, min}\\
     NM_L = V\ped{IL,max} - V\ped{OL, max}
@@ -112,51 +98,149 @@ datasheet dell'integrato SN7404.}
 \end{table}
 
 Dalle nostre misure otteniamo %spiegare come abbiamo misurato
+=======
+in cui abbiamo definito $V_O$ e $V_I$ le tensioni in uscita e in ingresso dalla porta logica rispettivamente (le altre diciture indicano se il valore a cui ci facciamo riferimento appartiene a uno stato logico alto o basso, e se è un minimo o un massimo).
+Estrapolando i corrispettivi valori dal datasheet, e assumendo che ogni porta logica abbia i medesimi parametri delle altre presenti nello stesso integrato, ci aspettiamo di trovare:
+\begin{gather*}
+    NM_H=0.4 V\\
+    NM_L=0.4 V
+\end{gather*}
+
+A questo punto generiamo una rampa di tensione 0-5 V inviandola alla porta in ingresso di una qualunque delle porte NOT e visualizziamo i segnali prodotti:
+in questo modo è possibile costruire un grafico di $V_{out}$ in funzione di $V_{in}$.\\
+%TODO ho fatto casino con l'immagine sotto, ha proporzioni troppo strane per fare width=\textwidth
+\begin{figure}
+	\includegraphics[scale=0.4]{not_xy1}
+\end{figure}
+\begin{figure}
+	\includegraphics[width=\textwidth]{not_time1}
+\end{figure}
+Utilizzando i cursori siamo andati a misurare le varie tensioni di soglia.
+%TODO so una sega se vuoi aggiungerci proprio come ho fatto, non lo so nemmeno io siccome, però ho cercato su internet e sembra che per misurare V_OH,min e V_IH,min tu debba cercare il valore in cui il coefficiente angolare è -1, solo che ti sfido a trovarlo dio cane.
+Dalle nostre misure otteniamo per il primo integrato:
 \begin{multicols}{2}
     \centering
-    $V_{OH,min}=$ $\pm$ V\\
-    $V_{IH,min}=$ $\pm$ V\\
-    $NM_H=$ $\pm$ V
+    $V_{OH,min}=$ 2.53 $\pm$0.03 V\\
+    $V_{IH,min}=$ 2.10 $\pm$0.02 V\\
+    $NM_H=$ 0.43 $\pm$0.04 V
     
-    $V_{IL,max}=$ $\pm$ V\\
-    $V_{OL,max}=$ $\pm$ V\\
-    $NM_L=$ $\pm$ V
+    $V_{IL,max}=$ 979 $\pm$9 mV\\
+    $V_{OL,max}=$ 632 $\pm$4 mV\\
+    $NM_L=$ 0.35 $\pm$0.01 V
 \end{multicols}
-(dire se torna)
+mentre per il secondo integrato:
+>>>>>>> Stashed changes
+\begin{multicols}{2}
+    \centering
+    $V_{OH,min}=$ 2.40 $\pm$0.03 V\\
+    $V_{IH,min}=$ 1.81 $\pm$0.02 V\\
+    $NM_H=$ 0.60 $\pm$0.04 V
+    
+    $V_{IL,max}=$ 772 $\pm$8 mV\\
+    $V_{OL,max}=$ 341 $\pm$3 mV\\
+    $NM_L=$ 0.43 $\pm$0.01 V
+\end{multicols}
+Si può quindi affermare che i risultati sono compatibili con le aspettative.
 
 \subsection{Misura del Fan-out}
 Il Fan-out è il numero massimo di porte che una singola porta può guidare restando entro le specifiche di funzionamento ed è definito nel seguente modo
 \[
-\mbox{Fan-out}=\frac{I_{OH,max}}{I_{IH,max}}
+\mbox{Fan-out}=\abs{  \frac{I_{IH,max}}{I_{OH,max}}}
 \]
 Dalle specifiche del DS leggiamo
 \begin{gather*}
-    I_{IH,max}=-0.4 mA\\
-    I_{OH,max}= 40 \mu A\\
-    \mbox{Fan-out}=-0.1 (?) %Probabilmente vanno presi i valori assoluti però non mi torna molto che sia minore di uno...
+    I_{IH,max}=40 \mu A\\
+    I_{OH,max}= -0.4 m A\\
+    \mbox{Fan-out}=10
 \end{gather*}
+A questo punto abbiamo preparato l'amperometro utilizzando il fondoscala da 2 mA viste le entità delle correnti che andremo a misurare: per prima cosa misureremo la corrente $I_{IH,max}$ per entrambi i due integrati, montando l'amperometro in serie tra l'ingresso della porta logica e l'uscita di WaveGen 1 dell'AD2. Quindi abbiamo inviato all'uscita WG1 una tensione DC pari a 5V.
+\begin{gather*}
+    I_{IH,1}=16 \pm 1 \mu A\\
+    I_{IH,2}=10 \pm 1 \mu A\\   
+\end{gather*}
+Che risultano essere compatibili entro i limiti del datasheet.
+Arrivati a questo punto abbiamo rimosso l'amperometro e abbiamo inviato all'ingresso della porta un segale DC a 0 V sempre utilizzando l'uscita WG1, e abbiamo inserito un potenziometro da $10 \; k\ohm$ in serie all'uscita della stessa porta logica utilizzata in precedenza, misurando la corrente che scorre attraverso questo quando la tensione in uscita dalla porta è pari a $3.40 \pm 0.03 \; V$.
+\begin{gather*}
+    I_{OH,1}=495 \pm 4 \mu A\\
+    I_{OH,2}=315 \pm 3 \mu A\\   
+\end{gather*}
+%TODO inseirire cosa sarebbe successo se avessi abbassato la tensione in uscita fino a 2.5 V circa
+Da questo si ricava che:
+\begin{gather*}
+    \mbox{Fan-out}_1=31 \pm 2\\
+    \mbox{Fan-out}_2=32 \pm 3\\
+\end{gather*}
+Valori che sono notevolmente più alti delle aspettative e non compatibili con esse, ma risultano essere compatibili tra di loro.
+\subsection{Tempi di propagazione}
+Vogliamo a questo punto misurare i tempi di propagazione della porta logica NOT osservando, tramite un oscilloscopio da laboratorio, i grafici in funzione del tempo dei pin di ingresso e di uscita; li vogliamo poi paragonare ai valori presenti sul datatsheet.
+Dal datasheet si ricavano dei tempi di propagazione pari a:
+\begin{gather*}
+    t_{PHL,max}=22 nS\\
+    t_{PLH,max}=15 nS\\
+\end{gather*}
+<<<<<<< Updated upstream
 Misuriamo le correnti\\ %non so se vogliamo descrivere un minimo il procedimento come sulla scheda..
 input a 2.4V ale 12 uA eli  13uA ele 21uA
 output a 3.4V ale 1.21 mA eli 1.13 ele 1.54mA
 (output 2 ?? ele 0.375 mA)
 \section{Circuiti logici elementari con sole porte NAND}
+=======
+Abbiamo quindi calcolato i valori medi tra stato basso e stato alto rispettivamente per l'entrata e per l'uscita tramite la formula:
+\begin{gather*}
+V_{O,med}=\frac{V_{OH}+V_{OL}}{2}\\
+V_{I,med}=\frac{V_{IH}+V_{IL}}{2}\\
+\end{gather*}
+utilizzando le acquisizioni fatte nella sezione \ref{TENSIONI} ricaviamo che utilizzando in ingresso un'onda quadra tra 0 e 5 V avrò in uscita un'onda quadra compresa tra $3.79 \pm 0.03 \; V$ e $ 632 \pm 4 \; mV$; da questi dati si ottiene:
+\begin{gather*}
+V_{O,med}=2.21 \pm 0.02\\
+V_{I,med}=2.50 \pm 0.03\\
+\end{gather*}
+Si definisce come tempo di propagazione il tempo che trascorre tra quando $V_{in}$ diventa pari a $V_{I,med}$ e $V_{out}$ diventa pari al suo $V_{O,med}$.
+Utilizzando l'oscilloscopio da banco abbiamo collegato i due canali disponibili all'entrata (CH1) e all'uscita (CH2) e abbiamo sempre triggerato quando il segnale di ingresso (CH1) raggiungeva $V_{I,med}$, abbiamo poi cambiato il fronte di trigger per scegliere se misurare il tempo di propagazione HL o LH.
+\begin{figure}
+	\includegraphics[width=\textwidth]{LH1}
+\end{figure}
+\begin{figure}
+	\includegraphics[width=\textwidth]{LH2}
+\end{figure}
+\begin{figure}
+	\includegraphics[width=\textwidth]{HL1}
+\end{figure}
+\begin{figure}
+	\includegraphics[width=\textwidth]{HL2}
+\end{figure}
+Dalla misura fatta con i cursori sull'oscilloscopio si ricava
+\begin{multicols}{2}
+    \centering
+    $t_{PLH}=$ 5.2 $\pm$ 0.2 nS\\
+    $t_{PHL}=$ 25.0 $\pm$0.2 nS\\
+    
+    
+    $t_{PLH}=$ 7.0 $\pm$0.2 nS\\
+    $t_{PHL}=$ 22.0 $\pm$0.2 nS\\
+\end{multicols}
+Dobbiamo però constatare la presenza di capacità parassite presenti nelle basette e circuito, infatti aumentando la scala dei tempi ci rendiamo conto che tutti i grafici prodotti dall'oscilloscopio rispecchiano qualitativamente il grafico della carica e scarica del condensatore; per questo motivo si sono ottenuti in alcuni casi dei tempi di propagazione poco più alti delle aspettative, per cui non abbiamo ragione di credere che le nostre misure non siano compatibili con le aspettative.
+\begin{figure}
+	\includegraphics[width=\textwidth]{carica}
+\end{figure}
+Possiamo quindi concludere che le misure sono in linea con quanto dichiarato nel datasheet.
+\section{Circuiti logici elementari}
+>>>>>>> Stashed changes
 \begin{minipage}{0.65\textwidth}
     In questa sezione, dopo aver rimosso l'integrato analizzato nella sezione precedente, utilizziamo due integrati del tipo SN74LS00 a porte NAND a due ingressi, schematizzati nella figura a lato. Una fondamentale caratteristica delle porte NAND è la loro universalità, ossia il fatto che è possibile realizzare qualsiasi tipo di circuito: infatti, con combinazioni di porte NAND, possiamo ottenere circuiti equivalenti dalle porte AND, OR e NOT, a partire dalle quali è possibile realizzare qualsiasi circuito.
 \end{minipage}
 \begin{minipage}{0.35\textwidth}
-    %\includegraphics[width=\textwidth]{NAND.png}
+    \includegraphics[width=\textwidth]{NAND.png}
     \label{NAND}
 \end{minipage}
 
 \subsection{Tabella di verità}
-Dalla funzione StaticIO visualizziamo la tabella di verità e la verifichiamo utilizzando gli interruttori.\\
-\\
-(Utilizzando le funzioni Pattern di Waveform producete le quattro possibili coppie di valori in ingresso e con la funzione Logic acquisite questi due segnali assieme al segnale in uscita e riportate il grafico nella relazione)\\
-\\
-Producendo, tramite la funzione Pattern, le quattro coppie degli ingressi, riportiamo le acquisizioni dei segnali visualizzati con Logic.\\
-\\
-Riportiamo inoltre il grafico (che grafico?)
-
+Utilizziamo quindi la funzione PATTERN di waveform per produrre 2 segnali di clock rispettivamente a 100 Hz (in uscita dalla porta DIO0 e in entrata nel pin 1 dell'integrato) e l'altro a 200 Hz (in uscita dalla porta DIO1 e in entrata nel pin 2). Infine abbiamo usato la funzione LOGIC per fare il grafico dei pin utilizzati nell'operazione logica (1,2 e 3). 
+\begin{figure}
+	\includegraphics[scale=0.4]{nand_time}
+	\label{nand_time}
+\end{figure}
+Il circuito risulta essere funzionante e l'output risulta essere L se e solo se i pin 1 e 2 valgono entrambi H, proprio come da aspettative.
 \subsection{Circuiti con porte NAND}
 In questa sezione vogliamo analizzare dei circuiti con il solo utilizzo di porte NAND.\\
 \\
@@ -178,7 +262,7 @@ che descrive la relazione OR in termini del NAND.\\
 Nota la relazione per ottenere un NOT utilizzando porte NAND, riportiamo lo schema del circuito
 \begin{figure}[htb!]
     \centering
-    %\includegraphics[width=0.45\textwidth]{OR.png}
+    \includegraphics[width=0.45\textwidth]{NAND_OR.png}
     \label{or}
 \end{figure}
 
