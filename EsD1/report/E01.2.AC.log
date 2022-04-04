@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  1 APR 2022 18:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  4 APR 2022 14:17
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1238,9 +1238,6 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \colbreak@box=\box131
 \mc@col@check@num=\count371
 )
-(c:/texlive/2021/texmf-dist/tex/latex/placeins/placeins.sty
-Package: placeins 2005/04/18  v 2.2
-)
 (c:/texlive/2021/texmf-dist/tex/latex/diagbox/diagbox.sty
 Package: diagbox 2020/02/09 v2.3 Making table heads with diagonal lines
 
@@ -1275,36 +1272,29 @@ File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
 \diagbox@insepr=\dimen368
 \diagbox@outsepl=\dimen369
 \diagbox@outsepr=\dimen370
-) (./E01.2.AC.aux
-
-LaTeX Warning: Label `tab: rmesB' multiply defined.
-
-
-LaTeX Warning: Label `tab: rmesB@cref' multiply defined.
-
-)
+) (./E01.2.AC.aux)
 \openout1 = `E01.2.AC.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-Package hyperref Info: Link coloring ON on input line 17.
- (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+Package hyperref Info: Link coloring ON on input line 16.
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
 (c:/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1315,16 +1305,16 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count372
 )
-LaTeX Info: Redefining \ref on input line 17.
-LaTeX Info: Redefining \pageref on input line 17.
-LaTeX Info: Redefining \nameref on input line 17.
+LaTeX Info: Redefining \ref on input line 16.
+LaTeX Info: Redefining \pageref on input line 16.
+LaTeX Info: Redefining \nameref on input line 16.
 
 (./E01.2.AC.out) (./E01.2.AC.out)
 \@outlinefile=\write4
 \openout4 = `E01.2.AC.out'.
 
 Package translations Info: no dictionary file `translations-basic-dictionary-it
-alian.trsl' found. on input line 17.
+alian.trsl' found. on input line 16.
 
 (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1385,108 +1375,123 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \it@ocap on input line 17.
-LaTeX Info: Redefining \it@ccap on input line 17.
+LaTeX Info: Redefining \it@ocap on input line 16.
+LaTeX Info: Redefining \it@ccap on input line 16.
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.18} (current compat level: 1.15).
 
 \c@lstlisting=\count379
-LaTeX Font Info:    Trying to load font information for U+msa on input line 19.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 19.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
 
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
-0.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 6
+9.
 
 (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 144--151
+Underfull \hbox (badness 10000) in paragraph at lines 151--158
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--151
+Underfull \hbox (badness 10000) in paragraph at lines 151--158
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--151
+Underfull \hbox (badness 10000) in paragraph at lines 151--158
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 153--159
+Underfull \hbox (badness 10000) in paragraph at lines 160--166
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--203
+Underfull \hbox (badness 10000) in paragraph at lines 186--210
 
  []
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 244.
+(caption)                particular \caption on input line 252.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 270.
+(caption)                particular \caption on input line 278.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (2.22168pt too wide) in paragraph at lines 233--290
+Overfull \hbox (2.22168pt too wide) in paragraph at lines 241--298
 []$ $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 233--290
+Underfull \hbox (badness 10000) in paragraph at lines 241--298
 
  []
 
-[3] [4] [5] (./E01.2.AC.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
+[3]
+<../figs//graybin.png, id=86, 794.97pt x 478.78876pt>
+File: ../figs//graybin.png Graphic file (type png)
+<use ../figs//graybin.png>
+Package pdftex.def Info: ../figs//graybin.png  used on input line 302.
+(pdftex.def)             Requested size: 483.69687pt x 291.32283pt.
+<../figs//gray20ns.png, id=87, 794.97pt x 478.78876pt>
+File: ../figs//gray20ns.png Graphic file (type png)
+<use ../figs//gray20ns.png>
+Package pdftex.def Info: ../figs//gray20ns.png  used on input line 307.
+(pdftex.def)             Requested size: 483.69687pt x 291.32283pt.
+<../figs//gray10ns.png, id=88, 794.97pt x 478.78876pt>
+File: ../figs//gray10ns.png Graphic file (type png)
+<use ../figs//gray10ns.png>
+Package pdftex.def Info: ../figs//gray10ns.png  used on input line 315.
+(pdftex.def)             Requested size: 483.69687pt x 291.32283pt.
+ [4] [5 <../figs//graybin.png (PNG copy)> <../figs//gray20ns.png (PNG copy)>] [
+6 <../figs//gray10ns.png (PNG copy)>] [7] (./E01.2.AC.aux)
 Package rerunfilecheck Info: File `E01.2.AC.out' has not changed.
-(rerunfilecheck)             Checksum: 301010F7009E4446DBF14AC1BC05ECC3;1631.
+(rerunfilecheck)             Checksum: 1E8994662358410C3201C455F2459F22;1999.
  ) 
 Here is how much of TeX's memory you used:
- 56041 strings out of 479713
- 1371214 string characters out of 5876923
- 2175107 words of memory out of 10000000
- 72999 multiletter control sequences out of 15000+600000
- 416820 words of font info for 64 fonts, out of 8000000 for 9000
+ 56068 strings out of 479713
+ 1371656 string characters out of 5876923
+ 2176107 words of memory out of 10000000
+ 73017 multiletter control sequences out of 15000+600000
+ 419367 words of font info for 69 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,16n,125p,754b,779s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1000.p
-fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/tex
-live/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/
-texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist
-/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
-cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
-ftt1000.pfb>
-Output written on E01.2.AC.pdf (5 pages, 227626 bytes).
+ 122i,16n,125p,754b,771s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
+ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/te
+xlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2021
+/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dis
+t/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/ty
+pe1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
+/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/
+sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.p
+fb>
+Output written on E01.2.AC.pdf (7 pages, 404296 bytes).
 PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 137 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
- 85 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 199 PDF objects out of 1000 (max. 8388607)
+ 156 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 108 words of extra memory for PDF output out of 10000 (max. 10000000)
 
