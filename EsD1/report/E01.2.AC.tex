@@ -2,7 +2,6 @@
 \input{../../latex/preamble}
 \input{../../latex/math}
 \usepackage{multicol}
-\usepackage{placeins}
 \usepackage{diagbox}
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
 
@@ -56,11 +55,11 @@ $R_4$	  		& 997		& 8	 			\\
 \bottomrule     
 \end{tabular}
 \caption{Valori di resistenza misurati per i componenti passivi dei circuiti
-studiati. \label{tab: rmesB}}
+studiati. \label{tab: rmesM}}
 \end{table}
 
 Riportiamo per completezza anche il valore della tensione continua di
-alimentazione continue per i circuiti integrati misurata con il multimetro
+alimentazione per i circuiti integrati misurata con il multimetro
 \begin{align*}
 V_{CC} &= 4.99 \pm 0.03 \si{\V} \\
 \end{align*}
@@ -72,14 +71,9 @@ mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 
 %=======================
 \section{Caratteristiche fisiche delle porte logiche}
-\begin{minipage}{0.7\textwidth}
-    Il punto di questa sezione è quello di verificare che l'integrato preso in esame, SN7404 a porte NOT (raffigurato a fianco), rientri nelle specifiche del DS. Per fare questo ci focalizziamo su alcune grandezze che descrivono il nostro integrato e che espliciteremo in dettaglio di seguito. In questa prima parte ci focalizzeremo più su un'analisi qualitativa.\\
-    Per le nostre misure, alimentiamo il TTL con una ddp di 5 V.
-\end{minipage}
-\begin{minipage}{0.3\textwidth}
-    %\includegraphics[width=\textwidth]{NOT.png}
-    \label{NOT}
-\end{minipage}
+Si studia il comportamento delle porte NOT TTL contenute nel circuito integrato
+SN7404 misurando le tensioni e correnti di operazione e verificando che queste
+rientrino nelle specifiche tecniche riportate nel Data-Sheet del chip.
 
 \subsection{Tensioni di operazione}
 Come prime misure verifichiamo i valori delle tensioni di soglia in ingresso e tipiche in uscita, da cui è possibile ricavare il Noise Margin.\\
@@ -88,21 +82,34 @@ Generiamo una rampa di tensione 0-5 V e visualizziamo i segnali prodotti:
 in questo modo è possibile costruire un grafico di $V_{out}$ in funzione di $V_{in}$.\\ %possiamo usare sia dalla modalità XY che prendendo i dati, magari possiamo fare entrambe le cose e vedere qual è meglio..
 Possiamo quindi misurare i valori del Noise Margin High e Low definiti rispettivamente
 \begin{gather*}
-    NM_H=V_{OH,min}-V_{IH,min}\\
-    NM_L=V_{IL,max}-V_{OL,max}
+    NM_H = V\ped{OH, min} - V\ped{IH, min}\\
+    NM_L = V\ped{IL,max} - V\ped{OL, max}
 \end{gather*}
-Dove $V_{OH,min}$ è il minimo valore interpretato in output dalla porta come alto; analogamente possiamo descrivere le altre grandezze presenti nelle definizioni.\\
+Dove $V\ped{OH, min}$ è il minimo valore interpretato in output dalla porta come alto; analogamente possiamo descrivere le altre grandezze presenti nelle definizioni.\\
 Dalle specifiche del DS si ha che i valori attesi sono %non ho visto gli errori
-\begin{multicols}{2}
-    \centering
-    $V_{OH,min}=$ 2.4 V\\ %typ 3.4 V
-    $V_{IH,min}=$ 2 V\\
-    $NM_H=$ 0.4 V
-    
-    $V_{IL,max}=$ 0.8 V\\
-    $V_{OL,max}=$ 0.4 V\\ %typ 0.2 V
-    $NM_L=$ 0.4 V
-\end{multicols}
+\begin{table}[htb]
+\centering
+\begin{tabular}{cccc|c}
+\toprule
+Parameter  & min & typ & max & [Unit] \\
+\midrule
+\midrule
+$V_{CC}$ &  &  & $7$ & V \\
+$V_I$	 &  &  & $5.5$ & V\\
+$V_{OH}$ & $2.4$  & $3.4$ & & V \\
+$V_{OL}$ & $0.2$  & $0.4$ & & V \\
+$V_{IH}$ & $2$  &  & & V  \\
+$V_{IL}$ &  &  & $0.8$ & V \\
+$I_{IH}$ &  &  & $40$ & $\si{\micro\A}$ \\
+$I_{OH}$ &  &  & $-0.4$ & mA \\
+\bottomrule 
+\end{tabular}
+
+\caption{Valori delle tensioni e correnti di operazione indicati sul
+datasheet dell'integrato SN7404.}
+\label{tab: notDS}
+\end{table}
+
 Dalle nostre misure otteniamo %spiegare come abbiamo misurato
 \begin{multicols}{2}
     \centering
@@ -131,7 +138,7 @@ Misuriamo le correnti\\ %non so se vogliamo descrivere un minimo il procedimento
 input a 2.4V ale 12 uA eli  13uA ele 21uA
 output a 3.4V ale 1.21 mA eli 1.13 ele 1.54mA
 (output 2 ?? ele 0.375 mA)
-\section{Circuiti logici elementari}
+\section{Circuiti logici elementari con sole porte NAND}
 \begin{minipage}{0.65\textwidth}
     In questa sezione, dopo aver rimosso l'integrato analizzato nella sezione precedente, utilizziamo due integrati del tipo SN74LS00 a porte NAND a due ingressi, schematizzati nella figura a lato. Una fondamentale caratteristica delle porte NAND è la loro universalità, ossia il fatto che è possibile realizzare qualsiasi tipo di circuito: infatti, con combinazioni di porte NAND, possiamo ottenere circuiti equivalenti dalle porte AND, OR e NOT, a partire dalle quali è possibile realizzare qualsiasi circuito.
 \end{minipage}
@@ -157,7 +164,7 @@ la derivazione analitica, utilizzando l'algebra di Boole, che trasformi la funzi
 lo schema del circuito;\\
 un'acquisizione effettuata utilizzando le funzioni Pattern e Logic che dimostri la funzionalità del circuito.)
 
-\subsubsection*{Circuito 1}
+\subsubsection*{Porta OR}
 Come primo circuito vogliamo realizzare una porta OR: detti \textit{A} e \textit{B} gli ingressi e \textit{Y} l'uscita, nella notazione dell'algebra booleana si ha
 \[
     Y=A+B
@@ -173,9 +180,9 @@ Nota la relazione per ottenere un NOT utilizzando porte NAND, riportiamo lo sche
     %\includegraphics[width=0.45\textwidth]{OR.png}
     \label{or}
 \end{figure}
-\FloatBarrier
 
-\subsubsection*{Circuito 2}
+
+\subsubsection*{Circuito selettore a due vie (multiplexer)}
 Realizziamo un circuito che permetta di assegnare all'uscita il valore di uno dei due ingressi a singolo bit tramite il valore di un terzo ingresso.
 Indichiamo con \textit{A}, \textit{B} e \textit{C} gli ingressi e con \textit{Y} l'uscita; il funzionamento del nostro circuito può essere descritto dalla tabella di Karnaugh riportata sotto\\
 \begin{minipage}{0.5\textwidth}
@@ -213,7 +220,7 @@ Riportiamo sotto lo schema del circuito
     %\includegraphics[width=0.6\textwidth]{cir2.png}
     \label{circuito2}
 \end{figure}
-\FloatBarrier
+
 Per dimostrare il corretto funzionamento del circuito riportiamo le acquisizioni di Pattern, in cui è possibile comprendere come sono stati impostati gli ingressi, e Logic, da cui si può verificare il corretto funzionamento del circuito.
 \begin{figure}[htb!]
     \centering
@@ -221,15 +228,16 @@ Per dimostrare il corretto funzionamento del circuito riportiamo le acquisizioni
     \caption{Pattern: DIO 0 $\equiv$ C, DIO 1 $\equiv$ A e DIO 2 $\equiv$ B}
     \label{pat2}
 \end{figure}
-\FloatBarrier
+
 \begin{figure}[htb!]
     \centering
     %\includegraphics[width=0.8\textwidth]{log2.png}
     \caption{Logic: DIO 0 $\equiv$ C, DIO 1 $\equiv$ A, DIO 2 $\equiv$ B e DIO 3 $\equiv$ Y}
 \end{figure}
-\FloatBarrier
 
-\section{Convertitore Gray-Binario}
+
+\section{Circuiti logici complessi a più chip}
+\subsection{Convertitore Gray-Binario}
 \begin{minipage}{0.7\textwidth}
     Come ultima cosa vogliamo realizzare un circuito in grado di convertire un valore a 4 bit dalla codifica Gray in Binario utilizzando un solo integrato di tipo SN74LS86 a porte XOR, descritto nella figura a lato.\\
     Un convertitore Gray-Binario può essere schematizzato come in Figura (\ref{gb}): il nostro obiettivo è quello di verificare che tale circuito si comporti come atteso.
@@ -287,24 +295,24 @@ Calcoliamo l'uscita del circuito per alcuni valori in ingresso:
     \end{array}
     \]
 \end{table}
-\FloatBarrier
+
 Confrontando le uscite ottenute con i valori riportati in Tabella (\ref{grbin}) affermiamo che il circuito si comporta correttamente come convertitore Gray-Binario. Come conferma, riportiamo un'acquisizione.\\
 \begin{figure}[htb!]
     \centering
-    %\includegraphics[width=\textwidth]{figs:gray/gray.png}
+    \includegraphics[width=\textwidth]{graybin}
     \caption{Acquisizione del Logic Analyzer per un ciclo completo (frequenza 10 Hz) dei segnali in ingresso e in uscita dal convertitore Gray-binario.}
 \end{figure}
 \begin{figure}[htb!]
     \centering
-    %\includegraphics[width=\textwidth]{figs:gray/gray_transition_30ns.png}
-    \caption{Acquisizione del Logic Analyzer durante la transizione dal numero $15$ al numero $0$ su scala dei tempi pari a $30$ ns. Il primo cursore evidenzia la durata di una metà del glitch su DIO 9 ($10$ ns) mentre il secondo è posto a $60$ ns per individuare la durata complessiva del glitch in DIO 11.}
+    \includegraphics[width=\textwidth]{gray20ns.png}
+    \caption{Acquisizione del Logic Analyzer durante la transizione dal numero $15$ al numero $0$ su scala dei tempi pari a $20$ ns. Il primo cursore evidenzia la durata di una metà del glitch su DIO 9 ($10$ ns) mentre il secondo è posto a $60$ ns per individuare la durata complessiva del glitch in DIO 11.}
 \end{figure}
 Per una scala dei tempi molto stretta, si registra che i tempi di propagazione non sono istantanei, distinguendo dei glitch(s) sui canali di uscita. \\
 In particolare, per DIO 9 (B1 
 
 \begin{figure}[htb!]
     \centering
-    %\includegraphics[width=\textwidth]{figs:gray/gray_transition_10ns.png}
+    \includegraphics[width=\textwidth]{gray10ns.png}
     \caption{Transizione dal $15$ allo $0$ su scala temporale pari a $10$ ns. Si riporta la tendina degli Eventi rilevanti per il canale DIO 11 (output B3: MSB).}
 \end{figure}
 (verificate il funzionamento del circuito utilizzando Pattern per generare un contatore a 4 bit con la codifica opportuna e osservando l’uscita con Logic (come ai punti precedenti);\\
@@ -340,13 +348,16 @@ Aggiungiamo al circuito 4 led verdi e un led rosso: questi sono pilotati da 5 nu
     \label{fig:Ver}
 \end{figure}
 
+
 %=======================
 \section*{Conclusioni e commenti finali}
-Si è riusciti a costruire e caratterizzare un amplificatore di tensione
-invertente con un JFET in configurazione a emettitore comune. In particolare
-si è riusciti ad apprezzare il differente comportamento (anche non lineare)
-del circuito in vari regimi, dare una stima di guadagno, impedenza in
-ingresso e frequenze caratteristiche della sua risposta in frequenza.
+Si è riusciti a verificare il corretto comportamento delle porte TTL studiate
+caratterizzandone le tensioni, correnti di operazione e tempi caratteristici
+di circuiti integrati come il SN7404.
+Inoltre, è stato possibile verificare il funzionamento di circuiti logici di
+diversa complessità costruiti con porte NAND, XOR, e OR e si è riusciti ad
+apprezzare l'effetto dei tempi di propagazione delle porte nella conversione
+dalla codifica Gray al binario.
 
 %=======================
 \section*{Dichiarazione}
