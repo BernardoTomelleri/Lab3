@@ -49,11 +49,9 @@ mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 
 %=======================
 \section{Caratteristiche fisiche delle porte logiche}
-<<<<<<< Updated upstream
-Si studia il comportamento delle porte NOT TTL contenute nel circuito integrato
-SN7404 misurando le tensioni e correnti di operazione e verificando che queste
-rientrino nelle specifiche tecniche riportate nel Data-Sheet del chip.
-=======
+
+Si studia il comportamento delle porte NOT TTL contenute nel circuito integrato SN7404 misurando le tensioni e correnti di operazione e verificando che queste rientrino nelle specifiche tecniche riportate nel Data-Sheet del chip.
+
 \begin{minipage}{0.7\textwidth}
     Il punto di questa sezione è quello di verificare che l'integrato preso in esame, SN7404 a porte NOT (raffigurato a fianco), rientri nelle specifiche del DS. Per fare questo misureremo tensioni e correnti in entrata e in uscita dalle porte logiche sia per valori H che L, tramite l'utilizzo di un amperometro e di un AD2.
     Per le nostre misure, alimentiamo il TTL con una tensione di 5 V inviata al pin 14 (VCC) e una tensione di 0 V al pin 7 (GND).
@@ -62,7 +60,6 @@ rientrino nelle specifiche tecniche riportate nel Data-Sheet del chip.
     \includegraphics[width=\textwidth]{NOT.jpg}
     \label{NOT}
 \end{minipage}
->>>>>>> Stashed changes
 
 \subsection{Tensioni di operazione}
 \label{TENSIONI}
@@ -71,10 +68,8 @@ Come prime misure verifichiamo i valori delle tensioni di soglia tipiche in ingr
     NM_H = V\ped{OH, min} - V\ped{IH, min}\\
     NM_L = V\ped{IL,max} - V\ped{OL, max}
 \end{gather*}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 Dove $V\ped{OH, min}$ è il minimo valore interpretato in output dalla porta come alto; analogamente possiamo descrivere le altre grandezze presenti nelle definizioni.\\
-Dalle specifiche del DS si ha che i valori attesi sono %non ho visto gli errori
+Dalle specifiche del DS si ha che i valori attesi sono
 \begin{table}[htb]
 \centering
 \begin{tabular}{cccc|c}
@@ -98,12 +93,7 @@ datasheet dell'integrato SN7404.}
 \label{tab: notDS}
 \end{table}
 
-Dalle nostre misure otteniamo %spiegare come abbiamo misurato
-=======
-=======
->>>>>>> Stashed changes
-in cui abbiamo definito $V_O$ e $V_I$ le tensioni in uscita e in ingresso dalla porta logica rispettivamente (le altre diciture indicano se il valore a cui ci facciamo riferimento appartiene a uno stato logico alto o basso, e se è un minimo o un massimo).
-Estrapolando i corrispettivi valori dal datasheet, e assumendo che ogni porta logica abbia i medesimi parametri delle altre presenti nello stesso integrato, ci aspettiamo di trovare:
+Assumendo che ogni porta logica abbia i medesimi parametri delle altre presenti nello stesso integrato, ci aspettiamo di trovare:
 \begin{gather*}
     NM_H=0.4 V\\
     NM_L=0.4 V
@@ -132,10 +122,7 @@ Dalle nostre misure otteniamo per il primo integrato:
     $NM_L=$ 0.35 $\pm$0.01 V
 \end{multicols}
 mentre per il secondo integrato:
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
 \begin{multicols}{2}
     \centering
     $V_{OH,min}=$ 2.40 $\pm$0.03 V\\
@@ -169,7 +156,6 @@ Arrivati a questo punto abbiamo rimosso l'amperometro e abbiamo inviato all'ingr
 \begin{gather*}
     I_{OH,1}=495 \pm 4 \mu A\\
     I_{OH,2}=315 \pm 3 \mu A\\   
-<<<<<<< Updated upstream
 \end{gather*}
 %TODO inseirire cosa sarebbe successo se avessi abbassato la tensione in uscita fino a 2.5 V circa
 Da questo si ricava che:
@@ -185,30 +171,7 @@ Dal datasheet si ricavano dei tempi di propagazione pari a:
     t_{PHL,max}=22 nS\\
     t_{PLH,max}=15 nS\\
 \end{gather*}
-<<<<<<< Updated upstream
-Misuriamo le correnti\\ %non so se vogliamo descrivere un minimo il procedimento come sulla scheda..
-input a 2.4V ale 12 uA eli  13uA ele 21uA
-output a 3.4V ale 1.21 mA eli 1.13 ele 1.54mA
-(output 2 ?? ele 0.375 mA)
-\section{Circuiti logici elementari con sole porte NAND}
-=======
-=======
-\end{gather*}
-%TODO inseirire cosa sarebbe successo se avessi abbassato la tensione in uscita fino a 2.5 V circa
-Da questo si ricava che:
-\begin{gather*}
-    \mbox{Fan-out}_1=31 \pm 2\\
-    \mbox{Fan-out}_2=32 \pm 3\\
-\end{gather*}
-Valori che sono notevolmente più alti delle aspettative e non compatibili con esse, ma risultano essere compatibili tra di loro.
-\subsection{Tempi di propagazione}
-Vogliamo a questo punto misurare i tempi di propagazione della porta logica NOT osservando, tramite un oscilloscopio da laboratorio, i grafici in funzione del tempo dei pin di ingresso e di uscita; li vogliamo poi paragonare ai valori presenti sul datatsheet.
-Dal datasheet si ricavano dei tempi di propagazione pari a:
-\begin{gather*}
-    t_{PHL,max}=22 nS\\
-    t_{PLH,max}=15 nS\\
-\end{gather*}
->>>>>>> Stashed changes
+
 Abbiamo quindi calcolato i valori medi tra stato basso e stato alto rispettivamente per l'entrata e per l'uscita tramite la formula:
 \begin{gather*}
 V_{O,med}=\frac{V_{OH}+V_{OL}}{2}\\
@@ -248,8 +211,7 @@ Dobbiamo però constatare la presenza di capacità parassite presenti nelle base
 	\includegraphics[width=\textwidth]{carica}
 \end{figure}
 Possiamo quindi concludere che le misure sono in linea con quanto dichiarato nel datasheet.
-\section{Circuiti logici elementari}
->>>>>>> Stashed changes
+\section{Circuiti logici elementari utilizzando la porta NAND}
 \begin{minipage}{0.65\textwidth}
     In questa sezione, dopo aver rimosso l'integrato analizzato nella sezione precedente, utilizziamo due integrati del tipo SN74LS00 a porte NAND a due ingressi, schematizzati nella figura a lato. Una fondamentale caratteristica delle porte NAND è la loro universalità, ossia il fatto che è possibile realizzare qualsiasi tipo di circuito: infatti, con combinazioni di porte NAND, possiamo ottenere circuiti equivalenti dalle porte AND, OR e NOT, a partire dalle quali è possibile realizzare qualsiasi circuito.
 \end{minipage}
@@ -289,8 +251,12 @@ Nota la relazione per ottenere un NOT utilizzando porte NAND, riportiamo lo sche
     \includegraphics[width=0.45\textwidth]{NAND_OR.png}
     \label{or}
 \end{figure}
-
-
+Utilizzando le funzioni pattern e logic abbiamo inviato tramite i pin DIO0 e DIO1 2 segnali di clock di frequenza 50 e 100 Hz e abbiamo utilizzato la porta DIO2 per verificare l'output del circuito
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=\textwidth]{or_time}
+\end{figure}
+Si vede quindi che il circuito ha il funzionamento aspettato con l'output L se e solo se i due input sono entrambi L.
 \subsubsection*{Circuito selettore a due vie (multiplexer)}
 Realizziamo un circuito che permetta di assegnare all'uscita il valore di uno dei due ingressi a singolo bit tramite il valore di un terzo ingresso.
 Indichiamo con \textit{A}, \textit{B} e \textit{C} gli ingressi e con \textit{Y} l'uscita; il funzionamento del nostro circuito può essere descritto dalla tabella di Karnaugh riportata sotto\\
@@ -326,25 +292,33 @@ Y=A\cdot\overline{C}+B\cdot C=\overline{(\overline{A\cdot\overline{C}})\cdot(\ov
 Riportiamo sotto lo schema del circuito
 \begin{figure}[htb!]
     \centering
-    %\includegraphics[width=0.6\textwidth]{cir2.png}
+    \includegraphics[width=0.6\textwidth]{NAND_MP.png}
     \label{circuito2}
 \end{figure}
 
 Per dimostrare il corretto funzionamento del circuito riportiamo le acquisizioni di Pattern, in cui è possibile comprendere come sono stati impostati gli ingressi, e Logic, da cui si può verificare il corretto funzionamento del circuito.
+Abbiamo inviato al circuito tramite la funzione pattern un segnale di clock a 100 Hz a B, uno a 50 Hz a A e infine uno a 25 Hz a C.
 \begin{figure}[htb!]
     \centering
-    %\includegraphics[width=0.8\textwidth]{pat2.png}
-    \caption{Pattern: DIO 0 $\equiv$ C, DIO 1 $\equiv$ A e DIO 2 $\equiv$ B}
+    \includegraphics[width=0.8\textwidth]{Multiplex.png}
+    \caption{Pattern: DIO 0 $\equiv$ B, DIO 1 $\equiv$ A e DIO 2 $\equiv$ C}
     \label{pat2}
 \end{figure}
+Si ricava quindi che il circuito funziona come da aspettative, restituendo il segnale di A nel caso in cui C=0 e il segnale B quando C=1.
 
+\subsection*{Porta XOR}
 \begin{figure}[htb!]
     \centering
-    %\includegraphics[width=0.8\textwidth]{log2.png}
-    \caption{Logic: DIO 0 $\equiv$ C, DIO 1 $\equiv$ A, DIO 2 $\equiv$ B e DIO 3 $\equiv$ Y}
+    \includegraphics[width=0.6\textwidth]{NAND_XOR.png}
+    \label{circuito3}
 \end{figure}
-
-
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{xor_time.png}
+    \caption{Porta XOR}
+    \label{pat2}
+\end{figure}
+Se ne deduce che il circuito ha il funzionamento aspettato e che quindi l'output risulta essere L se e solo se entrambi gli input A e B hanno lo stesso valore.
 \section{Circuiti logici complessi a più chip}
 \subsection{Convertitore Gray-Binario}
 \begin{minipage}{0.7\textwidth}
@@ -352,12 +326,12 @@ Per dimostrare il corretto funzionamento del circuito riportiamo le acquisizioni
     Un convertitore Gray-Binario può essere schematizzato come in Figura (\ref{gb}): il nostro obiettivo è quello di verificare che tale circuito si comporti come atteso.
 \end{minipage}
 \begin{minipage}{0.3\textwidth}
-    %\includegraphics[width=\textwidth]{XOR.png}
+    \includegraphics[width=\textwidth]{XOR.png}
 \end{minipage}
 \newline
 \begin{minipage}{0.5\textwidth}
     \centering
-    %\includegraphics[width=0.8\textwidth]{gb.png}
+    \includegraphics[width=0.8\textwidth]{gb.png}
     \captionof{figure}{Schema convertitore Gray-Binario}
     \label{gb}
 \end{minipage}
@@ -430,29 +404,44 @@ motivate l’osservazione del punto precedente tenendo conto del tempo di propag
 riportate tutti i grafici necessari a dimostrare il funzionamento del circuito.)
 
 \subsection{Sommatore a 2 bit}
-Vogliamo costruire un sommatore a due bit utilizzando le dovute porte logiche. Utilizzeremo i chip \texttt{SN74LS08} (quad-AND), \texttt{SN74LS32} (quad-OR), \texttt{SN74LS86} (quad-XOR). Il circuito da montare è riportato in Fig.(\ref{fig:fulladder}).
+Vogliamo costruire un sommatore a due bit utilizzando le dovute porte logiche. Utilizzeremo i chip \texttt{SN74LS08} (quad-AND), \texttt{SN74LS32} (quad-OR), \texttt{SN74LS86} (quad-XOR). Il circuito da montare è riportato in Fig.(\ref{fig:sommatore}).
 
 \begin{figure}[htbp]
     \centering
-%    \includegraphics[width=0.6\linewidth]{fulladder.png}
-    \caption{Schema circuitale di un sommatore a due bit.}
+    \includegraphics[width=0.6\linewidth]{half.png}
+    \caption{Schema circuitale di half adder}
+    \label{fig:halfadder}
+\end{figure}
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\linewidth]{full.png}
+    \caption{Schema circuitale di full adder.}
     \label{fig:fulladder}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\linewidth]{sum.png}
+    \caption{Schema circuitale di un sommatore a 2 bit}
+    \label{fig:sommatore}
 \end{figure}
 
 Verifichiamo il funzionamento mandando in ingresso tutte le possibili combinazioni di due numeri a due bit. Per fare ciò mandiamo ai 4 ingressi del circuito un segnale che conta in binario. Il risultato è mostrato in Fig.(\ref{fig:faAD2}).
 
 \begin{figure}[htbp]
     \centering
-%    \includegraphics[width=\linewidth]{fulladderAD2.png}
+    \includegraphics[width=\linewidth]{sum_time.png}
     \caption{Andamento del sommatore, si consulti la colonna di sinistra per il significato di ciascuna riga.}
     \label{fig:faAD2}
 \end{figure}
 
-Aggiungiamo al circuito 4 led verdi e un led rosso: questi sono pilotati da 5 nuovi cavi dell'AD2. Per controllare il loro funzionamento aggiungiamo a \emph{Patterns} una tabella delle verità, riportata in \ref{fig:Ver}, che faccia in modo che ad ogni step si illuminino un numero di led pari al valore della somma. Il led rosso verrà usato per controllare l'overflow, ovvero la possibilità che il risultato sia maggiore o uguale a 5. Per osservare al meglio il risultato si può vedere il video registrato per l'occasione, reperibile al link seguente: \url{https://www.youtube.com/watch?v=D473oqeD6gc}.
+Aggiungiamo al circuito 4 led verdi e un led rosso: questi sono pilotati da 5 nuovi cavi dell'AD2. Per controllare il loro funzionamento aggiungiamo a \emph{Patterns} una tabella delle verità, riportata in \ref{fig:Ver}, che faccia in modo che ad ogni step si illuminino un numero di led pari al valore della somma. Il led rosso verrà usato per controllare l'overflow, ovvero la possibilità che il risultato sia maggiore o uguale a 4.
 
 \begin{figure}[htbp]
     \centering
-%    \includegraphics[width=0.8\linewidth]{ROM.PNG}
+    \includegraphics[width=0.8\linewidth]{TAB_LED.PNG}
     \caption{Tabella delle verità usata.}
     \label{fig:Ver}
 \end{figure}
