@@ -52,7 +52,6 @@ Si studia il comportamento delle porte NOT TTL contenute nel circuito integrato
 SN7404 misurando le tensioni e correnti di operazione e verificando che queste
 rientrino nelle specifiche tecniche riportate nel Data-Sheet del chip
 (in \cref{fig: SN7404}).
-
 \begin{minipage}{0.3\textwidth}
     \includegraphics[width=\textwidth]{SN7404}
     \label{fig: SN7404}
@@ -86,6 +85,7 @@ $I_{OH}$ &  &  & $-0.4$ & mA \\
 datasheet dell'integrato SN7404.}
 \label{tab: notDS}
 \end{table}
+
 in cui $V_O$ e $V_I$ sono definite come le tensioni in uscita e in ingresso
 dalla porta logica (le altre diciture indicano se la grandezza a cui facciamo
 riferimento corrisponde a uno stato logico alto (H) o basso (L) e quali sono
@@ -105,14 +105,6 @@ V_{OL}= \pm \; \si{\V} \\
 V_{IH} = \pm \; \si{\V} \\
 V_{IL} = \pm \; \si{\V} \\
 \end{align*}
-%TODO vedere se torna
-
-Da cui troviamo le nostre stime dei valori delle soglie di rumore (Noise
-Margin High e Low) per le porte NOT studiate, definite come
-\begin{align*}
-    NM_H = V\ped{OH, min} - V\ped{IH, min} = 2.4 - 2 = 0.4 \; \si{\V} \\
-    NM_L = V\ped{IL, max} - V\ped{OL, max} = 0.8 - 0.4 = 0.4 \; \si{\V}
-\end{align*}
 
 \begin{figure}
 	\includegraphics[scale=0.4]{not_xy1}
@@ -128,11 +120,11 @@ Dalle nostre misure otteniamo per il primo integrato:
     \centering
     $V_{OH,min}=$ 2.53 $\pm$0.03 V\\
     $V_{IH,min}=$ 2.10 $\pm$0.02 V\\
-    $NM_H=$ 0.43 $\pm$0.04 V
+%    $NM_H=$ 0.43 $\pm$0.04 V
     
     $V_{IL,max}=$ 979 $\pm$9 mV\\
     $V_{OL,max}=$ 632 $\pm$4 mV\\
-    $NM_L=$ 0.35 $\pm$0.01 V
+%   $NM_L=$ 0.35 $\pm$ 0.02 V
 \end{multicols}
 mentre per il secondo integrato:
 
@@ -140,12 +132,21 @@ mentre per il secondo integrato:
     \centering
     $V_{OH,min}=$ 2.40 $\pm$0.03 V\\
     $V_{IH,min}=$ 1.81 $\pm$0.02 V\\
-    $NM_H=$ 0.60 $\pm$0.04 V
+%    $NM_H=$ 0.60 $\pm$0.04 V
     
     $V_{IL,max}=$ 772 $\pm$8 mV\\
     $V_{OL,max}=$ 341 $\pm$3 mV\\
-    $NM_L=$ 0.43 $\pm$0.01 V
+%    $NM_L=$ 0.43 $\pm$0.01 V
 \end{multicols}
+
+Da cui troviamo le nostre stime dei valori delle soglie di rumore (Noise
+Margin High e Low) per le porte NOT studiate, definite come
+\begin{align*}
+    NM_H = V\ped{OH, min} - V\ped{IH, min} = (0.43 \pm 0.04) \;
+    (0.60 \pm 0.03) \; \si{\V} \\
+    NM_L = V\ped{IL, max} - V\ped{OL, max} = (0.35 \pm 0.02) \;
+    (0.43 \pm 0.02) \; \si{\V}
+\end{align*}
 
 \subsection{Valori attesi per le soglie di rumore}
 Estrapolando i corrispettivi valori dal datasheet, e assumendo che ogni porta
@@ -259,6 +260,7 @@ Utilizziamo quindi la funzione PATTERN di waveform per produrre 2 segnali di clo
 \end{figure}
 Il circuito risulta essere funzionante e l'output risulta essere L se e solo se i pin 1 e 2 valgono entrambi H, proprio come da aspettative.
 
+\section{Costruzione di circuiti con porte NAND}
 \subsection{Porta OR}
 Come primo circuito vogliamo realizzare una porta OR: detti \textit{A} e \textit{B} gli ingressi e \textit{Y} l'uscita, nella notazione dell'algebra booleana si ha
 \[
@@ -276,6 +278,12 @@ Nota la relazione per ottenere un NOT utilizzando porte NAND, riportiamo lo sche
     \caption{\label{fig: OR}}
 \end{figure}
 
+Utilizzando le funzioni pattern e logic abbiamo inviato tramite i pin DIO0 e DIO1 2 segnali di clock di frequenza 50 e 100 Hz e abbiamo utilizzato la porta DIO2 per verificare l'output del circuito
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=\textwidth]{or_time}
+\end{figure}
+Si vede quindi che il circuito ha il funzionamento aspettato con l'output L se e solo se i due input sono entrambi L.
 
 \subsection{Circuito selettore a due vie (multiplexer)}
 Realizziamo un circuito che permetta di assegnare all'uscita il valore di uno dei due ingressi a singolo bit tramite il valore di un terzo ingresso.
@@ -310,7 +318,7 @@ Y=A\cdot\overline{C}+B\cdot C=\overline{(\overline{A\cdot\overline{C}})\cdot(\ov
 Riportiamo sotto lo schema del circuito
 \begin{figure}[htbp]
     \centering
-    %\includegraphics[width=0.6\textwidth]{cir2}
+    \includegraphics[width=0.6\textwidth]{NAND_MP.png}
     \label{circuito2}
 \end{figure}
 
@@ -319,8 +327,15 @@ Per dimostrare il corretto funzionamento del circuito riportiamo le acquisizioni
     \centering
     %\includegraphics[width=0.8\textwidth]{pat2}
     \caption{Pattern: DIO 0 $\equiv$ C, DIO 1 $\equiv$ A e DIO 2 $\equiv$ B}
+\end{figure}
+Abbiamo inviato al circuito tramite la funzione pattern un segnale di clock a 100 Hz a B, uno a 50 Hz a A e infine uno a 25 Hz a C.
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Multiplex.png}
+    \caption{Pattern: DIO 0 $\equiv$ B, DIO 1 $\equiv$ A e DIO 2 $\equiv$ C}
     \label{pat2}
 \end{figure}
+Si ricava quindi che il circuito funziona come da aspettative, restituendo il segnale di A nel caso in cui C=0 e il segnale B quando C=1.
 
 \begin{figure}[htbp]
     \centering
@@ -328,16 +343,38 @@ Per dimostrare il corretto funzionamento del circuito riportiamo le acquisizioni
     \caption{Logic: DIO 0 $\equiv$ C, DIO 1 $\equiv$ A, DIO 2 $\equiv$ B e DIO 3 $\equiv$ Y}
 \end{figure}
 
+\subsection{Porta XOR}
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{NAND_XOR.png}
+    \label{circuito3}
+\end{figure}
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{xor_time.png}
+    \caption{Porta XOR}
+    \label{pat2}
+\end{figure}
+Se ne deduce che il circuito ha il funzionamento aspettato e che quindi l'output risulta essere L se e solo se entrambi gli input A e B hanno lo stesso valore.
+
 \setcounter{section}{5}
 %=======================
 \section*{Parte C: Circuiti logici complessi a più chip}
 \section{Convertitore Gray-Binario}
-    Come ultima cosa vogliamo realizzare un circuito in grado di convertire un valore a 4 bit dalla codifica Gray in Binario utilizzando un solo integrato di tipo SN74LS86 a porte XOR.
-    Un convertitore Gray-Binario può essere schematizzato come in \cref{fig: gb}: il nostro obiettivo è quello di verificare che tale circuito si comporti come atteso.
-\begin{figure}[htbp]
-    %\includegraphics[width=0.8\textwidth]{gb}
-    \caption{Schema convertitore Gray-Binario\label{fig: gb}}
-\end{figure}
+\begin{minipage}{0.7\textwidth}
+    Come ultima cosa vogliamo realizzare un circuito in grado di convertire un valore a 4 bit dalla codifica Gray in Binario utilizzando un solo integrato di tipo SN74LS86 a porte XOR, descritto nella figura a lato.\\
+    Un convertitore Gray-Binario può essere schematizzato come in Figura (\ref{gb}): il nostro obiettivo è quello di verificare che tale circuito si comporti come atteso.
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{XOR.png}
+\end{minipage}
+\newline
+\begin{minipage}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{gb.png}
+    \captionof{figure}{Schema convertitore Gray-Binario}
+    \label{gb}
+\end{minipage}
 
 \begin{table}[htbp]
     \centering
@@ -407,36 +444,46 @@ Per una scala dei tempi molto stretta, si registra che i tempi di propagazione n
 %TODO riportare tutti i grafici necessari a dimostrare il funzionamento del circuito
 
 \section{Sommatore a 2 bit}
-Vogliamo costruire un sommatore a due bit utilizzando i chip
-\texttt{SN74LS08} (quad-AND), \texttt{SN74LS32} (quad-OR), 
-\texttt{SN74LS86} (quad-XOR). Il circuito costruito è riportato in
-\cref{fig: fulladder}.
+Vogliamo costruire un sommatore a due bit utilizzando le dovute porte logiche. Utilizzeremo i chip \texttt{SN74LS08} (quad-AND), \texttt{SN74LS32} (quad-OR), \texttt{SN74LS86} (quad-XOR). Il circuito da montare è riportato in \cref{fig: sommatore}.
 
 \begin{figure}[htbp]
     \centering
-%    \includegraphics[width=0.6\linewidth]{fulladder}
-    \caption{Schema circuitale di un sommatore a due bit.}
-    \label{fig: fulladder}
+    \includegraphics[width=0.6\linewidth]{half.png}
+    \caption{Schema circuitale di half adder}
+    \label{fig:halfadder}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\linewidth]{full.png}
+    \caption{Schema circuitale di full adder.}
+    \label{fig:fulladder}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\linewidth]{sum.png}
+    \caption{Schema circuitale di un sommatore a 2 bit}
+    \label{fig: sommatore}
 \end{figure}
 
 Verifichiamo il funzionamento mandando in ingresso tutte le possibili combinazioni di due numeri a due bit. Per fare ciò mandiamo ai 4 ingressi del circuito un segnale che conta in binario. Il risultato è mostrato in \cref{fig: faAD2}.
 
 \begin{figure}[htbp]
     \centering
-%    \includegraphics[width=\linewidth]{fulladderAD2}
+    \includegraphics[width=\linewidth]{sum_time.png}
     \caption{Andamento del sommatore, si consulti la colonna di sinistra per il significato di ciascuna riga.}
     \label{fig: faAD2}
 \end{figure}
 
-Aggiungiamo al circuito 4 led verdi e un led rosso: questi sono pilotati da 5 nuovi cavi dell'AD2. Per controllare il loro funzionamento aggiungiamo a Patterns una tabella delle verità, riportata in \cref{fig: Ver}, che faccia in modo che ad ogni step si illuminino un numero di led pari al valore della somma. Il led rosso verrà usato per controllare l'overflow, ovvero la possibilità che il risultato sia maggiore o uguale a 5.
+Aggiungiamo al circuito 4 led verdi e un led rosso: questi sono pilotati da 5 nuovi cavi dell'AD2. Per controllare il loro funzionamento aggiungiamo a \emph{Patterns} una tabella delle verità, riportata in \cref{fig: Ver}, che faccia in modo che ad ogni step si illuminino un numero di led pari al valore della somma. Il led rosso verrà usato per controllare l'overflow, ovvero la possibilità che il risultato sia maggiore o uguale a 4.
 
 \begin{figure}[htbp]
     \centering
-%    \includegraphics[width=0.8\linewidth]{ROM}
+    \includegraphics[width=0.8\linewidth]{TAB_LED}
     \caption{Tabella delle verità usata.}
     \label{fig: Ver}
 \end{figure}
-
 
 %=======================
 \section*{Conclusioni e commenti finali}
