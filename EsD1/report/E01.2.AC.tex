@@ -48,18 +48,16 @@ mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 \setcounter{section}{0}
 %=======================
 \section*{Parte A: Caratteristiche fisiche delle porte logiche}
-Si studia il comportamento delle porte NOT TTL contenute nel circuito integrato
-SN7404 misurando le tensioni e correnti di operazione e verificando che queste
-rientrino nelle specifiche tecniche riportate nel Data-Sheet del chip
-(in \cref{fig: SN7404}).
+Si studia il comportamento delle porte NOT TTL contenute nel circuito integrato SN7404 misurando le tensioni e correnti di operazione e verificando che queste rientrino nelle specifiche tecniche riportate nel Data-Sheet del chip in \cref{fig: SN7404}.
 \begin{minipage}{0.3\textwidth}
     \includegraphics[width=\textwidth]{SN7404}
+    
     \label{fig: SN7404}
 \end{minipage}
 
 \section{Tensioni di operazione}\label{sec: tens}
 Come prime misure verifichiamo che i valori delle tensioni di soglia in
-ingresso in uscita rispettino le specifiche di buon funzionamento del DS,
+ingresso e in uscita rispettino le specifiche di buon funzionamento del DS,
 da cui è possibile ottenere una misura del Noise Margin delle porte.
 
 Dalle specifiche del DS si ha che i valori attesi sono: (riportati in
@@ -74,7 +72,7 @@ Parameter  & min & typ & max & [Unit] \\
 $V_{CC}$ &  &  & $7$ & V \\
 $V_I$	 &  &  & $5.5$ & V\\
 $V_{OH}$ & $2.4$  & $3.4$ & & V \\
-$V_{OL}$ & $0.2$  & $0.4$ & & V \\
+$V_{OL}$ &   & $0.2$ & $0.4$ & V \\
 $V_{IH}$ & $2$  &  & & V  \\
 $V_{IL}$ &  &  & $0.8$ & V \\
 $I_{IH}$ &  &  & $40$ & $\si{\micro\A}$ \\
@@ -97,54 +95,67 @@ Generiamo una rampa di tensione compresa tra 0-5 V e la inviamo
 all'ingresso di una porta NOT per osservare i segnali generati in uscita,
 così da ottenere un grafico di $V\ped{out}$ in funzione di $V\ped{in}$.
 
-come misure delle tensioni di operazione otteniamo
-%TODO spiegare come abbiamo misurato
-\begin{align*}
-V_{OH} = \pm \; \si{\V} \\
-V_{OL}= \pm \; \si{\V} \\
-V_{IH} = \pm \; \si{\V} \\
-V_{IL} = \pm \; \si{\V} \\
-\end{align*}
+Abbiamo quindi utilizzato dei cursori per misurare $V_{OH}$ e $V_{OL}$ come la tensione che raggiunge l'uscita in saturazione per valore logico H e L rispettivamente, mentre per misurare $V_{IL}$ e $V_{IH}$ abbiamo misurato le tensioni in entrata per cui inizia e finisce la fase di transizione dell'uscita secondo lo schema in figura \ref{fig: trans}:
+\begin{figure}
+	\includegraphics[scale=0.4]{trans}
+	\caption{Schema di come sono stati utilizzati i cursori per misurare le tensioni $V_{OH}$, $V_{OL}$ (cursori orizzontali) e $V_{IH}$, $V_{IL}$ (aiutandosi con i cursori verticali a individuare la fase di transizione HL)}
+	\label{fig: trans}
+\end{figure}
+\begin{multicols}{2}
+    \centering
+    $V_{OH} = 3.78\pm 0.03\; \si{\V}$ \\
+	$V_{OL} = 632\pm 4 \; \si{m\V}$ \\
+	$V_{IH} = 2.10 \pm 0.02 \; \si{\V} $\\
+	$V_{IL} = 979 \pm 9\; \si{m\V} $\\
+    
+    $V_{OH} = 3.76\pm 0.03\; \si{\V}$ \\
+	$V_{OL} = 341\pm 3 \; \si{m\V}$ \\
+	$V_{IH} = 1.81 \pm 0.02 \; \si{\V} $\\
+	$V_{IL} = 772 \pm 8\; \si{m\V} $\\
+\end{multicols}
 
 \begin{figure}
 	\includegraphics[scale=0.4]{not_xy1}
+	\caption{Grafico XY di $V_{out}$ in funzione di $V_{in}$}
 \end{figure}
 \begin{figure}
 	\includegraphics[width=\textwidth]{not_time1}
+	\caption{Grafico in funzione del tempo di $V_{in}$ (in giallo, una rampa da 0 a 5 V di frequenza pari a 1 kHz) e $V_{out}$ (in blu)}
 \end{figure}
-
-Utilizzando i cursori siamo andati a misurare le varie tensioni di soglia.
-%TODO so una sega se vuoi aggiungerci proprio come ho fatto, non lo so nemmeno io siccome, però ho cercato su internet e sembra che per misurare V_OH,min e V_IH,min tu debba cercare il valore in cui il coefficiente angolare è -1, solo che ti sfido a trovarlo dio cane.
-Dalle nostre misure otteniamo per il primo integrato:
+%TODO leggi tutto qua sotto, è la cosa migliore che sono riuscito a tirare fuori
+Utilizzando nuovamente i cursori abbiamo ripreso la misura di $V_{OH,min}$ dato che il valore minimo per lo stato alto dell'uscita sembrava appunto essere più basso di quanto misurato prima; di conseguenza abbiamo spostato il cursore nel punto in cui la tensione in uscita cambia in maniera più repentina:
+\begin{figure}
+	\includegraphics[scale=0.4]{trans1}
+	\caption{Schema di come è stata presa la misura di $V_{OH_min}$ tramite l'utilizzo dei cursori: è stato scelto come valore minimo la tensione dell'uscita subito prima del primo cambio repentino.}
+	\label{fig: trans1}
+\end{figure}
+Successivamente si sono utilizzati gli altri valori presi in precedenza per completare le misure.
+Per il primo integrato:
 \begin{multicols}{2}
     \centering
     $V_{OH,min}=$ 2.53 $\pm$0.03 V\\
     $V_{IH,min}=$ 2.10 $\pm$0.02 V\\
-%    $NM_H=$ 0.43 $\pm$0.04 V
     
     $V_{IL,max}=$ 979 $\pm$9 mV\\
     $V_{OL,max}=$ 632 $\pm$4 mV\\
-%   $NM_L=$ 0.35 $\pm$ 0.02 V
 \end{multicols}
-mentre per il secondo integrato:
+mentre per il secondo:
 
 \begin{multicols}{2}
     \centering
     $V_{OH,min}=$ 2.40 $\pm$0.03 V\\
     $V_{IH,min}=$ 1.81 $\pm$0.02 V\\
-%    $NM_H=$ 0.60 $\pm$0.04 V
     
     $V_{IL,max}=$ 772 $\pm$8 mV\\
     $V_{OL,max}=$ 341 $\pm$3 mV\\
-%    $NM_L=$ 0.43 $\pm$0.01 V
 \end{multicols}
 
 Da cui troviamo le nostre stime dei valori delle soglie di rumore (Noise
 Margin High e Low) per le porte NOT studiate, definite come
 \begin{align*}
-    NM_H = V\ped{OH, min} - V\ped{IH, min} = (0.43 \pm 0.04) \;
+    NM_H = V\ped{OH, min} - V\ped{IH, min} = (0.43 \pm 0.04) \; ,\;
     (0.60 \pm 0.03) \; \si{\V} \\
-    NM_L = V\ped{IL, max} - V\ped{OL, max} = (0.35 \pm 0.02) \;
+    NM_L = V\ped{IL, max} - V\ped{OL, max} = (0.35 \pm 0.02) \; ,\;
     (0.43 \pm 0.02) \; \si{\V}
 \end{align*}
 
@@ -216,15 +227,19 @@ Si definisce come tempo di propagazione il tempo che trascorre tra quando $V_{in
 Utilizzando l'oscilloscopio da banco abbiamo collegato i due canali disponibili all'entrata (CH1) e all'uscita (CH2) e abbiamo sempre triggerato quando il segnale di ingresso (CH1) raggiungeva $V_{I,med}$, abbiamo poi cambiato il fronte di trigger per scegliere se misurare il tempo di propagazione HL o LH.
 \begin{figure}
 	\includegraphics[width=\textwidth]{LH1}
+	\caption{Acquisizione tramite oscilloscopio digitale della transizione da L a H per il primo integrato}
 \end{figure}
 \begin{figure}
 	\includegraphics[width=\textwidth]{LH2}
+	\caption{Acquisizione tramite oscilloscopio digitale della transizione da L a H per il secondo integrato}
 \end{figure}
 \begin{figure}
 	\includegraphics[width=\textwidth]{HL1}
+	\caption{Acquisizione tramite oscilloscopio digitale della transizione da H a L per il primo integrato}
 \end{figure}
 \begin{figure}
 	\includegraphics[width=\textwidth]{HL2}
+	\caption{Acquisizione tramite oscilloscopio digitale della transizione da H a L per il secondo integrato}
 \end{figure}
 Dalla misura fatta con i cursori sull'oscilloscopio si ricava
 \begin{multicols}{2}
@@ -236,9 +251,11 @@ Dalla misura fatta con i cursori sull'oscilloscopio si ricava
     $t_{PLH}=$ 7.0 $\pm$0.2 nS\\
     $t_{PHL}=$ 22.0 $\pm$0.2 nS\\
 \end{multicols}
-Dobbiamo però constatare la presenza di capacità parassite presenti nelle basette e circuito, infatti aumentando la scala dei tempi ci rendiamo conto che tutti i grafici prodotti dall'oscilloscopio rispecchiano qualitativamente il grafico della carica e scarica del condensatore; per questo motivo si sono ottenuti in alcuni casi dei tempi di propagazione poco più alti delle aspettative, per cui non abbiamo ragione di credere che le nostre misure non siano compatibili con le aspettative.
+Dobbiamo però constatare la presenza di capacità parassite presenti nelle basette e circuito, infatti aumentando la scala dei tempi ci rendiamo conto che tutti i grafici prodotti dall'oscilloscopio rispecchiano qualitativamente il grafico della carica e scarica del condensatore (figura \cref{fig: carica}); per questo motivo si sono ottenuti in alcuni casi dei tempi di propagazione poco più alti delle aspettative, per cui non abbiamo ragione di credere che le nostre misure non siano compatibili con le aspettative.
 \begin{figure}
 	\includegraphics[width=\textwidth]{carica}
+	\label{fig: carica}
+	\caption{Acquisizione con oscilloscopio digitale con un fondo scala dei tempi più grande, in modo da osservare qualitativamente come la propagazione del segnale assomigli molto al grafico della tensione ai capi di un condensatore durante il ciclo di carica/scarica}
 \end{figure}
 Possiamo quindi concludere che le misure sono in linea con quanto dichiarato nel datasheet.
 
@@ -248,7 +265,8 @@ Possiamo quindi concludere che le misure sono in linea con quanto dichiarato nel
 Una fondamentale caratteristica delle porte NAND è la loro universalità, ossia il fatto che è possibile realizzare qualsiasi tipo di circuito: infatti, con combinazioni di porte NAND, possiamo ottenere circuiti equivalenti dalle porte AND, OR e NOT, a partire dalle quali è possibile realizzare qualsiasi circuito.
 
 \begin{figure}
-    %\includegraphics[width=\textwidth]{NAND}
+    \includegraphics[width=\textwidth]{NAND}
+    \caption{Schema circuitale del circuito integrato SN74LS00}
     \label{fig: NAND}
 \end{figure}
 
@@ -256,6 +274,7 @@ Una fondamentale caratteristica delle porte NAND è la loro universalità, ossia
 Utilizziamo quindi la funzione PATTERN di waveform per produrre 2 segnali di clock rispettivamente a 100 Hz (in uscita dalla porta DIO0 e in entrata nel pin 1 dell'integrato) e l'altro a 200 Hz (in uscita dalla porta DIO1 e in entrata nel pin 2). Infine abbiamo usato la funzione LOGIC per fare il grafico dei pin utilizzati nell'operazione logica (1,2 e 3). 
 \begin{figure}
 	\includegraphics[scale=0.4]{nand_time}
+	\caption{Acquisizione di logic di una porta nand guidata da due segnali da DIO0 (100 Hz) e DIO1 (200 Hz); in uscita viene letto da DIO2}
 	\label{nand_time}
 \end{figure}
 Il circuito risulta essere funzionante e l'output risulta essere L se e solo se i pin 1 e 2 valgono entrambi H, proprio come da aspettative.
@@ -275,13 +294,14 @@ Nota la relazione per ottenere un NOT utilizzando porte NAND, riportiamo lo sche
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.45\textwidth]{NAND_OR}
-    \caption{\label{fig: OR}}
+    \caption{\label{fig: OR} Schema circuitale utilizzato per costruire un OR GATE: A e B sono i segnali di input, mentre O è l'output}
 \end{figure}
 
 Utilizzando le funzioni pattern e logic abbiamo inviato tramite i pin DIO0 e DIO1 2 segnali di clock di frequenza 50 e 100 Hz e abbiamo utilizzato la porta DIO2 per verificare l'output del circuito
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=\textwidth]{or_time}
+    \caption{Acquisizione Logic per il circuito OR costruito tramite NAND: DIO0 e DIO1 sono i segnali in input, DIO2 è l'output}
 \end{figure}
 Si vede quindi che il circuito ha il funzionamento aspettato con l'output L se e solo se i due input sono entrambi L.
 
@@ -319,42 +339,43 @@ Riportiamo sotto lo schema del circuito
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\textwidth]{NAND_MP.png}
+    \caption{Schema circuitale per costruire un multiplexer a 2 input, controllato dal valore logico C}
     \label{circuito2}
 \end{figure}
 
 Per dimostrare il corretto funzionamento del circuito riportiamo le acquisizioni di Pattern, in cui è possibile comprendere come sono stati impostati gli ingressi, e Logic, da cui si può verificare il corretto funzionamento del circuito.
-\begin{figure}[htbp]
-    \centering
-    %\includegraphics[width=0.8\textwidth]{pat2}
-    \caption{Pattern: DIO 0 $\equiv$ C, DIO 1 $\equiv$ A e DIO 2 $\equiv$ B}
-\end{figure}
 Abbiamo inviato al circuito tramite la funzione pattern un segnale di clock a 100 Hz a B, uno a 50 Hz a A e infine uno a 25 Hz a C.
 \begin{figure}[htb!]
     \centering
+    \includegraphics[width=0.8\textwidth]{pat2.png}
+    \caption{Logic: DIO 0 $\equiv$ B, DIO 1 $\equiv$ A, DIO 2 $\equiv$ C}
+    \label{logic2}
+\end{figure}
+\begin{figure}[htb!]
+    \centering
     \includegraphics[width=0.8\textwidth]{Multiplex.png}
-    \caption{Pattern: DIO 0 $\equiv$ B, DIO 1 $\equiv$ A e DIO 2 $\equiv$ C}
-    \label{pat2}
+    \caption{Logic: DIO 0 $\equiv$ B, DIO 1 $\equiv$ A, DIO 2 $\equiv$ C, DIO 3 $\equiv$ Y}
+    \label{logic2}
 \end{figure}
 Si ricava quindi che il circuito funziona come da aspettative, restituendo il segnale di A nel caso in cui C=0 e il segnale B quando C=1.
 
-\begin{figure}[htbp]
-    \centering
-    %\includegraphics[width=0.8\textwidth]{log2}
-    \caption{Logic: DIO 0 $\equiv$ C, DIO 1 $\equiv$ A, DIO 2 $\equiv$ B e DIO 3 $\equiv$ Y}
-\end{figure}
 
 \subsection{Porta XOR}
+
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=0.6\textwidth]{NAND_XOR.png}
+    \caption{Schema circuitale utilizzato per costruire uno XOR GATE tramite NAND}
     \label{circuito3}
 \end{figure}
+
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=0.8\textwidth]{xor_time.png}
-    \caption{Porta XOR}
+    \caption{Acquisizione Logic della Porta XOR: DIO0 e DIO1 sono i segnali di input, DIO2 è l'uscita dallo XOR}
     \label{pat2}
 \end{figure}
+
 Se ne deduce che il circuito ha il funzionamento aspettato e che quindi l'output risulta essere L se e solo se entrambi gli input A e B hanno lo stesso valore.
 
 \setcounter{section}{5}
@@ -449,14 +470,14 @@ Vogliamo costruire un sommatore a due bit utilizzando le dovute porte logiche. U
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\linewidth]{half.png}
-    \caption{Schema circuitale di half adder}
+    \caption{Schema circuitale di un half adder}
     \label{fig:halfadder}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\linewidth]{full.png}
-    \caption{Schema circuitale di full adder.}
+    \caption{Schema circuitale di un full adder.}
     \label{fig:fulladder}
 \end{figure}
 
@@ -472,7 +493,7 @@ Verifichiamo il funzionamento mandando in ingresso tutte le possibili combinazio
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{sum_time.png}
-    \caption{Andamento del sommatore, si consulti la colonna di sinistra per il significato di ciascuna riga.}
+    \caption{Acquisizione Logic per il sommatore a 2 bit: DIO0 e DIO1 rappresentano il numero A; DIO2 e DIO3 rappresentano B; DIO4, DIO5 e DIO6 rappresentano invece rispettivamente il risultato della somma (con DIO4 il LSB) e il bit di overflow}
     \label{fig: faAD2}
 \end{figure}
 
@@ -481,7 +502,7 @@ Aggiungiamo al circuito 4 led verdi e un led rosso: questi sono pilotati da 5 nu
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\linewidth]{TAB_LED}
-    \caption{Tabella delle verità usata.}
+    \caption{Tabella delle verità usata per il controllo dei led.}
     \label{fig: Ver}
 \end{figure}
 
