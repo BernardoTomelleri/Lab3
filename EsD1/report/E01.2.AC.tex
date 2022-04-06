@@ -48,19 +48,17 @@ mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 \setcounter{section}{0}
 %=======================
 \section*{Parte A: Caratteristiche fisiche delle porte logiche}
-Si studia il comportamento delle porte NOT TTL contenute nel circuito integrato
-SN7404 misurando le tensioni e correnti di operazione e verificando che queste
-rientrino nelle specifiche tecniche riportate nel Data-Sheet del chip
-(in \cref{fig: SN7404}).
+Si studia il comportamento delle porte NOT TTL contenute nel circuito integrato SN7404 misurando le tensioni e correnti di operazione e verificando che queste rientrino nelle specifiche tecniche riportate nel Data-Sheet del chip in \cref{fig: SN7404}.
 \begin{minipage}{0.3\textwidth}
     \includegraphics[width=\textwidth]{SN7404}
+    
     \label{fig: SN7404}
 \end{minipage}
 
 \section{Tensioni di operazione}\label{sec: tens}
-Come prime misure verifichiamo che i valori delle tensioni di soglia in
-ingresso in uscita rispettino le specifiche di buon funzionamento del DS,
-da cui è possibile ottenere una misura del Noise Margin delle porte.
+Per prima cosa misuriamo i valori delle tensioni di soglia in ingresso e in
+uscita (e verifichiamo che rispettino le specifiche di buon funzionamento del
+DS) da cui è possibile ottenere una misura del Noise Margin delle porte.
 
 Dalle specifiche del DS si ha che i valori attesi sono: (riportati in
 \cref{tab: notDS})
@@ -74,7 +72,7 @@ Parameter  & min & typ & max & [Unit] \\
 $V_{CC}$ &  &  & $7$ & V \\
 $V_I$	 &  &  & $5.5$ & V\\
 $V_{OH}$ & $2.4$  & $3.4$ & & V \\
-$V_{OL}$ & $0.2$  & $0.4$ & & V \\
+$V_{OL}$ &   & $0.2$ & $0.4$ & V \\
 $V_{IH}$ & $2$  &  & & V  \\
 $V_{IL}$ &  &  & $0.8$ & V \\
 $I_{IH}$ &  &  & $40$ & $\si{\micro\A}$ \\
@@ -97,30 +95,62 @@ Generiamo una rampa di tensione compresa tra 0-5 V e la inviamo
 all'ingresso di una porta NOT per osservare i segnali generati in uscita,
 così da ottenere un grafico di $V\ped{out}$ in funzione di $V\ped{in}$.
 
+Abbiamo quindi utilizzato i cursori per misurare $V_{OH}$ e $V_{OL}$, cioè
+la tensione che raggiunge l'uscita in saturazione per valore logico H e L
+rispettivamente, mentre per misurare $V_{IL}$ e $V_{IH}$ abbiamo misurato le
+tensioni in ingresso per cui inizia e finisce la commutazione dell'uscita
+secondo lo schema in \cref{fig: trans}:
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{trans}
+	\caption{Schema di come sono stati utilizzati i cursori per misurare le tensioni $V_{OH}$, $V_{OL}$ (cursori orizzontali) e $V_{IH}$, $V_{IL}$ (aiutandosi con i cursori verticali a individuare la fase di transizione H->L)}
+	\label{fig: trans}
+\end{figure}
+\begin{multicols}{2}
+    \centering
+    $V_{OH} = 3.78 \pm 0.03\; \si{\V}$ \\
+	$V_{OL} = 632 \pm 4 \; \si{m\V}$ \\
+	$V_{IH} = 2.10 \pm 0.02 \; \si{\V} $\\
+	$V_{IL} = 979 \pm 9\; \si{m\V} $\\
+    
+    $V_{OH} = 3.76 \pm 0.03\; \si{\V}$ \\
+	$V_{OL} = 341 \pm 3 \; \si{m\V}$ \\
+	$V_{IH} = 1.81 \pm 0.02 \; \si{\V} $\\
+	$V_{IL} = 772 \pm 8\; \si{m\V} $\\
+\end{multicols}
+
 \begin{figure}[htbp]
 \centering
 	\includegraphics[scale=0.4]{not_xy1}
+	\caption{Grafico XY di $V\ped{out}$ in funzione di $V\ped{in}$}
 \end{figure}
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{not_time1}
+	\caption{Grafico in funzione del tempo di $V\ped{in}$ (in giallo, una rampa da 0 a 5 V di frequenza pari a 1 kHz) e $V_{out}$ (in blu)}
 \end{figure}
 
-Utilizzando i cursori siamo andati a misurare le varie tensioni di soglia.
-%TODO so una sega se vuoi aggiungerci proprio come ho fatto, non lo so nemmeno io siccome, però ho cercato su internet e sembra che per misurare V_OH,min e V_IH,min tu debba cercare il valore in cui il coefficiente angolare è -1, solo che ti sfido a trovarlo dio cane.
-Dalle nostre misure otteniamo per il primo integrato:
+Sempre con i cursori abbiamo misurato $V\ped{OH, min}$ dato che il valore
+minimo per lo stato alto dell'uscita risultava più basso di
+quanto misurato prima; di conseguenza abbiamo spostato il cursore nel punto
+in cui la tensione in uscita cambia in maniera più repentina:
+\begin{figure}
+\centering
+	\includegraphics[scale=0.4]{trans1}
+	\caption{Schema di come è stata presa la misura di $V\ped{OH, min}$ tramitel'utilizzo dei cursori: è stato scelto come valore minimo la tensione dell'uscita subito prima del primo cambio repentino.}
+	\label{fig: trans1}
+\end{figure}
+Successivamente si sono utilizzati gli altri valori presi in precedenza per completare le misure.
+Per il primo integrato:
 \begin{multicols}{2}
     \centering
-    $V_{OH,min}=$ 2.53 $\pm$0.03 V\\
-    $V_{IH,min}=$ 2.10 $\pm$0.02 V\\
-%    $NM_H=$ 0.43 $\pm$0.04 V
+    $V\ped{OH, min}=$ 2.53 $\pm$ 0.03 V\\
+    $V\ped{IH, min}=$ 2.10 $\pm$ 0.02 V\\
     
-    $V_{IL,max}=$ 979 $\pm$9 mV\\
-    $V_{OL,max}=$ 632 $\pm$4 mV\\
-%   $NM_L=$ 0.35 $\pm$ 0.02 V
+    $V\ped{IL, max}=$ 979 $\pm$ 9 mV\\
+    $V\ped{OL, max}=$ 632 $\pm$ 4 mV\\
 \end{multicols}
-mentre per il secondo integrato:
-
+mentre per il secondo:
 \begin{multicols}{2}
     \centering
     $V\ped{OH, min}=$ 2.40 $\pm$ 0.03 V\\
@@ -161,107 +191,200 @@ ammessi dal datasheet per il buon funzionamento del componente, dunque anche
 le grandezze derivate risultano in accordo con le aspettative.
 
 \section{Misura (statica) del Fan-out}
-Il Fan-Out è il numero massimo di porte che una singola porta può guidare
-restando entro le specifiche di funzionamento ed è definito nel seguente modo
+Chiamiamo Fan-Out il massimo numero di porte che una singola porta è in grado
+di pilotare rimanendo entro le specifiche di funzionamento del datasheet, lo
+si è definito come
 \[
 \text{FO}= \abs{\frac{I\ped{IH, max}}{I\ped{OH, max}}}
 \]
 
-Dalle specifiche del DS risulta quindi che 
-\begin{align*}
-    I\ped{IH, max}= -0.4 \; \si{m\A} \\
-    I\ped{OH, max}= 40 \; \si{\micro\A} \\
-    \text{FO} = 10
-\end{align*}
-A questo punto abbiamo preparato l'amperometro utilizzando il fondoscala da 2 mA viste le entità delle correnti che andremo a misurare: per prima cosa misureremo la corrente $I\ped{IH, max}$ per entrambi i due integrati, montando l'amperometro in serie tra l'ingresso della porta logica e l'uscita di WaveGen 1 dell'AD2. Quindi abbiamo inviato all'uscita WG1 una tensione DC pari a 5V.
+\subsection{Misura della corrente in ingresso alla porta NOT nello stato alto}
+Misuriamo la corrente $I\ped{IH, max}$ per entrambi gli integrati collegando
+l'amperometro in serie tra l'ingresso della porta logica e l'uscita del
+canale WaveGen1 dell'AD2, quindi generando in questo canale una tensione
+continua di livello alto pari a 5 V, da cui si trova
 \begin{align*}
     I\ped{IH, 1} &= 16 \pm 1 \; \si{\micro\A} \\
     I\ped{IH, 2} &= 10 \pm \; \si{\micro\A} \\   
 \end{align*}
 Che risultano essere compatibili entro i limiti del datasheet.
-Arrivati a questo punto abbiamo rimosso l'amperometro e abbiamo inviato all'ingresso della porta un segale DC a 0 V sempre utilizzando l'uscita WG1, e abbiamo inserito un potenziometro da $10 \; k\ohm$ in serie all'uscita della stessa porta logica utilizzata in precedenza, misurando la corrente che scorre attraverso questo quando la tensione in uscita dalla porta è pari a $3.40 \pm 0.03 \; \si{\V}$.
+
+\subsection{Misura della corrente in uscita dalla porta NOT per VOH tipico}
+Successivamente abbiamo inviato all'ingresso della porta un segale DC a 0 V
+(sempre utilizzando il canale WG1) e abbiamo inserito un potenziometro da
+$10 \; \si{k\ohm}$ in serie all'uscita di questa per misurare la corrente che
+scorre attraverso questa ``resistenza di carico'' regolabile in modo da
+avere quando una tensione in uscita dalla porta corrispondente al valore
+tipico di $V_{OH}= 3.40 \pm 0.03 \; \si{\V}$.
 \begin{align*}
     I\ped{OH, 1} &= 495 \pm 4 \; \si{\micro\A} \\
     I\ped{OH, 2} &= 315 \pm 3 \; \si{\micro\A} \\   
 \end{align*}
-%TODO inseirire cosa sarebbe successo se avessi abbassato la tensione in uscita fino a 2.5 V circa
-Da questo si ricava che:
+
+\subsection{Misura della corrente in uscita dalla porta NOT per VOH tipico}
+%TODO inseirire cosa sarebbe successo se avessi abbassato la tensione in
+%uscita ai valori di VOH 2.5 V (min) o 3.8 V (saturazione) circa
+
+\subsection{Misura indiretta del fan-out}
+Dalle misure di corrente sui due integrati ricaviamo finalmente che:
 \begin{align*}
     \text{FO}_1 &= 31 \pm 2 \\
     \text{FO}_2 &= 32 \pm 3 \\
 \end{align*}
-Valori che sono notevolmente più alti delle aspettative e non compatibili con esse, ma risultano essere compatibili tra di loro.
+
+\subsection{Valore del fan-out atteso e confronto}
+Dalle specifiche del DS elencate sopra in \ref{tab: notDS} risulta che
+\begin{align*}
+    I\ped{IH, max}= -0.4 \; \si{m\A} \\
+    I\ped{OH, max}= 40 \; \si{\micro\A} \\
+    \text{FO} = 10
+\end{align*}
+I valori da noi trovati risultano sensibilmente più alti delle aspettative
+e non compatibili con queste, ma perlomeno rimangono compatibili tra di loro.
 
 \section{Tempi di propagazione}
-Vogliamo a questo punto misurare i tempi di propagazione della porta logica NOT osservando, tramite un oscilloscopio da laboratorio, i grafici in funzione del tempo dei pin di ingresso e di uscita; li vogliamo poi paragonare ai valori presenti sul datatsheet.
-Dal datasheet si ricavano dei tempi di propagazione pari a:
+Vogliamo ora misurare i tempi di propagazione della porta logica NOT
+osservando (tramite un oscilloscopio da banco) l'andamento nel tempo dei
+segnali nei pin di ingresso uscita della porta durante le transizioni di stato
+per poi paragonarli ai valori riportati sul datatsheet in analogia a quanto
+fatto finora.
+
+\subsection{Definizione e valori attesi dei tempi di propagazione}
+Dal datasheet TI fornito le misure di tempi di propagazione per la commutazione
+dell'uscita tra gli stati alto->basso $t_{PHL}$ e basso->alto $t_{PLH}$ sono
+definite come l'intervallo di tempo tra il passaggio della forma d'onda in
+ingresso e di quella in uscita dal livello di tensione iniziale al punto
+medio tra lo stato iniziale e finale, secondo lo schema in 
+
+\begin{figure}[htbp]
+\centering
+	\includegraphics[scale=0.4]{notdelay}
+	\caption{Diagramma dei tempi di propagazione per una porta NOT}
+\end{figure}
+
+Prendiamo quindi come definizione di tempo di propagazione il lasso di tempo
+che trascorre tra quando $V\ped{in}$ diventa pari a $V\ped{I, med}$ e
+$V\ped{out}$ diventa pari al suo $V\ped{O, med}$, dove i valori medi tra stato
+basso e stato alto rispettivamente per l'ingresso e per l'uscita sono
+definiti intuitivamente dalle formule
+\begin{align*}
+V\ped{O, med} &= \frac{V_{OH} + V_{OL}}{2} \\
+V\ped{I, med} &= \frac{V_{IH} + V_{IL}}{2} \\
+\end{align*}
+
+Dal datasheet si ricavano come tempi di propagazione attesi:
 \begin{align*}
     t_{PHL,max} &= 22 \; \si{n\s} \\
     t_{PLH,max} &= 15 \; \si{n\s} \\
 \end{align*}
 
-Abbiamo quindi calcolato i valori medi tra stato basso e stato alto rispettivamente per l'entrata e per l'uscita tramite la formula:
+\subsection{Misura dei tempi con l'oscillografo}
+Come visto anche nella \cref{sec: tens}, inviando in ingresso un'onda quadra
+compresa tra 0 e 5 V, all'uscita della porta troviamo la stessa onda compresa
+tra $V_{OH} \approx 3.6 \; \si{\V}$ e $V_{OL} \approx 0.3  \; \si{V}$;
+infatti misurando con i cursori e con l'oscilloscopio troviamo come
 \begin{align*}
-V_{O,med}=\frac{V_{OH}+V_{OL}}{2}\\
-V_{I,med}=\frac{V_{IH}+V_{IL}}{2}\\
+V\ped{O, med} = 1.95 \pm 0.02 \\
+V\ped{I, med} = 2.50 \pm 0.03 \\
 \end{align*}
-utilizzando le acquisizioni fatte nella \cref{sec: tens} ricaviamo che utilizzando in ingresso un'onda quadra tra 0 e 5 V avrò in uscita un'onda quadra compresa tra $3.79 \pm 0.03 \; V$ e $ 632 \pm 4 \; mV$; da questi dati si ottiene:
-\begin{gather*}
-V_{O,med}=2.21 \pm 0.02\\
-V_{I,med}=2.50 \pm 0.03\\
-\end{gather*}
-Si definisce come tempo di propagazione il tempo che trascorre tra quando $V_{in}$ diventa pari a $V_{I,med}$ e $V_{out}$ diventa pari al suo $V_{O,med}$.
-Utilizzando l'oscilloscopio da banco abbiamo collegato i due canali disponibili all'entrata (CH1) e all'uscita (CH2) e abbiamo sempre triggerato quando il segnale di ingresso (CH1) raggiungeva $V_{I,med}$, abbiamo poi cambiato il fronte di trigger per scegliere se misurare il tempo di propagazione HL o LH.
-\begin{figure}
+
+Quindi, una volta collegati i due canali all'ingresso (CH1) e all'uscita (CH2)
+del not gate, abbiamo scelto come evento di trigger il passaggio del segnale
+di ingresso per $V_{I,med}$, abbiamo dunque cambiato il fronte tra
+salita/discesa per scegliere se misurare il tempo di propagazione H->L o L->H.
+\begin{figure}[htbp]
+\centering
 	\includegraphics[width=\textwidth]{LH1}
+	\caption{Acquisizione tramite oscilloscopio digitale della transizione da
+	L a H per il primo integrato}
 \end{figure}
-\begin{figure}
+\begin{figure}[htbp]
+\centering
 	\includegraphics[width=\textwidth]{LH2}
+	\caption{Acquisizione tramite oscilloscopio digitale della transizione da
+	L a H per il secondo integrato}
 \end{figure}
-\begin{figure}
+\begin{figure}[htbp]
+\centering
 	\includegraphics[width=\textwidth]{HL1}
+	\caption{Acquisizione tramite oscilloscopio digitale della transizione da
+	H a L per il primo integrato}
 \end{figure}
-\begin{figure}
+\begin{figure}[htbp]
+\centering
 	\includegraphics[width=\textwidth]{HL2}
+	\caption{Acquisizione tramite oscilloscopio digitale della transizione da
+	H a L per il secondo integrato}
 \end{figure}
+
 Dalla misura fatta con i cursori sull'oscilloscopio si ricava
 \begin{multicols}{2}
     \centering
-    $t_{PLH}=$ 5.2 $\pm$ 0.2 nS\\
-    $t_{PHL}=$ 25.0 $\pm$0.2 nS\\
+    $t_{PLH}=$ 5.2 $\pm$ 0.2 \si{n\s} \\
+    $t_{PHL}=$ 25.0 $\pm$0.2 \si{n\s}
     
-    
-    $t_{PLH}=$ 7.0 $\pm$0.2 nS\\
-    $t_{PHL}=$ 22.0 $\pm$0.2 nS\\
+    $t_{PLH}=$ 7.0 $\pm$0.2 \si{n\s} \\
+    $t_{PHL}=$ 22.0 $\pm$0.2 \si{n\s}
 \end{multicols}
-Dobbiamo però constatare la presenza di capacità parassite presenti nelle basette e circuito, infatti aumentando la scala dei tempi ci rendiamo conto che tutti i grafici prodotti dall'oscilloscopio rispecchiano qualitativamente il grafico della carica e scarica del condensatore; per questo motivo si sono ottenuti in alcuni casi dei tempi di propagazione poco più alti delle aspettative, per cui non abbiamo ragione di credere che le nostre misure non siano compatibili con le aspettative.
-\begin{figure}
+
+\subsection{Confronto con i valori attesi}
+%TODO Scrivere in maniera sensata
+Dobbiamo però constatare la presenza di capacità parassite presenti nelle basette e circuito, infatti aumentando la scala dei tempi ci rendiamo conto che tutti i grafici prodotti dall'oscilloscopio rispecchiano qualitativamente il grafico della carica e scarica del condensatore (figura \cref{fig: carica}); per questo motivo si sono ottenuti in alcuni casi dei tempi di propagazione poco più alti delle aspettative, per cui non abbiamo ragione di credere che le nostre misure non siano compatibili con le aspettative.
+\begin{figure}[htbp]
+\centering
 	\includegraphics[width=\textwidth]{carica}
+	\label{fig: carica}
+	\caption{Acquisizione con oscilloscopio digitale con un fondo scala dei tempi più grande, in modo da osservare qualitativamente come la propagazione del segnale assomigli molto al grafico della tensione ai capi di un condensatore durante il ciclo di carica/scarica}
 \end{figure}
 Possiamo quindi concludere che le misure sono in linea con quanto dichiarato nel datasheet.
 
 \setcounter{section}{3}
 %=======================
 \section*{Parte B: Circuiti logici elementari con sole porte NAND}
-Una fondamentale caratteristica delle porte NAND è la loro universalità, ossia il fatto che è possibile realizzare qualsiasi tipo di circuito: infatti, con combinazioni di porte NAND, possiamo ottenere circuiti equivalenti dalle porte AND, OR e NOT, a partire dalle quali è possibile realizzare qualsiasi circuito.
+La caratteristica più fondamentale delle porte NAND è la loro universalità,
+infatti è possibile realizzare qualsiasi tipo di circuito logico tramite
+combinazione di sole porte NAND (o NOR). In questa parte intendiamo costruire
+e verificare il funzionamento di circuiti equivalenti a porte OR, XOR e
+multiplexer a partire da soli chip NAND SN74LS00.
 
 \begin{figure}[htbp]
-    %\includegraphics[width=\textwidth]{NAND}
+\centering
+    \includegraphics[width=\textwidth]{NAND}
+    \caption{Schema circuitale del circuito integrato SN74LS00}
     \label{fig: NAND}
 \end{figure}
 
 \section{Tabella di verità}
-Utilizziamo quindi la funzione PATTERN di waveform per produrre 2 segnali di clock rispettivamente a 100 Hz (in uscita dalla porta DIO0 e in entrata nel pin 1 dell'integrato) e l'altro a 200 Hz (in uscita dalla porta DIO1 e in entrata nel pin 2). Infine abbiamo usato la funzione LOGIC per fare il grafico dei pin utilizzati nell'operazione logica (1,2 e 3). 
+\subsection{Verifica statica della tabella di verità NAND}
+%TODO Non so se vogliamo almeno dire che lo abbiamo fatto senza mettere
+% immagini
+
+\subsection{Verifica del funzionamento dinamica con Logic Analyzer}
+Definiamo dentro lo strumento Patterns (generator) di WaveForms 2 segnali
+di clock rispettivamente a 100 Hz (in uscita dalla porta DIO0 e in ingresso
+al pin 1 dell'integrato) e l'altro a 200 Hz (in uscita dalla porta DIO1 e in
+entrata nel pin 2) per esplorare tutte le possibili coppie di valori in
+ingresso alla porta NAND.
+
+Dunque abbiamo usato lo strumento Logic (Analyzer) per acquisire l'andamento
+nel tempo dei segnali presenti nei pin della porta logica utilizzata
+(1,2 e 3).
+%TODO Non è chiaro che sia questa operazione logica utilizzata (1, 2, 3)
+
 \begin{figure}[htbp]
 \centering
 	\includegraphics[scale=0.4]{nand_time}
+	\caption{Acquisizione di Logic di una porta nand guidata da due segnali da
+	DIO0 (100 Hz) e DIO1 (200 Hz); in uscita viene letto da DIO2}
 	\label{nand_time}
 \end{figure}
-Il circuito risulta essere funzionante e l'output risulta essere L se e solo se i pin 1 e 2 valgono entrambi H, proprio come da aspettative.
+Il circuito risulta essere funzionante e l'output risulta essere L se e solo
+se i pin 1 e 2 valgono entrambi H, proprio come da aspettative.
 
 \section{Costruzione di circuiti con porte NAND}
 \subsection{Porta OR}
-Come primo circuito vogliamo realizzare una porta OR: detti \textit{A} e \textit{B} gli ingressi e \textit{Y} l'uscita, nella notazione dell'algebra booleana si ha
+Come primo circuito costruiamo una porta OR: detti \textit{A} e \textit{B}
+gli ingressi e \textit{Y} l'uscita, nella notazione dell'algebra booleana si ha
 \[
     Y = A + B
 \]
@@ -274,13 +397,14 @@ Nota la relazione per ottenere un NOT utilizzando porte NAND, riportiamo lo sche
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.45\textwidth]{NAND_OR}
-    \caption{\label{fig: OR}}
+    \caption{\label{fig: OR} Schema circuitale utilizzato per costruire un OR GATE: A e B sono i segnali di input, mentre O è l'output}
 \end{figure}
 
 Utilizzando le funzioni pattern e logic abbiamo inviato tramite i pin DIO0 e DIO1 2 segnali di clock di frequenza 50 e 100 Hz e abbiamo utilizzato la porta DIO2 per verificare l'output del circuito
-\begin{figure}[htb!]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{or_time}
+    \caption{Acquisizione Logic per il circuito OR costruito tramite NAND: DIO0 e DIO1 sono i segnali in input, DIO2 è l'output}
 \end{figure}
 Si vede quindi che il circuito ha il funzionamento aspettato con l'output L se e solo se i due input sono entrambi L.
 
@@ -318,42 +442,50 @@ Riportiamo sotto lo schema del circuito
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\textwidth]{NAND_MP.png}
+    \caption{Schema circuitale per costruire un multiplexer a 2 input, controllato dal valore logico C}
     \label{circuito2}
 \end{figure}
 
 Per dimostrare il corretto funzionamento del circuito riportiamo le acquisizioni di Pattern, in cui è possibile comprendere come sono stati impostati gli ingressi, e Logic, da cui si può verificare il corretto funzionamento del circuito.
+Abbiamo inviato al circuito tramite la funzione pattern un segnale di clock a 100 Hz a B, uno a 50 Hz a A e infine uno a 25 Hz a C.
 \begin{figure}[htbp]
     \centering
-    %\includegraphics[width=0.8\textwidth]{pat2}
-    \caption{Pattern: DIO 0 $\equiv$ C, DIO 1 $\equiv$ A e DIO 2 $\equiv$ B}
+    \includegraphics[width=0.8\textwidth]{pat2.png}
+    \caption{Logic: DIO 0 $\equiv$ B, DIO 1 $\equiv$ A, DIO 2 $\equiv$ C}
+    \label{logic2}
 \end{figure}
-Abbiamo inviato al circuito tramite la funzione pattern un segnale di clock a 100 Hz a B, uno a 50 Hz a A e infine uno a 25 Hz a C.
-\begin{figure}[htb!]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{Multiplex.png}
-    \caption{Pattern: DIO 0 $\equiv$ B, DIO 1 $\equiv$ A e DIO 2 $\equiv$ C}
-    \label{pat2}
+    \caption{Logic: DIO 0 $\equiv$ B, DIO 1 $\equiv$ A, DIO 2 $\equiv$ C, DIO 3 $\equiv$ Y}
+    \label{logic2}
 \end{figure}
 Si ricava quindi che il circuito funziona come da aspettative, restituendo il segnale di A nel caso in cui C=0 e il segnale B quando C=1.
 
-\begin{figure}[htbp]
-    \centering
-    %\includegraphics[width=0.8\textwidth]{log2}
-    \caption{Logic: DIO 0 $\equiv$ C, DIO 1 $\equiv$ A, DIO 2 $\equiv$ B e DIO 3 $\equiv$ Y}
-\end{figure}
 
 \subsection{Porta XOR}
-\begin{figure}[htb!]
+Un circuito \texttt{XOR} si può realizzare con 4 porte \texttt{NAND} partendo
+dalla sua equazione caratteristica e manipolandola con le leggi di De Morgan:
+\begin{align*}
+  A \oplus B &= (A \cdot \overline{B}) + (\overline{A} \cdot B)
+             =  (A \cdot \overline{A} + A \cdot \overline{B}) + (B \cdot \overline{B} + \overline{A} \cdot B) \\
+             &= A \cdot (\overline{A} + \overline{B}) + B \cdot (\overline{B} + \overline{A})
+             = A \cdot \overline{(A \cdot B)} + B \cdot \overline{(B \cdot A)} \\
+\end{align*}
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\textwidth]{NAND_XOR.png}
+    \caption{Schema circuitale utilizzato per costruire uno XOR GATE tramite NAND}
     \label{circuito3}
 \end{figure}
-\begin{figure}[htb!]
+
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{xor_time.png}
-    \caption{Porta XOR}
+    \caption{Acquisizione Logic della Porta XOR: DIO0 e DIO1 sono i segnali di input, DIO2 è l'uscita dallo XOR}
     \label{pat2}
 \end{figure}
+
 Se ne deduce che il circuito ha il funzionamento aspettato e che quindi l'output risulta essere L se e solo se entrambi gli input A e B hanno lo stesso valore.
 
 \setcounter{section}{5}
@@ -448,14 +580,14 @@ Vogliamo costruire un sommatore a due bit utilizzando le dovute porte logiche. U
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\linewidth]{half.png}
-    \caption{Schema circuitale di half adder}
+    \caption{Schema circuitale di un half adder}
     \label{fig:halfadder}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\linewidth]{full.png}
-    \caption{Schema circuitale di full adder.}
+    \caption{Schema circuitale di un full adder.}
     \label{fig:fulladder}
 \end{figure}
 
@@ -471,7 +603,7 @@ Verifichiamo il funzionamento mandando in ingresso tutte le possibili combinazio
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{sum_time.png}
-    \caption{Andamento del sommatore, si consulti la colonna di sinistra per il significato di ciascuna riga.}
+    \caption{Acquisizione Logic per il sommatore a 2 bit: DIO0 e DIO1 rappresentano il numero A; DIO2 e DIO3 rappresentano B; DIO4, DIO5 e DIO6 rappresentano invece rispettivamente il risultato della somma (con DIO4 il LSB) e il bit di overflow}
     \label{fig: faAD2}
 \end{figure}
 
@@ -480,7 +612,7 @@ Aggiungiamo al circuito 4 led verdi e un led rosso: questi sono pilotati da 5 nu
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\linewidth]{TAB_LED}
-    \caption{Tabella delle verità usata.}
+    \caption{Tabella delle verità usata per il controllo dei led.}
     \label{fig: Ver}
 \end{figure}
 
