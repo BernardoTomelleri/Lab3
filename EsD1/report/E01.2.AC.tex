@@ -221,15 +221,36 @@ tipico di $V_{OH}= 3.40 \pm 0.03 \; \si{\V}$.
     I\ped{OH, 2} &= 315 \pm 3 \; \si{\micro\A} \\   
 \end{align*}
 
-\subsection{Misura della corrente in uscita dalla porta NOT per VOH tipico}
-%TODO inseirire cosa sarebbe successo se avessi abbassato la tensione in
-%uscita ai valori di VOH 2.5 V (min) o 3.8 V (saturazione) circa
+\subsection{Misura della corrente in uscita dalla porta NOT per diversi valori di VOH}
+A questo punto per completare le misure abbiamo variato il potenziometro in modo che 
+la tensione $V_{OH}$ diventasse approssimativamente pari a $V_{OH,min}$ e $V_{OH,sat}$  misurati precedentemente.
+Abbiamo quindi ripetuto la misura di $I_{OH}$ per entrambi gli integrati:
+
+$V_{OH,sat}= 3.78 \pm 0.03 \; \si{\V}$
+\begin{align*}
+    I\ped{OH, 1} &= 453 \pm 4 \; \si{\micro\A} \\
+    I\ped{OH, 2} &= 275 \pm 2 \; \si{\micro\A} \\   
+\end{align*}
+
+$V_{OH,min}= 2.50 \pm 0.02 \; \si{\V}$
+\begin{align*}
+    I\ped{OH, 1} &= 782 \pm 6 \; \si{\micro\A} \\
+    I\ped{OH, 2} &= 552 \pm 5 \; \si{\micro\A} \\   
+\end{align*}
 
 \subsection{Misura indiretta del fan-out}
 Dalle misure di corrente sui due integrati ricaviamo finalmente che:
 \begin{align*}
     \text{FO}_1 &= 31 \pm 2 \\
     \text{FO}_2 &= 32 \pm 3 \\
+\end{align*}
+Mentre usando le correnti misurate per gli altri valori di $V_{OH}$:
+\begin{align*}
+    \text{FO}_{1,V=3.78 V} &= 28 \pm 2 \\
+    \text{FO}_{2,V=3.78 V} &= 28 \pm 3 \\
+\\
+    \text{FO}_{1,V=2.50 V} &= 49 \pm 3 \\
+    \text{FO}_{2,V=2.50 V} &= 55 \pm 6\\
 \end{align*}
 
 \subsection{Valore del fan-out atteso e confronto}
