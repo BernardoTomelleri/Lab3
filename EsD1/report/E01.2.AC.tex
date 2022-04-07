@@ -221,7 +221,7 @@ tipico di $V_{OH}= 3.40 \pm 0.03 \; \si{\V}$.
     I\ped{OH, 2} &= 315 \pm 3 \; \si{\micro\A} \\   
 \end{align*}
 
-\subsection{Misura della corrente in uscita dalla porta NOT per VOH tipico}
+\subsection{Misura della corrente in uscita dalla porta NOT per VOH misurato}
 %TODO inseirire cosa sarebbe successo se avessi abbassato la tensione in
 %uscita ai valori di VOH 2.5 V (min) o 3.8 V (saturazione) circa
 
@@ -258,7 +258,7 @@ medio tra lo stato iniziale e finale, secondo lo schema in
 
 \begin{figure}[htbp]
 \centering
-	\includegraphics[scale=0.4]{notdelay}
+	\includegraphics[scale=0.4]{notdelay_mark}
 	\caption{Diagramma dei tempi di propagazione per una porta NOT}
 \end{figure}
 
@@ -321,14 +321,20 @@ Dalla misura fatta con i cursori sull'oscilloscopio si ricava
 \begin{multicols}{2}
     \centering
     $t_{PLH}=$ 5.2 $\pm$ 0.2 \si{n\s} \\
-    $t_{PHL}=$ 25.0 $\pm$0.2 \si{n\s}
+    $t_{PHL}=$ 25.0 $\pm$ 0.2 \si{n\s}
     
-    $t_{PLH}=$ 7.0 $\pm$0.2 \si{n\s} \\
-    $t_{PHL}=$ 22.0 $\pm$0.2 \si{n\s}
+    $t_{PLH}=$ 7.0 $\pm$ 0.2 \si{n\s} \\
+    $t_{PHL}=$ 22.0 $\pm$ 0.2 \si{n\s}
 \end{multicols}
 
+Dobbiamo però constatare la presenza di capacità parassite presenti all'interno del circuito:
 \subsection{Confronto con i valori attesi}
-Dobbiamo però constatare la presenza di capacità parassite presenti all'interno del circuito: aumentando la scala dei tempi ci accorgiamo che i grafici prodotti dall'oscilloscopio sono qualitativamente simili alle curve di carica e scarica del condensatore(figura \cref{fig: carica}); per questo motivo andando a misurare il tempo di propagazione della porta abbiamo misurato un tempo di propagazione $t_{PHL}$ del primo integrato più alto rispetto a quello aspettato. Presa considerazione di ciò, non è stato possibile riprendere la misura in condizioni in cui la capacità parassita fosse inferiore, e nel migliore dei casi abbiamo ottenuto sempre $t_{PHL}=25.0 \pm 0.2 \; \si{n\s}$.
+Aumentando la scala dei tempi osserviamo che i segnali visualizzati
+dall'oscilloscopio risultano simili alle curve caratteristiche di carica e
+scarica di un condensatore(figura \cref{fig: carica}).
+
+Effettivamente a causa di questa discesa molto lenta del segnale in uscita
+abbiamo misurato un tempo di propagazione $t_{PHL}$ del primo integrato più alto rispetto a quello aspettato. Presa considerazione di ciò, non è stato possibile riprendere la misura in condizioni in cui la capacità parassita fosse inferiore, e nel migliore dei casi abbiamo ottenuto sempre $t_{PHL}=25.0 \pm 0.2 \; \si{n\s}$.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{carica}
@@ -357,13 +363,18 @@ multiplexer a partire da soli chip NAND SN74LS00.
 
 \subsection{Verifica del funzionamento con Logic Analyzer}
 Definiamo dentro lo strumento Patterns (generator) di WaveForms 2 segnali
-di clock rispettivamente a 100 Hz (in uscita dalla porta DIO0) e l'altro a 200 Hz (in uscita dalla porta DIO1) in modo che la loro combinazione producesse tutte le coppie di valori possibili ottenibili con 2 bit.
-Dunque si sono pilotati i due ingressi di una stessa porta nand utilizzando i segnali generati, inviandone uno ad ogni entrata.
-Si è usato lo strumento Logic (Analyzer) per acquisire gli andamenti nel tempo dei due segnali in entrata e di quello in uscita:
+di clock; uno di frequenza 100 Hz (in uscita dalla porta DIO0) e l'altro a
+200 Hz (in uscita dalla porta DIO1) in modo che la loro combinazione produca
+tutte le coppie di valori ottenibili con 2 bit.
+
+Dunque si sono pilotati i due ingressi di una stessa porta NAND collegando
+i due clock ad un ingresso ciascuno e tramite lo strumento Logic (Analyzer)
+si sono acquisiti gli andamenti nel tempo dei due segnali in ingresso e di
+quello in uscita dalla porta studiata.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[scale=0.4]{nand_time}
-	\caption{Acquisizione di Logic di una porta nand guidata da due segnali da
+	\caption{Acquisizione di Logic di una porta NAND guidata da due segnali da
 	DIO0 (100 Hz) e DIO1 (200 Hz); in uscita viene letto da DIO2}
 	\label{nand_time}
 \end{figure}
