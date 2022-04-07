@@ -48,12 +48,16 @@ mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 \setcounter{section}{0}
 %=======================
 \section*{Parte A: Caratteristiche fisiche delle porte logiche}
-Si studia il comportamento delle porte NOT TTL contenute nel circuito integrato SN7404 misurando le tensioni e correnti di operazione e verificando che queste rientrino nelle specifiche tecniche riportate nel Data-Sheet del chip in \cref{fig: SN7404}.
-\begin{minipage}{0.3\textwidth}
-    \includegraphics[width=\textwidth]{SN7404}
-    
-    \label{fig: SN7404}
-\end{minipage}
+Si studia il comportamento delle porte NOT TTL contenute nel circuito
+integrato SN7404 misurando le tensioni e correnti di operazione e verificando
+che queste rientrino nelle specifiche tecniche riportate nel Data-Sheet del
+chip in \cref{fig: SN7404}.
+\begin{figure}[htbp]
+\centering
+    \includegraphics[width=0.3\textwidth]{SN7404}
+    \caption{Schema e pedinatura del chip integrato
+    quad-NOT SN7404 \label{fig: SN7404}}
+\end{figure}
 
 \section{Tensioni di operazione}\label{sec: tens}
 Per prima cosa misuriamo i valori delle tensioni di soglia in ingresso e in
@@ -222,14 +226,36 @@ tipico di $V_{OH}= 3.40 \pm 0.03 \; \si{\V}$.
 \end{align*}
 
 \subsection{Misura della corrente in uscita dalla porta NOT per VOH misurato}
-%TODO inseirire cosa sarebbe successo se avessi abbassato la tensione in
-%uscita ai valori di VOH 2.5 V (min) o 3.8 V (saturazione) circa
+Per completezza abbiamo impostato il potenziometro in modo che la tensione
+$V_{OH}$ risultasse (entro l'incertezza) pari a $V\ped{OH, min}$ e
+$V\ped{OH, sat}$ misurati precedentemente e si è ripetuta la misura di
+$I_{OH}$ per entrambi gli integrati:
+
+Riportiamo le nostre misure per $V_{OH,sat}= 3.78 \pm 0.03 \; \si{\V}$
+\begin{align*}
+    I\ped{OH, 1} &= 453 \pm 4 \; \si{\micro\A} \\
+    I\ped{OH, 2} &= 275 \pm 2 \; \si{\micro\A} \\   
+\end{align*}
+
+quindi per $V\ped{OH, min}= 2.50 \pm 0.02 \; \si{\V}$
+\begin{align*}
+    I\ped{OH, 1} &= 782 \pm 6 \; \si{\micro\A} \\
+    I\ped{OH, 2} &= 552 \pm 5 \; \si{\micro\A} \\   
+\end{align*}
 
 \subsection{Misura indiretta del fan-out}
 Dalle misure di corrente sui due integrati ricaviamo finalmente che:
 \begin{align*}
     \text{FO}_1 &= 31 \pm 2 \\
     \text{FO}_2 &= 32 \pm 3 \\
+\end{align*}
+Mentre usando le correnti misurate per gli altri valori di $V_{OH}$:
+\begin{align*}
+    \text{FO}\ped{1, sat} &= 28 \pm 2 \\
+    \text{FO}\ped{2, sat} &= 28 \pm 3 \\
+\\
+    \text{FO}\ped{1, min} &= 49 \pm 3 \\
+    \text{FO}\ped{2, min} &= 55 \pm 6 \\
 \end{align*}
 
 \subsection{Valore del fan-out atteso e confronto}
@@ -254,12 +280,12 @@ Dal datasheet TI fornito le misure di tempi di propagazione per la commutazione
 dell'uscita tra gli stati alto->basso $t_{PHL}$ e basso->alto $t_{PLH}$ sono
 definite come l'intervallo di tempo tra il passaggio della forma d'onda in
 ingresso e di quella in uscita dal livello di tensione iniziale al punto
-medio tra lo stato iniziale e finale, secondo lo schema in 
-
+medio tra lo stato iniziale e finale, secondo lo schema in \ref{fig: notdelay}
 \begin{figure}[htbp]
 \centering
 	\includegraphics[scale=0.4]{notdelay_mark}
-	\caption{Diagramma dei tempi di propagazione per una porta NOT}
+	\caption{Diagramma dei tempi di propagazione per una porta NOT
+	\label{fig: notdelay}}
 \end{figure}
 
 Prendiamo quindi come definizione di tempo di propagazione il lasso di tempo
@@ -289,7 +315,7 @@ V\ped{I, med} = 2.50 \pm 0.03 \\
 \end{align*}
 
 Quindi, una volta collegati i due canali all'ingresso (CH1) e all'uscita (CH2)
-del not gate, abbiamo scelto come evento di trigger il passaggio del segnale
+del NOT gate, abbiamo scelto come evento di trigger il passaggio del segnale
 di ingresso per $V_{I,med}$, abbiamo dunque cambiato il fronte tra
 salita/discesa per scegliere se misurare il tempo di propagazione H->L o L->H.
 \begin{figure}[htbp]
@@ -327,21 +353,33 @@ Dalla misura fatta con i cursori sull'oscilloscopio si ricava
     $t_{PHL}=$ 22.0 $\pm$ 0.2 \si{n\s}
 \end{multicols}
 
-Dobbiamo però constatare la presenza di capacità parassite presenti all'interno del circuito:
 \subsection{Confronto con i valori attesi}
-Aumentando la scala dei tempi osserviamo che i segnali visualizzati
-dall'oscilloscopio risultano simili alle curve caratteristiche di carica e
-scarica di un condensatore(figura \cref{fig: carica}).
+Le misure dei tempi di propagazione nella transizione basso->alto risultano
+compatibili con i valori tipici, quindi sicuramente compresi entro
+l'intervallo massimo garantito dal costruttore.
 
-Effettivamente a causa di questa discesa molto lenta del segnale in uscita
-abbiamo misurato un tempo di propagazione $t_{PHL}$ del primo integrato più alto rispetto a quello aspettato. Presa considerazione di ciò, non è stato possibile riprendere la misura in condizioni in cui la capacità parassita fosse inferiore, e nel migliore dei casi abbiamo ottenuto sempre $t_{PHL}=25.0 \pm 0.2 \; \si{n\s}$.
+Mentre per quanto riguarda la transizione opposta, abbassando la scala dei
+tempi osserviamo che i segnali visualizzati dall'oscilloscopio risultano
+simili alle curve caratteristiche di carica e scarica di un condensatore
+(riportata in \cref{fig: carica}).
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{carica}
 	\label{fig: carica}
-	\caption{Acquisizione con oscilloscopio digitale con un fondo scala dei tempi più grande, in modo da osservare qualitativamente come la propagazione del segnale assomigli molto al grafico della tensione ai capi di un condensatore durante il ciclo di carica/scarica}
+	\caption{Acquisizione con oscilloscopio digitale con un fondo scala dei tempi più piccolo, in modo da osservare qualitativamente come la propagazione del segnale assomigli molto al grafico della tensione ai capi di un condensatore durante il ciclo di carica/scarica}
 \end{figure}
-Possiamo però concludere che le misure sono compatibili con quanto dichiarato nel datasheet con uno scarto del $14 \; \percent$.
+
+Effettivamente a causa di questa discesa molto lenta del segnale in uscita
+abbiamo misurato dei tempi di propagazione $t_{PHL}$ per il primo integrato
+al limite massimo riportato nel datasheet e addirittura oltre le specifiche
+per il secondo.
+
+Rimane difficile valutare se questo tempo di discesa lungo sia dovuto ad
+accoppiamenti capacitivi spuri fra la basetta, i cavi di connessione o interne
+agli integrati usati, per cui se la definizione di tempo di propagazione non
+risulta ben posta prendiamo le nostre misure come stime indicative dei valori
+effettivi, che risultano compatibili con quanto dichiarato nel datasheet con
+uno scarto del $14 \; \percent$.
 
 \setcounter{section}{3}
 %=======================
@@ -351,15 +389,15 @@ infatti è possibile realizzare qualsiasi tipo di circuito logico tramite
 combinazione di sole porte NAND (o NOR). In questa parte intendiamo costruire
 e verificare il funzionamento di circuiti equivalenti a porte OR, XOR e
 multiplexer a partire da soli chip NAND SN74LS00.
-
 \begin{figure}[htbp]
 \centering
-    \includegraphics[width=\textwidth]{NAND}
-    \caption{Schema circuitale del circuito integrato SN74LS00}
-    \label{fig: NAND}
+    \includegraphics[width=0.3\textwidth]{NAND}
+    \caption{Schema circuitale del circuito integrato SN74LS00
+    \label{fig: NAND}}
 \end{figure}
 
 \section{Tabella di verità}
+\subsection{Verifica statica della tabella di verità NAND}
 
 \subsection{Verifica del funzionamento con Logic Analyzer}
 Definiamo dentro lo strumento Patterns (generator) di WaveForms 2 segnali
@@ -370,54 +408,85 @@ tutte le coppie di valori ottenibili con 2 bit.
 Dunque si sono pilotati i due ingressi di una stessa porta NAND collegando
 i due clock ad un ingresso ciascuno e tramite lo strumento Logic (Analyzer)
 si sono acquisiti gli andamenti nel tempo dei due segnali in ingresso e di
-quello in uscita dalla porta studiata.
+quello in uscita dalla porta studiata (riportata in \cref{fig: nand_time})
 \begin{figure}[htbp]
 \centering
 	\includegraphics[scale=0.4]{nand_time}
 	\caption{Acquisizione di Logic di una porta NAND guidata da due segnali da
 	DIO0 (100 Hz) e DIO1 (200 Hz); in uscita viene letto da DIO2}
-	\label{nand_time}
+	\label{fig: nand_time}
 \end{figure}
 Il circuito risulta essere funzionante e l'output risulta essere L se e solo
 se i pin 1 e 2 valgono entrambi H, proprio come da aspettative.
 
 \section{Costruzione di circuiti con porte NAND}
 \subsection{Porta OR}
-Come primo circuito costruiamo una porta OR: detti \textit{A} e \textit{B}
-gli ingressi e \textit{Y} l'uscita, nella notazione dell'algebra booleana si ha
+Come primo circuito si costruisce una porta OR: detti $A$ e $B$ gli ingressi
+e $Y$ l'uscita, la funzione OR nella notazione dell'algebra di Boole si
+indica come
 \[
-    Y = A + B
+Y = A + B
 \]
-Sfruttando la legge di De Morgan si ottiene
-\[
+Sfruttando la legge di De Morgan si ottiene la stessa relazione in termini
+di operatori NAND:
+\begin{equation}
     Y = A + B = \overline{\overline{A}\cdot\overline{B}}
-\]
-che descrive la relazione OR in termini del NAND.\\
-Nota la relazione per ottenere un NOT utilizzando porte NAND, riportiamo lo schema del circuito
+\end{equation}
+
+Sapendo che per ottenere un NOT basta collegare lo stesso ingresso a un NAND
+gate, si può disegnare lo schema logico del circuito come in
+\cref{fig: OR_tikz}:
+\begin{figure}[htbp]
+    \centering
+    \begin{circuitikz}
+        \draw (0,0) node (nand) [nand port] {};
+        \draw (nand.in 1) ++(-0.5, 0) node (not1) [not port, scale=0.4] {};
+        \draw (nand.in 2) ++(-0.5, 0) node (not2) [not port, scale=0.4] {};
+        \draw (not1.out) -- (nand.in 1);
+        \draw (not2.out) -- (nand.in 2);
+        \draw (not1.in) -- ++(-0.5, 0) node[anchor=east] {$ A $};
+        \draw (not2.in) -- ++(-0.5, 0) node[anchor=east] {$ B $};
+        \node[anchor=west] at (nand.out) {$ A + B $};
+    \end{circuitikz}
+    \caption{\label{fig: OR_tikz}}
+\end{figure}
+
+Che corrisponde nella nostra implementazione reale con l'integrato SN74LS00
+allo schema circuitale in \cref{fig: OR_circ}.
+\cref{fig: OR}.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.45\textwidth]{NAND_OR}
-    \caption{\label{fig: OR} Schema circuitale utilizzato per costruire un OR GATE: A e B sono i segnali di input, mentre O è l'output}
+    \caption{Schema circuitale utilizzato per costruire un
+    OR GATE: $A$ e $B$ sono i segnali di input, mentre $O \equiv Y$ qui è
+    l'output \label{fig: OR_circ}}
 \end{figure}
 
-Utilizzando le funzioni pattern e logic abbiamo inviato tramite i pin DIO0 e DIO1 2 segnali di clock di frequenza 50 e 100 Hz e abbiamo utilizzato la porta DIO2 per verificare l'output del circuito
+Utilizzando le funzioni Patterns e Logic abbiamo inviato dai pin DIO0 e DIO1
+2 segnali di clock di frequenza 50 e 100 Hz e abbiamo utilizzato la porta
+DIO2 per verificare che l'output del circuito combaciasse con i valori attesi
+dalla tabella di verità della funzione logica OR (come si vede in
+\cref{fig: or_time})
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{or_time}
-    \caption{Acquisizione Logic per il circuito OR costruito tramite NAND: DIO0 e DIO1 sono i segnali in input, DIO2 è l'output}
+    \caption{Acquisizione di Logic per il circuito OR costruito tramite NAND: DIO0 e DIO1 sono i segnali in input, DIO2 è l'output\label{fig: or_time}}
 \end{figure}
 Si vede quindi che il circuito ha il funzionamento aspettato con l'output L se e solo se i due input sono entrambi L.
 
 \subsection{Circuito selettore a due vie (multiplexer)}
-Realizziamo un circuito che permetta di assegnare all'uscita il valore di uno dei due ingressi a singolo bit tramite il valore di un terzo ingresso.
-Indichiamo con \textit{A}, \textit{B} e \textit{C} gli ingressi e con \textit{Y} l'uscita; 
-    \[
+Realizziamo un circuito che permetta di assegnare all'uscita il valore di
+uno dei due ingressi a singolo bit tramite il valore di un terzo ingresso.
+Indichiamo con $A$, $B$ e $C$ gli ingressi e con $Y$ l'uscita.
+In notazione logica il circuito implementa la funzione
+\[
     \begin{cases}
-    C=0 \implies Y=A\\
-    C=1 \implies Y=B
+    C = 0 \implies Y = A \\
+    C = 1 \implies Y = B
     \end{cases}
-    \]
-il funzionamento del nostro circuito può essere descritto dalla tabella di Karnaugh riportata sotto\\
+\]
+che corrisponde alla mappa di Karnaugh riportata in \cref{tab: mult_map} e alla
+tabella di verità scritta in forma esplicita in \cref{tab: mult_ver}
 \begin{table}
     \centering
     \begin{tabular}{c||c|c|c|c}
@@ -428,65 +497,166 @@ il funzionamento del nostro circuito può essere descritto dalla tabella di Karn
         \hline
         1 & 0 & 1 & 1 & 0\\
     \end{tabular}
+\caption{Mappa di Karnaugh per un circuito selettore a due vie
+\label{tab: mult_map}}    
 \end{table}
 
-da cui si ricava facilmente la seguente relazione per il circuito
+\begin{table}[htbp]
+\centering
+\begin{tabular}{ccc|c}
+\toprule
+$C$ & $A$ & $B$ & $Y$ \\
+\midrule
+\midrule
+0&0&0&0\\
+0&0&1&0\\
+0&1&0&1\\
+0&1&1&1\\
+1&0&1&0\\
+1&1&0&0\\
+1&1&1&1\\
+\bottomrule
+\end{tabular}
+\caption{Tabella di verità del circuito selettore a due vie
+\label{tab: mult_ver}}
+\end{table}
+
+Da queste possiamo ricavare che l'uscita del circuito deve soddisfare
+la relazione
+\begin{equation}\label{eq: mult}
+Y = A \cdot \overline{C} + B \cdot C
+\end{equation}
+sempre con la legge di De Morgan si arriva ad una riscrittura dell'
+\cref{eq: mult} in termini di NAND
 \[
-Y=A\cdot\overline{C}+B\cdot C
+Y = A\cdot\overline{C} + B\cdot C = \overline{(\overline{A\cdot\overline{C}})\cdot(\overline{B\cdot C})}
 \]
-e, sempre sfruttando De Morgan, si ha
-\[
-Y=A\cdot\overline{C}+B\cdot C=\overline{(\overline{A\cdot\overline{C}})\cdot(\overline{B\cdot C})}
-\]
-Riportiamo sotto lo schema del circuito
+
+Che si traduce nello schema logico e nell'implementazione reale del circuito
+riportate in \cref{fig: mult_tikz} e \cref{fig: mult_circ} rispettivamente
+\begin{figure}[htbp]
+    \centering
+    \begin{circuitikz}
+        \draw (0, 1) node (nandSopra) [nand port] {};
+        \draw (0, -1) node (nandSotto) [nand port] {};
+        \draw (3, 0) node (nandDestra) [nand port] {};
+
+        \draw (nandSopra.in 2) ++(-0.5,0) node (not) [not port, scale=0.5] {};
+        \draw (nandDestra.out) node [anchor=west] {$ \text{SW}(C; A, B) $};
+        \draw (nandSopra.in 1) -- ++(-2, 0) node[anchor=east] (input) {$ A $};
+        \draw (nandSotto.in 2) -- ++(-2, 0) node[anchor=east] {$ B $};
+
+        \draw (not.out) -- (nandSopra.in 2);
+        \coordinate (biforcazione) at ($ (not.out |-, 0) + (-1, 0) $);
+        \draw (input |-, 0) node[anchor=east] {$ C $} -- (biforcazione) |- (not.in);
+        \draw (biforcazione) |- (nandSotto.in 1);
+
+        \draw (nandSopra.out) -| ++(0.5,0) |- (nandDestra.in 1);
+        \draw (nandSotto.out) -| ++(0.5,0) |- (nandDestra.in 2);
+    \end{circuitikz}
+    \caption{Diagramma logico del circuito selettore
+    \label{fig:mult_tikz}}
+\end{figure}
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\textwidth]{NAND_MP.png}
-    \caption{Schema circuitale per costruire un multiplexer a 2 input, controllato dal valore logico C}
-    \label{circuito2}
+    \caption{Schema circuitale di un multiplexer a 2 input, controllato dal
+    valore logico di switch $C$}
+    \label{fig: mult_circ}
 \end{figure}
 
-Per dimostrare il corretto funzionamento del circuito riportiamo le acquisizioni di Pattern, in cui è possibile comprendere come sono stati impostati gli ingressi, e Logic, da cui si può verificare il corretto funzionamento del circuito.
-Abbiamo inviato al circuito tramite la funzione pattern un segnale di clock a 100 Hz a B, uno a 50 Hz a A e infine uno a 25 Hz a C.
+Per dimostrare il corretto funzionamento del circuito riportiamo la schermata
+di configurazione di Patterns, in cui si vede come sono stati impostati gli
+ingressi e l'acquisizione di Logic, da cui si può verificare il corretto
+funzionamento in uscita dal circuito al variare dei valori logici dei 3
+ingressi.
+
+Si inviano all'ingresso del circuito un segnale di clock di frequenza 100 Hz
+($B$), uno a 50 Hz $A$ e infine uno a 25 Hz $C$ per esplorare tutte le
+possibili combinazioni possibili per i 3 bit di ingresso
+(cfr. \cref{fig: mult_pat}).
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{pat2.png}
-    \caption{Logic: DIO 0 $\equiv$ B, DIO 1 $\equiv$ A, DIO 2 $\equiv$ C}
-    \label{logic2}
+    \caption{Schermata di configurazione degli ingressi in Patterns
+    al multiplexer: DIO 0 $\equiv B$, DIO 1 $\equiv A$, DIO 2 $\equiv C$.
+    \label{fig: mult_pat}}
 \end{figure}
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{Multiplex.png}
-    \caption{Logic: DIO 0 $\equiv$ B, DIO 1 $\equiv$ A, DIO 2 $\equiv$ C, DIO 3 $\equiv$ Y}
-    \label{logic2}
+    \caption{Acquisizione di Logic per il multiplexer: DIO 0 $\equiv B$,
+    DIO 1 $\equiv A$, DIO 2 $\equiv C$, DIO 3 $\equiv Y$.}
+    \label{fig: mult_log}
 \end{figure}
-Si ricava quindi che il circuito funziona come da aspettative, restituendo il segnale di A nel caso in cui C=0 e il segnale B quando C=1.
-
+Osserviamo (da \cref{fig: mult_log}) che il circuito funziona come da
+aspettative, restituendo cioè il segnale in $A$ nel caso in cui $C = 0$ e
+il valore di $B$ quando $C = 1$.
 
 \subsection{Porta XOR}
-Un circuito \texttt{XOR} si può realizzare con 4 porte \texttt{NAND} partendo
-dalla sua equazione caratteristica e manipolandola con le leggi di De Morgan:
+Un circuito XOR si può realizzare in maniera ottimale con 4 porte NAND
+partendo dalla sua equazione caratteristica e manipolandola con le leggi di
+De Morgan:
 \begin{align*}
-  A \oplus B &= (A \cdot \overline{B}) + (\overline{A} \cdot B)
-             =  (A \cdot \overline{A} + A \cdot \overline{B}) + (B \cdot \overline{B} + \overline{A} \cdot B) \\
-             &= A \cdot (\overline{A} + \overline{B}) + B \cdot (\overline{B} + \overline{A})
-             = A \cdot \overline{(A \cdot B)} + B \cdot \overline{(B \cdot A)} \\
+  A \oplus B &= (A \cdot \overline{B}) + (\overline{A} \cdot B) = 
+ (A \cdot \overline{A} + A \cdot \overline{B}) + (B \cdot \overline{B} +
+ \overline{A} \cdot B) \\
+ &= A \cdot (\overline{A} + \overline{B}) + B \cdot (\overline{B} +
+ \overline{A}) = A \cdot \overline{(A \cdot B)} +
+ B \cdot \overline{(B \cdot A)} \\
+ &= \overline{\overline{A \cdot \overline{(A \cdot B)}} \cdot
+ \overline{B \cdot \overline{(B \cdot A)}}}
 \end{align*}
+
+Questo corrisponde allo schema logico e all'implementazione reale con il
+nostro chip riportate nelle \cref{fig: XOR_tikz} e \cref{fig: XOR_circ}.
+\begin{figure}[htbp]
+    \centering
+    \begin{circuitikz}
+        \draw (0, 1) node (nandSopra) [nand port] {};
+        \draw (0, -1) node (nandSotto) [nand port] {};
+        \draw (3, 0) node (nandDestra) [nand port] {};
+        \draw (-3, 0) node (nandSinistra) [nand port] {};
+
+        \coordinate (biforcazione) at ($ (nandSinistra.out |-, 0) + (0.5, 0) $);
+        \draw (nandSinistra.out) -- (biforcazione) |- (nandSopra.in 2);
+        \draw (nandSinistra.out) -- (biforcazione) |- (nandSotto.in 1);
+
+        \draw (nandSopra.out) -- ++(0.5,0) |- (nandDestra.in 1);
+        \draw (nandSotto.out) -- ++(0.5,0) |- (nandDestra.in 2);
+        \draw (nandDestra.out) node [anchor=west] {$ A \oplus B $};
+        \draw (nandSopra.in 1) -- ++(-4, 0) node[anchor=east] (inputA) {$ A $};
+        \draw (nandSotto.in 2) -- ++(-4, 0) node[anchor=east] (inputB) {$ B $};
+
+        \draw (nandSinistra.in 1) -| (-4.7, |- inputA);
+        \draw (nandSinistra.in 2) -| (-4.7, |- inputB);
+    \end{circuitikz}
+    \caption{Circuito logico di una porta XOR costruita
+    con sole porte NAND \label{fig: XOR_tikz}}
+\end{figure}
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\textwidth]{NAND_XOR.png}
     \caption{Schema circuitale utilizzato per costruire uno XOR GATE tramite NAND}
-    \label{circuito3}
+    \label{fig: XOR_circ}
 \end{figure}
 
+Verifichiamo il buon funzionamento del circuito XOR inviando ai due
+ingressi gli stessi segnali di clock usati per la porta OR e osservando i
+valori dell'uscita $Y$ con il Logic Analyzer in maniera del tutto analoga a
+prima.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{xor_time.png}
-    \caption{Acquisizione Logic della Porta XOR: DIO0 e DIO1 sono i segnali di input, DIO2 è l'uscita dallo XOR}
-    \label{pat2}
+    \caption{Acquisizione Logic della Porta XOR: DIO 0 e DIO 1 sono i segnali
+    di input, DIO 2 è l'uscita dallo XOR}
+    \label{fig: XOR_time}
 \end{figure}
-
-Se ne deduce che il circuito ha il funzionamento aspettato e che quindi l'output risulta essere L se e solo se entrambi gli input A e B hanno lo stesso valore.
+Dall'acquisizione in \ref{fig: XOR_time} osserviamo che il circuito riproduce
+il comportamento atteso, in quanto l'output risulta essere L se e solo se
+entrambi gli input $A$ e $B$ assumono lo stesso valore.
 
 \setcounter{section}{5}
 %=======================
