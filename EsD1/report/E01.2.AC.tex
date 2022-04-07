@@ -205,7 +205,7 @@ canale WaveGen1 dell'AD2, quindi generando in questo canale una tensione
 continua di livello alto pari a 5 V, da cui si trova
 \begin{align*}
     I\ped{IH, 1} &= 16 \pm 1 \; \si{\micro\A} \\
-    I\ped{IH, 2} &= 10 \pm \; \si{\micro\A} \\   
+    I\ped{IH, 2} &= 10 \pm 1 \; \si{\micro\A} \\   
 \end{align*}
 Che risultano essere compatibili entro i limiti del datasheet.
 
@@ -328,15 +328,14 @@ Dalla misura fatta con i cursori sull'oscilloscopio si ricava
 \end{multicols}
 
 \subsection{Confronto con i valori attesi}
-%TODO Scrivere in maniera sensata
-Dobbiamo però constatare la presenza di capacità parassite presenti nelle basette e circuito, infatti aumentando la scala dei tempi ci rendiamo conto che tutti i grafici prodotti dall'oscilloscopio rispecchiano qualitativamente il grafico della carica e scarica del condensatore (figura \cref{fig: carica}); per questo motivo si sono ottenuti in alcuni casi dei tempi di propagazione poco più alti delle aspettative, per cui non abbiamo ragione di credere che le nostre misure non siano compatibili con le aspettative.
+Dobbiamo però constatare la presenza di capacità parassite presenti all'interno del circuito: aumentando la scala dei tempi ci accorgiamo che i grafici prodotti dall'oscilloscopio sono qualitativamente simili alle curve di carica e scarica del condensatore(figura \cref{fig: carica}); per questo motivo andando a misurare il tempo di propagazione della porta abbiamo misurato un tempo di propagazione $t_{PHL}$ del primo integrato più alto rispetto a quello aspettato. Presa considerazione di ciò, non è stato possibile riprendere la misura in condizioni in cui la capacità parassita fosse inferiore, e nel migliore dei casi abbiamo ottenuto sempre $t_{PHL}=25.0 \pm 0.2 \; \si{n\s}$.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{carica}
 	\label{fig: carica}
 	\caption{Acquisizione con oscilloscopio digitale con un fondo scala dei tempi più grande, in modo da osservare qualitativamente come la propagazione del segnale assomigli molto al grafico della tensione ai capi di un condensatore durante il ciclo di carica/scarica}
 \end{figure}
-Possiamo quindi concludere che le misure sono in linea con quanto dichiarato nel datasheet.
+Possiamo però concludere che le misure sono compatibili con quanto dichiarato nel datasheet con uno scarto del $14 \; \percent$.
 
 \setcounter{section}{3}
 %=======================
@@ -355,22 +354,12 @@ multiplexer a partire da soli chip NAND SN74LS00.
 \end{figure}
 
 \section{Tabella di verità}
-\subsection{Verifica statica della tabella di verità NAND}
-%TODO Non so se vogliamo almeno dire che lo abbiamo fatto senza mettere
-% immagini
 
-\subsection{Verifica del funzionamento dinamica con Logic Analyzer}
+\subsection{Verifica del funzionamento con Logic Analyzer}
 Definiamo dentro lo strumento Patterns (generator) di WaveForms 2 segnali
-di clock rispettivamente a 100 Hz (in uscita dalla porta DIO0 e in ingresso
-al pin 1 dell'integrato) e l'altro a 200 Hz (in uscita dalla porta DIO1 e in
-entrata nel pin 2) per esplorare tutte le possibili coppie di valori in
-ingresso alla porta NAND.
-
-Dunque abbiamo usato lo strumento Logic (Analyzer) per acquisire l'andamento
-nel tempo dei segnali presenti nei pin della porta logica utilizzata
-(1,2 e 3).
-%TODO Non è chiaro che sia questa operazione logica utilizzata (1, 2, 3)
-
+di clock rispettivamente a 100 Hz (in uscita dalla porta DIO0) e l'altro a 200 Hz (in uscita dalla porta DIO1) in modo che la loro combinazione producesse tutte le coppie di valori possibili ottenibili con 2 bit.
+Dunque si sono pilotati i due ingressi di una stessa porta nand utilizzando i segnali generati, inviandone uno ad ogni entrata.
+Si è usato lo strumento Logic (Analyzer) per acquisire gli andamenti nel tempo dei due segnali in entrata e di quello in uscita:
 \begin{figure}[htbp]
 \centering
 	\includegraphics[scale=0.4]{nand_time}
@@ -562,17 +551,16 @@ Confrontando le uscite ottenute con i valori riportati in \cref{tab: grbin} affe
     \includegraphics[width=\textwidth]{gray20ns}
     \caption{Acquisizione del Logic Analyzer durante la transizione dal numero $15$ al numero $0$ su scala dei tempi pari a $20$ ns.}
 \end{figure}
-Per una scala dei tempi molto stretta, si registra che i tempi di propagazione non sono istantanei, distinguendo dei glitch sui canali di uscita. \\ 
-
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{gray10ns}
-    \caption{Transizione dal $15$ allo $0$ su scala temporale pari a $10$ ns.}
+    \caption{\label{fig: prop}Transizione dal $15$ allo $0$ su scala temporale pari a $10$ ns.}
 \end{figure}
-(verificate il funzionamento del circuito utilizzando Pattern per generare un contatore a 4 bit con la codifica opportuna e osservando l’uscita con Logic (come ai punti precedenti);\\
-%TODO motivare l’osservazione del punto precedente tenendo conto del tempo di propagazione necessario per i due circuiti;\\
-
-%TODO riportare tutti i grafici necessari a dimostrare il funzionamento del circuito
+Per una scala dei tempi molto stretta, abbiamo triggerato quando il MSB del bus a codice Gray cade da H a L: in questo modo riusciamo a osservare la transizione da 15 a 1 (1000 in Gray equivale a 1111 in binario) e a vedere come si comporta la propagazione del segnale.
+Dalla figura \cref{fig: prop} notiamo che anche se il bit 3 del segnale Gray e il bit 3 del codice binario sono direttamente collegati tra loro (senza nessuna porta logica nel mezzo), quest'ultimo percepisce un ritardo pari a circa la risoluzione temporale dell'AD2 (che risulta essere 10 \si{n\s}).
+Inoltre i successivi bit del codice binario (2,1 e infine 0) risultano anch'essi ritardati dal bit precedente a quello preso in considerazione perché in mezzo vi si trova una porta logica XOR: andando a controllare sul datasheet il tempo di propagazione per la porta XOR si ricava che nel caso in cui l'altro ingresso sia su uno stato logico basso, $t_{PHL,typ}=10 \; \si{n\s}$ e $t_{PHL,max}=17 \; \si{n\s}$.
+Considerando quindi che il ritardo totale (da quando il bit MSB Gray scende a 0, fino a quando il bit LSB Binario scende anch'esso a 0) risulta essere pari 50 \si{n\s}, possiamo verificare che questo combacia approssimativamente con le aspettative per cui 3 porte XOR inducono un ritardo di $\approx 30$ \si{n\s} e il primo bit binario (MSB) subisce anch'esso un ritardo di 10 \si{n\s}, portando il ritardo atteso approssimativamente a circa 40 \si{n\s}.
+Il ritardo "fantasma" misurato con l'AD2 presente dal momento in cui il bit 2 Binario scende a 0 fino a quando anche il bit 1 scende a 0 (indicativamente in figura \cref{fig: prop} tra i 20 e i 30 \si{n\s}) lo si può invece attribuire alla scarsa risoluzione dell'AD2  (che ripetiamo essere 10 \si{n\s}) e ad una porta logica con un tempo di propagazione particolarmente più elevato rispetto alle altre (in particolare ci aspettiamo sia la porta XOR che in uscita ha il bit B1).
 
 \section{Sommatore a 2 bit}
 Vogliamo costruire un sommatore a due bit utilizzando le dovute porte logiche. Utilizzeremo i chip \texttt{SN74LS08} (quad-AND), \texttt{SN74LS32} (quad-OR), \texttt{SN74LS86} (quad-XOR). Il circuito da montare è riportato in \cref{fig: sommatore}.
@@ -590,7 +578,25 @@ Vogliamo costruire un sommatore a due bit utilizzando le dovute porte logiche. U
     \caption{Schema circuitale di un full adder.}
     \label{fig:fulladder}
 \end{figure}
-
+\subsection{Verifica Half Adder e Full Adder}
+Si vuole quindi verificare il funzionamento dei due circuiti Half Adder e Full Adder:
+per verificare il funzionamento del primo è stato sufficiente generare con pattern
+un bus contatore a 2 bit che conta in binario e abbiamo inviato i segnali dei due bit uno ad ogni ingresso dell'HA.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{half_time}
+	\caption{Acquisizione Logic del funzionamento di un half adder}
+\end{figure}
+Per verificare il funzionamento del Full Adder abbiamo generato con pattern un bus
+contatore (come prima in binario) a 3 bit: 2 di questi (i due bit meno significativi) sono stati utilizzati come ingressi A e B, mentre il MSB è stato utilizzato come bit di CARRY IN.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{full_time}
+	\caption{Acquisizione Logic del funzionamento di un full adder}
+\end{figure} 
+Dai risultati ottenuti con le acquisizioni di Logic si verifica che entrambi i circuiti funzionano come da aspettativa.
+\subsection{Sommatore}
+Abbiamo quindi collegato l'uscita CARRY OUT  dell'half adder all'entrata CARRY IN dell full adder: così facendo si ottiene un sommatore binario a 2 bit con bit di riporto (che andrà ad indicare un eventuale overflow).
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\linewidth]{sum.png}
@@ -598,7 +604,9 @@ Vogliamo costruire un sommatore a due bit utilizzando le dovute porte logiche. U
     \label{fig: sommatore}
 \end{figure}
 
-Verifichiamo il funzionamento mandando in ingresso tutte le possibili combinazioni di due numeri a due bit. Per fare ciò mandiamo ai 4 ingressi del circuito un segnale che conta in binario. Il risultato è mostrato in \cref{fig: faAD2}.
+A questo punto si procede con la verifica di funzionamento del circuito; per questo motivo abbiamo generato un Bus contatore a 4 bit che utilizzeremo per inviare numeri in binario in ingresso al sommatore.
+In particolare i 2 bit meno significativi del bus formeranno il numero A, mentre i restanti saranno B.
+A questo punto si sono inviati questi 2 numeri alle entrate del sommatore facendo attenzione a inserire nel Half Adder i due bit meno significativi di entrambi i numeri, mentre al Full Adder i due bit più significativi.
 
 \begin{figure}[htbp]
     \centering
@@ -606,8 +614,10 @@ Verifichiamo il funzionamento mandando in ingresso tutte le possibili combinazio
     \caption{Acquisizione Logic per il sommatore a 2 bit: DIO0 e DIO1 rappresentano il numero A; DIO2 e DIO3 rappresentano B; DIO4, DIO5 e DIO6 rappresentano invece rispettivamente il risultato della somma (con DIO4 il LSB) e il bit di overflow}
     \label{fig: faAD2}
 \end{figure}
+Si verifica quindi che il circuito sommatore funziona come atteso.
+\subsection{Verifica funzionamento tramite led}
 
-Aggiungiamo al circuito 4 led verdi e un led rosso: questi sono pilotati da 5 nuovi cavi dell'AD2. Per controllare il loro funzionamento aggiungiamo a \emph{Patterns} una tabella delle verità, riportata in \cref{fig: Ver}, che faccia in modo che ad ogni step si illuminino un numero di led pari al valore della somma. Il led rosso verrà usato per controllare l'overflow, ovvero la possibilità che il risultato sia maggiore o uguale a 4.
+Aggiungiamo al circuito 4 led verdi e un led rosso: questi sono pilotati da 5 nuovi cavi dell'AD2. Per controllare il loro funzionamento aggiungiamo a \emph{Patterns} una tabella di verità, riportata in \cref{fig: Ver}, che faccia in modo che ad ogni step si illuminino un numero di led pari al valore della somma. Il led rosso verrà usato per controllare l'overflow, ovvero la possibilità che il risultato sia maggiore o uguale a 4.
 
 \begin{figure}[htbp]
     \centering
@@ -616,6 +626,16 @@ Aggiungiamo al circuito 4 led verdi e un led rosso: questi sono pilotati da 5 nu
     \label{fig: Ver}
 \end{figure}
 
+Si è fatta quindi un'ultima acquisizione tramite Logic includendo anche i segnali inviati nei LED
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\linewidth]{sum_time_ROM}
+    \caption{Acquisizione con logic dell'andamento dei vari segnali per il circuito Sommatore a 2 bit il cui risultato pilota la tabella di verità presente in \cref{Ver}.}
+    \label{fig: ROM_sommatore} %I RUMENI SOTTO I TRENI DIO SCHIFOSO
+\end{figure}
+Da cui come ci si aspetta l'ultimo LED verde non si accende mai (dato che con 2 bit riesco a rappresentare solo i numeri fino a 3) e solo il LED rosso si accende quando il bit di CARRY ha valore logico alto.
 %=======================
 \section*{Conclusioni e commenti finali}
 Si è riusciti a verificare il corretto comportamento delle porte TTL studiate
