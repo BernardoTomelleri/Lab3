@@ -131,7 +131,9 @@ secondo lo schema in \cref{fig: trans}:
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{not_time1}
-	\caption{Grafico in funzione del tempo di $V\ped{in}$ (in giallo, una rampa da 0 a 5 V di frequenza pari a 1 kHz) e $V_{out}$ (in blu)}
+	\caption{Acquisizione all'oscilloscopio dell'andamento nel tempo dei
+	segnali $V\ped{in}$ (CH1, una rampa da 0 a 5 V di frequenza $f = 1$ kHz)
+	e $V\ped{out}$ (CH2)}
 \end{figure}
 
 Sempre con i cursori abbiamo misurato $V\ped{OH, min}$ dato che il valore
@@ -141,10 +143,14 @@ in cui la tensione in uscita cambia in maniera più repentina:
 \begin{figure}
 \centering
 	\includegraphics[scale=0.4]{trans1}
-	\caption{Schema di come è stata presa la misura di $V\ped{OH, min}$ tramitel'utilizzo dei cursori: è stato scelto come valore minimo la tensione dell'uscita subito prima del primo cambio repentino.}
+	\caption{Schema di come è stata presa la misura di $V\ped{OH, min}$ tramite
+	l'utilizzo dei cursori. Si è scelto come valore minimo la tensione
+	dell'uscita subito prima del punto di discesa più ripida.}
 	\label{fig: trans1}
 \end{figure}
-Successivamente si sono utilizzati gli altri valori presi in precedenza per completare le misure.
+
+Successivamente si sono utilizzati i valori misurati già elencati prima per
+ottenere le nostre stime delle tensioni di soglia.
 Per il primo integrato:
 \begin{multicols}{2}
     \centering
@@ -343,14 +349,16 @@ salita/discesa per scegliere se misurare il tempo di propagazione H->L o L->H.
 	H a L per il secondo integrato}
 \end{figure}
 
-Dalla misura fatta con i cursori sull'oscilloscopio si ricava
+Dalle misure prese con i cursori dell'oscilloscopio (a cui associamo come
+incertezza il contributo dato dalle specifiche del datasheet, tenendo conto
+dell'instabilità delle tracce sullo schermo) troviamo
 \begin{multicols}{2}
     \centering
-    $t_{PLH}=$ 5.2 $\pm$ 0.2 \si{n\s} \\
-    $t_{PHL}=$ 25.0 $\pm$ 0.2 \si{n\s}
+    $t_{PLH}=$ 5.2 $\pm$ 1.2 \si{n\s} \\
+    $t_{PHL}=$ 25 $\pm$ 2 \si{n\s}
     
-    $t_{PLH}=$ 7.0 $\pm$ 0.2 \si{n\s} \\
-    $t_{PHL}=$ 22.0 $\pm$ 0.2 \si{n\s}
+    $t_{PLH}=$ 7.0 $\pm$ 1.2 \si{n\s} \\
+    $t_{PHL}=$ 22 $\pm$ 2 \si{n\s}
 \end{multicols}
 
 \subsection{Confronto con i valori attesi}
@@ -392,13 +400,25 @@ multiplexer a partire da soli chip NAND SN74LS00.
 \begin{figure}[htbp]
 \centering
     \includegraphics[width=0.3\textwidth]{NAND}
-    \caption{Schema circuitale del circuito integrato SN74LS00
+    \caption{Schema e pedinatura del circuito integrato SN74LS00 quad-NAND
     \label{fig: NAND}}
 \end{figure}
 
 \section{Tabella di verità}
 \subsection{Verifica statica della tabella di verità NAND}
-
+Vogliamo verificare preliminarmente che la porta NAND funzioni correttamente
+grazie alla funzione StaticIO inviando a DIO 0 e DIO 1 due segnali di tipo
+switch in tutte le loro possibili combinazioni. I primi due canali sono
+collegati agli ingresso di una stessa porta NAND sotto, mentre da DIO 2 in
+modalità LED misurare il valore in uscita da questa.
+\begin{figure}[htbp]
+	\includegraphics[scale=0.21]{static_nand00}
+	\includegraphics[scale=0.21]{static_nand01}
+	\includegraphics[scale=0.21]{static_nand10}
+	\includegraphics[scale=0.21]{static_nand11}
+	\caption{Acquisizione tramite StaticIO delle possibili configurazioni della
+	porta NAND, in funzione dei valori di input}
+\end{figure}
 \subsection{Verifica del funzionamento con Logic Analyzer}
 Definiamo dentro lo strumento Patterns (generator) di WaveForms 2 segnali
 di clock; uno di frequenza 100 Hz (in uscita dalla porta DIO0) e l'altro a
@@ -638,7 +658,7 @@ nostro chip riportate nelle \cref{fig: XOR_tikz} e \cref{fig: XOR_circ}.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.6\textwidth]{NAND_XOR.png}
+    \includegraphics[width=0.6\textwidth]{NAND_XOR}
     \caption{Schema circuitale utilizzato per costruire uno XOR GATE tramite NAND}
     \label{fig: XOR_circ}
 \end{figure}
@@ -649,7 +669,7 @@ valori dell'uscita $Y$ con il Logic Analyzer in maniera del tutto analoga a
 prima.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{xor_time.png}
+    \includegraphics[width=0.8\textwidth]{xor_time}
     \caption{Acquisizione Logic della Porta XOR: DIO 0 e DIO 1 sono i segnali
     di input, DIO 2 è l'uscita dallo XOR}
     \label{fig: XOR_time}
@@ -662,27 +682,57 @@ entrambi gli input $A$ e $B$ assumono lo stesso valore.
 %=======================
 \section*{Parte C: Circuiti logici complessi a più chip}
 \section{Convertitore Gray-Binario}
-\begin{minipage}{0.7\textwidth}
-    Come ultima cosa vogliamo realizzare un circuito in grado di convertire un valore a 4 bit dalla codifica Gray in Binario utilizzando un solo integrato di tipo SN74LS86 a porte XOR, descritto nella figura a lato.\\
-    Un convertitore Gray-Binario può essere schematizzato come in Figura (\ref{gb}): il nostro obiettivo è quello di verificare che tale circuito si comporti come atteso.
-\end{minipage}
-\begin{minipage}{0.3\textwidth}
-    \includegraphics[width=\textwidth]{XOR.png}
-\end{minipage}
-\newline
-\begin{minipage}{0.5\textwidth}
-    \centering
-    \includegraphics[width=0.8\textwidth]{gb.png}
-    \captionof{figure}{Schema convertitore Gray-Binario}
-    \label{gb}
-\end{minipage}
+Vogliamo costruire un circuito che converta un valore a 4 bit dalla codifica
+Gray in codice Binario utilizzando un integrato di tipo SN74LS86 a porte XOR
+(in \cref{fig: XOR}).
+\begin{figure}[htbp]
+    \includegraphics[width=0.3\textwidth]{XOR}
+    \caption{Schema e pedinatura del circuito integrato SN74LS86 quad-XOR
+    \label{fig: XOR}}
+\end{figure}
 
+Un convertitore Gray-Binario può essere schematizzato come in \cref{fig: gb},
+di nuovo il nostro obiettivo è verificare che tale circuito funzioni
+correttamente.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{gb}
+    \caption{Schema logico di un circuito convertitore Gray->Binario
+    \label{fig: gb}}
+\end{figure}
+
+\subsection{Verifica del disegno circuitale}
+Preliminarmente possiamo calcolare i valori attesi in uscita per almeno
+4 diversi stati in ingresso come verifica dello schema circuitale in
+\cref{fig: gb}
 \begin{table}[htbp]
     \centering
-    \begin{tabular}{c||c}
+    \[
+    \begin{array}{cccc|cccc}
+    \toprule
+        G_3 & G_2 & G_1 & G_0 & B_3 & B_2 & B_1 & B_0 \\
+        \midrule
+        \midrule
+        0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+		1 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\        
+        1 & 1 & 1 & 1 & 1 & 0 & 1 & 0 \\
+    \bottomrule
+    \end{array}
+    \]
+\end{table}
+
+\subsection{Verifica del corretto comportamento del convertitore G->B}
+Come si può vedere esplicitamente dalla \ref{tab: grbin} il codice Gray
+differisce dal codice binario in quanto si passa da un numero intero al
+successivo modificando un solo bit per volta.
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{cc}
+    \toprule
         Codice binario & Codice Gray \\
-        \hline
-        \hline
+        \midrule
+        \midrule
         0000 & 0000\\
         0001 & 0001\\
         0010 & 0011\\
@@ -699,85 +749,127 @@ entrambi gli input $A$ e $B$ assumono lo stesso valore.
         1101 & 1011\\
         1110 & 1001\\
         1111 & 1000\\
+        \bottomrule
         \end{tabular}
-    \caption{Conteggio a 4 bit nei due codici.}
+    \caption{Conteggio sequenziale a 4 bit nelle due codifiche.}
     \label{tab: grbin}
 \end{table}
+Dunque dalla stessa possiamo vedere quali sono i valori attesi per l'uscita del
+circuito al variare dei valori in ingresso.
 
-Il codice Gray differisce dal codice binario in quanto si passa da un intero al successivo modificando un solo bit per volta.\\
-Calcoliamo l'uscita del circuito per alcuni valori in ingresso:
-\begin{table}[htbp]
-    \centering
-    \[
-    \begin{array}{cccc|cccc}
-        G_3 & G_2 & G_1 & G_0 & B_3 & B_2 & B_1 & B_0\\
-        \hline
-        0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-        1 & 1 & 1 & 1 & 1 & 0 & 1 & 0\\
-        1 & 0 & 0 & 1 & 1 & 1 & 1 & 0\\
-        1 & 0 & 0 & 0 & 1 & 1 & 1 & 1\\
-    \end{array}
-    \]
-\end{table}
-
-Confrontando le uscite ottenute con i valori riportati in \cref{tab: grbin} affermiamo che il circuito si comporta correttamente come convertitore Gray-Binario. Come conferma, riportiamo un'acquisizione.\\
+Dunque, per conferma del corretto funzionamento del convertitore come prima
+possiamo confrontare le uscite ottenute da un'acquisizione con Logic Analyzer
+con i valori riportati in \cref{tab: grbin} generando all'ingresso con
+Patterns un contatore Gray.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{graybin}
     \caption{Acquisizione di un ciclo completo (frequenza 1 kHz) con Logic
     Analyzer dei segnali in ingresso e in uscita dal convertitore Gray-binario.}
 \end{figure}
+
+Per una scala dei tempi ristretta, abbiamo triggerato quando il MSB del bus a
+codice Gray cade da H a L: in questo modo riusciamo a osservare la transizione
+da 15 a 0 (1000 in Gray equivale a 1111 in binario) e in particolare il tempo
+di propagazione che intercorre tra quando il segnale in ingresso scende a 0
+e quando effettivamente in uscita si registra corrispondente valore in binario
+(riportiamo una serie di acquisizioni di questa transizione in
+\cref{fig: gray20ns} e \cref{fig: prop}
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{gray20ns}
-    \caption{Acquisizione del Logic Analyzer durante la transizione dal numero $15$ al numero $0$ su scala dei tempi pari a $20$ ns.}
+    \includegraphics[width=\textwidth]{gray20ns_B}
+    \caption{Acquisizione del Logic Analyzer durante la transizione dal numero
+    $15$ (b1111) al numero $0$ (b0000) su scala dei tempi pari a $20$ ns.
+    \label{fig: gray20ns}}
 \end{figure}
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{gray10ns}
-    \caption{\label{fig: prop}Transizione dal $15$ allo $0$ su scala temporale pari a $10$ ns.}
+    \caption{Transizione dal $15$ allo $0$ su scala temporale pari a $10$ ns.
+    \label{fig: prop}}
 \end{figure}
-Per una scala dei tempi molto stretta, abbiamo triggerato quando il MSB del bus a codice Gray cade da H a L: in questo modo riusciamo a osservare la transizione da 15 a 1 (1000 in Gray equivale a 1111 in binario) e a vedere come si comporta la propagazione del segnale.
-Dalla figura \cref{fig: prop} notiamo che anche se il bit 3 del segnale Gray e il bit 3 del codice binario sono direttamente collegati tra loro (senza nessuna porta logica nel mezzo), quest'ultimo percepisce un ritardo pari a circa la risoluzione temporale dell'AD2 (che risulta essere 10 \si{n\s}).
-Inoltre i successivi bit del codice binario (2,1 e infine 0) risultano anch'essi ritardati dal bit precedente a quello preso in considerazione perché in mezzo vi si trova una porta logica XOR: andando a controllare sul datasheet il tempo di propagazione per la porta XOR si ricava che nel caso in cui l'altro ingresso sia su uno stato logico basso, $t_{PHL,typ}=10 \; \si{n\s}$ e $t_{PHL,max}=17 \; \si{n\s}$.
-Considerando quindi che il ritardo totale (da quando il bit MSB Gray scende a 0, fino a quando il bit LSB Binario scende anch'esso a 0) risulta essere pari 50 \si{n\s}, possiamo verificare che questo combacia approssimativamente con le aspettative per cui 3 porte XOR inducono un ritardo di $\approx 30$ \si{n\s} e il primo bit binario (MSB) subisce anch'esso un ritardo di 10 \si{n\s}, portando il ritardo atteso approssimativamente a circa 40 \si{n\s}.
-Il ritardo "fantasma" misurato con l'AD2 presente dal momento in cui il bit 2 Binario scende a 0 fino a quando anche il bit 1 scende a 0 (indicativamente in figura \cref{fig: prop} tra i 20 e i 30 \si{n\s}) lo si può invece attribuire alla scarsa risoluzione dell'AD2  (che ripetiamo essere 10 \si{n\s}) e ad una porta logica con un tempo di propagazione particolarmente più elevato rispetto alle altre (in particolare ci aspettiamo sia la porta XOR che in uscita ha il bit B1).
+
+Dalla figura \cref{fig: prop} notiamo che anche se il bit 3 del segnale Gray e
+il bit 3 del codice binario sono direttamente collegati tra loro
+(cioè senza nessuna porta logica tra i due), quest'ultimo percepisce un
+ritardo pari a circa la risoluzione temporale dell'AD2 (10 \si{n\s}).
+
+Inoltre i successivi bit del codice binario (2, 1 e infine 0) risultano
+anch'essi ognuno in ritardo rispetto al bit precedente a cui è collegato in
+cascata da una porta logica XOR.
+
+Controllando sul datasheet i tempi di propagazione per i gate XOR usati si
+ricava che nel caso in cui l'altro ingresso si trovi in stato logico basso,
+$t\ped{PHL, typ} = 10 \; \si{n\s}$ e $t\ped{PHL, max} = 17 \; \si{n\s}$.
+
+Considerando quindi che il ritardo totale (da quando il bit MSB Gray scende a
+0, fino a quando il bit LSB Binario scende anch'esso a 0) risulta pari a circa
+$50 \pm 10 \; \si{n\s}$, questo risulta compatibile con il ritardo atteso;
+ovvero quello accumulato dalle 3 porte XOR di ($\approx 30$ \si{n\s}) in
+aggiunta a quello del primo bit binario (MSB) di 10 \si{n\s}.
+
+Il ritardo "fantasma" misurato con l'AD2 presente dal momento in cui il bit
+2 Binario scende a 0 fino a quando anche il bit 1 scende a 0 (indicativamente
+in \cref{fig: prop} tra i 20 e i 30 \si{n\s} dopo il trigger) si ipotizza sia
+da attribuire alla scarsa risoluzione dell'AD2 e ad una porta logica con tempo
+di propagazione particolarmente più alto rispetto alle altre (da quanto
+osservato ci aspettiamo sia lo XOR che in uscita ha il bit B1).
 
 \section{Sommatore a 2 bit}
-Vogliamo costruire un sommatore a due bit utilizzando le dovute porte logiche. Utilizzeremo i chip \texttt{SN74LS08} (quad-AND), \texttt{SN74LS32} (quad-OR), \texttt{SN74LS86} (quad-XOR). Il circuito da montare è riportato in \cref{fig: sommatore}.
-
+\subsection{Costruzione e analisi del circuito}
+Vogliamo costruire un sommatore a due bit utilizzando le porte logiche
+contenute nei chip integrati SN74LS08 (quad-AND), SN74LS32 (quad-OR) e
+SN74LS86 (quad-XOR). Il circuito da noi costruito e studiato è riportato in
+\cref{fig: sommatore}.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.6\linewidth]{half.png}
-    \caption{Schema circuitale di un half adder}
-    \label{fig:halfadder}
+    \includegraphics[width=0.6\linewidth]{half}
+    \caption{Schema logico di un half adder
+    \label{fig: halfadder}}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.6\linewidth]{full.png}
-    \caption{Schema circuitale di un full adder.}
-    \label{fig:fulladder}
+    \includegraphics[width=0.6\linewidth]{full}
+    \caption{Schema circuitale di un full adder.
+    \label{fig: fulladder}}
 \end{figure}
-\subsection{Verifica Half Adder e Full Adder}
-Si vuole quindi verificare il funzionamento dei due circuiti Half Adder e Full Adder:
-per verificare il funzionamento del primo è stato sufficiente generare con pattern
-un bus contatore a 2 bit che conta in binario e abbiamo inviato i segnali dei due bit uno ad ogni ingresso dell'HA.
+
+\subsection{Verifica del funzionamento degli Half-Adder e Full-Adder}
+Si vuole quindi verificare il funzionamento dei due circuiti Half Adder e Full Adder
+schematizzati nelle \cref{fig:halfadder} e \cref{fig:fulladder}.
+
+Per verificare il funzionamento del primo è stato sufficiente generare con
+Patterns un bus contatore binario a 2 bit, inviare i segnali dei due bit a
+ciascuno degli ingressi dell'HA e osservarne il comportamento con Logic
+(come in \cref{fig: HA_log}).
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{half_time}
-	\caption{Acquisizione Logic del funzionamento di un half adder}
+	\caption{Acquisizione di Logic del funzionamento di un Half Adder
+	\label{fig: HA_log}}
 \end{figure}
-Per verificare il funzionamento del Full Adder abbiamo generato con pattern un bus
-contatore (come prima in binario) a 3 bit: 2 di questi (i due bit meno significativi) sono stati utilizzati come ingressi A e B, mentre il MSB è stato utilizzato come bit di CARRY IN.
+
+Per verificare il funzionamento del Full Adder abbiamo generato con Patterns
+un bus contatore (sempre in binario) a 3 bit: 2 di questi (i due bit meno
+significativi) sono stati utilizzati come ingressi $A$ e $B$, mentre il MSB è
+stato utilizzato come bit di CARRY IN. Riportiamo l'andamento dell'uscita del
+FA in funzione dei segnali in ingresso acquisita dal Logic Analyzer in
+\cref{fig: FA_log}.
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\textwidth]{full_time}
-	\caption{Acquisizione Logic del funzionamento di un full adder}
+	\caption{Acquisizione con Logic del funzionamento di un Full Adder
+	\label{fig: FA_log}}
 \end{figure} 
-Dai risultati ottenuti con le acquisizioni di Logic si verifica che entrambi i circuiti funzionano come da aspettativa.
-\subsection{Sommatore}
-Abbiamo quindi collegato l'uscita CARRY OUT  dell'half adder all'entrata CARRY IN dell full adder: così facendo si ottiene un sommatore binario a 2 bit con bit di riporto (che andrà ad indicare un eventuale overflow).
+Dai risultati ottenuti con le acquisizioni di Logic si verifica che entrambi
+i circuiti funzionano come ci si aspetta.
+
+\subsection{Verifica del comportamento da sommatore con resto}
+Abbiamo collegato l'uscita CARRY OUT dell'half adder all'ingresso CARRY IN
+del full adder: così facendo si ottiene un sommatore binario a 2 bit con bit
+di riporto (che andrà ad indicare un eventuale overflow). Riportiamo lo schema
+del circuito per completezza in \cref{fig: sommatore}.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\linewidth]{sum.png}
@@ -785,38 +877,56 @@ Abbiamo quindi collegato l'uscita CARRY OUT  dell'half adder all'entrata CARRY I
     \label{fig: sommatore}
 \end{figure}
 
-A questo punto si procede con la verifica di funzionamento del circuito; per questo motivo abbiamo generato un Bus contatore a 4 bit che utilizzeremo per inviare numeri in binario in ingresso al sommatore.
-In particolare i 2 bit meno significativi del bus formeranno il numero A, mentre i restanti saranno B.
-A questo punto si sono inviati questi 2 numeri alle entrate del sommatore facendo attenzione a inserire nel Half Adder i due bit meno significativi di entrambi i numeri, mentre al Full Adder i due bit più significativi.
-
+A questo punto si procede con la verifica di funzionamento del circuito.
+Per fare questo si genera con Patterns un Bus contatore a 4 bit che
+utilizzeremo per inviare segnali corrispondenti a numeri in codice binario in
+ingresso al sommatore -facendo attenzione a inserire nell'Half Adder i due
+bit meno significativi di entrambi i numeri, mentre al Full Adder i due bit
+più significativi- (in particolare i 2 bit meno significativi del bus
+formeranno il numero $A$, mentre i restanti rappresenteranno l'intero $B$.)
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{sum_time.png}
-    \caption{Acquisizione Logic per il sommatore a 2 bit: DIO0 e DIO1 rappresentano il numero A; DIO2 e DIO3 rappresentano B; DIO4, DIO5 e DIO6 rappresentano invece rispettivamente il risultato della somma (con DIO4 il LSB) e il bit di overflow}
+    \caption{Acquisizione con Logic per il sommatore a 2 bit: DIO 0 e DIO 1
+    rappresentano il numero $A$; DIO 2 e DIO 3 rappresentano $B$; DIO 4 (LSB),
+    DIO 5 (MSB) e DIO 6 (bit di overflow) rappresentano il risultato della
+    somma.}
     \label{fig: faAD2}
 \end{figure}
-Si verifica quindi che il circuito sommatore funziona come atteso.
-\subsection{Verifica funzionamento tramite led}
+Si verifica come nei punti precedenti che il circuito sommatore si funziona
+come atteso dai risultati dell'analisi con Logic riportati in
+\cref{fig: faAD2}.
 
-Aggiungiamo al circuito 4 led verdi e un led rosso: questi sono pilotati da 5 nuovi cavi dell'AD2. Per controllare il loro funzionamento aggiungiamo a \emph{Patterns} una tabella di verità, riportata in \cref{fig: Ver}, che faccia in modo che ad ogni step si illuminino un numero di led pari al valore della somma. Il led rosso verrà usato per controllare l'overflow, ovvero la possibilità che il risultato sia maggiore o uguale a 4.
+\subsection{Verifica funzionamento con led e ROM}
+Aggiungiamo al circuito 4 led verdi e un led rosso e li colleghiamo all'AD2.
+Per controllare il loro funzionamento definiamo con ROM in Patterns una
+tabella di verità, riportata in \cref{fig: Ver}, tale per cui ad ogni ciclo
+si illuminino un numero di led pari al valore della somma.
 
+Il led rosso viene usato per indicare eventuale overflow, i.e. la possibilità
+che il risultato sia maggiore o uguale a 4.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\linewidth]{TAB_LED}
-    \caption{Tabella delle verità usata per il controllo dei led.}
-    \label{fig: Ver}
+    \caption{Tabella delle verità usata per il controllo dei led.
+    \label{fig: Ver}}
 \end{figure}
 
-Si è fatta quindi un'ultima acquisizione tramite Logic includendo anche i segnali inviati nei LED
-
-
+Si è fatta quindi un'ultima acquisizione tramite Logic includendo anche
+i segnali inviati ai LED (riportata in \cref{fig: ROM_sommatore})
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\linewidth]{sum_time_ROM}
-    \caption{Acquisizione con logic dell'andamento dei vari segnali per il circuito Sommatore a 2 bit il cui risultato pilota la tabella di verità presente in \cref{Ver}.}
-    \label{fig: ROM_sommatore} %I RUMENI SOTTO I TRENI DIO SCHIFOSO
+    \includegraphics[width=\linewidth]{sum_time_ROM}
+    \caption{Acquisizione con Logic dell'andamento nel tempo dei vari segnali
+    per il circuito Sommatore a 2 bit. Il risultato in uscita dal circuito
+    pilotano i led secondo la tabella di verità definita in \cref{fig: Ver}.}
+    \label{fig: ROM_sommatore}
 \end{figure}
-Da cui come ci si aspetta l'ultimo LED verde non si accende mai (dato che con 2 bit riesco a rappresentare solo i numeri fino a 3) e solo il LED rosso si accende quando il bit di CARRY ha valore logico alto.
+Compatibilmente con quanto ci si aspettava l'ultimo LED verde non si accende
+mai (dato che con 2 bit è possibile a rappresentare solo i numeri fino a 3) e
+osserviamo solo il LED rosso accendersi quando il bit di CARRY ha valore logico
+alto.
+
 %=======================
 \section*{Conclusioni e commenti finali}
 Si è riusciti a verificare il corretto comportamento delle porte TTL studiate
