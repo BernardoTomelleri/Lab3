@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  7 APR 2022 13:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  7 APR 2022 16:47
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1272,14 +1272,7 @@ File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
 \diagbox@insepr=\dimen368
 \diagbox@outsepl=\dimen369
 \diagbox@outsepr=\dimen370
-) (./E01.2.AC.aux
-
-LaTeX Warning: Label `logic2' multiply defined.
-
-
-LaTeX Warning: Label `logic2@cref' multiply defined.
-
-)
+) (./E01.2.AC.aux)
 \openout1 = `E01.2.AC.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
@@ -1301,7 +1294,7 @@ LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 Package hyperref Info: Link coloring ON on input line 16.
- (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
+(c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
 (c:/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1405,298 +1398,303 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
 (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-
-LaTeX Warning: cref reference format for label type `' undefined on input line 
-51.
-
-<../figs//SN7404.jpg, id=107, 983.675pt x 688.5725pt>
+<../figs//SN7404.jpg, id=112, 983.675pt x 688.5725pt>
 File: ../figs//SN7404.jpg Graphic file (type jpg)
 <use ../figs//SN7404.jpg>
-Package pdftex.def Info: ../figs//SN7404.jpg  used on input line 53.
+Package pdftex.def Info: ../figs//SN7404.jpg  used on input line 57.
 (pdftex.def)             Requested size: 145.11053pt x 101.5688pt.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 93.
-
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 93.
+(hyperref)                removing `math shift' on input line 97.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 93.
+(hyperref)                removing `math shift' on input line 97.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 93.
+(hyperref)                removing `subscript' on input line 97.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 93.
+(hyperref)                removing `math shift' on input line 97.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 93.
+(hyperref)                removing `math shift' on input line 97.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 93.
+(hyperref)                removing `subscript' on input line 97.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 93.
+(hyperref)                removing `math shift' on input line 97.
 
-<../figs//trans.png, id=110, 849.77475pt x 337.26pt>
-File: ../figs//trans.png Graphic file (type png)
-<use ../figs//trans.png>
-Package pdftex.def Info: ../figs//trans.png  used on input line 105.
-(pdftex.def)             Requested size: 483.69687pt x 191.9726pt.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 97.
+
 [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../figs//SN7404
 .jpg>]
-<../figs//not_xy1.png, id=134, 289.08pt x 473.3685pt>
+<../figs//trans.png, id=138, 849.77475pt x 337.26pt>
+File: ../figs//trans.png Graphic file (type png)
+<use ../figs//trans.png>
+Package pdftex.def Info: ../figs//trans.png  used on input line 109.
+(pdftex.def)             Requested size: 483.69687pt x 191.9726pt.
+<../figs//not_xy1.png, id=139, 289.08pt x 473.3685pt>
 File: ../figs//not_xy1.png Graphic file (type png)
 <use ../figs//not_xy1.png>
-Package pdftex.def Info: ../figs//not_xy1.png  used on input line 124.
+Package pdftex.def Info: ../figs//not_xy1.png  used on input line 128.
 (pdftex.def)             Requested size: 115.62994pt x 189.34404pt.
-<../figs//not_time1.png, id=135, 1152.7065pt x 553.46774pt>
+<../figs//not_time1.png, id=140, 1152.7065pt x 553.46774pt>
 File: ../figs//not_time1.png Graphic file (type png)
 <use ../figs//not_time1.png>
-Package pdftex.def Info: ../figs//not_time1.png  used on input line 129.
+Package pdftex.def Info: ../figs//not_time1.png  used on input line 133.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//trans1.png, id=136, 849.77475pt x 489.027pt>
+<../figs//trans1.png, id=141, 849.77475pt x 489.027pt>
 File: ../figs//trans1.png Graphic file (type png)
 <use ../figs//trans1.png>
-Package pdftex.def Info: ../figs//trans1.png  used on input line 139.
+Package pdftex.def Info: ../figs//trans1.png  used on input line 143.
 (pdftex.def)             Requested size: 339.90387pt x 195.60732pt.
  [2 <../figs//trans.png (PNG copy)>] [3 <../figs//not_xy1.png (PNG copy)> <../f
 igs//not_time1.png (PNG copy)> <../figs//trans1.png (PNG copy)>]
 [4]
-<../figs//notdelay_mark.png, id=159, 770.88pt x 452.4403pt>
+<../figs//notdelay_mark.png, id=165, 770.88pt x 452.4403pt>
 File: ../figs//notdelay_mark.png Graphic file (type png)
 <use ../figs//notdelay_mark.png>
-Package pdftex.def Info: ../figs//notdelay_mark.png  used on input line 261.
+Package pdftex.def Info: ../figs//notdelay_mark.png  used on input line 286.
 (pdftex.def)             Requested size: 308.34654pt x 180.97292pt.
- [5 <../figs//notdelay_mark.png>]
-<../figs//LH1.jpg, id=168, 4047.12pt x 1967.35pt>
+ [5]
+<../figs//LH1.jpg, id=173, 4047.12pt x 1967.35pt>
 File: ../figs//LH1.jpg Graphic file (type jpg)
 <use ../figs//LH1.jpg>
-Package pdftex.def Info: ../figs//LH1.jpg  used on input line 297.
+Package pdftex.def Info: ../figs//LH1.jpg  used on input line 323.
 (pdftex.def)             Requested size: 483.69687pt x 235.11119pt.
-<../figs//LH2.jpg, id=169, 971.3088pt x 728.4816pt>
+<../figs//LH2.jpg, id=174, 971.3088pt x 728.4816pt>
 File: ../figs//LH2.jpg Graphic file (type jpg)
 <use ../figs//LH2.jpg>
-Package pdftex.def Info: ../figs//LH2.jpg  used on input line 303.
+Package pdftex.def Info: ../figs//LH2.jpg  used on input line 329.
 (pdftex.def)             Requested size: 483.69687pt x 362.77263pt.
-<../figs//HL1.jpg, id=170, 4047.12pt x 1967.35pt>
+<../figs//HL1.jpg, id=175, 4047.12pt x 1967.35pt>
 File: ../figs//HL1.jpg Graphic file (type jpg)
 <use ../figs//HL1.jpg>
-Package pdftex.def Info: ../figs//HL1.jpg  used on input line 309.
+Package pdftex.def Info: ../figs//HL1.jpg  used on input line 335.
 (pdftex.def)             Requested size: 483.69687pt x 235.11119pt.
-<../figs//HL2.jpg, id=171, 971.3088pt x 728.4816pt>
+<../figs//HL2.jpg, id=176, 971.3088pt x 728.4816pt>
 File: ../figs//HL2.jpg Graphic file (type jpg)
 <use ../figs//HL2.jpg>
-Package pdftex.def Info: ../figs//HL2.jpg  used on input line 315.
+Package pdftex.def Info: ../figs//HL2.jpg  used on input line 341.
 (pdftex.def)             Requested size: 483.69687pt x 362.77263pt.
-<../figs//carica.jpg, id=173, 971.3088pt x 728.4816pt>
+ [6 <../figs//notdelay_mark.png> <../figs//LH1.jpg>] [7 <../figs//LH2.jpg> <../
+figs//HL1.jpg>] [8 <../figs//HL2.jpg>]
+<../figs//carica.jpg, id=197, 971.3088pt x 728.4816pt>
 File: ../figs//carica.jpg Graphic file (type jpg)
 <use ../figs//carica.jpg>
-Package pdftex.def Info: ../figs//carica.jpg  used on input line 335.
+Package pdftex.def Info: ../figs//carica.jpg  used on input line 367.
 (pdftex.def)             Requested size: 483.69687pt x 362.77263pt.
-<../figs//NAND.png, id=174, 215.6055pt x 180.675pt>
+<../figs//NAND.png, id=198, 215.6055pt x 180.675pt>
 File: ../figs//NAND.png Graphic file (type png)
 <use ../figs//NAND.png>
-Package pdftex.def Info: ../figs//NAND.png  used on input line 352.
-(pdftex.def)             Requested size: 483.69687pt x 405.35156pt.
- [6 <../figs//LH1.jpg>] [7 <../figs//LH2.jpg> <../figs//HL1.jpg>] [8 <../figs//
-HL2.jpg>] [9 <../figs//carica.jpg>]
-[10 <../figs//NAND.png>]
-<../figs//nand_time.png, id=205, 1152.7065pt x 505.89pt>
+Package pdftex.def Info: ../figs//NAND.png  used on input line 394.
+(pdftex.def)             Requested size: 145.11053pt x 121.60574pt.
+ [9 <../figs//carica.jpg>]
+<../figs//nand_time.png, id=206, 1152.7065pt x 505.89pt>
 File: ../figs//nand_time.png Graphic file (type png)
 <use ../figs//nand_time.png>
-Package pdftex.def Info: ../figs//nand_time.png  used on input line 371.
+Package pdftex.def Info: ../figs//nand_time.png  used on input line 414.
 (pdftex.def)             Requested size: 461.07443pt x 202.3524pt.
-<../figs//NAND_OR.png, id=206, 428.802pt x 372.79276pt>
+
+
+LaTeX Warning: Reference `fig: OR_tikz' on page 1 undefined on input line 438.
+
+[10 <../figs//NAND.png> <../figs//nand_time.png (PNG copy)>]
+
+LaTeX Warning: Reference `fig: OR_circ' on page 1 undefined on input line 455.
+
+<../figs//NAND_OR.png, id=216, 428.802pt x 372.79276pt>
 File: ../figs//NAND_OR.png Graphic file (type png)
 <use ../figs//NAND_OR.png>
-Package pdftex.def Info: ../figs//NAND_OR.png  used on input line 394.
+Package pdftex.def Info: ../figs//NAND_OR.png  used on input line 459.
 (pdftex.def)             Requested size: 217.66211pt x 189.22871pt.
-<../figs//or_time.png, id=207, 1152.7065pt x 553.46774pt>
+<../figs//or_time.png, id=218, 1152.7065pt x 553.46774pt>
 File: ../figs//or_time.png Graphic file (type png)
 <use ../figs//or_time.png>
-Package pdftex.def Info: ../figs//or_time.png  used on input line 401.
+Package pdftex.def Info: ../figs//or_time.png  used on input line 472.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
- [11 <../figs//nand_time.png (PNG copy)>] [12 <../figs//NAND_OR.png> <../figs//
-or_time.png (PNG copy)>]
-<../figs//NAND_MP.png, id=221, 419.166pt x 371.58826pt>
+
+LaTeX Warning: Reference `fig: mult_tikz' on page 1 undefined on input line 536
+.
+
+<../figs//NAND_MP.png, id=223, 419.166pt x 371.58826pt>
 File: ../figs//NAND_MP.png Graphic file (type png)
 <use ../figs//NAND_MP.png>
-Package pdftex.def Info: ../figs//NAND_MP.png  used on input line 439.
+Package pdftex.def Info: ../figs//NAND_MP.png  used on input line 563.
 (pdftex.def)             Requested size: 290.22107pt x 257.28069pt.
-<../figs//pat2.png, id=222, 1152.7065pt x 519.74174pt>
+[11 <../figs//NAND_OR.png>] [12 <../figs//or_time.png (PNG copy)>]
+<../figs//pat2.png, id=243, 1152.7065pt x 519.74174pt>
 File: ../figs//pat2.png Graphic file (type png)
 <use ../figs//pat2.png>
-Package pdftex.def Info: ../figs//pat2.png  used on input line 448.
+Package pdftex.def Info: ../figs//pat2.png  used on input line 581.
 (pdftex.def)             Requested size: 386.95897pt x 174.47342pt.
-<../figs//Multiplex.png, id=223, 1152.7065pt x 505.89pt>
+<../figs//Multiplex.png, id=244, 1152.7065pt x 505.89pt>
 File: ../figs//Multiplex.png Graphic file (type png)
 <use ../figs//Multiplex.png>
-Package pdftex.def Info: ../figs//Multiplex.png  used on input line 454.
+Package pdftex.def Info: ../figs//Multiplex.png  used on input line 588.
 (pdftex.def)             Requested size: 386.95897pt x 169.82349pt.
  [13 <../figs//NAND_MP.png> <../figs//pat2.png (PNG copy)>]
-<../figs//NAND_XOR.png, id=232, 362.5545pt x 333.04425pt>
+<../figs//NAND_XOR.png, id=256, 362.5545pt x 333.04425pt>
 File: ../figs//NAND_XOR.png Graphic file (type png)
 <use ../figs//NAND_XOR.png>
-Package pdftex.def Info: ../figs//NAND_XOR.png  used on input line 472.
+Package pdftex.def Info: ../figs//NAND_XOR.png  used on input line 641.
 (pdftex.def)             Requested size: 290.22107pt x 266.61362pt.
-<../figs//xor_time.png, id=233, 1152.7065pt x 505.89pt>
+<../figs//xor_time.png, id=257, 1152.7065pt x 505.89pt>
 File: ../figs//xor_time.png Graphic file (type png)
 <use ../figs//xor_time.png>
-Package pdftex.def Info: ../figs//xor_time.png  used on input line 479.
+Package pdftex.def Info: ../figs//xor_time.png  used on input line 652.
 (pdftex.def)             Requested size: 386.95897pt x 169.82349pt.
-<../figs//XOR.png, id=235, 689.57625pt x 449.68pt>
+<../figs//XOR.png, id=260, 689.57625pt x 449.68pt>
 File: ../figs//XOR.png Graphic file (type png)
 <use ../figs//XOR.png>
-Package pdftex.def Info: ../figs//XOR.png  used on input line 495.
+Package pdftex.def Info: ../figs//XOR.png  used on input line 670.
 (pdftex.def)             Requested size: 145.11053pt x 94.6277pt.
-<../figs//gb.png, id=236, 284.86424pt x 384.2355pt>
+<../figs//gb.png, id=261, 284.86424pt x 384.2355pt>
 File: ../figs//gb.png Graphic file (type png)
 <use ../figs//gb.png>
-Package pdftex.def Info: ../figs//gb.png  used on input line 500.
+Package pdftex.def Info: ../figs//gb.png  used on input line 675.
 (pdftex.def)             Requested size: 193.47948pt x 260.9718pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 501.
+(caption)                particular \caption on input line 676.
 See the caption package documentation for explanation.
 
 
-Overfull \hbox (2.22166pt too wide) in paragraph at lines 490--504
+Overfull \hbox (2.22166pt too wide) in paragraph at lines 665--679
 $[]$ $[]$ 
  []
 
-[14 <../figs//Multiplex.png (PNG copy)> <../figs//NAND_XOR.png>]
-<../figs//graybin.png, id=245, 794.97pt x 478.78876pt>
+[14 <../figs//Multiplex.png (PNG copy)> <../figs//XOR.png>] [15 <../figs//NAND_
+XOR.png> <../figs//xor_time.png (PNG copy)>]
+<../figs//graybin.png, id=279, 794.97pt x 478.78876pt>
 File: ../figs//graybin.png Graphic file (type png)
 <use ../figs//graybin.png>
-Package pdftex.def Info: ../figs//graybin.png  used on input line 551.
+Package pdftex.def Info: ../figs//graybin.png  used on input line 726.
 (pdftex.def)             Requested size: 483.69687pt x 291.32283pt.
-<../figs//gray20ns.png, id=246, 1152.7065pt x 505.89pt>
+<../figs//gray20ns.png, id=280, 1152.7065pt x 505.89pt>
 File: ../figs//gray20ns.png Graphic file (type png)
 <use ../figs//gray20ns.png>
-Package pdftex.def Info: ../figs//gray20ns.png  used on input line 557.
+Package pdftex.def Info: ../figs//gray20ns.png  used on input line 732.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
-<../figs//gray10ns.png, id=247, 1152.7065pt x 505.89pt>
+<../figs//gray10ns.png, id=281, 1152.7065pt x 505.89pt>
 File: ../figs//gray10ns.png Graphic file (type png)
 <use ../figs//gray10ns.png>
-Package pdftex.def Info: ../figs//gray10ns.png  used on input line 562.
+Package pdftex.def Info: ../figs//gray10ns.png  used on input line 737.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
-
-
-LaTeX Warning: Reference `fig: prop' on page 1 undefined on input line 566.
-
-
-LaTeX Warning: Reference `fig: prop' on page 1 undefined on input line 569.
-
-[15 <../figs//xor_time.png (PNG copy)> <../figs//XOR.png> <../figs//gb.png>]
-[16 <../figs//graybin.png (PNG copy)>] [17 <../figs//gray20ns.png (PNG copy)> <
-../figs//gray10ns.png (PNG copy)>]
-<../figs//half.png, id=271, 432.86719pt x 165.61874pt>
+ [16 <../figs//gb.png>] [17 <../figs//graybin.png (PNG copy)> <../figs//gray20n
+s.png (PNG copy)>]
+<../figs//half.png, id=300, 432.86719pt x 165.61874pt>
 File: ../figs//half.png Graphic file (type png)
 <use ../figs//half.png>
-Package pdftex.def Info: ../figs//half.png  used on input line 576.
+Package pdftex.def Info: ../figs//half.png  used on input line 751.
 (pdftex.def)             Requested size: 290.22107pt x 111.04485pt.
-<../figs//full.png, id=272, 1204.5pt x 578.16pt>
+<../figs//full.png, id=301, 1204.5pt x 578.16pt>
 File: ../figs//full.png Graphic file (type png)
 <use ../figs//full.png>
-Package pdftex.def Info: ../figs//full.png  used on input line 583.
+Package pdftex.def Info: ../figs//full.png  used on input line 758.
 (pdftex.def)             Requested size: 290.22107pt x 139.3082pt.
-<../figs//half_time.png, id=273, 1152.7065pt x 553.46774pt>
+<../figs//half_time.png, id=302, 1152.7065pt x 553.46774pt>
 File: ../figs//half_time.png Graphic file (type png)
 <use ../figs//half_time.png>
-Package pdftex.def Info: ../figs//half_time.png  used on input line 593.
+Package pdftex.def Info: ../figs//half_time.png  used on input line 768.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//full_time.png, id=274, 1152.7065pt x 553.46774pt>
+<../figs//full_time.png, id=303, 1152.7065pt x 553.46774pt>
 File: ../figs//full_time.png Graphic file (type png)
 <use ../figs//full_time.png>
-Package pdftex.def Info: ../figs//full_time.png  used on input line 600.
+Package pdftex.def Info: ../figs//full_time.png  used on input line 775.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//sum.png, id=275, 505.28775pt x 310.15875pt>
+ [18 <../figs//gray10ns.png (PNG copy)> <../figs//half.png>] [19 <../figs//full
+.png> <../figs//half_time.png (PNG copy)>]
+<../figs//sum.png, id=321, 505.28775pt x 310.15875pt>
 File: ../figs//sum.png Graphic file (type png)
 <use ../figs//sum.png>
-Package pdftex.def Info: ../figs//sum.png  used on input line 608.
+Package pdftex.def Info: ../figs//sum.png  used on input line 783.
 (pdftex.def)             Requested size: 290.22107pt x 178.14586pt.
- [18 <../figs//half.png> <../figs//full.png>] [19 <../figs//half_time.png (PNG 
-copy)> <../figs//full_time.png (PNG copy)>]
-<../figs//sum_time.png, id=291, 1152.7065pt x 505.89pt>
+<../figs//sum_time.png, id=322, 1152.7065pt x 505.89pt>
 File: ../figs//sum_time.png Graphic file (type png)
 <use ../figs//sum_time.png>
-Package pdftex.def Info: ../figs//sum_time.png  used on input line 619.
+Package pdftex.def Info: ../figs//sum_time.png  used on input line 794.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
-<../figs//TAB_LED.png, id=293, 522.753pt x 234.27525pt>
+<../figs//TAB_LED.png, id=324, 522.753pt x 234.27525pt>
 File: ../figs//TAB_LED.png Graphic file (type png)
 <use ../figs//TAB_LED.png>
-Package pdftex.def Info: ../figs//TAB_LED.png  used on input line 630.
+Package pdftex.def Info: ../figs//TAB_LED.png  used on input line 805.
 (pdftex.def)             Requested size: 386.95897pt x 173.41815pt.
-<../figs//sum_time_ROM.png, id=294, 1152.7065pt x 553.46774pt>
+ [20 <../figs//full_time.png (PNG copy)> <../figs//sum.png>]
+<../figs//sum_time_ROM.png, id=332, 1152.7065pt x 553.46774pt>
 File: ../figs//sum_time_ROM.png Graphic file (type png)
 <use ../figs//sum_time_ROM.png>
-Package pdftex.def Info: ../figs//sum_time_ROM.png  used on input line 640.
+Package pdftex.def Info: ../figs//sum_time_ROM.png  used on input line 815.
 (pdftex.def)             Requested size: 386.95897pt x 185.79498pt.
 
 
-LaTeX Warning: Reference `Ver' on page 1 undefined on input line 641.
+LaTeX Warning: Reference `Ver' on page 1 undefined on input line 816.
 
 
-LaTeX Warning: Reference `Ver' on page 1 undefined on input line 641.
+LaTeX Warning: Reference `Ver' on page 1 undefined on input line 816.
 
-[20 <../figs//sum.png> <../figs//sum_time.png (PNG copy)>] [21 <../figs//TAB_LE
-D.png> <../figs//sum_time_ROM.png (PNG copy)>] [22] (./E01.2.AC.aux)
+[21 <../figs//sum_time.png (PNG copy)> <../figs//TAB_LED.png>] [22 <../figs//su
+m_time_ROM.png (PNG copy)>] (./E01.2.AC.aux)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-
-Package rerunfilecheck Warning: File `E01.2.AC.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `E01.2.AC.out':
-(rerunfilecheck)             Before: 1E6170BF785A143F527EE35D3400AB45;5837
-(rerunfilecheck)             After:  824F491D15A58D12F13E1445131444C1;5847.
+Package rerunfilecheck Info: File `E01.2.AC.out' has not changed.
+(rerunfilecheck)             Checksum: B6D6564085F3A5D205C8D0CF83CA0699;6151.
  ) 
 Here is how much of TeX's memory you used:
- 56476 strings out of 479713
- 1379623 string characters out of 5876923
- 2174107 words of memory out of 10000000
- 73363 multiletter control sequences out of 15000+600000
+ 56717 strings out of 479713
+ 1385558 string characters out of 5876923
+ 2176107 words of memory out of 10000000
+ 73593 multiletter control sequences out of 15000+600000
  419367 words of font info for 69 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,17n,125p,754b,796s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/tex
-live/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2021/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12
-.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/te
-xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dis
-t/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/ty
-pe1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
-/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/
-sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.p
-fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/tex
-live/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2021/
-texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on E01.2.AC.pdf (22 pages, 13922935 bytes).
+ 122i,17n,125p,754b,810s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{table.caption.32} has been referenced but does no
+t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{figure.23} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{table.caption.22} has been referenced but does not 
+exist, replaced by a fixed one
+
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texliv
+e/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.p
+fb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/
+fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type
+1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/c
+m-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
+rm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb
+><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texli
+ve/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2021/te
+xmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on E01.2.AC.pdf (22 pages, 13928751 bytes).
 PDF statistics:
- 414 PDF objects out of 1000 (max. 8388607)
- 307 compressed objects within 4 object streams
- 91 named destinations out of 1000 (max. 500000)
- 378 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 445 PDF objects out of 1000 (max. 8388607)
+ 338 compressed objects within 4 object streams
+ 102 named destinations out of 1000 (max. 500000)
+ 386 words of extra memory for PDF output out of 10000 (max. 10000000)
 
