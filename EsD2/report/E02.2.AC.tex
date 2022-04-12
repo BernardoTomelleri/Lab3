@@ -1,0 +1,233 @@
+\documentclass[10pt, a4paper, italian]{article}
+\input{../../latex/preamble}
+\input{../../latex/math}
+\usepackage{multicol}
+\usepackage{diagbox}
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+
+% indexes subsections with letters, sections with numbers (1.a, 1.b, ...)
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+% lets graphicx know path where figures to be included are found
+\graphicspath{{../figs/}}
+
+\author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
+\title{EsD2: Costruzione di D-Latch, contatori e shift-register}
+\begin{document}
+\date{\today}
+\maketitle
+
+\section{Misura componenti dei circuiti}
+Riportiamo per completezza il valore della tensione continua di
+alimentazione per i circuiti integrati misurata con il multimetro
+\[
+V_{CC} = 4.99 \pm 0.03 \si{\V}
+\]
+
+e il valore di capacità del condensatore di disaccoppiamento che collega le
+linee di alimentazione a massa (sempre misurato con il multimetro)
+\[
+C_d = 97 \pm 4 \; \si{n\F}
+\]
+
+%=======================
+\section{D-Latch con Enable}\label{sec: dlatch}
+\subsection{Costruzione del circuito}
+Si è costruito un circuito D-Latch secondo lo schema mostrato in
+\cref{schm: dlatch} utilizzando le porte NAND di due integrati SN74LS00.
+\begin{figure}
+\centering
+\begin{circuitikz}
+    \draw (0,2.4) node[american nand port,label=north:R] (mynand1){};
+    \draw (0,0) node[american nand port,label=south:S] (mynand2){};
+    \draw (2.5,2.4) node[american nand port] (mynand3){};
+    \draw (2.5,0) node[american nand port] (mynand4){};
+    \draw (-3.5,0.5) node[american nand port,label=left:$\bar{D}$ NOT,
+    rotate = 270] (mynand5){};
+    \draw (-2,1.2) node[circ, label=left:$E$](E){}; 
+
+	\draw (mynand3.out) to[short] ++(0,-1) to[short] ++(-2,0) |- (mynand4.in 1);
+	\draw (mynand4.out) -- ++(1,0) node[circ, label=right:$\overline{Q}$]{};
+	\draw (mynand3.out) -- ++(1,0) node[circ, label=right:$Q$]{};
+	\draw (mynand4.out) to[short] ++(0,1) to[short] ++(-1.8,0) |- (mynand3.in 2);
+    \draw (mynand1.out) |- (mynand3.in 1);
+    \draw (mynand2.out) |- (mynand4.in 2);
+    \draw (mynand5.in 1) |- (mynand5.in 2);
+    \draw (mynand5.in 2) |- (mynand1.in 1);
+    \draw (mynand1.in 1) -- ++ (-3,0) node[circ, label=left:$D$]{};
+    \draw (mynand5.out) |- (mynand2.in 2);
+    \draw (mynand2.in 1) |- (E);
+    \draw (mynand1.in 2) |- (E);
+\end{circuitikz}
+\caption{Schema logico del circuito $D$-Latch (con Enable) realizzato
+\label{schm: dlatch}}
+\end{figure}
+
+Per studiarne il comportamento generiamo nei due pin DIO 0 (DATA) e DIO 1
+(ENABLE) dell'AD2 due segnali di clock di frequenza $f = \SI{1}{k\hertz}$ e
+sfasati tra loro di $\pm \SI{90}{\degree}$ agli ingressi $D$ ed $E$ del
+circuito. 
+
+\subsection{Analisi del funzionamento del circuito}
+Il circuito è composto da un Latch $RS$ i cui ingressi sono collegati a due
+porte NAND, di cui un ingresso per ciascuna è collegato all'input $E$, mentre
+gli altri due ingressi sono collegati l'uno al segnale opposto dell'altro
+tramite una porta NOT (in figura la porta NAND più in alto tra le due $(R)$ è
+collegata all'input $D$, mentre quella più in basso $(S)$ a $\overline{D}$).
+
+L'equazione fondamentale del circuito è quindi data dalla
+\begin{equation}
+Q(t + \Delta t) = \overline{\overline(D \cdot E)} +
+\overline{(\overline{D} \cdot E)} \cdot Q(t) =
+E \cdot D + \overline{E} \cdot Q(t)
+\end{equation}
+da cui si può ricavare la corrispondente tabella di verità
+\begin{table}
+\begin{center}
+    \begin{tabular}{cccc}
+      \toprule
+      $E$ & $D$     & $Q(t)$  & $ Q(t + \Delta t)$ \\
+      \midrule
+      \midrule
+      0     & X & 0         & 0 \\
+      0     & X & 1         & 1 \\
+      1     & 0         & X & 0 \\
+      1     & 1         & X & 1 \\
+      \bottomrule
+    \end{tabular}
+\end{center}
+\caption{Tabella di verità del circuito $D$-Latch con Enable (con X si indica
+valore logico indefinito/don't care) \label{tab: dlatch}}
+\end{table}
+
+Come si può vedere dalla tabella di verità (\cref{tab: dlatch}) l'uscita $Q$
+funge da memoria a un bit se $E$ è al livello logico basso (stato di HOLD),
+mentre assume il valore logico dell'input $D$ quando il segnale di ENABLE è
+acceso.
+Questo rende il valore dell'uscita indipendente dalle caratteristiche
+temporali delle porte NAND e protegge il circuito dallo stato proibito di
+oscillazione/racing $R = S = 1$ da cui è affetto il semplice $RS$-Latch.
+
+\subsection{Verifica della tabella di verità del Latch}
+Per conferma del corretto funzionamento del Latch possiamo confrontare
+le uscite ottenute da un'acquisizione con Logic Analyzer con i valori
+riportati in \cref{tab: dlatch} inviando all'ingresso del circuito con
+Patterns due segnali di clock sfasati tra loro di $\phi = \SI{90}{\degree}$.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{dlatch}
+    \caption{Acquisizione di un ciclo completo (frequenza 1 kHz) con Logic
+    Analyzer dei segnali in ingresso ($D =$ DIO 0, $E =$ DIO 1) e in uscita
+    ($Q =$ DIO 2, $\overline{Q} =$ DIO 3) dal D-Latch.
+    \label{fig: dlatch}}
+\end{figure}
+
+Dalla \cref{fig: dlatch} si osserva come durante lo stato basso di Enable
+il segnale in uscita rimanga costante rispetto a variazioni del segnale in
+$D$, mentre quando $E = 1 \implies Q(t + \Delta t) = D$ coerentemente con
+quanto previsto dalla tabella di verità.
+
+\subsection{Misura dei tempi del ritardo nelle transizioni di stato}
+Si riescono a distinguere due diverse transizioni dei segnali in ingresso per
+ciascun valore di sfasamento tra i due segnali di clock in $D$ ed $E$;
+per $\phi = \SI{90}{\degree}$:
+\begin{enumerate}
+\item $D: 1 \to 0$, $E \coloneqq 1$ \label{item: Dfall}
+\item $D \coloneqq 1$, $E: 0 \to 1$. \label{item: Erise}
+
+Mentre per $\phi = - \SI{90}{\degree} = 270 \; \si{\degree}$:
+\item $D \coloneqq 0$, $E: 0 \to 1$ \label{item: Efall}
+\item $D: 0 \to 1$, $E \coloneqq 1$. \label{item: Drise}
+\end{enumerate}
+
+
+Il ritardo di durata maggiore appare quello della transizione dell'input D da alto a basso ($40$ ns $\pm 10$ ns).
+
+Dalle misure prese con i cursori dell'oscilloscopio (a cui associamo come
+incertezza il contributo dato dalle specifiche del datasheet, tenendo conto
+dell'instabilità delle tracce sullo schermo) troviamo
+\begin{align*}
+    t_{PLH}= 5.2 \pm 1.2 \; \si{n\s} \\
+    t_{PHL}= 25 \pm 2 \; \si{n\s}
+\end{align*}
+
+Dalle specifiche del DS si trova che i tempi di propagazione tipici e massimi
+per una singola porta NAND sono:
+\begin{table}[htbp]
+\centering
+\begin{tabular}{cccc}
+	& typ & max & [units] \\
+    $t\ped{PLH}$ & $11$ & $22$ & \si{n\s} \\
+    $t\ped{PHL}$ & $7$ & $15$ & \si{n\s}
+\end{tabular}
+\end{table}
+
+%=======================
+\section{Shift-register con edge-triggered D-Flip Flop}
+\subsection{Costruzione del circuito}
+\subsection{Verifica della sincronia delle uscite}
+\subsection{Studio delle commutazioni di stato in uscita}
+\subsection{Studio del canale di ingresso con Preset e D-switch attivi}
+\subsection{Contatore BCD con Flip Flop in cascata}
+
+Dalle specifiche del DS risulta quindi che 
+\begin{align*}
+    I\ped{IH, max}= -0.4 \; \si{m\A} \\
+    I\ped{OH, max}= 40 \; \si{\micro\A} \\
+    \text{FO} = 10
+\end{align*}
+A questo punto abbiamo preparato l'amperometro utilizzando il fondoscala da 2 mA viste le entità delle correnti che andremo a misurare: per prima cosa misureremo la corrente $I_{IH,max}$ per entrambi i due integrati, montando l'amperometro in serie tra l'ingresso della porta logica e l'uscita di WaveGen 1 dell'AD2. Quindi abbiamo inviato all'uscita WG1 una tensione DC pari a 5V.
+\begin{gather*}
+    I_{IH,1}=16 \pm 1 \mu A\\
+    I_{IH,2}=10 \pm 1 \mu A\\   
+\end{gather*}
+Che risultano essere compatibili entro i limiti del datasheet.
+Arrivati a questo punto abbiamo rimosso l'amperometro e abbiamo inviato all'ingresso della porta un segale DC a 0 V sempre utilizzando l'uscita WG1, e abbiamo inserito un potenziometro da $10 \; k\ohm$ in serie all'uscita della stessa porta logica utilizzata in precedenza, misurando la corrente che scorre attraverso questo quando la tensione in uscita dalla porta è pari a $3.40 \pm 0.03 \; V$.
+\begin{gather*}
+    I_{OH,1}=495 \pm 4 \mu A\\
+    I_{OH,2}=315 \pm 3 \mu A\\   
+\end{gather*}
+%TODO inseirire cosa sarebbe successo se avessi abbassato la tensione in uscita fino a 2.5 V circa
+Da questo si ricava che:
+\begin{gather*}
+    \mbox{Fan-out}_1=31 \pm 2\\
+    \mbox{Fan-out}_2=32 \pm 3\\
+\end{gather*}
+Valori che sono notevolmente più alti delle aspettative e non compatibili con esse, ma risultano essere compatibili tra di loro.
+
+\section{Generatore di sequenze pseudo-casuali}
+\subsection{Costruzione del circuito}
+\subsection{Analisi e verifica del funzionamento}
+\subsection{Studio delle sequenze generabili con diverse condizioni iniziali}
+
+%=======================
+\section{Divisori di frequenza con contatori binari}
+\subsection{Costruzione del circuito}
+\subsection{Verifica del ciclo di funzionamento dei contatori}
+\subsection{Verifica della divisione in frequenza}
+\subsection{Transizione sincrona del contatore}
+\subsection{Costruzione di un divisore di frequenza 1/10}
+\subsection{Divisore di frequenza programmabile con RCO}
+\subsection{Misura dei tempi caratteristici del divisore RCO}
+\subsection{Analisi e verifica del comportamento del divisore RCO}
+
+%=======================
+\section{Sintetizzatore musicale}
+
+%=======================
+\section*{Conclusioni e commenti finali}
+Si è riusciti a verificare il corretto comportamento delle porte TTL studiate
+caratterizzandone le tensioni, correnti di operazione e tempi caratteristici
+di circuiti integrati come il SN7404.
+Inoltre, è stato possibile verificare il funzionamento di circuiti logici di
+diversa complessità costruiti con porte NAND, XOR, e OR e si è riusciti ad
+apprezzare l'effetto dei tempi di propagazione delle porte nella conversione
+dalla codifica Gray al binario.
+
+%=======================
+\section*{Dichiarazione}
+I firmatari di questa relazione dichiarano che il contenuto della relazione \`e
+originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
+hanno contribuito alla elaborazione della relazione stessa.
+
+\end{document}

@@ -66,7 +66,7 @@ DS) da cui è possibile ottenere una misura del Noise Margin delle porte.
 
 Dalle specifiche del DS si ha che i valori attesi sono: (riportati in
 \cref{tab: notDS})
-\begin{table}[htb]
+\begin{table}[htbp]
 \centering
 \begin{tabular}{cccc|c}
 \toprule
@@ -473,7 +473,6 @@ gate, si può disegnare lo schema logico del circuito come in
 
 Che corrisponde nella nostra implementazione reale con l'integrato SN74LS00
 allo schema circuitale in \cref{fig: OR_circ}.
-\cref{fig: OR}.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.45\textwidth]{NAND_OR}
@@ -575,7 +574,7 @@ riportate in \cref{fig: mult_tikz} e \cref{fig: mult_circ} rispettivamente
         \draw (nandSotto.out) -| ++(0.5,0) |- (nandDestra.in 2);
     \end{circuitikz}
     \caption{Diagramma logico del circuito selettore
-    \label{fig:mult_tikz}}
+    \label{fig: mult_tikz}}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -824,20 +823,20 @@ SN74LS86 (quad-XOR). Il circuito da noi costruito e studiato è riportato in
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\linewidth]{half}
-    \caption{Schema logico di un half adder
+    \caption{Schema logico del circuito di un half adder
     \label{fig: halfadder}}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.6\linewidth]{full}
-    \caption{Schema circuitale di un full adder.
+    \caption{Schema logico del circuito di un full adder.
     \label{fig: fulladder}}
 \end{figure}
 
 \subsection{Verifica del funzionamento degli Half-Adder e Full-Adder}
-Si vuole quindi verificare il funzionamento dei due circuiti Half Adder e Full Adder
-schematizzati nelle \cref{fig:halfadder} e \cref{fig:fulladder}.
+Si vuole quindi verificare il funzionamento dei due circuiti Half Adder e
+Full Adder schematizzati nelle \cref{fig: halfadder} e \cref{fig: fulladder}.
 
 Per verificare il funzionamento del primo è stato sufficiente generare con
 Patterns un bus contatore binario a 2 bit, inviare i segnali dei due bit a
