@@ -121,11 +121,18 @@ Patterns due segnali di clock sfasati tra loro di $\phi = \SI{90}{\degree}$.
     ($Q =$ DIO 2, $\overline{Q} =$ DIO 3) dal D-Latch.
     \label{fig: dlatch}}
 \end{figure}
+\begin{figure}[htbp]
+	\includegraphics[width=\textwidth]{latch2}
+	\caption{Acquisizione temporale con Logic dei segnali in ingresso uscita dal
+	D-Latch per $\phi = -\SI{90}{\degree}$.
+	\label{fig: Log_DLATCH2}}
+\end{figure}
 
-Dalla \cref{fig: dlatch} si osserva come durante lo stato basso di Enable
-il segnale in uscita rimanga costante rispetto a variazioni del segnale in
-$D$, mentre quando $E = 1 \implies Q(t + \Delta t) = D$ coerentemente con
-quanto previsto dalla tabella di verità.
+Dalle \cref{fig: dlatch} e \cref{fig: Log_DLATCH2} si osserva come durante lo
+stato basso di Enable il segnale in uscita rimanga costante rispetto a
+variazioni del segnale in $D$, mentre quando
+$E = 1 \implies Q(t + \Delta t) = D$ coerentemente con quanto previsto dalla
+tabella di verità.
 
 \subsection{Misura dei tempi del ritardo nelle transizioni di stato}
 Si riescono a distinguere due diverse transizioni dei segnali in ingresso per
@@ -141,14 +148,15 @@ Mentre per $\phi = - \SI{90}{\degree} = 270 \; \si{\degree}$:
 \end{enumerate}
 
 
-Il ritardo di durata maggiore appare quello della transizione dell'input D da alto a basso ($40$ ns $\pm 10$ ns).
+Il ritardo di durata maggiore risulta quello della transizione
+\ref{item: Dfall} dell'input $D$ da alto a basso ($40 \pm 10$ ns).
 
 Dalle misure prese con i cursori dell'oscilloscopio (a cui associamo come
 incertezza il contributo dato dalle specifiche del datasheet, tenendo conto
 dell'instabilità delle tracce sullo schermo) troviamo
 \begin{align*}
-    t_{PLH}= 5.2 \pm 1.2 \; \si{n\s} \\
-    t_{PHL}= 25 \pm 2 \; \si{n\s}
+    t_{PLH}= 11 \pm 1 \; \si{n\s} \\
+    t_{PHL}= 35 \pm 2 \; \si{n\s}
 \end{align*}
 
 Dalle specifiche del DS si trova che i tempi di propagazione tipici e massimi
@@ -165,48 +173,145 @@ per una singola porta NAND sono:
 %=======================
 \section{Shift-register con edge-triggered D-Flip Flop}
 \subsection{Costruzione del circuito}
-\subsection{Verifica della sincronia delle uscite}
-\subsection{Studio delle commutazioni di stato in uscita}
-\subsection{Studio del canale di ingresso con Preset e D-switch attivi}
-\subsection{Contatore BCD con Flip Flop in cascata}
+Si vuole ora costruire uno Shift Register a 4 bit a partire dagli integrati della serie SN74LS74, secondo lo schema in \cref{fig: schem_shift} e verificarne il funzionamento.
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=0.6\textwidth]{schem_shift}
+	\caption{\label{fig: schem_shift}}
+\end{figure}
 
-Dalle specifiche del DS risulta quindi che 
-\begin{align*}
-    I\ped{IH, max}= -0.4 \; \si{m\A} \\
-    I\ped{OH, max}= 40 \; \si{\micro\A} \\
-    \text{FO} = 10
-\end{align*}
-A questo punto abbiamo preparato l'amperometro utilizzando il fondoscala da 2 mA viste le entità delle correnti che andremo a misurare: per prima cosa misureremo la corrente $I_{IH,max}$ per entrambi i due integrati, montando l'amperometro in serie tra l'ingresso della porta logica e l'uscita di WaveGen 1 dell'AD2. Quindi abbiamo inviato all'uscita WG1 una tensione DC pari a 5V.
-\begin{gather*}
-    I_{IH,1}=16 \pm 1 \mu A\\
-    I_{IH,2}=10 \pm 1 \mu A\\   
-\end{gather*}
-Che risultano essere compatibili entro i limiti del datasheet.
-Arrivati a questo punto abbiamo rimosso l'amperometro e abbiamo inviato all'ingresso della porta un segale DC a 0 V sempre utilizzando l'uscita WG1, e abbiamo inserito un potenziometro da $10 \; k\ohm$ in serie all'uscita della stessa porta logica utilizzata in precedenza, misurando la corrente che scorre attraverso questo quando la tensione in uscita dalla porta è pari a $3.40 \pm 0.03 \; V$.
-\begin{gather*}
-    I_{OH,1}=495 \pm 4 \mu A\\
-    I_{OH,2}=315 \pm 3 \mu A\\   
-\end{gather*}
-%TODO inseirire cosa sarebbe successo se avessi abbassato la tensione in uscita fino a 2.5 V circa
-Da questo si ricava che:
-\begin{gather*}
-    \mbox{Fan-out}_1=31 \pm 2\\
-    \mbox{Fan-out}_2=32 \pm 3\\
-\end{gather*}
-Valori che sono notevolmente più alti delle aspettative e non compatibili con esse, ma risultano essere compatibili tra di loro.
+\subsection{Verifica della sincronia delle uscite tramite PRESET}
+Per prima cosa dopo aver montato il circuito verifichiamo la sincronicità delle commutazioni delle uscite.
+Dopo aver controllato che le uscite Q0, Q1, Q2 e Q4 fossero nello stato 0000, mantenendo il segnale di clock e il D-Switch scollegati abbiamo utilizzato la funzione StaticIO di wavegen per pilotare il pin PRE-BUTTON di \cref{fig: schem_shift} tramite un button di tipo pressed=0 e released=1 e  Logic per programmare un trigger che facesse partire l'acquisizione alla pressione del button, osservando le tracce prodotte dai 4 segnali in uscita.
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{3.trans}
+	\caption{Acquisizione temporale con Logic dei segnali di PRE-BUTTON e i 4 segnali in uscita da un registro a scorrimento di 4 bit come illustrato in \cref{fig: schem_shift}
+	\label{fig: Shift_reg_trans}}
+\end{figure}
+Dalla figura \cref{fig: Shift_reg_trans} vediamo che le commutazioni delle uscite avvengono in maniera sincrona, a un $\Delta T = 40 \si{n\s}$ a partire dalla pressione del pulsante di preset; successivamente le 4 uscite hanno raggiunto lo stato 1111.
 
+\subsection{Verifica del funzionamento tramite clock}\label{sbs: clock_reg}
+A questo punto si vuole verificare il funzionamento del registro a scorrimento tramite un segnale di clock.
+Possiamo quindi costruire una tabella di verità in funzione del tempo del registro a partire dal periodo $T$ del clock inviato:
+\begin{table}[htbp]
+\centering
+\begin{tabular}{c|cc}
+\toprule
+$t=t'$ & $t=t' + \Delta T$ & $ $\\
+\midrule
+\midrule
+$Q_0$&$Q_0'$&$Q_0'$\\
+$Q_1$&$Q_0$(t=t')&$Q_0$(t=t')\\
+$Q_2$&$Q_1$(t=t')&$Q_0$(t=t'-$\Delta T$)\\
+$Q_3$&$Q_2$(t=t')&$Q_0$(t=t'-2$\Delta T$)\\
+\bottomrule
+\end{tabular}
+\caption{Tabella "di verità" di un registro a scorrimento, $Q_0'$ è il valore che viene inviato durante l'impulso di clock tramite il D-SWITCH
+\label{tab: S-register}}
+\end{table}
+Come strategia per la verifica, utilizzeremo inizialmente il pulsante di preset per inizializzare tutte le uscite a 1, successivamente imposteremo il D-Switch tramite StaticIO come switch di tipo Push-Pull impostandolo a 0
+e invieremo un segnale di clock dell'ordine di 1 Hz. Utilizzeremo quindi Logic per acquisire gli andamenti nel tempo delle uscite.
+Dunque ci si aspetta che dopo 3 periodi di clock (3 secondi) a partire da quando l'uscita Q0 diventa 0, tutte le uscite diventino 0, e che aspettando ulteriormente questi valori non cambino.
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{3.c}
+	\caption{Acquisizione temporale con Logic dei segnali in uscita da un registro a scorrimento di 4 bit come spiegato in \cref{sbs: clock_reg} \label{fig: Shift_reg_clock}}
+\end{figure}
+Dalla \cref{fig: Shift_reg_clock} si verifica quanto detto prima, e le 4 uscite diventano (e si mantengono nel tempo visto che il D-Switch resta fisso a 0) tutte quante 0.
+Da questo si intuisce che collegando l'uscita $Q_3$ all'entrata del D-switch, possiamo generare una sequenza periodica.
+
+\subsection{Prevalenza tra gli ingressi D-switch e PRESET}
+Utilizzando allo stesso tempo gli ingressi $D$-switch e PRESET del registro
+si vede che è l'ultimo a pilotare il segnale in uscita, dal momento che PRESET
+è asincrono (indipendente dalla salita del clock). Questo risulta consistente
+con la regola generale per cui le architetture asincrone prendono la precedenza
+sulle istruzioni sincrone. 
+
+\subsection{Contatore BCD con Flip Flop ad anello}
+Dopo aver impostato tutte le uscite a 0, si collega l'uscita $\overline{Q_3}$ all'entrata D del primo Flip-Flop e si  invia un clock di frequenza pari a 1 kHz al circuito.
+Ci si aspetta che, prendendo un'uscita a caso, si osservi un segnale di clock di frequenza un quarto di quella di clock: questo effetto è dovuto a come la sequenza viene caricata nel registro a partire dall'uscita $\overline{Q_3}$.
+In generale supponendo che nel circuito ci siano in cascata n Flip-Flop, e che tutte le uscite siano inizializzate a 0, in una qualsiasi delle uscite otterrò un clock di frequenza pari a $\frac{f\ped{clk}}{n}$.
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{3.e}
+	\caption{Acquisizione temporale con Logic dei segnali in uscita da un registro a scorrimento di 4 bit con l'ultima uscita negata collegata all'entrata del primo flip flop
+	\label{fig: Shift_reg_seq}}
+\end{figure}
+
+%=======================
 \section{Generatore di sequenze pseudo-casuali}
 \subsection{Costruzione del circuito}
+Si vuole ora costruire un generatore di sequenze pseudo-casuali a 4 bit utilizzando lo shift register costruito in precedenza e una porta XOR; la schematica del circuito che utilizzeremo è riportato in figura \cref{fig: schem_gen}.
+\begin{figure}[htbp]
+	\includegraphics[width=0.6\textwidth]{schem_gen}
+	\captionof{figure}{\label{fig: schem_gen}}
+\end{figure}
+
 \subsection{Analisi e verifica del funzionamento}
+Dopo aver montato il circuito si inizializzano tutti Flip-Flop a 1 e si invia un segnale di clock a 10 kHz per verificare il funzionamento: 
+essendo il registro di lunghezza pari a 4 bit, dalla teoria ci aspettiamo che la sequenza si ripeta dopo $2^4 = 16$ eventi al massimo, condizione che si ottiene utilizzando come TAP (segnali in ingresso alla porta XOR, la cui uscita sarà inviata all'entrata D del primo Flip-Flop) le uscite $Q_2$ e $Q_3$. 
+
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{4.b}
+	\caption{\label{fig: TAP_23}Acquisizione temporale con Logic del bus in uscita dal generatore di sequenze psudo-casuale descritto in \cref{fig: schem_gen}}
+\end{figure}
+
+Dalla \cref{fig: TAP_23} si verificano le aspettative per cui la sequenza generata a una qualsiasi uscita si ripete ogni 16 periodi di clock (essendo uno shift register la sequenza nelle altre uscite sarà la medesima, solo che saranno sfasate lungo l'asse temporale le une con le altre).
 \subsection{Studio delle sequenze generabili con diverse condizioni iniziali}
+Si provano quindi altre combinazioni di TAP, per verificare che la scelta di utilizzare l'uscita $Q_2$ e $Q_3$ produce una sequenza più lunga rispetto a qualunque altra configurazione
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{4.b_10}
+	\caption{Acquisizione temporale con Logic del bus in uscita dal generatore di sequenze psudo-casuale con TAP sulle uscite $Q_0$ e $Q_1$, la sequenza si ripete ogni 4 eventi
+	\label{fig: TAP_10}}
+\end{figure}
+\begin{figure}[htbp]
+	\includegraphics[width=\textwidth]{4.b_21}
+	\caption{Acquisizione temporale con Logic del bus in uscita dal generatore di sequenze psudo-casuale con TAP sulle uscite $Q_2$ e $Q_1$, la sequenza si ripete ogni 8 eventi
+	\label{fig: TAP_21}}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{4.b_30}
+	\caption{Acquisizione temporale con Logic del bus in uscita dal generatore di sequenze psudo-casuale con TAP sulle uscite $Q_0$ e $Q_3$, la sequenza si ripete ogni 16 eventi \label{fig: TAP_30}}
+\end{figure}
 
 %=======================
 \section{Divisori di frequenza con contatori binari}
 \subsection{Costruzione del circuito}
+Si intende costruire un divisore di frequenza a partire da un contatore binario a 4 bit, utilizzando l'integrato SN74LS163, presente in \cref{fig: schem_counter}. Si vuole innanzitutto verificarne il funzionamento. 
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{schem_con}
+	\caption{\label{fig: schem_counter}}
+\end{figure}
+
 \subsection{Verifica del ciclo di funzionamento dei contatori}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.b}
+	\caption{Acquisizione temporale con Logic del bus in uscita dal contatore, con frequenza di clock pari a 10 kHz \label{fig: Count_Clock}}
+\end{figure}
+
 \subsection{Verifica della divisione in frequenza}
+
 \subsection{Transizione sincrona del contatore}
+
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.d}
+	\caption{Acquisizione temporale con Logic del bus in uscita dal contatore durante la transizione 15->0; dall'immagine possiamo notare il comportamento sincrono della commutazione delle uscite del contatore \label{fig: Count_150}}
+\end{figure}
+
 \subsection{Costruzione di un divisore di frequenza 1/10}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.e}
+	\caption{Acquisizione temporale con Logic del bus in uscita dal circuito che conta fino a 10; si può notare che il segnale in entrata nel Clock ha effettivamente periodo pari a 10 volte quello del clock \label{fig: Count_10th}}
+\end{figure}
+
 \subsection{Divisore di frequenza programmabile con RCO}
 \subsection{Misura dei tempi caratteristici del divisore RCO}
 \subsection{Analisi e verifica del comportamento del divisore RCO}
@@ -216,13 +321,16 @@ Valori che sono notevolmente più alti delle aspettative e non compatibili con e
 
 %=======================
 \section*{Conclusioni e commenti finali}
-Si è riusciti a verificare il corretto comportamento delle porte TTL studiate
-caratterizzandone le tensioni, correnti di operazione e tempi caratteristici
-di circuiti integrati come il SN7404.
-Inoltre, è stato possibile verificare il funzionamento di circuiti logici di
-diversa complessità costruiti con porte NAND, XOR, e OR e si è riusciti ad
-apprezzare l'effetto dei tempi di propagazione delle porte nella conversione
-dalla codifica Gray al binario.
+Si è riusciti a verificare il corretto funzionamento di circuiti logici
+sequenziali di crescente complessità e svariate applicazioni (e.g.
+crittografia, sistemi di controllo e misura) costruiti con porte NAND, XOR,
+D-Latch e contatori sincroni.
+In particolare sono stati realizzati e studiati un D-Latch, uno shift-register
+con positive edge-triggered D-FF, un generatore di sequenze pseudocasuali e
+alcuni tipi di divisore di frequenza con contatori binari.
+Inoltre si è riusciti ad apprezzare l'effetto dei tempi di propagazione
+delle porte sul loro comportamento, seppur in maniera limitata dalla bassa
+risoluzione temporale dell'AD2.
 
 %=======================
 \section*{Dichiarazione}
