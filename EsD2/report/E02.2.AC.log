@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  13 APR 2022 13:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  13 APR 2022 18:41
 entering extended mode
 **./E02.2.AC.tex
 (E02.2.AC.tex
@@ -1485,170 +1485,187 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-
-LaTeX Warning: Reference `schm: dlatch' on page 1 undefined on input line 37.
-
-
-LaTeX Warning: Reference `tab: dlatch' on page 1 undefined on input line 103.
-
-
-LaTeX Warning: Reference `tab: dlatch' on page 1 undefined on input line 114.
-
-<../figs//dlatch.png, id=110, 1440.88312pt x 711.4078pt>
+<../figs//dlatch.png, id=113, 1440.88312pt x 711.4078pt>
 File: ../figs//dlatch.png Graphic file (type png)
 <use ../figs//dlatch.png>
 Package pdftex.def Info: ../figs//dlatch.png  used on input line 118.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
-<../figs//latch2.png, id=111, 1152.7065pt x 505.89pt>
+<../figs//latch2.png, id=114, 1152.7065pt x 505.89pt>
 File: ../figs//latch2.png Graphic file (type png)
 <use ../figs//latch2.png>
 Package pdftex.def Info: ../figs//latch2.png  used on input line 125.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
+
 [1
 
-{C:/Users/rossi/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-
-LaTeX Warning: Reference `fig: dlatch' on page 1 undefined on input line 131.
-
-
-LaTeX Warning: Reference `item: Dfall' on page 2 undefined on input line 152.
-
-[2 <../figs//dlatch.png (PNG copy)>]
-<../figs//schem_shift.png, id=143, 585.18625pt x 633.36626pt>
+{C:/Users/rossi/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2 <../figs//dl
+atch.png (PNG copy)>]
+<../figs//schem_shift.png, id=147, 585.18625pt x 633.36626pt>
 File: ../figs//schem_shift.png Graphic file (type png)
 <use ../figs//schem_shift.png>
 Package pdftex.def Info: ../figs//schem_shift.png  used on input line 179.
 (pdftex.def)             Requested size: 290.22107pt x 314.13095pt.
-<../figs//3.trans.png, id=145, 1152.7065pt x 505.89pt>
+<../figs//3.trans.png, id=149, 1152.7065pt x 505.89pt>
 File: ../figs//3.trans.png Graphic file (type png)
 <use ../figs//3.trans.png>
 Package pdftex.def Info: ../figs//3.trans.png  used on input line 188.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
-<../figs//3.c.png, id=149, 1152.7065pt x 505.89pt>
+<../figs//3.c.png, id=153, 1152.7065pt x 505.89pt>
 File: ../figs//3.c.png Graphic file (type png)
 <use ../figs//3.c.png>
 Package pdftex.def Info: ../figs//3.c.png  used on input line 218.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
-
-
-LaTeX Warning: Reference `sbs: clock_reg' on page 1 undefined on input line 219
-.
-
-
-LaTeX Warning: Reference `sbs: clock_reg' on page 1 undefined on input line 219
-.
-
-[3 <../figs//latch2.png (PNG copy)>] [4 <../figs//schem_shift.png (PNG copy)> <
-../figs//3.trans.png (PNG copy)>]
-<../figs//3.e.png, id=165, 1152.7065pt x 553.46774pt>
+ [3 <../figs//latch2.png (PNG copy)>] [4 <../figs//schem_shift.png (PNG copy)> 
+<../figs//3.trans.png (PNG copy)>]
+<../figs//3.e.png, id=170, 1152.7065pt x 553.46774pt>
 File: ../figs//3.e.png Graphic file (type png)
 <use ../figs//3.e.png>
 Package pdftex.def Info: ../figs//3.e.png  used on input line 237.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//schem_gen.png, id=167, 633.36626pt x 652.4375pt>
+<../figs//schem_gen.png, id=172, 633.36626pt x 652.4375pt>
 File: ../figs//schem_gen.png Graphic file (type png)
 <use ../figs//schem_gen.png>
 Package pdftex.def Info: ../figs//schem_gen.png  used on input line 247.
 (pdftex.def)             Requested size: 290.22107pt x 298.96011pt.
-<../figs//4.b.png, id=168, 1152.7065pt x 553.46774pt>
+<../figs//4.b.png, id=173, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b.png Graphic file (type png)
 <use ../figs//4.b.png>
 Package pdftex.def Info: ../figs//4.b.png  used on input line 257.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//4.b_10.png, id=172, 1152.7065pt x 553.46774pt>
+<../figs//4.b_10.png, id=177, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b_10.png Graphic file (type png)
 <use ../figs//4.b_10.png>
 Package pdftex.def Info: ../figs//4.b_10.png  used on input line 266.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//4.b_21.png, id=173, 1152.7065pt x 553.46774pt>
+<../figs//4.b_21.png, id=178, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b_21.png Graphic file (type png)
 <use ../figs//4.b_21.png>
 Package pdftex.def Info: ../figs//4.b_21.png  used on input line 271.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//4.b_30.png, id=174, 1152.7065pt x 553.46774pt>
+<../figs//4.b_30.png, id=179, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b_30.png Graphic file (type png)
 <use ../figs//4.b_30.png>
 Package pdftex.def Info: ../figs//4.b_30.png  used on input line 277.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
  [5 <../figs//3.c.png (PNG copy)>] [6 <../figs//3.e.png (PNG copy)> <../figs//s
 chem_gen.png (PNG copy)>]
-<../figs//schem_con.png, id=189, 549.05125pt x 480.79625pt>
+<../figs//schem_con.png, id=194, 549.05125pt x 480.79625pt>
 File: ../figs//schem_con.png Graphic file (type png)
 <use ../figs//schem_con.png>
 Package pdftex.def Info: ../figs//schem_con.png  used on input line 287.
 (pdftex.def)             Requested size: 483.69687pt x 423.57886pt.
-<../figs//5.b.png, id=190, 1152.7065pt x 553.46774pt>
+<../figs//5.b.png, id=195, 1152.7065pt x 553.46774pt>
 File: ../figs//5.b.png Graphic file (type png)
 <use ../figs//5.b.png>
-Package pdftex.def Info: ../figs//5.b.png  used on input line 294.
+Package pdftex.def Info: ../figs//5.b.png  used on input line 297.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
  [7 <../figs//4.b.png (PNG copy)> <../figs//4.b_10.png (PNG copy)>] [8 <../figs
 //4.b_21.png (PNG copy)> <../figs//4.b_30.png (PNG copy)>] [9 <../figs//schem_c
 on.png (PNG copy)>]
-<../figs//5.d.png, id=210, 1152.7065pt x 553.46774pt>
+<../figs//5.d.png, id=215, 1152.7065pt x 553.46774pt>
 File: ../figs//5.d.png Graphic file (type png)
 <use ../figs//5.d.png>
-Package pdftex.def Info: ../figs//5.d.png  used on input line 304.
+Package pdftex.def Info: ../figs//5.d.png  used on input line 310.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//5.e.png, id=211, 1152.7065pt x 553.46774pt>
+<../figs//Draft1.png, id=217, 483.0045pt x 549.85425pt>
+File: ../figs//Draft1.png Graphic file (type png)
+<use ../figs//Draft1.png>
+Package pdftex.def Info: ../figs//Draft1.png  used on input line 318.
+(pdftex.def)             Requested size: 483.69687pt x 550.64156pt.
+
+
+LaTeX Warning: Reference `schem: 10_div' on page 1 undefined on input line 325.
+
+
+<../figs//5.e.png, id=219, 1152.7065pt x 553.46774pt>
 File: ../figs//5.e.png Graphic file (type png)
 <use ../figs//5.e.png>
-Package pdftex.def Info: ../figs//5.e.png  used on input line 311.
+Package pdftex.def Info: ../figs//5.e.png  used on input line 328.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-
-[10 <../figs//5.b.png (PNG copy)> <../figs//5.d.png (PNG copy)>] [11 <../figs//
-5.e.png (PNG copy)>] (E02.2.AC.aux)
+<../figs//Draft2.png, id=221, 582.37575pt x 437.83575pt>
+File: ../figs//Draft2.png Graphic file (type png)
+<use ../figs//Draft2.png>
+Package pdftex.def Info: ../figs//Draft2.png  used on input line 338.
+(pdftex.def)             Requested size: 483.69687pt x 363.66414pt.
+<../figs//5.RCO.png, id=222, 1152.7065pt x 505.89pt>
+File: ../figs//5.RCO.png Graphic file (type png)
+<use ../figs//5.RCO.png>
+Package pdftex.def Info: ../figs//5.RCO.png  used on input line 343.
+(pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
+[10 <../figs//5.b.png (PNG copy)>]
+<../figs//5.f_0110_20ns.png, id=232, 1152.7065pt x 505.89pt>
+File: ../figs//5.f_0110_20ns.png Graphic file (type png)
+<use ../figs//5.f_0110_20ns.png>
+Package pdftex.def Info: ../figs//5.f_0110_20ns.png  used on input line 349.
+(pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
+<../figs//5.f_0000.png, id=233, 1152.7065pt x 553.46774pt>
+File: ../figs//5.f_0000.png Graphic file (type png)
+<use ../figs//5.f_0000.png>
+Package pdftex.def Info: ../figs//5.f_0000.png  used on input line 355.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//5.f_0010.png, id=234, 1152.7065pt x 553.46774pt>
+File: ../figs//5.f_0010.png Graphic file (type png)
+<use ../figs//5.f_0010.png>
+Package pdftex.def Info: ../figs//5.f_0010.png  used on input line 360.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//5.f_0101.png, id=235, 1152.7065pt x 553.46774pt>
+File: ../figs//5.f_0101.png Graphic file (type png)
+<use ../figs//5.f_0101.png>
+Package pdftex.def Info: ../figs//5.f_0101.png  used on input line 365.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//5.f_1110.png, id=236, 1152.7065pt x 553.46774pt>
+File: ../figs//5.f_1110.png Graphic file (type png)
+<use ../figs//5.f_1110.png>
+Package pdftex.def Info: ../figs//5.f_1110.png  used on input line 370.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//5.f_1111.png, id=237, 1152.7065pt x 553.46774pt>
+File: ../figs//5.f_1111.png Graphic file (type png)
+<use ../figs//5.f_1111.png>
+Package pdftex.def Info: ../figs//5.f_1111.png  used on input line 375.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+ [11 <../figs//5.d.png (PNG copy)>] [12 <../figs//Draft1.png>] [13 <../figs//5.
+e.png (PNG copy)> <../figs//Draft2.png>]
+[14 <../figs//5.RCO.png (PNG copy)> <../figs//5.f_0110_20ns.png (PNG copy)>]
+[15 <../figs//5.f_0000.png (PNG copy)> <../figs//5.f_0010.png (PNG copy)>]
+[16 <../figs//5.f_0101.png (PNG copy)> <../figs//5.f_1110.png (PNG copy)>]
+[17 <../figs//5.f_1111.png (PNG copy)>] (E02.2.AC.aux)
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-
-Package rerunfilecheck Warning: File `E02.2.AC.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `E02.2.AC.out':
-(rerunfilecheck)             Before: 1E76D1CB18D31035759970B4C8805B83;6826
-(rerunfilecheck)             After:  EF0E02F13BB249FB96CB7E888BAC72D3;6800.
+Package rerunfilecheck Info: File `E02.2.AC.out' has not changed.
+(rerunfilecheck)             Checksum: EF0E02F13BB249FB96CB7E888BAC72D3;6800.
  ) 
 Here is how much of TeX's memory you used:
- 56930 strings out of 478927
- 1405477 string characters out of 2852534
+ 57040 strings out of 478927
+ 1407779 string characters out of 2852534
  2193522 words of memory out of 3000000
- 73958 multiletter control sequences out of 15000+600000
+ 74049 multiletter control sequences out of 15000+600000
  415821 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  122i,11n,125p,757b,862s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{figure.13} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.8} has been referenced but does not exist, r
-eplaced by a fixed one
-
-pdfTeX warning (dest): name{figure.4} has been referenced but does not exist, r
-eplaced by a fixed one
-
-{C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-super
--t1.enc}<C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmmi10.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmmi7.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/rossi/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/rossi/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rossi/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/rossi
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1000.pfb><C:/Use
-rs/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1200.pfb
-><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx
-1440.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-su
-per/sfrm1000.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/cm-super/sfrm1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/cm-super/sfrm1728.pfb>
-Output written on E02.2.AC.pdf (11 pages, 983311 bytes).
+{C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
+er-t1.enc}<C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmmi10.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmmi5.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rossi/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/rossi/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/rossi/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ros
+si/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/U
+sers/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1000.p
+fb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sf
+bx1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-
+super/sfbx1440.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/cm-super/sfrm1000.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/cm-super/sfrm1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/cm-super/sfrm1728.pfb>
+Output written on E02.2.AC.pdf (17 pages, 1410849 bytes).
 PDF statistics:
- 297 PDF objects out of 1000 (max. 8388607)
- 67 named destinations out of 1000 (max. 500000)
- 296 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 359 PDF objects out of 1000 (max. 8388607)
+ 79 named destinations out of 1000 (max. 500000)
+ 341 words of extra memory for PDF output out of 10000 (max. 10000000)
 
