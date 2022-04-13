@@ -331,18 +331,74 @@ Si costruisce quindi il circuito presente in \cref{schem: 10_div}.
 Come prima, si utilizza la funzione Logic per acquisire il Bus dei 4 bit in uscita, il clock e il bit di Clear.
 Osservando l'acquisizione presente in \cref{fig: Count_10th}, possiamo concludere come da aspettative che il segnale presente su clear ha una frequenza pari a $\frac{f_{clock}}{10}$ e Duty Cycle pari al $90 \percent$.
 \subsection{Divisore di frequenza programmabile con RCO}
+Per concludere, si vuole costruire un divisore in frequenza programmabile:
+per questo scopo utilizzeremo il bit RCO (Ripple Carry Output), la cui funzione è di generare un segnale H solo nel caso in cui il contatore abbia raggiunto lo stato massimo (1111) e il bit Load, che invece quando vale 0 sovrascrive lo stato del contatore in quello presente all'interno del bus di input. 
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{Draft2}
 	\caption{Schematica utilizzata per il divisore di frequenza programmabile}
 \end{figure}
-
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.RCO}
+	\caption{Acquisizione con Logic dei segnali del contatore per verificare il funzionamento del bit RCO}
+\end{figure}
 \subsection{Misura dei tempi caratteristici del divisore RCO}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.f_0110_20ns}
+	\caption{Acquisizione con logic dei segnali all'interno del circuito divisore di frequenza programmabile per un fondo scala dei tempi molto ristretto}
+\end{figure}
 \subsection{Analisi e verifica del comportamento del divisore RCO}
-
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.f_0000}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 0000}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.f_0010}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 0010}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.f_0101}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 0101}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.f_1110}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 1110}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.f_1111}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 1111}
+\end{figure}
 %=======================
 \section{Sintetizzatore musicale}
-
+%TODO ? AMOGUSSSS AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+\iffalse
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠛⠉⠙⠛⠛⠛⠛⠻⢿⣿⣷⣤⡀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⠋⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠈⢻⣿⣿⡄⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣸⣿⡏⠀⠀⠀⣠⣶⣾⣿⣿⣿⠿⠿⠿⢿⣿⣿⣿⣄⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣿⣿⠁⠀⠀⢰⣿⣿⣯⠁⠀⠀⠀⠀⠀⠀⠀⠈⠙⢿⣷⡄⠀
+⠀⠀⣀⣤⣴⣶⣶⣿⡟⠀⠀⠀⢸⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣷⠀
+⠀⢰⣿⡟⠋⠉⣹⣿⡇⠀⠀⠀⠘⣿⣿⣿⣿⣷⣦⣤⣤⣤⣶⣶⣶⣶⣿⣿⣿⠀
+⠀⢸⣿⡇⠀⠀⣿⣿⡇⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀
+⠀⣸⣿⡇⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠉⠻⠿⣿⣿⣿⣿⡿⠿⠿⠛⢻⣿⡇⠀⠀
+⠀⣿⣿⠁⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣧⠀⠀
+⠀⣿⣿⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠀
+⠀⣿⣿⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠀
+⠀⢿⣿⡆⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀
+⠀⠸⣿⣧⡀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠃⠀⠀
+⠀⠀⠛⢿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⣰⣿⣿⣷⣶⣶⣶⠶⠀⢠⣿⣿⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⣽⣿⡏⠁⠀ ⠀⢸⣿⡇⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⢹⣿⡆⠀⠀⠀ ⣸⣿⠇⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁⠀⠈⠻⣿⣿⣿⣿⡿⠏⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠈⠛⠻⠿⠿⠿⠿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+\fi
 %=======================
 \section*{Conclusioni e commenti finali}
 Si è riusciti a verificare il corretto funzionamento di circuiti logici
