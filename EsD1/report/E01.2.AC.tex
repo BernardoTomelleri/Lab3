@@ -22,13 +22,12 @@
 \centering
 \begin{tabular}{ccc}
 \toprule
-Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ \\
+Resistenze $[k \si{\ohm}]$ & $R$ & $\sigma R$ \\
 \midrule
 \midrule
-$R\ped{pot1}$	& 9.53 k	& 0.08 k 		\\
-$R\ped{pot2}$	& 9.78 k	& 0.08 k 		\\
-
-\bottomrule     
+$R\ped{pot1}$	& 9.53	& 0.08 		\\
+$R\ped{pot2}$	& 9.78	& 0.08		\\
+\bottomrule
 \end{tabular}
 \caption{Valori di resistenza misurati per i componenti passivi dei circuiti
 studiati. \label{tab: rmesM}}
@@ -579,7 +578,7 @@ riportate in \cref{fig: mult_tikz} e \cref{fig: mult_circ} rispettivamente
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.6\textwidth]{NAND_MP.png}
+    \includegraphics[width=0.6\textwidth]{NAND_MP}
     \caption{Schema circuitale di un multiplexer a 2 input, controllato dal
     valore logico di switch $C$}
     \label{fig: mult_circ}
@@ -597,14 +596,14 @@ possibili combinazioni possibili per i 3 bit di ingresso
 (cfr. \cref{fig: mult_pat}).
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{pat2.png}
+    \includegraphics[width=0.8\textwidth]{pat2}
     \caption{Schermata di configurazione degli ingressi in Patterns
     al multiplexer: DIO 0 $\equiv B$, DIO 1 $\equiv A$, DIO 2 $\equiv C$.
     \label{fig: mult_pat}}
 \end{figure}
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{Multiplex.png}
+    \includegraphics[width=0.8\textwidth]{Multiplex}
     \caption{Acquisizione di Logic per il multiplexer: DIO 0 $\equiv B$,
     DIO 1 $\equiv A$, DIO 2 $\equiv C$, DIO 3 $\equiv Y$.}
     \label{fig: mult_log}
@@ -871,7 +870,7 @@ di riporto (che andrà ad indicare un eventuale overflow). Riportiamo lo schema
 del circuito per completezza in \cref{fig: sommatore}.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.6\linewidth]{sum.png}
+    \includegraphics[width=0.6\linewidth]{sum}
     \caption{Schema circuitale di un sommatore a 2 bit}
     \label{fig: sommatore}
 \end{figure}
@@ -885,7 +884,7 @@ più significativi- (in particolare i 2 bit meno significativi del bus
 formeranno il numero $A$, mentre i restanti rappresenteranno l'intero $B$.)
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\linewidth]{sum_time.png}
+    \includegraphics[width=\linewidth]{sum_time}
     \caption{Acquisizione con Logic per il sommatore a 2 bit: DIO 0 e DIO 1
     rappresentano il numero $A$; DIO 2 e DIO 3 rappresentano $B$; DIO 4 (LSB),
     DIO 5 (MSB) e DIO 6 (bit di overflow) rappresentano il risultato della
