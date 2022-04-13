@@ -112,8 +112,8 @@ oscillazione/racing $R = S = 1$ da cui è affetto il semplice $RS$-Latch.
 Per conferma del corretto funzionamento del Latch possiamo confrontare
 le uscite ottenute da un'acquisizione con Logic Analyzer con i valori
 riportati in \cref{tab: dlatch} inviando all'ingresso del circuito con
-Patterns due segnali di clock sfasati tra loro di
-$\phi = \pm \SI{90}{\degree}$.
+Patterns due segnali di clock, di modo che $E$ sia lo stesso segnale in $D$,
+a cui si è però aggiunta una fase $\phi = \pm \SI{90}{\degree}$.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{dlatch}
@@ -124,8 +124,8 @@ $\phi = \pm \SI{90}{\degree}$.
 \end{figure}
 \begin{figure}[htbp]
 	\includegraphics[width=\textwidth]{latch2}
-	\caption{Acquisizione temporale con Logic dei segnali in ingresso uscita dal
-	D-Latch per $\phi = -\SI{90}{\degree}$.
+	\caption{Acquisizione con Logic dell'andamento temporale dei segnali in
+	ingresso uscita dal D-Latch per $\phi = -\SI{90}{\degree}$.
 	\label{fig: Log_DLATCH2}}
 \end{figure}
 
@@ -135,29 +135,56 @@ variazioni del segnale in $D$, mentre quando
 $E = 1 \implies Q(t + \Delta t) = D$ coerentemente con quanto previsto dalla
 tabella di verità e come principio di funzionamento della memoria a 1 bit.
 
-\subsection{Misura dei tempi del ritardo nelle transizioni di stato}
+\subsection{Misura dei tempi di propagazione nelle transizioni di stato}
 Si riescono a distinguere due diverse transizioni dei segnali in ingresso per
 ciascun valore di sfasamento tra i due segnali di clock in $D$ ed $E$;
 per $\phi = \SI{90}{\degree}$:
 \begin{enumerate}
-\item $D: 1 \to 0$, $E \coloneqq 1$ \label{item: Dfall}
-\item $D \coloneqq 1$, $E: 0 \to 1$. \label{item: Erise}
-
-Mentre per $\phi = - \SI{90}{\degree} = 270 \; \si{\degree}$:
 \item $D \coloneqq 0$, $E: 0 \to 1$ \label{item: Efall}
 \item $D: 0 \to 1$, $E \coloneqq 1$. \label{item: Drise}
+
+Mentre per $\phi = - \SI{90}{\degree} = 270 \; \si{\degree}$:
+\item $D: 1 \to 0$, $E \coloneqq 1$ \label{item: Dfall}
+\item $D \coloneqq 1$, $E: 0 \to 1$. \label{item: Erise}
 \end{enumerate}
 
-Il ritardo di durata maggiore risulta quello della transizione
-\ref{item: Dfall} dell'input $D$ da alto a basso ($40 \pm 10$ ns).
-
-Dalle misure prese con i cursori dell'oscilloscopio (a cui associamo come
+Si sono misurati i ritardi tra la transizione dei segnali in ingresso e i
+corrispondenti cambiamenti di stato in uscita su scala dei tempi minima
+($\SI{10}{n\s}$) con i cursori dalle acquisizioni con Logic Analyzer e per
+riconferma anche con l'oscilloscopio da banco (a cui associamo come
 incertezza il contributo dato dalle specifiche del datasheet, tenendo conto
-dell'instabilità e dello spessore delle tracce sullo schermo) troviamo
-\begin{align*}
-    t_{PLH}= 11 \pm 1 \; \si{n\s} \\
-    t_{PHL}= 35 \pm 2 \; \si{n\s}
-\end{align*}
+dell'instabilità e dello spessore delle tracce sullo schermo). Riportiamo
+di seguito e nelle figure \ref{fig: Drise} \ref{fig: Dfall} \ref{fig: Erise}
+i risultati ottenuti.
+\begin{enumerate}
+\item $t_{PHL} = 30 \pm 10 \; \si{n\s}$
+\item $t_{PLH} = 20 \pm 10 \; \si{n\s}$
+
+\item $t_{PHL} = 40 \pm 10 \; \si{n\s}$
+\item $t_{PLH} = 30 \pm 10 \; \si{n\s}$
+\end{enumerate}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{dlatch_Drise}
+    \caption{Acquisizione del Logic Analyzer durante la transizione
+    \ref{item: Drise} del D-Latch \label{fig: Drise}}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{dlatch_Dfall40}
+    \caption{Acquisizione del Logic Analyzer durante la transizione
+    \ref{item: Dfall} del D-Latch \label{fig: Dfall}}
+    \includegraphics[width=\textwidth]{dlatch_Erise}
+    \caption{Acquisizione del Logic Analyzer durante la transizione
+    \ref{item: Erise} del D-Latch \label{fig: Erise}}
+\end{figure}
+
+Il massimo ritardo indotto si è trovato in corrispondenza della transizione
+\ref{item: Dfall} dell'input $D$ da alto a basso (con i cursori
+dell'oscilloscopio $t_{PHL} = 35 \pm 2 \; \si{n\s}$) mentre il minimo per la
+\ref{item: Drise} (con oscilloscopio $t_{PLH} = 11 \pm 1 \; \si{n\s}$).
 
 Dalle specifiche del DS si trova che i tempi di propagazione tipici e massimi
 per una singola porta NAND sono:
@@ -169,6 +196,9 @@ per una singola porta NAND sono:
     $t\ped{PHL}$ & $7$ & $15$ & \si{n\s}
 \end{tabular}
 \end{table}
+da cui vediamo che le nostre misure dei ritardi accumulati tra uscita e
+ingresso del circuito sono compatibili con i tempi necessari per il numero di
+porte NAND che devono commutare per il cambiamento di stato del D-Latch.
 
 %=======================
 \section{Shift-register con edge-triggered D-Flip Flop}
@@ -289,30 +319,54 @@ Si intende costruire un divisore di frequenza a partire da un contatore binario 
 \end{figure}
 
 \subsection{Verifica del ciclo di funzionamento dei contatori}
+Dopo aver montato il circuito utilizziamo la funzione Pattern di Waveform per inviare un segnale di clock di frequenza pari a 10 kHz al pin di clock (CLK) del contatore, e utilizzeremo Logic per acquisire le uscite $Q_0$->$Q_3$.
+Essendo un contatore a 4 bit, ci si aspetta che il Bus conti dallo stato 0000 (0 in decimale) fino allo stato 1111 (15 in decimale).
+Per questo motivo utilizzeremo un formato di Bus esadecimale per verificare che il circuito generi tutti gli stati possibili (0->F).
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{5.b}
 	\caption{Acquisizione temporale con Logic del bus in uscita dal contatore, con frequenza di clock pari a 10 kHz \label{fig: Count_Clock}}
 \end{figure}
-
+Dalla \cref{fig: Count_Clock} si può notare che il comportamento del circuito è come atteso, e che gli stati del bus in uscita comprendono tutti i valori in ordine crescente della numerazione esadecimale 
 \subsection{Verifica della divisione in frequenza}
 
+Dato che il contatore incrementa di 1 ad ogni evento di clock, il bit di ordine n avrà come frequenza la metà di quella del bit di ordine n-1.
+Avendo noi un BUS composto da 4 bit, ci si aspetta che le frequenze ottenute siano $\frac{f_clock}{2}$ (per il LSB),$\frac{f_clock}{4}$,$\frac{f_clock}{8}$ e $\frac{f_clock}{16}$ (per il MSB).
+Sempre facendo riferimento all  \cref{fig: Count_Clock} si può notare come le uscite del contatore si comportino da divisori in frequenza: infatti i periodi che si trovano analizzando l'acquisizione sono 2 (LSB), 4, 8 e 16 (MSB) volte il periodo del clock.
 \subsection{Transizione sincrona del contatore}
-
+Utilizziamo quindi la funzione di trigger di Logic e la impostiamo in modo tale che l'acquisizione cominci quando il segnale presente in $Q_3$ cambia da 1 a 0 in modo da poter studiare gli eventuali ritardi delle singole uscite nella transizione F->0 e verificare il comportamento sincrono del contatore.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{5.d}
 	\caption{Acquisizione temporale con Logic del bus in uscita dal contatore durante la transizione 15->0; dall'immagine possiamo notare il comportamento sincrono della commutazione delle uscite del contatore \label{fig: Count_150}}
 \end{figure}
-
+Dalla \cref{fig: Count_150} possiamo infatti vedere che la transizione è sincrona e il passaggio di stato 1->0 avviene contemporaneamente in ogni uscita.
 \subsection{Costruzione di un divisore di frequenza 1/10}
+Si vuole quindi realizzare un divisore in frequenza, che generi un segnale di periodo pari a 10 volte quello di clock: per farlo utilizzeremo il pin CLEAR del contatore, il quale quando viene inviato un segnale Low resetta il contatore allo stato 0000.
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{Draft1}
+	\label{schem: 10_div}
+	\caption{Schematica utilizzata per il divisore per 10 di frequenza}
+\end{figure}
+È quindi necessario che il contatore conti un totale di 10 stati e poi si resetti, per cui partendo dallo 0, dobbiamo imporre la condizione che arrivati allo stato 9, il contatore riceva l'impulso di Clear (che ricordiamo essere Active Low).
+Per farlo utilizzeremo una porta NAND (utilizzando l'integrato SN74LS00) ai cui 2 ingressi invieremo il LSB e il MSB e invieremo l'uscita al pin di Clear. In questo modo, quando il contatore arriva a 9 (1001) il pin di Clear riceverà un segnale Low e il circuito si azzererà; pertanto la frequenza del segnale Clear sarà un decimo di quella di clock
+Inoltre essendo il segnale di Clear sullo stato Low solamente quando il bus in uscita registra lo stato 1001, mi aspetterò un Duty Cycle pari al $90 \percent$
+Si costruisce quindi il circuito presente in \cref{schem: 10_div}.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{5.e}
-	\caption{Acquisizione temporale con Logic del bus in uscita dal circuito che conta fino a 10; si può notare che il segnale in entrata nel Clock ha effettivamente periodo pari a 10 volte quello del clock \label{fig: Count_10th}}
+	\caption{Acquisizione temporale con Logic del bus in uscita dal circuito che conta fino a 10; si può notare che il segnale in entrata nel pin Clear ha effettivamente periodo pari a 10 volte quello del clock \label{fig: Count_10th}}
+\end{figure}
+Come prima, si utilizza la funzione Logic per acquisire il Bus dei 4 bit in uscita, il clock e il bit di Clear.
+Osservando l'acquisizione presente in \cref{fig: Count_10th}, possiamo concludere come da aspettative che il segnale presente su clear ha una frequenza pari a $\frac{f_{clock}}{10}$ e Duty Cycle pari al $90 \percent$.
+\subsection{Divisore di frequenza programmabile con RCO}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{Draft2}
+	\caption{Schematica utilizzata per il divisore di frequenza programmabile}
 \end{figure}
 
-\subsection{Divisore di frequenza programmabile con RCO}
 \subsection{Misura dei tempi caratteristici del divisore RCO}
 \subsection{Analisi e verifica del comportamento del divisore RCO}
 
