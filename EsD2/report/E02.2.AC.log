@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  13 APR 2022 08:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  13 APR 2022 12:29
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1395,12 +1395,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <../figs//dlatch.png, id=114, 1440.88312pt x 711.4078pt>
 File: ../figs//dlatch.png Graphic file (type png)
 <use ../figs//dlatch.png>
-Package pdftex.def Info: ../figs//dlatch.png  used on input line 118.
+Package pdftex.def Info: ../figs//dlatch.png  used on input line 119.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
 <../figs//latch2.png, id=115, 1152.7065pt x 505.89pt>
 File: ../figs//latch2.png Graphic file (type png)
 <use ../figs//latch2.png>
-Package pdftex.def Info: ../figs//latch2.png  used on input line 125.
+Package pdftex.def Info: ../figs//latch2.png  used on input line 126.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
  [1
 
@@ -1409,61 +1409,61 @@ atch.png (PNG copy)>]
 <../figs//schem_shift.png, id=148, 585.18625pt x 633.36626pt>
 File: ../figs//schem_shift.png Graphic file (type png)
 <use ../figs//schem_shift.png>
-Package pdftex.def Info: ../figs//schem_shift.png  used on input line 179.
+Package pdftex.def Info: ../figs//schem_shift.png  used on input line 180.
 (pdftex.def)             Requested size: 290.22107pt x 314.13095pt.
 <../figs//3.trans.png, id=150, 1152.7065pt x 505.89pt>
 File: ../figs//3.trans.png Graphic file (type png)
 <use ../figs//3.trans.png>
-Package pdftex.def Info: ../figs//3.trans.png  used on input line 188.
+Package pdftex.def Info: ../figs//3.trans.png  used on input line 189.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
 <../figs//3.c.png, id=154, 1152.7065pt x 505.89pt>
 File: ../figs//3.c.png Graphic file (type png)
 <use ../figs//3.c.png>
-Package pdftex.def Info: ../figs//3.c.png  used on input line 218.
+Package pdftex.def Info: ../figs//3.c.png  used on input line 219.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
 [3 <../figs//latch2.png (PNG copy)>] [4 <../figs//schem_shift.png (PNG copy)> <
 ../figs//3.trans.png (PNG copy)>]
 <../figs//3.e.png, id=172, 1152.7065pt x 553.46774pt>
 File: ../figs//3.e.png Graphic file (type png)
 <use ../figs//3.e.png>
-Package pdftex.def Info: ../figs//3.e.png  used on input line 237.
+Package pdftex.def Info: ../figs//3.e.png  used on input line 238.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
 <../figs//schem_gen.png, id=174, 633.36626pt x 652.4375pt>
 File: ../figs//schem_gen.png Graphic file (type png)
 <use ../figs//schem_gen.png>
-Package pdftex.def Info: ../figs//schem_gen.png  used on input line 247.
+Package pdftex.def Info: ../figs//schem_gen.png  used on input line 248.
 (pdftex.def)             Requested size: 290.22107pt x 298.96011pt.
 <../figs//4.b.png, id=175, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b.png Graphic file (type png)
 <use ../figs//4.b.png>
-Package pdftex.def Info: ../figs//4.b.png  used on input line 257.
+Package pdftex.def Info: ../figs//4.b.png  used on input line 258.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
 <../figs//4.b_10.png, id=179, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b_10.png Graphic file (type png)
 <use ../figs//4.b_10.png>
-Package pdftex.def Info: ../figs//4.b_10.png  used on input line 266.
+Package pdftex.def Info: ../figs//4.b_10.png  used on input line 267.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
 <../figs//4.b_21.png, id=180, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b_21.png Graphic file (type png)
 <use ../figs//4.b_21.png>
-Package pdftex.def Info: ../figs//4.b_21.png  used on input line 271.
+Package pdftex.def Info: ../figs//4.b_21.png  used on input line 272.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
 <../figs//4.b_30.png, id=181, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b_30.png Graphic file (type png)
 <use ../figs//4.b_30.png>
-Package pdftex.def Info: ../figs//4.b_30.png  used on input line 277.
+Package pdftex.def Info: ../figs//4.b_30.png  used on input line 278.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
  [5 <../figs//3.c.png (PNG copy)>] [6 <../figs//3.e.png (PNG copy)> <../figs//s
 chem_gen.png (PNG copy)>]
 <../figs//schem_con.png, id=197, 549.05125pt x 480.79625pt>
 File: ../figs//schem_con.png Graphic file (type png)
 <use ../figs//schem_con.png>
-Package pdftex.def Info: ../figs//schem_con.png  used on input line 287.
+Package pdftex.def Info: ../figs//schem_con.png  used on input line 288.
 (pdftex.def)             Requested size: 483.69687pt x 423.57886pt.
 <../figs//5.b.png, id=198, 1152.7065pt x 553.46774pt>
 File: ../figs//5.b.png Graphic file (type png)
 <use ../figs//5.b.png>
-Package pdftex.def Info: ../figs//5.b.png  used on input line 294.
+Package pdftex.def Info: ../figs//5.b.png  used on input line 295.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
  [7 <../figs//4.b.png (PNG copy)> <../figs//4.b_10.png (PNG copy)>] [8 <../figs
 //4.b_21.png (PNG copy)> <../figs//4.b_30.png (PNG copy)>] [9 <../figs//schem_c
@@ -1471,12 +1471,12 @@ on.png (PNG copy)>]
 <../figs//5.d.png, id=216, 1152.7065pt x 553.46774pt>
 File: ../figs//5.d.png Graphic file (type png)
 <use ../figs//5.d.png>
-Package pdftex.def Info: ../figs//5.d.png  used on input line 304.
+Package pdftex.def Info: ../figs//5.d.png  used on input line 305.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
 <../figs//5.e.png, id=217, 1152.7065pt x 553.46774pt>
 File: ../figs//5.e.png Graphic file (type png)
 <use ../figs//5.e.png>
-Package pdftex.def Info: ../figs//5.e.png  used on input line 311.
+Package pdftex.def Info: ../figs//5.e.png  used on input line 312.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
 
 [10 <../figs//5.b.png (PNG copy)> <../figs//5.d.png (PNG copy)>] [11 <../figs//

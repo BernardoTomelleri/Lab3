@@ -65,7 +65,7 @@ Si è costruito un circuito D-Latch secondo lo schema mostrato in
 
 Per studiarne il comportamento generiamo nei due pin DIO 0 (DATA) e DIO 1
 (ENABLE) dell'AD2 due segnali di clock di frequenza $f = \SI{1}{k\hertz}$ e
-sfasati tra loro di $\pm \SI{90}{\degree}$ agli ingressi $D$ ed $E$ del
+sfasati tra loro di $\SI{90}{\degree}$ agli ingressi $D$ ed $E$ del
 circuito. 
 
 \subsection{Analisi del funzionamento del circuito}
@@ -112,7 +112,8 @@ oscillazione/racing $R = S = 1$ da cui è affetto il semplice $RS$-Latch.
 Per conferma del corretto funzionamento del Latch possiamo confrontare
 le uscite ottenute da un'acquisizione con Logic Analyzer con i valori
 riportati in \cref{tab: dlatch} inviando all'ingresso del circuito con
-Patterns due segnali di clock sfasati tra loro di $\phi = \SI{90}{\degree}$.
+Patterns due segnali di clock sfasati tra loro di
+$\phi = \pm \SI{90}{\degree}$.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{dlatch}
@@ -132,7 +133,7 @@ Dalle \cref{fig: dlatch} e \cref{fig: Log_DLATCH2} si osserva come durante lo
 stato basso di Enable il segnale in uscita rimanga costante rispetto a
 variazioni del segnale in $D$, mentre quando
 $E = 1 \implies Q(t + \Delta t) = D$ coerentemente con quanto previsto dalla
-tabella di verità.
+tabella di verità e come principio di funzionamento della memoria a 1 bit.
 
 \subsection{Misura dei tempi del ritardo nelle transizioni di stato}
 Si riescono a distinguere due diverse transizioni dei segnali in ingresso per
@@ -147,13 +148,12 @@ Mentre per $\phi = - \SI{90}{\degree} = 270 \; \si{\degree}$:
 \item $D: 0 \to 1$, $E \coloneqq 1$. \label{item: Drise}
 \end{enumerate}
 
-
 Il ritardo di durata maggiore risulta quello della transizione
 \ref{item: Dfall} dell'input $D$ da alto a basso ($40 \pm 10$ ns).
 
 Dalle misure prese con i cursori dell'oscilloscopio (a cui associamo come
 incertezza il contributo dato dalle specifiche del datasheet, tenendo conto
-dell'instabilità delle tracce sullo schermo) troviamo
+dell'instabilità e dello spessore delle tracce sullo schermo) troviamo
 \begin{align*}
     t_{PLH}= 11 \pm 1 \; \si{n\s} \\
     t_{PHL}= 35 \pm 2 \; \si{n\s}
