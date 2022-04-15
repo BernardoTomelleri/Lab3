@@ -382,8 +382,9 @@ Si intende costruire un divisore di frequenza a partire da un contatore binario 
 \end{figure}
 
 \subsection{Verifica del ciclo di funzionamento dei contatori}
+\label{sec: count_base}
 Dopo aver montato il circuito utilizziamo la funzione Pattern di Waveform per inviare un segnale di clock di frequenza pari a 10 kHz al pin di clock (CLK) del contatore, e utilizzeremo Logic per acquisire le uscite $Q_0$->$Q_3$.
-Essendo un contatore a 4 bit, ci si aspetta che il Bus conti dallo stato 0000 (0 in decimale) fino allo stato 1111 (15 in decimale).
+Essendo un contatore a 4 bit, ci si aspetta che il Bus conti dallo stato 0000 (0 in decimale) fino allo stato 1111 (15 in decimale) in ordine crescente.
 Per questo motivo utilizzeremo un formato di Bus esadecimale per verificare che il circuito generi tutti gli stati possibili (0->F).
 \begin{figure}[htbp]
 \centering
@@ -393,27 +394,28 @@ Per questo motivo utilizzeremo un formato di Bus esadecimale per verificare che 
 Dalla \cref{fig: Count_Clock} si può notare che il comportamento del circuito è come atteso, e che gli stati del bus in uscita comprendono tutti i valori in ordine crescente della numerazione esadecimale 
 \subsection{Verifica della divisione in frequenza}
 
-Dato che il contatore incrementa di 1 ad ogni evento di clock, il bit di ordine n avrà come frequenza la metà di quella del bit di ordine n-1.
-Avendo noi un BUS composto da 4 bit, ci si aspetta che le frequenze ottenute siano $\frac{f_clock}{2}$ (per il LSB),$\frac{f_clock}{4}$,$\frac{f_clock}{8}$ e $\frac{f_clock}{16}$ (per il MSB).
+Dato che il contatore binario incrementa di 1 ad ogni evento di clock, il bit di ordine n avrà come frequenza la metà di quella del bit di ordine n-1.
+Avendo noi un BUS composto da 4 bit, ci si aspetta quindi che le frequenze ottenute siano $\frac{f_{clock}}{2}$ (per il LSB),$\frac{f_{clock}}{4}$,$\frac{f_{clock}}{8}$ e $\frac{f_{clock}}{16}$ (per il MSB).
 Sempre facendo riferimento all  \cref{fig: Count_Clock} si può notare come le uscite del contatore si comportino da divisori in frequenza: infatti i periodi che si trovano analizzando l'acquisizione sono 2 (LSB), 4, 8 e 16 (MSB) volte il periodo del clock.
 \subsection{Transizione sincrona del contatore}
-Utilizziamo quindi la funzione di trigger di Logic e la impostiamo in modo tale che l'acquisizione cominci quando il segnale presente in $Q_3$ cambia da 1 a 0 in modo da poter studiare gli eventuali ritardi delle singole uscite nella transizione F->0 e verificare il comportamento sincrono del contatore.
+\label{sec: count_trans}
+Utilizziamo la funzione di trigger di Logic e la impostiamo in modo tale che l'acquisizione cominci quando il segnale presente in $Q_3$ cambia da 1 a 0 in modo da poter studiare gli eventuali ritardi delle singole uscite nella transizione F->0 e verificare il comportamento sincrono del contatore.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{5.d}
 	\caption{Acquisizione temporale con Logic del bus in uscita dal contatore durante la transizione 15->0; dall'immagine possiamo notare il comportamento sincrono della commutazione delle uscite del contatore \label{fig: Count_150}}
 \end{figure}
-Dalla \cref{fig: Count_150} possiamo infatti vedere che la transizione è sincrona e il passaggio di stato 1->0 avviene contemporaneamente in ogni uscita.
+Dalla \cref{fig: Count_150} possiamo infatti vedere che la transizione è sincrona e avviene con un ritardo di $30 \si{n\s}$ da quando il clock compie il salto 0->1; il passaggio di stato 1->0 avviene contemporaneamente in ogni uscita.
 \subsection{Divisore di frequenza 1/10; Contatore BCD}
-Si vuole quindi realizzare un divisore in frequenza, che generi un segnale di periodo pari a 10 volte quello di clock: per farlo utilizzeremo il pin CLEAR del contatore, il quale quando viene inviato un segnale Low resetta il contatore allo stato 0000.
+Si vuole quindi realizzare un divisore in frequenza, che generi un segnale di periodo pari a 10 volte quello di clock: per farlo utilizzeremo il pin CLEAR del contatore, il quale quando gli viene inviato un segnale Low resetta il contatore allo stato 0000.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=0.6\textwidth]{Draft1}
 	\caption{Schematica utilizzata per il divisore per 10 di frequenza
 	\label{schem: 10_div}}
 \end{figure}
-È quindi necessario che il contatore conti un totale di 10 stati e poi si resetti, per cui partendo dallo 0, dobbiamo imporre la condizione che arrivati allo stato 9, il contatore riceva l'impulso di Clear (che ricordiamo essere Active Low).
-Per farlo utilizzeremo una porta NAND (utilizzando l'integrato SN74LS00) ai cui 2 ingressi invieremo il LSB e il MSB e invieremo l'uscita al pin di Clear. In questo modo, quando il contatore arriva a 9 (1001) il pin di Clear riceverà un segnale Low e il circuito si azzererà; pertanto la frequenza del segnale Clear sarà un decimo di quella di clock
+È quindi necessario che il contatore conti un totale di 10 stati e poi si resetti, per cui partendo dallo 0, dobbiamo imporre la condizione che arrivati allo stato 9 (1001) il contatore riceva il comando di reset tramite Clear (che ricordiamo essere Active Low).
+Per farlo utilizzeremo una porta NAND (utilizzando l'integrato SN74LS00) ai cui 2 ingressi invieremo il LSB e il MSB e invieremo l'uscita al pin di Clear. In questo modo, quando il contatore arriva a 9 il pin di Clear riceverà un segnale Low e il circuito si azzererà; pertanto la frequenza del segnale Clear sarà un decimo di quella di clock.
 Inoltre essendo il segnale di Clear sullo stato Low solamente quando il bus in uscita registra lo stato 1001, mi aspetterò un Duty Cycle pari al $90 \percent$
 Si costruisce quindi il circuito presente in \cref{schem: 10_div}.
 \begin{figure}[htbp]
@@ -429,45 +431,87 @@ per questo scopo utilizzeremo il bit RCO (Ripple Carry Output), la cui funzione 
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=0.6\textwidth]{Draft2}
+	\label{schem: programmable_counter}
 	\caption{Schematica utilizzata per il divisore di frequenza programmabile}
 \end{figure}
+Vogliamo intanto verificare il funzionamento del RCO; dopo aver montato nuovamento il circuito presente in \cref{fig: schem_counter} inviamo un segnale di clock di frequenza 10 kHz e utilizziamo Logic per acquisire i segnali del bus dei 4 bit di output e il segnale di RCO in funzione del tempo.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{5.RCO}
+	\label{fig: RCO_f}
 	\caption{Acquisizione con Logic dei segnali del contatore per verificare il funzionamento del bit RCO}
 \end{figure}
+Dalla \cref{fig: RCO_f} possiamo notare che il bit RCO funziona come da aspettative.
+Si collega ora l'uscita dal RCO all'ingresso di una porta NOT dell'integrato SN74LS04; l'uscita di tale porta sarà inviata al pin LOAD del contatore, come schematizzato in \cref{schem: programmable_counter}.
+Si utilizza la funzione StaticIO per inserire nel Bus di ingresso (A,B,C,D) lo stato 0101 e accendiamo il segnale di clock generato tramite Pattern a frequenza 10 kHz. 
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.f_0101}
+	\label{fig: c_0101}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 0101}
+\end{figure}
+Dalla \cref{fig: c_0101} ci accorgiamo che quando il contatore riceve il segnale di LOAD, quindi quando si registra 1 nel bit RCO, la sequenza iniziale non viene immediatamente caricata, ma sarà rimandata di un evento di clock.
+Di conseguenza, qualunque sia la sequenza iniziale del nostro circuito lo stato finale 1111 verrà sempre "contato".
 \subsection{Misura dei tempi caratteristici del divisore RCO}
+Si cambia ora la sequenza di inizializzazione a 0110, e utilizzando la funzione Logic impostiamo un trigger quando il bit LOAD compie la transizione 0->1: in seguito a quanto visto nella sezione precedente ci aspettiamo che il contatore passi dallo stato 1111 allo stato iniziale.
+Utilizzeremo una scala dei tempi molto ristretta per verificare che quanto affermato nella \cref{sec: count_trans} sia ancora vero.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{5.f_0110_20ns}
-	\caption{Acquisizione con logic dei segnali all'interno del circuito divisore di frequenza programmabile per un fondo scala dei tempi molto ristretto}
+	\label{fig: count_Sounasegadicomechiamarlo}
+	\caption{Acquisizione con logic dei segnali all'interno del circuito divisore di frequenza programmabile per un fondo scala dei tempi molto ristretto, con sequenza di avvio 0110}
 \end{figure}
+Dalla \cref{fig: count_Sounasegadicomechiamarlo} si può notare che è sempre presente un ritardo dall'inizio del nuovo Tick di clock alla commutazione delle uscite (che come prima è sincrona) che vale indicativamente $30 \si{n\s}$.
 \subsection{Analisi e verifica del comportamento del divisore RCO}
+Si passa infine a verificare la corrispondenza tra sequenza iniziale e la frequenza ottenuta.
+In questa sezione utilizzeremo come frequenza quoziente quella del segnale in uscita dal RCO.
+Analizzando il comportamento del circuito facendo uso di quanto visto nelle sezioni precedenti ci si aspetta che il periodo del segnale RCO sia pari a quello di clock moltiplicato per il numero di salti di stato necessari per farlo arrivare a 0000; chiamando A il valore in base 10 che corrisponde allo stato iniziale si ha dunque:
+\begin{equation}
+T_{divisore,A}=T_{clock} \times (16-A)
+\end{equation}
+Visto però il funzionamento dei pin LOAD e RCO, se utilizzassimo come sequenza iniziale 1111, il circuito produrrebbe un segnale costante: infatti 1111 è anche lo stato a cui avviene il caricamento della sequenza, che però risulta essere sempre la medesima, inducendo quindi uno stato incommutabile.
+Programmando la sequenza con 0000 invece mi aspetto che il comportamento sia analogo a quello presente in \cref{sec: count_base} essendo 0000 lo stato iniziale a cui si resetta autonomamente il counter in assenza di segnali di LOAD.
+Si provano quindi diverse sequenze iniziali per il circuito per cui ci si aspetta:
+\begin{table}[htbp]
+\centering
+\begin{tabular}{c|c}
+\toprule
+$Seq. iniziale$ & $T_{RCO} [T_{clock}]$\\
+\midrule
+$0000$ & $16$ \\
+$0010$ & $14$ \\
+$0101$ & $11$ \\
+$1110$ & $2$ \\
+$1111$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{5.f_0000}
-	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 0000}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 0000, da cui si misura $T= 16 T_{clock}$}
 \end{figure}
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{5.f_0010}
-	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 0010}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 0010, da cui si misura $T= 14 T_{clock}$}
 \end{figure}
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{5.f_0101}
-	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 0101}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 0101, da cui si misura $T= 11 T_{clock}$}
 \end{figure}
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{5.f_1110}
-	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 1110}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 1110, da cui si misura $T= 2 T_{clock}$}
 \end{figure}
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{5.f_1111}
-	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 1111}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 1111, dal quale si vede che RCO è un segnale costante}
 \end{figure}
+Dalle acquisizioni fatte con logic possiamo concludere che i periodi sono quelli aspettati.
 %=======================
 \section{Sintetizzatore musicale}
 %TODO ? AMOGUSSSS AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
