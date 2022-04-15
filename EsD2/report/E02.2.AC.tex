@@ -638,7 +638,7 @@ quello di clock moltiplicato per il numero di salti di stato necessari per
 farlo arrivare a 0000; detto $I$ il valore (in base decimale) caricato nello
 stato iniziale si ha dunque:
 \begin{equation}
-T\ped{divisore, I} = T\ped{clk} \times (16 - I)
+T\ped{divisore, I} = T\ped{clk} \cdot (16 - I)
 \end{equation}
 Visto però il funzionamento dei pin LOAD e RCO, se utilizzassimo come sequenza
 iniziale 1111, il circuito produrrebbe un segnale costante: infatti 1111 è
@@ -703,9 +703,9 @@ del circuito è coerente con quanto ci aspettavamo.
 %=======================
 \section*{Conclusioni e commenti finali}
 Si è riusciti a verificare il corretto funzionamento di circuiti logici
-sequenziali di crescente complessità e svariate applicazioni (e.g.
-crittografia, sistemi di controllo e misura) costruiti con porte NAND, XOR,
-D-Latch e contatori sincroni.
+sequenziali di crescente complessità e svariate applicazioni (e.g., sistemi di
+controllo e misura) costruiti con porte NOT, NAND, XOR, D-Latch e contatori
+sincroni.
 In particolare sono stati realizzati e studiati un D-Latch, uno shift-register
 con positive edge-triggered D-FF, un generatore di sequenze pseudocasuali e
 alcuni tipi di divisore di frequenza con contatori binari.
