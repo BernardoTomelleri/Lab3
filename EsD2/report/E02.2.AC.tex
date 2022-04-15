@@ -2,7 +2,6 @@
 \input{../../latex/preamble}
 \input{../../latex/math}
 \usepackage{multicol}
-\usepackage{diagbox}
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
 
 % indexes subsections with letters, sections with numbers (1.a, 1.b, ...)
@@ -154,8 +153,8 @@ corrispondenti cambiamenti di stato in uscita su scala dei tempi minima
 riconferma anche con l'oscilloscopio da banco (a cui associamo come
 incertezza il contributo dato dalle specifiche del datasheet, tenendo conto
 dell'instabilità e dello spessore delle tracce sullo schermo). Riportiamo
-di seguito e nelle figure \ref{fig: Drise} \ref{fig: Dfall} \ref{fig: Erise}
-i risultati ottenuti.
+di seguito e nella \cref{fig: Drise}, \cref{fig: Drise_osc}, \cref{fig: Dfall}
+e \cref{fig: Erise} i risultati ottenuti.
 \begin{enumerate}
 \item $t_{PHL} = 30 \pm 10 \; \si{n\s}$
 \item $t_{PLH} = 20 \pm 10 \; \si{n\s}$
@@ -173,6 +172,9 @@ i risultati ottenuti.
 
 \begin{figure}[htbp]
     \centering
+    \includegraphics[width=\textwidth]{dlatch_Drise}
+    \caption{Acquisizione da oscilloscopio digitale della transizione
+    \ref{item: Drise} del D-Latch \label{fig: Drise_osc}}
     \includegraphics[width=\textwidth]{dlatch_Dfall40}
     \caption{Acquisizione del Logic Analyzer durante la transizione
     \ref{item: Dfall} del D-Latch \label{fig: Dfall}}
@@ -203,53 +205,109 @@ porte NAND che devono commutare per il cambiamento di stato del D-Latch.
 %=======================
 \section{Shift-register con edge-triggered D-Flip Flop}
 \subsection{Costruzione del circuito}
-Si vuole ora costruire uno Shift Register a 4 bit a partire dagli integrati della serie SN74LS74, secondo lo schema in \cref{fig: schem_shift} e verificarne il funzionamento.
+Si vuole ora costruire uno Shift Register a 4 bit a partire da due integrati
+della serie SN74LS74 (Dual Positive-Edge-Triggered Flip-Flops), secondo lo
+schema riportato in \cref{fig: schem_shift} e verificarne il funzionamento.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=0.6\textwidth]{schem_shift}
 	\caption{\label{fig: schem_shift}}
 \end{figure}
 
-\subsection{Verifica della sincronia delle uscite tramite PRESET}
-Per prima cosa dopo aver montato il circuito verifichiamo la sincronicità delle commutazioni delle uscite.
-Dopo aver controllato che le uscite Q0, Q1, Q2 e Q4 fossero nello stato 0000, mantenendo il segnale di clock e il D-Switch scollegati abbiamo utilizzato la funzione StaticIO di wavegen per pilotare il pin PRE-BUTTON di \cref{fig: schem_shift} tramite un button di tipo pressed=0 e released=1 e  Logic per programmare un trigger che facesse partire l'acquisizione alla pressione del button, osservando le tracce prodotte dai 4 segnali in uscita.
+\subsection{Verifica della sincronia delle uscite rispetto a PRESET}
+Una volta controllato che le uscite $Q_0$, $Q_1$, $Q_2$ e $Q_4$ fossero nello
+stato $0000$, abbiamo utilizzato la funzione StaticIO per pilotare il PRESET
+(ingresso PRE-BUTTON di \cref{fig: schem_shift}) tramite un pulsante inverso
+(di tipo pressed$ = 0$ e released$ = 1$).
+Dunque si è acquisito con Logic Analyzer l'andamento temporale dei 4 segnali
+in uscita con condizione di trigger coincidente alla pressione del pulsante.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{3.trans}
-	\caption{Acquisizione temporale con Logic dei segnali di PRE-BUTTON e i 4 segnali in uscita da un registro a scorrimento di 4 bit come illustrato in \cref{fig: schem_shift}
+	\caption{Acquisizione con Logic dei segnali in PRE-BUTTON le 4 uscite dal
+	registro a scorrimento pilotato dall'ingresso di PRESET
 	\label{fig: Shift_reg_trans}}
 \end{figure}
-Dalla figura \cref{fig: Shift_reg_trans} vediamo che le commutazioni delle uscite avvengono in maniera sincrona, a un $\Delta T = 40 \si{n\s}$ a partire dalla pressione del pulsante di preset; successivamente le 4 uscite hanno raggiunto lo stato 1111.
+
+Dalla \cref{fig: Shift_reg_trans} vediamo che le commutazioni delle
+uscite avvengono allo stesso tempo, dopo un $\Delta t = 40 \si{n\s}$ a partire
+dalla pressione del pulsante di preset le 4 uscite raggiungono lo stato $1111$.
+
+Nella \cref{fig: reg_presync} si mette in evidenza come questo cambiamento di
+stato avvenga indipendentemente dal segnale di clock in ingresso ai FF, da cui
+si vede che l'ingresso di PRESET dei Flip-Flop è asincrono come atteso dalle
+specifiche tecniche.
+\begin{figure}[htbp]
+\centering
+%	\includegraphics[width=\textwidth]{3.b}
+	\caption{Acquisizione con Logic dei segnali in PRE-BUTTON, CLOCK e
+	$Q_{0, \ldots, 3}$ in uscita dal registro a scorrimento studiato
+	\label{fig: reg_presync}}
+\end{figure}
 
 \subsection{Verifica del funzionamento tramite clock}\label{sbs: clock_reg}
-A questo punto si vuole verificare il funzionamento del registro a scorrimento tramite un segnale di clock.
-Possiamo quindi costruire una tabella di verità in funzione del tempo del registro a partire dal periodo $T$ del clock inviato:
+Possiamo costruire una tabella di verità per il registro in funzione del tempo
+(discreto) battuto dal periodo $T$ del clock:
 \begin{table}[htbp]
 \centering
-\begin{tabular}{c|cc}
+\begin{tabular}{c|c}
 \toprule
-$t=t'$ & $t=t' + \Delta T$ & $ $\\
+$Q_i(t = t')$ & $Q_i(t = t' + T)$\\
 \midrule
 \midrule
-$Q_0$&$Q_0'$&$Q_0'$\\
-$Q_1$&$Q_0$(t=t')&$Q_0$(t=t')\\
-$Q_2$&$Q_1$(t=t')&$Q_0$(t=t'-$\Delta T$)\\
-$Q_3$&$Q_2$(t=t')&$Q_0$(t=t'-2$\Delta T$)\\
+$Q_0$ & $Q_0'$ \\
+$Q_1$ & $Q_0(t=t')$ \\
+$Q_2$ & $Q_1(t=t') = Q_0(t = t' - T)$ \\
+$Q_3$ & $Q_2(t=t') = Q_0(t = t'- 2T)$ \\
 \bottomrule
 \end{tabular}
-\caption{Tabella "di verità" di un registro a scorrimento, $Q_0'$ è il valore che viene inviato durante l'impulso di clock tramite il D-SWITCH
+\caption{Tabella "di verità" di un registro a scorrimento, in cui $Q_0'$ è il
+valore che viene inviato durante il fronte di salita $t'$ del clock tramite
+il $D$-SWITCH
 \label{tab: S-register}}
 \end{table}
-Come strategia per la verifica, utilizzeremo inizialmente il pulsante di preset per inizializzare tutte le uscite a 1, successivamente imposteremo il D-Switch tramite StaticIO come switch di tipo Push-Pull impostandolo a 0
-e invieremo un segnale di clock dell'ordine di 1 Hz. Utilizzeremo quindi Logic per acquisire gli andamenti nel tempo delle uscite.
-Dunque ci si aspetta che dopo 3 periodi di clock (3 secondi) a partire da quando l'uscita Q0 diventa 0, tutte le uscite diventino 0, e che aspettando ulteriormente questi valori non cambino.
+
+Nel caso in cui il pulsante di PRESET inizializzi tutte le uscite a 1, e il
+D-Switch sia impostato (sempre con StaticIO) al valore $Q_0' = 0$, la
+\cref{tab: S-register} si traduce nelle commutazioni di stato previste dalla
+\cref{tab: s-reg-truth}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{c|cccc}
+	\toprule
+	$t$	  &		$Q_0$	&	$Q_1$	& $Q_2$	&	$Q_3$  \\
+	\midrule
+	\midrule
+		$t'$ 	&	$1$	&	$1$	&	$1$	&	$1$	\\
+		$+T$	&	$0$	&	$1$	&	$1$	&	$1$	\\
+		$+2T$	&	$0$	&	$0$	&	$1$	&	$1$	\\
+		$+3T$	&	$0$	&	$0$	&	$0$	&	$1$	\\
+		$+4T$	&	$0$	&	$0$	&	$0$	&	$0$	\\		
+	\bottomrule
+	\end{tabular}
+\caption{Sequenza di transizioni che si osservano a partire da quando viene
+premuto il pulsante di PRESET ($t'$) lasciando a livello basso il $D$-SWITCH
+del registro a scorrimento. \label{tab: s-reg-truth}}
+\end{table}
+
+Per verificare il corretto funzionamento del circuito si pilota il registro
+con un segnale di clock di frequenza $f = \SI{1}{\Hz}$ e si fa ancora uso di
+Logic per acquisire gli andamenti nel tempo dei valori assunti dalle uscite.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{3.c}
-	\caption{Acquisizione temporale con Logic dei segnali in uscita da un registro a scorrimento di 4 bit come spiegato in \cref{sbs: clock_reg} \label{fig: Shift_reg_clock}}
+	\caption{Acquisizione con Logic dei segnali in uscita da un registro a
+	scorrimento di 4 bit come illustrato in \cref{sbs: clock_reg}
+	\label{fig: Shift_reg_clock}}
 \end{figure}
-Dalla \cref{fig: Shift_reg_clock} si verifica quanto detto prima, e le 4 uscite diventano (e si mantengono nel tempo visto che il D-Switch resta fisso a 0) tutte quante 0.
-Da questo si intuisce che collegando l'uscita $Q_3$ all'entrata del D-switch, possiamo generare una sequenza periodica.
+Dalla \cref{fig: Shift_reg_clock} si verifica come atteso che dopo 3 periodi
+di clock (3 secondi) a partire da quando l'uscita $Q_0 = 0$, le 4 uscite
+diventano (e si mantengono costanti nel tempo visto che il D-Switch rimane
+fisso a 0) tutte quante basse.
+
+Da questo si intuisce che collegando l'uscita (NOT) $Q_3$ all'ingresso
+$D$-switch, possiamo generare una sequenza periodica/costruire un contatore
+con modulo.
 
 \subsection{Prevalenza tra gli ingressi D-switch e PRESET}
 Utilizzando allo stesso tempo gli ingressi $D$-switch e PRESET del registro
@@ -258,8 +316,11 @@ si vede che è l'ultimo a pilotare il segnale in uscita, dal momento che PRESET
 con la regola generale per cui le architetture asincrone prendono la precedenza
 sulle istruzioni sincrone. 
 
-\subsection{Contatore BCD con Flip Flop ad anello}
-Dopo aver impostato tutte le uscite a 0, si collega l'uscita $\overline{Q_3}$ all'entrata D del primo Flip-Flop e si  invia un clock di frequenza pari a 1 kHz al circuito.
+\subsection{Twisted-ring Johnson counter}
+Dopo aver reimpostato il registro nello stato $Q_{i=0,\ldots, 3} = 0$, si
+collega l'uscita $\overline{Q_3}$ all'ingresso $D$ del primo Flip-Flop e si
+invia un clock di frequenza pari $f = \SI{1}{k\Hz}$ all'ingresso del circuito.
+
 Ci si aspetta che, prendendo un'uscita a caso, si osservi un segnale di clock di frequenza un quarto di quella di clock: questo effetto è dovuto a come la sequenza viene caricata nel registro a partire dall'uscita $\overline{Q_3}$.
 In generale supponendo che nel circuito ci siano in cascata n Flip-Flop, e che tutte le uscite siano inizializzate a 0, in una qualsiasi delle uscite otterrò un clock di frequenza pari a $\frac{f\ped{clk}}{n}$.
 \begin{figure}[htbp]
@@ -274,6 +335,7 @@ In generale supponendo che nel circuito ci siano in cascata n Flip-Flop, e che t
 \subsection{Costruzione del circuito}
 Si vuole ora costruire un generatore di sequenze pseudo-casuali a 4 bit utilizzando lo shift register costruito in precedenza e una porta XOR; la schematica del circuito che utilizzeremo è riportato in figura \cref{fig: schem_gen}.
 \begin{figure}[htbp]
+\centering
 	\includegraphics[width=0.6\textwidth]{schem_gen}
 	\captionof{figure}{\label{fig: schem_gen}}
 \end{figure}
@@ -298,6 +360,7 @@ Si provano quindi altre combinazioni di TAP, per verificare che la scelta di uti
 	\label{fig: TAP_10}}
 \end{figure}
 \begin{figure}[htbp]
+\centering
 	\includegraphics[width=\textwidth]{4.b_21}
 	\caption{Acquisizione temporale con Logic del bus in uscita dal generatore di sequenze psudo-casuale con TAP sulle uscite $Q_2$ e $Q_1$, la sequenza si ripete ogni 8 eventi
 	\label{fig: TAP_21}}
@@ -305,7 +368,7 @@ Si provano quindi altre combinazioni di TAP, per verificare che la scelta di uti
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{4.b_30}
-	\caption{Acquisizione temporale con Logic del bus in uscita dal generatore di sequenze psudo-casuale con TAP sulle uscite $Q_0$ e $Q_3$, la sequenza si ripete ogni 16 eventi \label{fig: TAP_30}}
+	\caption{Acquisizione temporale con Logic del bus in uscita dal generatore di sequenze pseudo-casuale con TAP sulle uscite $Q_0$ e $Q_3$, la sequenza si ripete ogni 16 eventi \label{fig: TAP_30}}
 \end{figure}
 
 %=======================
@@ -314,7 +377,7 @@ Si provano quindi altre combinazioni di TAP, per verificare che la scelta di uti
 Si intende costruire un divisore di frequenza a partire da un contatore binario a 4 bit, utilizzando l'integrato SN74LS163, presente in \cref{fig: schem_counter}. Si vuole innanzitutto verificarne il funzionamento. 
 \begin{figure}[htbp]
 \centering
-	\includegraphics[width=\textwidth]{schem_con}
+	\includegraphics[width=0.6\textwidth]{schem_con}
 	\caption{\label{fig: schem_counter}}
 \end{figure}
 
@@ -341,13 +404,13 @@ Utilizziamo quindi la funzione di trigger di Logic e la impostiamo in modo tale 
 	\caption{Acquisizione temporale con Logic del bus in uscita dal contatore durante la transizione 15->0; dall'immagine possiamo notare il comportamento sincrono della commutazione delle uscite del contatore \label{fig: Count_150}}
 \end{figure}
 Dalla \cref{fig: Count_150} possiamo infatti vedere che la transizione è sincrona e il passaggio di stato 1->0 avviene contemporaneamente in ogni uscita.
-\subsection{Costruzione di un divisore di frequenza 1/10}
+\subsection{Divisore di frequenza 1/10; Contatore BCD}
 Si vuole quindi realizzare un divisore in frequenza, che generi un segnale di periodo pari a 10 volte quello di clock: per farlo utilizzeremo il pin CLEAR del contatore, il quale quando viene inviato un segnale Low resetta il contatore allo stato 0000.
 \begin{figure}[htbp]
 \centering
-	\includegraphics[width=\textwidth]{Draft1}
-	\label{schem: 10_div}
-	\caption{Schematica utilizzata per il divisore per 10 di frequenza}
+	\includegraphics[width=0.6\textwidth]{Draft1}
+	\caption{Schematica utilizzata per il divisore per 10 di frequenza
+	\label{schem: 10_div}}
 \end{figure}
 È quindi necessario che il contatore conti un totale di 10 stati e poi si resetti, per cui partendo dallo 0, dobbiamo imporre la condizione che arrivati allo stato 9, il contatore riceva l'impulso di Clear (che ricordiamo essere Active Low).
 Per farlo utilizzeremo una porta NAND (utilizzando l'integrato SN74LS00) ai cui 2 ingressi invieremo il LSB e il MSB e invieremo l'uscita al pin di Clear. In questo modo, quando il contatore arriva a 9 (1001) il pin di Clear riceverà un segnale Low e il circuito si azzererà; pertanto la frequenza del segnale Clear sarà un decimo di quella di clock
@@ -361,18 +424,74 @@ Si costruisce quindi il circuito presente in \cref{schem: 10_div}.
 Come prima, si utilizza la funzione Logic per acquisire il Bus dei 4 bit in uscita, il clock e il bit di Clear.
 Osservando l'acquisizione presente in \cref{fig: Count_10th}, possiamo concludere come da aspettative che il segnale presente su clear ha una frequenza pari a $\frac{f_{clock}}{10}$ e Duty Cycle pari al $90 \percent$.
 \subsection{Divisore di frequenza programmabile con RCO}
+Per concludere, si vuole costruire un divisore in frequenza programmabile:
+per questo scopo utilizzeremo il bit RCO (Ripple Carry Output), la cui funzione è di generare un segnale H solo nel caso in cui il contatore abbia raggiunto lo stato massimo (1111) e il bit Load, che invece quando vale 0 sovrascrive lo stato del contatore in quello presente all'interno del bus di input. 
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{Draft2}
 	\caption{Schematica utilizzata per il divisore di frequenza programmabile}
 \end{figure}
-
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.RCO}
+	\caption{Acquisizione con Logic dei segnali del contatore per verificare il funzionamento del bit RCO}
+\end{figure}
 \subsection{Misura dei tempi caratteristici del divisore RCO}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.f_0110_20ns}
+	\caption{Acquisizione con logic dei segnali all'interno del circuito divisore di frequenza programmabile per un fondo scala dei tempi molto ristretto}
+\end{figure}
 \subsection{Analisi e verifica del comportamento del divisore RCO}
-
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.f_0000}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 0000}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.f_0010}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 0010}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.f_0101}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 0101}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.f_1110}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 1110}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+	\includegraphics[width=\textwidth]{5.f_1111}
+	\caption{Acquisizione con Logic dei segnali all'interno del circuito divisore di frequenza programmabile, con sequenza di avvio 1111}
+\end{figure}
 %=======================
 \section{Sintetizzatore musicale}
-
+%TODO ? AMOGUSSSS AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+\iffalse
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠛⠉⠙⠛⠛⠛⠛⠻⢿⣿⣷⣤⡀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⠋⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠈⢻⣿⣿⡄⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣸⣿⡏⠀⠀⠀⣠⣶⣾⣿⣿⣿⠿⠿⠿⢿⣿⣿⣿⣄⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣿⣿⠁⠀⠀⢰⣿⣿⣯⠁⠀⠀⠀⠀⠀⠀⠀⠈⠙⢿⣷⡄⠀
+⠀⠀⣀⣤⣴⣶⣶⣿⡟⠀⠀⠀⢸⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣷⠀
+⠀⢰⣿⡟⠋⠉⣹⣿⡇⠀⠀⠀⠘⣿⣿⣿⣿⣷⣦⣤⣤⣤⣶⣶⣶⣶⣿⣿⣿⠀
+⠀⢸⣿⡇⠀⠀⣿⣿⡇⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀
+⠀⣸⣿⡇⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠉⠻⠿⣿⣿⣿⣿⡿⠿⠿⠛⢻⣿⡇⠀⠀
+⠀⣿⣿⠁⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣧⠀⠀
+⠀⣿⣿⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠀
+⠀⣿⣿⠀⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀⠀
+⠀⢿⣿⡆⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀
+⠀⠸⣿⣧⡀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠃⠀⠀
+⠀⠀⠛⢿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⣰⣿⣿⣷⣶⣶⣶⠶⠀⢠⣿⣿⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⣽⣿⡏⠁⠀ ⠀⢸⣿⡇⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⢹⣿⡆⠀⠀⠀ ⣸⣿⠇⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁⠀⠈⠻⣿⣿⣿⣿⡿⠏⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠈⠛⠻⠿⠿⠿⠿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+\fi
 %=======================
 \section*{Conclusioni e commenti finali}
 Si è riusciti a verificare il corretto funzionamento di circuiti logici

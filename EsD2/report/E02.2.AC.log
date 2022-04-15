@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  13 APR 2022 18:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  15 APR 2022 08:55
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1237,63 +1237,29 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \mult@nat@firstbox=\box130
 \colbreak@box=\box131
 \mc@col@check@num=\count371
-)
-(c:/texlive/2021/texmf-dist/tex/latex/diagbox/diagbox.sty
-Package: diagbox 2020/02/09 v2.3 Making table heads with diagonal lines
-
-(c:/texlive/2021/texmf-dist/tex/latex/pict2e/pict2e.sty
-Package: pict2e 2020/09/30 v0.4b Improved picture commands (HjG,RN,JT)
-
-(c:/texlive/2021/texmf-dist/tex/latex/pict2e/pict2e.cfg
-File: pict2e.cfg 2016/02/05 v0.1u pict2e configuration for teTeX/TeXLive
-)
-Package pict2e Info: Driver file: pdftex.def on input line 112.
-Package pict2e Info: Driver file for pict2e: p2e-pdftex.def on input line 114.
-
-(c:/texlive/2021/texmf-dist/tex/latex/pict2e/p2e-pdftex.def
-File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
-)
-\pIIe@GRAPH=\toks55
-\@arclen=\dimen357
-\@arcrad=\dimen358
-\pIIe@tempdima=\dimen359
-\pIIe@tempdimb=\dimen360
-\pIIe@tempdimc=\dimen361
-\pIIe@tempdimd=\dimen362
-\pIIe@tempdime=\dimen363
-\pIIe@tempdimf=\dimen364
-)
-\diagbox@boxa=\box132
-\diagbox@boxb=\box133
-\diagbox@boxm=\box134
-\diagbox@wd=\dimen365
-\diagbox@ht=\dimen366
-\diagbox@insepl=\dimen367
-\diagbox@insepr=\dimen368
-\diagbox@outsepl=\dimen369
-\diagbox@outsepr=\dimen370
 ) (./E02.2.AC.aux)
 \openout1 = `E02.2.AC.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-Package hyperref Info: Link coloring ON on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+Package hyperref Info: Link coloring ON on input line 15.
+
 (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -1305,30 +1271,30 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count372
 )
-LaTeX Info: Redefining \ref on input line 16.
-LaTeX Info: Redefining \pageref on input line 16.
-LaTeX Info: Redefining \nameref on input line 16.
+LaTeX Info: Redefining \ref on input line 15.
+LaTeX Info: Redefining \pageref on input line 15.
+LaTeX Info: Redefining \nameref on input line 15.
 
 (./E02.2.AC.out) (./E02.2.AC.out)
 \@outlinefile=\write4
 \openout4 = `E02.2.AC.out'.
 
 Package translations Info: no dictionary file `translations-basic-dictionary-it
-alian.trsl' found. on input line 16.
+alian.trsl' found. on input line 15.
 
 (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count373
-\scratchdimen=\dimen371
-\scratchbox=\box135
+\scratchdimen=\dimen357
+\scratchbox=\box132
 \nofMPsegments=\count374
 \nofMParguments=\count375
-\everyMPshowfont=\toks56
+\everyMPshowfont=\toks55
 \MPscratchCnt=\count376
-\MPscratchDim=\dimen372
+\MPscratchDim=\dimen358
 \MPnumerator=\count377
 \makeMPintoPDFobject=\count378
-\everyMPtoPDFconversion=\toks57
+\everyMPtoPDFconversion=\toks56
 ) (c:/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1375,18 +1341,18 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \it@ocap on input line 16.
-LaTeX Info: Redefining \it@ccap on input line 16.
+LaTeX Info: Redefining \it@ocap on input line 15.
+LaTeX Info: Redefining \it@ccap on input line 15.
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.18} (current compat level: 1.15).
 
 \c@lstlisting=\count379
-LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 17.
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
 
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1395,130 +1361,176 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <../figs//dlatch.png, id=114, 1440.88312pt x 711.4078pt>
 File: ../figs//dlatch.png Graphic file (type png)
 <use ../figs//dlatch.png>
-Package pdftex.def Info: ../figs//dlatch.png  used on input line 119.
+Package pdftex.def Info: ../figs//dlatch.png  used on input line 118.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
 <../figs//latch2.png, id=115, 1152.7065pt x 505.89pt>
 File: ../figs//latch2.png Graphic file (type png)
 <use ../figs//latch2.png>
-Package pdftex.def Info: ../figs//latch2.png  used on input line 126.
+Package pdftex.def Info: ../figs//latch2.png  used on input line 125.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
  [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <../figs//dl
 atch.png (PNG copy)>]
-<../figs//dlatch_Drise.png, id=151, 1440.88312pt x 711.4078pt>
+<../figs//dlatch_Drise.png, id=152, 1440.88312pt x 711.4078pt>
 File: ../figs//dlatch_Drise.png Graphic file (type png)
 <use ../figs//dlatch_Drise.png>
-Package pdftex.def Info: ../figs//dlatch_Drise.png  used on input line 169.
+Package pdftex.def Info: ../figs//dlatch_Drise.png  used on input line 168.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
-<../figs//dlatch_Dfall40.png, id=154, 1440.88312pt x 711.4078pt>
+File: ../figs//dlatch_Drise.png Graphic file (type png)
+<use ../figs//dlatch_Drise.png>
+Package pdftex.def Info: ../figs//dlatch_Drise.png  used on input line 175.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+<../figs//dlatch_Dfall40.png, id=157, 1440.88312pt x 711.4078pt>
 File: ../figs//dlatch_Dfall40.png Graphic file (type png)
 <use ../figs//dlatch_Dfall40.png>
-Package pdftex.def Info: ../figs//dlatch_Dfall40.png  used on input line 176.
+Package pdftex.def Info: ../figs//dlatch_Dfall40.png  used on input line 178.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
-<../figs//dlatch_Erise.png, id=157, 1440.88312pt x 658.71094pt>
+<../figs//dlatch_Erise.png, id=160, 1440.88312pt x 658.71094pt>
 File: ../figs//dlatch_Erise.png Graphic file (type png)
 <use ../figs//dlatch_Erise.png>
-Package pdftex.def Info: ../figs//dlatch_Erise.png  used on input line 179.
+Package pdftex.def Info: ../figs//dlatch_Erise.png  used on input line 181.
 (pdftex.def)             Requested size: 483.69687pt x 221.12434pt.
-<../figs//schem_shift.png, id=163, 585.18625pt x 633.36626pt>
+
+LaTeX Warning: Float too large for page by 35.51707pt on input line 184.
+
+<../figs//schem_shift.png, id=166, 585.18625pt x 633.36626pt>
 File: ../figs//schem_shift.png Graphic file (type png)
 <use ../figs//schem_shift.png>
-Package pdftex.def Info: ../figs//schem_shift.png  used on input line 209.
+Package pdftex.def Info: ../figs//schem_shift.png  used on input line 213.
 (pdftex.def)             Requested size: 290.22107pt x 314.13095pt.
 [3 <../figs//latch2.png (PNG copy)> <../figs//dlatch_Drise.png (PNG copy)>]
 [4 <../figs//dlatch_Dfall40.png (PNG copy)> <../figs//dlatch_Erise.png (PNG cop
 y)>]
-<../figs//3.trans.png, id=180, 1152.7065pt x 505.89pt>
+<../figs//3.trans.png, id=181, 1152.7065pt x 505.89pt>
 File: ../figs//3.trans.png Graphic file (type png)
 <use ../figs//3.trans.png>
-Package pdftex.def Info: ../figs//3.trans.png  used on input line 218.
+Package pdftex.def Info: ../figs//3.trans.png  used on input line 226.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
-<../figs//3.c.png, id=184, 1152.7065pt x 505.89pt>
+<../figs//3.c.png, id=186, 1152.7065pt x 505.89pt>
 File: ../figs//3.c.png Graphic file (type png)
 <use ../figs//3.c.png>
-Package pdftex.def Info: ../figs//3.c.png  used on input line 248.
+Package pdftex.def Info: ../figs//3.c.png  used on input line 298.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
  [5 <../figs//schem_shift.png (PNG copy)>] [6 <../figs//3.trans.png (PNG copy)>
- <../figs//3.c.png (PNG copy)>]
-<../figs//3.e.png, id=201, 1152.7065pt x 553.46774pt>
+]
+<../figs//3.e.png, id=206, 1152.7065pt x 553.46774pt>
 File: ../figs//3.e.png Graphic file (type png)
 <use ../figs//3.e.png>
-Package pdftex.def Info: ../figs//3.e.png  used on input line 267.
+Package pdftex.def Info: ../figs//3.e.png  used on input line 328.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//schem_gen.png, id=203, 633.36626pt x 652.4375pt>
+<../figs//schem_gen.png, id=208, 633.36626pt x 652.4375pt>
 File: ../figs//schem_gen.png Graphic file (type png)
 <use ../figs//schem_gen.png>
-Package pdftex.def Info: ../figs//schem_gen.png  used on input line 277.
+Package pdftex.def Info: ../figs//schem_gen.png  used on input line 339.
 (pdftex.def)             Requested size: 290.22107pt x 298.96011pt.
-<../figs//4.b.png, id=204, 1152.7065pt x 553.46774pt>
+<../figs//4.b.png, id=209, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b.png Graphic file (type png)
 <use ../figs//4.b.png>
-Package pdftex.def Info: ../figs//4.b.png  used on input line 287.
+Package pdftex.def Info: ../figs//4.b.png  used on input line 349.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//4.b_10.png, id=208, 1152.7065pt x 553.46774pt>
+<../figs//4.b_10.png, id=213, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b_10.png Graphic file (type png)
 <use ../figs//4.b_10.png>
-Package pdftex.def Info: ../figs//4.b_10.png  used on input line 296.
+Package pdftex.def Info: ../figs//4.b_10.png  used on input line 358.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//4.b_21.png, id=209, 1152.7065pt x 553.46774pt>
+<../figs//4.b_21.png, id=214, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b_21.png Graphic file (type png)
 <use ../figs//4.b_21.png>
-Package pdftex.def Info: ../figs//4.b_21.png  used on input line 301.
+Package pdftex.def Info: ../figs//4.b_21.png  used on input line 364.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//4.b_30.png, id=210, 1152.7065pt x 553.46774pt>
+<../figs//4.b_30.png, id=215, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b_30.png Graphic file (type png)
 <use ../figs//4.b_30.png>
-Package pdftex.def Info: ../figs//4.b_30.png  used on input line 307.
+Package pdftex.def Info: ../figs//4.b_30.png  used on input line 370.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//schem_con.png, id=212, 549.05125pt x 480.79625pt>
+ [7 <../figs//3.c.png (PNG copy)>] [8 <../figs//3.e.png (PNG copy)> <../figs//s
+chem_gen.png (PNG copy)>]
+<../figs//schem_con.png, id=231, 549.05125pt x 480.79625pt>
 File: ../figs//schem_con.png Graphic file (type png)
 <use ../figs//schem_con.png>
-Package pdftex.def Info: ../figs//schem_con.png  used on input line 317.
-(pdftex.def)             Requested size: 483.69687pt x 423.57886pt.
- [7 <../figs//3.e.png (PNG copy)>] [8 <../figs//schem_gen.png (PNG copy)> <../f
-igs//4.b.png (PNG copy)>] [9 <../figs//4.b_10.png (PNG copy)> <../figs//4.b_21.
-png (PNG copy)>]
+Package pdftex.def Info: ../figs//schem_con.png  used on input line 380.
+(pdftex.def)             Requested size: 290.22107pt x 254.14584pt.
 <../figs//5.b.png, id=232, 1152.7065pt x 553.46774pt>
 File: ../figs//5.b.png Graphic file (type png)
 <use ../figs//5.b.png>
-Package pdftex.def Info: ../figs//5.b.png  used on input line 327.
+Package pdftex.def Info: ../figs//5.b.png  used on input line 390.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//5.d.png, id=235, 1152.7065pt x 553.46774pt>
+ [9 <../figs//4.b.png (PNG copy)> <../figs//4.b_10.png (PNG copy)>] [10 <../fig
+s//4.b_21.png (PNG copy)> <../figs//4.b_30.png (PNG copy)>] [11 <../figs//schem
+_con.png (PNG copy)> <../figs//5.b.png (PNG copy)>]
+<../figs//5.d.png, id=252, 1152.7065pt x 553.46774pt>
 File: ../figs//5.d.png Graphic file (type png)
 <use ../figs//5.d.png>
-Package pdftex.def Info: ../figs//5.d.png  used on input line 340.
+Package pdftex.def Info: ../figs//5.d.png  used on input line 403.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//Draft1.png, id=237, 483.0045pt x 549.85425pt>
+<../figs//Draft1.png, id=254, 483.0045pt x 549.85425pt>
 File: ../figs//Draft1.png Graphic file (type png)
 <use ../figs//Draft1.png>
-Package pdftex.def Info: ../figs//Draft1.png  used on input line 348.
-(pdftex.def)             Requested size: 483.69687pt x 550.64156pt.
-<../figs//5.e.png, id=240, 1152.7065pt x 553.46774pt>
+Package pdftex.def Info: ../figs//Draft1.png  used on input line 411.
+(pdftex.def)             Requested size: 290.22107pt x 330.38493pt.
+<../figs//5.e.png, id=257, 1152.7065pt x 553.46774pt>
 File: ../figs//5.e.png Graphic file (type png)
 <use ../figs//5.e.png>
-Package pdftex.def Info: ../figs//5.e.png  used on input line 358.
+Package pdftex.def Info: ../figs//5.e.png  used on input line 421.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
- [10 <../figs//4.b_30.png (PNG copy)>] [11 <../figs//schem_con.png (PNG copy)> 
-<../figs//5.b.png (PNG copy)>]
-<../figs//Draft2.png, id=255, 582.37575pt x 437.83575pt>
+<../figs//Draft2.png, id=259, 582.37575pt x 437.83575pt>
 File: ../figs//Draft2.png Graphic file (type png)
 <use ../figs//Draft2.png>
-Package pdftex.def Info: ../figs//Draft2.png  used on input line 366.
+Package pdftex.def Info: ../figs//Draft2.png  used on input line 431.
 (pdftex.def)             Requested size: 483.69687pt x 363.66414pt.
- [12 <../figs//5.d.png (PNG copy)>] [13 <../figs//Draft1.png>] [14 <../figs//5.
-e.png (PNG copy)> <../figs//Draft2.png>] (./E02.2.AC.aux)
+<../figs//5.RCO.png, id=260, 1152.7065pt x 505.89pt>
+File: ../figs//5.RCO.png Graphic file (type png)
+<use ../figs//5.RCO.png>
+Package pdftex.def Info: ../figs//5.RCO.png  used on input line 436.
+(pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
+<../figs//5.f_0110_20ns.png, id=261, 1152.7065pt x 505.89pt>
+File: ../figs//5.f_0110_20ns.png Graphic file (type png)
+<use ../figs//5.f_0110_20ns.png>
+Package pdftex.def Info: ../figs//5.f_0110_20ns.png  used on input line 442.
+(pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
+<../figs//5.f_0000.png, id=262, 1152.7065pt x 553.46774pt>
+File: ../figs//5.f_0000.png Graphic file (type png)
+<use ../figs//5.f_0000.png>
+Package pdftex.def Info: ../figs//5.f_0000.png  used on input line 448.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//5.f_0010.png, id=263, 1152.7065pt x 553.46774pt>
+File: ../figs//5.f_0010.png Graphic file (type png)
+<use ../figs//5.f_0010.png>
+Package pdftex.def Info: ../figs//5.f_0010.png  used on input line 453.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//5.f_0101.png, id=264, 1152.7065pt x 553.46774pt>
+File: ../figs//5.f_0101.png Graphic file (type png)
+<use ../figs//5.f_0101.png>
+Package pdftex.def Info: ../figs//5.f_0101.png  used on input line 458.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//5.f_1110.png, id=265, 1152.7065pt x 553.46774pt>
+File: ../figs//5.f_1110.png Graphic file (type png)
+<use ../figs//5.f_1110.png>
+Package pdftex.def Info: ../figs//5.f_1110.png  used on input line 463.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//5.f_1111.png, id=266, 1152.7065pt x 553.46774pt>
+File: ../figs//5.f_1111.png Graphic file (type png)
+<use ../figs//5.f_1111.png>
+Package pdftex.def Info: ../figs//5.f_1111.png  used on input line 468.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+ [12 <../figs//5.d.png (PNG copy)>] [13 <../figs//Draft1.png> <../figs//5.e.png
+ (PNG copy)>] [14 <../figs//Draft2.png> <../figs//5.RCO.png (PNG copy)>]
+[15 <../figs//5.f_0110_20ns.png (PNG copy)> <../figs//5.f_0000.png (PNG copy)>]
+[16 <../figs//5.f_0010.png (PNG copy)> <../figs//5.f_0101.png (PNG copy)>]
+[17 <../figs//5.f_1110.png (PNG copy)> <../figs//5.f_1111.png (PNG copy)>]
+[18] (./E02.2.AC.aux)
 Package rerunfilecheck Info: File `E02.2.AC.out' has not changed.
-(rerunfilecheck)             Checksum: B2821254BF9B84506EBC697FD21CD3F6;6820.
+(rerunfilecheck)             Checksum: C355B87136623D56F28C60978815B38A;6763.
  ) 
 Here is how much of TeX's memory you used:
- 56669 strings out of 479713
- 1385606 string characters out of 5876923
+ 56504 strings out of 479713
+ 1383662 string characters out of 5876923
  2186107 words of memory out of 10000000
- 73579 multiletter control sequences out of 15000+600000
+ 73407 multiletter control sequences out of 15000+600000
  417592 words of font info for 66 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,11n,125p,754b,908s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,11n,125p,754b,910s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/tex
 live/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dis
@@ -1533,10 +1545,10 @@ fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type
 1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/c
 m-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
 rm1728.pfb>
-Output written on E02.2.AC.pdf (14 pages, 1148613 bytes).
+Output written on E02.2.AC.pdf (18 pages, 1530981 bytes).
 PDF statistics:
- 355 PDF objects out of 1000 (max. 8388607)
- 281 compressed objects within 3 object streams
- 75 named destinations out of 1000 (max. 500000)
- 321 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 394 PDF objects out of 1000 (max. 8388607)
+ 308 compressed objects within 4 object streams
+ 88 named destinations out of 1000 (max. 500000)
+ 356 words of extra memory for PDF output out of 10000 (max. 10000000)
 
