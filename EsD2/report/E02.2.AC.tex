@@ -319,21 +319,38 @@ sulle istruzioni sincrone.
 \subsection{Twisted-ring Johnson counter}
 Dopo aver reimpostato il registro nello stato $Q_{i=0,\ldots, 3} = 0$, si
 collega l'uscita $\overline{Q_3}$ all'ingresso $D$ del primo Flip-Flop e si
-invia un clock di frequenza pari $f = \SI{1}{k\Hz}$ all'ingresso del circuito.
-
-Ci si aspetta che, prendendo un'uscita a caso, si osservi un segnale di clock di frequenza un quarto di quella di clock: questo effetto è dovuto a come la sequenza viene caricata nel registro a partire dall'uscita $\overline{Q_3}$.
-In generale supponendo che nel circuito ci siano in cascata n Flip-Flop, e che tutte le uscite siano inizializzate a 0, in una qualsiasi delle uscite otterrò un clock di frequenza pari a $\frac{f\ped{clk}}{n}$.
+invia un clock di frequenza pari $f\ped{clk} = \SI{1}{k\Hz}$ all'ingresso del
+circuito. Si riporta in \cref{fig: Shift_reg_seq} l'acquisizione con Logic
+Analyzer dei segnali di clock e dei 4 output in funzione del tempo.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{3.e}
-	\caption{Acquisizione temporale con Logic dei segnali in uscita da un registro a scorrimento di 4 bit con l'ultima uscita negata collegata all'entrata del primo flip flop
+	\caption{Acquisizione con Logic dei segnali in uscita dal registro a
+	scorrimento con l'ultima uscita negata collegata all'ingresso del primo FF.
 	\label{fig: Shift_reg_seq}}
 \end{figure}
+
+Da questa vediamo che in ogni uscita $Q_i$ si ha un'onda quadra con frequenza
+$f = f\ped{clk}/8$, ciascuna traslata temporalmente di un periodo di clock
+rispetto alla $Q_{i-1}$ precedente; per cui nel registro osserviamo la
+sequenza atomica $00001111$ ripetersi ogni $8$ cicli di clock.
+
+Questo è dovuto al fatto che nel registro ora scorre in modo ciclico la
+concatenazione dello stato iniziale degli output e del suo negato (tramite
+il collegamento ad anello $\overline{Q_3} \to Q_0$).
+Supponendo infatti che nel circuito siano collegati ad anello $n$
+edge-triggered Flip-Flop, in una qualsiasi delle uscite del twisted-ring
+Johnson counter ci si aspetta di trovare un clock di frequenza divisa di un
+fattore $2n$.
 
 %=======================
 \section{Generatore di sequenze pseudo-casuali}
 \subsection{Costruzione del circuito}
-Si vuole ora costruire un generatore di sequenze pseudo-casuali a 4 bit utilizzando lo shift register costruito in precedenza e una porta XOR; la schematica del circuito che utilizzeremo è riportato in figura \cref{fig: schem_gen}.
+Si vuole ora costruire un generatore di sequenze pseudo-casuali a 4 bit
+utilizzando lo shift register studiato in precedenza e una porta XOR (dal chip
+integrato SN74LS86 Quad XOR Gate).
+La schematica del circuito che utilizzeremo è riportata in figura
+\cref{fig: schem_gen}.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=0.6\textwidth]{schem_gen}
@@ -341,40 +358,95 @@ Si vuole ora costruire un generatore di sequenze pseudo-casuali a 4 bit utilizza
 \end{figure}
 
 \subsection{Analisi e verifica del funzionamento}
-Dopo aver montato il circuito si inizializzano tutti Flip-Flop a 1 e si invia un segnale di clock a 10 kHz per verificare il funzionamento: 
-essendo il registro di lunghezza pari a 4 bit, dalla teoria ci aspettiamo che la sequenza si ripeta dopo $2^4 = 16$ eventi al massimo, condizione che si ottiene utilizzando come TAP (segnali in ingresso alla porta XOR, la cui uscita sarà inviata all'entrata D del primo Flip-Flop) le uscite $Q_2$ e $Q_3$. 
+Dopo aver montato il circuito si inizializzano tutti Flip-Flop a 1, si invia
+un segnale di clock a 10 kHz, sempre collegando gli output $Q_{0,\ldots, 3}$
+ai canali del Logic Analyzer per verificarne il funzionamento.
 
+Poiché il registro costruito ha memoria di $n = 4$ bit, dalla teoria ci
+aspettiamo che la sequenza si ripeta dopo $2^4 = 16$ eventi al massimo,
+condizione che si ottiene utilizzando come TAP (i.e. segnali in ingresso alla
+porta XOR, la cui uscita è inviata all'ingresso $D = Q_0$ del primo FF) gli
+output $Q_2$ (o $Q_0$) e $Q_3$.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{4.b}
-	\caption{\label{fig: TAP_23}Acquisizione temporale con Logic del bus in uscita dal generatore di sequenze psudo-casuale descritto in \cref{fig: schem_gen}}
+	\caption{Acquisizione temporale con Logic del bus in uscita dal generatore
+	di sequenze psudo-casuale descritto in \cref{fig: schem_gen}
+	\label{fig: TAP_23}}
 \end{figure}
 
-Dalla \cref{fig: TAP_23} si verificano le aspettative per cui la sequenza generata a una qualsiasi uscita si ripete ogni 16 periodi di clock (essendo uno shift register la sequenza nelle altre uscite sarà la medesima, solo che saranno sfasate lungo l'asse temporale le une con le altre).
+\begin{table}[htbp]
+\centering
+\begin{tabular}{cccc}
+\toprule
+$Q_0$ & $Q_1$ & $Q_2$ & $Q_3$ \\
+\midrule
+\midrule
+1 & 1 & 1 & 1 \\
+0 & 1 & 1 & 1 \\
+0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+1 & 0 & 0 & 1 \\
+1 & 1 & 0 & 0 \\
+0 & 1 & 1 & 0 \\
+1 & 0 & 1 & 1 \\
+0 & 1 & 0 & 1 \\
+1 & 0 & 1 & 0 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 0 \\
+1 & 1 & 1 & 1 \\
+\bottomrule
+\end{tabular}
+\caption{Sequenza pseudo-casuale attesa collegando come TAP alla porta XOR i
+segnali $Q_2$ e $Q_3$ in uscita dal registro
+\label{tab: pseudo}}
+\end{table}
+Dall'acquisizione riportata in \cref{fig: TAP_23} si osserva la sequenza
+riportata in \cref{tab: pseudo} ripetersi ogni 16 periodi di clock in accordo
+con le aspettative (prendendo come riferimento una qualsiasi uscita dello
+shift-register, visto che la sequenza nelle altre uscite sarà la medesima, ma
+sfasata lungo l'asse temporale di qualche ciclo di clock).
+
 \subsection{Studio delle sequenze generabili con diverse condizioni iniziali}
-Si provano quindi altre combinazioni di TAP, per verificare che la scelta di utilizzare l'uscita $Q_2$ e $Q_3$ produce una sequenza più lunga rispetto a qualunque altra configurazione
+Si provano quindi altre combinazioni di TAP, per verificare che la scelta di
+$Q_2$ e $Q_3$ produca una sequenza più lunga rispetto alle altre possibili
+configurazioni. Riportiamo in \cref{fig: TAP_10}, \cref{fig: TAP_21} e
+\cref{fig: TAP_30} i risultati ottenuti con Logic Analyzer dell'AD2.
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{4.b_10}
-	\caption{Acquisizione temporale con Logic del bus in uscita dal generatore di sequenze psudo-casuale con TAP sulle uscite $Q_0$ e $Q_1$, la sequenza si ripete ogni 4 eventi
+	\caption{Acquisizione con Logic del bus in uscita dal generatore di sequenze
+	pseudo-casuali con TAP sulle uscite $Q_0$ e $Q_1$; la sequenza si ripete ogni
+	4 cicli di clock.
 	\label{fig: TAP_10}}
 \end{figure}
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{4.b_21}
-	\caption{Acquisizione temporale con Logic del bus in uscita dal generatore di sequenze psudo-casuale con TAP sulle uscite $Q_2$ e $Q_1$, la sequenza si ripete ogni 8 eventi
+	\caption{Acquisizione con Logic del bus in uscita dal generatore di sequenze
+	pseudo-casuali con TAP sulle uscite $Q_2$ e $Q_1$; la sequenza si ripete ogni
+	8 cicli di clock.
 	\label{fig: TAP_21}}
 \end{figure}
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=\textwidth]{4.b_30}
-	\caption{Acquisizione temporale con Logic del bus in uscita dal generatore di sequenze pseudo-casuale con TAP sulle uscite $Q_0$ e $Q_3$, la sequenza si ripete ogni 16 eventi \label{fig: TAP_30}}
+	\caption{Acquisizione con Logic del bus in uscita dal generatore di sequenze
+	pseudo-casuali con TAP sulle uscite La$Q_0$ e $Q_3$, la sequenza è massimale
+	(si ripete ogni $2^n = 16$ cicli di clock).
+	\label{fig: TAP_30}}
 \end{figure}
 
 %=======================
 \section{Divisori di frequenza con contatori binari}
 \subsection{Costruzione del circuito}
-Si intende costruire un divisore di frequenza a partire da un contatore binario a 4 bit, utilizzando l'integrato SN74LS163, presente in \cref{fig: schem_counter}. Si vuole innanzitutto verificarne il funzionamento. 
+Si intende costruire un divisore di frequenza a partire da un contatore
+binario a 4 bit (integrato SN74LS163 synchronous binary counter with
+synchronous clear/load) secondo lo schema riportato in
+\cref{fig: schem_counter}. 
 \begin{figure}[htbp]
 \centering
 	\includegraphics[width=0.6\textwidth]{schem_con}
@@ -382,6 +454,8 @@ Si intende costruire un divisore di frequenza a partire da un contatore binario 
 \end{figure}
 
 \subsection{Verifica del ciclo di funzionamento dei contatori}
+Si vuole innanzitutto verificarne il funzionamento.
+
 Dopo aver montato il circuito utilizziamo la funzione Pattern di Waveform per inviare un segnale di clock di frequenza pari a 10 kHz al pin di clock (CLK) del contatore, e utilizzeremo Logic per acquisire le uscite $Q_0$->$Q_3$.
 Essendo un contatore a 4 bit, ci si aspetta che il Bus conti dallo stato 0000 (0 in decimale) fino allo stato 1111 (15 in decimale).
 Per questo motivo utilizzeremo un formato di Bus esadecimale per verificare che il circuito generi tutti gli stati possibili (0->F).
