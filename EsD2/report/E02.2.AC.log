@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  15 APR 2022 08:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  15 APR 2022 09:02
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1407,58 +1407,62 @@ File: ../figs//3.trans.png Graphic file (type png)
 <use ../figs//3.trans.png>
 Package pdftex.def Info: ../figs//3.trans.png  used on input line 226.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
-<../figs//3.c.png, id=186, 1152.7065pt x 505.89pt>
+<../figs//3.b.png, id=184, 1152.7065pt x 505.89pt>
+File: ../figs//3.b.png Graphic file (type png)
+<use ../figs//3.b.png>
+Package pdftex.def Info: ../figs//3.b.png  used on input line 242.
+(pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
+<../figs//3.c.png, id=187, 1152.7065pt x 505.89pt>
 File: ../figs//3.c.png Graphic file (type png)
 <use ../figs//3.c.png>
 Package pdftex.def Info: ../figs//3.c.png  used on input line 298.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
  [5 <../figs//schem_shift.png (PNG copy)>] [6 <../figs//3.trans.png (PNG copy)>
-]
-<../figs//3.e.png, id=206, 1152.7065pt x 553.46774pt>
+ <../figs//3.b.png (PNG copy)>] [7 <../figs//3.c.png (PNG copy)>]
+<../figs//3.e.png, id=213, 1152.7065pt x 553.46774pt>
 File: ../figs//3.e.png Graphic file (type png)
 <use ../figs//3.e.png>
 Package pdftex.def Info: ../figs//3.e.png  used on input line 328.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//schem_gen.png, id=208, 633.36626pt x 652.4375pt>
+<../figs//schem_gen.png, id=215, 633.36626pt x 652.4375pt>
 File: ../figs//schem_gen.png Graphic file (type png)
 <use ../figs//schem_gen.png>
 Package pdftex.def Info: ../figs//schem_gen.png  used on input line 339.
 (pdftex.def)             Requested size: 290.22107pt x 298.96011pt.
-<../figs//4.b.png, id=209, 1152.7065pt x 553.46774pt>
+<../figs//4.b.png, id=216, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b.png Graphic file (type png)
 <use ../figs//4.b.png>
 Package pdftex.def Info: ../figs//4.b.png  used on input line 349.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//4.b_10.png, id=213, 1152.7065pt x 553.46774pt>
+<../figs//4.b_10.png, id=220, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b_10.png Graphic file (type png)
 <use ../figs//4.b_10.png>
 Package pdftex.def Info: ../figs//4.b_10.png  used on input line 358.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//4.b_21.png, id=214, 1152.7065pt x 553.46774pt>
+<../figs//4.b_21.png, id=221, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b_21.png Graphic file (type png)
 <use ../figs//4.b_21.png>
 Package pdftex.def Info: ../figs//4.b_21.png  used on input line 364.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//4.b_30.png, id=215, 1152.7065pt x 553.46774pt>
+<../figs//4.b_30.png, id=222, 1152.7065pt x 553.46774pt>
 File: ../figs//4.b_30.png Graphic file (type png)
 <use ../figs//4.b_30.png>
 Package pdftex.def Info: ../figs//4.b_30.png  used on input line 370.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
- [7 <../figs//3.c.png (PNG copy)>] [8 <../figs//3.e.png (PNG copy)> <../figs//s
-chem_gen.png (PNG copy)>]
-<../figs//schem_con.png, id=231, 549.05125pt x 480.79625pt>
+ [8 <../figs//3.e.png (PNG copy)>] [9 <../figs//schem_gen.png (PNG copy)> <../f
+igs//4.b.png (PNG copy)>]
+<../figs//schem_con.png, id=236, 549.05125pt x 480.79625pt>
 File: ../figs//schem_con.png Graphic file (type png)
 <use ../figs//schem_con.png>
 Package pdftex.def Info: ../figs//schem_con.png  used on input line 380.
 (pdftex.def)             Requested size: 290.22107pt x 254.14584pt.
-<../figs//5.b.png, id=232, 1152.7065pt x 553.46774pt>
+<../figs//5.b.png, id=237, 1152.7065pt x 553.46774pt>
 File: ../figs//5.b.png Graphic file (type png)
 <use ../figs//5.b.png>
 Package pdftex.def Info: ../figs//5.b.png  used on input line 390.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
- [9 <../figs//4.b.png (PNG copy)> <../figs//4.b_10.png (PNG copy)>] [10 <../fig
-s//4.b_21.png (PNG copy)> <../figs//4.b_30.png (PNG copy)>] [11 <../figs//schem
-_con.png (PNG copy)> <../figs//5.b.png (PNG copy)>]
+ [10 <../figs//4.b_10.png (PNG copy)> <../figs//4.b_21.png (PNG copy)>] [11 <..
+/figs//4.b_30.png (PNG copy)> <../figs//schem_con.png (PNG copy)>]
 <../figs//5.d.png, id=252, 1152.7065pt x 553.46774pt>
 File: ../figs//5.d.png Graphic file (type png)
 <use ../figs//5.d.png>
@@ -1478,56 +1482,57 @@ Package pdftex.def Info: ../figs//5.e.png  used on input line 421.
 File: ../figs//Draft2.png Graphic file (type png)
 <use ../figs//Draft2.png>
 Package pdftex.def Info: ../figs//Draft2.png  used on input line 431.
-(pdftex.def)             Requested size: 483.69687pt x 363.66414pt.
+(pdftex.def)             Requested size: 290.22107pt x 218.1958pt.
 <../figs//5.RCO.png, id=260, 1152.7065pt x 505.89pt>
 File: ../figs//5.RCO.png Graphic file (type png)
 <use ../figs//5.RCO.png>
 Package pdftex.def Info: ../figs//5.RCO.png  used on input line 436.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
-<../figs//5.f_0110_20ns.png, id=261, 1152.7065pt x 505.89pt>
+ [12 <../figs//5.b.png (PNG copy)>] [13 <../figs//5.d.png (PNG copy)> <../figs/
+/Draft1.png>]
+<../figs//5.f_0110_20ns.png, id=276, 1152.7065pt x 505.89pt>
 File: ../figs//5.f_0110_20ns.png Graphic file (type png)
 <use ../figs//5.f_0110_20ns.png>
 Package pdftex.def Info: ../figs//5.f_0110_20ns.png  used on input line 442.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
-<../figs//5.f_0000.png, id=262, 1152.7065pt x 553.46774pt>
+<../figs//5.f_0000.png, id=277, 1152.7065pt x 553.46774pt>
 File: ../figs//5.f_0000.png Graphic file (type png)
 <use ../figs//5.f_0000.png>
 Package pdftex.def Info: ../figs//5.f_0000.png  used on input line 448.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//5.f_0010.png, id=263, 1152.7065pt x 553.46774pt>
+<../figs//5.f_0010.png, id=278, 1152.7065pt x 553.46774pt>
 File: ../figs//5.f_0010.png Graphic file (type png)
 <use ../figs//5.f_0010.png>
 Package pdftex.def Info: ../figs//5.f_0010.png  used on input line 453.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//5.f_0101.png, id=264, 1152.7065pt x 553.46774pt>
+<../figs//5.f_0101.png, id=279, 1152.7065pt x 553.46774pt>
 File: ../figs//5.f_0101.png Graphic file (type png)
 <use ../figs//5.f_0101.png>
 Package pdftex.def Info: ../figs//5.f_0101.png  used on input line 458.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//5.f_1110.png, id=265, 1152.7065pt x 553.46774pt>
+<../figs//5.f_1110.png, id=280, 1152.7065pt x 553.46774pt>
 File: ../figs//5.f_1110.png Graphic file (type png)
 <use ../figs//5.f_1110.png>
 Package pdftex.def Info: ../figs//5.f_1110.png  used on input line 463.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//5.f_1111.png, id=266, 1152.7065pt x 553.46774pt>
+<../figs//5.f_1111.png, id=281, 1152.7065pt x 553.46774pt>
 File: ../figs//5.f_1111.png Graphic file (type png)
 <use ../figs//5.f_1111.png>
 Package pdftex.def Info: ../figs//5.f_1111.png  used on input line 468.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
- [12 <../figs//5.d.png (PNG copy)>] [13 <../figs//Draft1.png> <../figs//5.e.png
- (PNG copy)>] [14 <../figs//Draft2.png> <../figs//5.RCO.png (PNG copy)>]
-[15 <../figs//5.f_0110_20ns.png (PNG copy)> <../figs//5.f_0000.png (PNG copy)>]
-[16 <../figs//5.f_0010.png (PNG copy)> <../figs//5.f_0101.png (PNG copy)>]
-[17 <../figs//5.f_1110.png (PNG copy)> <../figs//5.f_1111.png (PNG copy)>]
-[18] (./E02.2.AC.aux)
+ [14 <../figs//5.e.png (PNG copy)> <../figs//Draft2.png>]
+[15 <../figs//5.RCO.png (PNG copy)> <../figs//5.f_0110_20ns.png (PNG copy)>]
+[16 <../figs//5.f_0000.png (PNG copy)> <../figs//5.f_0010.png (PNG copy)>]
+[17 <../figs//5.f_0101.png (PNG copy)> <../figs//5.f_1110.png (PNG copy)>]
+[18 <../figs//5.f_1111.png (PNG copy)>] (./E02.2.AC.aux)
 Package rerunfilecheck Info: File `E02.2.AC.out' has not changed.
 (rerunfilecheck)             Checksum: C355B87136623D56F28C60978815B38A;6763.
  ) 
 Here is how much of TeX's memory you used:
- 56504 strings out of 479713
- 1383662 string characters out of 5876923
+ 56515 strings out of 479713
+ 1383856 string characters out of 5876923
  2186107 words of memory out of 10000000
- 73407 multiletter control sequences out of 15000+600000
+ 73418 multiletter control sequences out of 15000+600000
  417592 words of font info for 66 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,11n,125p,754b,910s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1545,10 +1550,10 @@ fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type
 1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/c
 m-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
 rm1728.pfb>
-Output written on E02.2.AC.pdf (18 pages, 1530981 bytes).
+Output written on E02.2.AC.pdf (18 pages, 1574095 bytes).
 PDF statistics:
- 394 PDF objects out of 1000 (max. 8388607)
+ 395 PDF objects out of 1000 (max. 8388607)
  308 compressed objects within 4 object streams
  88 named destinations out of 1000 (max. 500000)
- 356 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 361 words of extra memory for PDF output out of 10000 (max. 10000000)
 
