@@ -11,7 +11,7 @@
 \graphicspath{{../figs/}}
 
 \author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
-\title{EsD2: Costruzione di D-Latch, contatori e shift-register}
+\title{EsD3: Macchine a stati finiti: semafori e riconoscitore di fronti}
 \begin{document}
 \date{\today}
 \maketitle
@@ -30,43 +30,91 @@ C_d = 97 \pm 4 \; \si{n\F}
 \]
 
 %=======================
-\section{D-Latch con Enable}\label{sec: dlatch}
+\section{Implementazione di un semaforo con circuiti integrati}\label{sec: dlatch}
 \subsection{Costruzione del circuito}
-Si è costruito un circuito D-Latch secondo lo schema mostrato in
-\cref{schm: dlatch} utilizzando le porte NAND di due integrati SN74LS00.
-\begin{figure}
-\centering
-\begin{circuitikz}
-    \draw (0,2.4) node[american nand port,label=north:R] (mynand1){};
-    \draw (0,0) node[american nand port,label=south:S] (mynand2){};
-    \draw (2.5,2.4) node[american nand port] (mynand3){};
-    \draw (2.5,0) node[american nand port] (mynand4){};
-    \draw (-3.5,0.5) node[american nand port,label=left:$\bar{D}$ NOT,
-    rotate = 270] (mynand5){};
-    \draw (-2,1.2) node[circ, label=left:$E$](E){}; 
+Si è assemblato il circuito riportato in Figura~\ref{fig:semaforoSchema} e si sono collegati i pin \texttt{preset} e \texttt{clear} dei D-FF a $ V \ped{CC}$.
+\begin{figure}[htbp]
+    \centering
+    \begin{circuitikz}
+        \def\andScale{0.7};
+        \def\cusu{-1};
+        \def\mano{0.5}
+        \def\yep{2}
 
-	\draw (mynand3.out) to[short] ++(0,-1) to[short] ++(-2,0) |- (mynand4.in 1);
-	\draw (mynand4.out) -- ++(1,0) node[circ, label=right:$\overline{Q}$]{};
-	\draw (mynand3.out) -- ++(1,0) node[circ, label=right:$Q$]{};
-	\draw (mynand4.out) to[short] ++(0,1) to[short] ++(-1.8,0) |- (mynand3.in 2);
-    \draw (mynand1.out) |- (mynand3.in 1);
-    \draw (mynand2.out) |- (mynand4.in 2);
-    \draw (mynand5.in 1) |- (mynand5.in 2);
-    \draw (mynand5.in 2) |- (mynand1.in 1);
-    \draw (mynand1.in 1) -- ++ (-3,0) node[circ, label=left:$D$]{};
-    \draw (mynand5.out) |- (mynand2.in 2);
-    \draw (mynand2.in 1) |- (E);
-    \draw (mynand1.in 2) |- (E);
-\end{circuitikz}
-\caption{Schema logico del circuito $D$-Latch (con Enable) realizzato
-\label{schm: dlatch}}
+        % componenti
+        %% flip flop
+        \draw (0,0) node[flipflop D] (ffSinistra) {};
+        \draw (5,0) node[flipflop D] (ffDestra) {};
+
+        %% and
+        \node (andSinistra) at (-2, |- ffSinistra.pin 1) [and port, scale=\andScale] {};
+        \node (andDestra) at (3, |- ffSinistra.pin 1) [and port, scale=\andScale] {};
+        \node [and port, scale=\andScale] (andSopra) at (5,4) {};
+
+        % per i crossing
+        \node at ($ (ffSinistra.pin 4) + (\mano,0) $) (ancilla) {};
+
+        %% led
+        \node (G) at ($ (andSopra.out) + (3,0) $) {$ G $};
+        \node (Y) at ($ (G) + (0,-0.5) $) {$ Y $};
+        \node (R) at ($ (G) + (0,-1) $) {$ R $};
+
+        % input
+        \node (E) at ($ (andSopra.in 1) + (-9,0) $) {$ E $};
+        \node (CLK) at ($ (E)+(0,-7) $) {\texttt{CLK}};
+
+        % fili
+        %% clock
+        \draw (CLK) -| (ffDestra.pin 3);
+        \draw (ffSinistra.pin 3) -- (ffSinistra.pin 3 |-, |- CLK);
+
+        % and e ff
+        \draw (andSinistra.out) -- (ffSinistra.pin 1);
+        \draw (andDestra.out) -- (ffDestra.pin 1);
+        \draw (E) -- (andSopra.in 1);
+        \draw (ffSinistra.pin 4) -- ++ (\mano,0) |- (andSopra.in 2);
+        \draw (andSinistra.in 2) -| (-3.5, |- E);
+        \draw (andDestra.in 1) -- ($ (ffSinistra.pin 4 |-, |- andDestra.in 1) + (\mano,0) $);
+        %% cacro del crossing pt 1
+        \node at (ffSinistra.pin 4 |-, \yep) [jump crossing] (X1) {};
+        \node at (ancilla |-, \yep) [jump crossing] (X2) {};
+        \draw (andSinistra.in 1) |- (X1.west);
+        \draw (X1.east) -- (X2.west);
+        \draw (X2.east) -- (ffDestra.pin 6 |-, \yep);
+        %% cancro del crossing pt 2
+        \node at ($ (ffDestra.pin 3) + (0,\cusu) $) [jump crossing] (X) {};
+        \draw (ffDestra.pin 4) |- (X.east);
+        \draw (X.west) -| (andDestra.in 2);
+
+        %% led
+        \draw (andSopra.out) -- (G);
+        \draw (ffDestra.pin 6) |- (Y);
+        %% cancro del crossing
+        \node at (ancilla |-, |- R) [jump crossing] (X1) {};
+        \node at (ffDestra.pin 6 |-, |- R) [jump crossing] (X2) {};
+        \draw (ffSinistra.pin 6) |- (X1.west);
+        \draw (X1.east) -- (X2.west);
+        \draw (X2.east) -- (R);
+
+        % numeri dei pin
+%        \draw (ffSinistra.pin 1) node[above] {2};
+%        \draw (ffSinistra.pin 3) node[above] {3};
+%        \draw (ffSinistra.pin 4) node[above] {6};
+%        \draw (ffSinistra.pin 6) node[below] {5};
+%
+%        \draw (ffDestra.pin 1) node[above] {12};
+%        \draw (ffDestra.pin 3) node[above] {11};
+%        \draw (ffDestra.pin 4) node[above] {8};
+%        \draw (ffDestra.pin 6) node[below] {9};
+    \end{circuitikz}
+    \caption{\label{fig:semaforoSchema}schema del semaforo Mealy con enable.}
 \end{figure}
 
-Per studiarne il comportamento generiamo nei due pin DIO 0 (DATA) e DIO 1
-(ENABLE) dell'AD2 due segnali di clock di frequenza $f = \SI{1}{k\hertz}$ e
-sfasati tra loro di $\SI{90}{\degree}$ agli ingressi $D$ ed $E$ del
-circuito. 
+Per studiarne il comportamento generiamo nei due pin DIO 0 (CLOCK) e DIO 1
+(ENABLE) dell'AD2 due segnali di clock di frequenza $f = \SI{10}{\hertz}$ e
+$\SI{1}{\hertz}$ agli ingressi CLK ed $E$ del circuito. 
 
+\iffalse
 \subsection{Analisi del funzionamento del circuito}
 Il circuito è composto da un Latch $RS$ i cui ingressi sono collegati a due
 porte NAND, di cui un ingresso per ciascuna è collegato all'input $E$, mentre
@@ -699,6 +747,7 @@ $1111$ & $0$ \\
 
 Dalle acquisizioni del Logic Analyzer riportate in si vede che il comportamento
 del circuito è coerente con quanto ci aspettavamo.
+\fi
 
 %=======================
 \section*{Conclusioni e commenti finali}
