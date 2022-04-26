@@ -3,6 +3,20 @@
 \input{../../latex/math}
 \usepackage{multicol}
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+\usepackage{tkz-graph}
+\usetikzlibrary{automata, positioning, arrows}
+\newenvironment{FSM}{
+\begin{tikzpicture}
+\tikzset{
+->, % makes the edges directed
+>=stealth', % makes the arrow heads bold
+node distance=2cm, % specifies the minimum distance between two nodes. Change if necessary.
+every state/.style={minimum size = 1cm, thick, fill=gray!10}, % sets the properties for each 'state' node
+initial text=$ $, % sets the text that appears on the start arrow
+}
+}{
+\end{tikzpicture}
+}
 
 % indexes subsections with letters, sections with numbers (1.a, 1.b, ...)
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
@@ -30,9 +44,67 @@ C_d = 97 \pm 4 \; \si{n\F}
 \]
 
 %=======================
-\section{Implementazione di un semaforo con circuiti integrati}\label{sec: dlatch}
+\section{Implementazione di un semaforo con circuiti integrati}\label{sec: IC}
+\subsection{Diagramma a stati del semaforo}
+Nel caso di semaforo ``abilitato'' i possibili output sono 3 e abbiamo quindi deciso di implementarli con 3 stati interni della macchina; nel caso di semaforo ``disabilitato'' i possibili output sono 2, ma possono essere ottenuti riutilizzando due degli stati precedenti e l'input ``enable'' tramite un'opportuno circuito combinatorio (\texttt{FSM} di Mealy).
+
+Si è deciso di codificare in due bit di memoria i tre stati $ (00) $, $ (01) $ e $ (10) $ che corrispondono, quando $ E = 1 $ (abilitato), ai tre output ``verde'', ``verde-giallo'', ``rosso'' (che si susseguono in modo ciclico). Quando invece $ E = 0 $ (disabilitato) vengono usati solamente $ (00) $ e $ (01) $, che corrispondono agli output del semaforo ``spento'' e ``giallo''.
+
+\begin{center}
+\begin{FSM}
+\tikzset{
+    LabelStyle/.style = {
+        rectangle, rounded corners, draw,
+        minimum width = 1em,
+    },
+    EdgeStyle/.append style = {-stealth}
+}
+
+   \node[state with output] (V) {$V/Y^-$ \nodepart{lower} $00$};
+   \node[state with output, right of=V, xshift=2cm] (VG)
+   {$VG/Y^+$ \nodepart{lower} $01$};
+   \node[state with output, right of=VG, xshift=2cm] (R)
+   {$R$ \nodepart{lower} $10$};
+   
+   \Edge[label = E](V)(VG)
+   \Edge[label = E](VG)(R)
+
+\tikzset{EdgeStyle/.append style = {-stealth, bend right = 30}}
+   \Edge[label = D](VG)(V)
+   \Edge[label = D](V)(VG)
+
+\tikzset{EdgeStyle/.append style = {bend right = 50}}
+   \Edge[label = E](R)(V)
+
+\tikzset{EdgeStyle/.append style = {bend left = 50}}
+   \Edge[label = D](R)(V)
+\end{FSM}
+\end{center}
+
+\subsection{Codifica degli stati della macchina}
+La scelta della codifica in termini di bit \`e riassunta nella tabella che segue: $Q_0$ e $Q_1$ rappresentano rispettivamente lo stato delle uscite del primo e del secondo flip-flop e $S$ \`e lo stato associato.
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{cc|cc}
+	\toprule
+	$S_E$ &	$S_D$ & $Q_0$ &	$Q_1$ \\
+	\midrule
+	\midrule
+	$Y^-$ & $V$  & $0$	&	$0$	\\
+	$Y^+$ & $VG$ & $0$	&	$1$	\\
+	 	  & $R$  & $1$	&	$0$	\\
+	\bottomrule
+	\end{tabular}
+	\caption{codifica binaria degli stati del semaforo. \label{tab:bit}}
+\end{table}
+\subsection{Tabelle di verità}
+
+\subsection{Mappe di Karnaugh e logica combinatoria}
+
 \subsection{Costruzione del circuito}
-Si è assemblato il circuito riportato in Figura~\ref{fig:semaforoSchema} e si sono collegati i pin \texttt{preset} e \texttt{clear} dei D-FF a $ V \ped{CC}$.
+Si è assemblato il circuito riportato in ~\cref{fig:semaforoSchema} e si
+sono collegati i pin \texttt{preset} e \texttt{clear} dei D-FF a
+$V_{CC}$ per evitare reset o clear spuri.
 \begin{figure}[htbp]
     \centering
     \begin{circuitikz}
@@ -111,643 +183,53 @@ Si è assemblato il circuito riportato in Figura~\ref{fig:semaforoSchema} e si s
 \end{figure}
 
 Per studiarne il comportamento generiamo nei due pin DIO 0 (CLOCK) e DIO 1
-(ENABLE) dell'AD2 due segnali di clock di frequenza $f = \SI{10}{\hertz}$ e
-$\SI{1}{\hertz}$ agli ingressi CLK ed $E$ del circuito. 
+(ENABLE) dell'AD2 due segnali di clock di frequenza $f = \SI{20}{\hertz}$ e
+$\SI{2}{\hertz}$ agli ingressi CLK ed $E$ del circuito. 
 
-\iffalse
-\subsection{Analisi del funzionamento del circuito}
-Il circuito è composto da un Latch $RS$ i cui ingressi sono collegati a due
-porte NAND, di cui un ingresso per ciascuna è collegato all'input $E$, mentre
-gli altri due ingressi sono collegati l'uno al segnale opposto dell'altro
-tramite una porta NOT (in figura la porta NAND più in alto tra le due $(R)$ è
-collegata all'input $D$, mentre quella più in basso $(S)$ a $\overline{D}$).
-
-L'equazione fondamentale del circuito è quindi data dalla
-\begin{equation}
-Q(t + \Delta t) = \overline{\overline(D \cdot E)} +
-\overline{(\overline{D} \cdot E)} \cdot Q(t) =
-E \cdot D + \overline{E} \cdot Q(t)
-\end{equation}
-da cui si può ricavare la corrispondente tabella di verità
-\begin{table}
-\begin{center}
-    \begin{tabular}{cccc}
-      \toprule
-      $E$ & $D$     & $Q(t)$  & $ Q(t + \Delta t)$ \\
-      \midrule
-      \midrule
-      0     & X & 0         & 0 \\
-      0     & X & 1         & 1 \\
-      1     & 0         & X & 0 \\
-      1     & 1         & X & 1 \\
-      \bottomrule
-    \end{tabular}
-\end{center}
-\caption{Tabella di verità del circuito $D$-Latch con Enable (con X si indica
-valore logico indefinito/don't care) \label{tab: dlatch}}
-\end{table}
-
-Come si può vedere dalla tabella di verità (\cref{tab: dlatch}) l'uscita $Q$
-funge da memoria a un bit se $E$ è al livello logico basso (stato di HOLD),
-mentre assume il valore logico dell'input $D$ quando il segnale di ENABLE è
-acceso.
-Questo rende il valore dell'uscita indipendente dalle caratteristiche
-temporali delle porte NAND e protegge il circuito dallo stato proibito di
-oscillazione/racing $R = S = 1$ da cui è affetto il semplice $RS$-Latch.
-
-\subsection{Verifica della tabella di verità del Latch}
-Per conferma del corretto funzionamento del Latch possiamo confrontare
-le uscite ottenute da un'acquisizione con Logic Analyzer con i valori
-riportati in \cref{tab: dlatch} inviando all'ingresso del circuito con
-Patterns due segnali di clock, di modo che $E$ sia lo stesso segnale in $D$,
-a cui si è però aggiunta una fase $\phi = \pm \SI{90}{\degree}$.
+\subsection{Analisi e verifica del funzionamento del circuito}
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{dlatch}
+    \includegraphics[width=\textwidth]{traffic}
     \caption{Acquisizione di un ciclo completo (frequenza 1 kHz) con Logic
-    Analyzer dei segnali in ingresso ($D =$ DIO 0, $E =$ DIO 1) e in uscita
-    ($Q =$ DIO 2, $\overline{Q} =$ DIO 3) dal D-Latch.
+    Analyzer dei segnali in ingresso e in uscita dal semaforo.
     \label{fig: dlatch}}
 \end{figure}
-\begin{figure}[htbp]
-	\includegraphics[width=\textwidth]{latch2}
-	\caption{Acquisizione con Logic dell'andamento temporale dei segnali in
-	ingresso uscita dal D-Latch per $\phi = -\SI{90}{\degree}$.
-	\label{fig: Log_DLATCH2}}
-\end{figure}
-
-Dalle \cref{fig: dlatch} e \cref{fig: Log_DLATCH2} si osserva come durante lo
-stato basso di Enable il segnale in uscita rimanga costante rispetto a
-variazioni del segnale in $D$, mentre quando
-$E = 1 \implies Q(t + \Delta t) = D$ coerentemente con quanto previsto dalla
-tabella di verità e come principio di funzionamento della memoria a 1 bit.
-
-\subsection{Misura dei tempi di propagazione nelle transizioni di stato}
-Si riescono a distinguere due diverse transizioni dei segnali in ingresso per
-ciascun valore di sfasamento tra i due segnali di clock in $D$ ed $E$;
-per $\phi = \SI{90}{\degree}$:
-\begin{enumerate}
-\item $D \coloneqq 0$, $E: 0 \to 1$ \label{item: Efall}
-\item $D: 0 \to 1$, $E \coloneqq 1$. \label{item: Drise}
-
-Mentre per $\phi = - \SI{90}{\degree} = 270 \; \si{\degree}$:
-\item $D: 1 \to 0$, $E \coloneqq 1$ \label{item: Dfall}
-\item $D \coloneqq 1$, $E: 0 \to 1$. \label{item: Erise}
-\end{enumerate}
-
-Si sono misurati i ritardi tra la transizione dei segnali in ingresso e i
-corrispondenti cambiamenti di stato in uscita su scala dei tempi minima
-($\SI{10}{n\s}$) con i cursori dalle acquisizioni con Logic Analyzer e per
-riconferma anche con l'oscilloscopio da banco (a cui associamo come
-incertezza il contributo dato dalle specifiche del datasheet, tenendo conto
-dell'instabilità e dello spessore delle tracce sullo schermo). Riportiamo
-di seguito e nella \cref{fig: Drise}, \cref{fig: Drise_osc}, \cref{fig: Dfall}
-e \cref{fig: Erise} i risultati ottenuti.
-\begin{enumerate}
-\item $t_{PHL} = 30 \pm 10 \; \si{n\s}$
-\item $t_{PLH} = 20 \pm 10 \; \si{n\s}$
-
-\item $t_{PHL} = 40 \pm 10 \; \si{n\s}$
-\item $t_{PLH} = 30 \pm 10 \; \si{n\s}$
-\end{enumerate}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth]{dlatch_Drise}
-    \caption{Acquisizione del Logic Analyzer durante la transizione
-    \ref{item: Drise} del D-Latch \label{fig: Drise}}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth]{dlatch_Drise}
-    \caption{Acquisizione da oscilloscopio digitale della transizione
-    \ref{item: Drise} del D-Latch \label{fig: Drise_osc}}
-    \includegraphics[width=\textwidth]{dlatch_Dfall40}
-    \caption{Acquisizione del Logic Analyzer durante la transizione
-    \ref{item: Dfall} del D-Latch \label{fig: Dfall}}
-    \includegraphics[width=\textwidth]{dlatch_Erise}
-    \caption{Acquisizione del Logic Analyzer durante la transizione
-    \ref{item: Erise} del D-Latch \label{fig: Erise}}
-\end{figure}
-
-Il massimo ritardo indotto si è trovato in corrispondenza della transizione
-\ref{item: Dfall} dell'input $D$ da alto a basso (con i cursori
-dell'oscilloscopio $t_{PHL} = 35 \pm 2 \; \si{n\s}$) mentre il minimo per la
-\ref{item: Drise} (con oscilloscopio $t_{PLH} = 11 \pm 1 \; \si{n\s}$).
-
-Dalle specifiche del DS si trova che i tempi di propagazione tipici e massimi
-per una singola porta NAND sono:
-\begin{table}[htbp]
-\centering
-\begin{tabular}{cccc}
-	& typ & max & [units] \\
-    $t\ped{PLH}$ & $11$ & $22$ & \si{n\s} \\
-    $t\ped{PHL}$ & $7$ & $15$ & \si{n\s}
-\end{tabular}
-\end{table}
-da cui vediamo che le nostre misure dei ritardi accumulati tra uscita e
-ingresso del circuito sono compatibili con i tempi necessari per il numero di
-porte NAND che devono commutare per il cambiamento di stato del D-Latch.
 
 %=======================
-\section{Shift-register con edge-triggered D-Flip Flop}
+\section{Implementazione software della logica combinatoria con AD2/ROM}
 \subsection{Costruzione del circuito}
-Si vuole ora costruire uno Shift Register a 4 bit a partire da due integrati
-della serie SN74LS74 (Dual Positive-Edge-Triggered Flip-Flops), secondo lo
-schema riportato in \cref{fig: schem_shift} e verificarne il funzionamento.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=0.6\textwidth]{schem_shift}
-	\caption{\label{fig: schem_shift}}
-\end{figure}
 
-\subsection{Verifica della sincronia delle uscite rispetto a PRESET}
-Una volta controllato che le uscite $Q_0$, $Q_1$, $Q_2$ e $Q_4$ fossero nello
-stato $0000$, abbiamo utilizzato la funzione StaticIO per pilotare il PRESET
-(ingresso PRE-BUTTON di \cref{fig: schem_shift}) tramite un pulsante inverso
-(di tipo pressed$ = 0$ e released$ = 1$).
-Dunque si è acquisito con Logic Analyzer l'andamento temporale dei 4 segnali
-in uscita con condizione di trigger coincidente alla pressione del pulsante.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{3.trans}
-	\caption{Acquisizione con Logic dei segnali in PRE-BUTTON le 4 uscite dal
-	registro a scorrimento pilotato dall'ingresso di PRESET
-	\label{fig: Shift_reg_trans}}
-\end{figure}
+\subsection{Implementazione delle tabelle di verità in ROM}
 
-Dalla \cref{fig: Shift_reg_trans} vediamo che le commutazioni delle
-uscite avvengono allo stesso tempo, dopo un $\Delta t = 40 \si{n\s}$ a partire
-dalla pressione del pulsante di preset le 4 uscite raggiungono lo stato $1111$.
+\subsection{Verifica del funzionamento del circuito}
 
-Nella \cref{fig: reg_presync} si mette in evidenza come questo cambiamento di
-stato avvenga indipendentemente dal segnale di clock in ingresso ai FF, da cui
-si vede che l'ingresso di PRESET dei Flip-Flop è asincrono come atteso dalle
-specifiche tecniche.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{3.b}
-	\caption{Acquisizione con Logic dei segnali in PRE-BUTTON, CLOCK e
-	$Q_{0, \ldots, 3}$ in uscita dal registro a scorrimento studiato
-	\label{fig: reg_presync}}
-\end{figure}
-
-\subsection{Verifica del funzionamento tramite clock}\label{sbs: clock_reg}
-Possiamo costruire una tabella di verità per il registro in funzione del tempo
-(discreto) battuto dal periodo $T$ del clock:
-\begin{table}[htbp]
-\centering
-\begin{tabular}{c|c}
-\toprule
-$Q_i(t = t')$ & $Q_i(t = t' + T)$\\
-\midrule
-\midrule
-$Q_0$ & $Q_0'$ \\
-$Q_1$ & $Q_0(t=t')$ \\
-$Q_2$ & $Q_1(t=t') = Q_0(t = t' - T)$ \\
-$Q_3$ & $Q_2(t=t') = Q_0(t = t'- 2T)$ \\
-\bottomrule
-\end{tabular}
-\caption{Tabella "di verità" di un registro a scorrimento, in cui $Q_0'$ è il
-valore che viene inviato durante il fronte di salita $t'$ del clock tramite
-il $D$-SWITCH
-\label{tab: S-register}}
-\end{table}
-
-Nel caso in cui il pulsante di PRESET inizializzi tutte le uscite a 1, e il
-D-Switch sia impostato (sempre con StaticIO) al valore $Q_0' = 0$, la
-\cref{tab: S-register} si traduce nelle commutazioni di stato previste dalla
-\cref{tab: s-reg-truth}
-\begin{table}[htbp]
-	\centering
-	\begin{tabular}{c|cccc}
-	\toprule
-	$t$	  &		$Q_0$	&	$Q_1$	& $Q_2$	&	$Q_3$  \\
-	\midrule
-	\midrule
-		$t'$ 	&	$1$	&	$1$	&	$1$	&	$1$	\\
-		$+T$	&	$0$	&	$1$	&	$1$	&	$1$	\\
-		$+2T$	&	$0$	&	$0$	&	$1$	&	$1$	\\
-		$+3T$	&	$0$	&	$0$	&	$0$	&	$1$	\\
-		$+4T$	&	$0$	&	$0$	&	$0$	&	$0$	\\		
-	\bottomrule
-	\end{tabular}
-\caption{Sequenza di transizioni che si osservano a partire da quando viene
-premuto il pulsante di PRESET ($t'$) lasciando a livello basso il $D$-SWITCH
-del registro a scorrimento. \label{tab: s-reg-truth}}
-\end{table}
-
-Per verificare il corretto funzionamento del circuito si pilota il registro
-con un segnale di clock di frequenza $f = \SI{1}{\Hz}$ e si fa ancora uso di
-Logic per acquisire gli andamenti nel tempo dei valori assunti dalle uscite.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{3.c}
-	\caption{Acquisizione con Logic dei segnali in uscita da un registro a
-	scorrimento di 4 bit come illustrato in \cref{sbs: clock_reg}
-	\label{fig: Shift_reg_clock}}
-\end{figure}
-Dalla \cref{fig: Shift_reg_clock} si verifica come atteso che dopo 3 periodi
-di clock (3 secondi) a partire da quando l'uscita $Q_0 = 0$, le 4 uscite
-diventano (e si mantengono costanti nel tempo visto che il D-Switch rimane
-fisso a 0) tutte quante basse.
-
-Da questo si intuisce che collegando l'uscita (NOT) $Q_3$ all'ingresso
-$D$-switch, possiamo generare una sequenza periodica/costruire un contatore
-con modulo.
-
-\subsection{Prevalenza tra gli ingressi D-switch e PRESET}
-Utilizzando allo stesso tempo gli ingressi $D$-switch e PRESET del registro
-si vede che è l'ultimo a pilotare il segnale in uscita, dal momento che PRESET
-è asincrono (indipendente dalla salita del clock). Questo risulta consistente
-con la regola generale per cui le architetture asincrone prendono la precedenza
-sulle istruzioni sincrone. 
-
-\subsection{Twisted-ring Johnson counter}
-Dopo aver reimpostato il registro nello stato $Q_{i=0,\ldots, 3} = 0$, si
-collega l'uscita $\overline{Q_3}$ all'ingresso $D$ del primo Flip-Flop e si
-invia un clock di frequenza pari $f\ped{clk} = \SI{1}{k\Hz}$ all'ingresso del
-circuito. Si riporta in \cref{fig: Shift_reg_seq} l'acquisizione con Logic
-Analyzer dei segnali di clock e dei 4 output in funzione del tempo.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{3.e}
-	\caption{Acquisizione con Logic dei segnali in uscita dal registro a
-	scorrimento con l'ultima uscita negata collegata all'ingresso del primo FF.
-	\label{fig: Shift_reg_seq}}
-\end{figure}
-
-Da questa vediamo che in ogni uscita $Q_i$ si ha un'onda quadra con frequenza
-$f = f\ped{clk}/8$, ciascuna traslata temporalmente di un periodo di clock
-rispetto alla $Q_{i-1}$ precedente; per cui nel registro osserviamo la
-sequenza atomica $00001111$ ripetersi ogni $8$ cicli di clock.
-
-Questo è dovuto al fatto che nel registro ora scorre in modo ciclico la
-concatenazione dello stato iniziale degli output e del suo negato (tramite
-il collegamento ad anello $\overline{Q_3} \to Q_0$).
-Supponendo infatti che nel circuito siano collegati ad anello $n$
-edge-triggered Flip-Flop, in una qualsiasi delle uscite del twisted-ring
-Johnson counter ci si aspetta di trovare un clock di frequenza divisa di un
-fattore $2n$.
+\subsection{Variante svizzera del semaforo ROM}
 
 %=======================
-\section{Generatore di sequenze pseudo-casuali}
-\subsection{Costruzione del circuito}
-Si vuole ora costruire un generatore di sequenze pseudo-casuali a 4 bit
-utilizzando lo shift register studiato in precedenza e una porta XOR (dal chip
-integrato SN74LS86 Quad XOR Gate).
-La schematica del circuito che utilizzeremo è riportata in figura
-\cref{fig: schem_gen}.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=0.6\textwidth]{schem_gen}
-	\captionof{figure}{\label{fig: schem_gen}}
-\end{figure}
+\section{Implementazione in software dei semafori con MCU (Arduino)}
+\subsection{Collegamento LED semaforo alle uscite}
 
-\subsection{Analisi e verifica del funzionamento}
-Dopo aver montato il circuito si inizializzano tutti Flip-Flop a 1 con
-PRESET, si invia un segnale di clock a 10 kHz, sempre collegando gli output
-$Q_{0,\ldots, 3}$ ai canali del Logic Analyzer per verificarne il
-funzionamento.
+\subsection{Definizione interruttore di Enable}
 
-Poiché il registro costruito ha memoria di $n = 4$ bit, dalla teoria ci
-aspettiamo che la sequenza si ripeta dopo $2^4 = 16$ eventi al massimo,
-condizione che si ottiene utilizzando come TAP (i.e. segnali in ingresso alla
-porta XOR, la cui uscita è inviata all'ingresso $D = Q_0$ del primo FF) gli
-output $Q_2$ (o $Q_0$) e $Q_3$.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{4.b}
-	\caption{Acquisizione temporale con Logic del bus in uscita dal generatore
-	di sequenze psudo-casuale descritto in \cref{fig: schem_gen}
-	\label{fig: TAP_23}}
-\end{figure}
+\subsection{Implementazione del codice per la FSM}
 
-\begin{table}[htbp]
-\centering
-\begin{tabular}{cccc}
-\toprule
-$Q_0$ & $Q_1$ & $Q_2$ & $Q_3$ \\
-\midrule
-\midrule
-0 & 0 & 0 & 1 \\
-0 & 0 & 1 & 0 \\
-0 & 1 & 0 & 0 \\
-1 & 0 & 0 & 1 \\
-0 & 0 & 1 & 1 \\
-0 & 1 & 1 & 0 \\
-1 & 1 & 0 & 1 \\
-1 & 0 & 1 & 0 \\
-0 & 1 & 0 & 1 \\
-1 & 0 & 1 & 1 \\
-0 & 1 & 1 & 1 \\
-1 & 1 & 1 & 1 \\
-1 & 1 & 1 & 0 \\
-1 & 1 & 0 & 0 \\
-1 & 0 & 0 & 0 \\
-\\
-0 & 0 & 0 & 1 \\
-\bottomrule
-\end{tabular}
-\caption{Sequenza pseudo-casuale attesa collegando come TAP alla porta XOR i
-segnali $Q_2$ e $Q_3$ in uscita dal registro a scorrimento.
-\label{tab: pseudo}}
-\end{table}
-
-Dall'acquisizione riportata in \cref{fig: TAP_23} si osserva la sequenza
-riportata in \cref{tab: pseudo} ripetersi ogni 16 periodi di clock in accordo
-con le aspettative (prendendo come riferimento una qualsiasi uscita dello
-shift-register, visto che la sequenza nelle altre uscite sarà la medesima, ma
-sfasata lungo l'asse temporale di qualche ciclo di clock).
-
-\subsection{Studio delle sequenze generabili con diverse condizioni iniziali}
-Si provano quindi altre combinazioni di TAP, per verificare che la scelta di
-$Q_2$ e $Q_3$ produca una sequenza più lunga rispetto alle altre possibili
-configurazioni. Riportiamo in \cref{fig: TAP_10}, \cref{fig: TAP_21} e
-\cref{fig: TAP_30} i risultati ottenuti con Logic Analyzer dell'AD2.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{4.b_10}
-	\caption{Acquisizione con Logic del bus in uscita dal generatore di sequenze
-	pseudo-casuali con TAP sulle uscite $Q_0$ e $Q_1$; la sequenza si ripete ogni
-	4 cicli di clock.
-	\label{fig: TAP_10}}
-\end{figure}
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{4.b_21}
-	\caption{Acquisizione con Logic del bus in uscita dal generatore di sequenze
-	pseudo-casuali con TAP sulle uscite $Q_2$ e $Q_1$; la sequenza si ripete ogni
-	8 cicli di clock.
-	\label{fig: TAP_21}}
-\end{figure}
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{4.b_30}
-	\caption{Acquisizione con Logic del bus in uscita dal generatore di sequenze
-	pseudo-casuali con TAP sulle uscite La$Q_0$ e $Q_3$, la sequenza è massimale
-	(si ripete ogni $2^n = 16$ cicli di clock).
-	\label{fig: TAP_30}}
-\end{figure}
+\subsection{Versione svizzera del semaforo con Enable via Arduino}
 
 %=======================
-\section{Divisori di frequenza con contatori binari}
-\subsection{Costruzione del circuito}
-Si intende costruire un divisore di frequenza a partire da un contatore
-binario a 4 bit (integrato SN74LS163 synchronous binary counter with
-synchronous clear/load) secondo lo schema riportato in
-\cref{fig: schem_counter}. 
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=0.6\textwidth]{schem_con}
-	\caption{\label{fig: schem_counter}}
-\end{figure}
+\section{Falling-edge detector}
+\subsection{Progettazione FSM e costruzione dei circuiti}
+Si vuole realizzare una FSM che riceve uno stream di bit su una linea di
+ingresso e che accende un LED tutte le volte che si presenta un fronte di
+discesa.
 
-\subsection{Verifica del ciclo di funzionamento dei contatori}
-\label{sec: count_base}
+\subsection{Definizione dello stream di bit casuali in ingresso}
 Con la funzione Patterns di Waveform si invia un segnale di clock di
-frequenza $f\ped{clk} = \SI{10}{k\Hz}$ al pin (CLK) del contatore e si
-acquisiscono i segnali in uscita $Q_{0, \ldots, 3}$ con la funzione Logic
+frequenza $f\ped{clk} = \SI{1}{k\Hz}$ al pin (CLK) del contatore e si
+acquisiscono i segnali in uscita con la funzione Logic
 dello stesso.
 
-Dalla \cref{fig: Count_Clock} si osserva che il bus ($Q_3 Q_2 Q_1 Q_0$ in
-formato esadecimale) collegato ai segnali in uscita dal contatore a 4 bit
-incrementa in maniera sequenziale dallo stato $0000$ (h0) fino allo stato
-$1111$ (hF) in ordine crescente.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{5.b}
-	\caption{Acquisizione con Logic dell'andamento temporale dei segnali in
-	uscita dal contatore SN74LS163, con frequenza di clock pari a 10 kHz.
-	\label{fig: Count_Clock}}
-\end{figure}
+\subsection{Verifica del funzionamento e analisi della temporizzazione}
 
-Da questa si verifica che il circuito esplora tutti gli stati possibili
-nell'ordine corretto per il buon funzionamento del contatore a 4 bit.
-
-\subsection{Verifica della divisione in frequenza}
-Dato che il contatore (composto da 4 positive-edge-triggered FF) incrementa
-di $1$ ad ogni fronte di salita del clock, ci si aspetta che il segnale di
-ordine $i$ abbia come frequenza $f\ped{clk}/2^{i+1}$, la metà di quella del
-bit precedente.
-
-In termini del BUS di prima con parola di lunghezza 4 bit, ci si aspetta
-quindi che le frequenze dei segnali per ciascun output del contatore siano:
-\begin{itemize}
-\item $\nicefrac{f\ped{clk}}{2}$ per il LSB $Q_0$
-\item $\nicefrac{f\ped{clk}}{4}$ per $Q_1$
-\item $\nicefrac{f\ped{clk}}{8}$ per $Q_2$
-\item $\nicefrac{f\ped{clk}}{16}$ per il MSB $Q_3$
-\end{itemize}
-Sempre facendo riferimento alla \cref{fig: Count_Clock} risulta evidente come
-le uscite del contatore si comportino da divisori in frequenza; infatti i
-periodi che si trovano analizzando l'acquisizione sono rispettivamente 2 (LSB),
-4, 8 e 16 (MSB) volte il periodo del clock $T\ped{clk} = 1/f\ped{clk}$.
-
-\subsection{Transizione sincrona del contatore}
-\label{sec: count_trans}
-Impostiamo ora la condizione di trigger in Logic affinché l'acquisizione abbia
-inizio quando il segnale in $Q_3$ scende da alto a basso, in modo da poter
-studiare gli eventuali ritardi delle singole uscite nella transizione
-$1111 \to 0000$ e verificare il comportamento sincrono del contatore.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{5.d}
-	\caption{Acquisizione temporale con Logic del bus in uscita dal contatore durante la transizione 15->0; dall'immagine possiamo notare il comportamento sincrono della commutazione delle uscite del contatore \label{fig: Count_150}}
-\end{figure}
-
-Dalla \cref{fig: Count_150} possiamo vedere che la commutazione delle uscite è
-sincrona e avviene simultaneamente per ogni pin di output con un ritardo di
-$t_{PHL} = 30 \pm \; \si{n\s}$ dal fronte di salita del clock, in linea con
-quanto previsto dalle specifiche dell'integrato.
-
-\subsection{Divisore di frequenza 1/10; Contatore BCD}
-Per realizzare un divisore in frequenza che generi un segnale di periodo pari
-a $T = 10 T\ped{clk}$ facciamo uso del pin CLEAR (Active-Low) del contatore,
-il quale resetta il contatore allo stato $0000$ quando riceve un segnale a
-livello logico basso.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=0.6\textwidth]{Draft1}
-	\caption{Schematica utilizzata per il divisore per 10 di frequenza
-	\label{schem: 10_div}}
-\end{figure}
-
-Affinché il contatore raggiunga un totale di 10 stati prima di ripartire,
-dobbiamo imporre la condizione che arrivati allo stato $9$ (b1001) il
-contatore riceva il comando di reset da CLEAR.
-Per farlo colleghiamo ai 2 ingressi di una porta NAND il LSB e il MSB e
-la sua uscita al pin di Clear, cosicché quando il contatore arriva a 9
-(entrambi $Q_0$ e $Q_3$ sono alti) CLEAR riceverà un segnale di reset,
-per cui la frequenza del segnale in uscita da $Q_3$ corrisponderà ad un decimo
-di quella di clock. Si riporta in \cref{schem: 10_div} lo schema proposto per
-il circuito.
-
-Come prima, si utilizza la funzione Logic per acquisire i segnali provenienti
-dal Bus dei 4 bit in uscita, il clock e il bit di Clear.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{5.e}
-	\caption{Acquisizione con Logic del bus in uscita dal circuito contatore BCD.
-	Si può notare che il segnale presente in $Q_3$ ha periodo pari a 10 volte
-	quello del clock \label{fig: Count_10th}}
-\end{figure}
-
-Come visibile dall'acquisizione riportata in \cref{fig: Count_10th}, troviamo
-che il segnale in $Q_3$ è un'onda quadra di frequenza
-$f = \nicefrac{f\ped{clk}}{10}$ come volevamo e Duty-Cycle pari al
-$20 \percent$.
-
-\subsection{Divisore di frequenza programmabile con RCO}
-Infine si vuole costruire un divisore di frequenza programmabile:
-per questo scopo utilizzeremo il bit RCO (Ripple Carry Output), la cui
-funzione è di generare un segnale alto solo nel caso in cui il contatore abbia
-raggiunto lo stato massimo $(1111)$ e il bit Load (Active-Low), che quando
-è basso sovrascrive lo stato $Q_3, \ldots, Q_0$ del contatore con quello
-presente nel bus di input $D_3, \ldots, D_0$. 
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=0.6\textwidth]{Draft2}
-	\caption{Schematica utilizzata per il divisore di frequenza programmabile
-	\label{schem: programmable_counter}}
-\end{figure}
-
-Vogliamo preliminarmente verificare il funzionamento del RCO; dopo aver
-montato nuovamento il circuito presente in \cref{fig: schem_counter} inviamo
-un segnale di clock di frequenza 10 kHz e utilizziamo Logic per acquisire i
-segnali del bus dei 4 bit di output e il segnale di RCO in funzione del tempo.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{5.RCO}
-	\label{fig: RCO_f}
-	\caption{Acquisizione con Logic dei segnali in uscita dal contatore per
-	verificare il funzionamento del bit RCO}
-\end{figure}
-Dall'acquisizione riportata in \cref{fig: RCO_f} possiamo notare che il bit
-RCO funziona correttamente.
-
-Quindi, per costruire il divisore programmabile schematizzato in
-\cref{schem: programmable_counter} si collega l'uscita dal pin RCO all'ingresso
-del pin LOAD dello stesso contatore tramite una porta NOT (integrato SN74LS04).
-Si utilizza dunque la funzione StaticIO per caricare nel Bus di ingresso
-lo stato $0101$ (5 arbitrariamente scelto), mantenendo collegato al circuito
-il segnale di clock generato da Patterns. 
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{5.f_0101}
-	\caption{Acquisizione con Logic dei segnali che interessano il circuito
-	divisore di frequenza programmabile, con sequenza di avvio $0101$
-	\label{fig: c_0101}}
-\end{figure}
-Dalla \cref{fig: c_0101} notiamo che quando il contatore riceve il
-segnale di LOAD, quindi quando si registra 1 nel bit RCO, la sequenza iniziale
-non viene immediatamente caricata, ma sarà posticipata da un evento di clock
-($\approx 100 \; \si{\micro\s}$).
-Di conseguenza, qualunque sia la sequenza iniziale del nostro circuito lo
-stato finale 1111 verrà sempre "contato".
-
-\subsection{Misura dei tempi caratteristici del divisore RCO}
-Si cambia ora la sequenza di inizializzazione a $0110$, e utilizzando la
-funzione Logic impostiamo un trigger quando il bit LOAD compie la transizione
-$0 \to 1$: in seguito a quanto visto nella sezione precedente ci aspettiamo
-che il contatore passi dallo stato $1111$ allo stato iniziale.
-
-Visualizziamo i segnali sulle linee di dato e RCO su scala dei tempi molto
-ristretta per misurare i ritardi tra di loro e verificare quanto affermato
-nella \cref{sec: count_trans}.
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{5.f_0110_20ns}
-	\caption{Acquisizione con logic dei segnali di interesse per il circuito
-	divisore di frequenza programmabile per un fondo scala dei tempi
-	molto ristretto, con sequenza di avvio 0110
-	\label{fig: count_20ns}}
-\end{figure}
-Dalla \cref{fig: count_20ns} si può notare che è sempre presente un ritardo
-dall'inizio del nuovo fronte di salita del clock alla commutazione delle
-uscite (che come prima è sincrona/simultanea) e che vale come prima
-$30 \pm 10 \; \si{n\s}$, per cui la funzione di LOAD risulta sincrona.
-
-\subsection{Analisi e verifica del comportamento del divisore RCO}
-In questa sezione prendiamo la frequenza del segnale in uscita dal RCO come
-frequenza quoziente/desiderata in uscita dal divisore.
-
-Dato che RCO è attivo quando tutte le uscite $Q_i$ sono alte, il LOAD
-(normalmente alto) viene attivato quando l'output corrisponde a 15. Al
-fronte di salita del clock successivo le uscite vengono impostate ai valori
-degli ingressi e il conteggio riparte. Dunque se si vuole realizzare un
-divisore di frequenza $1/n$, o un contatore a $n$ stati, occorre impostare il
-bus di input in modo che il conteggio parta da $16 - n$, quindi si osservano
-in uscita i numeri da $(16 - n)_{16}$ fino a 15 ripetersi.
-
-In altre parole ci si aspetta che il periodo del segnale RCO sia pari a
-quello di clock moltiplicato per il numero di salti di stato necessari per
-farlo arrivare a 0000; detto $I$ il valore (in base decimale) caricato nello
-stato iniziale si ha dunque:
-\begin{equation}
-T\ped{divisore, I} = T\ped{clk} \cdot (16 - I)
-\end{equation}
-Visto però il funzionamento dei pin LOAD e RCO, se utilizzassimo come sequenza
-iniziale 1111, il circuito produrrebbe un segnale costante: infatti 1111 è
-anche lo stato a cui avviene il caricamento della sequenza, che però risulta
-essere sempre la medesima, inducendo quindi uno stato incommutabile.
-
-Programmando la sequenza iniziale a $0000$ invece ci si aspetta che il
-comportamento del circuito si riduca allo stesso visto precedentemente in
-\cref{sec: count_base} essendo 0000 lo stato iniziale a cui si resetta
-autonomamente il counter in assenza di segnali di LOAD.
-
-Si provano quindi diverse sequenze per inizializzare il contatore, per cui
-in particolare ci si aspetta di trovare:
-\begin{table}[htbp]
-\centering
-\begin{tabular}{c|c}
-\toprule
-Seq. iniziale & $T\ped{RCO} [T\ped{clk}]$\\
-\midrule
-$0000$ & $16$ \\
-$0010$ & $14$ \\
-$0101$ & $11$ \\
-$1110$ & $2$ \\
-$1111$ & $0$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{5.f_0000}
-	\caption{Acquisizione con Logic dei segnali di interesse per il circuito divisore di frequenza programmabile, con sequenza di avvio 0000, da cui si misura $T = 16 T\ped{clk}$
-	 \label{fig: RCO_0000}}
-\end{figure}
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{5.f_0010}
-	\caption{Acquisizione con Logic dei segnali di interesse per il circuito divisore di frequenza programmabile, con sequenza di avvio 0010, da cui si misura $T = 14 T\ped{clk}$
-	 \label{fig: RCO_0010}}
-\end{figure}
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{5.f_0101}
-	\caption{Acquisizione con Logic dei segnali di interesse per il circuito divisore di frequenza programmabile, con sequenza di avvio 0101, da cui si misura $T = 11 T\ped{clk}$
-	 \label{fig: RCO_0101}}
-\end{figure}
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{5.f_1110}
-	\caption{Acquisizione con Logic dei segnali di interesse per il circuito divisore di frequenza programmabile, con sequenza di avvio 1110, da cui si misura $T = 2 T\ped{clk}$
-	 \label{fig: RCO_1110}}
-\end{figure}
-\begin{figure}[htbp]
-\centering
-	\includegraphics[width=\textwidth]{5.f_1111}
-	\caption{Acquisizione con Logic dei segnali di interesse per il circuito divisore di frequenza programmabile, con sequenza di avvio 1111, dal quale si vede che RCO è un segnale costante \label{fig: RCO_1111}}
-\end{figure}
-
-Dalle acquisizioni del Logic Analyzer riportate in si vede che il comportamento
-del circuito è coerente con quanto ci aspettavamo.
-\fi
 
 %=======================
 \section*{Conclusioni e commenti finali}
