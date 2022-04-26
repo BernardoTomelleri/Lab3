@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  26 APR 2022 18:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  27 APR 2022 00:12
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1236,6 +1236,46 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \colbreak@box=\box131
 \mc@col@check@num=\count371
 )
+(c:/texlive/2021/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+\everycr=\toks55
+\minrowclearance=\skip138
+)
+(c:/texlive/2021/texmf-dist/tex/latex/diagbox/diagbox.sty
+Package: diagbox 2020/02/09 v2.3 Making table heads with diagonal lines
+
+(c:/texlive/2021/texmf-dist/tex/latex/pict2e/pict2e.sty
+Package: pict2e 2020/09/30 v0.4b Improved picture commands (HjG,RN,JT)
+
+(c:/texlive/2021/texmf-dist/tex/latex/pict2e/pict2e.cfg
+File: pict2e.cfg 2016/02/05 v0.1u pict2e configuration for teTeX/TeXLive
+)
+Package pict2e Info: Driver file: pdftex.def on input line 112.
+Package pict2e Info: Driver file for pict2e: p2e-pdftex.def on input line 114.
+
+(c:/texlive/2021/texmf-dist/tex/latex/pict2e/p2e-pdftex.def
+File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
+)
+\pIIe@GRAPH=\toks56
+\@arclen=\dimen357
+\@arcrad=\dimen358
+\pIIe@tempdima=\dimen359
+\pIIe@tempdimb=\dimen360
+\pIIe@tempdimc=\dimen361
+\pIIe@tempdimd=\dimen362
+\pIIe@tempdime=\dimen363
+\pIIe@tempdimf=\dimen364
+)
+\diagbox@boxa=\box132
+\diagbox@boxb=\box133
+\diagbox@boxm=\box134
+\diagbox@wd=\dimen365
+\diagbox@ht=\dimen366
+\diagbox@insepl=\dimen367
+\diagbox@insepr=\dimen368
+\diagbox@outsepl=\dimen369
+\diagbox@outsepr=\dimen370
+)
 (c:/texlive/2021/texmf-dist/tex/latex/tkz-graph/tkz-graph.sty
 2021/01/20 v 2.00 tkz-graph.sty
 Package: tkz-graph 2021/01/20 2.00 base for graphs
@@ -1244,8 +1284,8 @@ Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
 
 (c:/texlive/2021/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (c:/texlive/2021/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks55
-\XKV@tempa@toks=\toks56
+\XKV@toks=\toks57
+\XKV@tempa@toks=\toks58
 )
 \XKV@depth=\count372
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
@@ -1256,7 +1296,7 @@ File: tikzlibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 
 (c:/texlive/2021/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\arrowsize=\dimen357
+\arrowsize=\dimen371
 ))
 \c@tkz@gr@a=\count373
 \c@tkz@gr@b=\count374
@@ -1280,26 +1320,26 @@ File: tikzlibraryshapes.multipart.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 (c:/texlive/2021/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.m
 ultipart.code.tex
 File: pgflibraryshapes.multipart.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfnodepartlowerbox=\box132
-\pgfnodeparttwobox=\box133
-\pgfnodepartthreebox=\box134
-\pgfnodepartfourbox=\box135
-\pgfnodeparttwentybox=\box136
-\pgfnodepartnineteenbox=\box137
-\pgfnodeparteighteenbox=\box138
-\pgfnodepartseventeenbox=\box139
-\pgfnodepartsixteenbox=\box140
-\pgfnodepartfifteenbox=\box141
-\pgfnodepartfourteenbox=\box142
-\pgfnodepartthirteenbox=\box143
-\pgfnodeparttwelvebox=\box144
-\pgfnodepartelevenbox=\box145
-\pgfnodeparttenbox=\box146
-\pgfnodepartninebox=\box147
-\pgfnodeparteightbox=\box148
-\pgfnodepartsevenbox=\box149
-\pgfnodepartsixbox=\box150
-\pgfnodepartfivebox=\box151
+\pgfnodepartlowerbox=\box135
+\pgfnodeparttwobox=\box136
+\pgfnodepartthreebox=\box137
+\pgfnodepartfourbox=\box138
+\pgfnodeparttwentybox=\box139
+\pgfnodepartnineteenbox=\box140
+\pgfnodeparteighteenbox=\box141
+\pgfnodepartseventeenbox=\box142
+\pgfnodepartsixteenbox=\box143
+\pgfnodepartfifteenbox=\box144
+\pgfnodepartfourteenbox=\box145
+\pgfnodepartthirteenbox=\box146
+\pgfnodeparttwelvebox=\box147
+\pgfnodepartelevenbox=\box148
+\pgfnodeparttenbox=\box149
+\pgfnodepartninebox=\box150
+\pgfnodeparteightbox=\box151
+\pgfnodepartsevenbox=\box152
+\pgfnodepartsixbox=\box153
+\pgfnodepartfivebox=\box154
 )))
 (c:/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
 brarypositioning.code.tex
@@ -1307,25 +1347,25 @@ File: tikzlibrarypositioning.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) (./E03.2.AC.aux)
 \openout1 = `E03.2.AC.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-Package hyperref Info: Link coloring ON on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+Package hyperref Info: Link coloring ON on input line 30.
 
 (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -1338,30 +1378,30 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count383
 )
-LaTeX Info: Redefining \ref on input line 29.
-LaTeX Info: Redefining \pageref on input line 29.
-LaTeX Info: Redefining \nameref on input line 29.
+LaTeX Info: Redefining \ref on input line 30.
+LaTeX Info: Redefining \pageref on input line 30.
+LaTeX Info: Redefining \nameref on input line 30.
 
 (./E03.2.AC.out) (./E03.2.AC.out)
 \@outlinefile=\write4
 \openout4 = `E03.2.AC.out'.
 
 Package translations Info: no dictionary file `translations-basic-dictionary-it
-alian.trsl' found. on input line 29.
+alian.trsl' found. on input line 30.
 
 (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count384
-\scratchdimen=\dimen358
-\scratchbox=\box152
+\scratchdimen=\dimen372
+\scratchbox=\box155
 \nofMPsegments=\count385
 \nofMParguments=\count386
-\everyMPshowfont=\toks57
+\everyMPshowfont=\toks59
 \MPscratchCnt=\count387
-\MPscratchDim=\dimen359
+\MPscratchDim=\dimen373
 \MPnumerator=\count388
 \makeMPintoPDFobject=\count389
-\everyMPtoPDFconversion=\toks58
+\everyMPtoPDFconversion=\toks60
 ) (c:/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1408,77 +1448,95 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \it@ocap on input line 29.
-LaTeX Info: Redefining \it@ccap on input line 29.
+LaTeX Info: Redefining \it@ocap on input line 30.
+LaTeX Info: Redefining \it@ccap on input line 30.
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.18} (current compat level: 1.15).
 
 \c@lstlisting=\count390
-LaTeX Font Info:    Trying to load font information for U+msa on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 32.
 
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
-9.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
+0.
 
 (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
- [1
+) [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<../figs//traffic.png, id=113, 1440.88312pt x 711.4078pt>
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
+
+ []
+
+
+Overfull \hbox (17.22168pt too wide) in paragraph at lines 149--179
+[]$[]$ $[]$ 
+ []
+
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+[2]
+<../figs//traffic.png, id=125, 1440.88312pt x 711.4078pt>
 File: ../figs//traffic.png Graphic file (type png)
 <use ../figs//traffic.png>
-Package pdftex.def Info: ../figs//traffic.png  used on input line 192.
+Package pdftex.def Info: ../figs//traffic.png  used on input line 268.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
 
-Overfull \hbox (0.72293pt too wide) in paragraph at lines 199--199
+Overfull \hbox (0.72293pt too wide) in paragraph at lines 275--275
 []\T1/cmr/bx/n/14.4 Implementazione soft-ware del-la lo-gi-ca com-bi-na-to-ria 
 con AD2/ROM 
  []
 
-[2] [3 <../figs//traffic.png (PNG copy)>] [4] (./E03.2.AC.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+[3 <../figs//traffic.png (PNG copy)>] [4] [5] (./E03.2.AC.aux)
 Package rerunfilecheck Info: File `E03.2.AC.out' has not changed.
 (rerunfilecheck)             Checksum: 58CE1C27A0F8B1D8C78B63D68BAF8477;5881.
  ) 
 Here is how much of TeX's memory you used:
- 58003 strings out of 479713
- 1423118 string characters out of 5876923
- 2182077 words of memory out of 10000000
- 74943 multiletter control sequences out of 15000+600000
- 418434 words of font info for 70 fonts, out of 8000000 for 9000
+ 58411 strings out of 479713
+ 1429279 string characters out of 5876923
+ 2190075 words of memory out of 10000000
+ 75324 multiletter control sequences out of 15000+600000
+ 420313 words of font info for 73 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,10n,125p,754b,1195s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pf
-b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texl
-ive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><c:/texlive/2021/t
-exmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/
-fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type
-1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/c
-m-super/sftt1000.pfb>
-Output written on E03.2.AC.pdf (4 pages, 244158 bytes).
+ 122i,18n,125p,754b,1265s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
+ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.p
+fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/tex
+live/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/
+texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist
+/fonts/type1/public/cm-super/sfrm0900.pfb><c:/texlive/2021/texmf-dist/fonts/typ
+e1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
+cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
+frm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pf
+b>
+Output written on E03.2.AC.pdf (5 pages, 268161 bytes).
 PDF statistics:
- 197 PDF objects out of 1000 (max. 8388607)
- 162 compressed objects within 2 object streams
- 32 named destinations out of 1000 (max. 500000)
+ 221 PDF objects out of 1000 (max. 8388607)
+ 182 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
  194 words of extra memory for PDF output out of 10000 (max. 10000000)
 

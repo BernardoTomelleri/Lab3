@@ -3,6 +3,8 @@
 \input{../../latex/math}
 \usepackage{multicol}
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+\usepackage{colortbl}
+\usepackage{diagbox}
 \usepackage{tkz-graph}
 \usetikzlibrary{automata, positioning, arrows}
 \newenvironment{FSM}{
@@ -12,7 +14,6 @@
 >=stealth', % makes the arrow heads bold
 node distance=2cm, % specifies the minimum distance between two nodes. Change if necessary.
 every state/.style={minimum size = 1cm, thick, fill=gray!10}, % sets the properties for each 'state' node
-initial text=$ $, % sets the text that appears on the start arrow
 }
 }{
 \end{tikzpicture}
@@ -50,7 +51,8 @@ Nel caso di semaforo ``abilitato'' i possibili output sono 3 e abbiamo quindi de
 
 Si è deciso di codificare in due bit di memoria i tre stati $ (00) $, $ (01) $ e $ (10) $ che corrispondono, quando $ E = 1 $ (abilitato), ai tre output ``verde'', ``verde-giallo'', ``rosso'' (che si susseguono in modo ciclico). Quando invece $ E = 0 $ (disabilitato) vengono usati solamente $ (00) $ e $ (01) $, che corrispondono agli output del semaforo ``spento'' e ``giallo''.
 
-\begin{center}
+\begin{figure}[htbp]
+\centering
 \begin{FSM}
 \tikzset{
     LabelStyle/.style = {
@@ -60,9 +62,9 @@ Si è deciso di codificare in due bit di memoria i tre stati $ (00) $, $ (01) $ 
     EdgeStyle/.append style = {-stealth}
 }
 
-   \node[state with output] (V) {$V/Y^-$ \nodepart{lower} $00$};
+   \node[state with output] (V) {$V/Y^0$ \nodepart{lower} $00$};
    \node[state with output, right of=V, xshift=2cm] (VG)
-   {$VG/Y^+$ \nodepart{lower} $01$};
+   {$VG/Y^1$ \nodepart{lower} $01$};
    \node[state with output, right of=VG, xshift=2cm] (R)
    {$R$ \nodepart{lower} $10$};
    
@@ -79,7 +81,7 @@ Si è deciso di codificare in due bit di memoria i tre stati $ (00) $, $ (01) $ 
 \tikzset{EdgeStyle/.append style = {bend left = 50}}
    \Edge[label = D](R)(V)
 \end{FSM}
-\end{center}
+\end{figure}
 
 \subsection{Codifica degli stati della macchina}
 La scelta della codifica in termini di bit \`e riassunta nella tabella che segue: $Q_0$ e $Q_1$ rappresentano rispettivamente lo stato delle uscite del primo e del secondo flip-flop e $S$ \`e lo stato associato.
@@ -97,9 +99,83 @@ La scelta della codifica in termini di bit \`e riassunta nella tabella che segue
 	\end{tabular}
 	\caption{codifica binaria degli stati del semaforo. \label{tab:bit}}
 \end{table}
+
 \subsection{Tabelle di verità}
+Si nota in particolare dal diagramma degli stati che il segnale di input ENABLE modifica l'output in maniera asincrona, mentre dalla tabella di verità (\cref{tab:2bit}) si può distinguere come lo stato futuro dipenda da quello precedente sfruttando la sincronia del segnale di clock per incrementare il contatore.
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{c|c|cc|cc|c}
+     \multicolumn{1}{c||}{ENABLE}&\multicolumn{1}{c}{ }&\multicolumn{2}{c||}{current state} &\multicolumn{2}{c}{next state}\\
+     \hline
+         && Q$_1$ & Q$_0$ & D$_1$ & D$_0$ & \\
+         \hline
+        1 & G & 0 & 0 & 0 & 1 & GY\\
+       & GY & 0 & 1 & 1 & 0 & R\\
+       & R & 1 & 0 & 0 & 0 & G\\
+        & ... & 1 & 1 & X & X & ...\\
+        \hline
+        0 & OFF & 0 & 0 & 0 & 1 & Y \\
+        & Y & 0 & 1 & 0 & 0 & OFF \\
+         & OFF & 1 & 0 & 0 & 0& OFF \\
+         &  ... & 1 & 1 & X & X & ...\\
+    \end{tabular}
+    \caption{Tabella di verità per il semaforo a 2 bit.}
+    \label{tab:2bit}
+\end{table}
+
+Di conseguenza, è possibile associare agli output led G, Y, R una corrispondenza in termini di bit secondo la logica:
+\begin{itemize}
+    \item Q$_0$ = 1 $\longrightarrow$ led giallo acceso (Y)
+    \item Q$_1$ = 0 (o equivalentemente: $\overline{Q_1}$ = 1) $\longrightarrow$ led verde acceso (G)
+    \item Q$_1$ = 1 $\longrightarrow$ led rosso acceso (R)
+\end{itemize}
+tale logica è sempre sottomessa al segnale di ENABLE, che consente che i led verde e rosso si possano accendere effettivamente. \\
+
+Questa codifica è quella sfruttata per la costruzione vera e propria del circuito collegando i led alle uscite dei Flip-Flop (ad esempio: led giallo in serie a Q$_0$). \\
+
+Per la precisione, dal momento che l'accensione dei led verde e rosso è consentita solo quando ENABLE = 1, si possono utilizzare due porte AND per definire
+\begin{itemize}
+    \item $\overline{Q_1} \cdot E \longrightarrow$ led verde acceso (G)
+    \item $Q_1 \cdot E \longrightarrow$ led rosso acceso (R)
+\end{itemize}
+
+\paragraph{AND-gate per led rosso}
+Si potrebbe usare una porta AND per rendere l'attivazione del led rosso dipendente dal segnale di ENABLE. Da \cref{tab:2bit} infatti si nota che l'unica differenza di funzionamento si avrebbe durante la transizione di ENABLE: 1 $\rightarrow$ 0. In questo caso, lo spegnimento diventerebbe asincrono col segnale di clock anziché sincrono.
 
 \subsection{Mappe di Karnaugh e logica combinatoria}
+Le seguenti tabelle di Karnaugh aiutano a derivare le funzioni logiche degli stati futuri in dipendenza da quelli correnti: \\
+
+\begin{minipage}{0.5\textwidth}
+    \centering
+    \begin{tabular}{c||c|c|c|c}
+        \backslashbox{E}{Q$_1$Q$_0$} & 00 & 01 & 11 & 10\\
+        \hline
+        \hline
+        0 & 0 & 0 & X & 0\\
+        \hline
+        1 & 0 & \cellcolor[HTML]{FF9999}1 & \cellcolor[HTML]{FF9999}X & 0\\
+    \end{tabular}
+    %\captionof{table}{Tabella di Karnaugh}
+    \label{k1}\\
+    \hfill \\
+    $D_1=E \cdot Q_0$
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+    \centering
+    \begin{tabular}{c||c|c|c|c}
+        \backslashbox{E}{Q$_1$Q$_0$} & 00 & 01 & 11 & 10\\
+        \hline
+        \hline
+        0 & \cellcolor[HTML]{FF9999}1 & 0 & X & 0\\
+        \hline
+        1 & \cellcolor[HTML]{FF9999}1 & 0 & X & 0\\
+    \end{tabular}
+    %\captionof{table}{Tabella di Karnaugh}
+    \label{k2}\\
+   \hfill \\
+    $D_0=\overline{Q_0}\cdot \overline{Q_1}$
+\end{minipage}
 
 \subsection{Costruzione del circuito}
 Si è assemblato il circuito riportato in ~\cref{fig:semaforoSchema} e si
@@ -220,7 +296,63 @@ $\SI{2}{\hertz}$ agli ingressi CLK ed $E$ del circuito.
 \subsection{Progettazione FSM e costruzione dei circuiti}
 Si vuole realizzare una FSM che riceve uno stream di bit su una linea di
 ingresso e che accende un LED tutte le volte che si presenta un fronte di
-discesa.
+discesa secondo il modello di Moore e secondo quello di Mealy.
+\begin{figure}[htbp]
+\centering
+\begin{FSM}
+\tikzset{node distance = 4cm, on grid, auto
+}
+\node (H) [state] {HIGH};
+\node (C) [state, right of = H] {CHANGE};
+\node (L) [state, right of = C] {LOW};
+ 
+\path [-stealth, thick]
+	(H) edge [loop left]  node {CLK=1}()
+    (H) edge [bend left] node[above] {CLK=0} (C)
+    (C) edge [bend left] node[above] {CLK=1} (H)
+    (C) edge [bend left] node[above] {CLK=0} (L)
+    (L) edge [bend left] node {CLK=1} (H)
+    (L) edge [loop right]  node {CLK=0}();
+\end{FSM}
+\caption{Edge detector FSM di Moore
+\label{diag: edgeMoore}}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{FSM}
+\tikzset{node distance = 4cm, on grid, auto
+}
+\node (H) [state] {HIGH};
+\node (L) [state, right of = H] {LOW};
+ 
+\path [-stealth, thick]
+	(H) edge [loop left]  node {CLK=1}()
+    (H) edge [bend left] node[above] {CLK=0, OUT=1} (L)
+    (L) edge [bend left] node {CLK=1, OUT=0} (H)
+    (L) edge [loop right]  node {CLK=0}();
+\end{FSM}
+\caption{Edge detector FSM di Mealy
+\label{diag: edgeMealy}}
+\end{figure}
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{cc|cc}
+	\toprule
+	CLK & $Q$ & $Q^+$ &	OUT \\
+	\midrule
+	\midrule
+	$0$  & $0$	&	$0$	& $0$ \\
+	$0$  & $1$	&	$0$	& $1$ \\
+	$1$  & $0$	&	$1$	& $0$ \\
+	$1$  & $1$  & 	$1$ & $0$ \\
+	\bottomrule
+	\end{tabular}
+	\caption{codifica binaria degli stati del detector di Mealy.
+	$Q_+$ = CLK; OUT = $\overline{\text{CLK}} \cdot Q$
+	\label{tab: bitMealy}}
+\end{table}
 
 \subsection{Definizione dello stream di bit casuali in ingresso}
 Con la funzione Patterns di Waveform si invia un segnale di clock di
