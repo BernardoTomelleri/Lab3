@@ -178,20 +178,26 @@ Le seguenti tabelle di Karnaugh aiutano a derivare le funzioni logiche degli sta
 \end{minipage}
 
 \subsection{Costruzione del circuito}
-Si è assemblato il circuito riportato in ~\cref{fig:semaforoSchema} e si
+Si è assemblato il circuito riportato in ~\cref{schm: semf} e si
 sono collegati i pin \texttt{preset} e \texttt{clear} dei D-FF a
 $V_{CC}$ per evitare reset o clear spuri.
 \begin{figure}[htbp]
     \centering
     \begin{circuitikz}
+    \tikzset{flipflop D/.style={flipflop,
+    flipflop def={t1=$D_0$, t6=$Q_0$, c3=1, t4=\ctikztextnot{$Q_0$}}},
+	}
         \def\andScale{0.7};
-        \def\cusu{-1};
-        \def\mano{0.5}
-        \def\yep{2}
+        \def\crossup{-1};
+        \def\mez{0.5}
+        \def\andskip{2}
 
         % componenti
         %% flip flop
         \draw (0,0) node[flipflop D] (ffSinistra) {};
+		\tikzset{flipflop D/.style={flipflop,
+		flipflop def={t1=$D_1$, t6=$Q_1$, c3=1, t4=\ctikztextnot{$Q_1$}}},
+		}
         \draw (5,0) node[flipflop D] (ffDestra) {};
 
         %% and
@@ -200,16 +206,16 @@ $V_{CC}$ per evitare reset o clear spuri.
         \node [and port, scale=\andScale] (andSopra) at (5,4) {};
 
         % per i crossing
-        \node at ($ (ffSinistra.pin 4) + (\mano,0) $) (ancilla) {};
+        \node at ($ (ffSinistra.pin 4) + (\mez,0) $) (ancilla) {};
 
         %% led
-        \node (G) at ($ (andSopra.out) + (3,0) $) {$ G $};
-        \node (Y) at ($ (G) + (0,-0.5) $) {$ Y $};
-        \node (R) at ($ (G) + (0,-1) $) {$ R $};
+        \node[label=north:G] (G) at ($ (andSopra.out) + (1.7,0) $) {};
+        \node[label=north west:Y] (Y) at ($ (G) + (0,-0.7) $) {};
+        \node[label=south:R] (R) at ($ (G) + (0,-1.4) $) {};
 
         % input
         \node (E) at ($ (andSopra.in 1) + (-9,0) $) {$ E $};
-        \node (CLK) at ($ (E)+(0,-7) $) {\texttt{CLK}};
+        \node (CLK) at ($ (E)+(0,-7) $) {CLK};
 
         % fili
         %% clock
@@ -220,42 +226,44 @@ $V_{CC}$ per evitare reset o clear spuri.
         \draw (andSinistra.out) -- (ffSinistra.pin 1);
         \draw (andDestra.out) -- (ffDestra.pin 1);
         \draw (E) -- (andSopra.in 1);
-        \draw (ffSinistra.pin 4) -- ++ (\mano,0) |- (andSopra.in 2);
+        \draw (ffSinistra.pin 4) -- ++ (\mez,0) |- (andSopra.in 2);
         \draw (andSinistra.in 2) -| (-3.5, |- E);
-        \draw (andDestra.in 1) -- ($ (ffSinistra.pin 4 |-, |- andDestra.in 1) + (\mano,0) $);
-        %% cacro del crossing pt 1
-        \node at (ffSinistra.pin 4 |-, \yep) [jump crossing] (X1) {};
-        \node at (ancilla |-, \yep) [jump crossing] (X2) {};
+        \draw (andDestra.in 1) --
+        ($ (ffSinistra.pin 4 |-, |- andDestra.in 1) + (\mez,0) $) node[circ]{};
+        %% and crossing
+        \node at (ffSinistra.pin 4 |-, \andskip) [jump crossing] (X1) {};
+        \node at (ancilla |-, \andskip) [jump crossing] (X2) {};
         \draw (andSinistra.in 1) |- (X1.west);
         \draw (X1.east) -- (X2.west);
-        \draw (X2.east) -- (ffDestra.pin 6 |-, \yep);
+        \draw (X2.east) -- (ffDestra.pin 6 |-, \andskip) node[circ]{};
         %% cancro del crossing pt 2
-        \node at ($ (ffDestra.pin 3) + (0,\cusu) $) [jump crossing] (X) {};
+        \node at ($ (ffDestra.pin 3) + (0,\crossup) $) [jump crossing] (X) {};
         \draw (ffDestra.pin 4) |- (X.east);
         \draw (X.west) -| (andDestra.in 2);
 
         %% led
-        \draw (andSopra.out) -- (G);
-        \draw (ffDestra.pin 6) |- (Y);
-        %% cancro del crossing
+        \draw (10,-2.5) node[eground](gnd){};
+        \draw (andSopra.out) -| (G) --++ (-0.2,0) to
+        [/tikz/circuitikz/bipoles/length=1cm,empty led, fill=green] ++ (1.5,0)
+        to[/tikz/circuitikz/bipoles/length=1cm, R,l=\SI{1}{\kilo\ohm}]
+        ++ (1.5,0) -| (gnd);
+        
+        \draw (ffDestra.pin 6) |- (Y) --++ (-0.2,0)
+        to [/tikz/circuitikz/bipoles/length=1cm,empty led, fill=yellow]
+        ++ (1.5,0) to[/tikz/circuitikz/bipoles/length=1cm, R,l=\SI{1}{\kilo\ohm}]
+        ++ (1.5,0) -| (10, 3.3) node[circ]{};
+        %% Q0 crossing
         \node at (ancilla |-, |- R) [jump crossing] (X1) {};
         \node at (ffDestra.pin 6 |-, |- R) [jump crossing] (X2) {};
         \draw (ffSinistra.pin 6) |- (X1.west);
         \draw (X1.east) -- (X2.west);
-        \draw (X2.east) -- (R);
-
-        % numeri dei pin
-%        \draw (ffSinistra.pin 1) node[above] {2};
-%        \draw (ffSinistra.pin 3) node[above] {3};
-%        \draw (ffSinistra.pin 4) node[above] {6};
-%        \draw (ffSinistra.pin 6) node[below] {5};
-%
-%        \draw (ffDestra.pin 1) node[above] {12};
-%        \draw (ffDestra.pin 3) node[above] {11};
-%        \draw (ffDestra.pin 4) node[above] {8};
-%        \draw (ffDestra.pin 6) node[below] {9};
+        \draw (X2.east) -- (R) --++ (-0.2,0)
+        to[/tikz/circuitikz/bipoles/length=1cm, empty led, fill=red]
+        ++ (1.5,0) to[/tikz/circuitikz/bipoles/length=1cm, R,a=\SI{1}{\kilo\ohm}]
+        ++ (1.5,0) -| (10, 2.6) node[circ]{};
     \end{circuitikz}
-    \caption{\label{fig:semaforoSchema}schema del semaforo Mealy con enable.}
+    \caption{schema del semaforo Mealy con enable.
+    \label{schm: semf}}
 \end{figure}
 
 Per studiarne il comportamento generiamo nei due pin DIO 0 (CLOCK) e DIO 1
@@ -302,17 +310,17 @@ discesa secondo il modello di Moore e secondo quello di Mealy.
 \begin{FSM}
 \tikzset{node distance = 4cm, on grid, auto
 }
-\node (H) [state] {HIGH};
-\node (C) [state, right of = H] {CHANGE};
-\node (L) [state, right of = C] {LOW};
+\node (H) [state with output] {HIGH \nodepart{lower} $11$};
+\node (C) [state with output, right of = H] {EDGE \nodepart{lower} $10$};
+\node (L) [state with output, right of = C] {LOW \nodepart{lower} $00$};
  
 \path [-stealth, thick]
-	(H) edge [loop left]  node {CLK=1}()
-    (H) edge [bend left] node[above] {CLK=0} (C)
-    (C) edge [bend left] node[above] {CLK=1} (H)
-    (C) edge [bend left] node[above] {CLK=0} (L)
-    (L) edge [bend left] node {CLK=1} (H)
-    (L) edge [loop right]  node {CLK=0}();
+	(H) edge [loop left]  node {IN=1}()
+    (H) edge [bend left] node[above] {IN=0} (C)
+    (C) edge [bend left] node[above] {IN=1} (H)
+    (C) edge [bend left] node[above] {IN=0} (L)
+    (L) edge [bend left] node {IN=1} (H)
+    (L) edge [loop right]  node {IN=0}();
 \end{FSM}
 \caption{Edge detector FSM di Moore
 \label{diag: edgeMoore}}
@@ -327,10 +335,10 @@ discesa secondo il modello di Moore e secondo quello di Mealy.
 \node (L) [state, right of = H] {LOW};
  
 \path [-stealth, thick]
-	(H) edge [loop left]  node {CLK=1}()
-    (H) edge [bend left] node[above] {CLK=0, OUT=1} (L)
-    (L) edge [bend left] node {CLK=1, OUT=0} (H)
-    (L) edge [loop right]  node {CLK=0}();
+	(H) edge [loop left]  node {IN$=1$ (OUT$=0$)}()
+    (H) edge [bend left] node[above] {IN$=0$ (OUT$=1$)} (L)
+    (L) edge [bend left] node {IN$=1$ (OUT$=0$)} (H)
+    (L) edge [loop right]  node {IN$=0$ (OUT$=0$)}();
 \end{FSM}
 \caption{Edge detector FSM di Mealy
 \label{diag: edgeMealy}}
@@ -338,19 +346,19 @@ discesa secondo il modello di Moore e secondo quello di Mealy.
 
 \begin{table}[htbp]
 	\centering
-	\begin{tabular}{cc|cc}
+	\begin{tabular}{cc|c}
 	\toprule
-	CLK & $Q$ & $Q^+$ &	OUT \\
+	$D$ = IN & $Q$ & OUT \\
 	\midrule
 	\midrule
-	$0$  & $0$	&	$0$	& $0$ \\
-	$0$  & $1$	&	$0$	& $1$ \\
-	$1$  & $0$	&	$1$	& $0$ \\
-	$1$  & $1$  & 	$1$ & $0$ \\
+	$0$  & $0$	& $0$ \\
+	$0$  & $1$	& $1$ \\
+	$1$  & $0$	& $0$ \\
+	$1$  & $1$  & $0$ \\
 	\bottomrule
 	\end{tabular}
 	\caption{codifica binaria degli stati del detector di Mealy.
-	$Q_+$ = CLK; OUT = $\overline{\text{CLK}} \cdot Q$
+	$D$ = IN; OUT = $\overline{\text{IN}} \cdot Q$
 	\label{tab: bitMealy}}
 \end{table}
 

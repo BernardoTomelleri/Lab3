@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  27 APR 2022 00:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  3 MAY 2022 19:45
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1494,14 +1494,19 @@ Overfull \hbox (17.22168pt too wide) in paragraph at lines 149--179
 
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+
+Package pgf Warning: Returning node center instead of a point on node border. D
+id you specify a point identical to the center of node ``G''? on input line 246
+.
+
 [2]
 <../figs//traffic.png, id=125, 1440.88312pt x 711.4078pt>
 File: ../figs//traffic.png Graphic file (type png)
 <use ../figs//traffic.png>
-Package pdftex.def Info: ../figs//traffic.png  used on input line 268.
+Package pdftex.def Info: ../figs//traffic.png  used on input line 276.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
 
-Overfull \hbox (0.72293pt too wide) in paragraph at lines 275--275
+Overfull \hbox (0.72293pt too wide) in paragraph at lines 283--283
 []\T1/cmr/bx/n/14.4 Implementazione soft-ware del-la lo-gi-ca com-bi-na-to-ria 
 con AD2/ROM 
  []
@@ -1511,32 +1516,32 @@ Package rerunfilecheck Info: File `E03.2.AC.out' has not changed.
 (rerunfilecheck)             Checksum: 58CE1C27A0F8B1D8C78B63D68BAF8477;5881.
  ) 
 Here is how much of TeX's memory you used:
- 58411 strings out of 479713
- 1429279 string characters out of 5876923
- 2190075 words of memory out of 10000000
- 75324 multiletter control sequences out of 15000+600000
+ 58745 strings out of 479713
+ 1439092 string characters out of 5876923
+ 2196077 words of memory out of 10000000
+ 75658 multiletter control sequences out of 15000+600000
  420313 words of font info for 73 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,18n,125p,754b,1265s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,18n,125p,754b,1315s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
 ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.p
-fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/tex
-live/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/
-texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist
-/fonts/type1/public/cm-super/sfrm0900.pfb><c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
-cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
-frm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pf
-b>
-Output written on E03.2.AC.pdf (5 pages, 268161 bytes).
+pe1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
+><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/t
+exmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/
+fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type
+1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/c
+m-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
+rm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb
+><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on E03.2.AC.pdf (5 pages, 282645 bytes).
 PDF statistics:
- 221 PDF objects out of 1000 (max. 8388607)
- 182 compressed objects within 2 object streams
+ 226 PDF objects out of 1000 (max. 8388607)
+ 185 compressed objects within 2 object streams
  39 named destinations out of 1000 (max. 500000)
  194 words of extra memory for PDF output out of 10000 (max. 10000000)
 
