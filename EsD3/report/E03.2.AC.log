@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  4 MAY 2022 21:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  4 MAY 2022 21:13
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1528,30 +1528,32 @@ Overfull \hbox (0.72293pt too wide) in paragraph at lines 281--281
 con AD2/ROM 
  []
 
+[4 <../figs//traffic.png (PNG copy)>]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-[4 <../figs//traffic.png (PNG copy)>] [5]
-<../figs//Moore_edge_detector.png, id=147, 1440.88312pt x 711.4078pt>
+ [5] [6]
+<../figs//Moore_edge_detector.png, id=156, 1440.88312pt x 711.4078pt>
 File: ../figs//Moore_edge_detector.png Graphic file (type png)
 <use ../figs//Moore_edge_detector.png>
 Package pdftex.def Info: ../figs//Moore_edge_detector.png  used on input line 5
-06.
+09.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
-<../figs//Mealy_edge_detector.png, id=148, 1440.88312pt x 711.4078pt>
+<../figs//Mealy_edge_detector.png, id=157, 1440.88312pt x 711.4078pt>
 File: ../figs//Mealy_edge_detector.png Graphic file (type png)
 <use ../figs//Mealy_edge_detector.png>
 Package pdftex.def Info: ../figs//Mealy_edge_detector.png  used on input line 5
-14.
+17.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
- [6] [7 <../figs//Moore_edge_detector.png (PNG copy)> <../figs//Mealy_edge_dete
-ctor.png (PNG copy)>] (./E03.2.AC.aux)
+ [7 <../figs//Moore_edge_detector.png (PNG copy)> <../figs//Mealy_edge_detector
+.png (PNG copy)>] [8]
+(./E03.2.AC.aux)
 Package rerunfilecheck Info: File `E03.2.AC.out' has not changed.
 (rerunfilecheck)             Checksum: 58CE1C27A0F8B1D8C78B63D68BAF8477;5881.
  ) 
 Here is how much of TeX's memory you used:
- 59153 strings out of 479713
- 1447778 string characters out of 5876923
- 2207077 words of memory out of 10000000
+ 59154 strings out of 479713
+ 1447784 string characters out of 5876923
+ 2204077 words of memory out of 10000000
  76053 multiletter control sequences out of 15000+600000
  420313 words of font info for 73 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
@@ -1572,10 +1574,10 @@ m-super/sfrm0900.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
 rm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb
 ><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texli
 ve/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on E03.2.AC.pdf (7 pages, 394493 bytes).
+Output written on E03.2.AC.pdf (8 pages, 394871 bytes).
 PDF statistics:
- 252 PDF objects out of 1000 (max. 8388607)
- 204 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 500000)
+ 257 PDF objects out of 1000 (max. 8388607)
+ 208 compressed objects within 3 object streams
+ 49 named destinations out of 1000 (max. 500000)
  204 words of extra memory for PDF output out of 10000 (max. 10000000)
 

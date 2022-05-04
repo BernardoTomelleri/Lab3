@@ -289,7 +289,9 @@ clock, dopo di cui si spegne come previsto dalla modalità disabilitato.
 
 %=======================
 \section{Implementazione in software dei semafori con MCU (Arduino)}
-Si vuole ricostruire il circuito precedente per il controllo di un semaforo tramite un microcontrollore (nel nostro caso utilizzeremo arduino); a questo scopo utilizzeremo come componenti uno switch, 3 led (rosso, verde e giallo) e una resistenza da $330 \ohm$ per limitare la corrente che scorre nei led.
+Si vuole ricostruire il circuito precedente per il controllo di un semaforo tramite un microcontrollore (nel nostro caso utilizzeremo arduino); a questo scopo utilizzeremo come componenti uno switch, 3 led (rosso, verde e giallo) e una resistenza da
+$330 \; \si{\ohm}$ per limitare la corrente che scorre nei led.
+
 \subsection{Collegamento LED semaforo alle uscite}
 
 \subsection{Definizione interruttore di Enable}
@@ -522,11 +524,7 @@ dello stesso.
 \section*{Conclusioni e commenti finali}
 Si è riusciti a verificare il corretto funzionamento di circuiti logici
 sequenziali di crescente complessità e svariate applicazioni (e.g., sistemi di
-controllo e misura) costruiti con porte NOT, NAND, XOR, D-Latch e contatori
-sincroni.
-In particolare sono stati realizzati e studiati un D-Latch, uno shift-register
-con positive edge-triggered D-FF, un generatore di sequenze pseudocasuali e
-alcuni tipi di divisore di frequenza con contatori binari.
+controllo e misura) costruiti con porte NOT, NAND, OR e D-FF.
 Inoltre si è riusciti ad apprezzare l'effetto dei tempi di propagazione
 delle porte sul loro comportamento, seppur in maniera limitata dalla bassa
 risoluzione temporale dell'AD2.
