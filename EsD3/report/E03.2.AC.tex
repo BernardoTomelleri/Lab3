@@ -6,6 +6,7 @@
 \usepackage{colortbl}
 \usepackage{diagbox}
 \usepackage{tkz-graph}
+\usepackage{arydshln}
 \usetikzlibrary{automata, positioning, arrows}
 \newenvironment{FSM}{
 \begin{tikzpicture}
@@ -146,36 +147,29 @@ Si potrebbe usare una porta AND per rendere l'attivazione del led rosso dipenden
 \subsection{Mappe di Karnaugh e logica combinatoria}
 Le seguenti tabelle di Karnaugh aiutano a derivare le funzioni logiche degli stati futuri in dipendenza da quelli correnti: \\
 
-\begin{minipage}{0.5\textwidth}
-    \centering
-    \begin{tabular}{c||c|c|c|c}
-        \backslashbox{E}{Q$_1$Q$_0$} & 00 & 01 & 11 & 10\\
-        \hline
-        \hline
-        0 & 0 & 0 & X & 0\\
-        \hline
-        1 & 0 & \cellcolor[HTML]{FF9999}1 & \cellcolor[HTML]{FF9999}X & 0\\
-    \end{tabular}
-    %\captionof{table}{Tabella di Karnaugh}
-    \label{k1}\\
-    \hfill \\
-    $D_1=E \cdot Q_0$
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-    \centering
-    \begin{tabular}{c||c|c|c|c}
-        \backslashbox{E}{Q$_1$Q$_0$} & 00 & 01 & 11 & 10\\
-        \hline
+\begin{table}[htbp]
+\centering
+    \begin{tabular}{c|c|c|c|c}
+        \backslashbox{E}{$Q_1 Q_0$} & 00 & 01 & 11 & 10\\
         \hline
         0 & \cellcolor[HTML]{FF9999}1 & 0 & X & 0\\
         \hline
         1 & \cellcolor[HTML]{FF9999}1 & 0 & X & 0\\
     \end{tabular}
-    %\captionof{table}{Tabella di Karnaugh}
-    \label{k2}\\
-   \hfill \\
-    $D_0=\overline{Q_0}\cdot \overline{Q_1}$
-\end{minipage}
+	\caption{Tabella di Karnaugh per $D_0 = \overline{Q_0} \cdot \overline{Q_1}$
+	 \label{tab: KarD0}}
+
+\bigskip
+
+    \begin{tabular}{c|c|c|c|c}
+        \backslashbox{E}{$Q_1 Q_0$} & 00 & 01 & 11 & 10\\
+        \hline
+        0 & 0 & 0 & X & 0\\
+        \hline
+        1 & 0 & \cellcolor[HTML]{FF9999}1 & \cellcolor[HTML]{FF9999}X & 0\\
+    \end{tabular}
+    \caption{Tabella di Karnaugh per $D_1 = E \cdot Q_0$ \label{tab: KarD1}}
+\end{table}
 
 \subsection{Costruzione del circuito}
 Si è assemblato il circuito riportato in ~\cref{schm: semf} e si
@@ -271,12 +265,16 @@ Per studiarne il comportamento generiamo nei due pin DIO 0 (CLOCK) e DIO 1
 $\SI{2}{\hertz}$ agli ingressi CLK ed $E$ del circuito. 
 
 \subsection{Analisi e verifica del funzionamento del circuito}
+Osserviamo che nel caso E = 0, Q0 = 1 e Q1 = 0 che è riportato come X nella tabella, produce l’output “rosso”. Questo vale a dire che se il semaforo è “rosso” con E = 1
+e questo viene messo a zero, rimarrà rosso fino al fronte di salita successivo del
+clock, dopo di cui si spegne come previsto dalla modalità disabilitato.
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{traffic}
-    \caption{Acquisizione di un ciclo completo (frequenza 1 kHz) con Logic
+    \caption{Acquisizione di un ciclo completo (frequenza 1 Hz) con Logic
     Analyzer dei segnali in ingresso e in uscita dal semaforo.
-    \label{fig: dlatch}}
+    \label{fig: traffic}}
 \end{figure}
 
 %=======================
@@ -310,7 +308,7 @@ discesa secondo il modello di Moore e secondo quello di Mealy.
 \begin{FSM}
 \tikzset{node distance = 4cm, on grid, auto
 }
-\node (H) [state with output] {HIGH \nodepart{lower} $11$};
+\node (H) [state with output] {HIGH \nodepart{lower} $01$};
 \node (C) [state with output, right of = H] {EDGE \nodepart{lower} $10$};
 \node (L) [state with output, right of = C] {LOW \nodepart{lower} $00$};
  
@@ -324,6 +322,107 @@ discesa secondo il modello di Moore e secondo quello di Mealy.
 \end{FSM}
 \caption{Edge detector FSM di Moore
 \label{diag: edgeMoore}}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{c:c|cc||cc|c}
+\toprule
+State & IN & $Q_1$ & $Q_0$ & $D_1$ & $D_0$ & OUT \\
+\midrule
+\midrule
+LOW   & 0  & 0  & 0  & 0  & 0  & 0   \\
+      & 1  & 0  & 0  & 0  & 1  & 0   \\
+\midrule
+EDGE  & 0  & 1  & 0  & 0  & 0  & 1   \\
+      & 1  & 1  & 0  & 0  & 1  & 1   \\
+\midrule
+HIGH  & 0  & 0  & 1  & 1  & 0  & 0   \\
+      & 1  & 0  & 1  & 0  & 1  & 0   \\
+\bottomrule
+\end{tabular}
+\caption{codifica binaria degli stati del detector di Moore.
+\label{tab: bitMoore}}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+	\begin{tabular}{c|c|c|c|c}
+        \backslashbox{IN}{$Q_1 Q_0$} & 00 & 01 & 11 & 10\\
+        \hline
+        0 & 0 & 0 & X & 0 \\
+        \hline
+        1 & 1 & 1 & X & 1 \\
+    \end{tabular}
+	\caption{Tabella di Karnaugh per $D_0 = \text{IN}$
+	 \label{tab: KarD0edge}}
+
+\bigskip
+	 
+    \begin{tabular}{c|c|c|c|c}
+        \backslashbox{IN}{$Q_1 Q_0$} & 00 & 01 & 11 & 10\\
+        \hline
+        0 & 0 & \cellcolor[HTML]{FF9999} 1 & \cellcolor[HTML]{FF9999} X & 0 \\
+        \hline
+        1 & 0 & 0 & X & 0 \\
+    \end{tabular}
+	\caption{Tabella di Karnaugh per $D_1 = \overline{\text{IN}} \cdot Q_0$
+	 \label{tab: KarD1edge}}
+
+\bigskip
+
+    \begin{tabular}{c|c|c|c|c}
+        \backslashbox{IN}{$Q_1 Q_0$} & 00 & 01 & 11 & 10\\
+        \hline
+        0 & 0 & 0 & \cellcolor[HTML]{FF9999} X & \cellcolor[HTML]{FF9999} 1 \\
+        \hline
+        1 & 0 & 0 & \cellcolor[HTML]{FF9999} X & \cellcolor[HTML]{FF9999} 1 \\
+    \end{tabular}
+    \caption{Tabella di Karnaugh per $\text{OUT} = Q_1$
+    \label{tab: KarOUT}}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{circuitikz}
+    \tikzset{flipflop D/.style={flipflop,
+    flipflop def={t1=$D_0$, t6=$Q_0$, c3=1, t4=\ctikztextnot{$Q_0$}}},
+	}
+        \def\andScale{0.7};
+
+        % componenti
+        %% flip flop
+        \draw (0,0) node[flipflop D] (ffSinistra) {};
+		\tikzset{flipflop D/.style={flipflop,
+		flipflop def={t1=$D_1$, t6=$Q_1$, c3=1, t4=\ctikztextnot{$Q_1$}}},
+		}
+        \draw (5,0) node[flipflop D] (ffDestra) {};
+        
+        %% and gate
+        \node (andDestra) at (3, |- ffDestra.pin 1) [and port, scale=\andScale] {};
+        \node at (andDestra.bin 1) [ocirc, left] {};
+        
+        % input
+        \node (IN) at ($ (ffSinistra.pin 1) + (-2,1) $) {IN};
+        \node (CLK) at ($ (IN) + (0,-4) $) {CLK};
+        \draw (9.5,-1.5) node[eground] (gnd){};
+
+        % fili
+        %% clock e in
+        \draw (CLK) -| (ffDestra.pin 3);
+        \draw (ffSinistra.pin 3) -- (ffSinistra.pin 3 |-, |- CLK);
+        \draw (IN) -| (andDestra.in 1);
+        \draw (ffSinistra.pin 1) -- (ffSinistra.pin 1 |-, |- IN);
+        \draw (ffSinistra.pin 6) |- (andDestra.in 2);
+        
+        \draw (andDestra.out) -- (ffDestra.pin 1);
+        \draw (ffDestra.pin 6) to
+        [/tikz/circuitikz/bipoles/length=1cm,empty led, l=OUT]
+        ++ (1.5,0) to[/tikz/circuitikz/bipoles/length=1cm, R,l=\SI{1}{\kilo\ohm}]
+        ++ (1.5,0) -| (gnd);
+    \end{circuitikz}
+    \caption{schema del detector Moore.
+    \label{schm: edgeMoore}}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -362,14 +461,61 @@ discesa secondo il modello di Moore e secondo quello di Mealy.
 	\label{tab: bitMealy}}
 \end{table}
 
+\begin{figure}[htbp]
+    \centering
+    \begin{circuitikz}
+	\def\andScale{0.7};
+        % componenti
+        %% flip flop
+        \draw (0,0) node[flipflop D] (ffSinistra) {};
+        
+        %% and gate
+        \node (andDestra) at ($ (ffSinistra.pin 6) + (1.5,0.2) $) [and port, scale=\andScale] {};
+        \node at (andDestra.bin 1) [ocirc, left] {};
+        
+        % input
+        \node (IN) at ($ (ffSinistra.pin 1) + (-2,1) $) {IN};
+        \node (CLK) at ($ (ffSinistra.pin 3) + (-2,0) $) {CLK};
+        \draw (6.5,-1) node[eground] (gnd){};
+
+        % fili
+        %% clock e in
+        \draw (CLK) -| (ffSinistra.pin 3);
+        \draw (IN) -| (andDestra.in 1);
+        \draw (ffSinistra.pin 1) -- (ffSinistra.pin 1 |-, |- IN);
+        \draw (ffSinistra.pin 6) |- (andDestra.in 2);
+        
+        \draw (andDestra.out) to
+        [/tikz/circuitikz/bipoles/length=1cm,empty led, l=OUT]
+        ++ (1.5,0) to[/tikz/circuitikz/bipoles/length=1cm, R,l=\SI{1}{\kilo\ohm}]
+        ++ (1.5,0) -| (gnd);
+    \end{circuitikz}
+    \caption{schema del detector Mealy.
+    \label{schm: edgeMealy}}
+\end{figure}
+
 \subsection{Definizione dello stream di bit casuali in ingresso}
 Con la funzione Patterns di Waveform si invia un segnale di clock di
-frequenza $f\ped{clk} = \SI{1}{k\Hz}$ al pin (CLK) del contatore e si
+frequenza $f\ped{clk} = \SI{1}{k\Hz}$ al pin (CLK) dei Flip-Flop e si
 acquisiscono i segnali in uscita con la funzione Logic
 dello stesso.
 
 \subsection{Verifica del funzionamento e analisi della temporizzazione}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Moore_edge_detector}
+    \caption{Acquisizione di un ciclo completo (frequenza 1 kHz) con Logic
+    Analyzer dei segnali in ingresso e in uscita dall'edge detector.
+    \label{fig: edgeMoore}}
+\end{figure}
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Mealy_edge_detector}
+    \caption{Acquisizione di un ciclo completo (frequenza 1 kHz) con Logic
+    Analyzer dei segnali in ingresso e in uscita dal semaforo.
+    \label{fig: edgeMealy}}
+\end{figure}
 
 %=======================
 \section*{Conclusioni e commenti finali}
