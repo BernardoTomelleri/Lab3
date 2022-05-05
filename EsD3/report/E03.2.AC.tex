@@ -26,6 +26,7 @@ every state/.style={minimum size = 1cm, thick, fill=gray!10}, % sets the propert
 % lets graphicx know path where figures to be included are found
 \graphicspath{{../figs/}}
 
+\newcommand{\dontcare}{X}
 \author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
 \title{EsD3: Macchine a stati finiti: semafori e riconoscitore di fronti}
 \begin{document}
@@ -36,7 +37,7 @@ every state/.style={minimum size = 1cm, thick, fill=gray!10}, % sets the propert
 Riportiamo per completezza il valore della tensione continua di
 alimentazione per i circuiti integrati misurata con il multimetro
 \[
-V_{CC} = 4.99 \pm 0.03 \si{\V}
+V_{CC} = 4.99 \pm 0.03 \; \si{\V}
 \]
 
 e il valore di capacità del condensatore di disaccoppiamento che collega le
@@ -118,56 +119,92 @@ ENABLED o DISABLED.
 \end{table}
 
 \subsection{Tabelle di verità}
-Si nota in particolare dal diagramma degli stati che il segnale di input ENABLE modifica l'output in maniera asincrona, mentre dalla tabella di verità (\cref{tab: 2bit}) si può distinguere come lo stato futuro dipenda da quello precedente sfruttando la sincronia del segnale di clock per incrementare il contatore.
-
+Come visto nel diagramma degli stati il segnale di input ENABLE modifica
+l'uscita del circuito in maniera asincrona, mentre dalla tabella di verità
+(\cref{tab: semftruth}) si intuisce come lo stato futuro dipenda da quello
+precedente incrementando come un contatore in maniera sincrona rispetto al
+segnale di clock.
 \begin{table}[htbp]
     \centering
     \begin{tabular}{c|c|cc|cc|c}
-     \multicolumn{1}{c||}{ENABLE}&\multicolumn{1}{c}{ }&\multicolumn{2}{c||}{current state} &\multicolumn{2}{c}{next state}\\
+    &\multicolumn{1}{c}{ }&\multicolumn{2}{c|}{current state} &\multicolumn{2}{c}{next state}\\
      \hline
-         && Q$_1$ & Q$_0$ & D$_1$ & D$_0$ & \\
+         ENABLE& LED & $Q_1$ & $Q_0$ & $D_1$ & $D_0$ & LED \\
          \hline
-        1 & G & 0 & 0 & 0 & 1 & GY\\
-       & GY & 0 & 1 & 1 & 0 & R\\
-       & R & 1 & 0 & 0 & 0 & G\\
-        & ... & 1 & 1 & X & X & ...\\
+       & $V$ & 0 & 0 & 0 & 1 & $VG$ \\
+       1 & $VG$ & 0 & 1 & 1 & 0 & $R$ \\
+       & $R$ & 1 & 0 & 0 & 0 & $V$ \\
+        & $\ominus$ & 1 & 1 & X & X & $\ominus$\\
         \hline
-        0 & OFF & 0 & 0 & 0 & 1 & Y \\
-        & Y & 0 & 1 & 0 & 0 & OFF \\
-         & OFF & 1 & 0 & 0 & 0& OFF \\
-         &  ... & 1 & 1 & X & X & ...\\
+        & $Y^0$ & 0 & 0 & 0 & 1 & $Y^1$ \\
+        0 & $Y^1$ & 0 & 1 & 0 & 0 & $Y^0$ \\
+         & $Y^0$ & 1 & 0 & 0 & 0& $Y^0$ \\
+         &  $\ominus$ & 1 & 1 & X & X & $\ominus$ \\
     \end{tabular}
-    \caption{Tabella di verità per il semaforo a 2 bit.}
-    \label{tab: 2bit}
+    \caption{Tabella di verità per le transizioni di stato del semaforo Mealy}
+    \label{tab: semftruth}
 \end{table}
 
-Di conseguenza, è possibile associare agli output led G, Y, R una corrispondenza in termini di bit secondo la logica:
+\begin{table}[htbp]
+    \centering
+        \begin{tabular}{c|cc|ccc}
+          \toprule
+          $ E $ & $ Q_0 $ & $ Q_1 $ &   G   &   Y   &   R   \\
+          \midrule
+          \midrule
+          1   &     0     &     0     &     1     &     0     &     0     \\
+          1   &     0     &     1     &     1     &     1     &     0     \\
+          1   &     1     &     0     &     0     &     0     &     1     \\
+          1   &     1     &     1     & \dontcare & \dontcare & \dontcare \\
+          \midrule
+          0   &     0     &     0     &     0     &     0     &     0     \\
+          0   &     0     &     1     &     0     &     1     &     0     \\
+          0   &     1     &     0     & \dontcare & \dontcare & \dontcare \\
+          0   &     1     &     1     & \dontcare & \dontcare & \dontcare \\
+          \bottomrule   
+    \end{tabular}
+    \caption{Corrispondenza tra gli stati della FSM e i valori di tensione
+	digitali in ingresso ai LED del semaforo \label{tab: LED}}.     
+\end{table}
+
+Come esplicitato nella tabella \ref{tab: LED} possiamo collegare gli output
+della macchina ai led di colori Verde, Giallo e Rosso secondo lo schema
+logico seguente:
+\begin{description}
+	\item{LED verde acceso} G $= Q_1 = 0 \; (\iff \overline{Q_1} = 1)$ 
+    \item{LED giallo acceso} Y $= Q_0 = 1$
+    \item{LED rosso acceso} R $= Q_1 = 1$
+\end{description}
+in modo tale che nella realizzazione pratica del circuito, in corrispondenza
+degli opportuni stati della FSM in uscita dai Flip-Flop si accendano le
+corrette combinazioni di LED (ad esempio: Y $= Q_0 \implies$ LED giallo in
+serie a $Q_0$).
+
+Occorre specificare che, nel caso in cui $E = 0$, $Q_0 = 1$ e $Q_1 = 0$ (riportato
+come X nella \cref{tab: LED}, produce l’output “rosso”. Questo vale a dire che se il
+semaforo è “rosso” con ENABLE alto e questo viene messo a zero, rimarrà rosso
+fino al fronte di salita successivo del clock, dopo di cui si spegne come
+previsto dalla modalità disabilitato.
+Mentre per quanto riguarda l'accensione dei led verde, questa è consentita
+solo quando ENABLE = 1
 \begin{itemize}
-    \item Q$_0$ = 1 $\longrightarrow$ led giallo acceso (Y)
-    \item Q$_1$ = 0 (o equivalentemente: $\overline{Q_1}$ = 1) $\longrightarrow$ led verde acceso (G)
-    \item Q$_1$ = 1 $\longrightarrow$ led rosso acceso (R)
-\end{itemize}
-tale logica è sempre sottomessa al segnale di ENABLE, che consente che i led verde e rosso si possano accendere effettivamente. \\
-
-Questa codifica è quella sfruttata per la costruzione vera e propria del circuito collegando i led alle uscite dei Flip-Flop (ad esempio: led giallo in serie a Q$_0$). \\
-
-Per la precisione, dal momento che l'accensione dei led verde e rosso è consentita solo quando ENABLE = 1, si possono utilizzare due porte AND per definire
-\begin{itemize}
-    \item $\overline{Q_1} \cdot E \to$ led verde acceso $(V)$
-    \item $Q_1 \to$ led rosso acceso $(R)$
+    \item $\overline{Q_1} \cdot E \implies$ LED verde acceso (G)
+    \item $Q_1 \implies$ LED rosso acceso (R)
 \end{itemize}
 
-\paragraph{AND-gate per led rosso}
-Impiegando una quarta porta AND è possibile rendere l'accensione del led rosso
-direttamente dipendente dal segnale di ENABLE (ovvero $R = Q_1 \cdot E$).
-Dalla \cref{tab: 2bit} infatti si nota che l'unica differenza di funzionamento
-si avrebbe durante la transizione di $E: 1 \to 0$; in questo caso, lo
-spegnimento diventerebbe asincrono rispetto al segnale di clock anziché
-sincrono.
+\paragraph{AND-gate per LED rosso}
+Facendo uso di una quarta porta AND è possibile rendere l'accensione del LED
+rosso dipendente dal segnale di ENABLE (ovvero R $= Q_1 \cdot E$) in maniera
+analoga a quanto fatto per il LED verde.
+Dalla \cref{tab: semftruth} infatti si nota che l'unica differenza di
+funzionamento si avrebbe durante la transizione di $E: 1 \to 0$.
+Per cui in questa variante del circuito, lo spegnimento diventerebbe asincrono
+rispetto al segnale di clock anziché sincrono.
 
 \subsection{Mappe di Karnaugh e logica combinatoria}
-Le seguenti tabelle di Karnaugh aiutano a derivare le funzioni logiche degli stati futuri in dipendenza da quelli correnti: \\
-
+Si riportano di seguito le tabelle di Karnaugh impiegate per derivare le
+espressioni logiche degli stati futuri $D_1 D_0$ in funzione di quelli
+correnti $Q_1 Q_0$:
 \begin{table}[htbp]
 \centering
     \begin{tabular}{c|c|c|c|c}
@@ -189,12 +226,14 @@ Le seguenti tabelle di Karnaugh aiutano a derivare le funzioni logiche degli sta
         \hline
         1 & 0 & \cellcolor[HTML]{FF9999}1 & \cellcolor[HTML]{FF9999}X & 0\\
     \end{tabular}
-    \caption{Tabella di Karnaugh per $D_1 = E \cdot Q_0$ \label{tab: KarD1}}
+    \caption{Tabella di Karnaugh per $D_1 = E \cdot Q_0$
+    \label{tab: KarD1}}
 \end{table}
 
 \subsection{Costruzione del circuito}
-Si è assemblato il circuito riportato in ~\cref{schm: semf} e si
-sono collegati i pin \texttt{preset} e \texttt{clear} dei D-FF a
+Si è montato il circuito riportato in ~\cref{schm: semf} con due
+positive-edge-triggered D Flip-Flop (da chip integrato 74LS74) e 3 porte AND
+(da chip integrato 74LS08) e si sono collegati i pin PRESET e CLEAR dei D-FF a
 $V_{CC}$ onde evitare reset o clear spuri.
 \begin{figure}[htbp]
     \centering
@@ -281,17 +320,17 @@ $V_{CC}$ onde evitare reset o clear spuri.
     \label{schm: semf}}
 \end{figure}
 
-Per studiarne il comportamento generiamo nei due pin DIO 0 (CLOCK) e DIO 1
-(ENABLE) dell'AD2 due segnali di clock di frequenza $f = \SI{20}{\hertz}$ e
-$\SI{2}{\hertz}$ agli ingressi CLK ed $E$ del circuito. 
-
 \subsection{Analisi e verifica del funzionamento del circuito}
-Osserviamo che nel caso $E = 0$, $Q_0 = 1$ e $Q_1 = 0$ che è riportato come
-X nella tabella, produce l’output “rosso”. Questo vale a dire che se il
-semaforo è “rosso” con ENABLE alto e questo viene messo a zero, rimarrà rosso
-fino al fronte di salita successivo del clock, dopo di cui si spegne come
-previsto dalla modalità disabilitato.
-
+Per studiarne il comportamento generiamo nei due pin DIO 0 (CLOCK) e DIO 1
+(ENABLE) dell'AD2 rispettivamente due segnali di clock di frequenza
+$f\ped{clk} = \SI{10}{\hertz}$ e $f = f\ped{clk}/10 = \SI{1}{\hertz}$ agli
+ingressi CLK ed $E$ del circuito.
+Così facendo si riesce ad apprezzare il comportamento del circuito non solo
+con $E = 1$ ed $E = 0$, ma anche durante le transizioni tra le due modalità
+di funzionamento del semaforo, come visualizzato dall'acquisizione con Logic
+Analyzer dei segnali in ingresso e in uscita della FSM in \cref{fig: traffic}
+(su DIO 2 il LED verde
+(G), in DIO 3 il giallo (Y) e in DIO 4 il rosso (R)).
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{traffic}
@@ -299,6 +338,10 @@ previsto dalla modalità disabilitato.
     Analyzer dei segnali in ingresso e in uscita dal semaforo.
     \label{fig: traffic}}
 \end{figure}
+
+Osserviamo che, come atteso nel caso $E = 0$, $Q_0 = 1$ e $Q_1 = 0$ il
+semaforo rimane rosso fino al fronte di salita successivo del clock prima
+di spegnersi come previsto dalla modalità disabilitato.
 
 %=======================
 \section{Implementazione software della logica combinatoria con AD2/ROM}
@@ -312,7 +355,7 @@ previsto dalla modalità disabilitato.
 
 %=======================
 \section{Implementazione in software dei semafori con MCU (Arduino)}
-Si vuole ricostruire il circuito precedente per il controllo di un semaforo tramite un microcontrollore (nel nostro caso utilizzeremo arduino); a questo scopo utilizzeremo come componenti uno switch, 3 led (rosso, verde e giallo) e una resistenza da
+Si vuole ricostruire il circuito precedente per il controllo di un semaforo tramite un microcontrollore (nel nostro caso utilizzeremo Arduino UNO); a questo scopo utilizzeremo come componenti uno switch, 3 led (rosso, verde e giallo) e una resistenza da
 $330 \; \si{\ohm}$ per limitare la corrente che scorre nei led.
 
 \subsection{Collegamento LED semaforo alle uscite}
@@ -327,8 +370,9 @@ $330 \; \si{\ohm}$ per limitare la corrente che scorre nei led.
 \section{Falling-edge detector}
 \subsection{Progettazione FSM e costruzione dei circuiti}
 Si vuole realizzare una FSM che riceve uno stream di bit su una linea di
-ingresso e che accende un LED tutte le volte che si presenta un fronte di
-discesa secondo il modello di Moore e secondo quello di Mealy.
+ingresso e che accende un LED tutte le volte che su questo si presenta un
+fronte di discesa secondo il modello di Moore e un'altra secondo quello di
+Mealy.
 \begin{figure}[htbp]
 \centering
 \begin{FSM}
@@ -521,36 +565,49 @@ HIGH  & 0  & 0  & 1  & 1  & 0  & 0   \\
 \end{figure}
 
 \subsection{Definizione dello stream di bit casuali in ingresso}
-Con la funzione Patterns di Waveform si invia un segnale di clock di
-frequenza $f\ped{clk} = \SI{1}{k\Hz}$ al pin (CLK) dei Flip-Flop e si
-acquisiscono i segnali in uscita con la funzione Logic
-dello stesso.
+Con la funzione Patterns di Waveform si invia un segnale (in DIO 5) di clock
+di frequenza $f\ped{clk} = \SI{1}{k\Hz}$ al pin (CLK) dei Flip-Flop e si
+genera con il canale DIO 6 uno stream di dati random alla stessa frequenza
+$f = f\ped{clk}$, già dalla schermata di Patterns è possibile notare come
+le commutazioni di stato del segnale pseudocasuale avvengano in corrispondenza
+dei fronti di discesa del segnale di clock.
+
+Come prima si sono mantenuti i pin PRESET e CLEAR dei D-FF collegati a
+$V_{CC}$ per evitare reset o clear spuri.
 
 \subsection{Verifica del funzionamento e analisi della temporizzazione}
+Si sono acquisiti i segnali in ingresso (CLK = DIO 5, IN = DIO 6) e in uscita
+(OUT = DIO 7) dai circuiti edge-detector con la funzione Logic Analyzer
+dell'AD2, di cui riportiamo i risultati per il circuito di Moore in
+\cref{fig: edgeMoore} e per la FSM di Mealy in \cref{fig: edgeMealy}.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{Moore_edge_detector}
     \caption{Acquisizione di un ciclo completo (frequenza 1 kHz) con Logic
-    Analyzer dei segnali in ingresso e in uscita dall'edge detector di Mealy.
+    Analyzer dei segnali in ingresso e in uscita dall'edge detector di Moore.
     \label{fig: edgeMoore}}
 \end{figure}
-
+Notiamo nel primo caso come l'uscita assume valore alto in maniera sincrona
+rispetto al segnale di clock, mentre nell'implementazione di Mealy l'uscita
+non aspetta il successivo fronte d'onda del clock per salire al livello logico
+alto e accendere il LED.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{Mealy_edge_detector}
     \caption{Acquisizione di un ciclo completo (frequenza 1 kHz) con Logic
-    Analyzer dei segnali in ingresso e in uscita dal detector di Moore.
+    Analyzer dei segnali in ingresso e in uscita dal detector di Mealy.
     \label{fig: edgeMealy}}
 \end{figure}
 
 %=======================
 \section*{Conclusioni e commenti finali}
-Si è riusciti a verificare il corretto funzionamento di circuiti logici
-sequenziali di crescente complessità e svariate applicazioni (e.g., sistemi di
-controllo e misura) costruiti con porte NOT, NAND, OR e D-FF.
-Inoltre si è riusciti ad apprezzare l'effetto dei tempi di propagazione
-delle porte sul loro comportamento, seppur in maniera limitata dalla bassa
-risoluzione temporale dell'AD2.
+Si è riusciti a progettare, costruire e verificare il corretto funzionamento
+di circuiti logici combinatori di diversa complessità e svariate applicazioni
+(e.g., sistemi di controllo e misura) costruiti con porte NOT, NAND, OR e D-FF.
+Inoltre si è riusciti ad apprezzare le diverse modalità di funzionamento delle
+macchine a stati finiti implementate secondo i modelli Moore e Mealy, ponendo
+particolare attenzione alle loro diverse temporizzazioni nei cambiamenti di
+stato, nonostante la bassa risoluzione temporale dell'AD2.
 
 %=======================
 \section*{Dichiarazione}
