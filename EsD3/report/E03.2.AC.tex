@@ -48,10 +48,19 @@ C_d = 97 \pm 4 \; \si{n\F}
 %=======================
 \section{Implementazione di un semaforo con circuiti integrati}\label{sec: IC}
 \subsection{Diagramma a stati del semaforo}
-Nel caso di semaforo ``abilitato'' i possibili output sono 3 e abbiamo quindi deciso di implementarli con 3 stati interni della macchina; nel caso di semaforo ``disabilitato'' i possibili output sono 2, ma possono essere ottenuti riutilizzando due degli stati precedenti e l'input ``enable'' tramite un'opportuno circuito combinatorio (\texttt{FSM} di Mealy).
+Quando il semaforo è in modalità ``abilitato'' ($E=1$) si susseguono
+ciclicamente 3 possibili output, per cui sono stati implementarli con $3$ stati
+interni della macchina. Mentre nel caso di semaforo ``disabilitato'' ($E=1$) i
+possibili output si riducono a $2$, e si possono esprimere utilizzando due
+degli stati precedentemente codificati a seconda del valore logico dell'input
+ENABLE tramite un circuito FSM di Mealy.
 
-Si è deciso di codificare in due bit di memoria i tre stati $ (00) $, $ (01) $ e $ (10) $ che corrispondono, quando $ E = 1 $ (abilitato), ai tre output ``verde'', ``verde-giallo'', ``rosso'' (che si susseguono in modo ciclico). Quando invece $ E = 0 $ (disabilitato) vengono usati solamente $ (00) $ e $ (01) $, che corrispondono agli output del semaforo ``spento'' e ``giallo''.
-
+Scegliamo di codificare con due bit di memoria $(Q_{1} Q_{0})$ i tre stati:
+$00$, $01$ e $10$ che corrispondono, quando $E=1$, ai tre output ``verde''
+$(V)$, ``verde-giallo'' $(VG)$, ``rosso'' $(R)$. Quando invece $E=0$ vengono
+usati solamente i primi due $00$ e $01$, che corrispondono agli output del
+semaforo ``spento'' $(Y^0)$ e ``giallo'' $(Y^1)$ come si può vedere già nel
+diagramma a stati riportato in \cref{diag: semf}.
 \begin{figure}[htbp]
 \centering
 \begin{FSM}
@@ -82,27 +91,34 @@ Si è deciso di codificare in due bit di memoria i tre stati $ (00) $, $ (01) $ 
 \tikzset{EdgeStyle/.append style = {bend left = 50}}
    \Edge[label = D](R)(V)
 \end{FSM}
+\caption{Diagramma degli stati del semaforo FSM di Mealy con Enable
+\label{diag: semf}}
 \end{figure}
 
 \subsection{Codifica degli stati della macchina}
-La scelta della codifica in termini di bit \`e riassunta nella tabella che segue: $Q_0$ e $Q_1$ rappresentano rispettivamente lo stato delle uscite del primo e del secondo flip-flop e $S$ \`e lo stato associato.
+La codifica in termini di bit degli stati della macchina è riassunta nella
+\cref{tab: bit}, dove $Q_0$ e $Q_1$ corrispondono rispettivamente
+al valore logico delle uscite del primo e del secondo flip-flop, mentre $S_E$
+e $S_D$ rappresentano lo stato associato al semaforo a seconda che questo sia
+ENABLED o DISABLED.
 \begin{table}[htbp]
 	\centering
 	\begin{tabular}{cc|cc}
 	\toprule
-	$S_E$ &	$S_D$ & $Q_0$ &	$Q_1$ \\
+	$S_D$ &	$S_E$ & $Q_1$ &	$Q_0$ \\
 	\midrule
 	\midrule
-	$Y^-$ & $V$  & $0$	&	$0$	\\
-	$Y^+$ & $VG$ & $0$	&	$1$	\\
+	$Y^0$ & $V$  & $0$	&	$0$	\\
+	$Y^1$ & $VG$ & $0$	&	$1$	\\
 	 	  & $R$  & $1$	&	$0$	\\
 	\bottomrule
 	\end{tabular}
-	\caption{codifica binaria degli stati del semaforo. \label{tab:bit}}
+	\caption{Codifica binaria scelta per gli stati del semaforo.
+	\label{tab: bit}}
 \end{table}
 
 \subsection{Tabelle di verità}
-Si nota in particolare dal diagramma degli stati che il segnale di input ENABLE modifica l'output in maniera asincrona, mentre dalla tabella di verità (\cref{tab:2bit}) si può distinguere come lo stato futuro dipenda da quello precedente sfruttando la sincronia del segnale di clock per incrementare il contatore.
+Si nota in particolare dal diagramma degli stati che il segnale di input ENABLE modifica l'output in maniera asincrona, mentre dalla tabella di verità (\cref{tab: 2bit}) si può distinguere come lo stato futuro dipenda da quello precedente sfruttando la sincronia del segnale di clock per incrementare il contatore.
 
 \begin{table}[htbp]
     \centering
@@ -122,7 +138,7 @@ Si nota in particolare dal diagramma degli stati che il segnale di input ENABLE 
          &  ... & 1 & 1 & X & X & ...\\
     \end{tabular}
     \caption{Tabella di verità per il semaforo a 2 bit.}
-    \label{tab:2bit}
+    \label{tab: 2bit}
 \end{table}
 
 Di conseguenza, è possibile associare agli output led G, Y, R una corrispondenza in termini di bit secondo la logica:
@@ -137,12 +153,17 @@ Questa codifica è quella sfruttata per la costruzione vera e propria del circui
 
 Per la precisione, dal momento che l'accensione dei led verde e rosso è consentita solo quando ENABLE = 1, si possono utilizzare due porte AND per definire
 \begin{itemize}
-    \item $\overline{Q_1} \cdot E \longrightarrow$ led verde acceso (G)
-    \item $Q_1 \cdot E \longrightarrow$ led rosso acceso (R)
+    \item $\overline{Q_1} \cdot E \to$ led verde acceso $(V)$
+    \item $Q_1 \to$ led rosso acceso $(R)$
 \end{itemize}
 
 \paragraph{AND-gate per led rosso}
-Si potrebbe usare una porta AND per rendere l'attivazione del led rosso dipendente dal segnale di ENABLE. Da \cref{tab:2bit} infatti si nota che l'unica differenza di funzionamento si avrebbe durante la transizione di ENABLE: 1 $\rightarrow$ 0. In questo caso, lo spegnimento diventerebbe asincrono col segnale di clock anziché sincrono.
+Impiegando una quarta porta AND è possibile rendere l'accensione del led rosso
+direttamente dipendente dal segnale di ENABLE (ovvero $R = Q_1 \cdot E$).
+Dalla \cref{tab: 2bit} infatti si nota che l'unica differenza di funzionamento
+si avrebbe durante la transizione di $E: 1 \to 0$; in questo caso, lo
+spegnimento diventerebbe asincrono rispetto al segnale di clock anziché
+sincrono.
 
 \subsection{Mappe di Karnaugh e logica combinatoria}
 Le seguenti tabelle di Karnaugh aiutano a derivare le funzioni logiche degli stati futuri in dipendenza da quelli correnti: \\
@@ -174,7 +195,7 @@ Le seguenti tabelle di Karnaugh aiutano a derivare le funzioni logiche degli sta
 \subsection{Costruzione del circuito}
 Si è assemblato il circuito riportato in ~\cref{schm: semf} e si
 sono collegati i pin \texttt{preset} e \texttt{clear} dei D-FF a
-$V_{CC}$ per evitare reset o clear spuri.
+$V_{CC}$ onde evitare reset o clear spuri.
 \begin{figure}[htbp]
     \centering
     \begin{circuitikz}
@@ -265,9 +286,11 @@ Per studiarne il comportamento generiamo nei due pin DIO 0 (CLOCK) e DIO 1
 $\SI{2}{\hertz}$ agli ingressi CLK ed $E$ del circuito. 
 
 \subsection{Analisi e verifica del funzionamento del circuito}
-Osserviamo che nel caso E = 0, Q0 = 1 e Q1 = 0 che è riportato come X nella tabella, produce l’output “rosso”. Questo vale a dire che se il semaforo è “rosso” con E = 1
-e questo viene messo a zero, rimarrà rosso fino al fronte di salita successivo del
-clock, dopo di cui si spegne come previsto dalla modalità disabilitato.
+Osserviamo che nel caso $E = 0$, $Q_0 = 1$ e $Q_1 = 0$ che è riportato come
+X nella tabella, produce l’output “rosso”. Questo vale a dire che se il
+semaforo è “rosso” con ENABLE alto e questo viene messo a zero, rimarrà rosso
+fino al fronte di salita successivo del clock, dopo di cui si spegne come
+previsto dalla modalità disabilitato.
 
 \begin{figure}[htbp]
     \centering
@@ -508,7 +531,7 @@ dello stesso.
     \centering
     \includegraphics[width=\textwidth]{Moore_edge_detector}
     \caption{Acquisizione di un ciclo completo (frequenza 1 kHz) con Logic
-    Analyzer dei segnali in ingresso e in uscita dall'edge detector.
+    Analyzer dei segnali in ingresso e in uscita dall'edge detector di Mealy.
     \label{fig: edgeMoore}}
 \end{figure}
 
@@ -516,7 +539,7 @@ dello stesso.
     \centering
     \includegraphics[width=\textwidth]{Mealy_edge_detector}
     \caption{Acquisizione di un ciclo completo (frequenza 1 kHz) con Logic
-    Analyzer dei segnali in ingresso e in uscita dal semaforo.
+    Analyzer dei segnali in ingresso e in uscita dal detector di Moore.
     \label{fig: edgeMealy}}
 \end{figure}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  4 MAY 2022 21:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  5 MAY 2022 15:54
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1486,44 +1486,44 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 33.
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
-1.
-
-(c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 134--135
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--137
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
 
  []
 
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
+97.
+(c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+
 
 Package pgf Warning: Returning node center instead of a point on node border. D
-id you specify a point identical to the center of node ``G''? on input line 240
+id you specify a point identical to the center of node ``G''? on input line 261
 .
 
 [2] [3]
-<../figs//traffic.png, id=133, 1440.88312pt x 711.4078pt>
+<../figs//traffic.png, id=134, 1440.88312pt x 711.4078pt>
 File: ../figs//traffic.png Graphic file (type png)
 <use ../figs//traffic.png>
-Package pdftex.def Info: ../figs//traffic.png  used on input line 274.
+Package pdftex.def Info: ../figs//traffic.png  used on input line 297.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
 
-Overfull \hbox (0.72293pt too wide) in paragraph at lines 281--281
+Overfull \hbox (0.72293pt too wide) in paragraph at lines 304--304
 []\T1/cmr/bx/n/14.4 Implementazione soft-ware del-la lo-gi-ca com-bi-na-to-ria 
 con AD2/ROM 
  []
@@ -1532,17 +1532,17 @@ con AD2/ROM
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
  [5] [6]
-<../figs//Moore_edge_detector.png, id=156, 1440.88312pt x 711.4078pt>
+<../figs//Moore_edge_detector.png, id=157, 1440.88312pt x 711.4078pt>
 File: ../figs//Moore_edge_detector.png Graphic file (type png)
 <use ../figs//Moore_edge_detector.png>
 Package pdftex.def Info: ../figs//Moore_edge_detector.png  used on input line 5
-09.
+32.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
-<../figs//Mealy_edge_detector.png, id=157, 1440.88312pt x 711.4078pt>
+<../figs//Mealy_edge_detector.png, id=158, 1440.88312pt x 711.4078pt>
 File: ../figs//Mealy_edge_detector.png Graphic file (type png)
 <use ../figs//Mealy_edge_detector.png>
 Package pdftex.def Info: ../figs//Mealy_edge_detector.png  used on input line 5
-17.
+40.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
  [7 <../figs//Moore_edge_detector.png (PNG copy)> <../figs//Mealy_edge_detector
 .png (PNG copy)>] [8]
@@ -1551,10 +1551,10 @@ Package rerunfilecheck Info: File `E03.2.AC.out' has not changed.
 (rerunfilecheck)             Checksum: 58CE1C27A0F8B1D8C78B63D68BAF8477;5881.
  ) 
 Here is how much of TeX's memory you used:
- 59154 strings out of 479713
- 1447784 string characters out of 5876923
- 2204077 words of memory out of 10000000
- 76053 multiletter control sequences out of 15000+600000
+ 59156 strings out of 479713
+ 1447817 string characters out of 5876923
+ 2205077 words of memory out of 10000000
+ 76055 multiletter control sequences out of 15000+600000
  420313 words of font info for 73 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
  122i,18n,125p,754b,1315s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1566,18 +1566,17 @@ pe1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 ><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/t
-exmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/
-fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type
-1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/c
-m-super/sfrm0900.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
-rm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb
-><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texli
-ve/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on E03.2.AC.pdf (8 pages, 394871 bytes).
+ive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2021/t
+exmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/
+fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type
+1/public/cm-super/sfrm0900.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/c
+m-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
+rm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb
+><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on E03.2.AC.pdf (8 pages, 386859 bytes).
 PDF statistics:
- 257 PDF objects out of 1000 (max. 8388607)
- 208 compressed objects within 3 object streams
+ 254 PDF objects out of 1000 (max. 8388607)
+ 207 compressed objects within 3 object streams
  49 named destinations out of 1000 (max. 500000)
  204 words of extra memory for PDF output out of 10000 (max. 10000000)
 
