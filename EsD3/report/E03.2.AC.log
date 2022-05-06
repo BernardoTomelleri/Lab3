@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  6 MAY 2022 18:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  6 MAY 2022 18:38
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1502,92 +1502,93 @@ id you specify a point identical to the center of node ``G''? on input line 379
 <../figs//traffic.png, id=129, 1440.88312pt x 711.4078pt>
 File: ../figs//traffic.png Graphic file (type png)
 <use ../figs//traffic.png>
-Package pdftex.def Info: ../figs//traffic.png  used on input line 415.
+Package pdftex.def Info: ../figs//traffic.png  used on input line 416.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
-[3] [4 <../figs//traffic.png (PNG copy)>]
-Overfull \hbox (0.72293pt too wide) in paragraph at lines 427--427
+[3]
+Overfull \hbox (0.72293pt too wide) in paragraph at lines 428--428
 []\T1/cmr/bx/n/14.4 Implementazione soft-ware del-la lo-gi-ca com-bi-na-to-ria 
 con AD2/ROM 
  []
 
+[4 <../figs//traffic.png (PNG copy)>]
 <../figs//schem_rom.png, id=146, 814.242pt x 550.4565pt>
 File: ../figs//schem_rom.png Graphic file (type png)
 <use ../figs//schem_rom.png>
-Package pdftex.def Info: ../figs//schem_rom.png  used on input line 438.
+Package pdftex.def Info: ../figs//schem_rom.png  used on input line 442.
 (pdftex.def)             Requested size: 483.69687pt x 327.00073pt.
 <../figs//ROM.1.png, id=149, 744.381pt x 173.448pt>
 File: ../figs//ROM.1.png Graphic file (type png)
 <use ../figs//ROM.1.png>
-Package pdftex.def Info: ../figs//ROM.1.png  used on input line 447.
+Package pdftex.def Info: ../figs//ROM.1.png  used on input line 451.
 (pdftex.def)             Requested size: 483.69687pt x 112.70544pt.
 <../figs//es2.enable.png, id=150, 1152.7065pt x 505.89pt>
 File: ../figs//es2.enable.png Graphic file (type png)
 <use ../figs//es2.enable.png>
-Package pdftex.def Info: ../figs//es2.enable.png  used on input line 457.
+Package pdftex.def Info: ../figs//es2.enable.png  used on input line 461.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
 <../figs//es2.disable.png, id=151, 1152.7065pt x 505.89pt>
 File: ../figs//es2.disable.png Graphic file (type png)
 <use ../figs//es2.disable.png>
-Package pdftex.def Info: ../figs//es2.disable.png  used on input line 463.
+Package pdftex.def Info: ../figs//es2.disable.png  used on input line 467.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
 <../figs//ROM.svizzero.png, id=155, 751.00575pt x 175.25475pt>
 File: ../figs//ROM.svizzero.png Graphic file (type png)
 <use ../figs//ROM.svizzero.png>
-Package pdftex.def Info: ../figs//ROM.svizzero.png  used on input line 472.
+Package pdftex.def Info: ../figs//ROM.svizzero.png  used on input line 477.
 (pdftex.def)             Requested size: 483.69687pt x 112.87396pt.
 <../figs//es2.svizzero.png, id=156, 1152.7065pt x 505.89pt>
 File: ../figs//es2.svizzero.png Graphic file (type png)
 <use ../figs//es2.svizzero.png>
-Package pdftex.def Info: ../figs//es2.svizzero.png  used on input line 479.
+Package pdftex.def Info: ../figs//es2.svizzero.png  used on input line 484.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
-[5 <../figs//schem_rom.png>] [6 <../figs//ROM.1.png> <../figs//es2.enable.png (
-PNG copy)> <../figs//es2.disable.png (PNG copy)>]
+ [5 <../figs//schem_rom.png> <../figs//ROM.1.png>] [6 <../figs//es2.enable.png 
+(PNG copy)> <../figs//es2.disable.png (PNG copy)>]
 <../figs//schem_ard.png, id=173, 966.009pt x 467.346pt>
 File: ../figs//schem_ard.png Graphic file (type png)
 <use ../figs//schem_ard.png>
-Package pdftex.def Info: ../figs//schem_ard.png  used on input line 490.
+Package pdftex.def Info: ../figs//schem_ard.png  used on input line 495.
 (pdftex.def)             Requested size: 483.69687pt x 234.00758pt.
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 499.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
-99.
-
-(c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
+nput line 503.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
+03.
+ (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
+(../arduino/Semaforo.ino
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <8> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 510.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 11.
  [7 <../figs//ROM.svizzero.png> <../figs//es2.svizzero.png (PNG copy)>] [8 <../
-figs//schem_ard.png>]
-[9]
+figs//schem_ard.png>]) [9]
 Missing character: There is no ; in font nullfont!
  [10]
 Missing character: There is no ; in font nullfont!
 <../figs//Moore_edge_detector.png, id=316, 1440.88312pt x 711.4078pt>
 File: ../figs//Moore_edge_detector.png Graphic file (type png)
 <use ../figs//Moore_edge_detector.png>
-Package pdftex.def Info: ../figs//Moore_edge_detector.png  used on input line 8
-65.
+Package pdftex.def Info: ../figs//Moore_edge_detector.png  used on input line 7
+94.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
 <../figs//Mealy_edge_detector.png, id=317, 1440.88312pt x 711.4078pt>
 File: ../figs//Mealy_edge_detector.png Graphic file (type png)
 <use ../figs//Mealy_edge_detector.png>
 Package pdftex.def Info: ../figs//Mealy_edge_detector.png  used on input line 8
-77.
+06.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
  [11] [12 <../figs//Moore_edge_detector.png (PNG copy)> <../figs//Mealy_edge_de
-tector.png (PNG copy)>] [13] (./E03.2.AC.aux)
+tector.png (PNG copy)>]
+[13] (./E03.2.AC.aux)
 Package rerunfilecheck Info: File `E03.2.AC.out' has not changed.
 (rerunfilecheck)             Checksum: BC3B85B0FC90A7E8AEE9AF9FF269AF8D;5803.
  ) 
 Here is how much of TeX's memory you used:
- 59730 strings out of 479713
- 1454801 string characters out of 5876923
- 2655888 words of memory out of 10000000
- 76508 multiletter control sequences out of 15000+600000
+ 59737 strings out of 479713
+ 1454940 string characters out of 5876923
+ 2644888 words of memory out of 10000000
+ 76510 multiletter control sequences out of 15000+600000
  421390 words of font info for 75 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,19n,125p,754b,2438s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,19n,125p,754b,2551s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
 ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dis
@@ -1604,7 +1605,7 @@ m-super/sfrm0900.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
 rm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb
 ><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texli
 ve/2021/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb>
-Output written on E03.2.AC.pdf (13 pages, 705643 bytes).
+Output written on E03.2.AC.pdf (13 pages, 705894 bytes).
 PDF statistics:
  445 PDF objects out of 1000 (max. 8388607)
  379 compressed objects within 4 object streams

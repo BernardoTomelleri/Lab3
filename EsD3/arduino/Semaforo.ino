@@ -23,7 +23,7 @@ int CurrentState=0; //stato iniziale impostato sul tutto spento
 
 
 void loop() {
-  //viene controllato se il semaforo è abilitato
+  //viene controllato se il semaforo \`e abilitato
   if(CheckEnable()){ 
     
     // nel caso in cui il semaforo sia abilitato
@@ -41,7 +41,7 @@ void loop() {
       delay(tickGREENYELLOW);
       break;
       
-    default: // in qualunque altro caso di stato precedente, se il semaforo è abilitato, lo stato inizializzato è quello rosso
+    default: // in qualunque altro caso di stato precedente, se il semaforo \`e abilitato, lo stato inizializzato \`e quello rosso
       CurrentState=1;
       digitalWrite(5,HIGH);
       digitalWrite(6,LOW);
@@ -57,7 +57,7 @@ void loop() {
         digitalWrite(6,LOW);
         delay(tickOFF); 
         break;     
-      default: // in qualunque altro caso di stato precedente, lo stato inizializzato è quello giallo
+      default: // in qualunque altro caso di stato precedente, lo stato inizializzato \`e quello giallo
         CurrentState=5;
         digitalWrite(6,HIGH);
         digitalWrite(5,LOW);

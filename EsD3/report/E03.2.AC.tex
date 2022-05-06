@@ -186,8 +186,7 @@ implementata con i Flip-Flop) e il successivo $D_1 D_0$ (che indichiamo con il
 valore logico in ingresso agli stessi FF). Riportiamo per completezza anche lo
 stato inutilizzato e non normalmente raggiungibile dalla macchina $11$ con
 $\ominus$, dal momento che la FSM attraversa gli stati come un contatore
-binario ($Q_i \mapsto D_i$) ci aspettiamo che torni spontaneamente negli stati
-permessi.
+binario ci aspettiamo che torni spontaneamente negli stati permessi.
 \begin{table}[htbp]
     \centering
     \begin{tabular}{c|c|cc|cc|c}
@@ -298,8 +297,6 @@ del semaforo come:
     \item R $= Q_1$
 \end{itemize}
 
-Per minimizzare il numero di porte logiche necessarie per costruire il circuito
-
 \paragraph{AND-gate per LED rosso}
 Facendo uso di una quarta porta AND è possibile consentire l'accensione del LED
 rosso solamente in presenza del segnale di ENABLE (ovvero R $= Q_1 \cdot E$) in
@@ -308,6 +305,9 @@ Dalla \cref{tab: semftruth} infatti si nota che l'unica differenza di
 funzionamento si avrebbe durante la transizione di $E: 1 \to 0$.
 Per cui in questa variante del circuito, lo spegnimento diventerebbe asincrono
 rispetto al segnale di clock anziché sincrono.
+
+Scegliamo quindi di costruire la prima versione del circuito che minimizza il
+numero di porte logiche necessarie.
 
 \subsection{Costruzione del circuito}
 Si è montato il circuito riportato in ~\cref{schm: semf} con due
@@ -404,6 +404,7 @@ Per studiarne il comportamento generiamo nei due pin DIO 0 (CLOCK) e DIO 1
 (ENABLE) dell'AD2 rispettivamente due segnali di clock di frequenza
 $f\ped{clk} = \SI{10}{\hertz}$ e $f = f\ped{clk}/10 = \SI{1}{\hertz}$ agli
 ingressi CLK ed $E$ del circuito.
+
 Così facendo si riesce ad apprezzare il comportamento del circuito non solo
 con $E = 1$ ed $E = 0$, ma anche durante le transizioni tra le due modalità
 di funzionamento del semaforo, come visualizzato dall'acquisizione con Logic
@@ -432,7 +433,10 @@ dell'AD2, mantenendo quindi gli stessi 2 Flip-Flop di prima per memorizzare i
 3 stati interni del semaforo.
 
 Dopo aver costruito il circuito in \cref{schem: rom} si è programmata la ROM:
-innanzitutto si sono scelti ENABLE, Q0 e Q1 come input, per controllare lo stato corrente e se il semaforo risulta essere abilitato, e D0, D1 e gli ingressi ai LED come Output, in modo da sovrascrivere lo stato corrente e per accendere o spengere i led.
+innanzitutto si sono impostati ENABLE, $Q_0$ e $Q_1$ come Input, per
+controllare lo stato corrente e se il semaforo risulta essere abilitato, dunque
+$D_0$, $D_1$ e le uscite corrispondenti ai LED come Output, in modo da poter
+sovrascrivere lo stato corrente e accendere o spengere i led.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{schem_rom}
@@ -466,6 +470,7 @@ Si invia al pin CLK un segnale di clock con frequenza pari ad 1 Hz, mantenendo c
 \end{figure}
 Dalle immagini \ref{fig: es.2_enable} e \ref{fig: es.2_disable} possiamo concludere che il circuito funzioni come da aspettativa.
 \subsection{Variante svizzera del semaforo ROM}
+
 Si va quindi a modificare la \cref{fig: rom} in modo da utilizzare anche lo stato $1\;1$ (successivo al rosso) per visualizzare lo stato rosso e giallo.
 \begin{figure}[htbp]
     \centering
@@ -495,84 +500,8 @@ Dopo aver montato il circuito descritto in \cref{schem: arduino}, si procede con
 
 \subsection{Implementazione del codice per la FSM}
 Ci basiamo sullo schema per il semaforo FSM di Mealy presente in \cref{diag: semf} per controllare il funzionamento di un semaforo tramite enable.
-%\lstinputlisting[label={list: semf-mealy}, style=Arduino, caption=Semaforo-mealy.ino]{../arduino/Semaforo.ino}
-\begin{lstlisting}[label={list: semf}, style=Arduino, caption=semf-mealy.ino]
-/*state
- * 0= ALL OFF
- * 1= RED ON
- * 2= RED YELLOW ON
- * 3= GREEN ON
- * 4= GREEN YELLOW ON
- * 5= YELLOW ON
- * 
- */
-void setup() {
-  pinMode(5, OUTPUT); //Led Rosso
-  pinMode(6, OUTPUT); //Led Giallo
-  pinMode(7, OUTPUT); //Led Verde
-  pinMode(8, INPUT_PULLUP); //Pin di Enable
-}
-int tickGREEN=1000; //Durata dello stato VERDE
-int tickRED=1000; //Durata dello stato ROSSO
-int tickYELLOW=1000; //Durata dello stato GIALLO
-int tickREDYELLOW=1000; //Durata dello stato ROSSOGIALLO
-int tickGREENYELLOW=1000; //Durata dello stato VERDEGIALLO
-int tickOFF=1000; //Durata dello stato spento
-int CurrentState=0; //stato iniziale impostato sul tutto spento
+\lstinputlisting[label={list: semf-mealy}, style=Arduino, caption=Semaforo-mealy.ino]{../arduino/Semaforo.ino}
 
-void loop() {
-  //viene controllato se il semaforo \'e abilitato
-  if(CheckEnable()){ 
-    
-    // nel caso in cui il semaforo sia abilitato
-    switch(CurrentState){  
-
-    case 1: //se lo stato precedente risulta essere rosso
-      CurrentState=3; //lo stato corrente viene spostato a verde
-      digitalWrite(5,LOW);
-      digitalWrite(6,LOW);
-      digitalWrite(7,HIGH);  
-      delay(tickGREEN); //viene fatto trascorrere il tempo specificato all'inizio del file
-      break; 
-    case 3: //se lo stato precedente risulta essere solo verde
-      CurrentState=4; //lo stato corrente viene portato a giallo e verde
-      digitalWrite(6,HIGH);
-      delay(tickGREENYELLOW);
-      break;
-      
-    default: // in qualunque altro caso di stato precedente, se il semaforo \'e abilitato, lo stato inizializzato \'e quello rosso
-      CurrentState=1;
-      digitalWrite(5,HIGH);
-      digitalWrite(6,LOW);
-      digitalWrite(7,LOW);
-      delay(tickRED); 
-    }
-    
-  }else { 
-    //nel caso in cui il semaforo sia disabilitato
-    switch(CurrentState){
-      case 5: // se lo stato precedente risulta essere giallo 
-        CurrentState=0; //imposta lo stato corrente a tutto spento
-        digitalWrite(6,LOW);
-        delay(tickOFF); 
-        break;     
-      default: // in qualunque altro caso di stato precedente, lo stato inizializzato \'e quello giallo
-        CurrentState=5;
-        digitalWrite(6,HIGH);
-        digitalWrite(5,LOW);
-        digitalWrite(7,LOW);
-        delay(tickYELLOW);
-      }
-  }
-}
-
-bool CheckEnable(){ 
-  //Algoritmo di controllo per Enable
-  
-  int check =digitalRead(8);
-  return (check== HIGH);
-}
-\end{lstlisting}
 
 \subsection{Versione svizzera del semaforo con Enable via Arduino}
 Si introduce un quarto stato nel caso in cui il semaforo sia abilitato, successivo al rosso; per fare ciò è necessaria una semplice modifica all'interno dello switch nel caso in cui il semaforo risulti abilitato
