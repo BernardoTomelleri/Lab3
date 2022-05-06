@@ -9,7 +9,21 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{xcolor}
-\usepackage{listings}
+\usepackage{tkz-graph}
+\usepackage{arydshln}
+\usetikzlibrary{automata, positioning, arrows}
+\newenvironment{FSM}{
+\begin{tikzpicture}
+\tikzset{
+->, % makes the edges directed
+>=stealth', % makes the arrow heads bold
+node distance=2cm, % specifies the minimum distance between two nodes. Change if necessary.
+every state/.style={minimum size = 1cm, thick, fill=gray!10}, % sets the properties for each 'state' node
+}
+}{
+\end{tikzpicture}
+}
+
 
 \lstset{%
   language = Octave,
@@ -49,20 +63,6 @@
     morecomment=[s]{/*}{*/},%         define /* ... */ comments
     emph={HIGH, OUTPUT, LOW}%        keywords to emphasize
 }
-\usepackage{tkz-graph}
-\usepackage{arydshln}
-\usetikzlibrary{automata, positioning, arrows}
-\newenvironment{FSM}{
-\begin{tikzpicture}
-\tikzset{
-->, % makes the edges directed
->=stealth', % makes the arrow heads bold
-node distance=2cm, % specifies the minimum distance between two nodes. Change if necessary.
-every state/.style={minimum size = 1cm, thick, fill=gray!10}, % sets the properties for each 'state' node
-}
-}{
-\end{tikzpicture}
-}
 
 % indexes subsections with letters, sections with numbers (1.a, 1.b, ...)
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
@@ -95,7 +95,7 @@ C_d = 97 \pm 4 \; \si{n\F}
 Si vuole costruire una macchina a stati finiti in grado di emulare il
 funzionamento delle luci di un semaforo stradale, nelle modalità
 \begin{description}
-\item[ABILITATO] si ripetono ciclicamente gli stati: LED verde acceso $\to$
+\item[ABILITATO] si ripetono in ciclo gli stati: LED verde acceso $\to$
 LED giallo e verde accesi $\to$ LED rosso acceso.
 \item[DISABILITATO] si alternano gli stati LED giallo acceso e spento
 (giallo lampeggiante).
@@ -179,10 +179,20 @@ l'uscita del circuito in maniera asincrona, mentre dalla tabella di verità
 (\cref{tab: semftruth}) si intuisce come lo stato futuro dipenda da quello
 precedente incrementando come un contatore in maniera sincrona rispetto al
 segnale di clock.
+
+Dal diagramma ricaviamo la tabella di verità delle transizioni di stato tra
+il corrente $Q_1 Q_0$ (che indichiamo con lo stato in uscita della memoria
+implementata con i Flip-Flop) e il successivo $D_1 D_0$ (che indichiamo con il
+valore logico in ingresso agli stessi FF). Riportiamo per completezza anche lo
+stato inutilizzato e non normalmente raggiungibile dalla macchina $11$ con
+$\ominus$, dal momento che la FSM attraversa gli stati come un contatore
+binario ($Q_i \mapsto D_i$) ci aspettiamo che torni spontaneamente negli stati
+permessi.
 \begin{table}[htbp]
     \centering
     \begin{tabular}{c|c|cc|cc|c}
-    &\multicolumn{1}{c}{ }&\multicolumn{2}{c|}{current state} &\multicolumn{2}{c}{next state}\\
+    &\multicolumn{1}{c}{ }&\multicolumn{2}{c|}{current state} &
+    \multicolumn{2}{c}{next state}\\
      \hline
          ENABLE& LED & $Q_1$ & $Q_0$ & $D_1$ & $D_0$ & LED \\
          \hline
@@ -200,11 +210,13 @@ segnale di clock.
     \label{tab: semftruth}
 \end{table}
 
+Riportiamo in forma esplicita la tabella di verità per le uscite che
+identificano i LED Verde, Giallo e Rosso del semaforo nella \cref{tab: LED}
 \begin{table}[htbp]
     \centering
         \begin{tabular}{c|cc|ccc}
           \toprule
-          $ E $ & $ Q_0 $ & $ Q_1 $ &   G   &   Y   &   R   \\
+          $E$ & $Q_0$ & $Q_1$ &   G   &   Y   &   R   \\
           \midrule
           \midrule
           1   &     0     &     0     &     1     &     0     &     0     \\
@@ -222,44 +234,35 @@ segnale di clock.
 	digitali in ingresso ai LED del semaforo \label{tab: LED}}.     
 \end{table}
 
-Come esplicitato nella tabella \ref{tab: LED} possiamo collegare gli output
-della macchina ai led di colori Verde, Giallo e Rosso secondo lo schema
-logico seguente:
+in cui come prima gli stati contrassegnati da una X sono quelli che non ci
+interessano (don't care). Questi sono stati che non ci aspettiamo che la
+macchina attraversi, e la loro codifica in termini di bit ci interessa solo
+per a minimizzare la logica combinatoria che definisce le transizioni e le
+espressioni per le uscite; come faremo per costruire le mappe di Karnaugh, in
+cui i singoli bit X verranno considerati 1 o 0 nella maniera più conveniente.
+
+Da queste vediamo come possiamo collegare gli output della macchina ai led del
+semaforo in modo tale che nella realizzazione pratica del circuito, in
+corrispondenza degli opportuni stati della FSM in uscita dai Flip-Flop si
+accendano le corrette combinazioni di LED (ad esempio: Y $= Q_0 \implies$
+LED giallo collegato in serie a $Q_0$).
 \begin{description}
-	\item{LED verde acceso} G $= Q_1 = 0 \; (\iff \overline{Q_1} = 1)$ 
-    \item{LED giallo acceso} Y $= Q_0 = 1$
-    \item{LED rosso acceso} R $= Q_1 = 1$
+	\item[LED verde acceso] G $= Q_1 = 0 \; (\iff \overline{Q_1} = 1)$ 
+    \item[LED giallo acceso] Y $= Q_0 = 1$
+    \item[LED rosso acceso] R $= Q_1 = 1$
 \end{description}
-in modo tale che nella realizzazione pratica del circuito, in corrispondenza
-degli opportuni stati della FSM in uscita dai Flip-Flop si accendano le
-corrette combinazioni di LED (ad esempio: Y $= Q_0 \implies$ LED giallo in
-serie a $Q_0$).
 
 Occorre specificare che, nel caso in cui $E = 0$, $Q_0 = 1$ e $Q_1 = 0$ (riportato
 come X nella \cref{tab: LED}, produce l’output “rosso”. Questo vale a dire che se il
 semaforo è “rosso” con ENABLE alto e questo viene messo a zero, rimarrà rosso
 fino al fronte di salita successivo del clock, dopo di cui si spegne come
 previsto dalla modalità disabilitato.
-Mentre per quanto riguarda l'accensione dei led verde, questa è consentita
-solo quando ENABLE = 1
-\begin{itemize}
-    \item $\overline{Q_1} \cdot E \implies$ LED verde acceso (G)
-    \item $Q_1 \implies$ LED rosso acceso (R)
-\end{itemize}
-
-\paragraph{AND-gate per LED rosso}
-Facendo uso di una quarta porta AND è possibile rendere l'accensione del LED
-rosso dipendente dal segnale di ENABLE (ovvero R $= Q_1 \cdot E$) in maniera
-analoga a quanto fatto per il LED verde.
-Dalla \cref{tab: semftruth} infatti si nota che l'unica differenza di
-funzionamento si avrebbe durante la transizione di $E: 1 \to 0$.
-Per cui in questa variante del circuito, lo spegnimento diventerebbe asincrono
-rispetto al segnale di clock anziché sincrono.
 
 \subsection{Mappe di Karnaugh e logica combinatoria}
-Si riportano di seguito le tabelle di Karnaugh impiegate per derivare le
-espressioni logiche degli stati futuri $D_1 D_0$ in funzione di quelli
-correnti $Q_1 Q_0$:
+Si riportano in \cref{tab: KarD0} e \cref{tab: KarD1} seguito le mappe di
+Karnaugh impiegate per derivare le espressioni logiche degli stati futuri
+$D_1 D_0$ in funzione di quelli correnti $Q_1 Q_0$ e del segnale di ingresso
+$E$:
 \begin{table}[htbp]
 \centering
     \begin{tabular}{c|c|c|c|c}
@@ -284,6 +287,27 @@ correnti $Q_1 Q_0$:
     \caption{Tabella di Karnaugh per $D_1 = E \cdot Q_0$
     \label{tab: KarD1}}
 \end{table}
+
+Da queste si vede come per la corretta accensione del led verde, è necessario
+che questa sia consentita solo quando ENABLE~$= 1$, mentre per il LED rosso
+questo non è necessario, infatti possiamo riassumere i valori delle uscite
+del semaforo come:
+\begin{itemize}
+    \item G $= \overline{Q_1} \cdot E \implies$
+    \item Y $= Q_0$
+    \item R $= Q_1$
+\end{itemize}
+
+Per minimizzare il numero di porte logiche necessarie per costruire il circuito
+
+\paragraph{AND-gate per LED rosso}
+Facendo uso di una quarta porta AND è possibile consentire l'accensione del LED
+rosso solamente in presenza del segnale di ENABLE (ovvero R $= Q_1 \cdot E$) in
+maniera analoga a quanto fatto per il LED verde.
+Dalla \cref{tab: semftruth} infatti si nota che l'unica differenza di
+funzionamento si avrebbe durante la transizione di $E: 1 \to 0$.
+Per cui in questa variante del circuito, lo spegnimento diventerebbe asincrono
+rispetto al segnale di clock anziché sincrono.
 
 \subsection{Costruzione del circuito}
 Si è montato il circuito riportato in ~\cref{schm: semf} con due
@@ -394,16 +418,21 @@ Analyzer dei segnali in ingresso e in uscita della FSM in \cref{fig: traffic}
     \label{fig: traffic}}
 \end{figure}
 
-Osserviamo che, come atteso nel caso $E = 0$, $Q_0 = 1$ e $Q_1 = 0$ il
-semaforo rimane rosso fino al fronte di salita successivo del clock prima
-di spegnersi come previsto dalla modalità disabilitato.
+Osserviamo che nel caso particolare del cambiamento di modalità di funzione
+del semaforo $E = 0$, $Q_0 = 1$ e $Q_1 = 0$ il LED rosso rimane acceso fino al
+fronte di salita successivo del clock prima di spegnersi, coerentemente con
+quanto previsto dalle tabelle di verità.
 
 %=======================
 \section{Implementazione software della logica combinatoria con AD2/ROM}
 \subsection{Costruzione del circuito}
-Si vuole ricostruire il semaforo utilizzando la funzione ROM.
-Come prima, andremo ad utilizzare 2 Flip-Flop per gestire i 3 stati del semaforo.
-Dopo aver costruito il circuito in \cref{schem: rom} si va a programmare la ROM: innanzitutto si sono scelti ENABLE, Q0 e Q1 come input, per controllare lo stato corrente e se il semaforo risulta essere abilitato, e D0, D1 e gli ingressi ai LED come Output, in modo da sovrascrivere lo stato corrente e per accendere o spengere i led.
+Si vuole ricostruire il semaforo sostituendo alla parte di logica
+combinatoria con circuiti integrati la funzione ROM dello strumento Patterns
+dell'AD2, mantenendo quindi gli stessi 2 Flip-Flop di prima per memorizzare i
+3 stati interni del semaforo.
+
+Dopo aver costruito il circuito in \cref{schem: rom} si è programmata la ROM:
+innanzitutto si sono scelti ENABLE, Q0 e Q1 come input, per controllare lo stato corrente e se il semaforo risulta essere abilitato, e D0, D1 e gli ingressi ai LED come Output, in modo da sovrascrivere lo stato corrente e per accendere o spengere i led.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{schem_rom}
@@ -452,6 +481,7 @@ Si procede quindi a verificare il funzionamento del semaforo svizzero. Come prim
     \label{fig: es.2_svizzero}}
 \end{figure}
 Osservando la \cref{fig: es.2_svizzero} possiamo concludere che il circuito funziona come da aspettativa
+
 %=======================
 \section{Implementazione in software dei semafori con MCU (Arduino)}
 Si vuole ricostruire il circuito precedente per il controllo di un semaforo tramite un microcontrollore (nel nostro caso utilizzeremo Arduino UNO).
@@ -465,7 +495,8 @@ Dopo aver montato il circuito descritto in \cref{schem: arduino}, si procede con
 
 \subsection{Implementazione del codice per la FSM}
 Ci basiamo sullo schema per il semaforo FSM di Mealy presente in \cref{diag: semf} per controllare il funzionamento di un semaforo tramite enable.
-\begin{lstlisting}[label={list:first}, style=Arduino, caption=Blink.ino]
+%\lstinputlisting[label={list: semf-mealy}, style=Arduino, caption=Semaforo-mealy.ino]{../arduino/Semaforo.ino}
+\begin{lstlisting}[label={list: semf}, style=Arduino, caption=semf-mealy.ino]
 /*state
  * 0= ALL OFF
  * 1= RED ON
@@ -542,9 +573,10 @@ bool CheckEnable(){
   return (check== HIGH);
 }
 \end{lstlisting}
+
 \subsection{Versione svizzera del semaforo con Enable via Arduino}
 Si introduce un quarto stato nel caso in cui il semaforo sia abilitato, successivo al rosso; per fare ciò è necessaria una semplice modifica all'interno dello switch nel caso in cui il semaforo risulti abilitato
-\begin{lstlisting}[label={list:first}, style=Arduino, caption=Blink.ino]
+\begin{lstlisting}[label={list: sviz}, style=Arduino, caption=semf-svizzero.ino]
 void loop() {
   //viene controllato se il semaforo \'e abilitato
   if(CheckEnable()){ 
@@ -567,14 +599,32 @@ void loop() {
     .
     .
 \end{lstlisting}
+
 %=======================
 \section{Falling-edge detector}
 Si vuole realizzare una FSM che riceve uno stream di bit su una linea di
 ingresso e che accende un LED tutte le volte che su questo si presenta un
 fronte di discesa secondo il modello di Moore e un'altra secondo quello di
 Mealy.
+
 \subsection{Progettazione FSM e costruzione dei circuiti}
-Come nella \ref{sec: IC}
+Seguendo lo stesso procedimento usato nella \cref{sec: IC} per realizzare il
+semaforo disegniamo i diagrammi degli stati delle macchine, ne codifichiamo in
+bit gli stati, ricaviamo le tabella di verità per le transizioni tra questi e
+i valori in uscita, così da ottenere le equazioni logiche che le governano da
+tradurre nella realizzazione pratica delle connessioni tra memoria e circuiti
+di logica combinatoria.
+
+\subsubsection{Edge-detector FSM di Moore}
+Si è scelto di costruire la FSM di Moore per riconoscere fronti di discesa
+con 3 stati, dunque 2 bit di memoria $Q_1 Q_0$ secondo il diagramma degli
+stati in \cref{diag: edgeMoore}. Per cui se il segnale di rumore in ingresso
+rimane a livello logico basso o alto la macchina resta in stato LOW $(00)$ o
+HIGH $(01)$ in cui l'uscita è OUT~$= 0$;
+se invece il segnale IN scende a 0 durante lo stato HIGH la macchina entra
+nell'unico stato (EDGE $\coloneqq 10$) in cui l'uscita è OUT~$= 1$ prima di
+tornare ad uno degli stati precedenti a seconda del valore logico
+dell'ingresso al successivo fronte di salita del clock.
 \begin{figure}[htbp]
 \centering
 \begin{FSM}
@@ -592,10 +642,13 @@ Come nella \ref{sec: IC}
     (L) edge [bend left] node {IN=1} (H)
     (L) edge [loop right]  node {IN=0}();
 \end{FSM}
-\caption{Edge detector FSM di Moore
+\caption{Edge-detector FSM di Moore
 \label{diag: edgeMoore}}
 \end{figure}
 
+Dal diagramma ricaviamo la tabella di verità delle transizioni di stato con
+la stessa convenzione usata prima tra lo stato corrente $Q_i$ e il successivo
+$D_i$ come riportata in \cref{tab: bitMoore}.
 \begin{table}[htbp]
 \centering
 \begin{tabular}{c:c|cc||cc|c}
@@ -613,10 +666,13 @@ HIGH  & 0  & 0  & 1  & 1  & 0  & 0   \\
       & 1  & 0  & 1  & 0  & 1  & 0   \\
 \bottomrule
 \end{tabular}
-\caption{codifica binaria degli stati del detector di Moore.
-\label{tab: bitMoore}}
+\caption{Tabella di verità per le transizioni tra gli stati del detector di
+Moore. \label{tab: bitMoore}}
 \end{table}
 
+Dunque per semplificare le espressioni logiche delle transizioni e delle
+uscite si sono costruite le mappe di Karnaugh riportate in
+\cref{tab: KarD0edge}, \cref{tab: KarD1edge} e \cref{tab: KarOUT}.
 \begin{table}[htbp]
 \centering
 	\begin{tabular}{c|c|c|c|c}
@@ -626,7 +682,7 @@ HIGH  & 0  & 0  & 1  & 1  & 0  & 0   \\
         \hline
         1 & 1 & 1 & X & 1 \\
     \end{tabular}
-	\caption{Tabella di Karnaugh per $D_0 = \text{IN}$
+	\caption{Mappa di Karnaugh per $D_0 = \text{IN}$
 	 \label{tab: KarD0edge}}
 
 \bigskip
@@ -638,7 +694,7 @@ HIGH  & 0  & 0  & 1  & 1  & 0  & 0   \\
         \hline
         1 & 0 & 0 & X & 0 \\
     \end{tabular}
-	\caption{Tabella di Karnaugh per $D_1 = \overline{\text{IN}} \cdot Q_0$
+	\caption{Mappa di Karnaugh per $D_1 = \overline{\text{IN}} \cdot Q_0$
 	 \label{tab: KarD1edge}}
 
 \bigskip
@@ -650,10 +706,14 @@ HIGH  & 0  & 0  & 1  & 1  & 0  & 0   \\
         \hline
         1 & 0 & 0 & \cellcolor[HTML]{FF9999} X & \cellcolor[HTML]{FF9999} 1 \\
     \end{tabular}
-    \caption{Tabella di Karnaugh per $\text{OUT} = Q_1$
+    \caption{Mappe di Karnaugh per $\text{OUT} = Q_1$
     \label{tab: KarOUT}}
 \end{table}
 
+Finalmente dalle equazioni per gli stati futuri e delle uscite della FSM
+si è costruito il circuito riportato in \cref{schm: edgeMoore} a partire da
+due positive-edge-triggered D Flip-Flop (IC 74LS74), 1 porta AND (74LS08) e
+una porta NOT (74LS04).
 \begin{figure}[htbp]
     \centering
     \begin{circuitikz}
@@ -697,6 +757,16 @@ HIGH  & 0  & 0  & 1  & 1  & 0  & 0   \\
     \label{schm: edgeMoore}}
 \end{figure}
 
+\subsubsection{Edge-detector FSM di Mealy}
+Per la realizzazione della FSM di Mealy per riconoscere fronti di discesa
+invece sono sufficienti 2 stati, quindi 1 bit di memoria, come si vede anche
+dal diagramma degli stati riportato in \cref{diag: edgeMealy}. Anche in questo
+caso il segnale di rumore viene inviato all'ingresso $D$ del FF, ma ora viene
+comparato continuamente con lo stato precedentemente registrato in
+memoria $Q$. Dunque il valore in uscita dal circuito è sempre OUT~$= 0$
+apparte quando la macchina registra la discesa del segnale IN a 0 durante lo
+stato HIGH $(Q = 1)$, per cui OUT: $0 \to 1$ in maniera asincrona rispetto
+clock.
 \begin{figure}[htbp]
 \centering
 \begin{FSM}
@@ -715,6 +785,11 @@ HIGH  & 0  & 0  & 1  & 1  & 0  & 0   \\
 \label{diag: edgeMealy}}
 \end{figure}
 
+Come prima ricaviamo dal diagramma la tabella di verità delle transizioni di
+stato riportata in \cref{tab: bitMealy} con le solite convenzioni; stavolta
+non è necessario ricorrere alle mappe di Karnaugh per semplificare le
+espressioni dello stato futuro $D =$ IN e dell'uscita OUT
+$= \overline{\text{IN}} \cdot Q$
 \begin{table}[htbp]
 	\centering
 	\begin{tabular}{cc|c}
@@ -733,6 +808,9 @@ HIGH  & 0  & 0  & 1  & 1  & 0  & 0   \\
 	\label{tab: bitMealy}}
 \end{table}
 
+A partire da queste equazioni si è costruito il circuito riportato in
+\cref{schm: edgeMealy} con un positive-edge-triggered D Flip-Flop (IC 74LS74),
+1 porta AND (74LS08) e una porta NOT (74LS04).
 \begin{figure}[htbp]
     \centering
     \begin{circuitikz}
@@ -789,6 +867,7 @@ dell'AD2, di cui riportiamo i risultati per il circuito di Moore in
     Analyzer dei segnali in ingresso e in uscita dall'edge detector di Moore.
     \label{fig: edgeMoore}}
 \end{figure}
+
 Notiamo nel primo caso come l'uscita assume valore alto in maniera sincrona
 rispetto al segnale di clock, mentre nell'implementazione di Mealy l'uscita
 non aspetta il successivo fronte d'onda del clock per salire al livello logico
@@ -800,6 +879,10 @@ alto e accendere il LED.
     Analyzer dei segnali in ingresso e in uscita dal detector di Mealy.
     \label{fig: edgeMealy}}
 \end{figure}
+
+Questo risulta compatibile con quanto ci si aspetta per le diverse
+temporizzazioni delle macchine a stati finiti realizzate secondo i modelli di
+Moore e Mealy
 
 %=======================
 \section*{Conclusioni e commenti finali}
