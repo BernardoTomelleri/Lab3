@@ -5,6 +5,50 @@
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
 \usepackage{colortbl}
 \usepackage{diagbox}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\lstset{%
+  language = Octave,
+  backgroundcolor=\color{white},   
+  basicstyle=\footnotesize\ttfamily,       
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                   
+  commentstyle=\color{gray},    
+  deletekeywords={...},           
+  escapeinside={\%*}{*)},          
+  extendedchars=true,              
+  frame=single,                    
+  keepspaces=true,                 
+  keywordstyle=\color{orange},       
+  morekeywords={*,...},            
+  numbers=left,                    
+  numbersep=5pt,                   
+  numberstyle=\footnotesize\color{gray}, 
+  rulecolor=\color{black},         
+  rulesepcolor=\color{blue},
+  showspaces=false,                
+  showstringspaces=false,          
+  showtabs=false,                  
+  stepnumber=2,                    
+  stringstyle=\color{orange},    
+  tabsize=2,                       
+  title=\lstname,
+  emphstyle=\bfseries\color{blue}%  style for emph={} 
+} 
+
+%% language specific settings:
+\lstdefinestyle{Arduino}{%
+    language = Octave,
+    keywords={void, int boolean},%                 define keywords
+    morecomment=[l]{//},%             treat // as comments
+    morecomment=[s]{/*}{*/},%         define /* ... */ comments
+    emph={HIGH, OUTPUT, LOW}%        keywords to emphasize
+}
 \usepackage{tkz-graph}
 \usepackage{arydshln}
 \usetikzlibrary{automata, positioning, arrows}
@@ -357,26 +401,172 @@ di spegnersi come previsto dalla modalità disabilitato.
 %=======================
 \section{Implementazione software della logica combinatoria con AD2/ROM}
 \subsection{Costruzione del circuito}
+Si vuole ricostruire il semaforo utilizzando la funzione ROM.
+Come prima, andremo ad utilizzare 2 Flip-Flop per gestire i 3 stati del semaforo.
+Dopo aver costruito il circuito in \cref{schem: rom} si va a programmare la ROM: innanzitutto si sono scelti ENABLE, Q0 e Q1 come input, per controllare lo stato corrente e se il semaforo risulta essere abilitato, e D0, D1 e gli ingressi ai LED come Output, in modo da sovrascrivere lo stato corrente e per accendere o spengere i led.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{schem_rom}
+    \caption{Schematica del circuito utilizzato per il semaforo gestito da ROM
+    \label{schem: rom}}
+\end{figure}
 
 \subsection{Implementazione delle tabelle di verità in ROM}
+Utilizzando la tabella di verità presente in \cref{tab: semftruth} abbiamo programmato la seguente ROM in cui è presente un unico stato illegale per entrami i funzionamenti (abilitato e disabilitato):
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{ROM.1}
+    \caption{Tabella di verità programmata all'interno della ROM per il controllo del semaforo
+    \label{fig: rom}}
+\end{figure}
 
 \subsection{Verifica del funzionamento del circuito}
-
+Si procede quindi con la verifica del funzionamento del circuito.
+Si invia al pin CLK un segnale di clock con frequenza pari ad 1 Hz, mantenendo collegati CLEAR e PRESET a Vcc come prima, e impostando la frequenza della ROM a 1 Mhz.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{es2.enable}
+    \caption{Acquisizione Logic del semaforo gestito da ROM, Abilitato
+    \label{fig: es.2_enable}}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{es2.disable}
+    \caption{Acquisizione Logic del semaforo gestito da ROM, Disabilitato
+    \label{fig: es.2_disable}}
+\end{figure}
+Dalle immagini \ref{fig: es.2_enable} e \ref{fig: es.2_disable} possiamo concludere che il circuito funzioni come da aspettativa.
 \subsection{Variante svizzera del semaforo ROM}
-
+Si va quindi a modificare la \cref{fig: rom} in modo da utilizzare anche lo stato $1\;1$ (successivo al rosso) per visualizzare lo stato rosso e giallo.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{ROM.svizzero}
+    \caption{Tabella di verità programmata all'interno della ROM per il controllo del semaforo svizzero
+    \label{fig: rom.svizzero}}
+\end{figure}
+Si procede quindi a verificare il funzionamento del semaforo svizzero. Come prima inviamo un segnale di clock a 1 Hz e lasciamo la frequenza della ROM a 1 MHz.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{es2.svizzero}
+    \caption{Acquisizione Logic del semaforo svizzero gestito da ROM, Abilitato
+    \label{fig: es.2_svizzero}}
+\end{figure}
+Osservando la \cref{fig: es.2_svizzero} possiamo concludere che il circuito funziona come da aspettativa
 %=======================
 \section{Implementazione in software dei semafori con MCU (Arduino)}
-Si vuole ricostruire il circuito precedente per il controllo di un semaforo tramite un microcontrollore (nel nostro caso utilizzeremo Arduino UNO); a questo scopo utilizzeremo come componenti uno switch, 3 led (rosso, verde e giallo) e una resistenza da
-$330 \; \si{\ohm}$ per limitare la corrente che scorre nei led.
-
-\subsection{Collegamento LED semaforo alle uscite}
-
-\subsection{Definizione interruttore di Enable}
+Si vuole ricostruire il circuito precedente per il controllo di un semaforo tramite un microcontrollore (nel nostro caso utilizzeremo Arduino UNO).
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{schem_ard}
+    \caption{Schematica utilizzata nella gestione del semaforo con software tramite arduino.
+    \label{schem: arduino}}
+\end{figure}
+Dopo aver montato il circuito descritto in \cref{schem: arduino}, si procede con l'implementazione software del semaforo.
 
 \subsection{Implementazione del codice per la FSM}
+Ci basiamo sullo schema per il semaforo FSM di Mealy presente in \cref{diag: semf} per controllare il funzionamento di un semaforo tramite enable.
+\begin{lstlisting}[label={list:first}, style=Arduino, caption=Blink.ino]
+/*state
+ * 0= ALL OFF
+ * 1= RED ON
+ * 2= RED YELLOW ON
+ * 3= GREEN ON
+ * 4= GREEN YELLOW ON
+ * 5= YELLOW ON
+ * 
+ */
+void setup() {
+  pinMode(5, OUTPUT); //Led Rosso
+  pinMode(6, OUTPUT); //Led Giallo
+  pinMode(7, OUTPUT); //Led Verde
+  pinMode(8, INPUT_PULLUP); //Pin di Enable
+}
+int tickGREEN=1000; //Durata dello stato VERDE
+int tickRED=1000; //Durata dello stato ROSSO
+int tickYELLOW=1000; //Durata dello stato GIALLO
+int tickREDYELLOW=1000; //Durata dello stato ROSSOGIALLO
+int tickGREENYELLOW=1000; //Durata dello stato VERDEGIALLO
+int tickOFF=1000; //Durata dello stato spento
+int CurrentState=0; //stato iniziale impostato sul tutto spento
 
+void loop() {
+  //viene controllato se il semaforo \'e abilitato
+  if(CheckEnable()){ 
+    
+    // nel caso in cui il semaforo sia abilitato
+    switch(CurrentState){  
+
+    case 1: //se lo stato precedente risulta essere rosso
+      CurrentState=3; //lo stato corrente viene spostato a verde
+      digitalWrite(5,LOW);
+      digitalWrite(6,LOW);
+      digitalWrite(7,HIGH);  
+      delay(tickGREEN); //viene fatto trascorrere il tempo specificato all'inizio del file
+      break; 
+    case 3: //se lo stato precedente risulta essere solo verde
+      CurrentState=4; //lo stato corrente viene portato a giallo e verde
+      digitalWrite(6,HIGH);
+      delay(tickGREENYELLOW);
+      break;
+      
+    default: // in qualunque altro caso di stato precedente, se il semaforo \'e abilitato, lo stato inizializzato \'e quello rosso
+      CurrentState=1;
+      digitalWrite(5,HIGH);
+      digitalWrite(6,LOW);
+      digitalWrite(7,LOW);
+      delay(tickRED); 
+    }
+    
+  }else { 
+    //nel caso in cui il semaforo sia disabilitato
+    switch(CurrentState){
+      case 5: // se lo stato precedente risulta essere giallo 
+        CurrentState=0; //imposta lo stato corrente a tutto spento
+        digitalWrite(6,LOW);
+        delay(tickOFF); 
+        break;     
+      default: // in qualunque altro caso di stato precedente, lo stato inizializzato \'e quello giallo
+        CurrentState=5;
+        digitalWrite(6,HIGH);
+        digitalWrite(5,LOW);
+        digitalWrite(7,LOW);
+        delay(tickYELLOW);
+      }
+  }
+}
+
+bool CheckEnable(){ 
+  //Algoritmo di controllo per Enable
+  
+  int check =digitalRead(8);
+  return (check== HIGH);
+}
+\end{lstlisting}
 \subsection{Versione svizzera del semaforo con Enable via Arduino}
-
+Si introduce un quarto stato nel caso in cui il semaforo sia abilitato, successivo al rosso; per fare ciò è necessaria una semplice modifica all'interno dello switch nel caso in cui il semaforo risulti abilitato
+\begin{lstlisting}[label={list:first}, style=Arduino, caption=Blink.ino]
+void loop() {
+  //viene controllato se il semaforo \'e abilitato
+  if(CheckEnable()){ 
+    
+    // nel caso in cui il semaforo sia abilitato
+    switch(CurrentState){  
+    case 1://se lo stato precedente risulta essere solo rosso
+      CurrentState=2;
+      digitalWrite(6,HIGH); //imposta lo stato corrente a rosso e giallo
+      delay(tickREDYELLOW); //viene fatto passare il tempo specificato all'inizio del file
+      break;
+    case 2: //se lo stato precedente risulta essere rosso e giallo
+      CurrentState=3; //lo stato corrente viene spostato a verde
+      digitalWrite(5,LOW);
+      digitalWrite(6,LOW);
+      digitalWrite(7,HIGH);  
+      delay(tickGREEN); 
+      break; 
+    .
+    .
+    .
+\end{lstlisting}
 %=======================
 \section{Falling-edge detector}
 Si vuole realizzare una FSM che riceve uno stream di bit su una linea di
