@@ -106,7 +106,7 @@ all'ingresso dei circuiti integrati a disposizione.
 \subsection{Diagramma a stati del semaforo}
 Quando il semaforo è in modalità ``abilitato'' ($E=1$) si susseguono
 ciclicamente 3 possibili output, per cui sono stati implementarli con $3$ stati
-interni della macchina. Mentre nel caso di semaforo ``disabilitato'' ($E=1$) i
+interni della macchina. Mentre nel caso di semaforo ``disabilitato'' ($E=0$) i
 possibili output si riducono a $2$, e si possono esprimere utilizzando due
 degli stati precedentemente codificati a seconda del valore logico dell'input
 ENABLE tramite un circuito FSM di Mealy.
@@ -230,7 +230,7 @@ identificano i LED Verde, Giallo e Rosso del semaforo nella \cref{tab: LED}
           \bottomrule   
     \end{tabular}
     \caption{Corrispondenza tra gli stati della FSM e i valori di tensione
-	digitali in ingresso ai LED del semaforo \label{tab: LED}}.     
+	digitali in ingresso ai LED del semaforo. \label{tab: LED}}     
 \end{table}
 
 in cui come prima gli stati contrassegnati da una X sono quelli che non ci
@@ -292,7 +292,7 @@ che questa sia consentita solo quando ENABLE~$= 1$, mentre per il LED rosso
 questo non è necessario, infatti possiamo riassumere i valori delle uscite
 del semaforo come:
 \begin{itemize}
-    \item G $= \overline{Q_1} \cdot E \implies$
+    \item G $= \overline{Q_1} \cdot E$
     \item Y $= Q_0$
     \item R $= Q_1$
 \end{itemize}
@@ -303,8 +303,8 @@ rosso solamente in presenza del segnale di ENABLE (ovvero R $= Q_1 \cdot E$) in
 maniera analoga a quanto fatto per il LED verde.
 Dalla \cref{tab: semftruth} infatti si nota che l'unica differenza di
 funzionamento si avrebbe durante la transizione di $E: 1 \to 0$.
-Per cui in questa variante del circuito, lo spegnimento diventerebbe asincrono
-rispetto al segnale di clock anziché sincrono.
+Per cui in questa variante del circuito, lo spegnimento diventerebbe sincrono
+rispetto al segnale di clock anziché asincrono.
 
 Scegliamo quindi di costruire la prima versione del circuito che minimizza il
 numero di porte logiche necessarie.
@@ -436,7 +436,7 @@ Dopo aver costruito il circuito in \cref{schem: rom} si è programmata la ROM:
 innanzitutto si sono impostati ENABLE, $Q_0$ e $Q_1$ come Input, per
 controllare lo stato corrente e se il semaforo risulta essere abilitato, dunque
 $D_0$, $D_1$ e le uscite corrispondenti ai LED come Output, in modo da poter
-sovrascrivere lo stato corrente e accendere o spengere i led.
+sovrascrivere lo stato corrente e accendere o spegnere i led.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{schem_rom}
@@ -445,17 +445,21 @@ sovrascrivere lo stato corrente e accendere o spengere i led.
 \end{figure}
 
 \subsection{Implementazione delle tabelle di verità in ROM}
-Utilizzando la tabella di verità presente in \cref{tab: semftruth} abbiamo programmato la seguente ROM in cui è presente un unico stato illegale per entrami i funzionamenti (abilitato e disabilitato):
+Utilizzando la tabella di verità presente in \cref{tab: semftruth} abbiamo
+programmato in Waveforms la ROM (\cref{fig: rom}) in cui è di nuovo presente
+un unico stato illegale $(\ominus)$ indipendentemente dal valore di $E$
+(semaforo abilitato o disabilitato):
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{ROM.1}
-    \caption{Tabella di verità programmata all'interno della ROM per il controllo del semaforo
+    \caption{Tabella di verità programmata all'interno della ROM per il controllo del semaforo Mealy con Enable
     \label{fig: rom}}
 \end{figure}
 
 \subsection{Verifica del funzionamento del circuito}
-Si procede quindi con la verifica del funzionamento del circuito.
-Si invia al pin CLK un segnale di clock con frequenza pari ad 1 Hz, mantenendo collegati CLEAR e PRESET a Vcc come prima, e impostando la frequenza della ROM a 1 Mhz.
+Per verificare il corretto funzionamento del circuito si invia al pin CLK un
+segnale di clock con frequenza pari ad 1 Hz, mantenendo collegati CLEAR e
+PRESET a $V_{CC}$ come prima e impostando la frequenza della ROM a 1 MHz.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{es2.enable}
@@ -468,44 +472,61 @@ Si invia al pin CLK un segnale di clock con frequenza pari ad 1 Hz, mantenendo c
     \caption{Acquisizione Logic del semaforo gestito da ROM, Disabilitato
     \label{fig: es.2_disable}}
 \end{figure}
-Dalle immagini \ref{fig: es.2_enable} e \ref{fig: es.2_disable} possiamo concludere che il circuito funzioni come da aspettativa.
-\subsection{Variante svizzera del semaforo ROM}
+Dalle \cref{fig: es.2_enable} e \cref{fig: es.2_disable} vediamo che il
+circuito continua a comportarsi correttamente come prima.
 
-Si va quindi a modificare la \cref{fig: rom} in modo da utilizzare anche lo stato $1\;1$ (successivo al rosso) per visualizzare lo stato rosso e giallo.
+\subsection{Variante svizzera del semaforo ROM}
+Si va quindi a modificare la \cref{fig: rom} in modo da utilizzare anche lo
+stato $1\;1$ (successivo al rosso) per esprimere lo stato del semaforo
+rosso e giallo.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{ROM.svizzero}
-    \caption{Tabella di verità programmata all'interno della ROM per il controllo del semaforo svizzero
+    \caption{Tabella di verità programmata all'interno della ROM per il
+    controllo del semaforo svizzero
     \label{fig: rom.svizzero}}
 \end{figure}
-Si procede quindi a verificare il funzionamento del semaforo svizzero. Come prima inviamo un segnale di clock a 1 Hz e lasciamo la frequenza della ROM a 1 MHz.
+
+In maniera del tutto analoga a prima si verifica il funzionamento del semaforo
+svizzero una seconda acquisizione con il Logic Analyzer riportata in
+\cref{fig: es.2_svizzero}
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{es2.svizzero}
     \caption{Acquisizione Logic del semaforo svizzero gestito da ROM, Abilitato
     \label{fig: es.2_svizzero}}
 \end{figure}
-Osservando la \cref{fig: es.2_svizzero} possiamo concludere che il circuito funziona come da aspettativa
+da cui notiamo che il circuito ripete in maniera corretta la sequenza di stati
+del semaforo svizzero, come da aspettativa.
 
 %=======================
 \section{Implementazione in software dei semafori con MCU (Arduino)}
-Si vuole ricostruire il circuito precedente per il controllo di un semaforo tramite un microcontrollore (nel nostro caso utilizzeremo Arduino UNO).
+Si vuole ricostruire il circuito precedente per il controllo di un semaforo
+tramite un microcontrollore (nel nostro caso utilizzeremo Eleego UNO R3).
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{schem_ard}
-    \caption{Schematica utilizzata nella gestione del semaforo con software tramite arduino.
+    \caption{Schematica utilizzata per la gestione del semaforo con software
+    tramite Eleego.
     \label{schem: arduino}}
 \end{figure}
-Dopo aver montato il circuito descritto in \cref{schem: arduino}, si procede con l'implementazione software del semaforo.
+Dopo aver assemblato il circuito descritto in \cref{schem: arduino}, si
+procede con l'implementazione software del semaforo.
 
 \subsection{Implementazione del codice per la FSM}
-Ci basiamo sullo schema per il semaforo FSM di Mealy presente in \cref{diag: semf} per controllare il funzionamento di un semaforo tramite enable.
+Ci basiamo sullo schema per il semaforo FSM di Mealy presente in
+\cref{diag: semf} per controllare il funzionamento del semaforo tramite
+segnale di controllo ENABLE, riportiamo il listato del programma nel listing
+\ref{list: semf-mealy}
 \lstinputlisting[label={list: semf-mealy}, style=Arduino, caption=Semaforo-mealy.ino]{../arduino/Semaforo.ino}
 
-
 \subsection{Versione svizzera del semaforo con Enable via Arduino}
-Si introduce un quarto stato nel caso in cui il semaforo sia abilitato, successivo al rosso; per fare ciò è necessaria una semplice modifica all'interno dello switch nel caso in cui il semaforo risulti abilitato
-\begin{lstlisting}[label={list: sviz}, style=Arduino, caption=semf-svizzero.ino]
+Si introduce un quarto stato nel caso in cui il semaforo sia abilitato,
+successivo al rosso; per fare ciò è necessaria una semplice modifica
+all'interno dello switch nel caso in cui il semaforo risulti abilitato.
+Riportiamo le modifiche apportate al codice precedente nel listing
+\ref{list: sviz}.
+\begin{lstlisting}[label={list: sviz}, style=Arduino, caption=Svizzero.ino]
 void loop() {
   //viene controllato se il semaforo \'e abilitato
   if(CheckEnable()){ 
@@ -694,8 +715,8 @@ caso il segnale di rumore viene inviato all'ingresso $D$ del FF, ma ora viene
 comparato continuamente con lo stato precedentemente registrato in
 memoria $Q$. Dunque il valore in uscita dal circuito è sempre OUT~$= 0$
 apparte quando la macchina registra la discesa del segnale IN a 0 durante lo
-stato HIGH $(Q = 1)$, per cui OUT: $0 \to 1$ in maniera asincrona rispetto
-clock.
+stato HIGH $(Q = 1)$, per cui OUT: $0 \to 1$ lungo il fronte di discesa del
+segnale di clock.
 \begin{figure}[htbp]
 \centering
 \begin{FSM}
@@ -798,9 +819,9 @@ dell'AD2, di cui riportiamo i risultati per il circuito di Moore in
 \end{figure}
 
 Notiamo nel primo caso come l'uscita assume valore alto in maniera sincrona
-rispetto al segnale di clock, mentre nell'implementazione di Mealy l'uscita
-non aspetta il successivo fronte d'onda del clock per salire al livello logico
-alto e accendere il LED.
+rispetto al fronte di salita del segnale di clock, mentre nell'implementazione
+di Mealy l'uscita sale in maniera sincrona rispetto al fronte di discesa del
+segnale di rumore IN.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{Mealy_edge_detector}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  6 MAY 2022 18:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  6 MAY 2022 19:14
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1516,42 +1516,42 @@ File: ../figs//schem_rom.png Graphic file (type png)
 <use ../figs//schem_rom.png>
 Package pdftex.def Info: ../figs//schem_rom.png  used on input line 442.
 (pdftex.def)             Requested size: 483.69687pt x 327.00073pt.
-<../figs//ROM.1.png, id=149, 744.381pt x 173.448pt>
+<../figs//ROM.1.png, id=150, 744.381pt x 173.448pt>
 File: ../figs//ROM.1.png Graphic file (type png)
 <use ../figs//ROM.1.png>
-Package pdftex.def Info: ../figs//ROM.1.png  used on input line 451.
+Package pdftex.def Info: ../figs//ROM.1.png  used on input line 454.
 (pdftex.def)             Requested size: 483.69687pt x 112.70544pt.
-<../figs//es2.enable.png, id=150, 1152.7065pt x 505.89pt>
+<../figs//es2.enable.png, id=151, 1152.7065pt x 505.89pt>
 File: ../figs//es2.enable.png Graphic file (type png)
 <use ../figs//es2.enable.png>
-Package pdftex.def Info: ../figs//es2.enable.png  used on input line 461.
+Package pdftex.def Info: ../figs//es2.enable.png  used on input line 465.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
-<../figs//es2.disable.png, id=151, 1152.7065pt x 505.89pt>
+<../figs//es2.disable.png, id=152, 1152.7065pt x 505.89pt>
 File: ../figs//es2.disable.png Graphic file (type png)
 <use ../figs//es2.disable.png>
-Package pdftex.def Info: ../figs//es2.disable.png  used on input line 467.
+Package pdftex.def Info: ../figs//es2.disable.png  used on input line 471.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
-<../figs//ROM.svizzero.png, id=155, 751.00575pt x 175.25475pt>
+<../figs//ROM.svizzero.png, id=156, 751.00575pt x 175.25475pt>
 File: ../figs//ROM.svizzero.png Graphic file (type png)
 <use ../figs//ROM.svizzero.png>
-Package pdftex.def Info: ../figs//ROM.svizzero.png  used on input line 477.
+Package pdftex.def Info: ../figs//ROM.svizzero.png  used on input line 484.
 (pdftex.def)             Requested size: 483.69687pt x 112.87396pt.
-<../figs//es2.svizzero.png, id=156, 1152.7065pt x 505.89pt>
-File: ../figs//es2.svizzero.png Graphic file (type png)
-<use ../figs//es2.svizzero.png>
-Package pdftex.def Info: ../figs//es2.svizzero.png  used on input line 484.
-(pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
  [5 <../figs//schem_rom.png> <../figs//ROM.1.png>] [6 <../figs//es2.enable.png 
 (PNG copy)> <../figs//es2.disable.png (PNG copy)>]
-<../figs//schem_ard.png, id=173, 966.009pt x 467.346pt>
+<../figs//es2.svizzero.png, id=173, 1152.7065pt x 505.89pt>
+File: ../figs//es2.svizzero.png Graphic file (type png)
+<use ../figs//es2.svizzero.png>
+Package pdftex.def Info: ../figs//es2.svizzero.png  used on input line 495.
+(pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
+<../figs//schem_ard.png, id=174, 966.009pt x 467.346pt>
 File: ../figs//schem_ard.png Graphic file (type png)
 <use ../figs//schem_ard.png>
-Package pdftex.def Info: ../figs//schem_ard.png  used on input line 495.
+Package pdftex.def Info: ../figs//schem_ard.png  used on input line 508.
 (pdftex.def)             Requested size: 483.69687pt x 234.00758pt.
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 503.
+nput line 521.
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 5
-03.
+21.
  (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
@@ -1563,17 +1563,17 @@ figs//schem_ard.png>]) [9]
 Missing character: There is no ; in font nullfont!
  [10]
 Missing character: There is no ; in font nullfont!
-<../figs//Moore_edge_detector.png, id=316, 1440.88312pt x 711.4078pt>
+<../figs//Moore_edge_detector.png, id=319, 1440.88312pt x 711.4078pt>
 File: ../figs//Moore_edge_detector.png Graphic file (type png)
 <use ../figs//Moore_edge_detector.png>
-Package pdftex.def Info: ../figs//Moore_edge_detector.png  used on input line 7
-94.
+Package pdftex.def Info: ../figs//Moore_edge_detector.png  used on input line 8
+15.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
-<../figs//Mealy_edge_detector.png, id=317, 1440.88312pt x 711.4078pt>
+<../figs//Mealy_edge_detector.png, id=320, 1440.88312pt x 711.4078pt>
 File: ../figs//Mealy_edge_detector.png Graphic file (type png)
 <use ../figs//Mealy_edge_detector.png>
 Package pdftex.def Info: ../figs//Mealy_edge_detector.png  used on input line 8
-06.
+27.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
  [11] [12 <../figs//Moore_edge_detector.png (PNG copy)> <../figs//Mealy_edge_de
 tector.png (PNG copy)>]
@@ -1605,10 +1605,10 @@ m-super/sfrm0900.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sf
 rm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb
 ><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texli
 ve/2021/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb>
-Output written on E03.2.AC.pdf (13 pages, 705894 bytes).
+Output written on E03.2.AC.pdf (13 pages, 706132 bytes).
 PDF statistics:
- 445 PDF objects out of 1000 (max. 8388607)
- 379 compressed objects within 4 object streams
+ 448 PDF objects out of 1000 (max. 8388607)
+ 382 compressed objects within 4 object streams
  160 named destinations out of 1000 (max. 500000)
  239 words of extra memory for PDF output out of 10000 (max. 10000000)
 
