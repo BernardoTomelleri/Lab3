@@ -48,6 +48,17 @@ C_d = 97 \pm 4 \; \si{n\F}
 
 %=======================
 \section{Implementazione di un semaforo con circuiti integrati}\label{sec: IC}
+Si vuole costruire una macchina a stati finiti in grado di emulare il
+funzionamento delle luci di un semaforo stradale, nelle modalità
+\begin{description}
+\item[ABILITATO] si ripetono ciclicamente gli stati: LED verde acceso $\to$
+LED giallo e verde accesi $\to$ LED rosso acceso.
+\item[DISABILITATO] si alternano gli stati LED giallo acceso e spento
+(giallo lampeggiante).
+\end{description}
+in cui tutti gli stati hanno durata pari ad un impulso del clock inviato
+all'ingresso dei circuiti integrati a disposizione.
+
 \subsection{Diagramma a stati del semaforo}
 Quando il semaforo è in modalità ``abilitato'' ($E=1$) si susseguono
 ciclicamente 3 possibili output, per cui sono stati implementarli con $3$ stati
@@ -233,8 +244,8 @@ correnti $Q_1 Q_0$:
 \subsection{Costruzione del circuito}
 Si è montato il circuito riportato in ~\cref{schm: semf} con due
 positive-edge-triggered D Flip-Flop (da chip integrato 74LS74) e 3 porte AND
-(da chip integrato 74LS08) e si sono collegati i pin PRESET e CLEAR dei D-FF a
-$V_{CC}$ onde evitare reset o clear spuri.
+(da chip integrato 74LS08) e si sono collegati i pin PRESET e CLEAR dei D-FF
+alla tensione di alimentazione $V_{CC}$ onde evitare reset o clear spuri.
 \begin{figure}[htbp]
     \centering
     \begin{circuitikz}
@@ -368,11 +379,12 @@ $330 \; \si{\ohm}$ per limitare la corrente che scorre nei led.
 
 %=======================
 \section{Falling-edge detector}
-\subsection{Progettazione FSM e costruzione dei circuiti}
 Si vuole realizzare una FSM che riceve uno stream di bit su una linea di
 ingresso e che accende un LED tutte le volte che su questo si presenta un
 fronte di discesa secondo il modello di Moore e un'altra secondo quello di
 Mealy.
+\subsection{Progettazione FSM e costruzione dei circuiti}
+Come nella \ref{sec: IC}
 \begin{figure}[htbp]
 \centering
 \begin{FSM}
