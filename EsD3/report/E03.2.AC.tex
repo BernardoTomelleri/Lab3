@@ -5,6 +5,50 @@
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
 \usepackage{colortbl}
 \usepackage{diagbox}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\lstset{%
+  language = Octave,
+  backgroundcolor=\color{white},   
+  basicstyle=\footnotesize\ttfamily,       
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                   
+  commentstyle=\color{gray},    
+  deletekeywords={...},           
+  escapeinside={\%*}{*)},          
+  extendedchars=true,              
+  frame=single,                    
+  keepspaces=true,                 
+  keywordstyle=\color{orange},       
+  morekeywords={*,...},            
+  numbers=left,                    
+  numbersep=5pt,                   
+  numberstyle=\footnotesize\color{gray}, 
+  rulecolor=\color{black},         
+  rulesepcolor=\color{blue},
+  showspaces=false,                
+  showstringspaces=false,          
+  showtabs=false,                  
+  stepnumber=2,                    
+  stringstyle=\color{orange},    
+  tabsize=2,                       
+  title=\lstname,
+  emphstyle=\bfseries\color{blue}%  style for emph={} 
+} 
+
+%% language specific settings:
+\lstdefinestyle{Arduino}{%
+    language = Octave,
+    keywords={void, int boolean},%                 define keywords
+    morecomment=[l]{//},%             treat // as comments
+    morecomment=[s]{/*}{*/},%         define /* ... */ comments
+    emph={HIGH, OUTPUT, LOW}%        keywords to emphasize
+}
 \usepackage{tkz-graph}
 \usepackage{arydshln}
 \usetikzlibrary{automata, positioning, arrows}
@@ -410,32 +454,108 @@ Dopo aver montato il circuito descritto in \cref{schem: arduino}, si procede con
 
 \subsection{Implementazione del codice per la FSM}
 Ci basiamo sullo schema per il semaforo FSM di Mealy presente in \cref{diag: semf} per controllare il funzionamento di un semaforo tramite enable.
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth]{Ard_iniz}
-    \caption{Fase di inizializzazione del software per la FSM con arduino
-    \label{fig: code_iniz}}
-\end{figure}
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth]{Ard_enable}
-    \caption{Segmento di codice che definisce il comportamento della FSM nel caso in cui il semaforo risulti abilitato
-    \label{fig: code_enable}}
-\end{figure}
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth]{Ard_disable}
-    \caption{Segmento di codice che definisci il comportamento nel caso in cui il semaforo sia disabilitato
-    \label{fig: code_disable}}
-\end{figure}
+\begin{lstlisting}[label={list:first}, style=Arduino, caption=Blink.ino]
+/*state
+ * 0= ALL OFF
+ * 1= RED ON
+ * 2= RED YELLOW ON
+ * 3= GREEN ON
+ * 4= GREEN YELLOW ON
+ * 5= YELLOW ON
+ * 
+ */
+void setup() {
+  pinMode(5, OUTPUT); //Led Rosso
+  pinMode(6, OUTPUT); //Led Giallo
+  pinMode(7, OUTPUT); //Led Verde
+  pinMode(8, INPUT_PULLUP); //Pin di Enable
+}
+int tickGREEN=1000; //Durata dello stato VERDE
+int tickRED=1000; //Durata dello stato ROSSO
+int tickYELLOW=1000; //Durata dello stato GIALLO
+int tickREDYELLOW=1000; //Durata dello stato ROSSOGIALLO
+int tickGREENYELLOW=1000; //Durata dello stato VERDEGIALLO
+int tickOFF=1000; //Durata dello stato spento
+int CurrentState=0; //stato iniziale impostato sul tutto spento
+
+void loop() {
+  //viene controllato se il semaforo \'e abilitato
+  if(CheckEnable()){ 
+    
+    // nel caso in cui il semaforo sia abilitato
+    switch(CurrentState){  
+
+    case 1: //se lo stato precedente risulta essere rosso
+      CurrentState=3; //lo stato corrente viene spostato a verde
+      digitalWrite(5,LOW);
+      digitalWrite(6,LOW);
+      digitalWrite(7,HIGH);  
+      delay(tickGREEN); //viene fatto trascorrere il tempo specificato all'inizio del file
+      break; 
+    case 3: //se lo stato precedente risulta essere solo verde
+      CurrentState=4; //lo stato corrente viene portato a giallo e verde
+      digitalWrite(6,HIGH);
+      delay(tickGREENYELLOW);
+      break;
+      
+    default: // in qualunque altro caso di stato precedente, se il semaforo \'e abilitato, lo stato inizializzato \'e quello rosso
+      CurrentState=1;
+      digitalWrite(5,HIGH);
+      digitalWrite(6,LOW);
+      digitalWrite(7,LOW);
+      delay(tickRED); 
+    }
+    
+  }else { 
+    //nel caso in cui il semaforo sia disabilitato
+    switch(CurrentState){
+      case 5: // se lo stato precedente risulta essere giallo 
+        CurrentState=0; //imposta lo stato corrente a tutto spento
+        digitalWrite(6,LOW);
+        delay(tickOFF); 
+        break;     
+      default: // in qualunque altro caso di stato precedente, lo stato inizializzato \'e quello giallo
+        CurrentState=5;
+        digitalWrite(6,HIGH);
+        digitalWrite(5,LOW);
+        digitalWrite(7,LOW);
+        delay(tickYELLOW);
+      }
+  }
+}
+
+bool CheckEnable(){ 
+  //Algoritmo di controllo per Enable
+  
+  int check =digitalRead(8);
+  return (check== HIGH);
+}
+\end{lstlisting}
 \subsection{Versione svizzera del semaforo con Enable via Arduino}
-Si introduce un quarto stato nel caso in cui il semaforo sia abilitato, successivo al rosso.
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\textwidth]{Ard_disable}
-    \caption{Segmento di codice che definisci il comportamento nel caso in cui il semaforo abilitato sia di tipo svizzero
-    \label{fig: code_svizzero}}
-\end{figure}
+Si introduce un quarto stato nel caso in cui il semaforo sia abilitato, successivo al rosso; per fare ciò è necessaria una semplice modifica all'interno dello switch nel caso in cui il semaforo risulti abilitato
+\begin{lstlisting}[label={list:first}, style=Arduino, caption=Blink.ino]
+void loop() {
+  //viene controllato se il semaforo \'e abilitato
+  if(CheckEnable()){ 
+    
+    // nel caso in cui il semaforo sia abilitato
+    switch(CurrentState){  
+    case 1://se lo stato precedente risulta essere solo rosso
+      CurrentState=2;
+      digitalWrite(6,HIGH); //imposta lo stato corrente a rosso e giallo
+      delay(tickREDYELLOW); //viene fatto passare il tempo specificato all'inizio del file
+      break;
+    case 2: //se lo stato precedente risulta essere rosso e giallo
+      CurrentState=3; //lo stato corrente viene spostato a verde
+      digitalWrite(5,LOW);
+      digitalWrite(6,LOW);
+      digitalWrite(7,HIGH);  
+      delay(tickGREEN); 
+      break; 
+    .
+    .
+    .
+\end{lstlisting}
 %=======================
 \section{Falling-edge detector}
 \subsection{Progettazione FSM e costruzione dei circuiti}

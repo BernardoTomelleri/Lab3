@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  6 MAY 2022 12:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.14)  6 MAY 2022 15:08
 entering extended mode
 **./E03.2.AC.tex
 (E03.2.AC.tex
@@ -1364,6 +1364,11 @@ File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
 \diagbox@insepr=\dimen368
 \diagbox@outsepl=\dimen369
 \diagbox@outsepr=\dimen370
+) (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+)
+(C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/tkz-graph\tkz-graph.sty
 2021/01/20 v 2.00 tkz-graph.sty
@@ -1457,30 +1462,36 @@ File: pgflibraryshapes.multipart.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z/libraries\tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (E03.2.AC.aux)
+) (E03.2.AC.aux
+
+LaTeX Warning: Label `list:first' multiply defined.
+
+
+LaTeX Warning: Label `list:first@cref' multiply defined.
+
+)
 \openout1 = `E03.2.AC.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-Package hyperref Info: Link coloring ON on input line 32.
-
-(C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+Package hyperref Info: Link coloring ON on input line 76.
+ (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
@@ -1492,15 +1503,15 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count393
 )
-LaTeX Info: Redefining \ref on input line 32.
-LaTeX Info: Redefining \pageref on input line 32.
-LaTeX Info: Redefining \nameref on input line 32.
+LaTeX Info: Redefining \ref on input line 76.
+LaTeX Info: Redefining \pageref on input line 76.
+LaTeX Info: Redefining \nameref on input line 76.
  (E03.2.AC.out) (E03.2.AC.out)
 \@outlinefile=\write4
 \openout4 = `E03.2.AC.out'.
 
 Package translations Info: no dictionary file `translations-basic-dictionary-it
-alian.trsl' found. on input line 32.
+alian.trsl' found. on input line 76.
 
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -1564,18 +1575,18 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \it@ocap on input line 32.
-LaTeX Info: Redefining \it@ccap on input line 32.
+LaTeX Info: Redefining \it@ocap on input line 76.
+LaTeX Info: Redefining \it@ccap on input line 76.
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.18} (current compat level: 1.15).
 
 \c@lstlisting=\count400
-LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
 
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
 
 
 (C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -1589,16 +1600,16 @@ Missing character: There is no ; in font nullfont!
 
 
 Package pgf Warning: Returning node center instead of a point on node border. D
-id you specify a point identical to the center of node ``G''? on input line 300
+id you specify a point identical to the center of node ``G''? on input line 344
 .
 
 <../figs//traffic.png, id=117, 1440.88312pt x 711.4078pt>
 File: ../figs//traffic.png Graphic file (type png)
 <use ../figs//traffic.png>
-Package pdftex.def Info: ../figs//traffic.png  used on input line 336.
+Package pdftex.def Info: ../figs//traffic.png  used on input line 380.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
 [3]
-Overfull \hbox (0.72293pt too wide) in paragraph at lines 347--347
+Overfull \hbox (0.72293pt too wide) in paragraph at lines 391--391
 []\T1/cmr/bx/n/14.4 Implementazione soft-ware del-la lo-gi-ca com-bi-na-to-ria 
 con AD2/ROM 
  []
@@ -1606,93 +1617,85 @@ con AD2/ROM
 <../figs//schem_rom.png, id=128, 814.242pt x 550.4565pt>
 File: ../figs//schem_rom.png Graphic file (type png)
 <use ../figs//schem_rom.png>
-Package pdftex.def Info: ../figs//schem_rom.png  used on input line 354.
+Package pdftex.def Info: ../figs//schem_rom.png  used on input line 398.
 (pdftex.def)             Requested size: 483.69687pt x 327.00073pt.
 [4 <../figs//traffic.png (PNG copy)>]
 <../figs//ROM.1.png, id=138, 744.381pt x 173.448pt>
 File: ../figs//ROM.1.png Graphic file (type png)
 <use ../figs//ROM.1.png>
-Package pdftex.def Info: ../figs//ROM.1.png  used on input line 363.
+Package pdftex.def Info: ../figs//ROM.1.png  used on input line 407.
 (pdftex.def)             Requested size: 483.69687pt x 112.70544pt.
 <../figs//es2.enable.png, id=139, 1152.7065pt x 505.89pt>
 File: ../figs//es2.enable.png Graphic file (type png)
 <use ../figs//es2.enable.png>
-Package pdftex.def Info: ../figs//es2.enable.png  used on input line 373.
+Package pdftex.def Info: ../figs//es2.enable.png  used on input line 417.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
 <../figs//es2.disable.png, id=140, 1152.7065pt x 505.89pt>
 File: ../figs//es2.disable.png Graphic file (type png)
 <use ../figs//es2.disable.png>
-Package pdftex.def Info: ../figs//es2.disable.png  used on input line 379.
+Package pdftex.def Info: ../figs//es2.disable.png  used on input line 423.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
  [5 <../figs//schem_rom.png> <../figs//ROM.1.png>]
 <../figs//ROM.svizzero.png, id=152, 751.00575pt x 175.25475pt>
 File: ../figs//ROM.svizzero.png Graphic file (type png)
 <use ../figs//ROM.svizzero.png>
-Package pdftex.def Info: ../figs//ROM.svizzero.png  used on input line 388.
+Package pdftex.def Info: ../figs//ROM.svizzero.png  used on input line 432.
 (pdftex.def)             Requested size: 483.69687pt x 112.87396pt.
 <../figs//es2.svizzero.png, id=153, 1152.7065pt x 505.89pt>
 File: ../figs//es2.svizzero.png Graphic file (type png)
 <use ../figs//es2.svizzero.png>
-Package pdftex.def Info: ../figs//es2.svizzero.png  used on input line 395.
+Package pdftex.def Info: ../figs//es2.svizzero.png  used on input line 439.
 (pdftex.def)             Requested size: 483.69687pt x 212.27936pt.
 <../figs//schem_ard.png, id=155, 966.009pt x 467.346pt>
 File: ../figs//schem_ard.png Graphic file (type png)
 <use ../figs//schem_ard.png>
-Package pdftex.def Info: ../figs//schem_ard.png  used on input line 405.
+Package pdftex.def Info: ../figs//schem_ard.png  used on input line 449.
 (pdftex.def)             Requested size: 483.69687pt x 234.00758pt.
-<../figs//Ard_iniz.png, id=158, 404.10976pt x 299.9205pt>
-File: ../figs//Ard_iniz.png Graphic file (type png)
-<use ../figs//Ard_iniz.png>
-Package pdftex.def Info: ../figs//Ard_iniz.png  used on input line 415.
-(pdftex.def)             Requested size: 483.69687pt x 359.00124pt.
-<../figs//Ard_enable.png, id=159, 704.03024pt x 355.3275pt>
-File: ../figs//Ard_enable.png Graphic file (type png)
-<use ../figs//Ard_enable.png>
-Package pdftex.def Info: ../figs//Ard_enable.png  used on input line 421.
-(pdftex.def)             Requested size: 483.69687pt x 244.1298pt.
-<../figs//Ard_disable.png, id=160, 562.5015pt x 287.27325pt>
-File: ../figs//Ard_disable.png Graphic file (type png)
-<use ../figs//Ard_disable.png>
-Package pdftex.def Info: ../figs//Ard_disable.png  used on input line 427.
-(pdftex.def)             Requested size: 483.69687pt x 247.02388pt.
  [6 <../figs//es2.enable.png (PNG copy)> <../figs//es2.disable.png (PNG copy)>]
  [7 <../figs//ROM.svizzero.png> <../figs//es2.svizzero.png (PNG copy)> <../figs
 //schem_ard.png>]
-File: ../figs//Ard_disable.png Graphic file (type png)
-<use ../figs//Ard_disable.png>
-Package pdftex.def Info: ../figs//Ard_disable.png  used on input line 435.
-(pdftex.def)             Requested size: 483.69687pt x 247.02388pt.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 457.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
+57.
+
+(C:\Users\rossi\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <8> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 468.
+
+[8]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-<../figs//Moore_edge_detector.png, id=179, 1440.88312pt x 711.4078pt>
+<../figs//Moore_edge_detector.png, id=254, 1440.88312pt x 711.4078pt>
 File: ../figs//Moore_edge_detector.png Graphic file (type png)
 <use ../figs//Moore_edge_detector.png>
-Package pdftex.def Info: ../figs//Moore_edge_detector.png  used on input line 6
-55.
+Package pdftex.def Info: ../figs//Moore_edge_detector.png  used on input line 7
+75.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
-<../figs//Mealy_edge_detector.png, id=180, 1440.88312pt x 711.4078pt>
+<../figs//Mealy_edge_detector.png, id=255, 1440.88312pt x 711.4078pt>
 File: ../figs//Mealy_edge_detector.png Graphic file (type png)
 <use ../figs//Mealy_edge_detector.png>
-Package pdftex.def Info: ../figs//Mealy_edge_detector.png  used on input line 6
-66.
+Package pdftex.def Info: ../figs//Mealy_edge_detector.png  used on input line 7
+86.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
- [8 <../figs//Ard_iniz.png>] [9 <../figs//Ard_enable.png> <../figs//Ard_disable
-.png>] [10] [11] [12 <../figs//Moore_edge_detector.png (PNG copy)> <../figs//Me
-aly_edge_detector.png (PNG copy)>] [13] (E03.2.AC.aux)
+ [9] [10] [11 <../figs//Moore_edge_detector.png (PNG copy)>] [12 <../figs//Meal
+y_edge_detector.png (PNG copy)>] (E03.2.AC.aux)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `E03.2.AC.out' has not changed.
 (rerunfilecheck)             Checksum: 481D32C86DEEAD0CFFA640ECBA9C6E63;5389.
  ) 
 Here is how much of TeX's memory you used:
- 59622 strings out of 478927
- 1472485 string characters out of 2852534
- 2204492 words of memory out of 3000000
- 76610 multiletter control sequences out of 15000+600000
- 420000 words of font info for 72 fonts, out of 8000000 for 9000
+ 60067 strings out of 478927
+ 1476984 string characters out of 2852534
+ 2734700 words of memory out of 3000000
+ 76952 multiletter control sequences out of 15000+600000
+ 421390 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 122i,19n,125p,757b,1309s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,19n,125p,757b,2439s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-t1.enc}{C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-supe
 r/cm-super-ts1.enc}<C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/pu
@@ -1707,13 +1710,15 @@ Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1000.
 pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/s
 fbx1200.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm
 -super/sfbx1440.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/cm-super/sfrm0900.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/cm-super/sfrm1000.pfb><C:/Users/rossi/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Users/rossi/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on E03.2.AC.pdf (13 pages, 726183 bytes).
+ublic/cm-super/sfrm0800.pfb><C:/Users/rossi/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/cm-super/sfrm0900.pfb><C:/Users/rossi/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/cm-super/sfrm1000.pfb><C:/Users/rossi/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Users/rossi/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1728.pfb><C:/Users/rossi/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sftt0800.pfb>
+Output written on E03.2.AC.pdf (12 pages, 734213 bytes).
 PDF statistics:
- 303 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 500000)
- 238 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 415 PDF objects out of 1000 (max. 8388607)
+ 157 named destinations out of 1000 (max. 500000)
+ 223 words of extra memory for PDF output out of 10000 (max. 10000000)
 
