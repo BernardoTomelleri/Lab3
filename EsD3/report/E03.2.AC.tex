@@ -346,26 +346,96 @@ di spegnersi come previsto dalla modalità disabilitato.
 %=======================
 \section{Implementazione software della logica combinatoria con AD2/ROM}
 \subsection{Costruzione del circuito}
+Si vuole ricostruire il semaforo utilizzando la funzione ROM.
+Come prima, andremo ad utilizzare 2 Flip-Flop per gestire i 3 stati del semaforo.
+Dopo aver costruito il circuito in \cref{schem: rom} si va a programmare la ROM: innanzitutto si sono scelti ENABLE, Q0 e Q1 come input, per controllare lo stato corrente e se il semaforo risulta essere abilitato, e D0, D1 e gli ingressi ai LED come Output, in modo da sovrascrivere lo stato corrente e per accendere o spengere i led.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{schem_rom}
+    \caption{Schematica del circuito utilizzato per il semaforo gestito da ROM
+    \label{schem: rom}}
+\end{figure}
 
 \subsection{Implementazione delle tabelle di verità in ROM}
+Utilizzando la tabella di verità presente in \cref{tab: semftruth} abbiamo programmato la seguente ROM in cui è presente un unico stato illegale per entrami i funzionamenti (abilitato e disabilitato):
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{ROM.1}
+    \caption{Tabella di verità programmata all'interno della ROM per il controllo del semaforo
+    \label{fig: rom}}
+\end{figure}
 
 \subsection{Verifica del funzionamento del circuito}
-
+Si procede quindi con la verifica del funzionamento del circuito.
+Si invia al pin CLK un segnale di clock con frequenza pari ad 1 Hz, mantenendo collegati CLEAR e PRESET a Vcc come prima, e impostando la frequenza della ROM a 1 Mhz.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{es2.enable}
+    \caption{Acquisizione Logic del semaforo gestito da ROM, Abilitato
+    \label{fig: es.2_enable}}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{es2.disable}
+    \caption{Acquisizione Logic del semaforo gestito da ROM, Disabilitato
+    \label{fig: es.2_disable}}
+\end{figure}
+Dalle immagini \ref{fig: es.2_enable} e \ref{fig: es.2_disable} possiamo concludere che il circuito funzioni come da aspettativa.
 \subsection{Variante svizzera del semaforo ROM}
-
+Si va quindi a modificare la \cref{fig: rom} in modo da utilizzare anche lo stato $1\;1$ (successivo al rosso) per visualizzare lo stato rosso e giallo.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{ROM.svizzero}
+    \caption{Tabella di verità programmata all'interno della ROM per il controllo del semaforo svizzero
+    \label{fig: rom.svizzero}}
+\end{figure}
+Si procede quindi a verificare il funzionamento del semaforo svizzero. Come prima inviamo un segnale di clock a 1 Hz e lasciamo la frequenza della ROM a 1 MHz.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{es2.svizzero}
+    \caption{Acquisizione Logic del semaforo svizzero gestito da ROM, Abilitato
+    \label{fig: es.2_svizzero}}
+\end{figure}
+Osservando la \cref{fig: es.2_svizzero} possiamo concludere che il circuito funziona come da aspettativa
 %=======================
 \section{Implementazione in software dei semafori con MCU (Arduino)}
-Si vuole ricostruire il circuito precedente per il controllo di un semaforo tramite un microcontrollore (nel nostro caso utilizzeremo Arduino UNO); a questo scopo utilizzeremo come componenti uno switch, 3 led (rosso, verde e giallo) e una resistenza da
-$330 \; \si{\ohm}$ per limitare la corrente che scorre nei led.
-
-\subsection{Collegamento LED semaforo alle uscite}
-
-\subsection{Definizione interruttore di Enable}
+Si vuole ricostruire il circuito precedente per il controllo di un semaforo tramite un microcontrollore (nel nostro caso utilizzeremo Arduino UNO).
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{schem_ard}
+    \caption{Schematica utilizzata nella gestione del semaforo con software tramite arduino.
+    \label{schem: arduino}}
+\end{figure}
+Dopo aver montato il circuito descritto in \cref{schem: arduino}, si procede con l'implementazione software del semaforo.
 
 \subsection{Implementazione del codice per la FSM}
-
+Ci basiamo sullo schema per il semaforo FSM di Mealy presente in \cref{diag: semf} per controllare il funzionamento di un semaforo tramite enable.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Ard_iniz}
+    \caption{Fase di inizializzazione del software per la FSM con arduino
+    \label{fig: code_iniz}}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Ard_enable}
+    \caption{Segmento di codice che definisce il comportamento della FSM nel caso in cui il semaforo risulti abilitato
+    \label{fig: code_enable}}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Ard_disable}
+    \caption{Segmento di codice che definisci il comportamento nel caso in cui il semaforo sia disabilitato
+    \label{fig: code_disable}}
+\end{figure}
 \subsection{Versione svizzera del semaforo con Enable via Arduino}
-
+Si introduce un quarto stato nel caso in cui il semaforo sia abilitato, successivo al rosso.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{Ard_disable}
+    \caption{Segmento di codice che definisci il comportamento nel caso in cui il semaforo abilitato sia di tipo svizzero
+    \label{fig: code_svizzero}}
+\end{figure}
 %=======================
 \section{Falling-edge detector}
 \subsection{Progettazione FSM e costruzione dei circuiti}
