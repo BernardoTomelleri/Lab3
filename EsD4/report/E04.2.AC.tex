@@ -80,365 +80,124 @@ every state/.style={minimum size = 1cm, thick, fill=gray!10}, % sets the propert
 \section*{Misura componenti dei circuiti}
 Riportiamo per completezza il valore della tensione continua di
 alimentazione per i circuiti integrati misurata con il multimetro
-\[
-V_{CC} = 4.99 \pm 0.03 \; \si{\V}
-\]
-
-e il valore di capacità del condensatore di disaccoppiamento che collega le
+\begin{align*}
+V_{CC} &= 4.99 \pm 0.03 \si{\V} \\
+V_{EE} &= -4.99 \pm 0.03 \si{\V}
+\end{align*}
+e i valori di capacità dei condensatori di disaccoppiamento che collegano le
 linee di alimentazione a massa (sempre misurato con il multimetro)
-\[
-C_d = 97 \pm 4 \; \si{n\F}
-\]
+\begin{align*}
+C_{d+} &= 97 \pm 4 \; \si{n\F} \\
+C_{d-} &= 107 \pm 4 \; \si{n\F}
+\end{align*}
 
+Abbiamo inoltre misurato i valori dei vari componenti del circuito:
+\begin{tabular}{cccccc}
+\toprule
+Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
+$\sigma C$ \\
+\midrule
+\midrule
+$R_1$	  	& 996 	& 8		& $C_1$ & 94	& 4 \\
+$R_2$	  	& 994	& 8		& & & \\
+$R_3$	  	& 999	& 8		& & & \\
+$R_4$	  	& 994 	& 8	& & & \\
+$R_5$	  	& 997	& 8 & & & \\
+
+\bottomrule   
+\end{tabular}
+\caption{Valori di resistenza e capacità misurate per i componenti del primo
+circuito studiato.}
+\end{table}
+\begin{tabular}{cccccc}
+\toprule
+Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
+$\sigma C$ \\
+\midrule
+\midrule
+$R_1$	  	& 995 	& 8		& $C_1$ & 109	& 4 \\
+$R_2$	  	& 999	& 8		& & & \\
+$R_3$	  	& 998	& 8		& & & \\
+$R_4$	  	& 998 	& 8	& & & \\
+$R_5$	  	& 996	& 8 & & & \\
+
+\bottomrule   
+\end{tabular}
+\caption{Valori di resistenza e capacità misurate per i componenti del secondo
+circuito studiato.}
+\end{table}
 \setcounter{section}{0}
 
 %=======================
 \section{Analisi e costruzione del circuito}\label{sec: IC}
-Si vuole costruire una macchina a stati finiti in grado di emulare il
-funzionamento delle luci di un semaforo stradale, nelle modalità
-\begin{description}
-\item[ABILITATO] si ripetono in ciclo gli stati: LED verde acceso $\to$
-LED giallo e verde accesi $\to$ LED rosso acceso.
-\item[DISABILITATO] si alternano gli stati LED giallo acceso e spento
-(giallo lampeggiante).
-\end{description}
-in cui tutti gli stati hanno durata pari ad un impulso del clock inviato
-all'ingresso dei circuiti integrati a disposizione.
-
-%=======================
-\section{Descrizione delle misure e acquisizione dati}
-Si vuole ricostruire il circuito precedente per il controllo di un semaforo
-tramite un microcontrollore (nel nostro caso utilizzeremo Eleego UNO R3).
 \begin{figure}[htbp]
     \centering
-%    \includegraphics[width=\textwidth]{schem_ard}
-    \caption{Schematica utilizzata per la gestione del semaforo con software
-    tramite Eleego.
-    \label{schem: arduino}}
+	\includegraphics[width=\textwidth]{schem}
+    \caption{Schematica del circuito utilizzato per il convertitore analogico digitale}
 \end{figure}
-Dopo aver assemblato il circuito descritto in \cref{schem: arduino}, si
-procede con l'implementazione software del semaforo.
+\subsection{Verifica del funzionamento}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{MIDDLE.U1.InputVSOutput}
+    \caption{Acquisizione del segnale nell'ingresso invertente (canale 1) e dell'uscita (canale 2) del circuito integratore}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{MIDDLE.U2.InputVSOutput}
+    \caption{Acquisizione del segnale nell'ingresso non invertente (canale 1) e dell'uscita (canale 2) del circuito comparatore semplice}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{MIDDLE.U3.InputVSOutput}
+    \caption{Acquisizione del segnale in ingresso(canale 1) e in uscita (canale 2) dal Flip Flop}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{MIDDLE.U3vU4}
+    \caption{Acquisizione del segnale in uscita dal pin Q del Flip Flop(canale 1) e in uscita dal DAC (canale 2)}
+\end{figure}
 
-\subsection{Definizione del segnale in ingresso}
-Ci basiamo sullo schema per il semaforo FSM di Mealy presente in
-\cref{diag: semf} per controllare il funzionamento del semaforo tramite
-segnale di controllo ENABLE, riportiamo il listato del programma nel listing
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{BOTTOM}
+    \caption{Acquisizione del segnale analogico in ingresso (un'onda sinusoidale di frequenza pari a 10 Hz e ampiezza pari a $2.5 V$) e del segnale logico in uscita dal pin Q del Flip-Flop durante il minimo del segnale}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{TOP}
+    \caption{Acquisizione del segnale analogico in ingresso (un'onda sinusoidale di frequenza pari a 10 Hz e ampiezza pari a $2.5 V$) e del segnale logico in uscita dal pin Q del Flip-Flop durante il massimo del segnale}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{MIDDLE}
+    \caption{Acquisizione del segnale analogico in ingresso (un'onda sinusoidale di frequenza pari a 10 Hz e ampiezza pari a $2.5 V$) e del segnale logico in uscita dal pin Q del Flip-Flop durante il punto medio dell'onda}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{Conv.Sinusoide.100Hz.2}
+    \caption{Acquisizione del segnale analogico in ingresso (un'onda sinusoidale di frequenza pari a 100 Hz e ampiezza pari a $2.5 V$) e del segnale in uscita dal DAC U4}
+\end{figure}
+%=======================
+\section{Descrizione delle misure e acquisizione dati}
 
 \subsection{Campionamento e acquisizione del segnale}
-Si introduce un quarto stato nel caso in cui il semaforo sia abilitato,
-successivo al rosso; per fare ciò è necessaria una semplice modifica
-all'interno dello switch nel caso in cui il semaforo risulti abilitato.
-Riportiamo le modifiche apportate al codice precedente nel listing
-\ref{list: sviz}.
-\begin{lstlisting}[label={list: sviz}, style=Arduino, caption=Svizzero.ino]
-void loop() {
-  //viene controllato se il semaforo \'e abilitato
-  if(CheckEnable()){ 
-    
-    // nel caso in cui il semaforo sia abilitato
-    switch(CurrentState){  
-    case 1://se lo stato precedente risulta essere solo rosso
-      CurrentState=2;
-      digitalWrite(6,HIGH); //imposta lo stato corrente a rosso e giallo
-      delay(tickREDYELLOW); //viene fatto passare il tempo specificato all'inizio del file
-      break;
-    case 2: //se lo stato precedente risulta essere rosso e giallo
-      CurrentState=3; //lo stato corrente viene spostato a verde
-      digitalWrite(5,LOW);
-      digitalWrite(6,LOW);
-      digitalWrite(7,HIGH);  
-      delay(tickGREEN); 
-      break; 
-    .
-    .
-    .
-\end{lstlisting}
 
 \subsection{Acquisizione con Protocol}
 
 %=======================
 \section{Analisi dei dati}
-Si vuole realizzare una FSM che riceve uno stream di bit su una linea di
-ingresso e che accende un LED tutte le volte che su questo si presenta un
-fronte di discesa secondo il modello di Moore e un'altra secondo quello di
-Mealy.
 
 \subsection{Ricostruzione dei segnali in ingresso}
-Seguendo lo stesso procedimento usato nella \cref{sec: IC} per realizzare il
-semaforo disegniamo i diagrammi degli stati delle macchine, ne codifichiamo in
-bit gli stati, ricaviamo le tabella di verità per le transizioni tra questi e
-i valori in uscita, così da ottenere le equazioni logiche che le governano da
-tradurre nella realizzazione pratica delle connessioni tra memoria e circuiti
-di logica combinatoria.
 
 \subsection{Fit sinusoidale}
-Si è scelto di costruire la FSM di Moore per riconoscere fronti di discesa
-con 3 stati, dunque 2 bit di memoria $Q_1 Q_0$ secondo il diagramma degli
-stati in \cref{diag: edgeMoore}. Per cui se il segnale di rumore in ingresso
-rimane a livello logico basso o alto la macchina resta in stato LOW $(00)$ o
-HIGH $(01)$ in cui l'uscita è OUT~$= 0$;
-se invece il segnale IN scende a 0 durante lo stato HIGH la macchina entra
-nell'unico stato (EDGE $\coloneqq 10$) in cui l'uscita è OUT~$= 1$ prima di
-tornare ad uno degli stati precedenti a seconda del valore logico
-dell'ingresso al successivo fronte di salita del clock.
-\begin{figure}[htbp]
-\centering
-\begin{FSM}
-\tikzset{node distance = 4cm, on grid, auto
-}
-\node (H) [state with output] {HIGH \nodepart{lower} $01$};
-\node (C) [state with output, right of = H] {EDGE \nodepart{lower} $10$};
-\node (L) [state with output, right of = C] {LOW \nodepart{lower} $00$};
- 
-\path [-stealth, thick]
-	(H) edge [loop left]  node {IN=1}()
-    (H) edge [bend left] node[above] {IN=0} (C)
-    (C) edge [bend left] node[above] {IN=1} (H)
-    (C) edge [bend left] node[above] {IN=0} (L)
-    (L) edge [bend left] node {IN=1} (H)
-    (L) edge [loop right]  node {IN=0}();
-\end{FSM}
-\caption{Edge-detector FSM di Moore
-\label{diag: edgeMoore}}
-\end{figure}
-
-Dal diagramma ricaviamo la tabella di verità delle transizioni di stato con
-la stessa convenzione usata prima tra lo stato corrente $Q_i$ e il successivo
-$D_i$ come riportata in \cref{tab: bitMoore}.
-\begin{table}[htbp]
-\centering
-\begin{tabular}{c:c|cc||cc|c}
-\toprule
-State & IN & $Q_1$ & $Q_0$ & $D_1$ & $D_0$ & OUT \\
-\midrule
-\midrule
-LOW   & 0  & 0  & 0  & 0  & 0  & 0   \\
-      & 1  & 0  & 0  & 0  & 1  & 0   \\
-\midrule
-EDGE  & 0  & 1  & 0  & 0  & 0  & 1   \\
-      & 1  & 1  & 0  & 0  & 1  & 1   \\
-\midrule
-HIGH  & 0  & 0  & 1  & 1  & 0  & 0   \\
-      & 1  & 0  & 1  & 0  & 1  & 0   \\
-\bottomrule
-\end{tabular}
-\caption{Tabella di verità per le transizioni tra gli stati del detector di
-Moore. \label{tab: bitMoore}}
-\end{table}
-
-Dunque per semplificare le espressioni logiche delle transizioni e delle
-uscite si sono costruite le mappe di Karnaugh riportate in
-\cref{tab: KarD0edge}, \cref{tab: KarD1edge} e \cref{tab: KarOUT}.
-\begin{table}[htbp]
-\centering
-	\begin{tabular}{c|c|c|c|c}
-        \backslashbox{IN}{$Q_1 Q_0$} & 00 & 01 & 11 & 10\\
-        \hline
-        0 & 0 & 0 & X & 0 \\
-        \hline
-        1 & 1 & 1 & X & 1 \\
-    \end{tabular}
-	\caption{Mappa di Karnaugh per $D_0 = \text{IN}$
-	 \label{tab: KarD0edge}}
-
-\bigskip
-	 
-    \begin{tabular}{c|c|c|c|c}
-        \backslashbox{IN}{$Q_1 Q_0$} & 00 & 01 & 11 & 10\\
-        \hline
-        0 & 0 & \cellcolor[HTML]{FF9999} 1 & \cellcolor[HTML]{FF9999} X & 0 \\
-        \hline
-        1 & 0 & 0 & X & 0 \\
-    \end{tabular}
-	\caption{Mappa di Karnaugh per $D_1 = \overline{\text{IN}} \cdot Q_0$
-	 \label{tab: KarD1edge}}
-
-\bigskip
-
-    \begin{tabular}{c|c|c|c|c}
-        \backslashbox{IN}{$Q_1 Q_0$} & 00 & 01 & 11 & 10\\
-        \hline
-        0 & 0 & 0 & \cellcolor[HTML]{FF9999} X & \cellcolor[HTML]{FF9999} 1 \\
-        \hline
-        1 & 0 & 0 & \cellcolor[HTML]{FF9999} X & \cellcolor[HTML]{FF9999} 1 \\
-    \end{tabular}
-    \caption{Mappe di Karnaugh per $\text{OUT} = Q_1$
-    \label{tab: KarOUT}}
-\end{table}
-
-Finalmente dalle equazioni per gli stati futuri e delle uscite della FSM
-si è costruito il circuito riportato in \cref{schm: edgeMoore} a partire da
-due positive-edge-triggered D Flip-Flop (IC 74LS74), 1 porta AND (74LS08) e
-una porta NOT (74LS04).
-\begin{figure}[htbp]
-    \centering
-    \begin{circuitikz}
-    \tikzset{flipflop D/.style={flipflop,
-    flipflop def={t1=$D_0$, t6=$Q_0$, c3=1, t4=\ctikztextnot{$Q_0$}}},
-	}
-        \def\andScale{0.7};
-
-        % componenti
-        %% flip flop
-        \draw (0,0) node[flipflop D] (ffSinistra) {};
-		\tikzset{flipflop D/.style={flipflop,
-		flipflop def={t1=$D_1$, t6=$Q_1$, c3=1, t4=\ctikztextnot{$Q_1$}}},
-		}
-        \draw (5,0) node[flipflop D] (ffDestra) {};
-        
-        %% and gate
-        \node (andDestra) at (3, |- ffDestra.pin 1) [and port, scale=\andScale] {};
-        \node at (andDestra.bin 1) [ocirc, left] {};
-        
-        % input
-        \node (IN) at ($ (ffSinistra.pin 1) + (-2,1) $) {IN};
-        \node (CLK) at ($ (IN) + (0,-4) $) {CLK};
-        \draw (9.5,-1.5) node[eground] (gnd){};
-
-        % fili
-        %% clock e in
-        \draw (CLK) -| (ffDestra.pin 3);
-        \draw (ffSinistra.pin 3) -- (ffSinistra.pin 3 |-, |- CLK);
-        \draw (IN) -| (andDestra.in 1);
-        \draw (ffSinistra.pin 1) -- (ffSinistra.pin 1 |-, |- IN);
-        \draw (ffSinistra.pin 6) |- (andDestra.in 2);
-        
-        \draw (andDestra.out) -- (ffDestra.pin 1);
-        \draw (ffDestra.pin 6) to
-        [/tikz/circuitikz/bipoles/length=1cm,empty led, l=OUT]
-        ++ (1.5,0) to[/tikz/circuitikz/bipoles/length=1cm, R,l=\SI{1}{\kilo\ohm}]
-        ++ (1.5,0) -| (gnd);
-    \end{circuitikz}
-    \caption{schema del detector Moore.
-    \label{schm: edgeMoore}}
-\end{figure}
 
 \subsection{Risposta in frequenza dell'ADC}
-Per la realizzazione della FSM di Mealy per riconoscere fronti di discesa
-invece sono sufficienti 2 stati, quindi 1 bit di memoria, come si vede anche
-dal diagramma degli stati riportato in \cref{diag: edgeMealy}. Anche in questo
-caso il segnale di rumore viene inviato all'ingresso $D$ del FF, ma ora viene
-comparato continuamente con lo stato precedentemente registrato in
-memoria $Q$. Dunque il valore in uscita dal circuito è sempre OUT~$= 0$
-apparte quando la macchina registra la discesa del segnale IN a 0 durante lo
-stato HIGH $(Q = 1)$, per cui OUT: $0 \to 1$ lungo il fronte di discesa del
-segnale di clock.
-\begin{figure}[htbp]
-\centering
-\begin{FSM}
-\tikzset{node distance = 4cm, on grid, auto
-}
-\node (H) [state] {HIGH};
-\node (L) [state, right of = H] {LOW};
- 
-\path [-stealth, thick]
-	(H) edge [loop left]  node {IN$=1$ (OUT$=0$)}()
-    (H) edge [bend left] node[above] {IN$=0$ (OUT$=1$)} (L)
-    (L) edge [bend left] node {IN$=1$ (OUT$=0$)} (H)
-    (L) edge [loop right]  node {IN$=0$ (OUT$=0$)}();
-\end{FSM}
-\caption{Edge detector FSM di Mealy
-\label{diag: edgeMealy}}
-\end{figure}
-
-Come prima ricaviamo dal diagramma la tabella di verità delle transizioni di
-stato riportata in \cref{tab: bitMealy} con le solite convenzioni; stavolta
-non è necessario ricorrere alle mappe di Karnaugh per semplificare le
-espressioni dello stato futuro $D =$ IN e dell'uscita OUT
-$= \overline{\text{IN}} \cdot Q$
-\begin{table}[htbp]
-	\centering
-	\begin{tabular}{cc|c}
-	\toprule
-	$D$ = IN & $Q$ & OUT \\
-	\midrule
-	\midrule
-	$0$  & $0$	& $0$ \\
-	$0$  & $1$	& $1$ \\
-	$1$  & $0$	& $0$ \\
-	$1$  & $1$  & $0$ \\
-	\bottomrule
-	\end{tabular}
-	\caption{codifica binaria degli stati del detector di Mealy.
-	$D$ = IN; OUT = $\overline{\text{IN}} \cdot Q$
-	\label{tab: bitMealy}}
-\end{table}
-
-A partire da queste equazioni si è costruito il circuito riportato in
-\cref{schm: edgeMealy} con un positive-edge-triggered D Flip-Flop (IC 74LS74),
-1 porta AND (74LS08) e una porta NOT (74LS04).
-\begin{figure}[htbp]
-    \centering
-    \begin{circuitikz}
-	\def\andScale{0.7};
-        % componenti
-        %% flip flop
-        \draw (0,0) node[flipflop D] (ffSinistra) {};
-        
-        %% and gate
-        \node (andDestra) at ($ (ffSinistra.pin 6) + (1.5,0.2) $) [and port, scale=\andScale] {};
-        \node at (andDestra.bin 1) [ocirc, left] {};
-        
-        % input
-        \node (IN) at ($ (ffSinistra.pin 1) + (-2,1) $) {IN};
-        \node (CLK) at ($ (ffSinistra.pin 3) + (-2,0) $) {CLK};
-        \draw (6.5,-1) node[eground] (gnd){};
-
-        % fili
-        %% clock e in
-        \draw (CLK) -| (ffSinistra.pin 3);
-        \draw (IN) -| (andDestra.in 1);
-        \draw (ffSinistra.pin 1) -- (ffSinistra.pin 1 |-, |- IN);
-        \draw (ffSinistra.pin 6) |- (andDestra.in 2);
-        
-        \draw (andDestra.out) to
-        [/tikz/circuitikz/bipoles/length=1cm,empty led, l=OUT]
-        ++ (1.5,0) to[/tikz/circuitikz/bipoles/length=1cm, R,l=\SI{1}{\kilo\ohm}]
-        ++ (1.5,0) -| (gnd);
-    \end{circuitikz}
-    \caption{schema del detector Mealy.
-    \label{schm: edgeMealy}}
-\end{figure}
 
 \subsection{Stima del fattore di calibrazione del convertitore}
-Con la funzione Patterns di Waveform si invia un segnale (in DIO 5) di clock
-di frequenza $f\ped{clk} = \SI{1}{k\Hz}$ al pin (CLK) dei Flip-Flop e si
-genera con il canale DIO 6 uno stream di dati random alla stessa frequenza
-$f = f\ped{clk}$, già dalla schermata di Patterns è possibile notare come
-le commutazioni di stato del segnale pseudocasuale avvengano in corrispondenza
-dei fronti di discesa del segnale di clock.
 
-Come prima si sono mantenuti i pin PRESET e CLEAR dei D-FF collegati a
-$V_{CC}$ per evitare reset o clear spuri.
 
 \subsection{Misura del signal/noise ratio (SNR)}
-Si sono acquisiti i segnali in ingresso (CLK = DIO 5, IN = DIO 6) e in uscita
-(OUT = DIO 7) dai circuiti edge-detector con la funzione Logic Analyzer
-dell'AD2, di cui riportiamo i risultati per il circuito di Moore in
-\cref{fig: edgeMoore} e per la FSM di Mealy in \cref{fig: edgeMealy}.
-\begin{figure}[htbp]
-    \centering
-%    \includegraphics[width=\textwidth]{Moore_edge_detector}
-    \caption{Acquisizione di un ciclo completo (frequenza 1 kHz) con Logic
-    Analyzer dei segnali in ingresso e in uscita dall'edge detector di Moore.
-    \label{fig: edgeMoore}}
-\end{figure}
 
-Notiamo nel primo caso come l'uscita assume valore alto in maniera sincrona
-rispetto al fronte di salita del segnale di clock, mentre nell'implementazione
-di Mealy l'uscita sale in maniera sincrona rispetto al fronte di discesa del
-segnale di rumore IN.
-\begin{figure}[htbp]
-    \centering
-%    \includegraphics[width=\textwidth]{Mealy_edge_detector}
-    \caption{Acquisizione di un ciclo completo (frequenza 1 kHz) con Logic
-    Analyzer dei segnali in ingresso e in uscita dal detector di Mealy.
-    \label{fig: edgeMealy}}
-\end{figure}
-
-Questo risulta compatibile con quanto ci si aspetta per le diverse
-temporizzazioni delle macchine a stati finiti realizzate secondo i modelli di
-Moore e Mealy
 
 %=======================
 \section*{Conclusioni e commenti finali}
@@ -457,3 +216,164 @@ originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
 hanno contribuito alla elaborazione della relazione stessa.
 
 \end{document}
+\iffalse
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀⠐⠂⠀⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⡠⠴⠤⣤⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⢀⣀⣀⣀⣀⡀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀⠈⠉⢁⣈⣿⣿⣿⣷⡀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠠⠴⠒⠛⠛⠛⠛⠛⠛⠛⠷⠄⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⣀⣤⣴⣶⣶⣶⣶⣶⣶⣤⣄⣀⠀⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀⣠⣾⣿⠿⠟⠛⠛⠛⠛⠛⠿⠿⣿⣿⣷⣆⠀⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀⠐⠋⠉⣀⡠⠤⠔⠒⠒⠒⠠⠤⢀⡀⠉⠛⠿⣆⠀⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⢀⣠⠔⠊⠁⠀⢠⣤⣤⣶⣤⣤⣤⡀⠈⠑⠠⢄⠈⠁⠀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⢴⠋⠀⠀⠰⣧⠀⢸⣿⣿⣿⣿⣿⣿⡇⠀⣴⣄⠀⠑⠢⣤⡀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⢀⣄⠀⠀⢾⣦⠀⠙⠦⠀⠙⠿⠿⠿⠿⠋⠀⣴⠋⠁⣀⣤⣠⣿⣷⡀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⢀⠀⠙⢷⣶⣾⣿⣷⣤⣄⣰⣦⣄⣀⣀⣠⣴⣾⣿⣷⠾⠿⠀⠈⠉⠛⠓⠀⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⢀⠈⠓⢤⣀⠉⠙⠻⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣅⣀⣠⣤⣄⡀⠀⠒⠲⠶⠄⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠉⠀⠀⠀⠙⠷⣶⣤⣤⣀⣀⣀⡉⠉⣹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣤⣀⣀⣀⠀⠹⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠏⠀⣰⣿⣷⣄⡀⠙⠢⡀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠹⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣇⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣸⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠿⢋⣥⣴⣶⣶⣶⣬⣙⠻⠟⣋⣭⣭⣭⣭⡙⠻⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⡿⢋⣴⣿⣿⠿⢟⣛⣛⣛⠿⢷⡹⣿⣿⣿⣿⣿⣿⣆⠹⣿⣿⣿⣿
+⣿⣿⣿⡿⢁⣾⣿⣿⣴⣿⣿⣿⣿⠿⠿⠷⠥⠱⣶⣶⣶⣶⡶⠮⠤⣌⡙⢿⣿
+⣿⡿⢛⡁⣾⣿⣿⣿⡿⢟⡫⢕⣪⡭⠥⢭⣭⣉⡂⣉⡒⣤⡭⡉⠩⣥⣰⠂⠹
+⡟⢠⣿⣱⣿⣿⣿⣏⣛⢲⣾⣿⠃⠄⠐⠈⣿⣿⣿⣿⣿⣿⠄⠁⠃⢸⣿⣿⡧
+⢠⣿⣿⣿⣿⣿⣿⣿⣿⣇⣊⠙⠳⠤⠤⠾⣟⠛⠍⣹⣛⣛⣢⣀⣠⣛⡯⢉⣰
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡶⠶⢒⣠⣼⣿⣿⣛⠻⠛⢛⣛⠉⣴⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⡿⢛⡛⢿⣿⣿⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡈⢿⣿
+⣿⣿⣿⣿⣿⣿⣿⠸⣿⡻⢷⣍⣛⠻⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢇⡘⣿
+⣿⣿⣿⣿⣿⣿⣿⣷⣝⠻⠶⣬⣍⣛⣛⠓⠶⠶⠶⠤⠬⠭⠤⠶⠶⠞⠛⣡⣿
+⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣬⣭⣍⣙⣛⣛⣛⠛⠛⠛⠿⠿⠿⠛⣠⣿⣿
+⣦⣈⠉⢛⠻⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⣁⣴⣾⣿⣿⣿⣿
+⣿⣿⣿⣶⣮⣭⣁⣒⣒⣒⠂⠠⠬⠭⠭⠭⢀⣀⣠⣄⡘⠿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡈⢿⣿⣿⣿⣿⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⠋⠉⠉⠉⠙⠛⠻⢶⣤⡀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⡆⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣠⣴⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡟⠁⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⠶⠟⠛⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡟⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣴⠾⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡶⠛⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⠞⠋⠀⠀⠀⠀⣠⣴⠶⠶⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣄⣀⣀⣤⡴⠟⠋⠀⠀⠀⠘⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣟⠉⠙⢷⣄⠀⠀⠀⠀⠀⠀⠘⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣷⡀⠀⠹⣧⡀⠀⠀⠀⠀⠀⣼⠃⠀⠀⠀⠀⠀⠀⠀⢀⣾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⡀⠀⠈⠛⣷⣤⣴⠶⠟⠃⠀⠀⠀⠀⠀⠀⠀⢀⣾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⡀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⠟⠛⣻⡿⠀⠀⠀⠀⠀⢀⣤⡾⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠋⠀⠀⠀⠀⢀⣴⠟⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⠟⠀⠀⠀⠀⣠⣾⡿⠁⢀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠏⠀⠀⠀⢀⡾⢫⣿⠁⠀⣼⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡾⠃⠀⠀⢀⣴⠟⢡⡟⣿⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠟⠁⠀⠀⣰⠟⠁⢠⡿⠀⢿⡄⢰⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠏⠀⠀⢠⣾⠋⠀⢀⡿⠁⠀⠈⠛⠿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡏⠀⠀⣴⢿⡟⠀⠀⣾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⣄⣾⠋⠘⣧⡀⢰⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠈⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠶⢶⣶⣦⣄⡀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⡄⠒⠪⢝⠻⣿⣿⣦⡀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⡿⢉⡀⠀⠈⠐⠄⢿⣿⣿⣷
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⡇⠀⠀⠈⡄⠤⢀⠈⣾⣿⣿⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡾⣿⣟⣕⡤⡠⠘⠀⠀⠀⢱⣿⣿⣿⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣾⣿⣞⣄⠮⠔⠈⡢⠄⣠⣾⣿⣿⣿⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⢿⣿⢽⡻⣿⣿⣿⣽⣵⣾⡽⣿⣿⣿⣿⣿⡏
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣗⣿⡟⠈⠉⠚⢽⣻⢷⡝⣿⡿⣿⣿⣿⣿⡿⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⠇⠀⠀⠀⠀⠀⢩⣯⣭⣾⣿⣿⣿⣿⠁⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⠃⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⡿⠃⠀⠀⠀⠀⣠⣼⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢞⣿⣿⡿⠁⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣾⣿⠏⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⡟⣿⣿⠏⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⠃⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣟⣷⣾⣿⠏⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⠃⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⡰⢿⣿⣿⣯⡶⠁⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⢀⣼⣟⣿⣿⡿⠃⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢀⣾⣿⣿⡯⣿⠀⠀⢠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣾⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠛⠀⠈⠀⠻⣿⣿⣿⣿⣿⣟⣛⣿⣿⡭⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠢⡀⠀⠀⠀⠀⠻⣿⣿⣿⣿⣿⣭⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠈⠐⠤⢀⡀⠀⢀⣙⣿⠿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠛⠛⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠉⠁⠀⠀⠀⠀⠀⠀⠀⠉⠻⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⠋⠈⠀⠀⠀⠀⠐⠺⣖⢄⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡏⢀⡆⠀⠀⠀⢋⣭⣽⡚⢮⣲⠆⠀⠀⠀⠀⠀⠀⢹⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡇⡼⠀⠀⠀⠀⠈⠻⣅⣨⠇⠈⠀⠰⣀⣀⣀⡀⠀⢸⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡇⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣟⢷⣶⠶⣃⢀⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠀⠈⠓⠚⢸⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⢀⡠⠀⡄⣀⠀⠀⠀⢻⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠐⠉⠀⠀⠙⠉⠀⠠⡶⣸⠁⠀⣠⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣦⡆⠀⠐⠒⠢⢤⣀⡰⠁⠇⠈⠘⢶⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠠⣄⣉⣙⡉⠓⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⣀⣀⠀⣀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠋⠉⠉⠉⠙⠛⠻⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⣠⣤⣦⣤⡀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⣴⣶⣿⣿⣿⣿⣿⣿⣷⡄⠘⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡿⠀⣼⠀⠀⢨⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡘⢿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⡏⡄⠄⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣝⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡟⠺⢰⣦⡄⠀⠠⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡽⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣧⠀⢸⡋⠀⠀⠀⠀⠀⢹⣯⡀⠀⠠⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡇⢺⠇⠀⣬⣶⡇⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣷⡈⠀⠀⠈⢻⠋⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⢿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠴⠸⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⢳⡀⠀⠀⠀⠀⣈⣈⣽⣿⣶⣿⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠟⠁⠘⣷⣤⡀⠀⠀⠐⠙⠛⠛⣩⣵⣿⠻⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⡿⠿⠛⠉⠁⠀⠀⠀⠈⢿⣿⣶⣄⣤⣤⣐⣾⣿⣿⣿⡆⠈⠻⠿⣿⣿⣿⣿⣿
+⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⠿⠿⣿⣿⣧⠀⠀⠀⠀⠈⠉⠛⠿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⡟⠁⠀⠀⠈⢹⣿⣇⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣷⣦⣀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿⣿⡟⠀⠈⢹⣿⣿⡇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⠃⠀⠀⠸⣿⣿⣷⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣿⠀⠀⠀⠀⢻⣿⣿⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⠀⠈⢿⣿⡇⠀⠀⠀⠀⠀
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢀⠄⡀⠄⡀⢀⠄⡀⡀⠠⢀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⡀⠠⢀⠄⡅⢔⠰⡨⢢⢡⢑⠔⠅⠕⠄⠅⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⡀⠅⢔⠨⢐⠅⡌⢆⢣⠪⡪⡘⡌⡮⡱⡡⣊⢌⢀⢀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠠⡐⢄⠕⡡⡘⢔⢱⢨⢪⢪⢪⢪⡺⣪⢞⢮⢫⢮⢺⢔⢆⡢⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⢀⠐⠈⠄⡠⡊⢌⠢⡑⡌⡆⡇⡇⡇⡇⣇⢗⣝⢮⡺⣪⡳⣹⡪⣞⢵⢝⡵⡝⣕⠡⢀⢂⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⢠⢊⢂⠁⡔⡌⡢⢑⠌⡢⡱⡸⡸⡸⡪⡺⡸⣕⢵⡳⣝⢮⡺⣪⢞⣵⣫⡳⣕⢯⡺⡬⠄⠕⡕⡄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⡇⡇⡂⢢⢣⢣⠨⡂⡊⢔⢕⢱⡱⡝⣜⢝⡺⣜⡵⣝⢮⡳⡽⣵⣻⡺⣼⡺⡵⣳⢝⡮⡃⡕⡺⢄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⢸⡱⡱⡨⢪⢪⢢⠡⢂⢊⠢⡱⡱⡱⡝⡮⡳⣝⢞⢮⢗⡯⣯⢯⣗⡯⣟⣮⢯⣟⢮⡳⣝⢇⢇⢎⢵⡀⠄⠄⠄⠄⠄
+⠄⠄⠄⣕⢵⢣⢣⢑⢅⢆⢃⠢⠡⡡⡱⡱⡹⡪⡯⣺⢕⡯⣫⢯⢾⢽⢽⣺⢯⣗⡯⣗⣗⢗⣝⢮⡫⣏⢮⢒⢅⠄⠄⠄⠄⠄
+⠄⠄⢀⠮⡪⢪⠪⠢⡃⡪⡂⠅⢕⠰⢱⢸⢸⡱⣝⢮⡳⡽⣪⢏⡯⡯⣟⡾⣽⣺⢽⣳⡳⣝⢮⡳⣫⣳⢳⡱⡱⠄⠄⠄⠄⠄
+⠄⠄⢀⡃⡫⢔⢨⢕⢕⢔⢌⢌⠢⡑⡱⡘⢜⢜⢮⡳⣝⣞⢵⣫⢿⢽⣺⡽⡾⣾⢽⣳⢯⢮⡳⣝⣕⢗⢵⡑⡕⡀⠄⠄⠄⠄
+⠄⠄⠐⠢⡱⡐⢕⢵⣑⡑⢕⢐⠕⠸⠰⡑⠕⢕⢕⠽⡕⣏⢗⢽⢝⢽⠺⠽⠽⢽⢻⢽⢽⢵⢽⡸⣪⢳⢱⢱⡱⡽⡡⡀⠄⠄
+⠄⠄⠨⠈⢆⢊⢎⢖⢂⠃⠡⠐⠈⠈⠄⠄⠄⠄⠄⢑⢹⢘⣜⢕⠑⡈⠄⡈⣈⣐⠨⠘⡜⢕⡳⣝⢮⡳⡱⡱⡵⡯⡪⠂⠄⠄
+⠄⠄⠄⠅⢂⠑⡕⡕⠄⡢⢀⠄⠠⠄⠁⠁⡌⠠⢠⠄⠸⣸⣺⡪⣐⠅⢢⢈⠄⢬⢍⣆⢧⣳⡽⡮⣺⡪⡺⣘⢼⣝⠆⠄⠄⠄
+⠄⠄⠄⠨⡢⡢⡣⡳⢑⢰⢐⠠⡊⡪⣢⡣⡪⡰⠑⡀⠨⣪⢷⣝⡮⡫⡪⣪⢾⢝⣯⢾⣝⣗⡯⣟⢮⡪⡯⡷⣗⡯⠄⠄⠄⠄
+⠄⠄⠄⠄⢕⠄⡇⡣⡑⠔⢅⠇⡇⡏⡖⡕⡕⣌⢂⠂⠌⢮⢷⡳⡯⡯⡾⡵⣫⢯⢞⣗⡷⡯⣯⡳⣱⢱⢝⡽⣺⠁⠄⠄⠄⠄
+⠄⠄⠄⠄⠡⡡⢱⢐⠨⠨⠐⡡⢃⢇⢇⡏⡞⡔⡐⠠⢑⢽⢽⢽⢽⢽⢽⣝⢗⡯⣟⢾⢽⢝⡞⣜⢜⢜⣽⣺⠎⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠊⠃⠂⡐⠄⠅⡐⡈⡢⡃⢇⠕⡢⠄⠨⢘⢮⢯⢯⣳⡫⡗⣗⢽⢝⡮⡯⡮⡣⡏⣎⢎⠞⠺⠊⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠂⡁⢂⠐⡈⡢⢑⠅⡕⡐⠈⠨⡨⢯⣻⢽⣺⢺⡺⡪⣏⢷⢽⢕⣯⡫⣞⢜⢜⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⡁⠄⠄⠂⡂⠌⠄⢕⢐⠌⢄⠄⠨⠨⢘⢥⢅⡵⣝⣝⢮⡳⡽⣝⡮⣺⢪⢎⣗⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⢂⢀⠡⠄⠌⠌⢂⢂⠪⠐⡌⢰⢰⢘⢼⢝⣞⢞⣞⡵⡯⣞⢵⣫⢮⡳⡣⡳⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠈⡀⠐⠄⠊⠄⠨⠐⠠⠈⠌⠘⠜⠵⡢⢳⢹⢜⢕⠕⠱⡹⡪⡳⣕⣳⢹⡸⠅⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⢄⠡⠁⠠⠄⠄⡀⠄⠐⠔⠔⠔⡢⠦⣒⢎⣎⢦⢢⢩⡫⣎⢮⢣⠃⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⢰⣇⠄⠐⠠⠄⠁⠄⠡⢀⢂⢅⢔⢄⣆⣆⢕⢵⡹⣪⡳⣕⢵⢱⢕⢇⡇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠱⡿⣵⣀⠄⠄⠄⠈⠨⠨⡂⢇⢎⢕⢎⢞⡽⡵⣝⢮⢺⢸⠸⡘⣜⢼⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⢹⣺⣳⣧⣄⡀⠄⠄⡀⠂⠌⡂⠕⢌⠊⢎⠪⠪⠪⡊⡆⣕⣕⢧⣓⣧⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⢪⢞⣾⡽⣷⣮⡄⠐⠄⡂⠌⢌⠢⢑⢐⢄⢅⢇⢇⣗⣕⢗⡵⣽⣿⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠙⡾⣽⣯⣷⣿⡿⣮⣰⢱⡱⣜⢔⡑⡜⣜⢮⣣⡳⣪⢷⣽⣿⣿⡀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⡷⣿⣽⣿⣿⣿⣿⣿⣾⣮⣗⣽⢵⢕⣕⢮⡺⢝⣵⣿⣿⣿⣷⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⣯⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣏⣾⣿⣿⣿⣿⣿⣿⣇⠄⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠻⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠉⠄⠄⠄⠉⠻⢿⣿⣿⣿⣿⡀⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢻⣿⣿⣿⣿⣿⣿⣿⡟⠁⠄⠄⠁⠠⠄⠄⠄⠈⠽⣿⣿⣿⣷⠄⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⢿⣿⣿⣿⣿⣿⡵⣄⠄⠄⠄⠄⠁⠈⠄⠄⢸⣹⡪⣿⣿⣿⡂⠄⠄⠄⠄⠄⠄⠄
+⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⢿⣿⣿⣻⣿⣿⣯⣿⣢⣄⠄⠄⠄⠑⠠⢸⣿⣿⣮⢞⣿⣧⠄⠄⠄⠄⠄⠄⠄
+\fi
