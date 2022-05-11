@@ -6,7 +6,7 @@ from scipy import optimize
 def sin_func(t, A, nu,phi,B):
     return A*np.sin(2*np.pi*nu*t + phi) + B
 
-file_path = './data/sinusoide1v1Off.txt'
+file_path = './data/cal/dc-3.4v.txt'
 with open(file_path,newline='') as csvfile:
 #convert csv removing comments and empty lines
 # fieldnames = ['Data']
