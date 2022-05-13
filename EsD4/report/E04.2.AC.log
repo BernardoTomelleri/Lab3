@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  13 MAY 2022 10:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  13 MAY 2022 19:03
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1368,115 +1368,147 @@ File: ../figs//sin10hz2.5v.png Graphic file (type png)
 <use ../figs//sin10hz2.5v.png>
 Package pdftex.def Info: ../figs//sin10hz2.5v.png  used on input line 95.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
-<../figs//MIDDLE.U1.InputVSOutput.png, id=64, 1152.7065pt x 553.46774pt>
+<../figs//MIDDLE.U1.InputVSOutput.png, id=65, 1152.7065pt x 553.46774pt>
 File: ../figs//MIDDLE.U1.InputVSOutput.png Graphic file (type png)
 <use ../figs//MIDDLE.U1.InputVSOutput.png>
 Package pdftex.def Info: ../figs//MIDDLE.U1.InputVSOutput.png  used on input li
-ne 105.
-(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//MIDDLE.U2.InputVSOutput.png, id=65, 1152.7065pt x 553.46774pt>
-File: ../figs//MIDDLE.U2.InputVSOutput.png Graphic file (type png)
-<use ../figs//MIDDLE.U2.InputVSOutput.png>
-Package pdftex.def Info: ../figs//MIDDLE.U2.InputVSOutput.png  used on input li
-ne 112.
-(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//MIDDLE.U3.InputVSOutput.png, id=66, 1152.7065pt x 553.46774pt>
-File: ../figs//MIDDLE.U3.InputVSOutput.png Graphic file (type png)
-<use ../figs//MIDDLE.U3.InputVSOutput.png>
-Package pdftex.def Info: ../figs//MIDDLE.U3.InputVSOutput.png  used on input li
-ne 117.
-(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//MIDDLE.U3vU4.png, id=67, 1152.7065pt x 553.46774pt>
-File: ../figs//MIDDLE.U3vU4.png Graphic file (type png)
-<use ../figs//MIDDLE.U3vU4.png>
-Package pdftex.def Info: ../figs//MIDDLE.U3vU4.png  used on input line 123.
-(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//BOTTOM.png, id=68, 1019.007pt x 489.027pt>
-File: ../figs//BOTTOM.png Graphic file (type png)
-<use ../figs//BOTTOM.png>
-Package pdftex.def Info: ../figs//BOTTOM.png  used on input line 129.
-(pdftex.def)             Requested size: 483.69687pt x 232.12607pt.
-<../figs//TOP.png, id=69, 1152.7065pt x 553.46774pt>
-File: ../figs//TOP.png Graphic file (type png)
-<use ../figs//TOP.png>
-Package pdftex.def Info: ../figs//TOP.png  used on input line 134.
-(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//MIDDLE.png, id=70, 1152.7065pt x 553.46774pt>
-File: ../figs//MIDDLE.png Graphic file (type png)
-<use ../figs//MIDDLE.png>
-Package pdftex.def Info: ../figs//MIDDLE.png  used on input line 139.
+ne 110.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
  [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <../figs//sc
-hem.png> <../figs//sin10hz2.5v.png (PNG copy)>] [3 <../figs//MIDDLE.U1.InputVSO
-utput.png (PNG copy)> <../figs//MIDDLE.U2.InputVSOutput.png (PNG copy)>] [4 <..
-/figs//MIDDLE.U3.InputVSOutput.png (PNG copy)> <../figs//MIDDLE.U3vU4.png (PNG 
-copy)>] [5 <../figs//BOTTOM.png (PNG copy)> <../figs//TOP.png (PNG copy)>]
-<../figs//sin10hz2.5vofs2v.png, id=115, 1440.88312pt x 711.4078pt>
+hem.png> <../figs//sin10hz2.5v.png (PNG copy)>]
+<../figs//MIDDLE.U2.InputVSOutput.png, id=91, 1152.7065pt x 553.46774pt>
+File: ../figs//MIDDLE.U2.InputVSOutput.png Graphic file (type png)
+<use ../figs//MIDDLE.U2.InputVSOutput.png>
+Package pdftex.def Info: ../figs//MIDDLE.U2.InputVSOutput.png  used on input li
+ne 117.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//MIDDLE.U3.InputVSOutput.png, id=92, 1152.7065pt x 553.46774pt>
+File: ../figs//MIDDLE.U3.InputVSOutput.png Graphic file (type png)
+<use ../figs//MIDDLE.U3.InputVSOutput.png>
+Package pdftex.def Info: ../figs//MIDDLE.U3.InputVSOutput.png  used on input li
+ne 122.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//MIDDLE.U3vU4.png, id=93, 1152.7065pt x 553.46774pt>
+File: ../figs//MIDDLE.U3vU4.png Graphic file (type png)
+<use ../figs//MIDDLE.U3vU4.png>
+Package pdftex.def Info: ../figs//MIDDLE.U3vU4.png  used on input line 128.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//BOTTOM.png, id=94, 1019.007pt x 489.027pt>
+File: ../figs//BOTTOM.png Graphic file (type png)
+<use ../figs//BOTTOM.png>
+Package pdftex.def Info: ../figs//BOTTOM.png  used on input line 136.
+(pdftex.def)             Requested size: 483.69687pt x 232.12607pt.
+<../figs//TOP.png, id=95, 1152.7065pt x 553.46774pt>
+File: ../figs//TOP.png Graphic file (type png)
+<use ../figs//TOP.png>
+Package pdftex.def Info: ../figs//TOP.png  used on input line 141.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//MIDDLE.png, id=96, 1152.7065pt x 553.46774pt>
+File: ../figs//MIDDLE.png Graphic file (type png)
+<use ../figs//MIDDLE.png>
+Package pdftex.def Info: ../figs//MIDDLE.png  used on input line 146.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//sin10hz2.5vofs2v.png, id=98, 1440.88312pt x 711.4078pt>
 File: ../figs//sin10hz2.5vofs2v.png Graphic file (type png)
 <use ../figs//sin10hz2.5vofs2v.png>
-Package pdftex.def Info: ../figs//sin10hz2.5vofs2v.png  used on input line 156.
+Package pdftex.def Info: ../figs//sin10hz2.5vofs2v.png  used on input line 163.
 
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
-<../figs//sin10hz5v.png, id=117, 1440.88312pt x 711.4078pt>
+<../figs//sin10hz5v.png, id=100, 1440.88312pt x 711.4078pt>
 File: ../figs//sin10hz5v.png Graphic file (type png)
 <use ../figs//sin10hz5v.png>
-Package pdftex.def Info: ../figs//sin10hz5v.png  used on input line 164.
+Package pdftex.def Info: ../figs//sin10hz5v.png  used on input line 171.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
-<../figs//Conv.Sinusoide.100Hz.2.png, id=119, 1152.7065pt x 553.46774pt>
+<../figs//Conv.Sinusoide.100Hz.2.png, id=102, 1152.7065pt x 553.46774pt>
 File: ../figs//Conv.Sinusoide.100Hz.2.png Graphic file (type png)
 <use ../figs//Conv.Sinusoide.100Hz.2.png>
 Package pdftex.def Info: ../figs//Conv.Sinusoide.100Hz.2.png  used on input lin
-e 183.
+e 190.
 (pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
-<../figs//sin2khz2.5v.png, id=121, 1440.88312pt x 711.4078pt>
+<../figs//sin2khz2.5v.png, id=104, 1440.88312pt x 711.4078pt>
 File: ../figs//sin2khz2.5v.png Graphic file (type png)
 <use ../figs//sin2khz2.5v.png>
-Package pdftex.def Info: ../figs//sin2khz2.5v.png  used on input line 191.
+Package pdftex.def Info: ../figs//sin2khz2.5v.png  used on input line 198.
 (pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
- [6 <../figs//MIDDLE.png (PNG copy)> <../figs//sin10hz2.5vofs2v.png (PNG copy)>
-] [7 <../figs//sin10hz5v.png (PNG copy)> <../figs//Conv.Sinusoide.100Hz.2.png (
-PNG copy)>]
+ [3 <../figs//MIDDLE.U1.InputVSOutput.png (PNG copy)>]
+[4 <../figs//MIDDLE.U2.InputVSOutput.png (PNG copy)> <../figs//MIDDLE.U3.InputV
+SOutput.png (PNG copy)>] [5 <../figs//MIDDLE.U3vU4.png (PNG copy)> <../figs//BO
+TTOM.png (PNG copy)>] [6 <../figs//TOP.png (PNG copy)> <../figs//MIDDLE.png (PN
+G copy)>] [7 <../figs//sin10hz2.5vofs2v.png (PNG copy)> <../figs//sin10hz5v.png
+ (PNG copy)>] [8 <../figs//Conv.Sinusoide.100Hz.2.png (PNG copy)> <../figs//sin
+2khz2.5v.png (PNG copy)>]
+<../figs//recsin.png, id=143, 618.6312pt x 445.9059pt>
+File: ../figs//recsin.png Graphic file (type png)
+<use ../figs//recsin.png>
+Package pdftex.def Info: ../figs//recsin.png  used on input line 250.
+(pdftex.def)             Requested size: 483.69687pt x 348.64209pt.
+
 (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [8 <../figs//sin2khz2.5v.png (PNG copy)>]
-<../figs//Net100-10k.png, id=148, 1440.88312pt x 711.4078pt>
+)
+<../figs//sinfit.png, id=145, 607.7907pt x 383.7537pt>
+File: ../figs//sinfit.png Graphic file (type png)
+<use ../figs//sinfit.png>
+Package pdftex.def Info: ../figs//sinfit.png  used on input line 268.
+(pdftex.def)             Requested size: 483.69687pt x 305.40479pt.
+<../figs//sin2khzpy.png, id=150, 591.8913pt x 385.9218pt>
+File: ../figs//sin2khzpy.png Graphic file (type png)
+<use ../figs//sin2khzpy.png>
+Package pdftex.def Info: ../figs//sin2khzpy.png  used on input line 296.
+(pdftex.def)             Requested size: 483.69687pt x 315.3803pt.
+<../figs//Net100-10k.png, id=151, 1440.88312pt x 711.4078pt>
 File: ../figs//Net100-10k.png Graphic file (type png)
 <use ../figs//Net100-10k.png>
-Package pdftex.def Info: ../figs//Net100-10k.png  used on input line 301.
-(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
- [9] [10 <../figs//Net100-10k.png (PNG copy)>]
+Package pdftex.def Info: ../figs//Net100-10k.png  used on input line 304.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+<../figs//bode.pdf, id=154, 544.9158pt x 350.5095pt>
+File: ../figs//bode.pdf Graphic file (type pdf)
+<use ../figs//bode.pdf>
+Package pdftex.def Info: ../figs//bode.pdf  used on input line 321.
+(pdftex.def)             Requested size: 483.69687pt x 311.13419pt.
+ [9] [10 <../figs//recsin.png> <../figs//sinfit.png>] [11 <../figs//sin2khzpy.p
+ng> <../figs//Net100-10k.png (PNG copy)>]
+<../figs//cal.pdf, id=182, 569.48758pt x 372.19049pt>
+File: ../figs//cal.pdf Graphic file (type pdf)
+<use ../figs//cal.pdf>
+Package pdftex.def Info: ../figs//cal.pdf  used on input line 355.
+(pdftex.def)             Requested size: 483.69687pt x 316.13055pt.
+ [12 <../figs//bode.pdf>] [13 <../figs//cal.pdf>]
 (./E04.2.AC.aux)
 Package rerunfilecheck Info: File `E04.2.AC.out' has not changed.
 (rerunfilecheck)             Checksum: DEDEF4D6B16B6C57D47B031C6295D341;3159.
  ) 
 Here is how much of TeX's memory you used:
- 56366 strings out of 479713
- 1375132 string characters out of 5876923
- 2216667 words of memory out of 10000000
- 73306 multiletter control sequences out of 15000+600000
- 419367 words of font info for 69 fonts, out of 8000000 for 9000
+ 56418 strings out of 479713
+ 1376268 string characters out of 5876923
+ 2213632 words of memory out of 10000000
+ 73356 multiletter control sequences out of 15000+600000
+ 418689 words of font info for 67 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,11n,125p,754b,1242s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 122i,10n,125p,754b,1240s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
 ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1000.p
-fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/tex
-live/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/
-texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist
-/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
-cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
-ftt1000.pfb>
-Output written on E04.2.AC.pdf (10 pages, 1475857 bytes).
+t/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2021/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.p
+fb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist
+/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/typ
+e1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
+cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
+frm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pf
+b><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texl
+ive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2021/t
+exmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on E04.2.AC.pdf (13 pages, 1860068 bytes).
 PDF statistics:
- 246 PDF objects out of 1000 (max. 8388607)
- 190 compressed objects within 2 object streams
- 52 named destinations out of 1000 (max. 500000)
- 187 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 322 PDF objects out of 1000 (max. 8388607)
+ 242 compressed objects within 3 object streams
+ 56 named destinations out of 1000 (max. 500000)
+ 212 words of extra memory for PDF output out of 10000 (max. 10000000)
 
