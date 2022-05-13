@@ -99,12 +99,17 @@ sinusoidale su CH1 e dell'uscita di U4 su CH2 in \cref{fig: verif}.
 \end{figure}
 
 \subsection{Analisi qualitativa del funzionamento del circuito}
-%TODO Non ho idea di come usare queste immagini e fare il punto dell'esperienza
+Possiamo dividere il circuito in 3 sezioni principali: basandoci sullo schema mostrato in \cref{schm: ADC} individuiamo da sinistra verso destra un circuito sommatore e integratore invertente, un comparatore semplice e un flip flop che faranno da convertitore A->D a 1 bit, e infine un convertirore D->A anch'esso da 1 bit.
+Il compito del sommatore e integratore è quello di fare la media nel tempo del segnale di feedback sommato a quello analogico in ingresso all'ADC, in modo che l'uscita dell'integratore sia >0 quando la media del segnale di feedback è inferiore a $V_{in}$ e viceversa.
+L'uscita dell'integratore viene poi inviata all'ingresso di un comparatore la cui uscita sarà $V_{sat,+} \approx 3.5 V$ nel caso in cui l'uscita dell'integratore sia positiva, e $V_{sat,-} \approx -3.5 V$ nel caso opposto.
+A questo punto si vuole modificare il segnale in modo che l'ingresso del flip flop possa interpretarlo correttamente come segnale digitale; per questo utilizzeremo un partitore di tensione tra l'uscita del comparatore e $V_{CC}$ in modo che H e L del segnale siano rispettivamente $4.25 V$ ( che risulta essere maggiore del valore nominale di $V_{IH}$) e $0.75 V$ (minore del valore nominale di $V_{IL}$).
+L'uscita dal flip flop sarà quindi l'uscita digitale del nostro DAC.
+Infine l'uscita digitale passerà attraverso un ultimo comparatore (che compara il segnale digitale con $2.5V$, e nel caso in cui sia maggiore, all'uscita avrò $V_{sat,+}$ e viceversa) che avrà la funzione di convertitore Digitale->Analogico ad un singolo bit, la cui uscita sarà inviata al circuito sommatore+integratore come segnale di feedback.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{MIDDLE.U1.InputVSOutput}
     \caption{Acquisizione dei segnali all'ingresso invertente (CH1) e uscita (CH2)
-    del circuito integratore \texttt{U1}}
+    del circuito solo integratore \texttt{U1}}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -123,7 +128,9 @@ sinusoidale su CH1 e dell'uscita di U4 su CH2 in \cref{fig: verif}.
 	\includegraphics[width=\textwidth]{MIDDLE.U3vU4}
     \caption{Acquisizione del segnale in uscita dal pin Q del Flip Flop(canale 1) e in uscita dal DAC (canale 2)}
 \end{figure}
-
+Dalle acquisizioni fatte con l'oscilloscopio di Waveform, ci accorgiamo che ogni componente del circuito si comporta come atteso.
+Si procede quindi alla verifica del funzionamento del convertitore A->D: per farlo, dopo aver alimentato ogni componente del circuito, inviamo un segnale di clock al flip flop di frequenza pari a 50 kHz, e un'onda sinusoidale di ampiezza $2.5 V$ e frequenza $10 Hz$ all'entrata analogica; ci concentriamo quindi sui segnali in uscita dal Flip Flop.
+Dopo ciò che si è detto prima, ci aspettiamo in uscita dal flip flop un segnale simile ad un'onda quadra con duty cycle medio $\approx 50 \percent$ quando l'onda vale circa 0 V, e che il Duty Cycle aumenti quando l'onda raggiunge il minimo e viceversa.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{BOTTOM}
@@ -139,7 +146,7 @@ sinusoidale su CH1 e dell'uscita di U4 su CH2 in \cref{fig: verif}.
 	\includegraphics[width=\textwidth]{MIDDLE}
     \caption{Acquisizione del segnale analogico in ingresso (un'onda sinusoidale di frequenza pari a 10 Hz e ampiezza pari a $2.5 V$) e del segnale logico in uscita dal pin Q del Flip-Flop durante il punto medio dell'onda}
 \end{figure}
-
+Dalle acquisizioni possiamo concludere che il circuito ha il comportamento atteso
 \subsection{Risposta del convertitore al variare dei parametri del seno}
 \label{sbs: adcresp}
 Modificando i valori di offset e ampiezza dell'onda in ingresso si nota
@@ -235,21 +242,18 @@ uscita da Protocol in un intervallo di tempo con una media mobile su $8$ bit.
 
 Riportiamo in \cref{fig: sin100hzpy} la forma d'onda ottenuta su un grafico
 con Python, in cui i punti blu rappresentano i valori digitali in uscita dal
-DAC e i punti in giallo sono il risultato della prima operazione di media
-mobile a 8 bit.
+DAC, i punti in giallo sono il risultato della prima operazione di media
+mobile a 8 bit e i punti in verde il risultato dopo una seconda operazione di media mobile sempre a 8 bit e decimati di un fattore pari a 8.
 \begin{figure}[htbp]
     \centering
-%	\includegraphics[width=\textwidth]{sin100hzpy}
+	\includegraphics[width=\textwidth]{sin100hzpy}
     \caption{Ricostruzione del segnale sinusoidale in ingresso di $f = 100$
     Hz e ampiezza $2.5$ V a partire dall'acquisizione del segnale in uscita
     dall'ADC con Protocol.
     \label{fig: sin100hzpy}}
 \end{figure}
 
-Per migliorare ulteriormente la qualità della ricostruzione si può quindi
-filtrare una seconda volta con la stessa operazione di media mobile (punti
-in verde nel grafico) e decimare il segnale campionato per un fattore
-arbitrario (nel nostro caso 8).
+
 
 \subsection{Fit sinusoidale}
 Si è effettuato un fit con un legge della forma $A\sin(2\pi f t + \phi) + B$
@@ -257,22 +261,37 @@ Si è effettuato un fit con un legge della forma $A\sin(2\pi f t + \phi) + B$
 def sin(t, A, f, phi, B):
     return A*np.sin(2*np.pi*f*t + phi) + B
 \end{lstlisting}
-%TODO valori ottimali e figure ricostruite e fit
+
 lasciando liberi tutti i parametri, da cui si ottengono il grafico riportato 
 in \ref{fig: sinfit}
 \begin{figure}[htbp]
     \centering
-%	\includegraphics[width=\textwidth]{sinfit}
+	\includegraphics[width=\textwidth]{sinfit}
     \caption{Grafico del fit con una forma d'onda sinusoidale e dei residui
-    per l'andamento nel tempo dei punti campionati e ricostruiti dall'ADC.
+    per l'andamento nel tempo dei punti campionati e ricostruiti dal secondo ADC.
+    \label{fig: sinfit}}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{sinfit2}
+    \caption{Grafico del fit con una forma d'onda sinusoidale e dei residui
+    per l'andamento nel tempo dei punti campionati e ricostruiti dal primo ADC.
     \label{fig: sinfit}}
 \end{figure}
 e come stime dei valori ottimali:
 \begin{align*}
-A &=& \pm \quad f &=& \pm \; \si{Hz} \\
-B &=& \pm \quad \phi &=& \pm \; \si{\degree} \\
-\chi^2/\text{d.o.f} = 
+A_1 &=& 404 \times 10^{-3} \pm 2 \times 10^{-4} \quad f_1 &=& 99.9\pm 7 \times 10^{-5}\; \si{Hz} \\
+B_1 &=& 545 \times 10^{-3} \pm 1 \times 10^{-4}\quad \phi_1 &=& -0.09 \pm \; 7 \times 10^{-4}\si{rad} \\
+\chi^2/\text{d.o.f} =  4 / 20554
 \end{align*}
+%TODO questi qua sotto vengono dal best fit, sono i risultati, gesù camioncino dei gelati
+\begin{align*}
+A_2 &=& 387 \times 10^{-3} \pm 1 \times 10^{-4} \quad f_2 &=& 99.9\pm 7 \times 10^{-5}\; \si{Hz} \\
+B_2 &=& 545 \times 10^{-3} \pm 1 \times 10^{-4}\quad \phi_2 &=& -0.09 \pm \; 7 \times 10^{-4}\si{rad} \\
+\chi^2/\text{d.o.f} =  4 / 20554
+\end{align*}
+
+
 
 \subsection{Risposta in frequenza dell'ADC}
 \label{sbs: freq}
@@ -336,6 +355,17 @@ convertire da Volt a ADC counts.
     \label{fig: cal}}
 \end{figure}
 
+Si utilizza anche un secondo metodo per la calibrazione del circuito: dopo avere eseguito il fit dell'onda ricostruita, si divide l'ampiezza dell'onda in ingresso misurata tramite oscilloscopio, per il valore dell'ampiezza ricavato dal fit.
+Dai due circuiti ricaviamo due valori di calibrazione diversi:
+\begin{align*}
+C_{1}=6.18 \pm 0.06 \frac{V}{a.u.}
+C_{2}=6.39 \pm 0.06 \frac{V}{a.u.}
+\end{align*}
+%TODO Offset? cioè se fai una misura e dalla ricostruzione del segnale digitale ricavi Y (compreso tra 0 e 1) allora la misura in volt vale X=(Y-O)*C
+\begin{align*}
+O_{1}=471 \times 10^{-3} \pm 2 \times 10^{-4} \si{a.u.}
+O_{2}=545 \times 10^{-3} \pm 1 \times 10^{-4} \si{a.u.}
+\end{align*}
 \subsection{Misura del signal/noise ratio (SNR)}
 Assumendo che il valore RMS del rumore del nostro circuito corrisponda al
 valore RMS dei residui del fit alla sinusoide effettuato in \cref{sbs: freq},
