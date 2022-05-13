@@ -3,66 +3,6 @@
 \input{../../latex/math}
 \usepackage{multicol}
 \geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
-\usepackage{colortbl}
-\usepackage{diagbox}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-\usepackage{xcolor}
-\usepackage{tkz-graph}
-\usepackage{arydshln}
-\usetikzlibrary{automata, positioning, arrows}
-\newenvironment{FSM}{
-\begin{tikzpicture}
-\tikzset{
-->, % makes the edges directed
->=stealth', % makes the arrow heads bold
-node distance=2cm, % specifies the minimum distance between two nodes. Change if necessary.
-every state/.style={minimum size = 1cm, thick, fill=gray!10}, % sets the properties for each 'state' node
-}
-}{
-\end{tikzpicture}
-}
-
-
-\lstset{%
-  language = Octave,
-  backgroundcolor=\color{white},   
-  basicstyle=\footnotesize\ttfamily,       
-  breakatwhitespace=false,         
-  breaklines=true,                 
-  captionpos=b,                   
-  commentstyle=\color{gray},    
-  deletekeywords={...},           
-  escapeinside={\%*}{*)},          
-  extendedchars=true,              
-  frame=single,                    
-  keepspaces=true,                 
-  keywordstyle=\color{orange},       
-  morekeywords={*,...},            
-  numbers=left,                    
-  numbersep=5pt,                   
-  numberstyle=\footnotesize\color{gray}, 
-  rulecolor=\color{black},         
-  rulesepcolor=\color{blue},
-  showspaces=false,                
-  showstringspaces=false,          
-  showtabs=false,                  
-  stepnumber=2,                    
-  stringstyle=\color{orange},    
-  tabsize=2,                       
-  title=\lstname,
-  emphstyle=\bfseries\color{blue}%  style for emph={} 
-} 
-
-%% language specific settings:
-\lstdefinestyle{Arduino}{%
-    language = Octave,
-    keywords={void, int boolean},%                 define keywords
-    morecomment=[l]{//},%             treat // as comments
-    morecomment=[s]{/*}{*/},%         define /* ... */ comments
-    emph={HIGH, OUTPUT, LOW}%        keywords to emphasize
-}
 
 % indexes subsections with letters, sections with numbers (1.a, 1.b, ...)
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
@@ -70,7 +10,6 @@ every state/.style={minimum size = 1cm, thick, fill=gray!10}, % sets the propert
 % lets graphicx know path where figures to be included are found
 \graphicspath{{../figs/}}
 
-\newcommand{\dontcare}{X}
 \author{Gruppo 1.AC \\ Matteo Rossi, Bernardo Tomelleri}
 \title{EsD4 ADC-DAC: Convertitore sigma-delta}
 \begin{document}
@@ -78,37 +17,24 @@ every state/.style={minimum size = 1cm, thick, fill=gray!10}, % sets the propert
 \maketitle
 
 \section*{Misura componenti dei circuiti}
-Riportiamo per completezza il valore della tensione continua di
-alimentazione per i circuiti integrati misurata con il multimetro
-\begin{align*}
-V_{CC} &= 4.99 \pm 0.03 \si{\V} \\
-V_{EE} &= -4.99 \pm 0.03 \si{\V}
-\end{align*}
-e i valori di capacità dei condensatori di disaccoppiamento che collegano le
-linee di alimentazione a massa (sempre misurato con il multimetro)
-\begin{align*}
-C_{d+} &= 97 \pm 4 \; \si{n\F} \\
-C_{d-} &= 107 \pm 4 \; \si{n\F}
-\end{align*}
-
-Abbiamo inoltre misurato i valori dei vari componenti del circuito:
+\begin{table}[htbp]
+\centering
 \begin{tabular}{cccccc}
 \toprule
 Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
 $\sigma C$ \\
 \midrule
 \midrule
-$R_1$	  	& 996 	& 8		& $C_1$ & 94	& 4 \\
+$R_1$	  	& 992 	& 8		& $C_1$ & 99	& 4 \\
 $R_2$	  	& 994	& 8		& & & \\
-$R_3$	  	& 999	& 8		& & & \\
+$R_3$	  	& 993	& 8		& & & \\
 $R_4$	  	& 994 	& 8	& & & \\
-$R_5$	  	& 997	& 8 & & & \\
-
+$R_5$	  	& 996	& 8 & & & \\
 \bottomrule   
 \end{tabular}
-\caption{Valori di resistenza e capacità misurate per i componenti del primo
-circuito studiato.}
-\end{table}
+\caption{Valori di resistenza e capacità misurate con il multimetro dei
+componenti del primo circuito.}
+
 \begin{tabular}{cccccc}
 \toprule
 Resistenze $[\si{\ohm}]$ & $R$ & $\sigma R$ & Capacità $[\si{n\F}]$ & $C$ &
@@ -120,27 +46,67 @@ $R_2$	  	& 999	& 8		& & & \\
 $R_3$	  	& 998	& 8		& & & \\
 $R_4$	  	& 998 	& 8	& & & \\
 $R_5$	  	& 996	& 8 & & & \\
-
 \bottomrule   
 \end{tabular}
-\caption{Valori di resistenza e capacità misurate per i componenti del secondo
-circuito studiato.}
+\caption{Valori di resistenza e capacità misurate con il multimetro
+dei componenti del secondo circuito}
 \end{table}
-\setcounter{section}{0}
 
+Riportiamo per completezza anche i valori delle tensioni di alimentazione
+continue per i circuiti integrati misurate con il multimetro
+\begin{align*}
+V_{CC} &= 4.99 \pm 0.03 \; \si{\V} \\
+V_{EE} &= -4.99 \pm 0.03 \; \si{\V}
+\end{align*}
+
+Per tutto il resto della trattazione come ampiezze dei segnali si intendono
+misurate non ``picco - picco'', a meno che non venga esplicitato altrimenti.
+
+\setcounter{section}{0}
 %=======================
-\section{Analisi e costruzione del circuito}\label{sec: IC}
+\section{Analisi e costruzione del circuito}\label{sec: AC}
+\subsection{Costruzione del circuito}
+Si è costruito il circuito secondo lo schema riportato in \cref{schm: ADC},
+alimentando con $V_{CC} = 5 \; \si{\V}$ il D Flip-Flop e gli OpAmp alla
+medesima $V_{CC}$ e $V_{EE} = -5 \; \si{\V}$ con l'AD2.
+Dunque abbiamo collegato l'ingresso analogico \verb+V3+ del circuito al
+canale 1 del Waveforms (generator) e il pin CLK del FF ad un segnale di
+clock di frequenza $f\ped{clk} = 50 \; \si{k\Hz}$ generato in DIO 0 con
+Patterns (generator).
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{schem}
-    \caption{Schematica del circuito utilizzato per il convertitore analogico digitale}
+    \caption{Schema elettrico del circuito convertitore analogico digitale
+    sigma-delta studiato \label{schm: ADC}}
 \end{figure}
+Con i canali 1 e 2 dell'oscilloscopio si osservano gli andamenti nel tempo del
+segnale in ingresso e del segnale di uscita (OUT) dall'ultimo amplificatore
+\verb+U4+, al contempo si registra il valore logico assunto dall'uscita $Q$
+del Flip-Flop \verb+U3A+ con Logic (analyzer).
+
 \subsection{Verifica del funzionamento}
+Per verificare il corretto funzionamento del circuito si è inviata all'ingresso
+analogico del circuito una sinusoide di bassa frequenza ($f = 10 \; \si{\Hz}
+ \ll f\ped{clk}$) con ampiezza di $2.5 \; \si{\V}$ e media nulla.
+Riportiamo l'acquisizione con l'oscilloscopio di qualche periodo dell'onda
+sinusoidale su CH1 e dell'uscita di U4 su CH2 in \cref{fig: verif}.
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{sin10hz2.5v}
+    \caption{Acquisizione dell'andamento temporale del segnale in ingresso
+    (CH1) e del segnale in uscita (CH2) dall'ADC
+    \label{fig: verif}}
+\end{figure}
+
+\subsection{Analisi qualitativa del funzionamento del circuito}
+%TODO Non ho idea di come usare queste immagini e fare il punto dell'esperienza
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{MIDDLE.U1.InputVSOutput}
-    \caption{Acquisizione del segnale nell'ingresso invertente (canale 1) e dell'uscita (canale 2) del circuito integratore}
+    \caption{Acquisizione dei segnali all'ingresso invertente (CH1) e uscita (CH2)
+    del circuito integratore \texttt{U1}}
 \end{figure}
+
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{MIDDLE.U2.InputVSOutput}
@@ -151,6 +117,7 @@ circuito studiato.}
 	\includegraphics[width=\textwidth]{MIDDLE.U3.InputVSOutput}
     \caption{Acquisizione del segnale in ingresso(canale 1) e in uscita (canale 2) dal Flip Flop}
 \end{figure}
+
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{MIDDLE.U3vU4}
@@ -172,42 +139,236 @@ circuito studiato.}
 	\includegraphics[width=\textwidth]{MIDDLE}
     \caption{Acquisizione del segnale analogico in ingresso (un'onda sinusoidale di frequenza pari a 10 Hz e ampiezza pari a $2.5 V$) e del segnale logico in uscita dal pin Q del Flip-Flop durante il punto medio dell'onda}
 \end{figure}
+
+\subsection{Risposta del convertitore al variare dei parametri del seno}
+\label{sbs: adcresp}
+Modificando i valori di offset e ampiezza dell'onda in ingresso si nota
+immediatamente come il segnale in uscita venga tosato ai livelli di
+saturazione basso $V_{OL} = 138 \pm 2 \; \si{m\V}$ e alto
+$V_{OH} = 3.52 \pm 0.02 \; \si{\V}$ quando il segnale in ingresso raggiunge
+valori di tensione pari a circa $V_s \approx \pm 3 \; si{\V}$ per via della
+portata limitata del nostro convertitore.
+
+Si riporta la risposta del circuito per un'onda della stessa ampiezza (2.5 V)
+e offset = 2 V in \cref{fig: sinofs}
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{sin10hz2.5vofs2v}
+    \caption{Acquisizione dell'andamento temporale del segnale in ingresso
+    (CH1) e del segnale in uscita (CH2) dall'ADC
+    \label{fig: sinofs}}
+\end{figure}
+e per un'onda di ampiezza maggiore (5 V) e offset = 0 V in \cref{fig: sinsat}.
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{sin10hz5v}
+    \caption{Acquisizione dell'andamento temporale del segnale in ingresso
+    (CH1) e del segnale in uscita (CH2) dall'ADC
+    \label{fig: sinsat}}
+\end{figure}
+
+Quanto trovato risulta compatibile con il massimo intervallo di tensioni che
+il segnale analogico di ingresso può assumere senza rischiare saturazioni nel
+nostro circuito $\approx 7$ V, assumendo che il valore di uscita del nostro
+DAC risulti essere $-V\ped{sat}$ in corrispondenza di uno 0 logico e
+$V\ped{sat} \approx 3.5$ V in corrispondenza di un 1.
+
+Aumentando la frequenza $f$ del segnale in ingresso al circuito si nota come
+l'informazione in uscita sull'onda da ricostruire (proporzionale al numero di
+punti campionati/alla densità di fronti d'onda) diminuisce man mano che $f$ si
+avvicina alla frequenza massima di campionamento $f\ped{clk}$, come si mostra
+in \cref{fig: sin100hz} per $f = 100 \; \si{\Hz}$.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{Conv.Sinusoide.100Hz.2}
-    \caption{Acquisizione del segnale analogico in ingresso (un'onda sinusoidale di frequenza pari a 100 Hz e ampiezza pari a $2.5 V$) e del segnale in uscita dal DAC U4}
+    \caption{Acquisizione del segnale sinusoidale in ingresso (CH1)
+    $f = 100$ Hz e ampiezza $2.5$ V e del segnale in uscita dal DAC (CH2)
+    \label{fig: sin100hz}}
 \end{figure}
+e in \cref{fig: sin2khz} per $f = \SI{2}{k\Hz}$.
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[width=\textwidth]{sin2khz2.5v}
+    \caption{Acquisizione del segnale sinusoidale in ingresso (CH1)
+    $f = 2$ kHz e ampiezza $2.5$ V e del segnale in uscita dal DAC (CH2)
+    \label{fig: sin2khz}}
+\end{figure}
+
+Questo risulta compatibile con quanto ci aspettiamo per via della risoluzione
+temporale limitata (proprio dalla frequenza di clock) del nostro modulatore
+delta. Infatti, per ripristinare la densità di informazione che avevamo su
+segnali più lenti, è sufficiente aumentare proporzionalmente la frequenza
+di clock/campionamento inviata con DIO 0 al FF.
+
 %=======================
 \section{Descrizione delle misure e acquisizione dati}
-
 \subsection{Campionamento e acquisizione del segnale}
+Per acquisire il segnale in uscita dal Flip-Flop con l'AD2 si sono reimpostate
+la frequenza della sinusoide in ingresso a $f = 100 \; \si{\Hz}$ e la
+frequenza del clock come prima a $f\ped{clk} = 50 \; \si{k\Hz}$, dunque
+leggiamo in modalità Spy un bus SPI creato con lo strumento Protocol di
+Waveforms, impostando i parametri come segue:
+\begin{description}
+\item[Select:] None
+\item[Frequency:] 50 kHz (come il clock in DIO 0)
+\item[Clock:] DIO 0
+\item[Data:] DIO 1
+\item[Mode:] Three-wire
+\item[Data bits:] 8
+\item[Format:] Decimal
+\end{description}
 
-\subsection{Acquisizione con Protocol}
+Si registrano una decina di periodi della sinusoide lasciando lo strumento in
+modalità Receive per qualche frazione di secondo, quindi salviamo la serie
+di valori campionati su file di testo per analizzarli e ricostruire il segnale
+in ingresso.
 
 %=======================
 \section{Analisi dei dati}
-
 \subsection{Ricostruzione dei segnali in ingresso}
+Come abbiamo visto, il segnale in uscita dal Flip-Flop $Q$ commuta in
+corrispondenza dei fronti di salita del clock l'ampiezza del segnale in
+ingresso è proporzionale alla densità relativa di bit a livello logico alto
+nella sequenza in OUT. Quindi per ricostruire l'ampiezza del segnale possiamo
+effettuare un conteggio di quanti bit sono in stato $1$ nella sequenza in
+uscita da Protocol in un intervallo di tempo con una media mobile su $8$ bit.
+
+Riportiamo in \cref{fig: sin100hzpy} la forma d'onda ottenuta su un grafico
+con Python, in cui i punti blu rappresentano i valori digitali in uscita dal
+DAC e i punti in giallo sono il risultato della prima operazione di media
+mobile a 8 bit.
+\begin{figure}[htbp]
+    \centering
+%	\includegraphics[width=\textwidth]{sin100hzpy}
+    \caption{Ricostruzione del segnale sinusoidale in ingresso di $f = 100$
+    Hz e ampiezza $2.5$ V a partire dall'acquisizione del segnale in uscita
+    dall'ADC con Protocol.
+    \label{fig: sin100hzpy}}
+\end{figure}
+
+Per migliorare ulteriormente la qualità della ricostruzione si può quindi
+filtrare una seconda volta con la stessa operazione di media mobile (punti
+in verde nel grafico) e decimare il segnale campionato per un fattore
+arbitrario (nel nostro caso 8).
 
 \subsection{Fit sinusoidale}
+Si è effettuato un fit con un legge della forma $A\sin(2\pi f t + \phi) + B$
+\begin{lstlisting}[language=Python]
+def sin(t, A, f, phi, B):
+    return A*np.sin(2*np.pi*f*t + phi) + B
+\end{lstlisting}
+%TODO valori ottimali e figure ricostruite e fit
+lasciando liberi tutti i parametri, da cui si ottengono il grafico riportato 
+in \ref{fig: sinfit}
+\begin{figure}[htbp]
+    \centering
+%	\includegraphics[width=\textwidth]{sinfit}
+    \caption{Grafico del fit con una forma d'onda sinusoidale e dei residui
+    per l'andamento nel tempo dei punti campionati e ricostruiti dall'ADC.
+    \label{fig: sinfit}}
+\end{figure}
+e come stime dei valori ottimali:
+\begin{align*}
+A &=& \pm \quad f &=& \pm \; \si{Hz} \\
+B &=& \pm \quad \phi &=& \pm \; \si{\degree} \\
+\chi^2/\text{d.o.f} = 
+\end{align*}
 
 \subsection{Risposta in frequenza dell'ADC}
+\label{sbs: freq}
+Come visto in \cref{sbs: adcresp} il convertitore studiato riesce a funzionare
+correttamente per segnali in ingresso fino a frequenze dell'ordine di qualche
+kHz; oltre cui la forma d'onda ricostruita in uscita risulta affetta da
+aliasing per via del basso numero di punti campionati lungo un periodo del
+segnale in ingresso.
+
+Riportiamo quindi in \cref{fig: sin2khzpy} la ricostruzione ottenuta per lo
+stesso segnale sinusoidale di frequenza $f = \SI{2}{k\Hz}$ (visualizzato
+all'oscilloscopio prima in \cref{fig: sin2khz}) e in \cref{fig: net}
+la risposta in frequenza all'uscita U4 del circuito ottenuta da uno scan con
+Network Analyzer inviando una sinusoide di ampiezza fissata a $2.5 \; \si{\V}$
+e frequenza tra $100$ e $\SI{10}{k\Hz}$ all'ingresso analogico dello stesso.
+\begin{figure}[htbp]
+    \centering
+%	\includegraphics[width=\textwidth]{sin2khzpy}
+    \caption{Ricostruzione del segnale sinusoidale in ingresso di $f = 2$
+    kHz e ampiezza $2.5$ V a partire dall'acquisizione del segnale in uscita
+    dall'ADC con Protocol.
+    \label{fig: sin2khzpy}}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.335]{Net100-10k}
+	\caption{Analisi in frequenza dell'ADC ottenuta dallo scan con Network
+	tra $\SI{100}{\Hz}$ e $\SI{10}{k\Hz}$ con segnale sinusoidale in ingresso
+	di ampiezza fissata a $v\ped{in} = 2.5 \; \si{\V}$. L'unico punto di
+	interesse si trova a circa $\SI{2}{k\Hz}$, frequenza oltre alla quale il
+	circuito assume un comportamento irregolare. L'andamento della fase risulta
+	qualitativamente simile a quello atteso per un filtro passa basso.
+	\label{fig: net}}
+\end{figure}
+
+Come regola generale infatti ci aspettiamo che per riuscire a ricostruire
+fedelmente il segnale in ingresso la frequenza di campionamento debba essere
+almeno $f\ped{clk} \geq 20 f\ped{max}$ dove $f\ped{max}$ è la frequenza
+massima dell'onda in ingresso.
 
 \subsection{Stima del fattore di calibrazione del convertitore}
+Per ottenere una legge di conversione tra i conteggi in uscita dall'ADC e
+la d.d.p in Volt al suo ingresso abbiamo ricostruito alla stessa maniera dei
+segnali di tensione nota e costante, in modo da esplorare il range di valori
+ammessi per il nostro circuito. Per prima cosa ricaviamo il conteggio di zero
+che corrisponde alla lettura in uscita dall'ADC con ingresso collegato a massa,
+dunque effettuiamo un fit lineare per ricavare il fattore di scala per
+convertire da Volt a ADC counts.
 
+%TODO Prendere i punti da cal, fittare e riportare.
+\begin{align*}
+\mathrm{intercetta} =  \pm \;  \;\;\;\mathrm{pendenza} = \pm  \;\;\;\mathrm{correlazione} 
+= -0.99 \;\;\; \chi^2 =  \;\;\; d.o.f. = 
+\end{align*}
+
+\begin{figure}[htbp]
+    \centering
+%	\includegraphics[width=\textwidth]{cal}
+    \caption{Grafico con retta di best-fit e residui della lettura dell'ADC
+    al variare della tensione in ingresso per la calibrazione dell'ADC
+    \label{fig: cal}}
+\end{figure}
 
 \subsection{Misura del signal/noise ratio (SNR)}
+Assumendo che il valore RMS del rumore del nostro circuito corrisponda al
+valore RMS dei residui del fit alla sinusoide effettuato in \cref{sbs: freq},
+si è stimato il rapporto segnale/rumore in potenza tramite la formula
+\begin{equation}\label{eq: SNR}
+\text{SNR} = \frac{A_{pp}^2/8}{\sigma^2\ped{noise}} =
+\frac{A^2/2}{\text{Var}(\text{residuals})} = 380
+\end{equation}
+in cui $A_{pp}$ è l'ampiezza massima (picco-picco) e $\sigma\ped{noise}$ indica
+il valore rms del rumore.
 
+Dunque abbiamo ricavato il numero di bit effettivi del convertitore studiato
+tramite la formula
+\begin{equation}\label{eq: effbit}
+n\ped{bits} = \frac{20\log_{10}{\text{SNR}} - 1.76 \; \si{dB}}
+{6.02 \; \si{dB}} = 8.3
+\end{equation}
+
+\subsection*{Nota sul metodo di fit}
+Per determinare i parametri ottimali e le rispettive covarianze si \`e
+implementato in \verb+Python+ un algoritmo di fit basato sui minimi quadrati
+mediante la funzione \emph{curve\_fit} della libreria \texttt{SciPy}.
 
 %=======================
 \section*{Conclusioni e commenti finali}
-Si è riusciti a progettare, costruire e verificare il corretto funzionamento
-di circuiti logici combinatori di diversa complessità e svariate applicazioni
-(e.g., sistemi di controllo e misura) costruiti con porte NOT, NAND, OR e D-FF.
-Inoltre si è riusciti ad apprezzare le diverse modalità di funzionamento delle
-macchine a stati finiti implementate secondo i modelli Moore e Mealy, ponendo
-particolare attenzione alle loro diverse temporizzazioni nei cambiamenti di
-stato, nonostante la bassa risoluzione temporale dell'AD2.
+Si è riusciti a costruire e studiare il comportamento di un convertitore
+analogico-digitale Sigma-Delta facendo uso di tre amplificatori
+operazionali (TL081) e un D-FF (74LS74).
+
+In particolare si è riusciti a descrivere e verificare sperimentalmente il
+corretto funzionamento del circuito e a caratterizzarne la risposta in uscita
+sia nel dominio dei tempi che delle frequenze al variare dei parametri del
+segnale analogico inviato al suo ingresso.
 
 %=======================
 \section*{Dichiarazione}
@@ -216,164 +377,3 @@ originale, con misure effettuate dai membri del gruppo, e che tutti i firmatari
 hanno contribuito alla elaborazione della relazione stessa.
 
 \end{document}
-\iffalse
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀⠐⠂⠀⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⡠⠴⠤⣤⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⢀⣀⣀⣀⣀⡀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀⠈⠉⢁⣈⣿⣿⣿⣷⡀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠠⠴⠒⠛⠛⠛⠛⠛⠛⠛⠷⠄⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⣀⣤⣴⣶⣶⣶⣶⣶⣶⣤⣄⣀⠀⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀⣠⣾⣿⠿⠟⠛⠛⠛⠛⠛⠿⠿⣿⣿⣷⣆⠀⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀⠐⠋⠉⣀⡠⠤⠔⠒⠒⠒⠠⠤⢀⡀⠉⠛⠿⣆⠀⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⢀⣠⠔⠊⠁⠀⢠⣤⣤⣶⣤⣤⣤⡀⠈⠑⠠⢄⠈⠁⠀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⢴⠋⠀⠀⠰⣧⠀⢸⣿⣿⣿⣿⣿⣿⡇⠀⣴⣄⠀⠑⠢⣤⡀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⢀⣄⠀⠀⢾⣦⠀⠙⠦⠀⠙⠿⠿⠿⠿⠋⠀⣴⠋⠁⣀⣤⣠⣿⣷⡀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⢀⠀⠙⢷⣶⣾⣿⣷⣤⣄⣰⣦⣄⣀⣀⣠⣴⣾⣿⣷⠾⠿⠀⠈⠉⠛⠓⠀⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⢀⠈⠓⢤⣀⠉⠙⠻⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣅⣀⣠⣤⣄⡀⠀⠒⠲⠶⠄⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠉⠀⠀⠀⠙⠷⣶⣤⣤⣀⣀⣀⡉⠉⣹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣤⣀⣀⣀⠀⠹⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⠏⠀⣰⣿⣷⣄⡀⠙⠢⡀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠹⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣇⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣸⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⠿⢋⣥⣴⣶⣶⣶⣬⣙⠻⠟⣋⣭⣭⣭⣭⡙⠻⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⡿⢋⣴⣿⣿⠿⢟⣛⣛⣛⠿⢷⡹⣿⣿⣿⣿⣿⣿⣆⠹⣿⣿⣿⣿
-⣿⣿⣿⡿⢁⣾⣿⣿⣴⣿⣿⣿⣿⠿⠿⠷⠥⠱⣶⣶⣶⣶⡶⠮⠤⣌⡙⢿⣿
-⣿⡿⢛⡁⣾⣿⣿⣿⡿⢟⡫⢕⣪⡭⠥⢭⣭⣉⡂⣉⡒⣤⡭⡉⠩⣥⣰⠂⠹
-⡟⢠⣿⣱⣿⣿⣿⣏⣛⢲⣾⣿⠃⠄⠐⠈⣿⣿⣿⣿⣿⣿⠄⠁⠃⢸⣿⣿⡧
-⢠⣿⣿⣿⣿⣿⣿⣿⣿⣇⣊⠙⠳⠤⠤⠾⣟⠛⠍⣹⣛⣛⣢⣀⣠⣛⡯⢉⣰
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡶⠶⢒⣠⣼⣿⣿⣛⠻⠛⢛⣛⠉⣴⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⡿⢛⡛⢿⣿⣿⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡈⢿⣿
-⣿⣿⣿⣿⣿⣿⣿⠸⣿⡻⢷⣍⣛⠻⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢇⡘⣿
-⣿⣿⣿⣿⣿⣿⣿⣷⣝⠻⠶⣬⣍⣛⣛⠓⠶⠶⠶⠤⠬⠭⠤⠶⠶⠞⠛⣡⣿
-⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣬⣭⣍⣙⣛⣛⣛⠛⠛⠛⠿⠿⠿⠛⣠⣿⣿
-⣦⣈⠉⢛⠻⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⣁⣴⣾⣿⣿⣿⣿
-⣿⣿⣿⣶⣮⣭⣁⣒⣒⣒⠂⠠⠬⠭⠭⠭⢀⣀⣠⣄⡘⠿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡈⢿⣿⣿⣿⣿⣿
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⠋⠉⠉⠉⠙⠛⠻⢶⣤⡀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⡆⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣠⣴⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡟⠁⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⠶⠟⠛⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡟⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣴⠾⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⠁⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡶⠛⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⠞⠋⠀⠀⠀⠀⣠⣴⠶⠶⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣄⣀⣀⣤⡴⠟⠋⠀⠀⠀⠘⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣟⠉⠙⢷⣄⠀⠀⠀⠀⠀⠀⠘⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣷⡀⠀⠹⣧⡀⠀⠀⠀⠀⠀⣼⠃⠀⠀⠀⠀⠀⠀⠀⢀⣾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⡀⠀⠈⠛⣷⣤⣴⠶⠟⠃⠀⠀⠀⠀⠀⠀⠀⢀⣾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣷⡀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⠟⠛⣻⡿⠀⠀⠀⠀⠀⢀⣤⡾⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠋⠀⠀⠀⠀⢀⣴⠟⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⠟⠀⠀⠀⠀⣠⣾⡿⠁⢀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠏⠀⠀⠀⢀⡾⢫⣿⠁⠀⣼⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡾⠃⠀⠀⢀⣴⠟⢡⡟⣿⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠟⠁⠀⠀⣰⠟⠁⢠⡿⠀⢿⡄⢰⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠏⠀⠀⢠⣾⠋⠀⢀⡿⠁⠀⠈⠛⠿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡏⠀⠀⣴⢿⡟⠀⠀⣾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⣄⣾⠋⠘⣧⡀⢰⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠈⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⠶⢶⣶⣦⣄⡀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⡄⠒⠪⢝⠻⣿⣿⣦⡀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⡿⢉⡀⠀⠈⠐⠄⢿⣿⣿⣷
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⡇⠀⠀⠈⡄⠤⢀⠈⣾⣿⣿⣿
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡾⣿⣟⣕⡤⡠⠘⠀⠀⠀⢱⣿⣿⣿⣿
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⣾⣿⣞⣄⠮⠔⠈⡢⠄⣠⣾⣿⣿⣿⣿
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⢿⣿⢽⡻⣿⣿⣿⣽⣵⣾⡽⣿⣿⣿⣿⣿⡏
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣗⣿⡟⠈⠉⠚⢽⣻⢷⡝⣿⡿⣿⣿⣿⣿⡿⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⠇⠀⠀⠀⠀⠀⢩⣯⣭⣾⣿⣿⣿⣿⠁⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⠃⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣿⡿⠃⠀⠀⠀⠀⣠⣼⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢞⣿⣿⡿⠁⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣾⣿⠏⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⡟⣿⣿⠏⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⠃⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣟⣷⣾⣿⠏⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⠃⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⡰⢿⣿⣿⣯⡶⠁⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⢀⣼⣟⣿⣿⡿⠃⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⢀⣾⣿⣿⡯⣿⠀⠀⢠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⣾⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠛⠀⠈⠀⠻⣿⣿⣿⣿⣿⣟⣛⣿⣿⡭⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠢⡀⠀⠀⠀⠀⠻⣿⣿⣿⣿⣿⣭⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠈⠐⠤⢀⡀⠀⢀⣙⣿⠿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠛⠛⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠉⠁⠀⠀⠀⠀⠀⠀⠀⠉⠻⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⠋⠈⠀⠀⠀⠀⠐⠺⣖⢄⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⡏⢀⡆⠀⠀⠀⢋⣭⣽⡚⢮⣲⠆⠀⠀⠀⠀⠀⠀⢹⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⡇⡼⠀⠀⠀⠀⠈⠻⣅⣨⠇⠈⠀⠰⣀⣀⣀⡀⠀⢸⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⡇⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣟⢷⣶⠶⣃⢀⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠀⠈⠓⠚⢸⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⢀⡠⠀⡄⣀⠀⠀⠀⢻⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠐⠉⠀⠀⠙⠉⠀⠠⡶⣸⠁⠀⣠⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣦⡆⠀⠐⠒⠢⢤⣀⡰⠁⠇⠈⠘⢶⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠠⣄⣉⣙⡉⠓⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⣀⣀⠀⣀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠋⠉⠉⠉⠙⠛⠻⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⣠⣤⣦⣤⡀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⣴⣶⣿⣿⣿⣿⣿⣿⣷⡄⠘⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⡿⠀⣼⠀⠀⢨⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡘⢿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⡏⡄⠄⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣝⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⡟⠺⢰⣦⡄⠀⠠⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡽⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣧⠀⢸⡋⠀⠀⠀⠀⠀⢹⣯⡀⠀⠠⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⡇⢺⠇⠀⣬⣶⡇⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣷⡈⠀⠀⠈⢻⠋⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠘⢿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠴⠸⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⢳⡀⠀⠀⠀⠀⣈⣈⣽⣿⣶⣿⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⠟⠁⠘⣷⣤⡀⠀⠀⠐⠙⠛⠛⣩⣵⣿⠻⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⡿⠿⠛⠉⠁⠀⠀⠀⠈⢿⣿⣶⣄⣤⣤⣐⣾⣿⣿⣿⡆⠈⠻⠿⣿⣿⣿⣿⣿
-⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⠿⠿⣿⣿⣧⠀⠀⠀⠀⠈⠉⠛⠿
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⡟⠁⠀⠀⠈⢹⣿⣇⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣷⣦⣀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿⣿⡟⠀⠈⢹⣿⣿⡇⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⠃⠀⠀⠸⣿⣿⣷⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣿⠀⠀⠀⠀⢻⣿⣿⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⠀⠈⢿⣿⡇⠀⠀⠀⠀⠀
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢀⠄⡀⠄⡀⢀⠄⡀⡀⠠⢀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⡀⠠⢀⠄⡅⢔⠰⡨⢢⢡⢑⠔⠅⠕⠄⠅⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⡀⠅⢔⠨⢐⠅⡌⢆⢣⠪⡪⡘⡌⡮⡱⡡⣊⢌⢀⢀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠠⡐⢄⠕⡡⡘⢔⢱⢨⢪⢪⢪⢪⡺⣪⢞⢮⢫⢮⢺⢔⢆⡢⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⢀⠐⠈⠄⡠⡊⢌⠢⡑⡌⡆⡇⡇⡇⡇⣇⢗⣝⢮⡺⣪⡳⣹⡪⣞⢵⢝⡵⡝⣕⠡⢀⢂⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⢠⢊⢂⠁⡔⡌⡢⢑⠌⡢⡱⡸⡸⡸⡪⡺⡸⣕⢵⡳⣝⢮⡺⣪⢞⣵⣫⡳⣕⢯⡺⡬⠄⠕⡕⡄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⡇⡇⡂⢢⢣⢣⠨⡂⡊⢔⢕⢱⡱⡝⣜⢝⡺⣜⡵⣝⢮⡳⡽⣵⣻⡺⣼⡺⡵⣳⢝⡮⡃⡕⡺⢄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⢸⡱⡱⡨⢪⢪⢢⠡⢂⢊⠢⡱⡱⡱⡝⡮⡳⣝⢞⢮⢗⡯⣯⢯⣗⡯⣟⣮⢯⣟⢮⡳⣝⢇⢇⢎⢵⡀⠄⠄⠄⠄⠄
-⠄⠄⠄⣕⢵⢣⢣⢑⢅⢆⢃⠢⠡⡡⡱⡱⡹⡪⡯⣺⢕⡯⣫⢯⢾⢽⢽⣺⢯⣗⡯⣗⣗⢗⣝⢮⡫⣏⢮⢒⢅⠄⠄⠄⠄⠄
-⠄⠄⢀⠮⡪⢪⠪⠢⡃⡪⡂⠅⢕⠰⢱⢸⢸⡱⣝⢮⡳⡽⣪⢏⡯⡯⣟⡾⣽⣺⢽⣳⡳⣝⢮⡳⣫⣳⢳⡱⡱⠄⠄⠄⠄⠄
-⠄⠄⢀⡃⡫⢔⢨⢕⢕⢔⢌⢌⠢⡑⡱⡘⢜⢜⢮⡳⣝⣞⢵⣫⢿⢽⣺⡽⡾⣾⢽⣳⢯⢮⡳⣝⣕⢗⢵⡑⡕⡀⠄⠄⠄⠄
-⠄⠄⠐⠢⡱⡐⢕⢵⣑⡑⢕⢐⠕⠸⠰⡑⠕⢕⢕⠽⡕⣏⢗⢽⢝⢽⠺⠽⠽⢽⢻⢽⢽⢵⢽⡸⣪⢳⢱⢱⡱⡽⡡⡀⠄⠄
-⠄⠄⠨⠈⢆⢊⢎⢖⢂⠃⠡⠐⠈⠈⠄⠄⠄⠄⠄⢑⢹⢘⣜⢕⠑⡈⠄⡈⣈⣐⠨⠘⡜⢕⡳⣝⢮⡳⡱⡱⡵⡯⡪⠂⠄⠄
-⠄⠄⠄⠅⢂⠑⡕⡕⠄⡢⢀⠄⠠⠄⠁⠁⡌⠠⢠⠄⠸⣸⣺⡪⣐⠅⢢⢈⠄⢬⢍⣆⢧⣳⡽⡮⣺⡪⡺⣘⢼⣝⠆⠄⠄⠄
-⠄⠄⠄⠨⡢⡢⡣⡳⢑⢰⢐⠠⡊⡪⣢⡣⡪⡰⠑⡀⠨⣪⢷⣝⡮⡫⡪⣪⢾⢝⣯⢾⣝⣗⡯⣟⢮⡪⡯⡷⣗⡯⠄⠄⠄⠄
-⠄⠄⠄⠄⢕⠄⡇⡣⡑⠔⢅⠇⡇⡏⡖⡕⡕⣌⢂⠂⠌⢮⢷⡳⡯⡯⡾⡵⣫⢯⢞⣗⡷⡯⣯⡳⣱⢱⢝⡽⣺⠁⠄⠄⠄⠄
-⠄⠄⠄⠄⠡⡡⢱⢐⠨⠨⠐⡡⢃⢇⢇⡏⡞⡔⡐⠠⢑⢽⢽⢽⢽⢽⢽⣝⢗⡯⣟⢾⢽⢝⡞⣜⢜⢜⣽⣺⠎⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠊⠃⠂⡐⠄⠅⡐⡈⡢⡃⢇⠕⡢⠄⠨⢘⢮⢯⢯⣳⡫⡗⣗⢽⢝⡮⡯⡮⡣⡏⣎⢎⠞⠺⠊⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠂⡁⢂⠐⡈⡢⢑⠅⡕⡐⠈⠨⡨⢯⣻⢽⣺⢺⡺⡪⣏⢷⢽⢕⣯⡫⣞⢜⢜⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⡁⠄⠄⠂⡂⠌⠄⢕⢐⠌⢄⠄⠨⠨⢘⢥⢅⡵⣝⣝⢮⡳⡽⣝⡮⣺⢪⢎⣗⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⢂⢀⠡⠄⠌⠌⢂⢂⠪⠐⡌⢰⢰⢘⢼⢝⣞⢞⣞⡵⡯⣞⢵⣫⢮⡳⡣⡳⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠈⡀⠐⠄⠊⠄⠨⠐⠠⠈⠌⠘⠜⠵⡢⢳⢹⢜⢕⠕⠱⡹⡪⡳⣕⣳⢹⡸⠅⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⢄⠡⠁⠠⠄⠄⡀⠄⠐⠔⠔⠔⡢⠦⣒⢎⣎⢦⢢⢩⡫⣎⢮⢣⠃⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⢰⣇⠄⠐⠠⠄⠁⠄⠡⢀⢂⢅⢔⢄⣆⣆⢕⢵⡹⣪⡳⣕⢵⢱⢕⢇⡇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠱⡿⣵⣀⠄⠄⠄⠈⠨⠨⡂⢇⢎⢕⢎⢞⡽⡵⣝⢮⢺⢸⠸⡘⣜⢼⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⢹⣺⣳⣧⣄⡀⠄⠄⡀⠂⠌⡂⠕⢌⠊⢎⠪⠪⠪⡊⡆⣕⣕⢧⣓⣧⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⢪⢞⣾⡽⣷⣮⡄⠐⠄⡂⠌⢌⠢⢑⢐⢄⢅⢇⢇⣗⣕⢗⡵⣽⣿⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠙⡾⣽⣯⣷⣿⡿⣮⣰⢱⡱⣜⢔⡑⡜⣜⢮⣣⡳⣪⢷⣽⣿⣿⡀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⡷⣿⣽⣿⣿⣿⣿⣿⣾⣮⣗⣽⢵⢕⣕⢮⡺⢝⣵⣿⣿⣿⣷⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠘⣯⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣏⣾⣿⣿⣿⣿⣿⣿⣇⠄⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠻⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠉⠄⠄⠄⠉⠻⢿⣿⣿⣿⣿⡀⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢻⣿⣿⣿⣿⣿⣿⣿⡟⠁⠄⠄⠁⠠⠄⠄⠄⠈⠽⣿⣿⣿⣷⠄⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⢿⣿⣿⣿⣿⣿⡵⣄⠄⠄⠄⠄⠁⠈⠄⠄⢸⣹⡪⣿⣿⣿⡂⠄⠄⠄⠄⠄⠄⠄
-⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⢿⣿⣿⣻⣿⣿⣯⣿⣢⣄⠄⠄⠄⠑⠠⢸⣿⣿⣮⢞⣿⣧⠄⠄⠄⠄⠄⠄⠄
-\fi

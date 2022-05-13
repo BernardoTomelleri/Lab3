@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  11 MAY 2022 10:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.11)  13 MAY 2022 10:06
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1231,165 +1231,28 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \mult@nat@firstbox=\box130
 \colbreak@box=\box131
 \mc@col@check@num=\count371
-)
-(c:/texlive/2021/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
-\everycr=\toks55
-\minrowclearance=\skip138
-)
-(c:/texlive/2021/texmf-dist/tex/latex/diagbox/diagbox.sty
-Package: diagbox 2020/02/09 v2.3 Making table heads with diagonal lines
-
-(c:/texlive/2021/texmf-dist/tex/latex/pict2e/pict2e.sty
-Package: pict2e 2020/09/30 v0.4b Improved picture commands (HjG,RN,JT)
-
-(c:/texlive/2021/texmf-dist/tex/latex/pict2e/pict2e.cfg
-File: pict2e.cfg 2016/02/05 v0.1u pict2e configuration for teTeX/TeXLive
-)
-Package pict2e Info: Driver file: pdftex.def on input line 112.
-Package pict2e Info: Driver file for pict2e: p2e-pdftex.def on input line 114.
-
-(c:/texlive/2021/texmf-dist/tex/latex/pict2e/p2e-pdftex.def
-File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
-)
-\pIIe@GRAPH=\toks56
-\@arclen=\dimen357
-\@arcrad=\dimen358
-\pIIe@tempdima=\dimen359
-\pIIe@tempdimb=\dimen360
-\pIIe@tempdimc=\dimen361
-\pIIe@tempdimd=\dimen362
-\pIIe@tempdime=\dimen363
-\pIIe@tempdimf=\dimen364
-)
-\diagbox@boxa=\box132
-\diagbox@boxb=\box133
-\diagbox@boxm=\box134
-\diagbox@wd=\dimen365
-\diagbox@ht=\dimen366
-\diagbox@insepl=\dimen367
-\diagbox@insepr=\dimen368
-\diagbox@outsepl=\dimen369
-\diagbox@outsepr=\dimen370
-)
-(c:/texlive/2021/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-)
-(c:/texlive/2021/texmf-dist/tex/latex/tkz-graph/tkz-graph.sty
-2021/01/20 v 2.00 tkz-graph.sty
-Package: tkz-graph 2021/01/20 2.00 base for graphs
-(c:/texlive/2021/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
-
-(c:/texlive/2021/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(c:/texlive/2021/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks57
-\XKV@tempa@toks=\toks58
-)
-\XKV@depth=\count372
-File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-))
-(c:/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-braryarrows.code.tex
-File: tikzlibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-
-(c:/texlive/2021/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
-File: pgflibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\arrowsize=\dimen371
-))
-\c@tkz@gr@a=\count373
-\c@tkz@gr@b=\count374
-\c@tkz@gr@c=\count375
-\c@tkz@gr@e=\count376
-\c@tkz@gr@d=\count377
-\c@tkz@gr@p=\count378
-\c@tkz@gr@i=\count379
-\c@tkz@gr@n=\count380
-\c@tkz@gr@ta=\count381
-\c@tkz@gr@tb=\count382
-) (c:/texlive/2021/texmf-dist/tex/latex/arydshln/arydshln.sty
-Package: arydshln 2019/02/21 v1.76 
-\dashlinedash=\dimen372
-\dashlinegap=\dimen373
-\adl@box=\box135
-\adl@height=\dimen374
-\adl@heightsave=\dimen375
-\adl@depth=\dimen376
-\adl@depthsave=\dimen377
-\adl@finaldepth=\dimen378
-\adl@columns=\count383
-\adl@ncol=\count384
-\adl@currentcolumn=\count385
-\adl@currentcolumnsave=\count386
-\adl@totalheight=\count387
-\adl@totalheightsave=\count388
-\adl@dash=\count389
-\adl@gap=\count390
-\adl@cla=\count391
-\adl@clb=\count392
-\adl@everyvbox=\toks59
-\adl@LTpagetotal=\dimen379
-)
-(c:/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-braryautomata.code.tex
-File: tikzlibraryautomata.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-
-(c:/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-braryshapes.multipart.code.tex
-File: tikzlibraryshapes.multipart.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-
-(c:/texlive/2021/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.m
-ultipart.code.tex
-File: pgflibraryshapes.multipart.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfnodepartlowerbox=\box136
-\pgfnodeparttwobox=\box137
-\pgfnodepartthreebox=\box138
-\pgfnodepartfourbox=\box139
-\pgfnodeparttwentybox=\box140
-\pgfnodepartnineteenbox=\box141
-\pgfnodeparteighteenbox=\box142
-\pgfnodepartseventeenbox=\box143
-\pgfnodepartsixteenbox=\box144
-\pgfnodepartfifteenbox=\box145
-\pgfnodepartfourteenbox=\box146
-\pgfnodepartthirteenbox=\box147
-\pgfnodeparttwelvebox=\box148
-\pgfnodepartelevenbox=\box149
-\pgfnodeparttenbox=\box150
-\pgfnodepartninebox=\box151
-\pgfnodeparteightbox=\box152
-\pgfnodepartsevenbox=\box153
-\pgfnodepartsixbox=\box154
-\pgfnodepartfivebox=\box155
-)))
-(c:/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarypositioning.code.tex
-File: tikzlibrarypositioning.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)
-(c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) (./E04.2.AC.aux)
 \openout1 = `E04.2.AC.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-Package hyperref Info: Link coloring ON on input line 76.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+Package hyperref Info: Link coloring ON on input line 15.
 
 (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -1400,32 +1263,32 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (c:/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count393
+\c@section@level=\count372
 )
-LaTeX Info: Redefining \ref on input line 76.
-LaTeX Info: Redefining \pageref on input line 76.
-LaTeX Info: Redefining \nameref on input line 76.
+LaTeX Info: Redefining \ref on input line 15.
+LaTeX Info: Redefining \pageref on input line 15.
+LaTeX Info: Redefining \nameref on input line 15.
 
 (./E04.2.AC.out) (./E04.2.AC.out)
 \@outlinefile=\write4
 \openout4 = `E04.2.AC.out'.
 
 Package translations Info: no dictionary file `translations-basic-dictionary-it
-alian.trsl' found. on input line 76.
+alian.trsl' found. on input line 15.
 
 (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count394
-\scratchdimen=\dimen380
-\scratchbox=\box156
-\nofMPsegments=\count395
-\nofMParguments=\count396
-\everyMPshowfont=\toks60
-\MPscratchCnt=\count397
-\MPscratchDim=\dimen381
-\MPnumerator=\count398
-\makeMPintoPDFobject=\count399
-\everyMPtoPDFconversion=\toks61
+\scratchcounter=\count373
+\scratchdimen=\dimen357
+\scratchbox=\box132
+\nofMPsegments=\count374
+\nofMParguments=\count375
+\everyMPshowfont=\toks55
+\MPscratchCnt=\count376
+\MPscratchDim=\dimen358
+\MPnumerator=\count377
+\makeMPintoPDFobject=\count378
+\everyMPtoPDFconversion=\toks56
 ) (c:/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1472,75 +1335,148 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \it@ocap on input line 76.
-LaTeX Info: Redefining \it@ccap on input line 76.
+LaTeX Info: Redefining \it@ocap on input line 15.
+LaTeX Info: Redefining \it@ccap on input line 15.
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.18} (current compat level: 1.15).
 
-\c@lstlisting=\count400
-LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
+\c@lstlisting=\count379
+LaTeX Font Info:    Trying to load font information for U+msa on input line 17.
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
 
 
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
+2.
 
-LaTeX Warning: Reference `diag: semf' on page 1 undefined on input line 124.
-
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 133.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-33.
 (c:/texlive/2021/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <8> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 142.
+<../figs//schem.png, id=60, 1003.95074pt x 472.164pt>
+File: ../figs//schem.png Graphic file (type png)
+<use ../figs//schem.png>
+Package pdftex.def Info: ../figs//schem.png  used on input line 78.
+(pdftex.def)             Requested size: 483.69687pt x 227.48628pt.
+<../figs//sin10hz2.5v.png, id=63, 1440.88312pt x 711.4078pt>
+File: ../figs//sin10hz2.5v.png Graphic file (type png)
+<use ../figs//sin10hz2.5v.png>
+Package pdftex.def Info: ../figs//sin10hz2.5v.png  used on input line 95.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+<../figs//MIDDLE.U1.InputVSOutput.png, id=64, 1152.7065pt x 553.46774pt>
+File: ../figs//MIDDLE.U1.InputVSOutput.png Graphic file (type png)
+<use ../figs//MIDDLE.U1.InputVSOutput.png>
+Package pdftex.def Info: ../figs//MIDDLE.U1.InputVSOutput.png  used on input li
+ne 105.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//MIDDLE.U2.InputVSOutput.png, id=65, 1152.7065pt x 553.46774pt>
+File: ../figs//MIDDLE.U2.InputVSOutput.png Graphic file (type png)
+<use ../figs//MIDDLE.U2.InputVSOutput.png>
+Package pdftex.def Info: ../figs//MIDDLE.U2.InputVSOutput.png  used on input li
+ne 112.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//MIDDLE.U3.InputVSOutput.png, id=66, 1152.7065pt x 553.46774pt>
+File: ../figs//MIDDLE.U3.InputVSOutput.png Graphic file (type png)
+<use ../figs//MIDDLE.U3.InputVSOutput.png>
+Package pdftex.def Info: ../figs//MIDDLE.U3.InputVSOutput.png  used on input li
+ne 117.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//MIDDLE.U3vU4.png, id=67, 1152.7065pt x 553.46774pt>
+File: ../figs//MIDDLE.U3vU4.png Graphic file (type png)
+<use ../figs//MIDDLE.U3vU4.png>
+Package pdftex.def Info: ../figs//MIDDLE.U3vU4.png  used on input line 123.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//BOTTOM.png, id=68, 1019.007pt x 489.027pt>
+File: ../figs//BOTTOM.png Graphic file (type png)
+<use ../figs//BOTTOM.png>
+Package pdftex.def Info: ../figs//BOTTOM.png  used on input line 129.
+(pdftex.def)             Requested size: 483.69687pt x 232.12607pt.
+<../figs//TOP.png, id=69, 1152.7065pt x 553.46774pt>
+File: ../figs//TOP.png Graphic file (type png)
+<use ../figs//TOP.png>
+Package pdftex.def Info: ../figs//TOP.png  used on input line 134.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//MIDDLE.png, id=70, 1152.7065pt x 553.46774pt>
+File: ../figs//MIDDLE.png Graphic file (type png)
+<use ../figs//MIDDLE.png>
+Package pdftex.def Info: ../figs//MIDDLE.png  used on input line 139.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
  [1
 
-{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Missing character: There is no ; in font nullfont!
- [2] [3]
-Missing character: There is no ; in font nullfont!
- [4] [5] (./E04.2.AC.aux)
+{c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <../figs//sc
+hem.png> <../figs//sin10hz2.5v.png (PNG copy)>] [3 <../figs//MIDDLE.U1.InputVSO
+utput.png (PNG copy)> <../figs//MIDDLE.U2.InputVSOutput.png (PNG copy)>] [4 <..
+/figs//MIDDLE.U3.InputVSOutput.png (PNG copy)> <../figs//MIDDLE.U3vU4.png (PNG 
+copy)>] [5 <../figs//BOTTOM.png (PNG copy)> <../figs//TOP.png (PNG copy)>]
+<../figs//sin10hz2.5vofs2v.png, id=115, 1440.88312pt x 711.4078pt>
+File: ../figs//sin10hz2.5vofs2v.png Graphic file (type png)
+<use ../figs//sin10hz2.5vofs2v.png>
+Package pdftex.def Info: ../figs//sin10hz2.5vofs2v.png  used on input line 156.
 
-LaTeX Warning: There were undefined references.
-
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+<../figs//sin10hz5v.png, id=117, 1440.88312pt x 711.4078pt>
+File: ../figs//sin10hz5v.png Graphic file (type png)
+<use ../figs//sin10hz5v.png>
+Package pdftex.def Info: ../figs//sin10hz5v.png  used on input line 164.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+<../figs//Conv.Sinusoide.100Hz.2.png, id=119, 1152.7065pt x 553.46774pt>
+File: ../figs//Conv.Sinusoide.100Hz.2.png Graphic file (type png)
+<use ../figs//Conv.Sinusoide.100Hz.2.png>
+Package pdftex.def Info: ../figs//Conv.Sinusoide.100Hz.2.png  used on input lin
+e 183.
+(pdftex.def)             Requested size: 483.69687pt x 232.24373pt.
+<../figs//sin2khz2.5v.png, id=121, 1440.88312pt x 711.4078pt>
+File: ../figs//sin2khz2.5v.png Graphic file (type png)
+<use ../figs//sin2khz2.5v.png>
+Package pdftex.def Info: ../figs//sin2khz2.5v.png  used on input line 191.
+(pdftex.def)             Requested size: 483.69687pt x 238.81429pt.
+ [6 <../figs//MIDDLE.png (PNG copy)> <../figs//sin10hz2.5vofs2v.png (PNG copy)>
+] [7 <../figs//sin10hz5v.png (PNG copy)> <../figs//Conv.Sinusoide.100Hz.2.png (
+PNG copy)>]
+(c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+) [8 <../figs//sin2khz2.5v.png (PNG copy)>]
+<../figs//Net100-10k.png, id=148, 1440.88312pt x 711.4078pt>
+File: ../figs//Net100-10k.png Graphic file (type png)
+<use ../figs//Net100-10k.png>
+Package pdftex.def Info: ../figs//Net100-10k.png  used on input line 301.
+(pdftex.def)             Requested size: 482.70433pt x 238.3258pt.
+ [9] [10 <../figs//Net100-10k.png (PNG copy)>]
+(./E04.2.AC.aux)
 Package rerunfilecheck Info: File `E04.2.AC.out' has not changed.
-(rerunfilecheck)             Checksum: B28A17A633155A0684520012913785A1;2515.
+(rerunfilecheck)             Checksum: DEDEF4D6B16B6C57D47B031C6295D341;3159.
  ) 
 Here is how much of TeX's memory you used:
- 59138 strings out of 479713
- 1441656 string characters out of 5876923
- 2402888 words of memory out of 10000000
- 76033 multiletter control sequences out of 15000+600000
- 421055 words of font info for 74 fonts, out of 8000000 for 9000
+ 56366 strings out of 479713
+ 1375132 string characters out of 5876923
+ 2216667 words of memory out of 10000000
+ 73306 multiletter control sequences out of 15000+600000
+ 419367 words of font info for 69 fonts, out of 8000000 for 9000
  418 hyphenation exceptions out of 8191
- 122i,19n,125p,754b,2433s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2021/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr6.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texli
-ve/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/te
-xmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/f
-onts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2021/texmf-dist/fonts/type1
-/public/cm-super/sfrm0900.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm
--super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfr
-m1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-<c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb>
-Output written on E04.2.AC.pdf (5 pages, 244270 bytes).
+ 122i,11n,125p,754b,1242s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texl
+ive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1000.p
+fb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/tex
+live/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/
+texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist
+/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/typ
+e1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/
+cm-super/sfti1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/s
+ftt1000.pfb>
+Output written on E04.2.AC.pdf (10 pages, 1475857 bytes).
 PDF statistics:
- 219 PDF objects out of 1000 (max. 8388607)
- 178 compressed objects within 2 object streams
+ 246 PDF objects out of 1000 (max. 8388607)
+ 190 compressed objects within 2 object streams
  52 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 187 words of extra memory for PDF output out of 10000 (max. 10000000)
 
