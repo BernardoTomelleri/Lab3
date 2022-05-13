@@ -8,7 +8,7 @@ def sin_func(t, A, nu,phi,B):
 def moving_average(x, w):
     return np.convolve(x, np.ones(w), 'valid') / w
 
-file_path = "./data/freq/2khz.txt"
+file_path = "./data/sinusoide.txt"
 with open(file_path,newline='') as csvfile:
 #convert csv removing comments and empty lines
 # fieldnames = ['Data']
@@ -21,9 +21,9 @@ with open(file_path,newline='') as csvfile:
     bit_stream = np.unpackbits(decimal_stream)
             
 # sampling interval in ms
-t_samp = 20e-3
+t_samp = 20e-6
 ind = np.arange(len(bit_stream))
-t_min = 0.; t_max=5
+t_min = 0.; t_max=0.1
 
 # moving average graphs
 lab.rc.typeset(usetex=True, fontsize=12)
@@ -45,7 +45,7 @@ legend = ax.legend(loc='upper right')
 
 # sinusoidal fit
 dx=np.full_like(x, 1e-6); dy=np.full_like(x, 3./255)
-popt, pcov = lab.curve_fit(sin_func, x, mov_avg2, p0=np.array([1, 2, 1,1]))
+popt, pcov = lab.curve_fit(sin_func, x, mov_avg2, p0=np.array([1, 100, 1,1]))
 res=(mov_avg2 - sin_func(x, *popt))/(255./255.)
 
 perr, pcor = errcor(pcov)

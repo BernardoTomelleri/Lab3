@@ -99,54 +99,66 @@ sinusoidale su CH1 e dell'uscita di U4 su CH2 in \cref{fig: verif}.
 \end{figure}
 
 \subsection{Analisi qualitativa del funzionamento del circuito}
-Possiamo dividere il circuito in 3 sezioni principali: basandoci sullo schema mostrato in \cref{schm: ADC} individuiamo da sinistra verso destra un circuito sommatore e integratore invertente, un comparatore semplice e un flip flop che faranno da convertitore A->D a 1 bit, e infine un convertirore D->A anch'esso da 1 bit.
-Il compito del sommatore e integratore è quello di fare la media nel tempo del segnale di feedback sommato a quello analogico in ingresso all'ADC, in modo che l'uscita dell'integratore sia >0 quando la media del segnale di feedback è inferiore a $V_{in}$ e viceversa.
-L'uscita dell'integratore viene poi inviata all'ingresso di un comparatore la cui uscita sarà $V_{sat,+} \approx 3.5 V$ nel caso in cui l'uscita dell'integratore sia positiva, e $V_{sat,-} \approx -3.5 V$ nel caso opposto.
-A questo punto si vuole modificare il segnale in modo che l'ingresso del flip flop possa interpretarlo correttamente come segnale digitale; per questo utilizzeremo un partitore di tensione tra l'uscita del comparatore e $V_{CC}$ in modo che H e L del segnale siano rispettivamente $4.25 V$ ( che risulta essere maggiore del valore nominale di $V_{IH}$) e $0.75 V$ (minore del valore nominale di $V_{IL}$).
-L'uscita dal flip flop sarà quindi l'uscita digitale del nostro DAC.
-Infine l'uscita digitale passerà attraverso un ultimo comparatore (che compara il segnale digitale con $2.5V$, e nel caso in cui sia maggiore, all'uscita avrò $V_{sat,+}$ e viceversa) che avrà la funzione di convertitore Digitale->Analogico ad un singolo bit, la cui uscita sarà inviata al circuito sommatore+integratore come segnale di feedback.
-\begin{figure}[htbp]
-    \centering
-	\includegraphics[width=\textwidth]{MIDDLE.U1.InputVSOutput}
-    \caption{Acquisizione dei segnali all'ingresso invertente (CH1) e uscita (CH2)
-    del circuito solo integratore \texttt{U1}}
-\end{figure}
+Possiamo dividere il circuito in 3 blocchi funzionali: basandoci sullo schema
+mostrato in \cref{schm: ADC} individuiamo da sinistra verso destra un circuito
+sommatore e integratore invertente, un comparatore con $V\ped{ref} =$ GND e un
+flip flop che faranno da convertitore A->D a 1 bit, e infine un convertitore
+D->A anch'esso da 1 bit.
 
-\begin{figure}[htbp]
-    \centering
-	\includegraphics[width=\textwidth]{MIDDLE.U2.InputVSOutput}
-    \caption{Acquisizione del segnale nell'ingresso non invertente (canale 1) e dell'uscita (canale 2) del circuito comparatore semplice}
-\end{figure}
-\begin{figure}[htbp]
-    \centering
-	\includegraphics[width=\textwidth]{MIDDLE.U3.InputVSOutput}
-    \caption{Acquisizione del segnale in ingresso(canale 1) e in uscita (canale 2) dal Flip Flop}
-\end{figure}
+Il compito del sommatore e integratore è quello di calcolare la media nel
+tempo del segnale di feedback sommato a quello analogico in ingresso all'ADC,
+in modo che l'uscita dell'integratore sia $>0$ quando la media del segnale di
+feedback è inferiore a $V\ped{in}$ e viceversa.
 
-\begin{figure}[htbp]
-    \centering
-	\includegraphics[width=\textwidth]{MIDDLE.U3vU4}
-    \caption{Acquisizione del segnale in uscita dal pin Q del Flip Flop(canale 1) e in uscita dal DAC (canale 2)}
-\end{figure}
-Dalle acquisizioni fatte con l'oscilloscopio di Waveform, ci accorgiamo che ogni componente del circuito si comporta come atteso.
-Si procede quindi alla verifica del funzionamento del convertitore A->D: per farlo, dopo aver alimentato ogni componente del circuito, inviamo un segnale di clock al flip flop di frequenza pari a 50 kHz, e un'onda sinusoidale di ampiezza $2.5 V$ e frequenza $10 Hz$ all'entrata analogica; ci concentriamo quindi sui segnali in uscita dal Flip Flop.
-Dopo ciò che si è detto prima, ci aspettiamo in uscita dal flip flop un segnale simile ad un'onda quadra con duty cycle medio $\approx 50 \percent$ quando l'onda vale circa 0 V, e che il Duty Cycle aumenti quando l'onda raggiunge il minimo e viceversa.
+L'uscita dell'integratore viene poi inviata all'ingresso di un comparatore la
+cui uscita in assenza di partitore di tensione corrisponderebbe alle tensioni
+di saturazione degli OpAmp: $V\ped{sat,+} \approx 3.5 V$ nel caso in cui
+l'uscita dell'integratore sia positiva, e $V\ped{sat,-} \approx -3.5 V$ nel
+caso opposto.
+
+Dunque, per modificare il segnale in modo che l'ingresso del FF possa
+interpretarlo correttamente come segnale digitale, si fa uso del partitore di
+tensione $R_3 + R_4$ in modo che H e L del segnale siano rispettivamente
+$4.25$ V (cioè maggiore del valore nominale di $V_{IH}$) e $0.75$ V
+(minore del valore nominale di $V_{IL}$) e l'uscita del flip flop costituisca
+quindi l'uscita del nostro DAC.
+
+Infine, l'uscita digitale passa attraverso un ultimo comparatore che implementa
+la funzione di convertitore Digitale->Analogico ad un singolo bit, la cui
+uscita sarà inviata al circuito sommatore+integratore come segnale di feedback.
+In maniera del tutto simile a prima il partitore $R_5 + R_6$ assicura che
+il segnale in uscita assuma valori di saturazione degli OpAmp; in particolare
+si compara il segnale digitale con $2.5$ V, e nel caso in cui sia maggiore,
+all'uscita si avrà $V\ped{sat,+}$ o $V\ped{sat,-}$ nel caso complementare.
+
+Si procede alla verifica del funzionamento del convertitore A->D: per farlo
+inviamo un segnale di clock al FF di frequenza pari a 50 kHz, e un'onda
+sinusoidale di ampiezza $2.5$ V e frequenza $10$ Hz all'ingresso analogico.
+Ci aspettiamo di osservare con l'oscilloscopio in uscita dal flip flop un
+segnale simile ad un'onda quadra con duty cycle $\sim 50 \percent$ quando
+l'onda vale circa 0 V, e che il Duty Cycle cresca in maniera proporzionale
+all'ampiezza dell'onda in ingresso.
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{BOTTOM}
-    \caption{Acquisizione del segnale analogico in ingresso (un'onda sinusoidale di frequenza pari a 10 Hz e ampiezza pari a $2.5 V$) e del segnale logico in uscita dal pin Q del Flip-Flop durante il minimo del segnale}
+    \caption{Acquisizione del segnale analogico in ingresso (un'onda sinusoidale di frequenza pari a 10 Hz e ampiezza pari a $2.5$ V) e del segnale logico in uscita dal pin Q del Flip-Flop durante il minimo del segnale
+    \label{fig: bot}}
 \end{figure}
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{TOP}
-    \caption{Acquisizione del segnale analogico in ingresso (un'onda sinusoidale di frequenza pari a 10 Hz e ampiezza pari a $2.5 V$) e del segnale logico in uscita dal pin Q del Flip-Flop durante il massimo del segnale}
+    \caption{Acquisizione del segnale analogico in ingresso (un'onda sinusoidale di frequenza pari a 10 Hz e ampiezza pari a $2.5$ V) e del segnale logico in uscita dal pin Q del Flip-Flop durante il massimo del segnale
+    \label{fig: top}}
 \end{figure}
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{MIDDLE}
-    \caption{Acquisizione del segnale analogico in ingresso (un'onda sinusoidale di frequenza pari a 10 Hz e ampiezza pari a $2.5 V$) e del segnale logico in uscita dal pin Q del Flip-Flop durante il punto medio dell'onda}
+    \caption{Acquisizione del segnale analogico in ingresso (un'onda sinusoidale di frequenza pari a 10 Hz e ampiezza pari a $2.5$ V) e del segnale logico in uscita dal pin Q del Flip-Flop durante il punto medio dell'onda
+    \label{fig: middle}}
 \end{figure}
-Dalle acquisizioni possiamo concludere che il circuito ha il comportamento atteso
+Dalle acquisizioni riportate in \cref{fig: bot}, \cref{fig: top} e \cref{fig: middle}
+il comportamento del circuito risulta compatibile con quanto atteso.
+
 \subsection{Risposta del convertitore al variare dei parametri del seno}
 \label{sbs: adcresp}
 Modificando i valori di offset e ampiezza dell'onda in ingresso si nota
@@ -272,8 +284,8 @@ in \cref{fig: sinfit}
 \end{figure}
 e come stime dei valori ottimali:
 \begin{align*}
-A &= 404 \times 10^{-3} \pm 2 \times 10^{-4} \quad f = 99.9\pm 7 \times 10^{-5}\; \si{Hz} \\
-B &= 545 \times 10^{-3} \pm 1 \times 10^{-4} \quad \phi = -0.09 \pm \; 7 \times 10^{-4}\si{rad} \\
+A &= (386.8 \pm 0.2) \times 10^{-3} \quad f = 100.00 \pm 0.01 \; \si{Hz} \\
+B &= (454.7 \pm 0.1) \times 10^{-3} \quad \phi = -79 \pm \; 4 \; \si{mrad} \\
 \chi^2/\text{d.o.f} &=  4 / 20554
 \end{align*}
 
@@ -287,10 +299,7 @@ segnale in ingresso.
 
 Riportiamo quindi in \cref{fig: sin2khzpy} la ricostruzione ottenuta per lo
 stesso segnale sinusoidale di frequenza $f = \SI{2}{k\Hz}$ (visualizzato
-all'oscilloscopio prima in \cref{fig: sin2khz}) e in \cref{fig: net}
-la risposta in frequenza all'uscita U4 del circuito ottenuta da uno scan con
-Network Analyzer inviando una sinusoide di ampiezza fissata a $2.5 \; \si{\V}$
-e frequenza tra $100$ e $\SI{10}{k\Hz}$ all'ingresso analogico dello stesso.
+all'oscilloscopio prima in \cref{fig: sin2khz}) 
 \begin{figure}[htbp]
     \centering
 	\includegraphics[width=\textwidth]{sin2khzpy}
@@ -299,17 +308,10 @@ e frequenza tra $100$ e $\SI{10}{k\Hz}$ all'ingresso analogico dello stesso.
     dall'ADC con Protocol.
     \label{fig: sin2khzpy}}
 \end{figure}
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=\textwidth]{Net100-10k}
-	\caption{Analisi in frequenza dell'ADC ottenuta dallo scan con Network
-	tra $\SI{100}{\Hz}$ e $\SI{10}{k\Hz}$ con segnale sinusoidale in ingresso
-	di ampiezza fissata a $v\ped{in} = 2.5 \; \si{\V}$. L'unico punto di
-	interesse si trova a circa $\SI{2}{k\Hz}$, frequenza oltre alla quale il
-	circuito assume un comportamento irregolare. L'andamento della fase risulta
-	qualitativamente simile a quello atteso per un filtro passa basso.
-	\label{fig: net}}
-\end{figure}
+Come regola generale infatti ci aspettiamo che per riuscire a ricostruire
+fedelmente il segnale in ingresso la frequenza di campionamento debba essere
+almeno $f\ped{clk} \geq 20 f\ped{max}$ dove $f\ped{max}$ è la frequenza
+massima dell'onda in ingresso.
 
 Una volta ricostruite le onde per valori di frequenza $f = [100, 200, 500, 1k,
 2k, 5k, 10k] \; \si{\Hz}$ abbiamo misurato la loro ampiezza ripetendo il fit
@@ -326,13 +328,28 @@ riportato in \cref{fig: bode}
 	cui l'ampiezza è diminuita rispetto a centro banda di $-3$ dB.
 	\label{fig: bode}}
 \end{figure}
-Da cui si vede di nuovo come l'uscita del circuito ha una risposta in frequenza
-simile a quella di un integratore, come quello presente in \verb+U1+.
+Da cui si vede di come l'andamento dell'ampiezza del segnale in uscita dal
+circuito ha una risposta in frequenza simile a quella di un integratore, come
+quello presente in \verb+U1+.
 
-Come regola generale infatti ci aspettiamo che per riuscire a ricostruire
-fedelmente il segnale in ingresso la frequenza di campionamento debba essere
-almeno $f\ped{clk} \geq 20 f\ped{max}$ dove $f\ped{max}$ è la frequenza
-massima dell'onda in ingresso.
+Riportiamo finalmente in \cref{fig: net} la risposta in frequenza all'uscita
+\verb+U4+ del circuito ottenuta da uno scan con Network Analyzer inviando una
+sinusoide di ampiezza fissata a $2.5 \; \si{\V}$ e frequenza tra $100$ e
+$\SI{10}{k\Hz}$ all'ingresso analogico dello stesso
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\textwidth]{Net100-10k}
+	\caption{Analisi in frequenza dell'ADC ottenuta dallo scan con Network
+	tra $\SI{100}{\Hz}$ e $\SI{10}{k\Hz}$ con segnale sinusoidale in ingresso
+	di ampiezza fissata a $v\ped{in} = 2.5 \; \si{\V}$. L'unico punto di
+	interesse si trova a circa $\SI{2}{k\Hz}$, frequenza oltre alla quale il
+	circuito assume un comportamento irregolare. L'andamento della fase risulta
+	qualitativamente simile a quello atteso per un filtro passa basso.
+	\label{fig: net}}
+\end{figure}
+da cui si vede che anche la fase del segnale in uscita ha un andamento in
+frequenza grossolanamente compatibile con quello atteso per un filtro passa
+basso.
 
 \subsection{Stima del fattore di calibrazione del convertitore}
 Per ottenere una legge di conversione tra i conteggi in uscita dall'ADC e
@@ -358,16 +375,16 @@ Riportiamo in \cref{fig: cal} e di seguito i risultati del fit lineare
     \label{fig: cal}}
 \end{figure}
 
-Si utilizza anche un secondo metodo per la calibrazione inversa del circuito;
-per cui ad un conteggio ricostruito dall'ADC $Y \in [0, 1]$ corrisponde una
-misura in Volt $X = (Y - O) \cdot C$.
+Per l'altro circuito si è provato un secondo metodo per la calibrazione inversa
+del convertitore; per cui ad un conteggio ricostruito dall'ADC $Y \in [0, 1]$
+corrisponde una misura in Volt $X = (Y - O) \cdot C$.
 
 Dopo avere eseguito il fit dell'onda ricostruita, si divide l'ampiezza
 dell'onda in ingresso misurata tramite oscilloscopio, per il valore
 dell'ampiezza ricavato dal fit, da cui otteniamo
 \begin{align*}
 C &= 6.39 \pm 0.06 \; \si{\V/counts} \\
-O &= 471 \times 10^{-3} \pm 2 \times 10^{-4} \; \text{ADC counts}
+O &= (454.6 \pm 0.1) \times 10^{-3} \; \text{ADC counts}
 \end{align*}
 
 \subsection{Misura del signal/noise ratio (SNR)}
