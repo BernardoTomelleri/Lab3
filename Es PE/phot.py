@@ -53,6 +53,7 @@ axf.plot(x, model(x, *pars), ls='-', marker=None, color='red',
 
 axr.errorbar(x[::10], resn[::10], None, None, marker='o', ms=2, elinewidth=0.5, capsize=0.5,
              ls='--', lw=1, color='k')
+axr.axhline(0, **lab.rc.RES_HLINE)
 
 axf.set_ylabel(r'Inverse current intensity $I_{\mathrm{inv}}$ [pA]')
 if tix: tick(axf, xmaj=0.1, ymaj=50)
